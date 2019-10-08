@@ -1,0 +1,41 @@
+99	0.2	0.2	0.2	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	null
+999	0.2	0.2	0.2	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	null
+1000	0.2	0.2	0.2	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	null
+1001	0.2	0.2	0.2	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	null
+107	0.454902	0.454902	0.454902	1	1	True	0.4784314	0.3764706	0.3372549	1	0.01	150	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox0010.mat_frres
+101	0.5597015	0.5597015	0.5597015	1	1	True	0.4784314	0.3764706	0.3372549	1	0.005	800	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox0010G.mat_frres
+103	0.1490196	0.1882353	0.2470588	1	1	True	0.07796837	0.1873655	0.3731343	1	1	110	1	30	0.5	Assets/Standard Assets/Skyboxes/Sky_0011.mat_frres
+113	0.5597015	0.5597015	0.5597015	1	1	True	0.4784314	0.3764706	0.3372549	1	0.005	800	1	0	0.5	Assets/Standard Assets/Skyboxes/Overcast1 Skybox 1.mat_frres
+104	0.1756516	0.1930109	0.2835821	1	1	True	0.4064379	0.5602055	0.6119403	1	0.015	100	3	12	0.5	Assets/Standard Assets/Skyboxes/Overcast1 Skybox 1.mat_frres
+102	0.414012	0.4402985	0.4391956	1	1	True	0.4784314	0.3764706	0.3372549	1	0.005	150	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox0010.mat_frres
+105	0.2985075	0.2985075	0.2985075	1	1	True	0.0627451	0.1215686	0.2078431	0.01960784	0.02	500	1	50	0.5	Assets/Standard Assets/Skyboxes/sky_map0017.mat_frres
+106	0.1950323	0.2414169	0.2537314	1	1	True	0.3969704	0.5482777	0.6044776	0.5058824	0.01	100	3	50	0.5	Assets/Standard Assets/Skyboxes/Skybox17.mat_frres
+109	0.2792381	0.3432836	0.324473	1	1	True	0.5074627	0.4311923	0.3711294	1	0.04	50	3	-20	0.5	Assets/Standard Assets/Skyboxes/Skybox Breeze/Breeze Sky 1.mat_frres
+201	0.2	0.2	0.2	1	1	True	0.1533749	0.1873601	0.2014925	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/Overcast1 Skybox.mat_frres
+108	0.4552239	0.4552239	0.4552239	1	1	True	0.477612	0.3777477	0.3386055	1	0.01	150	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox0010.mat_frres
+110	0.3271887	0.347781	0.3507463	1	1	True	0.1290708	0.1343284	0.1042548	1	0.01	150	2	0	0.5	Assets/Standard Assets/Skyboxes/MoonShine Skybox 2.mat_frres
+202	0.2695478	0.3572408	0.4104478	1	1	True	0.2910448	0.2348468	0.182446	1	0.025	70	3	10	0.5	Assets/Standard Assets/Skyboxes/skybox_xuese.mat_frres
+203	0.1826687	0.225602	0.2985075	1	1	True	0.05390956	0.1317922	0.1641791	1	0.02	152	3	-40	0.5	Assets/Standard Assets/Skyboxes/MoonShine Skybox 3.mat_frres
+204	0.477612	0.477612	0.477612	1	1	True	0.1803922	0.3294118	0.4196078	1	0.01	130	1	30	0.5	Assets/Standard Assets/Skyboxes/Overcast1 Skybox.mat_frres
+304	0.2985075	0.2985075	0.2985075	1	1	True	0.4756627	0.5070779	0.5447761	1	0.01	300	1	0	0.5	Assets/Standard Assets/Skyboxes/Overcast1 Skybox 2.mat_frres
+305	0.3059701	0.3059701	0.3059701	1	1	True	0.01091557	0.03490039	0.05223882	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/sky_xinkong 1.mat_frres
+306	0.3058824	0.3058824	0.3058824	1	1	True	0.08214525	0.1077031	0.1865672	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/sky_xinkong 1.mat_frres
+307	0.3058824	0.3058824	0.3058824	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/sky_xinkong 1.mat_frres
+401	0.5372549	0.5372549	0.5372549	1	1	False	0.5970149	0.5189404	0.3920695	1	0.015	50	3	-30	0.5	Assets/Standard Assets/Skyboxes/Skybox17.mat_frres
+402	0.2164179	0.1550457	0.1550457	1	1	True	0.2835821	0.2466729	0.2222098	0.6078432	0.025	80	2	-20	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 1.mat_frres
+403	0.2164179	0.1550457	0.1550457	1	1	True	0.282353	0.2470588	0.2235294	0.6078432	0.02	130	2	-20	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 1.mat_frres
+404	0.2156863	0.1568628	0.1568628	1	1	True	0.282353	0.2470588	0.2235294	0.6078432	0.03	100	2	-20	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 1.mat_frres
+405	0.2156863	0.1568628	0.1568628	1	1	True	0.2313433	0.1070394	0.06042549	0.6078432	0.02	100	2	-20	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 1.mat_frres
+406	0.4029851	0.4029851	0.4029851	1	1	False	0.5	0.5	0.5	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/skybox_xuese.mat_frres
+407	0.3955224	0.3955224	0.3955224	1	1	True	0.4210292	0.5138825	0.5223881	1	0.1	150	1	50	0.5	Assets/Standard Assets/Skyboxes/Sunny1 Skybox.mat_frres
+501	0.03095863	0.05158351	0.1032131	1	1	False	0.3428381	0.3849201	0.6044776	1	0.005	300	3	0	0.5	Assets/Standard Assets/Skyboxes/Eerie Skybox 2.mat_frres
+502	0.1119403	0.1119403	0.1119403	1	1	True	0.1511948	0.1503676	0.2686567	1	0.01	300	3	0	0.5	null
+503	0.2352941	0.2352941	0.2352941	1	1	False	0.1529412	0.1411765	0.2705882	1	0.01	300	3	0	0.5	null
+504	0.1411765	0.1411765	0.1411765	1	1	False	0.1529412	0.1411765	0.2705882	1	0.01	300	3	0	0.5	null
+505	0.5373135	0.5373135	0.5373135	1	1	True	0.6698192	0.5754066	0.9402985	1	0.02	300	1	20	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 1.mat_frres
+506	0.454902	0.454902	0.454902	1	1	True	0.4784314	0.3764706	0.3372549	1	0.005	800	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox Breeze/Breeze Sky 1.mat_frres
+507	0.454902	0.454902	0.454902	1	1	True	0.4784314	0.3764706	0.3372549	1	0.005	800	1	0	0.5	Assets/Standard Assets/Skyboxes/Skybox Breeze/Breeze Sky 1.mat_frres
+601	0.3411765	0.3411765	0.3411765	1	1	True	0.2686567	0.1449978	0.08821565	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/Skybox12/Skybox130033.mat_frres
+602	0.3490196	0.3490196	0.3490196	1	1	True	0.2705882	0.145098	0.08627451	1	0.01	300	3	0	0.5	Assets/Standard Assets/Skyboxes/Skybox12/Skybox130033.mat_frres
+603	0.5671642	0.5671642	0.5671642	1	1	True	0.113444	0.1567164	0.1567164	1	0.05	90	1	10	0.5	Assets/Standard Assets/Skyboxes/Overcast2 Skybox 2.mat_frres
+604	0.5372549	0.5372549	0.5372549	1	1	True	0.4477612	0.4055601	0.3775896	1	0.2	500	1	50	0.5	Assets/Standard Assets/Skyboxes/sky_map0036.mat_frres

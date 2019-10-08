@@ -1,0 +1,9 @@
+Prefabs/Effect/g_chenqiaoqian_boss_feitianwu	0
+Prefabs/Effect/g_chenqiaoqian_boss_feitianwu_EndCollder	0
+Prefabs/Effect/g_chenqiaoqian_boss_jianji1	0
+Prefabs/Effect/g_chenqiaoqian_boss_jianji2_1	0
+Prefabs/Effect/g_chenqiaoqian_boss_jianji2_2	0
+Prefabs/Effect/g_chenqiaoqian_boss_mishangjianwu	0
+Prefabs/Effect/g_chenqiaoqian_boss_mishangjianwu_feijian	0
+Prefabs/Effect/g_huoqiushu_shouji01	0
+Prefabs/Mob/Mesh/ChenQiaoqian_BOSS	0

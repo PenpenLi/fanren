@@ -1,0 +1,20 @@
+﻿using System;
+
+// Token: 0x02000539 RID: 1337
+public enum ROLE_TYPE
+{
+	// Token: 0x04001FE8 RID: 8168
+	RT_PLAYER = 1,
+	// Token: 0x04001FE9 RID: 8169
+	RT_COMRADE,
+	// Token: 0x04001FEA RID: 8170
+	RT_PET,
+	// Token: 0x04001FEB RID: 8171
+	RT_MONSTER,
+	// Token: 0x04001FEC RID: 8172
+	RT_NPC,
+	// Token: 0x04001FED RID: 8173
+	RT_ROLEPART,
+	// Token: 0x04001FEE RID: 8174
+	RT_PUPPET
+}

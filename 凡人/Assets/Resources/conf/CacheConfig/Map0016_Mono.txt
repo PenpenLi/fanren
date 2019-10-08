@@ -1,0 +1,20 @@
+Prefabs/Effect/bingyaojineng_bingmao	0
+Prefabs/Effect/bingyaojineng_bingmao_baozha	0
+Prefabs/Effect/bingyaojineng_yidibing02	0
+Prefabs/Effect/bingyaojineng_yidibing02_shifa	0
+Prefabs/Effect/bingyaowang_xueyu_shifa	0
+Prefabs/Effect/bingyaowang_xueyu_shouji	0
+Prefabs/Effect/DaoGuang/g_bingyaowang_gongji1	0
+Prefabs/Effect/DaoGuang/g_tiebiyuan_gongji1	0
+Prefabs/Effect/DaoGuang/g_tiebiyuan_gongji2	0
+Prefabs/Effect/Fulu_shouji001_huo	0
+Prefabs/Effect/g_fengxiaoyao_JiNeng_lei	0
+Prefabs/Effect/g_lufengyang_leibao	0
+Prefabs/Effect/g_tiebiyuan _butonggongji_1	0
+Prefabs/Effect/g_xueyuan_diuxueqiu_baozha	0
+Prefabs/Effect/SparkleRising	0
+Prefabs/Mob/Mesh/BingYaoWang_01	0
+Prefabs/Mob/Mesh/fengxiaoyao03	0
+Prefabs/Mob/Mesh/fengxiaoyao03_jin	0
+Prefabs/Mob/Mesh/Gorilla_03	0
+Prefabs/Mob/Mesh/ShanDianKuiLei_06	0

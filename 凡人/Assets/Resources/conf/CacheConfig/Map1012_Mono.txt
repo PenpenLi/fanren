@@ -1,0 +1,8 @@
+Prefabs/Effect/DaoGuang/g_lushixiong_putonggongji	0
+Prefabs/Effect/fengdun_bianshi01	0
+Prefabs/Effect/g_lufengyang_fenglibaofa	0
+Prefabs/Effect/g_lufengyang_jushiqianyin_shifa	0
+Prefabs/Effect/g_lufengyang_jushiqianyin_shifa02	0
+Prefabs/Effect/g_lufengyang_zhongshiqianyin01	0
+Prefabs/Effect/G_xiaoyuren_shanshuo	0
+Prefabs/Mob/Mesh/LuFengYang_BOSS	0

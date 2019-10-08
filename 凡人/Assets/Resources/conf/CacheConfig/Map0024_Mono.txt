@@ -1,0 +1,7 @@
+Prefabs/Effect/DaoGuang/g_lufengyang_gongji1	0
+Prefabs/Effect/DaoGuang/t_fengyue_lianji1_1	0
+Prefabs/Effect/DaoGuang/t_fengyue_lianji1_2	0
+Prefabs/Effect/ShanDianKuLei00_gongji	0
+Prefabs/Mob/Mesh/FengYue_02	0
+Prefabs/Mob/Mesh/LuFengYang_BOSS_jin	0
+Prefabs/Mob/Mesh/ShanDianKuiLei_05	0

@@ -1,0 +1,1 @@
+1000002	Main CameraLanding	3001031	0	MainCamera	0	0	134.3198	22.52669	125.4182	0	0	0	1	1	1

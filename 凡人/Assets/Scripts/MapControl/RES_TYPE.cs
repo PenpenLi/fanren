@@ -1,0 +1,16 @@
+﻿using System;
+
+
+public enum RES_TYPE
+{
+	GAMEOBJECT,
+	TEXTURE,
+	AUDIO,
+	VIDEO,
+	SHADER,
+	MATERIAL,
+	TEXT,
+	FONT,
+	ANIM,
+	OBJECT
+}

@@ -1,0 +1,19 @@
+Prefabs/Effect/DaoGuang/g_heixiongjing_gongji1	0
+Prefabs/Effect/DaoGuang/g_heixiongjing_gongji2	0
+Prefabs/Effect/DaoGuang/g_lushixiong_putonggongji	0
+Prefabs/Effect/DaoGuang/g_yangguai_gongji03	0
+Prefabs/Effect/g_fengxiaoyao_JiNeng_lei	0
+Prefabs/Effect/g_lufengyang_fenglibaofa	0
+Prefabs/Effect/g_lufengyang_fengqiang_shifa	0
+Prefabs/Effect/g_lufengyang_jingzhi_chusheng	0
+Prefabs/Effect/g_lufengyang_jingzhi_siwang	0
+Prefabs/Effect/g_lufengyang_leibao	0
+Prefabs/Effect/g_lufengyang_liefengbo	0
+Prefabs/Effect/g_menghuaniao_xuanfeng_chusheng 1	0
+Prefabs/Effect/g_menghuaniao_xuanfeng_yidong	0
+Prefabs/Effect/g_tieluo_huochui	0
+Prefabs/Effect/xiongjing_huochui_shifa	0
+Prefabs/Mob/Mesh/FengXiaoYao	0
+Prefabs/Mob/Mesh/LuFengYang_BOSS	0
+Prefabs/Mob/Mesh/XiongJing_01	0
+Prefabs/Mob/Mesh/YangGuai_01	0
