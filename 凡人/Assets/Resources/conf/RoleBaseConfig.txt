@@ -1,0 +1,6 @@
+#角色基本信息配置表									
+#唯一ID	#名称	#人模	#默认装备ID						
+#ID	#名字	#角色模型路径	#默认衣	#默认头	#默认护腕	#默认戒	#默认护符	#默认足	#默认武器
+1	韩立	Prefabs/Player/HanLi	0	0	0	0	0	0	0
+2	陈巧倩	Prefabs/Player/Chenqiaoqian	0	0	0	0	0	0	0
+3	南宫婉	Prefabs/Player/Nangongwan	0	0	0	0	0	0	0

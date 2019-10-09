@@ -39,7 +39,7 @@ public class GameData
 
     public CacheData cacheData = new CacheData();
 
-    //public UserData userData = new UserData();
+    public UserData userData = new UserData();
 
     //public CItemStaticManager ItemStaticMan = new CItemStaticManager();
 
@@ -51,7 +51,7 @@ public class GameData
 
     //public EZGUIManager GUIMan = new EZGUIManager();
 
-    //public RoleBaseConfig RoleBaseCfg = new RoleBaseConfig();
+    public RoleBaseConfig RoleBaseCfg = new RoleBaseConfig();
 
     public ArtResourceConfig ArtResConf = new ArtResourceConfig();
 
@@ -129,7 +129,7 @@ public class GameData
 		//GameData.Instance.colliderTable.initialize();
 		//GameData.Instance.soundTable.initialize();
 		GameData.Instance.cacheData.initialize();
-		//GameData.Instance.userData.initialize();
+		GameData.Instance.userData.initialize();
 		//GameData.Instance.chest.ReadInfo();
 		//GameData.Instance.herbal.ReadInfo();
 		//GameData.Instance.organ.ReadInfo();

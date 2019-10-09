@@ -68,7 +68,10 @@
     <Compile Include="Assets\Scripts\Callback\Callback.cs" />
     <Compile Include="Assets\Scripts\GameData\CacheData.cs" />
     <Compile Include="Assets\Scripts\GameData\GameData.cs" />
+    <Compile Include="Assets\Scripts\GameData\RoleBaseConfig.cs" />
+    <Compile Include="Assets\Scripts\GameData\RoleModelData.cs" />
     <Compile Include="Assets\Scripts\GameData\ScriptManager.cs" />
+    <Compile Include="Assets\Scripts\GameData\UserData.cs" />
     <Compile Include="Assets\Scripts\Main\BroadcastManager.cs" />
     <Compile Include="Assets\Scripts\Main\FantasyWorld.cs" />
     <Compile Include="Assets\Scripts\Main\KeyManager.cs" />
@@ -96,6 +99,8 @@
     <Compile Include="Assets\Scripts\NS_RoleBaseFun\RoleBaseFun.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourcePath.cs" />
+    <Compile Include="Assets\Scripts\Role\BindRole.cs" />
+    <Compile Include="Assets\Scripts\Role\BindRoleInfo.cs" />
     <Compile Include="Assets\Scripts\Role\CItemManager.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjSpawn.cs" />
     <Compile Include="Assets\Scripts\Role\Player.cs" />
@@ -105,6 +110,14 @@
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\RoleManager.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleModelInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleWearEquipPos.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveData.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveDataBase.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveInfo.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveLoadManager.cs" />
+    <Compile Include="Assets\Scripts\Save\SDManager.cs" />
+    <Compile Include="Assets\Scripts\Save\SystemTag.cs" />
     <Compile Include="Assets\Scripts\Scene\ActorManager.cs" />
     <Compile Include="Assets\Scripts\Scene\FanrenSceneManager.cs" />
     <Compile Include="Assets\Scripts\Scene\SceneInfo.cs" />
@@ -118,6 +131,7 @@
     <Compile Include="Assets\Scripts\UI\GUIBase.cs" />
     <Compile Include="Assets\Scripts\UI\LandPlane.cs" />
     <Compile Include="Assets\Scripts\UI\UICamera.cs" />
+    <Compile Include="Assets\Scripts\UtilityLoader.cs" />
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0031_Mono.txt" />
@@ -130,6 +144,7 @@
     <None Include="Assets\Resources\conf\CacheConfig\Map1001_Mono.txt" />
     <None Include="Assets\Resources\conf\map\map0037.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0014_Mono.txt" />
+    <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
     <None Include="Assets\Resources\conf\map\map0025.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map1012_Mono.txt" />
@@ -144,6 +159,7 @@
     <None Include="Assets\Resources\conf\CacheConfig\Map0024_Mono.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0023_Mono.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />
+    <None Include="Assets\Resources\conf\RoleModelConfig.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0033_Mono.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0036_Mono.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0030_Mono.txt" />
@@ -154,35 +170,36 @@
     <None Include="Assets\Resources\conf\CacheConfig\Map0029_Mono.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0008_Mono.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0009_Mono.txt" />
+    <None Include="Assets\Resources\conf\RoleBaseConfig.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0032_Mono.txt" />
     <None Include="Assets\Resources\conf\map\Start.txt" />
     <None Include="Assets\Resources\conf\CacheConfig\Map0019_Mono.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/凡人/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -9,5 +9,5 @@ public class RoleBaseInfo
 
 	public string PrefabName;
 
-	//public Dictionary<RoleWearEquipPos, ulong> DefultEquip = new Dictionary<RoleWearEquipPos, ulong>();
+	public Dictionary<RoleWearEquipPos, ulong> DefultEquip = new Dictionary<RoleWearEquipPos, ulong>();
 }

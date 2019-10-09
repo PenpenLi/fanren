@@ -1,0 +1,39 @@
+#主角配置信息配置文件					
+
+#ID	#名字	#头像路径	#资源路径	#默认移动速度	#默认武器id
+1	韩立	GameLegend/HeadPic/Hanli	Prefabs/Player/HanLi	7	1
+2	陈巧倩	EZGUI/Main/主界面PNG/PNG	Prefabs/Player/Chenqiaoqian	5	1
+3	南宫婉	EZGUI/Main/主界面PNG/PNG	Prefabs/Player/Nangongwan	5	1
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					

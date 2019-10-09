@@ -19,8 +19,7 @@ public class RoleGameObject
     //   // Token: 0x04002043 RID: 8259
     //   private RoleModelInfo m_cModelInfo;
 
-    //   // Token: 0x04002044 RID: 8260
-    //   private Transform m_cTrans;
+       private Transform m_cTrans;
 
     //   // Token: 0x04002045 RID: 8261
     //   private Animation m_cRoleAnimation;
@@ -211,15 +210,13 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x17000440 RID: 1088
-    //// (get) Token: 0x0600240C RID: 9228 RVA: 0x000F377C File Offset: 0x000F197C
-    //public Transform RoleTransform
-    //{
-    //	get
-    //	{
-    //		return this.m_cTrans;
-    //	}
-    //}
+    public Transform RoleTransform
+    {
+        get
+        {
+            return this.m_cTrans;
+        }
+    }
 
     //// Token: 0x17000441 RID: 1089
     //// (get) Token: 0x0600240D RID: 9229 RVA: 0x000F3784 File Offset: 0x000F1984
@@ -316,8 +313,6 @@ public class RoleGameObject
         this.m_cRole = role;
     }
 
-    //// Token: 0x17000446 RID: 1094
-    //// (get) Token: 0x06002413 RID: 9235 RVA: 0x000F3914 File Offset: 0x000F1B14
     //public Rigidbody[] Rigidbodys
     //{
     //	get
@@ -506,7 +501,7 @@ public class RoleGameObject
 
     public void CreatGO(int modelId, Vector3 position, Quaternion rotation)
     {
-        //this.SetGO(RoleGameObject.CreatRoleGameObject(modelId, position, rotation));
+        this.SetGO(RoleGameObject.CreatRoleGameObject(modelId, position, rotation));
     }
 
     //// Token: 0x0600241E RID: 9246 RVA: 0x000F3DD4 File Offset: 0x000F1FD4
@@ -522,49 +517,47 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x0600241F RID: 9247 RVA: 0x000F3E60 File Offset: 0x000F2060
-    //public void SetGO(GameObject gameObject, Vector3 position, Quaternion rotation)
-    //{
-    //	this.SetGO(gameObject);
-    //	if (this.m_cTrans != null)
-    //	{
-    //		this.m_cTrans.position = position;
-    //		this.m_cTrans.rotation = rotation;
-    //	}
-    //}
+    public void SetGO(GameObject gameObject, Vector3 position, Quaternion rotation)
+    {
+        this.SetGO(gameObject);
+        if (this.m_cTrans != null)
+        {
+            this.m_cTrans.position = position;
+            this.m_cTrans.rotation = rotation;
+        }
+    }
 
-    //// Token: 0x06002420 RID: 9248 RVA: 0x000F3EA0 File Offset: 0x000F20A0
-    //public void SetGO(GameObject gameObject)
-    //{
-    //	if (gameObject == null)
-    //	{
-    //		return;
-    //	}
-    //	BindRole component = gameObject.GetComponent<BindRole>();
-    //	if (component == null)
-    //	{
-    //		return;
-    //	}
-    //	ColliderCheckCharacterController colliderCheckCharacterController = gameObject.GetComponent<ColliderCheckCharacterController>();
-    //	if (colliderCheckCharacterController == null)
-    //	{
-    //		colliderCheckCharacterController = gameObject.AddComponent<ColliderCheckCharacterController>();
-    //	}
-    //	colliderCheckCharacterController.ClearHandle();
-    //	colliderCheckCharacterController.CloseCheck();
-    //	this.m_cGO = gameObject;
-    //	this.m_cRoleAnimation = null;
-    //	this.m_cRoleController = null;
-    //	this.renderers = null;
-    //	this.rigidbodys = null;
-    //	this.m_cRoleBind = component;
-    //	this.m_iModelId = component.ModelID;
-    //	this.m_cTrans = this.m_cGO.transform;
-    //	this.m_fModelScale = this.m_cTrans.localScale.x;
-    //	this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
-    //	this.SetBodyInfo(this.m_cTrans);
-    //	this.CorrectEffect();
-    //}
+    public void SetGO(GameObject gameObject)
+    {
+        if (gameObject == null)
+        {
+            return;
+        }
+        //BindRole component = gameObject.GetComponent<BindRole>();
+        //if (component == null)
+        //{
+        //    return;
+        //}
+        //ColliderCheckCharacterController colliderCheckCharacterController = gameObject.GetComponent<ColliderCheckCharacterController>();
+        //if (colliderCheckCharacterController == null)
+        //{
+        //    colliderCheckCharacterController = gameObject.AddComponent<ColliderCheckCharacterController>();
+        //}
+        //colliderCheckCharacterController.ClearHandle();
+        //colliderCheckCharacterController.CloseCheck();
+        //this.m_cGO = gameObject;
+        //this.m_cRoleAnimation = null;
+        //this.m_cRoleController = null;
+        //this.renderers = null;
+        //this.rigidbodys = null;
+        //this.m_cRoleBind = component;
+        //this.m_iModelId = component.ModelID;
+        //this.m_cTrans = this.m_cGO.transform;
+        //this.m_fModelScale = this.m_cTrans.localScale.x;
+        //this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
+        //this.SetBodyInfo(this.m_cTrans);
+        //this.CorrectEffect();
+    }
 
     //// Token: 0x06002421 RID: 9249 RVA: 0x000F3F7C File Offset: 0x000F217C
     //public void CloneGO(GameObject clone)
@@ -852,19 +845,19 @@ public class RoleGameObject
 
     public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
-        //RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);
-        //if (roleModelInfo == null)
-        //{
-        //    Debug.LogWarning("modelID:" + modelID);
-        //    return null;
-        //}
-        //GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;
-        //if (gameObject == null)
-        //{
-        //    return null;
-        //}
-        //gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);
-        //BindRole bindRole = gameObject.AddComponent<BindRole>();
+        RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);
+        if (roleModelInfo == null)
+        {
+            Debug.LogWarning("modelID:" + modelID);
+            return null;
+        }
+        GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;
+        if (gameObject == null)
+        {
+            Debug.LogWarning("modelID:" + roleModelInfo.Path);
+            return null;
+        }
+        //BindRole bindRole = gameObject.AddComponent("BindRole");
         //bindRole.SetModelID(modelID);
         //return gameObject;
         return null;

@@ -395,26 +395,28 @@ public class Player : Role
     //		return false;
     //	}
 
+    /// <summary>
+    ///创建玩家
+    /// </summary>
     public override void Create()
     {
         Player.instance = this;
         this.playerId++;
         int id = this.playerId;
         base.ID = id;
-        Debug.Log("id"+ id);
         Player.currentPlayerId = id;
-        //this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);
-        ////if (this.playerInfo == null)
-        ////{
-        ////    Debug.LogWarning("not find playerInfo by id: " + this.playerId);
-        ////    return;
-        ////}
-        //this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];
-        //if (this.playerInfo == null)
-        //{
-        //    Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
-        //    return;
-        //}
+        this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);
+        if (this.playerInfo == null)
+        {
+            Debug.LogWarning("not find playerInfo by id: " + this.playerId);
+            return;
+        }
+        this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];
+        if (this.playerInfo == null)
+        {
+            Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
+            return;
+        }
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));

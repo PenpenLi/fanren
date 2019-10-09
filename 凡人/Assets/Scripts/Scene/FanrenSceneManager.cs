@@ -59,31 +59,38 @@ public class FanrenSceneManager : MonoBehaviour
 	{
 		//SaveLoadManager.Delete(SaveLoadManager.tagSL.Del_Auto);
 		this.Init();
-        if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
-        {
-            this.InitScene();
-            //GameTime.Init();
-        }
-        if (SceneManager.GetActiveScene().name == "Landing")
-        {
-            this.PlayGameBgSound();
-        }
-        if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
-        {
-            //GUIControl.MovieClose();
-            //this.EnterScene();
-            //Singleton<CResourcesStaticManager>.GetInstance();
-            //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
-        }
-        if (SceneManager.GetActiveScene().name == "Landing")
-        {
-            //EZGUIManager._BindRunTimeObj.AddLandUI();
-            //this.ReStartGame(true);
-        }
-        else
-        {
-            //EZGUIManager._BindRunTimeObj.RemoveLandUI();
-        }
+        this.InitScene();
+
+        //this.EnterScene();
+        //    //Singleton<CResourcesStaticManager>.GetInstance();
+        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
+
+
+
+
+        //if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
+        //{
+
+        //    //GameTime.Init();
+        //}
+        //if (SceneManager.GetActiveScene().name == "Landing")
+        //{
+        //    this.PlayGameBgSound();
+        //}
+        //if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
+        //{
+        //    //GUIControl.MovieClose();
+        //   
+        //}
+        //if (SceneManager.GetActiveScene().name == "Landing")
+        //{
+        //    //EZGUIManager._BindRunTimeObj.AddLandUI();
+        //    //this.ReStartGame(true);
+        //}
+        //else
+        //{
+        //    //EZGUIManager._BindRunTimeObj.RemoveLandUI();
+        //}
         //Main.Instance.DelayGC(20f);
     }
 

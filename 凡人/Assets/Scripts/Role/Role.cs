@@ -8,7 +8,7 @@ public class Role
 {
     //    //public const int nMaxID = 100000;
 
-    //    //public ROLE_TYPE _roleType;
+    public ROLE_TYPE _roleType;
 
     //    //public RoleHatred hatred = new RoleHatred();
 
@@ -63,8 +63,8 @@ public class Role
     //    //// Token: 0x04001FDF RID: 8159
     //    //private bool isDestroyed;
 
-    //    //// Token: 0x04001FE0 RID: 8160
-    //    //private static Transform zeroTrans;
+
+    private static Transform zeroTrans;
 
  
     protected RoleGameObject _roleGameObj = new RoleGameObject();
@@ -80,17 +80,17 @@ public class Role
 
     //    //public event RoleDeadEventHandler beforeDead;
 
-    //	public static Transform ZeroTrans
-    //	{
-    //		get
-    //		{
-    //			if (Role.zeroTrans == null)
-    //			{
-    //				Role.zeroTrans = new GameObject("ZeroTrans").transform;
-    //			}
-    //			return Role.zeroTrans;
-    //		}
-    //	}
+    public static Transform ZeroTrans
+    {
+        get
+        {
+            if (Role.zeroTrans == null)
+            {
+                Role.zeroTrans = new GameObject("ZeroTrans").transform;
+            }
+            return Role.zeroTrans;
+        }
+    }
 
     //	// Token: 0x17000420 RID: 1056
     //	// (get) Token: 0x0600233A RID: 9018 RVA: 0x000EFCC8 File Offset: 0x000EDEC8
@@ -559,16 +559,15 @@ public class Role
     //		this.roleGameObject.RoleTransform.rotation = rat;
     //	}
 
-    //	// Token: 0x0600237D RID: 9085 RVA: 0x000F00A8 File Offset: 0x000EE2A8
-    //	public Transform GetTrans()
-    //	{
-    //		if (this.roleGameObject.RoleTransform == null)
-    //		{
-    //			return Role.ZeroTrans;
-    //		}
-    //		Role.ZeroTrans.position = this.roleGameObject.RoleTransform.position;
-    //		return this.roleGameObject.RoleTransform;
-    //	}
+    public Transform GetTrans()
+    {
+        if (this.roleGameObject.RoleTransform == null)
+        {
+            return Role.ZeroTrans;
+        }
+        Role.ZeroTrans.position = this.roleGameObject.RoleTransform.position;
+        return this.roleGameObject.RoleTransform;
+    }
 
     //	// Token: 0x0600237E RID: 9086 RVA: 0x000F00F8 File Offset: 0x000EE2F8
     //	public virtual bool IsOutOfSpawnBox()

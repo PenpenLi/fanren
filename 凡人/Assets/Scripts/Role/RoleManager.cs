@@ -141,7 +141,7 @@ public class RoleManager : MonoBehaviour
     private void UpdateSceneBySave()
     {
         GameData.Instance.ItemMan.Clear();
-        //SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();
+        SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();
         //if (curSceneDate != null)
         //{
         //    foreach (SaveData.SDMonsterDate sdmonsterDate in curSceneDate.MonsterList)
@@ -411,7 +411,7 @@ public class RoleManager : MonoBehaviour
     {
         Player player = new Player();
         player.Create();
-        //player.GetTrans().parent = this._playerRootGo.transform;
+        player.GetTrans().parent = this._playerRootGo.transform;
         if (player.ID == 1)
         {
             this._player = player;
