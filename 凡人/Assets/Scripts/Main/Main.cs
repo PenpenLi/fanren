@@ -120,6 +120,9 @@ public class Main : MonoBehaviour
     //	base.CancelInvoke("GC");
     //}
 
+    /// <summary>
+    /// 添加组件
+    /// </summary>
     private static void AddComponents()
     {
         Main.MainGo.AddComponent<KeyManager>();

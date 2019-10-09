@@ -69,6 +69,10 @@ public class MouseManager : MonoBehaviour
 		}
 	}
 
+    /// <summary>
+    /// 设置鼠标状态
+    /// </summary>
+    /// <param name="mouseType"></param>
 	public void SetMouseState(int mouseType)
 	{
 		if (mouseType != 1)

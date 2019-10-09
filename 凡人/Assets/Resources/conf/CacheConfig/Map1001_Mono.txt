@@ -1,2 +1,0 @@
-Prefabs/Effect/DaoGuang/g_huliehuo_gongji01	0
-Prefabs/Mob/Mesh/HuLieHuo_JingYing_jin	0

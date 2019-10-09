@@ -1,15 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-// Token: 0x020004A9 RID: 1193
 public class BindRole : HurtRoleGameObject
 {
-	// Token: 0x06001F11 RID: 7953 RVA: 0x0000221B File Offset: 0x0000041B
 	private new void Start()
 	{
 	}
 
-	// Token: 0x06001F12 RID: 7954 RVA: 0x000D8D0C File Offset: 0x000D6F0C
+    /// <summary>
+    /// 设置角色
+    /// </summary>
+    /// <param name="theRole"></param>
 	public override void SetRole(Role theRole)
 	{
 		base.SetRole(theRole);
@@ -32,19 +33,22 @@ public class BindRole : HurtRoleGameObject
 		this.SetLayer(LayerMask.NameToLayer("Monster"));
 	}
 
-	// Token: 0x06001F13 RID: 7955 RVA: 0x000D8DD4 File Offset: 0x000D6FD4
+    /// <summary>
+    /// 设置层
+    /// </summary>
+    /// <param name="layer"></param>
 	private void SetLayer(int layer)
 	{
-		SkinnedMeshRenderer[] skinMeshRensers = this.role.roleGameObject.SkinMeshRensers;
-		if (skinMeshRensers != null && skinMeshRensers.Length > 0)
-		{
-			foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinMeshRensers)
-			{
-				if (skinnedMeshRenderer != null && skinnedMeshRenderer.gameObject != null)
-				{
-					skinnedMeshRenderer.gameObject.layer = layer;
-				}
-			}
-		}
+		//SkinnedMeshRenderer[] skinMeshRensers = this.role.roleGameObject.SkinMeshRensers;
+		//if (skinMeshRensers != null && skinMeshRensers.Length > 0)
+		//{
+		//	foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinMeshRensers)
+		//	{
+		//		if (skinnedMeshRenderer != null && skinnedMeshRenderer.gameObject != null)
+		//		{
+		//			skinnedMeshRenderer.gameObject.layer = layer;
+		//		}
+		//	}
+		//}
 	}
 }

@@ -1,7 +1,0 @@
-Prefabs/Effect/DaoGuang/yuehuang_gongji01	0
-Prefabs/Effect/DaoGuang/yuehuang_gongji02	0
-Prefabs/Effect/yuehuang_xuesechongjibo	0
-Prefabs/Effect/yuehuang_xuexianpenfa1	0
-Prefabs/Effect/yuehuang_xuexianpenfa2	0
-Prefabs/Effect/yuehuang_zhaohuan	0
-Prefabs/Mob/Mesh/YueHuang_boos	0

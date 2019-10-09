@@ -272,15 +272,14 @@ public class Role
     {
     }
 
-    //	// Token: 0x06002354 RID: 9044 RVA: 0x000EFDD8 File Offset: 0x000EDFD8
-    //	public virtual void SetChildrenGameObj(GameObject go)
-    //	{
-    //	}
 
-    //	// Token: 0x06002355 RID: 9045 RVA: 0x000EFDDC File Offset: 0x000EDFDC
-    //	public virtual void CreateModule()
-    //	{
-    //	}
+    public virtual void SetChildrenGameObj(GameObject go)
+    {
+    }
+
+    public virtual void CreateModule()
+    {
+    }
 
     //	// Token: 0x06002356 RID: 9046 RVA: 0x000EFDE0 File Offset: 0x000EDFE0
     //	public virtual string GetHeadPath()
@@ -440,15 +439,13 @@ public class Role
     //		return modOrganization != null && modOrganization2 != null && modOrganization2.IsEnmity(modOrganization);
     //	}
 
-    //	// Token: 0x1700042E RID: 1070
-    //	// (get) Token: 0x0600236F RID: 9071 RVA: 0x000EFEC0 File Offset: 0x000EE0C0
-    //	public GameObject gameObject
-    //	{
-    //		get
-    //		{
-    //			return this._roleGameObj.RoleBody;
-    //		}
-    //	}
+    public GameObject gameObject
+    {
+        get
+        {
+            return this._roleGameObj.RoleBody;
+        }
+    }
 
     //	// Token: 0x06002370 RID: 9072 RVA: 0x000EFED0 File Offset: 0x000EE0D0
     //	public virtual List<MonsterSkill> GetUseableSkill(int skillType)
@@ -462,7 +459,6 @@ public class Role
     //		return null;
     //	}
 
-    //	// Token: 0x06002372 RID: 9074 RVA: 0x000EFED8 File Offset: 0x000EE0D8
     //	public void InitRole()
     //	{
     //		this.EventHandlerManager = new RoleEventHandler(this);

@@ -7,39 +7,28 @@ public class RoleGameObject
 {
     private Role m_cRole;
 
-    //   // Token: 0x04002040 RID: 8256
-    //   private int m_iModelId;
+    private int m_iModelId;
 
-    //   // Token: 0x04002041 RID: 8257
-    //   private float m_fModelScale;
+    private float m_fModelScale;
 
-    //   // Token: 0x04002042 RID: 8258
-    //   private GameObject m_cGO;
+    private GameObject m_cGO;
 
-    //   // Token: 0x04002043 RID: 8259
-    //   private RoleModelInfo m_cModelInfo;
+    private RoleModelInfo m_cModelInfo;
 
-       private Transform m_cTrans;
+    private Transform m_cTrans;
 
-    //   // Token: 0x04002045 RID: 8261
-    //   private Animation m_cRoleAnimation;
+    private Animation m_cRoleAnimation;
 
-    //   // Token: 0x04002046 RID: 8262
-    //   private CharacterController m_cRoleController;
+    private CharacterController m_cRoleController;
 
-    //   // Token: 0x04002047 RID: 8263
-    //   private BindRole m_cRoleBind;
+    private BindRole m_cRoleBind;
 
-    //   // Token: 0x04002048 RID: 8264
-    //   private Renderer[] renderers;
+    private Renderer[] renderers;
 
-    //   // Token: 0x04002049 RID: 8265
-    //   private ColliderCheckCharacterController m_cColliderCheck;
+    private ColliderCheckCharacterController m_cColliderCheck;
 
-    //   // Token: 0x0400204A RID: 8266
     //   private List<RoleGameObject.BindEffectInfo> m_cEffectList = new List<RoleGameObject.BindEffectInfo>();
 
-    //   // Token: 0x0400204B RID: 8267
     //   private Dictionary<CHILD_EFFECT_POINT, Transform> m_mapEffectTrans = new Dictionary<CHILD_EFFECT_POINT, Transform>();
 
     //   // Token: 0x0400204C RID: 8268
@@ -60,8 +49,7 @@ public class RoleGameObject
     //   // Token: 0x04002051 RID: 8273
     //   private Dictionary<HURT_PART, HurtRoleGameObject> m_mapHurt = new Dictionary<HURT_PART, HurtRoleGameObject>();
 
-    //   // Token: 0x04002052 RID: 8274
-    //   private Rigidbody[] rigidbodys;
+    private Rigidbody[] rigidbodys;
 
     //   // Token: 0x04002053 RID: 8275
     //   private SkinnedMeshRenderer[] skinMeshs;
@@ -182,33 +170,29 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x1700043E RID: 1086
-    //// (get) Token: 0x0600240A RID: 9226 RVA: 0x000F3734 File Offset: 0x000F1934
-    //public GameObject RoleBody
-    //{
-    //	get
-    //	{
-    //		return this.m_cGO;
-    //	}
-    //}
+    public GameObject RoleBody
+    {
+        get
+        {
+            return this.m_cGO;
+        }
+    }
 
-    //// Token: 0x1700043F RID: 1087
-    //// (get) Token: 0x0600240B RID: 9227 RVA: 0x000F373C File Offset: 0x000F193C
-    //public BindRole RoleBind
-    //{
-    //	get
-    //	{
-    //		if (this.m_cGO == null)
-    //		{
-    //			return null;
-    //		}
-    //		if (this.m_cRoleBind == null)
-    //		{
-    //			this.m_cRoleBind = this.m_cGO.GetComponent<BindRole>();
-    //		}
-    //		return this.m_cRoleBind;
-    //	}
-    //}
+    public BindRole RoleBind
+    {
+        get
+        {
+            if (this.m_cGO == null)
+            {
+                return null;
+            }
+            if (this.m_cRoleBind == null)
+            {
+                this.m_cRoleBind = this.m_cGO.GetComponent<BindRole>();
+            }
+            return this.m_cRoleBind;
+        }
+    }
 
     public Transform RoleTransform
     {
@@ -533,27 +517,27 @@ public class RoleGameObject
         {
             return;
         }
-        //BindRole component = gameObject.GetComponent<BindRole>();
-        //if (component == null)
-        //{
-        //    return;
-        //}
-        //ColliderCheckCharacterController colliderCheckCharacterController = gameObject.GetComponent<ColliderCheckCharacterController>();
-        //if (colliderCheckCharacterController == null)
-        //{
-        //    colliderCheckCharacterController = gameObject.AddComponent<ColliderCheckCharacterController>();
-        //}
+        BindRole component = gameObject.GetComponent<BindRole>();
+        if (component == null)
+        {
+            return;
+        }
+        ColliderCheckCharacterController colliderCheckCharacterController = gameObject.GetComponent<ColliderCheckCharacterController>();
+        if (colliderCheckCharacterController == null)
+        {
+            colliderCheckCharacterController = gameObject.AddComponent<ColliderCheckCharacterController>();
+        }
         //colliderCheckCharacterController.ClearHandle();
         //colliderCheckCharacterController.CloseCheck();
-        //this.m_cGO = gameObject;
-        //this.m_cRoleAnimation = null;
-        //this.m_cRoleController = null;
-        //this.renderers = null;
-        //this.rigidbodys = null;
-        //this.m_cRoleBind = component;
-        //this.m_iModelId = component.ModelID;
-        //this.m_cTrans = this.m_cGO.transform;
-        //this.m_fModelScale = this.m_cTrans.localScale.x;
+        this.m_cGO = gameObject;
+        this.m_cRoleAnimation = null;
+        this.m_cRoleController = null;
+        this.renderers = null;
+        this.rigidbodys = null;
+        this.m_cRoleBind = component;
+        this.m_iModelId = component.ModelID;
+        this.m_cTrans = this.m_cGO.transform;
+        this.m_fModelScale = this.m_cTrans.localScale.x;
         //this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
         //this.SetBodyInfo(this.m_cTrans);
         //this.CorrectEffect();
@@ -589,87 +573,86 @@ public class RoleGameObject
     //	this.m_mapAttachmentGo.Clear();
     //}
 
-    //// Token: 0x06002423 RID: 9251 RVA: 0x000F404C File Offset: 0x000F224C
-    //private void SetBodyInfo(Transform root)
-    //{
-    //	RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
-    //	if (component == null)
-    //	{
-    //		return;
-    //	}
-    //	this.m_cRoleController = component.Controller;
-    //	this.m_cRoleAnimation = component.Animation;
-    //	this.m_mapEffectTrans.Clear();
-    //	this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
-    //	for (int i = 0; i < component.EffectType.Count; i++)
-    //	{
-    //		if (!this.m_mapEffectTrans.ContainsKey(component.EffectType[i]))
-    //		{
-    //			this.m_mapEffectTrans.Add(component.EffectType[i], component.EffectTrans[i]);
-    //		}
-    //	}
-    //	this.m_mapArmTrans.Clear();
-    //	for (int j = 0; j < component.ArmType.Count; j++)
-    //	{
-    //		this.m_mapArmTrans.Add(component.ArmType[j], component.ArmTrans[j]);
-    //	}
-    //	this.m_mapMeshTrans.Clear();
-    //	for (int k = 0; k < component.MeshType.Count; k++)
-    //	{
-    //		this.m_mapMeshTrans.Add(component.MeshType[k], component.Mesh[k]);
-    //	}
-    //	this.m_mapRagDollTrans.Clear();
-    //	for (int l = 0; l < component.RagDollType.Count; l++)
-    //	{
-    //		this.m_mapRagDollTrans.Add(component.RagDollType[l], component.RagDollRigidbody[l]);
-    //	}
-    //	this.m_mapHarm.Clear();
-    //	for (int m = 0; m < component.HarmPartType.Count; m++)
-    //	{
-    //		this.m_mapHarm.Add(component.HarmPartType[m], component.HarmCheckPart[m]);
-    //		if (component.HarmCheckPart[m] != null)
-    //		{
-    //			component.HarmCheckPart[m].CloseCheck();
-    //			if (this.RoleController != null)
-    //			{
-    //				Collider[] allCollider = component.HarmCheckPart[m].GetAllCollider();
-    //				if (allCollider != null && allCollider.Length > 0)
-    //				{
-    //					foreach (Collider collider in allCollider)
-    //					{
-    //						if (collider != null)
-    //						{
-    //							Physics.IgnoreCollision(collider, this.RoleController);
-    //						}
-    //					}
-    //				}
-    //			}
-    //		}
-    //	}
-    //	this.m_mapHurt.Clear();
-    //	for (int num = 0; num < component.HurtPartType.Count; num++)
-    //	{
-    //		this.m_mapHurt.Add(component.HurtPartType[num], component.HurtPart[num]);
-    //		if (component.HurtPart[num] != null)
-    //		{
-    //			component.HurtPart[num].SetRole(this.m_cRole);
-    //			if (this.RoleController != null)
-    //			{
-    //				Collider[] collider2 = component.HurtPart[num].GetCollider();
-    //				if (collider2 != null)
-    //				{
-    //					foreach (Collider collider3 in collider2)
-    //					{
-    //						if (collider3 != null)
-    //						{
-    //							Physics.IgnoreCollision(collider3, this.RoleController);
-    //						}
-    //					}
-    //				}
-    //			}
-    //		}
-    //	}
-    //}
+    private void SetBodyInfo(Transform root)
+    {
+        //RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
+        //if (component == null)
+        //{
+        //    return;
+        //}
+        //this.m_cRoleController = component.Controller;
+        //this.m_cRoleAnimation = component.Animation;
+        //this.m_mapEffectTrans.Clear();
+        //this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
+        //for (int i = 0; i < component.EffectType.Count; i++)
+        //{
+        //    if (!this.m_mapEffectTrans.ContainsKey(component.EffectType[i]))
+        //    {
+        //        this.m_mapEffectTrans.Add(component.EffectType[i], component.EffectTrans[i]);
+        //    }
+        //}
+        //this.m_mapArmTrans.Clear();
+        //for (int j = 0; j < component.ArmType.Count; j++)
+        //{
+        //    this.m_mapArmTrans.Add(component.ArmType[j], component.ArmTrans[j]);
+        //}
+        //this.m_mapMeshTrans.Clear();
+        //for (int k = 0; k < component.MeshType.Count; k++)
+        //{
+        //    this.m_mapMeshTrans.Add(component.MeshType[k], component.Mesh[k]);
+        //}
+        //this.m_mapRagDollTrans.Clear();
+        //for (int l = 0; l < component.RagDollType.Count; l++)
+        //{
+        //    this.m_mapRagDollTrans.Add(component.RagDollType[l], component.RagDollRigidbody[l]);
+        //}
+        //this.m_mapHarm.Clear();
+        //for (int m = 0; m < component.HarmPartType.Count; m++)
+        //{
+        //    this.m_mapHarm.Add(component.HarmPartType[m], component.HarmCheckPart[m]);
+        //    if (component.HarmCheckPart[m] != null)
+        //    {
+        //        component.HarmCheckPart[m].CloseCheck();
+        //        if (this.RoleController != null)
+        //        {
+        //            Collider[] allCollider = component.HarmCheckPart[m].GetAllCollider();
+        //            if (allCollider != null && allCollider.Length > 0)
+        //            {
+        //                foreach (Collider collider in allCollider)
+        //                {
+        //                    if (collider != null)
+        //                    {
+        //                        Physics.IgnoreCollision(collider, this.RoleController);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+        //this.m_mapHurt.Clear();
+        //for (int num = 0; num < component.HurtPartType.Count; num++)
+        //{
+        //    this.m_mapHurt.Add(component.HurtPartType[num], component.HurtPart[num]);
+        //    if (component.HurtPart[num] != null)
+        //    {
+        //        component.HurtPart[num].SetRole(this.m_cRole);
+        //        if (this.RoleController != null)
+        //        {
+        //            Collider[] collider2 = component.HurtPart[num].GetCollider();
+        //            if (collider2 != null)
+        //            {
+        //                foreach (Collider collider3 in collider2)
+        //                {
+        //                    if (collider3 != null)
+        //                    {
+        //                        Physics.IgnoreCollision(collider3, this.RoleController);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+    }
 
     //// Token: 0x06002424 RID: 9252 RVA: 0x000F43BC File Offset: 0x000F25BC
     //public void AttachWeapon(ATTACHMENT attchPart, HARM_PART harmPart, GameObject weapon)
@@ -806,7 +789,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x0600242B RID: 9259 RVA: 0x000F4738 File Offset: 0x000F2938
     //public void ResetRender()
     //{
     //	this.renderers = this.RoleBody.GetComponentsInChildren<Renderer>(true);
@@ -857,9 +839,9 @@ public class RoleGameObject
             Debug.LogWarning("modelID:" + roleModelInfo.Path);
             return null;
         }
-        //BindRole bindRole = gameObject.AddComponent("BindRole");
-        //bindRole.SetModelID(modelID);
-        //return gameObject;
-        return null;
+        gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);
+        BindRole bindRole = gameObject.AddComponent<BindRole>();
+        bindRole.SetModelID(modelID);
+        return gameObject;
     }
 }

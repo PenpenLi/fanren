@@ -182,9 +182,7 @@ namespace NS_RoleBaseFun
         {
             if (!File.Exists(Application.dataPath + "/Resources/conf/" + filename) && !File.Exists(Application.dataPath + "/Resources/conf/" + filename + ".txt"))
             {
-                Debug.LogError(
-                    "(RF)Can't find file:" + Application.dataPath + "/Resources/conf/" + filename
-                );
+                Debug.LogError( "(RF)Can't find file:" + Application.dataPath + "/Resources/conf/" + filename);
             }
             TextAsset textAsset = (TextAsset)ResourceLoader.Load("conf/" + filename, typeof(TextAsset));
             if (textAsset == null)

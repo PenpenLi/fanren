@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NS_RoleBaseFun;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Player : Role
 {
@@ -99,18 +99,13 @@ public class Player : Role
     //    // Token: 0x04001FAC RID: 8108
     //    private bool m_bFightingSound;
 
-    //    public Player()
-    //	{
-    //		this._roleType = ROLE_TYPE.RT_PLAYER;
-    //	}
+    public Player()
+    {
+        this._roleType = ROLE_TYPE.RT_PLAYER;
+    }
 
-    //	// Token: 0x17000416 RID: 1046
-    //	// (get) Token: 0x060022A3 RID: 8867 RVA: 0x000EC590 File Offset: 0x000EA790
-    //	// (set) Token: 0x060022A4 RID: 8868 RVA: 0x000EC598 File Offset: 0x000EA798
     //	public ModPlayerControl ModPlayerControl { get; private set; }
 
-    //	// Token: 0x17000417 RID: 1047
-    //	// (get) Token: 0x060022A5 RID: 8869 RVA: 0x000EC5A4 File Offset: 0x000EA7A4
     //	public AmbitSystem SystemAmbit
     //	{
     //		get
@@ -174,29 +169,24 @@ public class Player : Role
     //	// (set) Token: 0x060022AD RID: 8877 RVA: 0x000EC5EC File Offset: 0x000EA7EC
     //	public ModMutualPlayer ModMutual { get; private set; }
 
-    //	// Token: 0x1700041D RID: 1053
-    //	// (get) Token: 0x060022AE RID: 8878 RVA: 0x000EC5F8 File Offset: 0x000EA7F8
-    //	public static Player Instance
-    //	{
-    //		get
-    //		{
-    //			if (Player.instance == null)
-    //			{
-    //				if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
-    //				{
-    //					Logger.Log(new object[]
-    //					{
-    //						"Player Instance is null"
-    //					});
-    //				}
-    //			}
-    //			else if (Player.instance.gameObject == null)
-    //			{
-    //				Player.instance = null;
-    //			}
-    //			return Player.instance;
-    //		}
-    //	}
+    public static Player Instance
+    {
+        get
+        {
+            if (Player.instance == null)
+            {
+                if (SceneManager.GetActiveScene().name != "Start" && SceneManager.GetActiveScene().name != "Landing" && SceneManager.GetActiveScene().name != "End")
+                {
+                    Debug.Log("Player Instance is null");
+                }
+            }
+            else if (Player.instance.gameObject == null)
+            {
+                Player.instance = null;
+            }
+            return Player.instance;
+        }
+    }
 
     //	// Token: 0x060022AF RID: 8879 RVA: 0x000EC698 File Offset: 0x000EA898
     //	public override float GetTurnSpeed()
@@ -435,9 +425,9 @@ public class Player : Role
         //        }
         //    }
         //}
-        //base.roleGameObject.RoleBind.SetRole(this);
-        //this.SetChildrenGameObj(base.roleGameObject.RoleBody);
-        //this.CreateModule();
+        base.roleGameObject.RoleBind.SetRole(this);
+        this.SetChildrenGameObj(base.roleGameObject.RoleBody);
+        this.CreateModule();
         //this.addPlayerHotKey();
         //this.hatred.selfRole = Player.Instance;
         //KeyManager.controlRole = this;
@@ -457,99 +447,97 @@ public class Player : Role
         //}
     }
 
-    //	// Token: 0x060022BD RID: 8893 RVA: 0x000ECF14 File Offset: 0x000EB114
-    //	public override void CreateModule()
-    //	{
-    //		base.CreateModule();
-    //		this._roleType = ROLE_TYPE.RT_PLAYER;
-    //		this.AddMod(MODULE_TYPE.MT_MOTION);
-    //		this.AddMod(MODULE_TYPE.MT_MOVE);
-    //		this.AddMod(MODULE_TYPE.MT_CAMERA);
-    //		this.AddMod(MODULE_TYPE.MT_FIGHT);
-    //		this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
-    //		this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
-    //		this.AddMod(MODULE_TYPE.MT_BUFF);
-    //		this.AddMod(MODULE_TYPE.MT_COLLIDER);
-    //		this.AddMod(MODULE_TYPE.MT_MISSION);
-    //		this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
-    //		this.AddMod(MODULE_TYPE.MT_SKILL);
-    //		this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
-    //		this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
-    //		this.AddMod(MODULE_TYPE.MT_VOICE);
-    //		this.ReadPlayerPropertyInfoConfig();
-    //		base.InitRole();
-    //		this.Init();
-    //		this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");
-    //		this.m_cMixtureSmelt.LoadConfig("MixtureConfig");
-    //		this.m_BottleSystem.LoadConfig();
-    //	}
+    public override void CreateModule()
+    {
+        base.CreateModule();
+        this._roleType = ROLE_TYPE.RT_PLAYER;
+        this.AddMod(MODULE_TYPE.MT_MOTION);
+        //this.AddMod(MODULE_TYPE.MT_MOVE);
+        //this.AddMod(MODULE_TYPE.MT_CAMERA);
+        //this.AddMod(MODULE_TYPE.MT_FIGHT);
+        //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
+        //this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
+        //this.AddMod(MODULE_TYPE.MT_BUFF);
+        //this.AddMod(MODULE_TYPE.MT_COLLIDER);
+        //this.AddMod(MODULE_TYPE.MT_MISSION);
+        //this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
+        //this.AddMod(MODULE_TYPE.MT_SKILL);
+        //this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
+        //this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
+        //this.AddMod(MODULE_TYPE.MT_VOICE);
+        //this.ReadPlayerPropertyInfoConfig();
+        //base.InitRole();
+        //this.Init();
+        //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");
+        //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");
+        //this.m_BottleSystem.LoadConfig();
+    }
 
-    //	// Token: 0x060022BE RID: 8894 RVA: 0x000ECFEC File Offset: 0x000EB1EC
-    //	public Module AddMod(MODULE_TYPE mt)
-    //	{
-    //		Module module = null;
-    //		switch (mt)
-    //		{
-    //		case MODULE_TYPE.MT_CAMERA:
-    //			module = ModCamera.Create(base.roleGameObject.RoleBody, this);
-    //			this.m_cModCamera = (ModCamera)module;
-    //			break;
-    //		case MODULE_TYPE.MT_MOTION:
-    //			module = new ModAnimation(this, base.roleGameObject.RoleAnimation, base.roleGameObject.RoleController);
-    //			this.modAnimation = (ModAnimation)module;
-    //			break;
-    //		case MODULE_TYPE.MT_ORGANIZATION:
-    //			module = new ModOrganization(this);
-    //			break;
-    //		case MODULE_TYPE.MT_ATTRIBUTE:
-    //			module = new ModAttribute(this);
-    //			this.m_cModAttribute = (ModAttribute)module;
-    //			break;
-    //		case MODULE_TYPE.MT_FIGHT:
-    //			module = new ModFight(this);
-    //			this.m_cModFight = (ModFight)module;
-    //			break;
-    //		case MODULE_TYPE.MT_SKILL:
-    //			module = new ModSkillProperty(this);
-    //			break;
-    //		case MODULE_TYPE.MT_BUFF:
-    //			module = new ModBuffProperty(this);
-    //			break;
-    //		case MODULE_TYPE.MT_MISSION:
-    //			module = new ModMission(this);
-    //			this.m_cModMission = (module as ModMission);
-    //			break;
-    //		case MODULE_TYPE.MT_COLLIDER:
-    //			module = new ModColliderProperty(this);
-    //			break;
-    //		case MODULE_TYPE.MT_CONTROL_MFS:
-    //			module = new ModControlMFS(base.gameObject, this);
-    //			this.modMFS = (ModControlMFS)module;
-    //			break;
-    //		case MODULE_TYPE.MT_QTE:
-    //			module = new ModQTEProperty(this);
-    //			break;
-    //		case MODULE_TYPE.MT_MULTIVERSESPACE:
-    //			module = new ModMultiverseSpace(this);
-    //			break;
-    //		case MODULE_TYPE.MT_PLAYERCONTROL:
-    //			module = new ModPlayerControl(this);
-    //			this.ModPlayerControl = (ModPlayerControl)module;
-    //			break;
-    //		case MODULE_TYPE.MT_PLAYERMUTUAL:
-    //			module = new ModMutualPlayer(this);
-    //			this.ModMutual = (ModMutualPlayer)module;
-    //			break;
-    //		case MODULE_TYPE.MT_VOICE:
-    //			module = new ModVoice(this);
-    //			break;
-    //		}
-    //		if (base.AddModule(module))
-    //		{
-    //			return module;
-    //		}
-    //		return null;
-    //	}
+    public Module AddMod(MODULE_TYPE mt)
+    {
+        Module module = null;
+        switch (mt)
+        {
+        //    case MODULE_TYPE.MT_CAMERA:
+        //        module = ModCamera.Create(base.roleGameObject.RoleBody, this);
+        //        this.m_cModCamera = (ModCamera)module;
+        //        break;
+        //    case MODULE_TYPE.MT_MOTION:
+        //        module = new ModAnimation(this, base.roleGameObject.RoleAnimation, base.roleGameObject.RoleController);
+        //        this.modAnimation = (ModAnimation)module;
+        //        break;
+        //    case MODULE_TYPE.MT_ORGANIZATION:
+        //        module = new ModOrganization(this);
+        //        break;
+        //    case MODULE_TYPE.MT_ATTRIBUTE:
+        //        module = new ModAttribute(this);
+        //        this.m_cModAttribute = (ModAttribute)module;
+        //        break;
+        //    case MODULE_TYPE.MT_FIGHT:
+        //        module = new ModFight(this);
+        //        this.m_cModFight = (ModFight)module;
+        //        break;
+        //    case MODULE_TYPE.MT_SKILL:
+        //        module = new ModSkillProperty(this);
+        //        break;
+        //    case MODULE_TYPE.MT_BUFF:
+        //        module = new ModBuffProperty(this);
+        //        break;
+        //    case MODULE_TYPE.MT_MISSION:
+        //        module = new ModMission(this);
+        //        this.m_cModMission = (module as ModMission);
+        //        break;
+        //    case MODULE_TYPE.MT_COLLIDER:
+        //        module = new ModColliderProperty(this);
+        //        break;
+        //    case MODULE_TYPE.MT_CONTROL_MFS:
+        //        module = new ModControlMFS(base.gameObject, this);
+        //        this.modMFS = (ModControlMFS)module;
+        //        break;
+        //    case MODULE_TYPE.MT_QTE:
+        //        module = new ModQTEProperty(this);
+        //        break;
+        //    case MODULE_TYPE.MT_MULTIVERSESPACE:
+        //        module = new ModMultiverseSpace(this);
+        //        break;
+        //    case MODULE_TYPE.MT_PLAYERCONTROL:
+        //        module = new ModPlayerControl(this);
+        //        this.ModPlayerControl = (ModPlayerControl)module;
+        //        break;
+        //    case MODULE_TYPE.MT_PLAYERMUTUAL:
+        //        module = new ModMutualPlayer(this);
+        //        this.ModMutual = (ModMutualPlayer)module;
+        //        break;
+        //    case MODULE_TYPE.MT_VOICE:
+        //        module = new ModVoice(this);
+        //        break;
+        }
+        //if (base.AddModule(module))
+        //{
+        //    return module;
+        //}
+        return null;
+    }
 
     //	// Token: 0x060022BF RID: 8895 RVA: 0x000ED19C File Offset: 0x000EB39C
     //	private void Init()

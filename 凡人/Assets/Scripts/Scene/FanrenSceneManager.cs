@@ -49,17 +49,16 @@ public class FanrenSceneManager : MonoBehaviour
 	{
         FanrenSceneManager.Instance = this;
         FanrenSceneManager.loading = false;
-        if (!ResourcePath.IS_PUBLISH || !MapControl.LoadAsync)
-        {
-            this.GameStart();
-        }
+        this.GameStart();
     }
 
+    /// <summary>
+    /// 游戏开始
+    /// </summary>
 	public void GameStart()
 	{
-		//SaveLoadManager.Delete(SaveLoadManager.tagSL.Del_Auto);
 		this.Init();
-        this.InitScene();
+        //this.InitScene();
 
         //this.EnterScene();
         //    //Singleton<CResourcesStaticManager>.GetInstance();
@@ -227,17 +226,18 @@ public class FanrenSceneManager : MonoBehaviour
     {
         this.GetSceneInfo();
         Main.InitMain();
-        UICamera.InitUICamera();
-        SystemSetting.initialize();
-        Singleton<ActorManager>.GetInstance().Clear();
-        if (SceneManager.GetActiveScene().name== "Start")
-        {
-            GameData.Instance.ScrMan.Exec(31, 10110);
-        }
+        //UICamera.InitUICamera();
+        //SystemSetting.initialize();
+        //Singleton<ActorManager>.GetInstance().Clear();
+        //if (SceneManager.GetActiveScene().name== "Start")
+        //{
+        //    GameData.Instance.ScrMan.Exec(31, 10110);
+        //}
     }
 
-
-
+    /// <summary>
+    /// 获得当前场景信息
+    /// </summary>
     private void GetSceneInfo()
     {
         FanrenSceneManager.currScenenInfo = GameData.Instance.cacheData.getSceneInfo(SceneManager.GetActiveScene().name);
@@ -317,9 +317,11 @@ public class FanrenSceneManager : MonoBehaviour
     //	SystemSetting.SceneSetting();
     //}
 
+    /// <summary>
+    /// 播放背景音乐
+    /// </summary>
     private void PlayGameBgSound()
     {
-        Debug.Log("播放音乐");
         //SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.scenenInfo.bgSoundId, 0f, 1f, 0f);
         //SingletonMono<AudioManager>.GetInstance().PauseAll(true);
     }

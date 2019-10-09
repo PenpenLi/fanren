@@ -1,6 +1,0 @@
-Prefabs/Effect/DaoGuang/wangchan_gongji02	0
-Prefabs/Effect/fengdun_bianshi01	0
-Prefabs/Effect/G_xiaoyuren_shanshuo	0
-Prefabs/Effect/wangchan_heixuelingyu_chixu	0
-Prefabs/Effect/wangchan_heixuelingyu_shifa	0
-Prefabs/Mob/Mesh/WangChan_BOSS3	0
