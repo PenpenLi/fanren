@@ -21,8 +21,7 @@ public class Player : Role
 //    // Token: 0x04001F90 RID: 8080
 //    public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
-//    // Token: 0x04001F91 RID: 8081
-//    public ModCamera m_cModCamera;
+      public ModCamera m_cModCamera;
 
 //    // Token: 0x04001F92 RID: 8082
 //    public ModFight m_cModFight;
@@ -918,82 +917,81 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x060022DF RID: 8927 RVA: 0x000EDA2C File Offset: 0x000EBC2C
-    //	public override void Input(float VerInput, float HorInput)
-    //	{
-    //		if (base.IsDead())
-    //		{
-    //			return;
-    //		}
-    //		this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
-    //		Vector3 a = this.m_cModCamera.cameraTransform.forward;
-    //		if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
-    //		{
-    //			if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
-    //			{
-    //				a = this.m_cModCamera.cameraTransform.up;
-    //			}
-    //			a.y = 0f;
-    //		}
-    //		Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
-    //		Vector3 vector2 = base.GetPos() + vector;
-    //		Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
-    //		CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-    //		if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
-    //		{
-    //			if (currentStateId != CONTROL_STATE.WALK_FORWARD)
-    //			{
-    //				if (currentStateId != CONTROL_STATE.SWIM)
-    //				{
-    //					if (currentStateId != CONTROL_STATE.FLY)
-    //					{
-    //						if (!(vector == Vector3.zero))
-    //						{
-    //							this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-    //						}
-    //					}
-    //					else if (UnityEngine.Input.GetKey(KeyCode.Space))
-    //					{
-    //						this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
-    //					}
-    //					else
-    //					{
-    //						this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
-    //					}
-    //				}
-    //				else
-    //				{
-    //					this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));
-    //				}
-    //			}
-    //			else if (vector == Vector3.zero)
-    //			{
-    //				if (this.weaponManager.weaponeActive)
-    //				{
-    //					this.modMFS.ChangeState(new ControlEventAttackIdle(false));
-    //				}
-    //				else
-    //				{
-    //					this.modMFS.ChangeState(new ControlEventIdle(false));
-    //				}
-    //			}
-    //			else
-    //			{
-    //				this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-    //			}
-    //		}
-    //		else
-    //		{
-    //			if (!this.weaponManager.weaponeActive)
-    //			{
-    //				this.modMFS.ChangeState(new ControlEventIdle(false));
-    //			}
-    //			if (vector != Vector3.zero)
-    //			{
-    //				this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-    //			}
-    //		}
-    //	}
+    public override void Input(float VerInput, float HorInput)
+    {
+        //if (base.IsDead())
+        //{
+        //    return;
+        //}
+        this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
+        Vector3 a = this.m_cModCamera.cameraTransform.forward;
+        //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
+        //{
+        //    if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
+        //    {
+        //        a = this.m_cModCamera.cameraTransform.up;
+        //    }
+        //    a.y = 0f;
+        //}
+        //Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
+        //Vector3 vector2 = base.GetPos() + vector;
+        //Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
+        //CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
+        //if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
+        //{
+        //    if (currentStateId != CONTROL_STATE.WALK_FORWARD)
+        //    {
+        //        if (currentStateId != CONTROL_STATE.SWIM)
+        //        {
+        //            if (currentStateId != CONTROL_STATE.FLY)
+        //            {
+        //                if (!(vector == Vector3.zero))
+        //                {
+        //                    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+        //                }
+        //            }
+        //            else if (UnityEngine.Input.GetKey(KeyCode.Space))
+        //            {
+        //                this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
+        //            }
+        //            else
+        //            {
+        //                this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
+        //            }
+        //        }
+        //        else
+        //        {
+        //            this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));
+        //        }
+        //    }
+        //    else if (vector == Vector3.zero)
+        //    {
+        //        if (this.weaponManager.weaponeActive)
+        //        {
+        //            this.modMFS.ChangeState(new ControlEventAttackIdle(false));
+        //        }
+        //        else
+        //        {
+        //            this.modMFS.ChangeState(new ControlEventIdle(false));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+        //    }
+        //}
+        //else
+        //{
+        //    if (!this.weaponManager.weaponeActive)
+        //    {
+        //        this.modMFS.ChangeState(new ControlEventIdle(false));
+        //    }
+        //    if (vector != Vector3.zero)
+        //    {
+        //        this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+        //    }
+        //}
+    }
 
     //	// Token: 0x060022E0 RID: 8928 RVA: 0x000EDCC4 File Offset: 0x000EBEC4
     //	public void SetTarget(float distance)
@@ -1089,50 +1087,52 @@ public class Player : Role
     //		return role2;
     //	}
 
-    //	// Token: 0x060022E4 RID: 8932 RVA: 0x000EDFD8 File Offset: 0x000EC1D8
-    //	private float GetSelectDistance()
-    //	{
-    //		float result = 4f;
-    //		if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
-    //		{
-    //			result = Singleton<PlayerFightData>.GetInstance().MagicSelectDistance;
-    //		}
-    //		else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_WEAPON)
-    //		{
-    //			result = Singleton<PlayerFightData>.GetInstance().SwordSelectDistance;
-    //		}
-    //		else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_DWEAPON)
-    //		{
-    //			result = Singleton<PlayerFightData>.GetInstance().DaggerSelectDistance;
-    //		}
-    //		return result;
-    //	}
+    /// <summary>
+    /// 获得距离
+    /// </summary>
+    /// <returns></returns>
+    private float GetSelectDistance()
+    {
+        float result = 4f;
+        //if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
+        //{
+        //    result = Singleton<PlayerFightData>.GetInstance().MagicSelectDistance;
+        //}
+        //else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_WEAPON)
+        //{
+        //    result = Singleton<PlayerFightData>.GetInstance().SwordSelectDistance;
+        //}
+        //else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_DWEAPON)
+        //{
+        //    result = Singleton<PlayerFightData>.GetInstance().DaggerSelectDistance;
+        //}
+        return result;
+    }
 
-    //	// Token: 0x060022E5 RID: 8933 RVA: 0x000EE04C File Offset: 0x000EC24C
-    //	public void SetTargetByKey(float VerInput, float HorInput, float distance)
-    //	{
-    //		this.m_cModFight.VerInput = VerInput;
-    //		this.m_cModFight.HorInput = HorInput;
-    //		if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
-    //		{
-    //			this.m_cModFight.AttackDir = Vector3.zero;
-    //		}
-    //		else
-    //		{
-    //			Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
-    //			a.y = 0f;
-    //			a = a.normalized;
-    //			Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
-    //			a2.y = 0f;
-    //			a2 = a2.normalized;
-    //			Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
-    //			this.m_cModFight.AttackDir = attackDir;
-    //		}
-    //		if (this.m_cModFight.AttackDir != Vector3.zero)
-    //		{
-    //			this.m_cModFight.TargetRole = null;
-    //		}
-    //	}
+    public void SetTargetByKey(float VerInput, float HorInput, float distance)
+    {
+        //this.m_cModFight.VerInput = VerInput;
+        //this.m_cModFight.HorInput = HorInput;
+        //if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
+        //{
+        //    this.m_cModFight.AttackDir = Vector3.zero;
+        //}
+        //else
+        //{
+        //    Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
+        //    a.y = 0f;
+        //    a = a.normalized;
+        //    Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
+        //    a2.y = 0f;
+        //    a2 = a2.normalized;
+        //    Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
+        //    this.m_cModFight.AttackDir = attackDir;
+        //}
+        //if (this.m_cModFight.AttackDir != Vector3.zero)
+        //{
+        //    this.m_cModFight.TargetRole = null;
+        //}
+    }
 
     //	// Token: 0x060022E6 RID: 8934 RVA: 0x000EE15C File Offset: 0x000EC35C
     //	public void ReadPlayerPropertyInfoConfig()

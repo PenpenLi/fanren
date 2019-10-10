@@ -1014,10 +1014,9 @@ public class Role
     //		this.BindRoleList.Remove(bri);
     //	}
 
-    //	// Token: 0x060023A4 RID: 9124 RVA: 0x000F0A28 File Offset: 0x000EEC28
-    //	public virtual void Input(float VerInput, float HorInput)
-    //	{
-    //	}
+    public virtual void Input(float VerInput, float HorInput)
+    {
+    }
 
     //	// Token: 0x060023A5 RID: 9125 RVA: 0x000F0A2C File Offset: 0x000EEC2C
     //	public bool HaveBuff(int buffId)

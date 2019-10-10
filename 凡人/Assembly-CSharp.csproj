@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Role\GameObjSpawn.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
+    <Compile Include="Assets\Scripts\Role\ModCamera.cs" />
     <Compile Include="Assets\Scripts\Role\Module.cs" />
     <Compile Include="Assets\Scripts\Role\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Player.cs" />
