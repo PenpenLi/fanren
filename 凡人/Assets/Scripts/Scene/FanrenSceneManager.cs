@@ -58,7 +58,7 @@ public class FanrenSceneManager : MonoBehaviour
 	public void GameStart()
 	{
 		this.Init();
-        //this.InitScene();
+        this.InitScene();
 
         //this.EnterScene();
         //    //Singleton<CResourcesStaticManager>.GetInstance();

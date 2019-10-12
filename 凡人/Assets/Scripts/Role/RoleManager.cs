@@ -74,9 +74,9 @@ public class RoleManager : MonoBehaviour
     private void Start()
     {
         GameData.CreatGameData();
-        this.ReadSpawnInfo();
+        //this.ReadSpawnInfo();
         this.CreateRootObject();
-        this.UpdateSceneBySave();
+        //this.UpdateSceneBySave();
         this.CreateRole();
         //this.UpdatePlayerBySave();
         this.InitPlayer();

@@ -23,8 +23,7 @@ public class Player : Role
 
       public ModCamera m_cModCamera;
 
-//    // Token: 0x04001F92 RID: 8082
-//    public ModFight m_cModFight;
+      public ModFight m_cModFight;
 
 //    // Token: 0x04001F93 RID: 8083
 //    public AdeptTalent m_cAdeptSystem = new AdeptTalent();
@@ -92,10 +91,8 @@ public class Player : Role
     //    // Token: 0x04001FAA RID: 8106
     //    public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
 
-    //    // Token: 0x04001FAB RID: 8107
     //    private SoundData fightSD = new SoundData();
 
-    //    // Token: 0x04001FAC RID: 8108
     //    private bool m_bFightingSound;
 
     public Player()
@@ -429,7 +426,7 @@ public class Player : Role
         this.CreateModule();
         //this.addPlayerHotKey();
         //this.hatred.selfRole = Player.Instance;
-        //KeyManager.controlRole = this;
+        KeyManager.controlRole = this;
         //this.equipReplace = new EquipReplace(this);
         //this.ItemFolder = new ItemFolderContainer(base.ID);
         //this.m_cAmbitSystem.Init(this);
@@ -924,7 +921,7 @@ public class Player : Role
         //    return;
         //}
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
-        Vector3 a = this.m_cModCamera.cameraTransform.forward;
+        //Vector3 a = this.m_cModCamera.cameraTransform.forward;
         //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
         //{
         //    if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
@@ -1111,23 +1108,23 @@ public class Player : Role
 
     public void SetTargetByKey(float VerInput, float HorInput, float distance)
     {
-        //this.m_cModFight.VerInput = VerInput;
-        //this.m_cModFight.HorInput = HorInput;
-        //if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
-        //{
-        //    this.m_cModFight.AttackDir = Vector3.zero;
-        //}
-        //else
-        //{
-        //    Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
-        //    a.y = 0f;
-        //    a = a.normalized;
-        //    Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
-        //    a2.y = 0f;
-        //    a2 = a2.normalized;
-        //    Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
-        //    this.m_cModFight.AttackDir = attackDir;
-        //}
+        this.m_cModFight.VerInput = VerInput;
+        this.m_cModFight.HorInput = HorInput;
+        if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
+        {
+            this.m_cModFight.AttackDir = Vector3.zero;
+        }
+        else
+        {
+            //Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
+            //a.y = 0f;
+            //a = a.normalized;
+            //Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
+            //a2.y = 0f;
+            //a2 = a2.normalized;
+            //Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
+            //this.m_cModFight.AttackDir = attackDir;
+        }
         //if (this.m_cModFight.AttackDir != Vector3.zero)
         //{
         //    this.m_cModFight.TargetRole = null;

@@ -144,30 +144,6 @@ public class KeyManager : MonoBehaviour
 
 	private void Update()
 	{
-        float axisRaw = Input.GetAxisRaw("Vertical");
-        float axisRaw2 = Input.GetAxisRaw("Horizontal");
-        bool buttonDown = Input.GetButtonDown("Jump");
-       
-        KeyManager.controlRole.Input(axisRaw, axisRaw2);
-     
-        //if (KeyManager.Shift)
-        //{
-        //    if (Config.DEBUG)
-        //    {
-        //        Player.Instance.RunSpeed = 8f;
-        //    }
-        //}
-        //else
-        //{
-        //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-        //    if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-        //    {
-        //        return;
-        //    }
-        //    Player.Instance.RunSpeed = 5f;
-        //}
-
-
         //按下Shift键退出训练模式
         //if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Singleton<DrillSystem>.GetInstance().IsDrillState)
         //{
@@ -182,36 +158,38 @@ public class KeyManager : MonoBehaviour
         //	return;
         //}
 
-        //if (Player.Instance != null)
-        //{
-        //    if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
-        //    {
-        //        return;
-        //    }
-        //    ////float axisRaw = Input.GetAxisRaw("Vertical");
-        //    ////float axisRaw2 = Input.GetAxisRaw("Horizontal");
-        //    //bool buttonDown = Input.GetButtonDown("Jump");
-        //    //if (KeyManager.controlRole != null)
-        //    //{
-        //    //    KeyManager.controlRole.Input(axisRaw, axisRaw2);
-        //    //}
-        //    //if (KeyManager.Shift)
-        //    //{
-        //    //    if (Config.DEBUG)
-        //    //    {
-        //    //        Player.Instance.RunSpeed = 8f;
-        //    //    }
-        //    //}
-        //    //else
-        //    //{
-        //    //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-        //    //    if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-        //    //    {
-        //    //        return;
-        //    //    }
-        //    //    Player.Instance.RunSpeed = 5f;
-        //    //}
-        //}
+        if (Player.Instance != null)
+        {
+            //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
+            //{
+            //    return;
+            //}
+           
+            float axisRaw = Input.GetAxisRaw("Vertical");
+            float axisRaw2 = Input.GetAxisRaw("Horizontal");
+            bool buttonDown = Input.GetButtonDown("Jump");
+            if (KeyManager.controlRole != null)
+            {
+                KeyManager.controlRole.Input(axisRaw, axisRaw2);
+            }
+
+            //if (KeyManager.Shift)
+            //{
+            //    if (Config.DEBUG)
+            //    {
+            //        Player.Instance.RunSpeed = 8f;
+            //    }
+            //}
+            //else
+            //{
+            //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
+            //    if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
+            //    {
+            //        return;
+            //    }
+            //    Player.Instance.RunSpeed = 5f;
+            //}
+        }
         //if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
         //{
         //    //Player.Instance.m_cModFight.StartGatherStrength();

@@ -1018,7 +1018,6 @@ public class Role
     {
     }
 
-    //	// Token: 0x060023A5 RID: 9125 RVA: 0x000F0A2C File Offset: 0x000EEC2C
     //	public bool HaveBuff(int buffId)
     //	{
     //		ModBuffProperty modBuffProperty = this.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
