@@ -182,418 +182,379 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
 		}
 	}
 
-	//public bool IsExistsRoleAniType(RoleAnimationType tp, int aniIdx)
-	//{
-	//	if (!this._aniTypeTable.ContainsKey(tp))
-	//	{
-	//		return false;
-	//	}
-	//	foreach (object obj in this._aniTypeTable[tp])
-	//	{
-	//		ArrayList arrayList = (ArrayList)obj;
-	//		if (arrayList.Contains(aniIdx))
-	//		{
-	//			return true;
-	//		}
-	//	}
-	//	return false;
-	//}
+    //public bool IsExistsRoleAniType(RoleAnimationType tp, int aniIdx)
+    //{
+    //	if (!this._aniTypeTable.ContainsKey(tp))
+    //	{
+    //		return false;
+    //	}
+    //	foreach (object obj in this._aniTypeTable[tp])
+    //	{
+    //		ArrayList arrayList = (ArrayList)obj;
+    //		if (arrayList.Contains(aniIdx))
+    //		{
+    //			return true;
+    //		}
+    //	}
+    //	return false;
+    //}
 
-	//// Token: 0x06002443 RID: 9283 RVA: 0x000F2040 File Offset: 0x000F0240
-	//public bool IsExistsRoleAniTypeAtAll(int aniIdx)
-	//{
-	//	foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
-	//	{
-	//		if (keyValuePair.Value.Contains(aniIdx))
-	//		{
-	//			return true;
-	//		}
-	//	}
-	//	return false;
-	//}
+    //// Token: 0x06002443 RID: 9283 RVA: 0x000F2040 File Offset: 0x000F0240
+    //public bool IsExistsRoleAniTypeAtAll(int aniIdx)
+    //{
+    //	foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
+    //	{
+    //		if (keyValuePair.Value.Contains(aniIdx))
+    //		{
+    //			return true;
+    //		}
+    //	}
+    //	return false;
+    //}
 
-	//// Token: 0x06002444 RID: 9284 RVA: 0x000F20B4 File Offset: 0x000F02B4
-	//public bool IsExistsByModelID(int modID)
-	//{
-	//	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID);
-	//}
+    //// Token: 0x06002444 RID: 9284 RVA: 0x000F20B4 File Offset: 0x000F02B4
+    //public bool IsExistsByModelID(int modID)
+    //{
+    //	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID);
+    //}
 
-	//// Token: 0x06002445 RID: 9285 RVA: 0x000F20E8 File Offset: 0x000F02E8
-	//public bool IsExistsByModelIDAndAniIndex(int modID, int aniIdx)
-	//{
-	//	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
-	//}
+    //// Token: 0x06002445 RID: 9285 RVA: 0x000F20E8 File Offset: 0x000F02E8
+    //public bool IsExistsByModelIDAndAniIndex(int modID, int aniIdx)
+    //{
+    //	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
+    //}
 
-	//// Token: 0x06002446 RID: 9286 RVA: 0x00018BDE File Offset: 0x00016DDE
-	//public bool IsExistsPlayerAnimation(int aniIdx, int weaponIndex)
-	//{
-	//	return this.IsExistsAnimation(1, aniIdx, weaponIndex);
-	//}
+    //// Token: 0x06002446 RID: 9286 RVA: 0x00018BDE File Offset: 0x00016DDE
+    //public bool IsExistsPlayerAnimation(int aniIdx, int weaponIndex)
+    //{
+    //	return this.IsExistsAnimation(1, aniIdx, weaponIndex);
+    //}
 
-	//// Token: 0x06002447 RID: 9287 RVA: 0x000F2120 File Offset: 0x000F0320
-	//public bool IsExistsAnimation(int modID, int aniIdx, int weaponIndex)
-	//{
-	//	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx && rac.weaponIndex == weaponIndex);
-	//}
+    //// Token: 0x06002447 RID: 9287 RVA: 0x000F2120 File Offset: 0x000F0320
+    //public bool IsExistsAnimation(int modID, int aniIdx, int weaponIndex)
+    //{
+    //	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx && rac.weaponIndex == weaponIndex);
+    //}
 
-	//// Token: 0x06002448 RID: 9288 RVA: 0x000F2160 File Offset: 0x000F0360
-	//public ArrayList FindRoleAniTypeAll(int aniIdx)
-	//{
-	//	ArrayList arrayList = null;
-	//	foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
-	//	{
-	//		if (keyValuePair.Value.Contains(aniIdx))
-	//		{
-	//			if (arrayList == null)
-	//			{
-	//				arrayList = new ArrayList();
-	//			}
-	//			arrayList.Add(keyValuePair.Key);
-	//		}
-	//	}
-	//	return arrayList;
-	//}
+    //// Token: 0x06002448 RID: 9288 RVA: 0x000F2160 File Offset: 0x000F0360
+    //public ArrayList FindRoleAniTypeAll(int aniIdx)
+    //{
+    //	ArrayList arrayList = null;
+    //	foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
+    //	{
+    //		if (keyValuePair.Value.Contains(aniIdx))
+    //		{
+    //			if (arrayList == null)
+    //			{
+    //				arrayList = new ArrayList();
+    //			}
+    //			arrayList.Add(keyValuePair.Key);
+    //		}
+    //	}
+    //	return arrayList;
+    //}
 
-	//// Token: 0x06002449 RID: 9289 RVA: 0x00018BE9 File Offset: 0x00016DE9
-	//public ArrayList FindAniIndexByRoleAniType(RoleAnimationType type)
-	//{
-	//	return (!this._aniTypeTable.ContainsKey(type)) ? null : this._aniTypeTable[type];
-	//}
+    //// Token: 0x06002449 RID: 9289 RVA: 0x00018BE9 File Offset: 0x00016DE9
+    //public ArrayList FindAniIndexByRoleAniType(RoleAnimationType type)
+    //{
+    //	return (!this._aniTypeTable.ContainsKey(type)) ? null : this._aniTypeTable[type];
+    //}
 
-	//// Token: 0x0600244A RID: 9290 RVA: 0x000F21EC File Offset: 0x000F03EC
-	//public List<RoleAniCollect> FindByModelID(int modID)
-	//{
-	//	return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID);
-	//}
+    //// Token: 0x0600244A RID: 9290 RVA: 0x000F21EC File Offset: 0x000F03EC
+    //public List<RoleAniCollect> FindByModelID(int modID)
+    //{
+    //	return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID);
+    //}
 
-	//// Token: 0x0600244B RID: 9291 RVA: 0x000F2220 File Offset: 0x000F0420
-	//public List<RoleAniCollect> FindByModelIDAndAniIndex(int modID, int aniIdx)
-	//{
-	//	return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
-	//}
+    //// Token: 0x0600244B RID: 9291 RVA: 0x000F2220 File Offset: 0x000F0420
+    //public List<RoleAniCollect> FindByModelIDAndAniIndex(int modID, int aniIdx)
+    //{
+    //	return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
+    //}
 
-	//// Token: 0x0600244C RID: 9292 RVA: 0x00018C0E File Offset: 0x00016E0E
-	//public RoleAniCollect FindPlayerAnimation(int aniIdx, int weaponIndex)
-	//{
-	//	return this.FindAnimation(1, aniIdx, weaponIndex);
-	//}
+    //// Token: 0x0600244C RID: 9292 RVA: 0x00018C0E File Offset: 0x00016E0E
+    //public RoleAniCollect FindPlayerAnimation(int aniIdx, int weaponIndex)
+    //{
+    //	return this.FindAnimation(1, aniIdx, weaponIndex);
+    //}
 
-	//// Token: 0x0600244D RID: 9293 RVA: 0x000F2258 File Offset: 0x000F0458
-	//public RoleAniCollect FindAnimation(int modID, int aniIdx, int weaponIndex)
-	//{
-	//	return this._table.Find((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx && rac.weaponIndex == weaponIndex);
-	//}
+    //// Token: 0x0600244D RID: 9293 RVA: 0x000F2258 File Offset: 0x000F0458
+    //public RoleAniCollect FindAnimation(int modID, int aniIdx, int weaponIndex)
+    //{
+    //	return this._table.Find((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx && rac.weaponIndex == weaponIndex);
+    //}
 
-	//// Token: 0x0600244E RID: 9294 RVA: 0x000F2298 File Offset: 0x000F0498
-	//public void DetachAllAnimation(Role role)
-	//{
-	//	if (!this.IsSwitch)
-	//	{
-	//		return;
-	//	}
-	//	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
-	//	{
-	//		return;
-	//	}
-	//	if (role == null)
-	//	{
-	//		return;
-	//	}
-	//	for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Max; roleAnimationType++)
-	//	{
-	//		this.DetachAnimation(roleAnimationType, role);
-	//	}
-	//}
+    //// Token: 0x0600244E RID: 9294 RVA: 0x000F2298 File Offset: 0x000F0498
+    //public void DetachAllAnimation(Role role)
+    //{
+    //	if (!this.IsSwitch)
+    //	{
+    //		return;
+    //	}
+    //	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
+    //	{
+    //		return;
+    //	}
+    //	if (role == null)
+    //	{
+    //		return;
+    //	}
+    //	for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Max; roleAnimationType++)
+    //	{
+    //		this.DetachAnimation(roleAnimationType, role);
+    //	}
+    //}
 
-	//// Token: 0x0600244F RID: 9295 RVA: 0x000F22E8 File Offset: 0x000F04E8
-	//public void DetachAnimation(RoleAnimationType detachType, Role role)
-	//{
-	//	if (!this.IsSwitch)
-	//	{
-	//		return;
-	//	}
-	//	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
-	//	{
-	//		return;
-	//	}
-	//	if (role == null)
-	//	{
-	//		return;
-	//	}
-	//	if (!this._nowRunAnimation.ContainsKey(detachType))
-	//	{
-	//		return;
-	//	}
-	//	ArrayList arrayList = new ArrayList(this._nowRunAnimation[detachType] as ArrayList);
-	//	this.print(LogType.Log, new object[]
-	//	{
-	//		"DetachAnimation",
-	//		detachType.ToString(),
-	//		role.roleGameObject.Name,
-	//		arrayList.Count
-	//	});
-	//	(this._nowRunAnimation[detachType] as ArrayList).Clear();
-	//	this._nowRunAnimation.Remove(detachType);
-	//	foreach (object obj in arrayList)
-	//	{
-	//		string text = (string)obj;
-	//		if (!this._nowRunAnimation.ContainsValue(text))
-	//		{
-	//			AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip(text);
-	//			if (clip == null)
-	//			{
-	//				this.print(LogType.Warning, new object[]
-	//				{
-	//					"DetachAnimation Continue :",
-	//					detachType,
-	//					" .No find AnimationClip ",
-	//					text,
-	//					" RoleModeID=",
-	//					role.roleGameObject.ModelID
-	//				});
-	//			}
-	//			else
-	//			{
-	//				role.roleGameObject.RoleAnimation.RemoveClip(clip);
-	//				LoadMachine.DeleteAsset(clip, true);
-	//				UnityEngine.Object.DestroyImmediate(clip, false);
-	//			}
-	//		}
-	//	}
-	//	this.CheckState(role);
-	//	Main.Instance.DelayGC(10f);
-	//}
+    //// Token: 0x0600244F RID: 9295 RVA: 0x000F22E8 File Offset: 0x000F04E8
+    //public void DetachAnimation(RoleAnimationType detachType, Role role)
+    //{
+    //	if (!this.IsSwitch)
+    //	{
+    //		return;
+    //	}
+    //	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
+    //	{
+    //		return;
+    //	}
+    //	if (role == null)
+    //	{
+    //		return;
+    //	}
+    //	if (!this._nowRunAnimation.ContainsKey(detachType))
+    //	{
+    //		return;
+    //	}
+    //	ArrayList arrayList = new ArrayList(this._nowRunAnimation[detachType] as ArrayList);
+    //	this.print(LogType.Log, new object[]
+    //	{
+    //		"DetachAnimation",
+    //		detachType.ToString(),
+    //		role.roleGameObject.Name,
+    //		arrayList.Count
+    //	});
+    //	(this._nowRunAnimation[detachType] as ArrayList).Clear();
+    //	this._nowRunAnimation.Remove(detachType);
+    //	foreach (object obj in arrayList)
+    //	{
+    //		string text = (string)obj;
+    //		if (!this._nowRunAnimation.ContainsValue(text))
+    //		{
+    //			AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip(text);
+    //			if (clip == null)
+    //			{
+    //				this.print(LogType.Warning, new object[]
+    //				{
+    //					"DetachAnimation Continue :",
+    //					detachType,
+    //					" .No find AnimationClip ",
+    //					text,
+    //					" RoleModeID=",
+    //					role.roleGameObject.ModelID
+    //				});
+    //			}
+    //			else
+    //			{
+    //				role.roleGameObject.RoleAnimation.RemoveClip(clip);
+    //				LoadMachine.DeleteAsset(clip, true);
+    //				UnityEngine.Object.DestroyImmediate(clip, false);
+    //			}
+    //		}
+    //	}
+    //	this.CheckState(role);
+    //	Main.Instance.DelayGC(10f);
+    //}
 
-	//// Token: 0x06002450 RID: 9296 RVA: 0x000F24C0 File Offset: 0x000F06C0
-	//private void CheckState(Role role)
-	//{
-	//	if (this._nowRunAnimation.Count < 1)
-	//	{
-	//		return;
-	//	}
-	//	foreach (object obj in this._nowRunAnimation.Values)
-	//	{
-	//		ArrayList arrayList = (ArrayList)obj;
-	//		foreach (object obj2 in arrayList)
-	//		{
-	//			string text = (string)obj2;
-	//			AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(text);
-	//			if (animationClip == null)
-	//			{
-	//				animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + text);
-	//				if (animationClip == null)
-	//				{
-	//					this.print(LogType.Warning, new object[]
-	//					{
-	//						"No find AnimationClip ",
-	//						text,
-	//						" RoleModeID=",
-	//						role.roleGameObject.ModelID
-	//					});
-	//				}
-	//				else
-	//				{
-	//					role.roleGameObject.RoleAnimation.AddClip(animationClip, text);
-	//				}
-	//			}
-	//		}
-	//	}
-	//}
+    //// Token: 0x06002450 RID: 9296 RVA: 0x000F24C0 File Offset: 0x000F06C0
+    //private void CheckState(Role role)
+    //{
+    //	if (this._nowRunAnimation.Count < 1)
+    //	{
+    //		return;
+    //	}
+    //	foreach (object obj in this._nowRunAnimation.Values)
+    //	{
+    //		ArrayList arrayList = (ArrayList)obj;
+    //		foreach (object obj2 in arrayList)
+    //		{
+    //			string text = (string)obj2;
+    //			AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(text);
+    //			if (animationClip == null)
+    //			{
+    //				animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + text);
+    //				if (animationClip == null)
+    //				{
+    //					this.print(LogType.Warning, new object[]
+    //					{
+    //						"No find AnimationClip ",
+    //						text,
+    //						" RoleModeID=",
+    //						role.roleGameObject.ModelID
+    //					});
+    //				}
+    //				else
+    //				{
+    //					role.roleGameObject.RoleAnimation.AddClip(animationClip, text);
+    //				}
+    //			}
+    //		}
+    //	}
+    //}
 
-	//// Token: 0x06002451 RID: 9297 RVA: 0x000F261C File Offset: 0x000F081C
-	//public bool AttachAnimationAdeptTalent(EquipCfgType weapontype, int AmbitID, Role role)
-	//{
-	//	if (!this.IsSwitch)
-	//	{
-	//		return false;
-	//	}
-	//	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
-	//	{
-	//		return false;
-	//	}
-	//	int num = 0;
-	//	int num2 = 0;
-	//	if (weapontype == EquipCfgType.EQCHILD_CT_WEAPON)
-	//	{
-	//		num = 3;
-	//		num2 = 6;
-	//	}
-	//	else if (weapontype == EquipCfgType.EQCHILD_CT_DWEAPON)
-	//	{
-	//		num = 11;
-	//		num2 = 14;
-	//	}
-	//	else if (weapontype == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
-	//	{
-	//		num = 7;
-	//		num2 = 10;
-	//	}
-	//	int num3 = 0;
-	//	int num4 = 0;
-	//	for (int i = num; i <= num2; i++)
-	//	{
-	//		num3++;
-	//		if (AmbitID != num3)
-	//		{
-	//			this.DetachAnimation((RoleAnimationType)i, role);
-	//		}
-	//		else
-	//		{
-	//			num4 = i;
-	//		}
-	//	}
-	//	Debug.Log("attach = " + (RoleAnimationType)num4);
-	//	return this.AttachAnimation((RoleAnimationType)num4, role);
-	//}
+    //// Token: 0x06002451 RID: 9297 RVA: 0x000F261C File Offset: 0x000F081C
+    //public bool AttachAnimationAdeptTalent(EquipCfgType weapontype, int AmbitID, Role role)
+    //{
+    //	if (!this.IsSwitch)
+    //	{
+    //		return false;
+    //	}
+    //	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
+    //	{
+    //		return false;
+    //	}
+    //	int num = 0;
+    //	int num2 = 0;
+    //	if (weapontype == EquipCfgType.EQCHILD_CT_WEAPON)
+    //	{
+    //		num = 3;
+    //		num2 = 6;
+    //	}
+    //	else if (weapontype == EquipCfgType.EQCHILD_CT_DWEAPON)
+    //	{
+    //		num = 11;
+    //		num2 = 14;
+    //	}
+    //	else if (weapontype == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
+    //	{
+    //		num = 7;
+    //		num2 = 10;
+    //	}
+    //	int num3 = 0;
+    //	int num4 = 0;
+    //	for (int i = num; i <= num2; i++)
+    //	{
+    //		num3++;
+    //		if (AmbitID != num3)
+    //		{
+    //			this.DetachAnimation((RoleAnimationType)i, role);
+    //		}
+    //		else
+    //		{
+    //			num4 = i;
+    //		}
+    //	}
+    //	Debug.Log("attach = " + (RoleAnimationType)num4);
+    //	return this.AttachAnimation((RoleAnimationType)num4, role);
+    //}
 
-	//// Token: 0x06002452 RID: 9298 RVA: 0x00018C19 File Offset: 0x00016E19
-	//public bool AttachAnimation(RoleAnimationType attachType, Role role)
-	//{
-	//	return this.IsSwitch && (!Application.isEditor || ResourcePath.IS_PUBLISH) && this.AttachAnimation(attachType, role, false);
-	//}
+    public bool AttachAnimation(RoleAnimationType attachType, Role role)
+    {
+        return this.IsSwitch  && this.AttachAnimation(attachType, role, false);
+    }
 
-	//// Token: 0x06002453 RID: 9299 RVA: 0x000F26D4 File Offset: 0x000F08D4
-	//public bool AttachAnimation(RoleAnimationType attachType, Role role, bool detachOther)
-	//{
-	//	if (!this.IsSwitch)
-	//	{
-	//		return false;
-	//	}
-	//	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
-	//	{
-	//		return false;
-	//	}
-	//	if (role == null)
-	//	{
-	//		return false;
-	//	}
-	//	if (this._nowRunAnimation.ContainsKey(attachType))
-	//	{
-	//		return false;
-	//	}
-	//	if (role.roleGameObject.RoleAnimation == null)
-	//	{
-	//		Animation animation = role.roleGameObject.RoleBody.AddComponent<Animation>();
-	//		animation.playAutomatically = true;
-	//		animation.animatePhysics = false;
-	//		animation.cullingType = AnimationCullingType.BasedOnUserBounds;
-	//		animation.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
-	//	}
-	//	this.print(LogType.Log, new object[]
-	//	{
-	//		"AttachAnimation",
-	//		attachType.ToString(),
-	//		role.roleGameObject.Name
-	//	});
-	//	ArrayList arrayList = this.FindAniIndexByRoleAniType(attachType);
-	//	if (arrayList == null)
-	//	{
-	//		this.print(LogType.Error, new object[]
-	//		{
-	//			"No define data ",
-	//			attachType
-	//		});
-	//		return false;
-	//	}
-	//	foreach (object obj in arrayList)
-	//	{
-	//		int aniIdx = (int)obj;
-	//		List<RoleAniCollect> list = this.FindByModelIDAndAniIndex(role.roleGameObject.ModelID, aniIdx);
-	//		foreach (RoleAniCollect roleAniCollect in list)
-	//		{
-	//			if (roleAniCollect.ContainsType != null && roleAniCollect.ContainsType.Contains(attachType))
-	//			{
-	//				AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(roleAniCollect.aniName);
-	//				if (animationClip == null)
-	//				{
-	//					animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
-	//					if (animationClip == null)
-	//					{
-	//						this.print(LogType.Warning, new object[]
-	//						{
-	//							"AttachAnimation Continue :",
-	//							attachType,
-	//							" .No find AnimationClip ",
-	//							roleAniCollect.aniName,
-	//							" RoleModeID=",
-	//							role.roleGameObject.ModelID
-	//						});
-	//						continue;
-	//					}
-	//					role.roleGameObject.RoleAnimation.AddClip(animationClip, roleAniCollect.aniName);
-	//				}
-	//				if (!this._nowRunAnimation.ContainsKey(attachType))
-	//				{
-	//					ArrayList arrayList2 = new ArrayList();
-	//					arrayList2.Add(roleAniCollect.aniName);
-	//					this._nowRunAnimation.Add(attachType, arrayList2);
-	//				}
-	//				else
-	//				{
-	//					ArrayList arrayList3 = this._nowRunAnimation[attachType] as ArrayList;
-	//					arrayList3.Add(roleAniCollect.aniName);
-	//				}
-	//			}
-	//		}
-	//	}
-	//	AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip("zhanli");
-	//	if (clip != null)
-	//	{
-	//		role.roleGameObject.RoleAnimation.clip = clip;
-	//		role.roleGameObject.RoleAnimation.Play("zhanli");
-	//	}
-	//	return true;
-	//}
+    public bool AttachAnimation(RoleAnimationType attachType, Role role, bool detachOther)
+    {
+        if (!this.IsSwitch)
+        {
+            return false;
+        }
 
-	//// Token: 0x06002454 RID: 9300 RVA: 0x00018C47 File Offset: 0x00016E47
-	//private AnimationClip LoadAnimation(string name)
-	//{
-	//	return ResourceLoader.Load(name, typeof(AnimationClip)) as AnimationClip;
-	//}
+        if (role == null)
+        {
+            return false;
+        }
 
-	//// Token: 0x06002455 RID: 9301 RVA: 0x000F2A44 File Offset: 0x000F0C44
-	//private void print(LogType lt, params object[] objs)
-	//{
-	//	if (lt != LogType.Error)
-	//	{
-	//		return;
-	//	}
-	//	string text = base.GetType().Name + " : ";
-	//	if (objs != null)
-	//	{
-	//		foreach (object obj in objs)
-	//		{
-	//			text += obj.ToString();
-	//			text += "  ";
-	//		}
-	//	}
-	//	if (lt == LogType.Log)
-	//	{
-	//		Debug.Log(text);
-	//	}
-	//	else if (lt == LogType.Warning)
-	//	{
-	//		Debug.LogWarning(text);
-	//	}
-	//	else if (lt == LogType.Error)
-	//	{
-	//		Debug.LogError(text);
-	//	}
-	//}
+        if (this._nowRunAnimation.ContainsKey(attachType))
+        {
+            return false;
+        }
 
-	//// Token: 0x06002456 RID: 9302 RVA: 0x00018C5E File Offset: 0x00016E5E
-	//public void AddRes(string name, AnimationClip ac)
-	//{
-	//	if (this._tempRes.ContainsKey(name))
-	//	{
-	//		return;
-	//	}
-	//	this._tempRes.Add(name, ac);
-	//}
+        if (role.roleGameObject.RoleAnimation == null)
+        {
+            Animation animation = role.roleGameObject.RoleBody.AddComponent<Animation>();
+            animation.playAutomatically = true;
+            animation.animatePhysics = false;
+            animation.cullingType = AnimationCullingType.BasedOnUserBounds;
+            animation.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
+        }
 
-	//// Token: 0x06002457 RID: 9303 RVA: 0x00018C7F File Offset: 0x00016E7F
-	//public void ClearRes()
-	//{
-	//	this._tempRes.Clear();
-	//}
+        //ArrayList arrayList = this.FindAniIndexByRoleAniType(attachType);
+        //if (arrayList == null)
+        //{
+        //    this.print(LogType.Error, new object[]
+        //    {
+        //        "No define data ",
+        //        attachType
+        //    });
+        //    return false;
+        //}
+
+        //foreach (object obj in arrayList)
+        //{
+        //    int aniIdx = (int)obj;
+        //    List<RoleAniCollect> list = this.FindByModelIDAndAniIndex(role.roleGameObject.ModelID, aniIdx);
+        //    foreach (RoleAniCollect roleAniCollect in list)
+        //    {
+        //        if (roleAniCollect.ContainsType != null && roleAniCollect.ContainsType.Contains(attachType))
+        //        {
+        //            AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(roleAniCollect.aniName);
+        //            if (animationClip == null)
+        //            {
+        //                animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
+        //                if (animationClip == null)
+        //                {
+        //                    this.print(LogType.Warning, new object[]
+        //                    {
+        //                        "AttachAnimation Continue :",
+        //                        attachType,
+        //                        " .No find AnimationClip ",
+        //                        roleAniCollect.aniName,
+        //                        " RoleModeID=",
+        //                        role.roleGameObject.ModelID
+        //                    });
+        //                    continue;
+        //                }
+        //                role.roleGameObject.RoleAnimation.AddClip(animationClip, roleAniCollect.aniName);
+        //            }
+        //            if (!this._nowRunAnimation.ContainsKey(attachType))
+        //            {
+        //                ArrayList arrayList2 = new ArrayList();
+        //                arrayList2.Add(roleAniCollect.aniName);
+        //                this._nowRunAnimation.Add(attachType, arrayList2);
+        //            }
+        //            else
+        //            {
+        //                ArrayList arrayList3 = this._nowRunAnimation[attachType] as ArrayList;
+        //                arrayList3.Add(roleAniCollect.aniName);
+        //            }
+        //        }
+        //    }
+        //}
+        AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip("zhanli");
+        if (clip != null)
+        {
+            role.roleGameObject.RoleAnimation.clip = clip;
+            role.roleGameObject.RoleAnimation.Play("zhanli");
+        }
+        return true;
+    }
+
+    //private AnimationClip LoadAnimation(string name)
+    //{
+    //	return ResourceLoader.Load(name, typeof(AnimationClip)) as AnimationClip;
+    //}
+
+    //public void AddRes(string name, AnimationClip ac)
+    //{
+    //	if (this._tempRes.ContainsKey(name))
+    //	{
+    //		return;
+    //	}
+    //	this._tempRes.Add(name, ac);
+    //}
+
+    //// Token: 0x06002457 RID: 9303 RVA: 0x00018C7F File Offset: 0x00016E7F
+    //public void ClearRes()
+    //{
+    //	this._tempRes.Clear();
+    //}
 }

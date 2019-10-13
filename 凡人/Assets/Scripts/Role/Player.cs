@@ -380,43 +380,50 @@ public class Player : Role
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
+
+        //设置角色动画 这里要改成新动画系统
         if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
         {
             Animation roleAnimation = base.roleGameObject.RoleAnimation;
             if (null != roleAnimation)
             {
-                //UnityEngine.Object.DestroyImmediate(roleAnimation, false);
+                UnityEngine.Object.DestroyImmediate(roleAnimation, false);
             }
-            //for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
-            //{
-            //    if (roleAnimationType != RoleAnimationType.Movie)
-            //    {
-            //        Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
-            //    }
-            //}
+
+            for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
+            {
+                if (roleAnimationType != RoleAnimationType.Movie)
+                {
+                    Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
+                }
+            }
         }
-        //base.roleGameObject.RoleBind.SetRole(this);
-        //this.SetChildrenGameObj(base.roleGameObject.RoleBody);
-        //this.CreateModule();
-        //this.addPlayerHotKey();
-        //this.hatred.selfRole = Player.Instance;
+
+        base.roleGameObject.RoleBind.SetRole(this);
+        this.SetChildrenGameObj(base.roleGameObject.RoleBody);
+        this.CreateModule();//创建模块
+        this.addPlayerHotKey();//添加热键
+        this.hatred.selfRole = Player.Instance;
         KeyManager.controlRole = this;
-        //this.equipReplace = new EquipReplace(this);
-        //this.ItemFolder = new ItemFolderContainer(base.ID);
+        //this.equipReplace = new EquipReplace(this);//装备
+        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
         //this.m_cAmbitSystem.Init(this);
-        //this.InitRoleBaseInfo();
+        this.InitRoleBaseInfo();
         //this.m_RoleGrowDatas.Init();
         //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
         //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
         //this.m_cFigureSystem.Init(this);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);//s
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        //if (!base.roleGameObject.RoleController.isGrounded)
-        //{
-        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        //}
+        if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
+        {
+            base.roleGameObject.RoleController.Move(-Vector3.up * 200f);
+        }
     }
 
+    /// <summary>
+    /// 创建模块
+    /// </summary>
     public override void CreateModule()
     {
         base.CreateModule();
@@ -502,6 +509,7 @@ public class Player : Role
                 //module = new ModVoice(this);
                 break;
         }
+
         if (base.AddModule(module))
         {
             return module;
@@ -547,38 +555,32 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x060022C1 RID: 8897 RVA: 0x000ED2BC File Offset: 0x000EB4BC
-    //	private void addPlayerHotKey()
-    //	{
-    //		if (Config.DEBUG)
-    //		{
-    //			KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
-    //		}
-    //		KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));
-    //		if (Config.DEBUG)
-    //		{
-    //			KeyManager.addNormalKey(KeyCode.BackQuote, new Callback(this.EnterFly));
-    //		}
-    //		KeyManager.addNormalKey(KeyCode.Z, new Callback(this.Rage));
-    //		KeyManager.addNormalKey(KeyCode.Space, new Callback(this.Roll));
-    //		KeyManager.addNormalKey(KeyCode.Alpha1, new Callback(this.UseSkillA));
-    //		KeyManager.addNormalKey(KeyCode.Alpha2, new Callback(this.UseSkillB));
-    //		KeyManager.addNormalKey(KeyCode.Alpha3, new Callback(this.UseSkillC));
-    //		KeyManager.addNormalKey(KeyCode.Alpha4, new Callback(this.UseSkillD));
-    //		if (Application.isEditor)
-    //		{
-    //			KeyManager.addNormalKey(KeyCode.Alpha5, new Callback(this.UseSkillE));
-    //			KeyManager.addNormalKey(KeyCode.Alpha6, new Callback(this.UseSkillF));
-    //			KeyManager.addNormalKey(KeyCode.Alpha7, new Callback(this.UseSkillG));
-    //		}
-    //		KeyManager.addNormalKey(KeyCode.F4, new Callback(Main.Quit));
-    //		KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
-    //	}
-
-    //	// Token: 0x060022C2 RID: 8898 RVA: 0x000ED3F4 File Offset: 0x000EB5F4
-    //	private void Test()
-    //	{
-    //	}
+    private void addPlayerHotKey()
+    {
+        //if (Config.DEBUG)
+        //{
+        //    KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
+        //}
+        //KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));
+        //if (Config.DEBUG)
+        //{
+        //    KeyManager.addNormalKey(KeyCode.BackQuote, new Callback(this.EnterFly));
+        //}
+        //KeyManager.addNormalKey(KeyCode.Z, new Callback(this.Rage));
+        //KeyManager.addNormalKey(KeyCode.Space, new Callback(this.Roll));
+        //KeyManager.addNormalKey(KeyCode.Alpha1, new Callback(this.UseSkillA));
+        //KeyManager.addNormalKey(KeyCode.Alpha2, new Callback(this.UseSkillB));
+        //KeyManager.addNormalKey(KeyCode.Alpha3, new Callback(this.UseSkillC));
+        //KeyManager.addNormalKey(KeyCode.Alpha4, new Callback(this.UseSkillD));
+        //if (Application.isEditor)
+        //{
+        //    KeyManager.addNormalKey(KeyCode.Alpha5, new Callback(this.UseSkillE));
+        //    KeyManager.addNormalKey(KeyCode.Alpha6, new Callback(this.UseSkillF));
+        //    KeyManager.addNormalKey(KeyCode.Alpha7, new Callback(this.UseSkillG));
+        //}
+        //KeyManager.addNormalKey(KeyCode.F4, new Callback(Main.Quit));
+        //KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
+    }
 
     //	// Token: 0x060022C3 RID: 8899 RVA: 0x000ED3F8 File Offset: 0x000EB5F8
     //	private void UseSkillA()
@@ -893,21 +895,22 @@ public class Player : Role
         //{
         //    return;
         //}
+
         //this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;
-        if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
-        {
-            if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
-            {
-                a = this.m_cModCamera.cameraTransform.up;
-            }
-            a.y = 0f;
-        }
+        //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
+        //{
+        //    if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
+        //    {
+        //        a = this.m_cModCamera.cameraTransform.up;
+        //    }
+        //    a.y = 0f;
+        //}
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;
+        //Debug.Log(vector2);
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-        Debug.Log(currentStateId);
         if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
         {
             if (currentStateId != CONTROL_STATE.WALK_FORWARD)
@@ -1138,29 +1141,28 @@ public class Player : Role
     //		this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);
     //	}
 
-    //	// Token: 0x060022E7 RID: 8935 RVA: 0x000EE2BC File Offset: 0x000EC4BC
-    //	public void InitRoleBaseInfo()
-    //	{
-    //		if (this.roleinfo == null)
-    //		{
-    //			return;
-    //		}
-    //		GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
-    //		foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
-    //		{
-    //			if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
-    //			{
-    //				Dictionary<ulong, CItemBase> dictionary = new Dictionary<ulong, CItemBase>();
-    //				if (GameData.Instance.ItemMan.TryGetItemsByID(keyValuePair.Value, out dictionary))
-    //				{
-    //					foreach (CItemBase item in dictionary.Values)
-    //					{
-    //						this.ItemFolder.WearOperate.TakeOn(item);
-    //					}
-    //				}
-    //			}
-    //		}
-    //	}
+    public void InitRoleBaseInfo()
+    {
+        if (this.roleinfo == null)
+        {
+            return;
+        }
+        //GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
+        //{
+        //    if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
+        //    {
+        //        Dictionary<ulong, CItemBase> dictionary = new Dictionary<ulong, CItemBase>();
+        //        if (GameData.Instance.ItemMan.TryGetItemsByID(keyValuePair.Value, out dictionary))
+        //        {
+        //            foreach (CItemBase item in dictionary.Values)
+        //            {
+        //                this.ItemFolder.WearOperate.TakeOn(item);
+        //            }
+        //        }
+        //    }
+        //}
+    }
 
     //	// Token: 0x060022E8 RID: 8936 RVA: 0x000EE3E8 File Offset: 0x000EC5E8
     //	public static void LoadPlayerRes(Player player)

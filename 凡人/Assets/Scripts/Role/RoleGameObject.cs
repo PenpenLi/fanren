@@ -146,17 +146,17 @@ public class RoleGameObject
     //	}
     //}
 
-    //public string Name
-    //{
-    //	get
-    //	{
-    //		if (this.m_cGO == null)
-    //		{
-    //			return string.Empty;
-    //		}
-    //		return this.m_cGO.name;
-    //	}
-    //}
+    public string Name
+    {
+        get
+        {
+            if (this.m_cGO == null)
+            {
+                return string.Empty;
+            }
+            return this.m_cGO.name;
+        }
+    }
 
     public GameObject RoleBody
     {

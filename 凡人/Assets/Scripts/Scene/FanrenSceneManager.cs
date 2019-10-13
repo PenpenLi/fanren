@@ -57,31 +57,27 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
 	public void GameStart()
 	{
-		this.Init();
-        this.InitScene();
+        this.Init();
 
-        //this.EnterScene();
-        //    //Singleton<CResourcesStaticManager>.GetInstance();
-        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
+        if (SceneManager.GetActiveScene().name != "Start" && SceneManager.GetActiveScene().name != "Landing" && SceneManager.GetActiveScene().name != "End")
+        {
+            this.InitScene();
+            GameTime.Init();
+        }
 
+        if (SceneManager.GetActiveScene().name == "Landing")
+        {
+            this.PlayGameBgSound();
+        }
 
-
-
-        //if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
-        //{
-
-        //    //GameTime.Init();
-        //}
-        //if (SceneManager.GetActiveScene().name == "Landing")
-        //{
-        //    this.PlayGameBgSound();
-        //}
         //if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
         //{
         //    //GUIControl.MovieClose();
-        //   
+        //    //this.EnterScene();
+        //    //Singleton<CResourcesStaticManager>.GetInstance();
+        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
         //}
-        //if (SceneManager.GetActiveScene().name == "Landing")
+        //if (Application.loadedLevelName == "Landing")
         //{
         //    //EZGUIManager._BindRunTimeObj.AddLandUI();
         //    //this.ReStartGame(true);
@@ -89,6 +85,10 @@ public class FanrenSceneManager : MonoBehaviour
         //else
         //{
         //    //EZGUIManager._BindRunTimeObj.RemoveLandUI();
+        //}
+        //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
+        //{
+        //    //this.ReStartGame(false);
         //}
         //Main.Instance.DelayGC(20f);
     }
@@ -221,7 +221,7 @@ public class FanrenSceneManager : MonoBehaviour
     //		SceneManager.LoadLevel(num, true, true);
     //	}
     //}
-
+     
     private void Init()
     {
         this.GetSceneInfo();
@@ -229,6 +229,7 @@ public class FanrenSceneManager : MonoBehaviour
         //UICamera.InitUICamera();
         //SystemSetting.initialize();
         //Singleton<ActorManager>.GetInstance().Clear();
+
         //if (SceneManager.GetActiveScene().name== "Start")
         //{
         //    GameData.Instance.ScrMan.Exec(31, 10110);

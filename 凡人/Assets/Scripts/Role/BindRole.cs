@@ -8,7 +8,7 @@ public class BindRole : HurtRoleGameObject
 	}
 
     /// <summary>
-    /// 设置角色
+    /// 设置角色标签和层
     /// </summary>
     /// <param name="theRole"></param>
 	public override void SetRole(Role theRole)

@@ -13,6 +13,46 @@ public class ControlEventMoveForward : ControlEventBase
 
     private Vector3[] path;
 
+    public Vector3 TargetPos
+    {
+        get
+        {
+            return this.m_vecTarget;
+        }
+    }
+
+    public ACTION_INDEX ActIdx
+    {
+        get
+        {
+            return this.m_actIdx;
+        }
+    }
+
+    public float Speed
+    {
+        get
+        {
+            return this.m_speed;
+        }
+    }
+
+    public bool Rotate
+    {
+        get
+        {
+            return this.m_rotate;
+        }
+    }
+
+    public Vector3[] Path
+    {
+        get
+        {
+            return this.path;
+        }
+    }
+
     public ControlEventMoveForward(bool Forced, Vector3 target, ACTION_INDEX act, float speed, bool rot) : base(Forced)
 	{
 		this.m_iInputId = CONTROL_INPUT.WALK_FORWARD;
@@ -31,45 +71,5 @@ public class ControlEventMoveForward : ControlEventBase
 		this.m_rotate = rot;
 		this.m_speed = speed;
 		this.path = paths;
-	}
-
-	public Vector3 TargetPos
-	{
-		get
-		{
-			return this.m_vecTarget;
-		}
-	}
-
-	public ACTION_INDEX ActIdx
-	{
-		get
-		{
-			return this.m_actIdx;
-		}
-	}
-
-	public float Speed
-	{
-		get
-		{
-			return this.m_speed;
-		}
-	}
-
-	public bool Rotate
-	{
-		get
-		{
-			return this.m_rotate;
-		}
-	}
-
-	public Vector3[] Path
-	{
-		get
-		{
-			return this.path;
-		}
 	}
 }

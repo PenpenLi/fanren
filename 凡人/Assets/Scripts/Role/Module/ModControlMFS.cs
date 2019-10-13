@@ -77,34 +77,32 @@ public class ModControlMFS : Module
 
     public bool ChangeState(ControlEventBase tmpEvent)
     {
-        if (tmpEvent.Forced)
-        {
-     
-            //ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
-            if (this.m_cCurrentState != null)
-            {
-                this.m_cCurrentState.Destory();
-                this.m_cCurrentState.ExitProcess();
-            }
-            //this.m_cCurrentState = stateByInput;
-            //this.m_cCurrentState.OnEnter(tmpEvent);
-            return true;
-        }
+        //if (tmpEvent.Forced)
+        //{    
+        //    //ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
+        //    if (this.m_cCurrentState != null)
+        //    {
+        //        this.m_cCurrentState.Destory();
+        //        this.m_cCurrentState.ExitProcess();
+        //    }
+        //    //this.m_cCurrentState = stateByInput;
+        //    //this.m_cCurrentState.OnEnter(tmpEvent);
+        //    return true;
+        //}
 
-        if (this.m_cCurrentState != null)
-        {
-            Debug.Log("执行");
-            if (this.m_cCurrentState.IsLocked)
-            {
-                return false;
-            }
-            //if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
-            //{
-            //    return false;
-            //}
-        }
+        //if (this.m_cCurrentState != null)
+        //{
+        //    if (this.m_cCurrentState.IsLocked)
+        //    {
+        //        return false;
+        //    }
+        //    //if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
+        //    //{
+        //    //    return false;
+        //    //}
+        //}
 
-        //ControlStateBase stateByInput2 = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
+        ControlStateBase stateByInput2 = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
         //if (!stateByInput2.IsEffectTive(tmpEvent))
         //{
         //    return false;
@@ -112,19 +110,20 @@ public class ModControlMFS : Module
         ControlStateBase cCurrentState = this.m_cCurrentState;
         if (cCurrentState != null)
         {
-            if (!cCurrentState.Destory())
-            {
-                this.m_cCurrentState = cCurrentState;
-                return false;
-            }
-            cCurrentState.ExitProcess();
+            //if (!cCurrentState.Destory())
+            //{
+            //    this.m_cCurrentState = cCurrentState;
+            //    return false;
+            //}
+            //cCurrentState.ExitProcess();
         }
-        //if (!stateByInput2.OnEnter(tmpEvent))
-        //{
-        //    return false;
-        //}
-        //stateByInput2.EnterProcess();
-        //this.m_cCurrentState = stateByInput2;
+
+        if (!stateByInput2.OnEnter(tmpEvent))
+        {
+            return false;
+        }
+        stateByInput2.EnterProcess();
+        this.m_cCurrentState = stateByInput2;
         //if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER && CameraBoxsSelect.Instance != null)
         //{
         //    if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
@@ -143,7 +142,7 @@ public class ModControlMFS : Module
     {
         private Dictionary<CONTROL_STATE, ControlStateBase> m_mapOutputStates = new Dictionary<CONTROL_STATE, ControlStateBase>();
 
-        //private Dictionary<CONTROL_INPUT, ControlStateBase> m_mapInpuStates = new Dictionary<CONTROL_INPUT, ControlStateBase>();
+        private Dictionary<CONTROL_INPUT, ControlStateBase> m_mapInpuStates = new Dictionary<CONTROL_INPUT, ControlStateBase>();
 
         //private MFSTable m_mapEventTable;
 
@@ -158,7 +157,7 @@ public class ModControlMFS : Module
             //this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK, new ControlStateAttack(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BACK_WEAPON, new ControlStateBackWeapon(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.DIE, new ControlStateDie(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.WALK_FORWARD, new ControlStateWalkForward(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.WALK_FORWARD, new ControlStateWalkForward(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.SKILL, new ControlStateSkill(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK_IDLE, new ControlStateAttackIdle(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.SHOWTIME, new ControlStateShowTime(role, control, mcm));
@@ -180,7 +179,7 @@ public class ModControlMFS : Module
             //this.m_mapOutputStates.Add(CONTROL_STATE.WALK_SURROUND, new ControlStateWalkSurround(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.GATHER_STRENGTH, new ControlStateGatherStrength(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BOSS_SHOW, new ControlStateBossShow(role, control, mcm));
-            //this.m_mapInpuStates.Clear();
+            this.m_mapInpuStates.Clear();
             //this.m_mapInpuStates.Add(CONTROL_INPUT.IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
@@ -191,7 +190,7 @@ public class ModControlMFS : Module
             //this.m_mapInpuStates.Add(CONTROL_INPUT.ATTACK, this.m_mapOutputStates[CONTROL_STATE.ATTACK]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.BACK_WEAPON, this.m_mapOutputStates[CONTROL_STATE.BACK_WEAPON]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.DIE, this.m_mapOutputStates[CONTROL_STATE.DIE]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.WALK_FORWARD, this.m_mapOutputStates[CONTROL_STATE.WALK_FORWARD]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.WALK_FORWARD, this.m_mapOutputStates[CONTROL_STATE.WALK_FORWARD]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.SKILL, this.m_mapOutputStates[CONTROL_STATE.SKILL]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.SHOWTIME, this.m_mapOutputStates[CONTROL_STATE.SHOWTIME]);
@@ -216,14 +215,14 @@ public class ModControlMFS : Module
             //this.m_mapEventTable = Singleton<MFSTableManager>.GetInstance().GetTableByType(mcm._role.MFSType);
         }
 
-        //public ControlStateBase GetStateByInput(CONTROL_INPUT ci)
-        //{
-        //    if (this.m_mapInpuStates.ContainsKey(ci))
-        //    {
-        //        return this.m_mapInpuStates[ci];
-        //    }
-        //    return null;
-        //}
+        public ControlStateBase GetStateByInput(CONTROL_INPUT ci)
+        {
+            if (this.m_mapInpuStates.ContainsKey(ci))
+            {
+                return this.m_mapInpuStates[ci];
+            }
+            return null;
+        }
 
         public ControlStateBase GetStateByOutput(CONTROL_STATE cs)
         {

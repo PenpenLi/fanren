@@ -6,11 +6,14 @@ using UnityEngine;
 
 public class Role
 {
-    //    //public const int nMaxID = 100000;
+    public const int nMaxID = 100000;
 
     public ROLE_TYPE _roleType;
 
-    //    //public RoleHatred hatred = new RoleHatred();
+    /// <summary>
+    /// 角色仇恨
+    /// </summary>
+    public RoleHatred hatred = new RoleHatred();
 
     protected List<Module> _modList = new List<Module>();
 
@@ -24,7 +27,6 @@ public class Role
 
     //    //private GameObjSpawn.SpawnInfo _spawnInfo;
 
-    //    //// Token: 0x04001FD5 RID: 8149
     //    //private bool _bRagdoll;
 
     //    //// Token: 0x04001FD6 RID: 8150
@@ -186,20 +188,17 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000427 RID: 1063
-    //	// (get) Token: 0x0600234A RID: 9034 RVA: 0x000EFD7C File Offset: 0x000EDF7C
-    //	// (set) Token: 0x06002349 RID: 9033 RVA: 0x000EFD70 File Offset: 0x000EDF70
-    //	public string RoleName
-    //	{
-    //		get
-    //		{
-    //			return this._roleName;
-    //		}
-    //		set
-    //		{
-    //			this._roleName = value;
-    //		}
-    //	}
+    public string RoleName
+    {
+        get
+        {
+            return this._roleName;
+        }
+        set
+        {
+            this._roleName = value;
+        }
+    }
 
     //	// Token: 0x17000428 RID: 1064
     //	// (get) Token: 0x0600234C RID: 9036 RVA: 0x000EFD90 File Offset: 0x000EDF90
@@ -414,15 +413,13 @@ public class Role
     //		return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
     //	}
 
-    //	// Token: 0x1700042D RID: 1069
-    //	// (get) Token: 0x0600236D RID: 9069 RVA: 0x000EFE74 File Offset: 0x000EE074
-    //	public string name
-    //	{
-    //		get
-    //		{
-    //			return this._roleGameObj.Name;
-    //		}
-    //	}
+    public string name
+    {
+        get
+        {
+            return this._roleGameObj.Name;
+        }
+    }
 
     //	// Token: 0x0600236E RID: 9070 RVA: 0x000EFE84 File Offset: 0x000EE084
     //	public bool IsEnemy(Role role)
@@ -496,18 +493,17 @@ public class Role
         return false;
     }
 
-    //	// Token: 0x06002375 RID: 9077 RVA: 0x000EFFB4 File Offset: 0x000EE1B4
-    //	public Module GetModule(MODULE_TYPE mt)
-    //	{
-    //		for (int i = 0; i < this._modList.Count; i++)
-    //		{
-    //			if (this._modList[i].ModType == mt)
-    //			{
-    //				return this._modList[i];
-    //			}
-    //		}
-    //		return null;
-    //	}
+    public Module GetModule(MODULE_TYPE mt)
+    {
+        for (int i = 0; i < this._modList.Count; i++)
+        {
+            if (this._modList[i].ModType == mt)
+            {
+                return this._modList[i];
+            }
+        }
+        return null;
+    }
 
     //	// Token: 0x06002376 RID: 9078 RVA: 0x000F0004 File Offset: 0x000EE204
     //	public bool GetBuff(int id)

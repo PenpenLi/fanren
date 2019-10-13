@@ -24,44 +24,44 @@ public class ControlStateBase
 
     protected bool isFree;
 
-    //private List<CONTROL_INPUT> m_lstBreakEvent = new List<CONTROL_INPUT>();
+    private List<CONTROL_INPUT> m_lstBreakEvent = new List<CONTROL_INPUT>();
 
     public Callback OverCall;
 
-    //protected ControlEventBase m_cNextEvent;
+    protected ControlEventBase m_cNextEvent;
 
     public ControlStateBase(Role role, CharacterController control, ModControlMFS mcm, CONTROL_STATE cs)
 	{
 		this.m_cRole = role;
 		this.m_cControl = control;
-		//this.m_cAnimation = (ModAnimation)this.m_cRole.GetModule(MODULE_TYPE.MT_MOTION);
+		this.m_cAnimation = (ModAnimation)this.m_cRole.GetModule(MODULE_TYPE.MT_MOTION);
 		//this.modBevAi = (this.m_cRole.GetModule(MODULE_TYPE.MT_AI_BEHAVIOR) as ModBehaviorAI);
 		//this.modAtt = (this.m_cRole.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
 		this.m_cControlMfs = mcm;
 		this.m_eStateId = cs;
 	}
 
-	//public List<CONTROL_INPUT> BreakEvent
-	//{
-	//	get
-	//	{
-	//		return this.m_lstBreakEvent;
-	//	}
-	//}
+    //public List<CONTROL_INPUT> BreakEvent
+    //{
+    //	get
+    //	{
+    //		return this.m_lstBreakEvent;
+    //	}
+    //}
 
-	//public ControlEventBase NextEvent
-	//{
-	//	get
-	//	{
-	//		return this.m_cNextEvent;
-	//	}
-	//	set
-	//	{
-	//		this.m_cNextEvent = value;
-	//	}
-	//}
+    public ControlEventBase NextEvent
+    {
+        get
+        {
+            return this.m_cNextEvent;
+        }
+        set
+        {
+            this.m_cNextEvent = value;
+        }
+    }
 
-	public bool IsLocked
+    public bool IsLocked
 	{
 		get
 		{
@@ -117,48 +117,42 @@ public class ControlStateBase
 		return this.m_eStateId;
 	}
 
-	//public virtual bool OnEnter(ControlEventBase tmpEvent)
-	//{
-	//	this.m_fStateStartTime = GameTime.time;
-	//	this.ResetEnterState();
-	//	return true;
-	//}
+    public virtual bool OnEnter(ControlEventBase tmpEvent)
+    {
+        this.m_fStateStartTime = GameTime.time;
+        this.ResetEnterState();
+        return true;
+    }
 
-	//// Token: 0x06002005 RID: 8197 RVA: 0x00002AD8 File Offset: 0x00000CD8
-	//public virtual bool IsEffectTive(ControlEventBase tmpEvent)
-	//{
-	//	return true;
-	//}
+    public virtual bool IsEffectTive(ControlEventBase tmpEvent)
+    {
+        return true;
+    }
 
-	// Token: 0x06002006 RID: 8198 RVA: 0x0000221B File Offset: 0x0000041B
-	public virtual void OnExit()
+    public virtual void OnExit()
 	{
 	}
 
-	// Token: 0x06002007 RID: 8199 RVA: 0x00002AD8 File Offset: 0x00000CD8
 	public virtual bool Destory()
 	{
 		return true;
 	}
 
-	// Token: 0x06002008 RID: 8200 RVA: 0x0000221B File Offset: 0x0000041B
 	public virtual void EnterProcess()
 	{
 	}
 
-	// Token: 0x06002009 RID: 8201 RVA: 0x0000221B File Offset: 0x0000041B
 	public virtual void ExitProcess()
 	{
 	}
 
-	// Token: 0x0600200A RID: 8202 RVA: 0x0001627A File Offset: 0x0001447A
 	private void ResetEnterState()
 	{
 		this.isLocked = false;
 		this.isFree = false;
-		//this.NextEvent = null;
+		this.NextEvent = null;
 		this.OverCall = null;
-		//this.m_lstBreakEvent.Clear();
+		this.m_lstBreakEvent.Clear();
 	}
 
 	protected void CheckToFallingState()

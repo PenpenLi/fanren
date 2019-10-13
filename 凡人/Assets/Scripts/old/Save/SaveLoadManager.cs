@@ -3,10 +3,12 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-
+/// <summary>
+/// 存档读档管理
+/// </summary>
 public class SaveLoadManager
 {
-    //	public const string EncryptKey = "";
+    	public const string EncryptKey = "";
 
     	public static string DIR_PATH = Application.dataPath + "/Save/";
 
@@ -19,43 +21,24 @@ public class SaveLoadManager
     [Serializable]
     public enum tagSL
     {
-        // Token: 0x040006CF RID: 1743
         Save_Auto,
-        // Token: 0x040006D0 RID: 1744
         Save_One,
-        // Token: 0x040006D1 RID: 1745
         Save_Two,
-        // Token: 0x040006D2 RID: 1746
         Save_Three,
-        // Token: 0x040006D3 RID: 1747
         Save_Four,
-        // Token: 0x040006D4 RID: 1748
         Save_Five,
-        // Token: 0x040006D5 RID: 1749
         Load_Auto = 10,
-        // Token: 0x040006D6 RID: 1750
         Load_One,
-        // Token: 0x040006D7 RID: 1751
         Load_Two,
-        // Token: 0x040006D8 RID: 1752
         Load_Three,
-        // Token: 0x040006D9 RID: 1753
         Load_Four,
-        // Token: 0x040006DA RID: 1754
         Load_Five,
-        // Token: 0x040006DB RID: 1755
         Del_Auto = 20,
-        // Token: 0x040006DC RID: 1756
         Del_One,
-        // Token: 0x040006DD RID: 1757
         Del_Two,
-        // Token: 0x040006DE RID: 1758
         Del_Three,
-        // Token: 0x040006DF RID: 1759
         Del_Four,
-        // Token: 0x040006E0 RID: 1760
         Del_Five,
-        // Token: 0x040006E1 RID: 1761
         NONE = -1
     }
 
