@@ -31,30 +31,22 @@ public class RoleGameObject
 
     //   private Dictionary<CHILD_EFFECT_POINT, Transform> m_mapEffectTrans = new Dictionary<CHILD_EFFECT_POINT, Transform>();
 
-    //   // Token: 0x0400204C RID: 8268
     //   private Dictionary<CHILD_MESH_POINT, Renderer> m_mapMeshTrans = new Dictionary<CHILD_MESH_POINT, Renderer>();
 
-    //   // Token: 0x0400204D RID: 8269
     //   private Dictionary<CHILD_RAGDOLL_POINT, Rigidbody> m_mapRagDollTrans = new Dictionary<CHILD_RAGDOLL_POINT, Rigidbody>();
 
-    //   // Token: 0x0400204E RID: 8270
     //   private Dictionary<ATTACHMENT, GameObject> m_mapAttachmentGo = new Dictionary<ATTACHMENT, GameObject>();
 
-    //   // Token: 0x0400204F RID: 8271
     //   private Dictionary<CHILD_ARM_POINT, Transform> m_mapArmTrans = new Dictionary<CHILD_ARM_POINT, Transform>();
 
-    //   // Token: 0x04002050 RID: 8272
     //   private Dictionary<HARM_PART, ColliderCheckObject> m_mapHarm = new Dictionary<HARM_PART, ColliderCheckObject>();
 
-    //   // Token: 0x04002051 RID: 8273
     //   private Dictionary<HURT_PART, HurtRoleGameObject> m_mapHurt = new Dictionary<HURT_PART, HurtRoleGameObject>();
 
     private Rigidbody[] rigidbodys;
 
-    //   // Token: 0x04002053 RID: 8275
     //   private SkinnedMeshRenderer[] skinMeshs;
 
-    //   // Token: 0x02000546 RID: 1350
     //   public struct BindEffectInfo
     //   {
     //       // Token: 0x0600242E RID: 9262 RVA: 0x000F4898 File Offset: 0x000F2A98
@@ -66,16 +58,12 @@ public class RoleGameObject
     //           this.eulerOffest = euler;
     //       }
 
-    //       // Token: 0x04002055 RID: 8277
     //       public GameObject effectObj;
 
-    //       // Token: 0x04002056 RID: 8278
     //       public CHILD_EFFECT_POINT pointType;
 
-    //       // Token: 0x04002057 RID: 8279
     //       public Vector3 posOffest;
 
-    //       // Token: 0x04002058 RID: 8280
     //       public Vector3 eulerOffest;
     //   }
 
@@ -202,53 +190,49 @@ public class RoleGameObject
         }
     }
 
-    //// Token: 0x17000441 RID: 1089
-    //// (get) Token: 0x0600240D RID: 9229 RVA: 0x000F3784 File Offset: 0x000F1984
-    //public CharacterController RoleController
-    //{
-    //	get
-    //	{
-    //		if (this.m_cGO == null)
-    //		{
-    //			return null;
-    //		}
-    //		if (this.m_cRoleController == null)
-    //		{
-    //			this.m_cRoleController = this.m_cGO.GetComponent<CharacterController>();
-    //		}
-    //		return this.m_cRoleController;
-    //	}
-    //}
+    public CharacterController RoleController
+    {
+        get
+        {
+            if (this.m_cGO == null)
+            {
+                return null;
+            }
+            if (this.m_cRoleController == null)
+            {
+                this.m_cRoleController = this.m_cGO.GetComponent<CharacterController>();
+            }
+            return this.m_cRoleController;
+        }
+    }
 
-    //// Token: 0x17000442 RID: 1090
-    //// (get) Token: 0x0600240E RID: 9230 RVA: 0x000F37C4 File Offset: 0x000F19C4
-    //public Animation RoleAnimation
-    //{
-    //	get
-    //	{
-    //		if (this.m_cGO == null)
-    //		{
-    //			return null;
-    //		}
-    //		if (this.m_cRoleAnimation == null)
-    //		{
-    //			this.m_cRoleAnimation = this.m_cGO.GetComponent<Animation>();
-    //			if (this.m_cRoleAnimation == null)
-    //			{
-    //				foreach (object obj in this.m_cGO.transform)
-    //				{
-    //					Transform transform = (Transform)obj;
-    //					this.m_cRoleAnimation = transform.GetComponent<Animation>();
-    //					if (this.m_cRoleAnimation != null)
-    //					{
-    //						break;
-    //					}
-    //				}
-    //			}
-    //		}
-    //		return this.m_cRoleAnimation;
-    //	}
-    //}
+    public Animation RoleAnimation
+    {
+        get
+        {
+            if (this.m_cGO == null)
+            {
+                return null;
+            }
+            if (this.m_cRoleAnimation == null)
+            {
+                this.m_cRoleAnimation = this.m_cGO.GetComponent<Animation>();
+                if (this.m_cRoleAnimation == null)
+                {
+                    foreach (object obj in this.m_cGO.transform)
+                    {
+                        Transform transform = (Transform)obj;
+                        this.m_cRoleAnimation = transform.GetComponent<Animation>();
+                        if (this.m_cRoleAnimation != null)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return this.m_cRoleAnimation;
+        }
+    }
 
     //// Token: 0x17000443 RID: 1091
     //// (get) Token: 0x0600240F RID: 9231 RVA: 0x000F38A0 File Offset: 0x000F1AA0
@@ -282,8 +266,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x17000445 RID: 1093
-    //// (get) Token: 0x06002411 RID: 9233 RVA: 0x000F3900 File Offset: 0x000F1B00
     //public int ModelID
     //{
     //	get
@@ -483,6 +465,12 @@ public class RoleGameObject
     //	}
     //}
 
+    /// <summary>
+    /// 创建对象
+    /// </summary>
+    /// <param name="modelId"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
     public void CreatGO(int modelId, Vector3 position, Quaternion rotation)
     {
         this.SetGO(RoleGameObject.CreatRoleGameObject(modelId, position, rotation));
@@ -825,6 +813,13 @@ public class RoleGameObject
     //	return gameObject;
     //}
 
+    /// <summary>
+    /// 创建角色物体
+    /// </summary>
+    /// <param name="modelID"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
         RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);
@@ -841,7 +836,7 @@ public class RoleGameObject
         }
         gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);
         BindRole bindRole = gameObject.AddComponent<BindRole>();
-        bindRole.SetModelID(modelID);
+        bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;
     }
 }

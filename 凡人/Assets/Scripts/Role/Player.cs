@@ -12,67 +12,49 @@ public class Player : Role
 
 //    private const string strBaseMixtureCfg = "MixtureConfig";
 
-//    // Token: 0x04001F8E RID: 8078
 //    public Character m_cCharacter;
 
-//    // Token: 0x04001F8F RID: 8079
 //    public ModAttribute m_cModAttribute;
 
-//    // Token: 0x04001F90 RID: 8080
 //    public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
       public ModCamera m_cModCamera;
 
       public ModFight m_cModFight;
 
-//    // Token: 0x04001F93 RID: 8083
-//    public AdeptTalent m_cAdeptSystem = new AdeptTalent();
+    //    public AdeptTalent m_cAdeptSystem = new AdeptTalent();
 
-//    // Token: 0x04001F94 RID: 8084
-//    public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
+    //    public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
 
-//    // Token: 0x04001F95 RID: 8085
-//    public BottleSystem m_BottleSystem = new BottleSystem();
+    //    public BottleSystem m_BottleSystem = new BottleSystem();
 
-//    // Token: 0x04001F96 RID: 8086
-//    private AmbitSystem m_cAmbitSystem = new AmbitSystem();
+    //    private AmbitSystem m_cAmbitSystem = new AmbitSystem();
 
-//    // Token: 0x04001F97 RID: 8087
-//    private FigureSystem m_cFigureSystem = new FigureSystem();
+    //    private FigureSystem m_cFigureSystem = new FigureSystem();
 
-//    // Token: 0x04001F98 RID: 8088
-//    private Handbook m_cHandbook = new Handbook();
+    //    private Handbook m_cHandbook = new Handbook();
 
-//    // Token: 0x04001F99 RID: 8089
-//    public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
+    //    public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
 
-//    // Token: 0x04001F9A RID: 8090
-//    public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
+    //    public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
 
-//    // Token: 0x04001F9B RID: 8091
-//    private ModMission m_cModMission;
+    //    private ModMission m_cModMission;
 
-//    // Token: 0x04001F9C RID: 8092
-//    private Hbar hpBar;
+    //    private Hbar hpBar;
 
-//    // Token: 0x04001F9D RID: 8093
-//    private Mbar mpBar;
+    //    private Mbar mpBar;
 
-//    // Token: 0x04001F9E RID: 8094
-//    private GameObject _currentMob;
+    //    private GameObject _currentMob;
 
-//    // Token: 0x04001F9F RID: 8095
-//    public HelpBase _helpBase = new HelpBase();
+    //    public HelpBase _helpBase = new HelpBase();
 
-//    // Token: 0x04001FA0 RID: 8096
-//    private MobCharacter Mob;
+    //    private MobCharacter Mob;
 
-//    // Token: 0x04001FA1 RID: 8097
-//    public ModAnimation modAnimation;
+    public ModAnimation modAnimation;
 
-      private int playerId;
+    private int playerId;
 
-      public static int currentPlayerId = 1;
+    public static int currentPlayerId = 1;
 
     public PlayerInfo playerInfo;
 
@@ -82,13 +64,10 @@ public class Player : Role
 
     //    public WeaponManager weaponManager = new WeaponManager();
 
-    //    // Token: 0x04001FA8 RID: 8104
     //    public EquipReplace equipReplace;
 
-    //    // Token: 0x04001FA9 RID: 8105
     //    public ItemFolderContainer ItemFolder;
 
-    //    // Token: 0x04001FAA RID: 8106
     //    public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
 
     //    private SoundData fightSD = new SoundData();
@@ -110,8 +89,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x17000418 RID: 1048
-    //	// (get) Token: 0x060022A6 RID: 8870 RVA: 0x000EC5AC File Offset: 0x000EA7AC
     //	public FigureSystem SystemFigure
     //	{
     //		get
@@ -120,8 +97,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x17000419 RID: 1049
-    //	// (get) Token: 0x060022A7 RID: 8871 RVA: 0x000EC5B4 File Offset: 0x000EA7B4
     //	public Handbook SystemHandbook
     //	{
     //		get
@@ -184,7 +159,6 @@ public class Player : Role
         }
     }
 
-    //	// Token: 0x060022AF RID: 8879 RVA: 0x000EC698 File Offset: 0x000EA898
     //	public override float GetTurnSpeed()
     //	{
     //		return 1000f;
@@ -406,24 +380,24 @@ public class Player : Role
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
-        //if ((!Application.isEditor || ResourcePath.IS_PUBLISH) && Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
-        //{
-        //    Animation roleAnimation = base.roleGameObject.RoleAnimation;
-        //    if (null != roleAnimation)
-        //    {
-        //        UnityEngine.Object.DestroyImmediate(roleAnimation, false);
-        //    }
-        //    for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
-        //    {
-        //        if (roleAnimationType != RoleAnimationType.Movie)
-        //        {
-        //            Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
-        //        }
-        //    }
-        //}
-        base.roleGameObject.RoleBind.SetRole(this);
-        this.SetChildrenGameObj(base.roleGameObject.RoleBody);
-        this.CreateModule();
+        if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
+        {
+            Animation roleAnimation = base.roleGameObject.RoleAnimation;
+            if (null != roleAnimation)
+            {
+                //UnityEngine.Object.DestroyImmediate(roleAnimation, false);
+            }
+            //for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
+            //{
+            //    if (roleAnimationType != RoleAnimationType.Movie)
+            //    {
+            //        Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
+            //    }
+            //}
+        }
+        //base.roleGameObject.RoleBind.SetRole(this);
+        //this.SetChildrenGameObj(base.roleGameObject.RoleBody);
+        //this.CreateModule();
         //this.addPlayerHotKey();
         //this.hatred.selfRole = Player.Instance;
         KeyManager.controlRole = this;
@@ -448,22 +422,22 @@ public class Player : Role
         base.CreateModule();
         this._roleType = ROLE_TYPE.RT_PLAYER;
         this.AddMod(MODULE_TYPE.MT_MOTION);
-        //this.AddMod(MODULE_TYPE.MT_MOVE);
-        //this.AddMod(MODULE_TYPE.MT_CAMERA);
+        this.AddMod(MODULE_TYPE.MT_MOVE);
+        this.AddMod(MODULE_TYPE.MT_CAMERA);
         //this.AddMod(MODULE_TYPE.MT_FIGHT);
         //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
         //this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
         //this.AddMod(MODULE_TYPE.MT_BUFF);
         //this.AddMod(MODULE_TYPE.MT_COLLIDER);
         //this.AddMod(MODULE_TYPE.MT_MISSION);
-        //this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
+        this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
         //this.AddMod(MODULE_TYPE.MT_SKILL);
         //this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
         //this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
         //this.AddMod(MODULE_TYPE.MT_VOICE);
         //this.ReadPlayerPropertyInfoConfig();
-        //base.InitRole();
-        //this.Init();
+        base.InitRole();
+        this.Init();
         //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");
         //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");
         //this.m_BottleSystem.LoadConfig();
@@ -474,79 +448,78 @@ public class Player : Role
         Module module = null;
         switch (mt)
         {
-        //    case MODULE_TYPE.MT_CAMERA:
-        //        module = ModCamera.Create(base.roleGameObject.RoleBody, this);
-        //        this.m_cModCamera = (ModCamera)module;
-        //        break;
-        //    case MODULE_TYPE.MT_MOTION:
-        //        module = new ModAnimation(this, base.roleGameObject.RoleAnimation, base.roleGameObject.RoleController);
-        //        this.modAnimation = (ModAnimation)module;
-        //        break;
-        //    case MODULE_TYPE.MT_ORGANIZATION:
-        //        module = new ModOrganization(this);
-        //        break;
-        //    case MODULE_TYPE.MT_ATTRIBUTE:
-        //        module = new ModAttribute(this);
-        //        this.m_cModAttribute = (ModAttribute)module;
-        //        break;
-        //    case MODULE_TYPE.MT_FIGHT:
-        //        module = new ModFight(this);
-        //        this.m_cModFight = (ModFight)module;
-        //        break;
-        //    case MODULE_TYPE.MT_SKILL:
-        //        module = new ModSkillProperty(this);
-        //        break;
-        //    case MODULE_TYPE.MT_BUFF:
-        //        module = new ModBuffProperty(this);
-        //        break;
-        //    case MODULE_TYPE.MT_MISSION:
-        //        module = new ModMission(this);
-        //        this.m_cModMission = (module as ModMission);
-        //        break;
-        //    case MODULE_TYPE.MT_COLLIDER:
-        //        module = new ModColliderProperty(this);
-        //        break;
-        //    case MODULE_TYPE.MT_CONTROL_MFS:
-        //        module = new ModControlMFS(base.gameObject, this);
-        //        this.modMFS = (ModControlMFS)module;
-        //        break;
-        //    case MODULE_TYPE.MT_QTE:
-        //        module = new ModQTEProperty(this);
-        //        break;
-        //    case MODULE_TYPE.MT_MULTIVERSESPACE:
-        //        module = new ModMultiverseSpace(this);
-        //        break;
-        //    case MODULE_TYPE.MT_PLAYERCONTROL:
-        //        module = new ModPlayerControl(this);
-        //        this.ModPlayerControl = (ModPlayerControl)module;
-        //        break;
-        //    case MODULE_TYPE.MT_PLAYERMUTUAL:
-        //        module = new ModMutualPlayer(this);
-        //        this.ModMutual = (ModMutualPlayer)module;
-        //        break;
-        //    case MODULE_TYPE.MT_VOICE:
-        //        module = new ModVoice(this);
-        //        break;
+            case MODULE_TYPE.MT_CAMERA:
+                module = ModCamera.Create(base.roleGameObject.RoleBody, this);
+                this.m_cModCamera = (ModCamera)module;
+                break;
+            case MODULE_TYPE.MT_MOTION:
+                module = new ModAnimation(this, base.roleGameObject.RoleAnimation, base.roleGameObject.RoleController);
+                this.modAnimation = (ModAnimation)module;
+                break;
+            case MODULE_TYPE.MT_ORGANIZATION:
+                //module = new ModOrganization(this);
+                break;
+            case MODULE_TYPE.MT_ATTRIBUTE:
+                //module = new ModAttribute(this);
+                //this.m_cModAttribute = (ModAttribute)module;
+                break;
+            case MODULE_TYPE.MT_FIGHT:
+                //module = new ModFight(this);
+                //this.m_cModFight = (ModFight)module;
+                break;
+            case MODULE_TYPE.MT_SKILL:
+                //module = new ModSkillProperty(this);
+                break;
+            case MODULE_TYPE.MT_BUFF:
+                //module = new ModBuffProperty(this);
+                break;
+            case MODULE_TYPE.MT_MISSION:
+                //module = new ModMission(this);
+                //this.m_cModMission = (module as ModMission);
+                break;
+            case MODULE_TYPE.MT_COLLIDER:
+                //module = new ModColliderProperty(this);
+                break;
+            case MODULE_TYPE.MT_CONTROL_MFS:
+                module = new ModControlMFS(base.gameObject, this);
+                this.modMFS = (ModControlMFS)module;
+                break;
+            case MODULE_TYPE.MT_QTE:
+                //module = new ModQTEProperty(this);
+                break;
+            case MODULE_TYPE.MT_MULTIVERSESPACE:
+                //module = new ModMultiverseSpace(this);
+                break;
+            case MODULE_TYPE.MT_PLAYERCONTROL:
+                //module = new ModPlayerControl(this);
+                //this.ModPlayerControl = (ModPlayerControl)module;
+                break;
+            case MODULE_TYPE.MT_PLAYERMUTUAL:
+                //module = new ModMutualPlayer(this);
+                //this.ModMutual = (ModMutualPlayer)module;
+                break;
+            case MODULE_TYPE.MT_VOICE:
+                //module = new ModVoice(this);
+                break;
         }
-        //if (base.AddModule(module))
-        //{
-        //    return module;
-        //}
+        if (base.AddModule(module))
+        {
+            return module;
+        }
         return null;
     }
 
-    //	// Token: 0x060022BF RID: 8895 RVA: 0x000ED19C File Offset: 0x000EB39C
-    //	private void Init()
-    //	{
-    //		base.roleGameObject.EnableRagdoll(false);
-    //		base.RunSpeed = this.playerInfo.runSpeed;
-    //		this.weaponManager.initialize(this);
-    //		base.SetRat(PlayerInfo.PLAYER_ROTATION);
-    //		this.m_cAdeptSystem.OwnerPlayer = this;
-    //		ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
-    //		modSkillProperty.AddSkill(2025);
-    //		CameraEffectManager.GetAllCameraEffectComponent();
-    //	}
+    private void Init()
+    {
+        //base.roleGameObject.EnableRagdoll(false);
+        //base.RunSpeed = this.playerInfo.runSpeed;
+        //this.weaponManager.initialize(this);
+        //base.SetRat(PlayerInfo.PLAYER_ROTATION);
+        //this.m_cAdeptSystem.OwnerPlayer = this;
+        //ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
+        //modSkillProperty.AddSkill(2025);
+        //CameraEffectManager.GetAllCameraEffectComponent();
+    }
 
     //	// Token: 0x060022C0 RID: 8896 RVA: 0x000ED208 File Offset: 0x000EB408
     //	public void BindAutoMisson()
@@ -920,77 +893,77 @@ public class Player : Role
         //{
         //    return;
         //}
-        this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
-        //Vector3 a = this.m_cModCamera.cameraTransform.forward;
-        //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
-        //{
-        //    if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
-        //    {
-        //        a = this.m_cModCamera.cameraTransform.up;
-        //    }
-        //    a.y = 0f;
-        //}
-        //Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
-        //Vector3 vector2 = base.GetPos() + vector;
-        //Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
-        //CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-        //if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
-        //{
-        //    if (currentStateId != CONTROL_STATE.WALK_FORWARD)
-        //    {
-        //        if (currentStateId != CONTROL_STATE.SWIM)
-        //        {
-        //            if (currentStateId != CONTROL_STATE.FLY)
-        //            {
-        //                if (!(vector == Vector3.zero))
-        //                {
-        //                    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        //                }
-        //            }
-        //            else if (UnityEngine.Input.GetKey(KeyCode.Space))
-        //            {
-        //                this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
-        //            }
-        //            else
-        //            {
-        //                this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
-        //            }
-        //        }
-        //        else
-        //        {
-        //            this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));
-        //        }
-        //    }
-        //    else if (vector == Vector3.zero)
-        //    {
-        //        if (this.weaponManager.weaponeActive)
-        //        {
-        //            this.modMFS.ChangeState(new ControlEventAttackIdle(false));
-        //        }
-        //        else
-        //        {
-        //            this.modMFS.ChangeState(new ControlEventIdle(false));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        //    }
-        //}
-        //else
-        //{
-        //    if (!this.weaponManager.weaponeActive)
-        //    {
-        //        this.modMFS.ChangeState(new ControlEventIdle(false));
-        //    }
-        //    if (vector != Vector3.zero)
-        //    {
-        //        this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        //    }
-        //}
+        //this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
+        Vector3 a = this.m_cModCamera.cameraTransform.forward;
+        if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
+        {
+            if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
+            {
+                a = this.m_cModCamera.cameraTransform.up;
+            }
+            a.y = 0f;
+        }
+        Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
+        Vector3 vector2 = base.GetPos() + vector;
+        Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
+        CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
+        Debug.Log(currentStateId);
+        if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
+        {
+            if (currentStateId != CONTROL_STATE.WALK_FORWARD)
+            {
+                if (currentStateId != CONTROL_STATE.SWIM)
+                {
+                    if (currentStateId != CONTROL_STATE.FLY)
+                    {
+                        if (!(vector == Vector3.zero))
+                        {
+                            this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+                        }
+                    }
+                    else if (UnityEngine.Input.GetKey(KeyCode.Space))
+                    {
+                        //this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
+                    }
+                    else
+                    {
+                        //this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
+                    }
+                }
+                else
+                {
+                    //this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));
+                }
+            }
+            else if (vector == Vector3.zero)
+            {
+                //if (this.weaponManager.weaponeActive)
+                //{
+                //    this.modMFS.ChangeState(new ControlEventAttackIdle(false));
+                //}
+                //else
+                //{
+                //    this.modMFS.ChangeState(new ControlEventIdle(false));
+                //}
+            }
+            else
+            {
+                //this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+            }
+        }
+        else
+        {
+            //if (!this.weaponManager.weaponeActive)
+            //{
+            //    this.modMFS.ChangeState(new ControlEventIdle(false));
+            //}
+            //if (vector != Vector3.zero)
+            //{
+            //    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+            //}
+        }
     }
 
-    //	// Token: 0x060022E0 RID: 8928 RVA: 0x000EDCC4 File Offset: 0x000EBEC4
     //	public void SetTarget(float distance)
     //	{
     //		Role role;

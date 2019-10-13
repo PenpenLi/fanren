@@ -12,22 +12,16 @@ public class Role
 
     //    //public RoleHatred hatred = new RoleHatred();
 
-    //    //// Token: 0x04001FCF RID: 8143
-    //    //protected List<Module> _modList = new List<Module>();
+    protected List<Module> _modList = new List<Module>();
 
-    //    //// Token: 0x04001FD0 RID: 8144
     //    //public List<Role> rolePartsList = new List<Role>();
 
-    //    //// Token: 0x04001FD1 RID: 8145
     //    //public List<BindRoleInfo> BindRoleList = new List<BindRoleInfo>();
 
+    private int _roleId;
 
-     private int _roleId;
+    private string _roleName;
 
-    //    //// Token: 0x04001FD3 RID: 8147
-    //    //private string _roleName;
-
-    //    //// Token: 0x04001FD4 RID: 8148
     //    //private GameObjSpawn.SpawnInfo _spawnInfo;
 
     //    //// Token: 0x04001FD5 RID: 8149
@@ -36,8 +30,7 @@ public class Role
     //    //// Token: 0x04001FD6 RID: 8150
     //    //private RoleChildren _roleChildren = new RoleChildren();
 
-    //    //// Token: 0x04001FD7 RID: 8151
-    //    //public ModControlMFS modMFS;
+    public ModControlMFS modMFS;
 
     //    //// Token: 0x04001FD8 RID: 8152
     //    //public ModBehaviorAI modAi;
@@ -69,8 +62,8 @@ public class Role
  
     protected RoleGameObject _roleGameObj = new RoleGameObject();
 
-    //    //// Token: 0x04001FE2 RID: 8162
-    //    //private float runSpeed = 7f;
+
+    private float runSpeed = 7f;
 
     //    //// Token: 0x04001FE3 RID: 8163
     //    //public List<Role> RetinueList = new List<Role>();
@@ -459,41 +452,49 @@ public class Role
     //		return null;
     //	}
 
-    //	public void InitRole()
-    //	{
-    //		this.EventHandlerManager = new RoleEventHandler(this);
-    //		for (int i = 0; i < this._modList.Count; i++)
-    //		{
-    //			this._modList[i].Init();
-    //		}
-    //	}
+    public void InitRole()
+    {
+        //this.EventHandlerManager = new RoleEventHandler(this);
+        for (int i = 0; i < this._modList.Count; i++)
+        {
+            this._modList[i].Init();
+        }
+    }
 
-    //	// Token: 0x06002373 RID: 9075 RVA: 0x000EFF20 File Offset: 0x000EE120
-    //	public bool AddModule(Module md)
-    //	{
-    //		if (md == null)
-    //		{
-    //			return false;
-    //		}
-    //		this.RmvModule(md.ModType);
-    //		this._modList.Add(md);
-    //		return true;
-    //	}
+    /// <summary>
+    /// 添加模块
+    /// </summary>
+    /// <param name="md"></param>
+    /// <returns></returns>
+    public bool AddModule(Module md)
+    {
+        if (md == null)
+        {
+            return false;
+        }
+        this.RmvModule(md.ModType);
+        this._modList.Add(md);
+        return true;
+    }
 
-    //	// Token: 0x06002374 RID: 9076 RVA: 0x000EFF50 File Offset: 0x000EE150
-    //	public bool RmvModule(MODULE_TYPE mt)
-    //	{
-    //		for (int i = 0; i < this._modList.Count; i++)
-    //		{
-    //			if (this._modList[i].ModType == mt)
-    //			{
-    //				this._modList[i].Remove();
-    //				this._modList.RemoveAt(i);
-    //				return true;
-    //			}
-    //		}
-    //		return false;
-    //	}
+    /// <summary>
+    /// 移除模块
+    /// </summary>
+    /// <param name="mt"></param>
+    /// <returns></returns>
+    public bool RmvModule(MODULE_TYPE mt)
+    {
+        for (int i = 0; i < this._modList.Count; i++)
+        {
+            if (this._modList[i].ModType == mt)
+            {
+                this._modList[i].Remove();
+                this._modList.RemoveAt(i);
+                return true;
+            }
+        }
+        return false;
+    }
 
     //	// Token: 0x06002375 RID: 9077 RVA: 0x000EFFB4 File Offset: 0x000EE1B4
     //	public Module GetModule(MODULE_TYPE mt)
@@ -515,15 +516,14 @@ public class Role
     //		return false;
     //	}
 
-    //	// Token: 0x06002377 RID: 9079 RVA: 0x000F0020 File Offset: 0x000EE220
-    //	public Vector3 GetPos()
-    //	{
-    //		if (this.GetTrans() == null)
-    //		{
-    //			return Vector3.zero;
-    //		}
-    //		return this.GetTrans().position;
-    //	}
+    public Vector3 GetPos()
+    {
+        if (this.GetTrans() == null)
+        {
+            return Vector3.zero;
+        }
+        return this.GetTrans().position;
+    }
 
     //	// Token: 0x06002378 RID: 9080 RVA: 0x000F0050 File Offset: 0x000EE250
     //	public void SetPos(Vector3 pos)
@@ -667,22 +667,20 @@ public class Role
     //		return true;
     //	}
 
-    //	// Token: 0x1700042F RID: 1071
-    //	// (get) Token: 0x06002387 RID: 9095 RVA: 0x000F0294 File Offset: 0x000EE494
-    //	// (set) Token: 0x06002388 RID: 9096 RVA: 0x000F02B8 File Offset: 0x000EE4B8
-    //	public float RunSpeed
-    //	{
-    //		get
-    //		{
-    //			ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //			return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
-    //		}
-    //		set
-    //		{
-    //			ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //			modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
-    //		}
-    //	}
+    public float RunSpeed
+    {
+        get
+        {
+            return 7;
+            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            //return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        }
+        set
+        {
+            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            //modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
+        }
+    }
 
     //	// Token: 0x06002389 RID: 9097 RVA: 0x000F02DC File Offset: 0x000EE4DC
     //	public int GetCurHp()

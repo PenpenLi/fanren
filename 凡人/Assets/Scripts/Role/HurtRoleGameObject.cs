@@ -35,6 +35,10 @@ public class HurtRoleGameObject : HurtGameObject
 		this.role = theRole;
 	}
 
+    /// <summary>
+    /// 设置模型ID
+    /// </summary>
+    /// <param name="id"></param>
 	public void SetModelID(int id)
 	{
 		this.modelID = id;

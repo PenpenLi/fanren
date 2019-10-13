@@ -3,9 +3,15 @@
 public enum MODULE_TYPE
 {
 	MT_AI,
+    /// <summary>
+    /// 移动
+    /// </summary>
 	MT_MOVE,
 	MT_BATTEL,
 	MT_CONTROLLER,
+    /// <summary>
+    /// 摄像机
+    /// </summary>
 	MT_CAMERA,
 	MT_MOTION,
 	MT_ORGANIZATION,
