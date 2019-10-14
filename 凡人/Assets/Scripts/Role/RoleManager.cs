@@ -75,7 +75,7 @@ public class RoleManager : MonoBehaviour
         //this.UpdateSceneBySave();
         this.CreateRole();
         //this.UpdatePlayerBySave();
-        this.InitPlayer();
+        //this.InitPlayer();
         //this.InitOther();
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();

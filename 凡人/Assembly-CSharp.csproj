@@ -116,9 +116,11 @@
     <Compile Include="Assets\Scripts\Role\BindRole.cs" />
     <Compile Include="Assets\Scripts\Role\BindRoleInfo.cs" />
     <Compile Include="Assets\Scripts\Role\CItemManager.cs" />
-    <Compile Include="Assets\Scripts\Role\ColliderCheckCharacterController.cs" />
-    <Compile Include="Assets\Scripts\Role\ColliderCheckObject.cs" />
-    <Compile Include="Assets\Scripts\Role\ColliderCheckRay.cs" />
+    <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckCharacterController.cs" />
+    <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckHandle.cs" />
+    <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckObject.cs" />
+    <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckRay.cs" />
+    <Compile Include="Assets\Scripts\Role\Collider\HitEventArgs.cs" />
     <Compile Include="Assets\Scripts\Role\CONTROL_INPUT.cs" />
     <Compile Include="Assets\Scripts\Role\CONTROL_STATE.cs" />
     <Compile Include="Assets\Scripts\Role\ControlEventBase.cs" />

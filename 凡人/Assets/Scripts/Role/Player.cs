@@ -355,13 +355,13 @@ public class Player : Role
         int id = this.playerId;
         base.ID = id;
         Player.currentPlayerId = id;
-        this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);
+        this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);//主角信息
         if (this.playerInfo == null)
         {
             Debug.LogWarning("not find playerInfo by id: " + this.playerId);
             return;
         }
-        this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];
+        this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];//角色基本信息
         if (this.playerInfo == null)
         {
             Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
