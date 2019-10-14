@@ -1,17 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-// Token: 0x02000302 RID: 770
+
 public class ColliderCheckObject : MonoBehaviour
 {
     public LayerMask EffectiveLayer = -1;
 
     //public ColliderCheckHandle OnHitEnter;
 
-    //// Token: 0x0400138B RID: 5003
     //public ColliderCheckHandle OnHitExit;
 
-    //// Token: 0x0400138C RID: 5004
     //public ColliderCheckHandle OnHitStay;
 
     public virtual void OpenCheck()

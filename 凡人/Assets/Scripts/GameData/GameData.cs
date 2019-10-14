@@ -35,7 +35,7 @@ public class GameData
 
     //public ColliderTable colliderTable = new ColliderTable();
 
-    //public SoundTable soundTable = new SoundTable();
+    public SoundTable soundTable = new SoundTable();
 
     public CacheData cacheData = new CacheData();
 
@@ -127,7 +127,7 @@ public class GameData
 		//GameData.Instance.mapNameInfo.ReadMapNameInfo();
 		//GameData.Instance.attackTable.initialize();
 		//GameData.Instance.colliderTable.initialize();
-		//GameData.Instance.soundTable.initialize();
+		GameData.Instance.soundTable.initialize();
 		GameData.Instance.cacheData.initialize();
 		GameData.Instance.userData.initialize();
 		//GameData.Instance.chest.ReadInfo();

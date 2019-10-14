@@ -105,9 +105,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x1700041A RID: 1050
-    //	// (get) Token: 0x060022A8 RID: 8872 RVA: 0x000EC5BC File Offset: 0x000EA7BC
-    //	// (set) Token: 0x060022A9 RID: 8873 RVA: 0x000EC5C4 File Offset: 0x000EA7C4
     //	public GameObject CurrentMob
     //	{
     //		get
@@ -120,9 +117,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x1700041B RID: 1051
-    //	// (get) Token: 0x060022AA RID: 8874 RVA: 0x000EC5D0 File Offset: 0x000EA7D0
-    //	// (set) Token: 0x060022AB RID: 8875 RVA: 0x000EC5D8 File Offset: 0x000EA7D8
     //	public ModMission ModMis
     //	{
     //		get
@@ -135,9 +129,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x1700041C RID: 1052
-    //	// (get) Token: 0x060022AC RID: 8876 RVA: 0x000EC5E4 File Offset: 0x000EA7E4
-    //	// (set) Token: 0x060022AD RID: 8877 RVA: 0x000EC5EC File Offset: 0x000EA7EC
     //	public ModMutualPlayer ModMutual { get; private set; }
 
     public static Player Instance
@@ -222,7 +213,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x060022B4 RID: 8884 RVA: 0x000EC88C File Offset: 0x000EAA8C
     //	public override long GetWeaponIdx()
     //	{
     //		if (base.roleGameObject.ModelInfo == null)

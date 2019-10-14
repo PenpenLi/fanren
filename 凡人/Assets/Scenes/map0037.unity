@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 1218398644}
   - component: {fileID: 1218398645}
   - component: {fileID: 1218398643}
+  - component: {fileID: 1218398646}
   m_Layer: 0
   m_Name: FanrenSceneManager
   m_TagString: MainCamera
@@ -351,6 +352,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClassName: FanrenSceneManager
+--- !u!81 &1218398646
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218398642}
+  m_Enabled: 1
 --- !u!1 &1512575819
 GameObject:
   m_ObjectHideFlags: 0

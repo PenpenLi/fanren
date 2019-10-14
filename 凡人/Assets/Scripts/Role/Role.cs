@@ -17,45 +17,36 @@ public class Role
 
     protected List<Module> _modList = new List<Module>();
 
-    //    //public List<Role> rolePartsList = new List<Role>();
+    public List<Role> rolePartsList = new List<Role>();
 
-    //    //public List<BindRoleInfo> BindRoleList = new List<BindRoleInfo>();
+    public List<BindRoleInfo> BindRoleList = new List<BindRoleInfo>();
 
     private int _roleId;
 
     private string _roleName;
 
-    //    //private GameObjSpawn.SpawnInfo _spawnInfo;
+    //private GameObjSpawn.SpawnInfo _spawnInfo;
 
-    //    //private bool _bRagdoll;
+    private bool _bRagdoll;
 
-    //    //// Token: 0x04001FD6 RID: 8150
-    //    //private RoleChildren _roleChildren = new RoleChildren();
+    //private RoleChildren _roleChildren = new RoleChildren();
 
     public ModControlMFS modMFS;
 
-    //    //// Token: 0x04001FD8 RID: 8152
-    //    //public ModBehaviorAI modAi;
+    //public ModBehaviorAI modAi;
 
-    //    //// Token: 0x04001FD9 RID: 8153
-    //    //private bool _bAniMove;
+    private bool _bAniMove;
 
-    //    //// Token: 0x04001FDA RID: 8154
-    //    //private int bevTreeID;
+    private int bevTreeID;
 
-    //    //// Token: 0x04001FDB RID: 8155
-    //    //private MFS_TALBE_TYPE m_eMFSType;
+    //private MFS_TALBE_TYPE m_eMFSType;
 
-    //    //// Token: 0x04001FDC RID: 8156
     //    //private MonsterHp _monsterHp;
 
-    //    //// Token: 0x04001FDD RID: 8157
     //    //private MonsterHp _monsterHpBottom;
 
-    //    //// Token: 0x04001FDE RID: 8158
     //    //private bool invincible;
 
-    //    //// Token: 0x04001FDF RID: 8159
     //    //private bool isDestroyed;
 
 
@@ -67,10 +58,8 @@ public class Role
 
     private float runSpeed = 7f;
 
-    //    //// Token: 0x04001FE3 RID: 8163
     //    //public List<Role> RetinueList = new List<Role>();
 
-    //    //// Token: 0x04001FE4 RID: 8164
     //    //public Role ParentRole;
 
     //    //public event RoleDeadEventHandler beforeDead;
@@ -967,7 +956,6 @@ public class Role
     //		RoleBaseFun.SetRigidSleep(this.roleGameObject.RoleTransform);
     //	}
 
-    //	// Token: 0x060023A1 RID: 9121 RVA: 0x000F0948 File Offset: 0x000EEB48
     //	public virtual void DestroyRole()
     //	{
     //		this.RoleChildObj.ClearTable();
@@ -984,7 +972,6 @@ public class Role
     //		this.isDestroyed = true;
     //	}
 
-    //	// Token: 0x060023A2 RID: 9122 RVA: 0x000F09AC File Offset: 0x000EEBAC
     //	public void AddBindRole(BindRoleInfo bri)
     //	{
     //		bool flag = false;
@@ -1002,7 +989,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x060023A3 RID: 9123 RVA: 0x000F0A18 File Offset: 0x000EEC18
     //	public void RemoveBindRole(BindRoleInfo bri)
     //	{
     //		this.BindRoleList.Remove(bri);

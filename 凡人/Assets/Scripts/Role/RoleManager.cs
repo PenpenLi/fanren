@@ -3,73 +3,69 @@ using System.Collections.Generic;
 using NS_RoleBaseFun;
 using UnityEngine;
 
-
+/// <summary>
+/// 角色管理
+/// </summary>
 public class RoleManager : MonoBehaviour
 {
-    //    private int[] id = new int[]
-    //    {
-    //        1,
-    //        5017,
-    //        5001,
-    //        5013,
-    //        5031
-    //    };
+    private int[] id = new int[]
+    {
+            1,
+            5017,
+            5001,
+            5013,
+            5031
+    };
 
-    //    private int currentId;
+    private int currentId;
 
-          public List<Role> RoleObjList = new List<Role>();
+    public List<Role> RoleObjList = new List<Role>();
 
-    //    [HideInInspector]
-    //    public List<Role> StageRoleList = new List<Role>();
+    [HideInInspector]
+    public List<Role> StageRoleList = new List<Role>();
 
-          private GameObject _roleRootGO;
+    private GameObject _roleRootGO;
 
-          private GameObject _playerRootGo;
-  
-          private GameObject _monsterRootGo;
+    private GameObject _playerRootGo;
 
-          private GameObject operableRootGo;
+    private GameObject _monsterRootGo;
 
-          private GameObject monsterHpRoot;
+    private GameObject operableRootGo;
 
-    //    // Token: 0x040020D4 RID: 8404
-    //    private List<Role> ignoreColliderRole = new List<Role>();
+    private GameObject monsterHpRoot;
 
+    private List<Role> ignoreColliderRole = new List<Role>();
 
     private GameObject _npcRootGo;
 
+    private GameObject _chestRootGo;
 
-      private GameObject _chestRootGo;
+    private Player _player;
 
-        private Player _player;
+    [HideInInspector]
+    public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
 
-       [HideInInspector]
-       public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
+    //[HideInInspector]
+    //public List<SpawnManager> SpawnManList = new List<SpawnManager>();
 
-    //    // Token: 0x040020D9 RID: 8409
-    //    [HideInInspector]
-    //    public List<SpawnManager> SpawnManList = new List<SpawnManager>();
+    //[HideInInspector]
+    //public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
 
-    //    // Token: 0x040020DA RID: 8410
-    //    [HideInInspector]
-    //    public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
+    //[HideInInspector]
+    //public List<HelpManager> HelpList = new List<HelpManager>();
 
-    //    // Token: 0x040020DB RID: 8411
-    //    [HideInInspector]
-    //    public List<HelpManager> HelpList = new List<HelpManager>();
-
-    //    public GameObject MonsterHpRoot
-    //	{
-    //		get
-    //		{
-    //			if (this.monsterHpRoot == null)
-    //			{
-    //				this.monsterHpRoot = new GameObject();
-    //				this.monsterHpRoot.name = "Hp";
-    //			}
-    //			return this.monsterHpRoot;
-    //		}
-    //	}
+    public GameObject MonsterHpRoot
+    {
+        get
+        {
+            if (this.monsterHpRoot == null)
+            {
+                this.monsterHpRoot = new GameObject();
+                this.monsterHpRoot.name = "Hp";
+            }
+            return this.monsterHpRoot;
+        }
+    }
 
     private void Start()
     {
@@ -126,7 +122,6 @@ public class RoleManager : MonoBehaviour
         }
     }
 
-    //	// Token: 0x06002451 RID: 9297 RVA: 0x000F68B4 File Offset: 0x000F4AB4
     //	private void CreateObject()
     //	{
     //		foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)

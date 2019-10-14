@@ -323,7 +323,7 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
     private void PlayGameBgSound()
     {
-        //SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.scenenInfo.bgSoundId, 0f, 1f, 0f);
-        //SingletonMono<AudioManager>.GetInstance().PauseAll(true);
+        SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.currScenenInfo.bgSoundId, 0f, 1f, 0f);
+        SingletonMono<AudioManager>.GetInstance().PauseAll(true);
     }
 }

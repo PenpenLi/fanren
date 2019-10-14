@@ -58,18 +58,18 @@ public class ControlStateWalkForward : ControlStateBase
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;
         bool b = true;
-        //float num = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
-        //Vector3[] array = null;
+        float num = 7f;//this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        Vector3[] array = null;
         CONTROL_INPUT inputId = ceb.InputId;
         if (inputId == CONTROL_INPUT.WALK_FORWARD)
         {
             vector = ((ControlEventMoveForward)ceb).TargetPos;
             ai = ((ControlEventMoveForward)ceb).ActIdx;
-            //num = ((ControlEventMoveForward)ceb).Speed;
+            num = ((ControlEventMoveForward)ceb).Speed;
             b = ((ControlEventMoveForward)ceb).Rotate;
-            //array = ((ControlEventMoveForward)ceb).Path;
+            array = ((ControlEventMoveForward)ceb).Path;
         }
-        //this.m_cMove.Reset(ai, num);
+        this.m_cMove.Reset(ai, num);
         //this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);
         //if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
         //{
