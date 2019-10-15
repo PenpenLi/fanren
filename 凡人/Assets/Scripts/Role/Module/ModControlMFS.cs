@@ -30,13 +30,13 @@ public class ModControlMFS : Module
         return true;
     }
 
-    //public override void Process()
-    //{
-    //	if (this.m_cCurrentState != null && !this.m_cCurrentState.Update())
-    //	{
-    //		this.m_cCurrentState.OnExit();
-    //	}
-    //}
+    public override void Process()
+    {
+        if (this.m_cCurrentState != null && !this.m_cCurrentState.Update())
+        {
+            this.m_cCurrentState.OnExit();
+        }
+    }
 
     //public void ChangeStateToIdle()
     //{
@@ -90,17 +90,18 @@ public class ModControlMFS : Module
         //    return true;
         //}
 
-        //if (this.m_cCurrentState != null)
-        //{
-        //    if (this.m_cCurrentState.IsLocked)
-        //    {
-        //        return false;
-        //    }
-        //    //if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
-        //    //{
-        //    //    return false;
-        //    //}
-        //}
+        if (this.m_cCurrentState != null)
+        {
+            Debug.Log("执行");
+            //if (this.m_cCurrentState.IsLocked)
+            //{
+            //    return false;
+            //}
+            ////if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
+            ////{
+            ////    return false;
+            ////}
+        }
 
         ControlStateBase stateByInput2 = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
         //if (!stateByInput2.IsEffectTive(tmpEvent))

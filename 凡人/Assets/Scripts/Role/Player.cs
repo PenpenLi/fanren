@@ -238,37 +238,36 @@ public class Player : Role
     //		return this.playerInfo.headPath;
     //	}
 
-    //	// Token: 0x060022B7 RID: 8887 RVA: 0x000EC8E4 File Offset: 0x000EAAE4
-    //	public override void RoleProcess()
-    //	{
-    //		base.RoleProcess();
-    //		this.CheckDead();
-    //		SceneManager.RoleMan.CheckRoleInView(this);
-    //		if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
-    //		{
-    //			GameData.Instance.ItemMan.CreateItem(4010001UL, 3, ItemOwner.ITO_HEROFOLDER);
-    //			GameData.Instance.ItemMan.CreateItem(1010001UL, 3, ItemOwner.ITO_HEROFOLDER);
-    //			Dictionary<ulong, CItemBase> dictionary = null;
-    //			this.ItemFolder.TryGetEquipData(EquipCfgType.EQCHILD_CT_WEAPON, out dictionary);
-    //			List<ItemWeapon> list = new List<ItemWeapon>();
-    //			foreach (CItemBase citemBase in dictionary.Values)
-    //			{
-    //				list.Add((ItemWeapon)citemBase);
-    //			}
-    //			Dictionary<ulong, ItemMagicFigure> dictionary2 = null;
-    //			this.ItemFolder.TryGetAmuletData(out dictionary2);
-    //			List<ItemMagicFigure> list2 = new List<ItemMagicFigure>();
-    //			foreach (ItemMagicFigure item in dictionary2.Values)
-    //			{
-    //				list2.Add(item);
-    //			}
-    //			list2[0].AttachToWeapon(list[1].ID, true);
-    //			this.ItemFolder.WearOperate.TakeOn(RoleWearEquipPos.WEAR_WEAPON, list[1]);
-    //		}
-    //		this.m_cAmbitSystem.Update();
-    //		this.weaponManager.DrawLine();
-    //		this.m_BottleSystem.Update();
-    //	}
+    public override void RoleProcess()
+    {
+        base.RoleProcess();
+        //this.CheckDead();
+        //SceneManager.RoleMan.CheckRoleInView(this);
+        //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
+        //{
+        //    GameData.Instance.ItemMan.CreateItem(4010001UL, 3, ItemOwner.ITO_HEROFOLDER);
+        //    GameData.Instance.ItemMan.CreateItem(1010001UL, 3, ItemOwner.ITO_HEROFOLDER);
+        //    Dictionary<ulong, CItemBase> dictionary = null;
+        //    this.ItemFolder.TryGetEquipData(EquipCfgType.EQCHILD_CT_WEAPON, out dictionary);
+        //    List<ItemWeapon> list = new List<ItemWeapon>();
+        //    foreach (CItemBase citemBase in dictionary.Values)
+        //    {
+        //        list.Add((ItemWeapon)citemBase);
+        //    }
+        //    Dictionary<ulong, ItemMagicFigure> dictionary2 = null;
+        //    this.ItemFolder.TryGetAmuletData(out dictionary2);
+        //    List<ItemMagicFigure> list2 = new List<ItemMagicFigure>();
+        //    foreach (ItemMagicFigure item in dictionary2.Values)
+        //    {
+        //        list2.Add(item);
+        //    }
+        //    list2[0].AttachToWeapon(list[1].ID, true);
+        //    this.ItemFolder.WearOperate.TakeOn(RoleWearEquipPos.WEAR_WEAPON, list[1]);
+        //}
+        //this.m_cAmbitSystem.Update();
+        //this.weaponManager.DrawLine();
+        //this.m_BottleSystem.Update();
+    }
 
     //	// Token: 0x060022B8 RID: 8888 RVA: 0x000ECA8C File Offset: 0x000EAC8C
     //	private void Update()
@@ -888,17 +887,17 @@ public class Player : Role
 
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;
-        //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
-        //{
-        //    if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
-        //    {
-        //        a = this.m_cModCamera.cameraTransform.up;
-        //    }
-        //    a.y = 0f;
-        //}
+        //Debug.Log(this.m_cModCamera.cameraState);
+        if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
+        {
+            if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
+            {
+                a = this.m_cModCamera.cameraTransform.up;
+            }
+            a.y = 0f;
+        }
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;
-        //Debug.Log(vector2);
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
         if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
@@ -920,12 +919,12 @@ public class Player : Role
                     }
                     else
                     {
-                        //this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
+                        //this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));//飞
                     }
                 }
                 else
                 {
-                    //this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));
+                    //this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
                 }
             }
             else if (vector == Vector3.zero)

@@ -16,21 +16,21 @@ public class ControlStateWalkForward : ControlStateBase
     public ControlStateWalkForward(Role role, CharacterController control, ModControlMFS mcm) : base(role, control, mcm, CONTROL_STATE.WALK_FORWARD)
 	{
 		this.m_cMove = new MoveTarget(role, control);
-		//this.m_cMove.SetTurnSpeed(800f);
+		this.m_cMove.SetTurnSpeed(800f);
 	}
 
 	public override bool Update()
 	{
-		//if (this.m_cRole.IsDead())
-		//{
-		//	return false;
-		//}
-		//if (!base.Update())
-		//{
-		//	return false;
-		//}
-		//this.SetSpeed();
-		if (!this.m_cMove.Update())
+        //if (this.m_cRole.IsDead())
+        //{
+        //	return false;
+        //}
+        //if (!base.Update())
+        //{
+        //    return false;
+        //}
+        //this.SetSpeed();
+        if (!this.m_cMove.Update())
 		{
 			if (this.m_cRole._roleType == ROLE_TYPE.RT_PLAYER)
 			{

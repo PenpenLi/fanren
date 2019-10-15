@@ -109,7 +109,7 @@ public class ControlStateBase
 
 	public virtual bool Update()
 	{
-		return this.m_cRole != null && this.m_cAnimation != null;
+        return this.m_cRole != null; //&& this.m_cAnimation != null;
 	}
 
 	public CONTROL_STATE GetState()

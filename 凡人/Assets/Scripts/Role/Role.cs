@@ -796,18 +796,17 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x06002396 RID: 9110 RVA: 0x000F0604 File Offset: 0x000EE804
-    //	public virtual void RoleProcess()
-    //	{
-    //		if (this.roleGameObject.RoleBody == null)
-    //		{
-    //			return;
-    //		}
-    //		for (int i = 0; i < this._modList.Count; i++)
-    //		{
-    //			this._modList[i].Process();
-    //		}
-    //	}
+    public virtual void RoleProcess()
+    {
+        if (this.roleGameObject.RoleBody == null)
+        {
+            return;
+        }
+        for (int i = 0; i < this._modList.Count; i++)
+        {
+            this._modList[i].Process();
+        }
+    }
 
     //	// Token: 0x06002397 RID: 9111 RVA: 0x000F0658 File Offset: 0x000EE858
     //	public virtual bool ChangeMeshColor(Color col)

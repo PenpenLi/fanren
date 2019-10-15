@@ -127,6 +127,8 @@
     <Compile Include="Assets\Scripts\Role\ControlEventMoveForward.cs" />
     <Compile Include="Assets\Scripts\Role\ControlStateBase.cs" />
     <Compile Include="Assets\Scripts\Role\ControlStateWalkForward.cs" />
+    <Compile Include="Assets\Scripts\Role\EASING_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\GameObjectBevBase.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjSpawn.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Assets\Scripts\Role\Module\ModFight.cs" />
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\MOVE_CLASS.cs" />
     <Compile Include="Assets\Scripts\Role\MoveBase.cs" />
     <Compile Include="Assets\Scripts\Role\MoveTarget.cs" />
     <Compile Include="Assets\Scripts\Role\Player.cs" />
@@ -153,6 +156,9 @@
     <Compile Include="Assets\Scripts\Role\RoleManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleModelInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleWearEquipPos.cs" />
+    <Compile Include="Assets\Scripts\Role\Rotate.cs" />
+    <Compile Include="Assets\Scripts\Role\TransPhysicsCast.cs" />
+    <Compile Include="Assets\Scripts\Role\UpdateBevBase.cs" />
     <Compile Include="Assets\Scripts\Save\SaveData.cs" />
     <Compile Include="Assets\Scripts\Save\SaveDataBase.cs" />
     <Compile Include="Assets\Scripts\Save\SaveInfo.cs" />
@@ -165,6 +171,7 @@
     <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\Singleton\SingletonMono.cs" />
     <Compile Include="Assets\Scripts\SM_Script\SM_SwitchScene.cs" />
+    <Compile Include="Assets\Scripts\TransBevBase.cs" />
     <Compile Include="Assets\Scripts\UI\EZGUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\GUI_TYPE.cs" />
     <Compile Include="Assets\Scripts\UI\GUIBase.cs" />

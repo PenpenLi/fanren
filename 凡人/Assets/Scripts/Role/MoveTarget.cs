@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoveTarget : MoveBase
 {
-    //private Rotate rotate;
+    private Rotate rotate;
 
     private bool rotateWhenMove;
 
@@ -175,11 +175,11 @@ public class MoveTarget : MoveBase
 		}
 	}
 
-	//public void SetTurnSpeed(float speed)
-	//{
-	//	if (this.rotate != null)
-	//	{
-	//		this.rotate.RotateSpeed = speed;
-	//	}
-	//}
+    public void SetTurnSpeed(float speed)
+    {
+        if (this.rotate != null)
+        {
+            this.rotate.RotateSpeed = speed;
+        }
+    }
 }

@@ -336,11 +336,6 @@ public class RoleManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //Debug.Log(MobSpawnList.Count);
-    }
-
     //	// Token: 0x06002456 RID: 9302 RVA: 0x000F72A0 File Offset: 0x000F54A0
     //	public SpawnManager GetSMById(int id)
     //	{
@@ -1502,37 +1497,36 @@ public class RoleManager : MonoBehaviour
     //		}
     //	}
 
-    //	// Token: 0x06002494 RID: 9364 RVA: 0x000F9070 File Offset: 0x000F7270
-    //	private void Update()
-    //	{
-    //		List<Role> list = new List<Role>();
-    //		for (int i = 0; i < this.RoleObjList.Count; i++)
-    //		{
-    //			if (this.RoleObjList[i] != null)
-    //			{
-    //				this.RoleObjList[i].RoleProcess();
-    //			}
-    //			else
-    //			{
-    //				list.Add(this.RoleObjList[i]);
-    //			}
-    //		}
-    //		foreach (Role item in list)
-    //		{
-    //			this.RoleObjList.Remove(item);
-    //		}
-    //		if (Config.DEBUG && Input.GetKeyDown(KeyCode.Return))
-    //		{
-    //			if (GMConsole.instance == null)
-    //			{
-    //				GMConsole.OpenConsole();
-    //			}
-    //			else
-    //			{
-    //				GMConsole.CloseConsole();
-    //			}
-    //		}
-    //	}
+    private void Update()
+    {
+        List<Role> list = new List<Role>();
+        for (int i = 0; i < this.RoleObjList.Count; i++)
+        {
+            if (this.RoleObjList[i] != null)
+            {
+                this.RoleObjList[i].RoleProcess();
+            }
+            else
+            {
+                list.Add(this.RoleObjList[i]);
+            }
+        }
+        foreach (Role item in list)
+        {
+            this.RoleObjList.Remove(item);
+        }
+        //if (Config.DEBUG && Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    if (GMConsole.instance == null)
+        //    {
+        //        GMConsole.OpenConsole();
+        //    }
+        //    else
+        //    {
+        //        GMConsole.CloseConsole();
+        //    }
+        //}
+    }
 
     //	// Token: 0x06002495 RID: 9365 RVA: 0x000F9168 File Offset: 0x000F7368
     //	public void AddIgnoreColliderRole(Role role)
