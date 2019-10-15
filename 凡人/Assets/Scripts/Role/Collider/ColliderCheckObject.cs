@@ -26,20 +26,20 @@ public class ColliderCheckObject : MonoBehaviour
 	{
 	}
 
-	//protected void EventCall(ColliderCheckHandle handle, object sender, HitEventArgs e)
-	//{
-	//	if (handle != null)
-	//	{
-	//		handle(sender, e);
-	//	}
-	//}
+    protected void EventCall(ColliderCheckHandle handle, object sender, HitEventArgs e)
+    {
+        if (handle != null)
+        {
+            handle(sender, e);
+        }
+    }
 
-	public void ClearHandle()
+    public void ClearHandle()
 	{
-		//this.OnHitEnter = null;
-		//this.OnHitExit = null;
-		//this.OnHitStay = null;
-	}
+        this.OnHitEnter = null;
+        this.OnHitExit = null;
+        this.OnHitStay = null;
+    }
 
 	public virtual Collider[] GetAllCollider()
 	{

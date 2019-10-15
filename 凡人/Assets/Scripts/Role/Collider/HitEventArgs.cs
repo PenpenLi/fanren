@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// 受伤事件参数
+/// 打击事件参数
 /// </summary>
 public class HitEventArgs : EventArgs
 {

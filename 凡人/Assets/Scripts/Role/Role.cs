@@ -76,10 +76,7 @@ public class Role
         }
     }
 
-    //	// Token: 0x17000420 RID: 1056
-    //	// (get) Token: 0x0600233A RID: 9018 RVA: 0x000EFCC8 File Offset: 0x000EDEC8
-    //	// (set) Token: 0x0600233B RID: 9019 RVA: 0x000EFCD0 File Offset: 0x000EDED0
-    //	public RoleEventHandler EventHandlerManager { get; private set; }
+    public RoleEventHandler EventHandlerManager { get; private set; }
 
     //	// Token: 0x0600233C RID: 9020 RVA: 0x000EFCDC File Offset: 0x000EDEDC
     //	public virtual void BeforeDead(object sender, RoleDeadArgs e)
@@ -440,7 +437,7 @@ public class Role
 
     public void InitRole()
     {
-        //this.EventHandlerManager = new RoleEventHandler(this);
+        this.EventHandlerManager = new RoleEventHandler(this);
         for (int i = 0; i < this._modList.Count; i++)
         {
             this._modList[i].Init();

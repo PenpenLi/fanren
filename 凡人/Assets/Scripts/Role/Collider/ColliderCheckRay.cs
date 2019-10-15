@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 检查射线
+/// </summary>
 public class ColliderCheckRay : ColliderCheckObject
 {
     public override bool IsChecking()
@@ -10,9 +12,9 @@ public class ColliderCheckRay : ColliderCheckObject
         return base.enabled;
     }
 
-    //private Dictionary<int, HitEventArgs> lastHit = new Dictionary<int, HitEventArgs>();
+    private Dictionary<int, HitEventArgs> lastHit = new Dictionary<int, HitEventArgs>();
 
-    //private Dictionary<int, HitEventArgs> currentHit = new Dictionary<int, HitEventArgs>();
+    private Dictionary<int, HitEventArgs> currentHit = new Dictionary<int, HitEventArgs>();
 
     public override void OpenCheck()
 	{
@@ -21,15 +23,13 @@ public class ColliderCheckRay : ColliderCheckObject
 		this.Update();
 	}
 
-
 	public override void CloseCheck()
 	{
 		base.CloseCheck();
 		base.enabled = false;
-		//this.lastHit.Clear();
-		//this.currentHit.Clear();
-	}
-
+        this.lastHit.Clear();
+        this.currentHit.Clear();
+    }
 
 	protected override void Start()
 	{
@@ -41,74 +41,71 @@ public class ColliderCheckRay : ColliderCheckObject
 	{
 	}
 
-
-	//protected HitEventArgs CreatEvent(RaycastHit hit)
-	//{
-	//	return new HitEventArgs(hit.collider, hit.point, hit.normal);
-	//}
-
-
-	//protected HitEventArgs CreatEvent(Collider collider, Vector3 hitPoint, Vector3 hitNormal)
-	//{
-	//	return new HitEventArgs(collider, hitPoint, hitNormal);
-	//}
+    protected HitEventArgs CreatEvent(RaycastHit hit)
+    {
+        return new HitEventArgs(hit.collider, hit.point, hit.normal);
+    }
 
 
-	protected void StartHandle()
+    protected HitEventArgs CreatEvent(Collider collider, Vector3 hitPoint, Vector3 hitNormal)
+    {
+        return new HitEventArgs(collider, hitPoint, hitNormal);
+    }
+
+
+    protected void StartHandle()
 	{
-		//this.currentHit.Clear();
-	}
+        this.currentHit.Clear();
+    }
 
 
-	protected void TouchAGameObject(Collider collider, Vector3 hitPoint, Vector3 hitNormal)
+    protected void TouchAGameObject(Collider collider, Vector3 hitPoint, Vector3 hitNormal)
 	{
 		if (collider == null)
 		{
 			return;
 		}
 		int instanceID = collider.gameObject.GetInstanceID();
-		//if (this.lastHit.ContainsKey(instanceID))
-		//{
-		//	if (!this.currentHit.ContainsKey(instanceID))
-		//	{
-		//		HitEventArgs value = this.CreatEvent(collider, hitPoint, hitNormal);
-		//		this.currentHit.Add(instanceID, value);
-		//	}
-		//}
-		//else
-		//{
-		//	HitEventArgs hitEventArgs = this.CreatEvent(collider, hitPoint, hitNormal);
-		//	this.lastHit.Add(instanceID, hitEventArgs);
-		//	this.currentHit.Add(instanceID, hitEventArgs);
-		//	base.EventCall(this.OnHitEnter, this, hitEventArgs);
-		//}
-	}
+        if (this.lastHit.ContainsKey(instanceID))
+        {
+            if (!this.currentHit.ContainsKey(instanceID))
+            {
+                HitEventArgs value = this.CreatEvent(collider, hitPoint, hitNormal);
+                this.currentHit.Add(instanceID, value);
+            }
+        }
+        else
+        {
+            HitEventArgs hitEventArgs = this.CreatEvent(collider, hitPoint, hitNormal);
+            this.lastHit.Add(instanceID, hitEventArgs);
+            this.currentHit.Add(instanceID, hitEventArgs);
+            base.EventCall(this.OnHitEnter, this, hitEventArgs);
+        }
+    }
 
-	// Token: 0x060012E3 RID: 4835 RVA: 0x0009DF74 File Offset: 0x0009C174
 	protected void LastHandle()
 	{
 		List<int> list = new List<int>();
-		//foreach (int num in this.lastHit.Keys)
-		//{
-		//	if (!this.currentHit.ContainsKey(num))
-		//	{
-		//		list.Add(num);
-		//	}
-		//	else
-		//	{
-		//		base.EventCall(this.OnHitStay, this, this.currentHit[num]);
-		//	}
-		//}
-		//foreach (int key in list)
-		//{
-		//	if (this.lastHit[key].collider != null)
-		//	{
-		//		base.EventCall(this.OnHitExit, this, this.lastHit[key]);
-		//	}
-		//	this.lastHit.Remove(key);
-		//}
-	}
-
+        foreach (int num in this.lastHit.Keys)
+        {
+            if (!this.currentHit.ContainsKey(num))
+            {
+                list.Add(num);
+            }
+            else
+            {
+                base.EventCall(this.OnHitStay, this, this.currentHit[num]);
+            }
+        }
+        foreach (int key in list)
+        {
+            if (this.lastHit[key].collider != null)
+            {
+                base.EventCall(this.OnHitExit, this, this.lastHit[key]);
+            }
+            this.lastHit.Remove(key);
+        }
+    }
 	
 	protected Vector3[] GetPoints(Vector3 starsPosition, Vector3 endPosition, int amount)
 	{

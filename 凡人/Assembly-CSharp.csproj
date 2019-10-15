@@ -145,8 +145,11 @@
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationType.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\RoleHatred.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleHurtArgs.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleHurtEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleModelInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleWearEquipPos.cs" />

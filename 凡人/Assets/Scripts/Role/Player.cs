@@ -407,7 +407,7 @@ public class Player : Role
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
         if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
         {
-            base.roleGameObject.RoleController.Move(-Vector3.up * 200f);
+            base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
         }
     }
 
@@ -886,7 +886,7 @@ public class Player : Role
         //    return;
         //}
 
-        //this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
+        this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;
         //if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
         //{
@@ -1074,23 +1074,23 @@ public class Player : Role
 
     public void SetTargetByKey(float VerInput, float HorInput, float distance)
     {
-        this.m_cModFight.VerInput = VerInput;
-        this.m_cModFight.HorInput = HorInput;
-        if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
-        {
-            this.m_cModFight.AttackDir = Vector3.zero;
-        }
-        else
-        {
-            //Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
-            //a.y = 0f;
-            //a = a.normalized;
-            //Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
-            //a2.y = 0f;
-            //a2 = a2.normalized;
-            //Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
-            //this.m_cModFight.AttackDir = attackDir;
-        }
+        //this.m_cModFight.VerInput = VerInput;
+        //this.m_cModFight.HorInput = HorInput;
+        //if (this.m_cModFight.VerInput == 0f && this.m_cModFight.HorInput == 0f)
+        //{
+        //    this.m_cModFight.AttackDir = Vector3.zero;
+        //}
+        //else
+        //{
+        //    //Vector3 a = Singleton<ActorManager>.GetInstance().MainCamera.transform.forward;
+        //    //a.y = 0f;
+        //    //a = a.normalized;
+        //    //Vector3 a2 = Singleton<ActorManager>.GetInstance().MainCamera.transform.right;
+        //    //a2.y = 0f;
+        //    //a2 = a2.normalized;
+        //    //Vector3 attackDir = a * this.m_cModFight.VerInput + a2 * this.m_cModFight.HorInput;
+        //    //this.m_cModFight.AttackDir = attackDir;
+        //}
         //if (this.m_cModFight.AttackDir != Vector3.zero)
         //{
         //    this.m_cModFight.TargetRole = null;

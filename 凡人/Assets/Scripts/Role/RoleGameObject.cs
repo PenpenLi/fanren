@@ -47,25 +47,24 @@ public class RoleGameObject
 
     //   private SkinnedMeshRenderer[] skinMeshs;
 
-    //   public struct BindEffectInfo
-    //   {
-    //       // Token: 0x0600242E RID: 9262 RVA: 0x000F4898 File Offset: 0x000F2A98
-    //       public BindEffectInfo(GameObject effect, CHILD_EFFECT_POINT type, Vector3 pos, Vector3 euler)
-    //       {
-    //           this.effectObj = effect;
-    //           this.pointType = type;
-    //           this.posOffest = pos;
-    //           this.eulerOffest = euler;
-    //       }
+    public struct BindEffectInfo
+    {
+        public GameObject effectObj;
 
-    //       public GameObject effectObj;
+        //public CHILD_EFFECT_POINT pointType;
 
-    //       public CHILD_EFFECT_POINT pointType;
+        //public Vector3 posOffest;
 
-    //       public Vector3 posOffest;
+        //public Vector3 eulerOffest;
 
-    //       public Vector3 eulerOffest;
-    //   }
+        //public BindEffectInfo(GameObject effect, CHILD_EFFECT_POINT type, Vector3 pos, Vector3 euler)
+        //{
+        //    this.effectObj = effect;
+        //    this.pointType = type;
+        //    this.posOffest = pos;
+        //    this.eulerOffest = euler;
+        //}
+    }
 
     //   public Renderer[] Renderers
     //{
@@ -442,28 +441,27 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x0600241C RID: 9244 RVA: 0x000F3C9C File Offset: 0x000F1E9C
-    //private void CorrectEffect()
-    //{
-    //	if (this.m_cEffectList.Count <= 0)
-    //	{
-    //		return;
-    //	}
-    //	for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
-    //	{
-    //		if (!(this.m_cEffectList[i].effectObj == null))
-    //		{
-    //			Transform transform = this.EffectTrans[this.m_cEffectList[i].pointType];
-    //			if (transform == null)
-    //			{
-    //				transform = this.m_cTrans;
-    //			}
-    //			this.m_cEffectList[i].effectObj.transform.parent = transform;
-    //			this.m_cEffectList[i].effectObj.transform.localPosition = this.m_cEffectList[i].posOffest / this.m_fModelScale;
-    //			this.m_cEffectList[i].effectObj.transform.localEulerAngles = this.m_cEffectList[i].eulerOffest;
-    //		}
-    //	}
-    //}
+    private void CorrectEffect()
+    {
+        //if (this.m_cEffectList.Count <= 0)
+        //{
+        //    return;
+        //}
+        //for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
+        //{
+        //    if (!(this.m_cEffectList[i].effectObj == null))
+        //    {
+        //        Transform transform = this.EffectTrans[this.m_cEffectList[i].pointType];
+        //        if (transform == null)
+        //        {
+        //            transform = this.m_cTrans;
+        //        }
+        //        this.m_cEffectList[i].effectObj.transform.parent = transform;
+        //        this.m_cEffectList[i].effectObj.transform.localPosition = this.m_cEffectList[i].posOffest / this.m_fModelScale;
+        //        this.m_cEffectList[i].effectObj.transform.localEulerAngles = this.m_cEffectList[i].eulerOffest;
+        //    }
+        //}
+    }
 
     /// <summary>
     /// 创建对象
@@ -515,8 +513,8 @@ public class RoleGameObject
         {
             colliderCheckCharacterController = gameObject.AddComponent<ColliderCheckCharacterController>();
         }
-        //colliderCheckCharacterController.ClearHandle();
-        //colliderCheckCharacterController.CloseCheck();
+        colliderCheckCharacterController.ClearHandle();
+        colliderCheckCharacterController.CloseCheck();
         this.m_cGO = gameObject;
         this.m_cRoleAnimation = null;
         this.m_cRoleController = null;
@@ -526,9 +524,9 @@ public class RoleGameObject
         this.m_iModelId = component.ModelID;
         this.m_cTrans = this.m_cGO.transform;
         this.m_fModelScale = this.m_cTrans.localScale.x;
-        //this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
-        //this.SetBodyInfo(this.m_cTrans);
-        //this.CorrectEffect();
+        this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
+        this.SetBodyInfo(this.m_cTrans);
+        this.CorrectEffect();
     }
 
     //// Token: 0x06002421 RID: 9249 RVA: 0x000F3F7C File Offset: 0x000F217C
