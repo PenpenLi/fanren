@@ -471,17 +471,15 @@ public class Role
     //		return this.roleGameObject.RoleTransform.rotation;
     //	}
 
-    //	// Token: 0x0600237B RID: 9083 RVA: 0x000F007C File Offset: 0x000EE27C
-    //	public void SetRat(Vector3 rat)
-    //	{
-    //		this.roleGameObject.RoleTransform.rotation = Quaternion.Euler(rat);
-    //	}
+    public void SetRat(Vector3 rat)
+    {
+        this.roleGameObject.RoleTransform.rotation = Quaternion.Euler(rat);
+    }
 
-    //	// Token: 0x0600237C RID: 9084 RVA: 0x000F0094 File Offset: 0x000EE294
-    //	public void SetRat(Quaternion rat)
-    //	{
-    //		this.roleGameObject.RoleTransform.rotation = rat;
-    //	}
+    public void SetRat(Quaternion rat)
+    {
+        this.roleGameObject.RoleTransform.rotation = rat;
+    }
 
     public Transform GetTrans()
     {

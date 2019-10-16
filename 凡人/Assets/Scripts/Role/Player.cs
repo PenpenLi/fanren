@@ -371,22 +371,22 @@ public class Player : Role
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
 
         //设置角色动画 这里要改成新动画系统
-        if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
-        {
-            Animation roleAnimation = base.roleGameObject.RoleAnimation;
-            if (null != roleAnimation)
-            {
-                UnityEngine.Object.DestroyImmediate(roleAnimation, false);
-            }
+        //if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
+        //{
+        //    Animation roleAnimation = base.roleGameObject.RoleAnimation;
+        //    if (null != roleAnimation)
+        //    {
+        //        UnityEngine.Object.DestroyImmediate(roleAnimation, false);
+        //    }
 
-            for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
-            {
-                if (roleAnimationType != RoleAnimationType.Movie)
-                {
-                    Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
-                }
-            }
-        }
+        //    for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
+        //    {
+        //        if (roleAnimationType != RoleAnimationType.Movie)
+        //        {
+        //            Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
+        //        }
+        //    }
+        //}
 
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);
@@ -509,9 +509,9 @@ public class Player : Role
     private void Init()
     {
         //base.roleGameObject.EnableRagdoll(false);
-        //base.RunSpeed = this.playerInfo.runSpeed;
+        base.RunSpeed = this.playerInfo.runSpeed;
         //this.weaponManager.initialize(this);
-        //base.SetRat(PlayerInfo.PLAYER_ROTATION);
+        base.SetRat(PlayerInfo.PLAYER_ROTATION);
         //this.m_cAdeptSystem.OwnerPlayer = this;
         //ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
         //modSkillProperty.AddSkill(2025);
@@ -887,7 +887,7 @@ public class Player : Role
 
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;
-        //Debug.Log(this.m_cModCamera.cameraState);
+        Debug.Log(this.m_cModCamera.cameraState);
         if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
         {
             if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)

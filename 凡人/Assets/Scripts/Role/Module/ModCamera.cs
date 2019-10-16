@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 
 public class ModCamera : Module
@@ -158,13 +159,12 @@ public class ModCamera : Module
 
 	private void Start()
 	{
-		if (Application.isEditor)
+        if (Application.isEditor)
+        {
+            this.isMouseOrbit = false;
+        }
+        if (this._role == null)
 		{
-			this.isMouseOrbit = false;
-		}
-		if (this._role == null)
-		{
-            Debug.Log("null");
             return;
 		}
 		if (this._role._roleType != ROLE_TYPE.RT_PLAYER)
@@ -173,7 +173,7 @@ public class ModCamera : Module
 		}
 		if (!this.cameraTransform && Camera.main)
 		{
-			this.cameraTransform = Camera.main.transform;
+            this.cameraTransform = Camera.main.transform;
 		}
 		if (!this.cameraTransform)
 		{
@@ -311,7 +311,6 @@ public class ModCamera : Module
 		this.cameraTransform.transform.localScale = new Vector3(1f, 1f, 1f);
 	}
 
-	// Token: 0x060021D2 RID: 8658 RVA: 0x000E724C File Offset: 0x000E544C
 	public void CameraFollowPositionAutoRotation()
 	{
 		if (this._target == null)
@@ -327,7 +326,6 @@ public class ModCamera : Module
 		this.cameraControl.transform.position = Vector3.SmoothDamp(this.cameraControl.transform.position, position, ref this.velocity, this.smoothTime);
 	}
 
-	// Token: 0x060021D3 RID: 8659 RVA: 0x000E7344 File Offset: 0x000E5544
 	public void UpdateFollowPositionLockAxis()
 	{
 		this.cameraTransform.parent = this.cameraControl.transform;
@@ -346,7 +344,6 @@ public class ModCamera : Module
 		this.cameraControl.transform.position = Vector3.SmoothDamp(this.cameraControl.transform.position, target, ref this.velocity, this.smoothTime);
 	}
 
-	// Token: 0x060021D4 RID: 8660 RVA: 0x000E760C File Offset: 0x000E580C
 	public void AutoRotationLook()
 	{
 		Quaternion to = Quaternion.Euler(0f, this.x, this.y);
@@ -356,7 +353,6 @@ public class ModCamera : Module
 		}
 	}
 
-	// Token: 0x060021D5 RID: 8661 RVA: 0x00017607 File Offset: 0x00015807
 	public void CameraLookTarget(Transform targetTransform, float targetHeight, float targetDist)
 	{
 		if (targetTransform == null)
@@ -370,7 +366,6 @@ public class ModCamera : Module
 		this.SetCameraState(ModCamera.CameraState.LookTarget);
 	}
 
-	// Token: 0x060021D6 RID: 8662 RVA: 0x000E76E4 File Offset: 0x000E58E4
 	private void LookTarget()
 	{
 		if (this._target == null)
@@ -385,7 +380,6 @@ public class ModCamera : Module
 		this.cameraControl.transform.position = Vector3.SmoothDamp(this.cameraControl.transform.position, vector, ref this.velocity, this.smoothTime);
 	}
 
-	// Token: 0x060021D7 RID: 8663 RVA: 0x000E77CC File Offset: 0x000E59CC
 	private void CameraLockPositionAutoLook()
 	{
 		if (this._target == null)
@@ -399,19 +393,16 @@ public class ModCamera : Module
 		this.cameraFather.transform.localPosition = Vector3.zero;
 	}
 
-	// Token: 0x060021D8 RID: 8664 RVA: 0x00017639 File Offset: 0x00015839
 	public void ShakeCameraRotation(Vector3 amount, float time)
 	{
 		//iTween.ShakeRotation(this.cameraTransform.gameObject, amount, time);
 	}
 
-	// Token: 0x060021D9 RID: 8665 RVA: 0x0001764D File Offset: 0x0001584D
 	public void ShakeCameraPosition(Vector3 amount, float time)
 	{
 		//SingletonMono<ScreenShockController>.GetInstance().Shock(amount, time);
 	}
 
-	// Token: 0x060021DA RID: 8666 RVA: 0x000E7850 File Offset: 0x000E5A50
 	public void ReSetCamera(bool resetDist = false)
 	{
 		this.SetCamearTarget(this.transform);
@@ -425,7 +416,6 @@ public class ModCamera : Module
 		this.centerHeight = 3f;
 	}
 
-	// Token: 0x060021DB RID: 8667 RVA: 0x000E78A0 File Offset: 0x000E5AA0
 	public void ScaleCamera(float delta)
 	{
 		if (this.isScaleCamera)
@@ -442,13 +432,11 @@ public class ModCamera : Module
 		}
 	}
 
-	// Token: 0x060021DC RID: 8668 RVA: 0x0001765B File Offset: 0x0001585B
 	public void SetCamearTarget(Transform transform)
 	{
 		this._target = transform;
 	}
 
-	// Token: 0x060021DD RID: 8669 RVA: 0x00017664 File Offset: 0x00015864
 	public void SetOrignTarget(Transform trans)
 	{
 		this._target = trans;
@@ -456,20 +444,19 @@ public class ModCamera : Module
 		this.CameraGo = trans.gameObject;
 	}
 
-	// Token: 0x060021DE RID: 8670 RVA: 0x000E7918 File Offset: 0x000E5B18
 	public void StartMouseOrbit()
 	{
 		this.cameraState = ModCamera.CameraState.MouseOrbit;
 		this.ReSetCamera(false);
 		this.x = this.cameraControl.transform.eulerAngles.y;
 		this.y = this.cameraControl.transform.eulerAngles.z;
-		//if (this.transform.rigidbody)
-		//{
-		//	this.transform.rigidbody.freezeRotation = true;
-		//}
-	}
+        
+        if (transform.GetComponent<Rigidbody>())
+        {
+            this.transform.GetComponent<Rigidbody>().freezeRotation = true;
+        }
+    }
 
-	// Token: 0x060021DF RID: 8671 RVA: 0x000E7998 File Offset: 0x000E5B98
 	public void UpdateMouseOrbit()
 	{
 		if (KeyManager.hotKeyEnabled && this._target && this.cameraTransform && Time.timeScale != 0f)
@@ -496,7 +483,6 @@ public class ModCamera : Module
 		}
 	}
 
-	// Token: 0x060021E0 RID: 8672 RVA: 0x00017680 File Offset: 0x00015880
 	private void CheckDistance()
 	{
 		if (this.curDist < this.checkDistance)
@@ -509,7 +495,6 @@ public class ModCamera : Module
 		}
 	}
 
-	// Token: 0x060021E1 RID: 8673 RVA: 0x000E7BA0 File Offset: 0x000E5DA0
 	private float CheckCameraHit()
 	{
 		Vector3 vector = this.cameraControl.transform.position + new Vector3(0f, 1f, 0f);
@@ -534,7 +519,6 @@ public class ModCamera : Module
 		return num2;
 	}
 
-	// Token: 0x060021E2 RID: 8674 RVA: 0x000E7CB8 File Offset: 0x000E5EB8
 	public void CatchMainCamera()
 	{
 		this.cameraTransform.parent = this.cameraControl.transform;
@@ -565,7 +549,6 @@ public class ModCamera : Module
 		}
 	}
 
-	// Token: 0x060021E3 RID: 8675 RVA: 0x000176BC File Offset: 0x000158BC
 	private static float ClampAngle(float angle, float min, float max)
 	{
 		if (angle < -360f)

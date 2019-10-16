@@ -147,8 +147,8 @@
     <Compile Include="Assets\Scripts\Role\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Role.cs" />
     <Compile Include="Assets\Scripts\Role\ROLE_TYPE.cs" />
-    <Compile Include="Assets\Scripts\Role\RoleAnimationManager.cs" />
-    <Compile Include="Assets\Scripts\Role\RoleAnimationType.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationManager.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationType.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBodyInfo\RoleBodyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleEventHandler.cs" />
@@ -185,6 +185,7 @@
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
     <None Include="Assets\Resources\conf\res\normalInfo.txt" />
+    <None Include="Assets\Model\RoleModel\Player\cike\动画帧数刺客.txt" />
     <None Include="Assets\Resources\conf\res\RenderSettings.txt" />
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
