@@ -19,6 +19,9 @@ public class RoleManager : MonoBehaviour
 
     private int currentId;
 
+    /// <summary>
+    /// 角色列表
+    /// </summary>
     public List<Role> RoleObjList = new List<Role>();
 
     [HideInInspector]
@@ -45,8 +48,8 @@ public class RoleManager : MonoBehaviour
     [HideInInspector]
     public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
 
-    //[HideInInspector]
-    //public List<SpawnManager> SpawnManList = new List<SpawnManager>();
+    [HideInInspector]
+    public List<SpawnManager> SpawnManList = new List<SpawnManager>();
 
     //[HideInInspector]
     //public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
@@ -70,7 +73,7 @@ public class RoleManager : MonoBehaviour
     private void Start()
     {
         GameData.CreatGameData();
-        //this.ReadSpawnInfo();
+        //this.ReadSpawnInfo();//读取刷怪点信息
         this.CreateRootObject();
         //this.UpdateSceneBySave();
         this.CreateRole();

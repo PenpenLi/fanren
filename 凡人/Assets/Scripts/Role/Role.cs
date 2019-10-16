@@ -41,13 +41,13 @@ public class Role
 
     //private MFS_TALBE_TYPE m_eMFSType;
 
-    //    //private MonsterHp _monsterHp;
+    //private MonsterHp _monsterHp;
 
-    //    //private MonsterHp _monsterHpBottom;
+    //private MonsterHp _monsterHpBottom;
 
-    //    //private bool invincible;
+    //private bool invincible;
 
-    //    //private bool isDestroyed;
+    //private bool isDestroyed;
 
 
     private static Transform zeroTrans;
@@ -58,11 +58,11 @@ public class Role
 
     private float runSpeed = 7f;
 
-    //    //public List<Role> RetinueList = new List<Role>();
+    public List<Role> RetinueList = new List<Role>();
 
-    //    //public Role ParentRole;
+    public Role ParentRole;
 
-    //    //public event RoleDeadEventHandler beforeDead;
+    //public event RoleDeadEventHandler beforeDead;
 
     public static Transform ZeroTrans
     {
@@ -78,7 +78,6 @@ public class Role
 
     public RoleEventHandler EventHandlerManager { get; private set; }
 
-    //	// Token: 0x0600233C RID: 9020 RVA: 0x000EFCDC File Offset: 0x000EDEDC
     //	public virtual void BeforeDead(object sender, RoleDeadArgs e)
     //	{
     //		if (this.beforeDead != null)
@@ -87,9 +86,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000421 RID: 1057
-    //	// (get) Token: 0x0600233D RID: 9021 RVA: 0x000EFCF8 File Offset: 0x000EDEF8
-    //	// (set) Token: 0x0600233E RID: 9022 RVA: 0x000EFD00 File Offset: 0x000EDF00
     //	public bool Invincible
     //	{
     //		get
@@ -102,9 +98,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000422 RID: 1058
-    //	// (get) Token: 0x0600233F RID: 9023 RVA: 0x000EFD0C File Offset: 0x000EDF0C
-    //	// (set) Token: 0x06002340 RID: 9024 RVA: 0x000EFD14 File Offset: 0x000EDF14
     //	public MFS_TALBE_TYPE MFSType
     //	{
     //		get
@@ -117,9 +110,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000423 RID: 1059
-    //	// (get) Token: 0x06002342 RID: 9026 RVA: 0x000EFD2C File Offset: 0x000EDF2C
-    //	// (set) Token: 0x06002341 RID: 9025 RVA: 0x000EFD20 File Offset: 0x000EDF20
     //	public int BevTreeID
     //	{
     //		get
@@ -132,9 +122,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000424 RID: 1060
-    //	// (get) Token: 0x06002344 RID: 9028 RVA: 0x000EFD40 File Offset: 0x000EDF40
-    //	// (set) Token: 0x06002343 RID: 9027 RVA: 0x000EFD34 File Offset: 0x000EDF34
     //	public bool BRagdoll
     //	{
     //		get
@@ -159,9 +146,6 @@ public class Role
         }
     }
 
-    //	// Token: 0x17000426 RID: 1062
-    //	// (get) Token: 0x06002348 RID: 9032 RVA: 0x000EFD68 File Offset: 0x000EDF68
-    //	// (set) Token: 0x06002347 RID: 9031 RVA: 0x000EFD5C File Offset: 0x000EDF5C
     //	public GameObjSpawn.SpawnInfo SpawnInfo
     //	{
     //		get
@@ -186,9 +170,6 @@ public class Role
         }
     }
 
-    //	// Token: 0x17000428 RID: 1064
-    //	// (get) Token: 0x0600234C RID: 9036 RVA: 0x000EFD90 File Offset: 0x000EDF90
-    //	// (set) Token: 0x0600234B RID: 9035 RVA: 0x000EFD84 File Offset: 0x000EDF84
     //	public RoleChildren RoleChildObj
     //	{
     //		get
@@ -201,9 +182,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x17000429 RID: 1065
-    //	// (get) Token: 0x0600234E RID: 9038 RVA: 0x000EFDA4 File Offset: 0x000EDFA4
-    //	// (set) Token: 0x0600234D RID: 9037 RVA: 0x000EFD98 File Offset: 0x000EDF98
     //	public bool BAniMove
     //	{
     //		get
@@ -216,9 +194,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x1700042A RID: 1066
-    //	// (get) Token: 0x06002350 RID: 9040 RVA: 0x000EFDB8 File Offset: 0x000EDFB8
-    //	// (set) Token: 0x0600234F RID: 9039 RVA: 0x000EFDAC File Offset: 0x000EDFAC
     //	public MonsterHp MonsterHP
     //	{
     //		get
@@ -231,9 +206,6 @@ public class Role
     //		}
     //	}
 
-    //	// Token: 0x1700042B RID: 1067
-    //	// (get) Token: 0x06002352 RID: 9042 RVA: 0x000EFDCC File Offset: 0x000EDFCC
-    //	// (set) Token: 0x06002351 RID: 9041 RVA: 0x000EFDC0 File Offset: 0x000EDFC0
     //	public MonsterHp MonsterHpBottom
     //	{
     //		get
@@ -259,127 +231,106 @@ public class Role
     {
     }
 
-    //	// Token: 0x06002356 RID: 9046 RVA: 0x000EFDE0 File Offset: 0x000EDFE0
     //	public virtual string GetHeadPath()
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x06002357 RID: 9047 RVA: 0x000EFDE4 File Offset: 0x000EDFE4
     //	public virtual string GetShoutTalk()
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x06002358 RID: 9048 RVA: 0x000EFDE8 File Offset: 0x000EDFE8
     //	public virtual string GetFleeWord()
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x06002359 RID: 9049 RVA: 0x000EFDEC File Offset: 0x000EDFEC
     //	public virtual bool GetCanFlee()
     //	{
     //		return false;
     //	}
 
-    //	// Token: 0x0600235A RID: 9050 RVA: 0x000EFDF0 File Offset: 0x000EDFF0
     //	public virtual RoleStaticInfo GetStaticRoleInfo()
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x0600235B RID: 9051 RVA: 0x000EFDF4 File Offset: 0x000EDFF4
     //	public virtual string GetName()
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x0600235C RID: 9052 RVA: 0x000EFDF8 File Offset: 0x000EDFF8
     //	public virtual float GetPrepareDis()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x0600235D RID: 9053 RVA: 0x000EFE00 File Offset: 0x000EE000
     //	public virtual float FleeHpPercent()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x0600235E RID: 9054 RVA: 0x000EFE08 File Offset: 0x000EE008
     //	public virtual float BegProbability()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x0600235F RID: 9055 RVA: 0x000EFE10 File Offset: 0x000EE010
     //	public virtual int SkillAttact()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002360 RID: 9056 RVA: 0x000EFE14 File Offset: 0x000EE014
     //	public virtual int SkillAssault()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002361 RID: 9057 RVA: 0x000EFE18 File Offset: 0x000EE018
     //	public virtual int SkillAggress()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002362 RID: 9058 RVA: 0x000EFE1C File Offset: 0x000EE01C
     //	public virtual int SkillBuff()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002363 RID: 9059 RVA: 0x000EFE20 File Offset: 0x000EE020
     //	public virtual int SkillBlood()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002364 RID: 9060 RVA: 0x000EFE24 File Offset: 0x000EE024
     //	public virtual IdentityType Identity()
     //	{
     //		return (IdentityType)0;
     //	}
 
-    //	// Token: 0x06002365 RID: 9061 RVA: 0x000EFE28 File Offset: 0x000EE028
     //	public virtual float NextAtkTime()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x06002366 RID: 9062 RVA: 0x000EFE30 File Offset: 0x000EE030
     //	public virtual float Height()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x06002367 RID: 9063 RVA: 0x000EFE38 File Offset: 0x000EE038
     //	public virtual int GetHurtID()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x06002368 RID: 9064 RVA: 0x000EFE3C File Offset: 0x000EE03C
     //	public virtual float Distance()
     //	{
     //		return 0f;
     //	}
 
-    //	// Token: 0x06002369 RID: 9065 RVA: 0x000EFE44 File Offset: 0x000EE044
     //	public virtual int GetBloodType()
     //	{
     //		return 0;
     //	}
 
-    //	// Token: 0x0600236A RID: 9066 RVA: 0x000EFE48 File Offset: 0x000EE048
     //	public virtual float HpHigh()
     //	{
     //		return 0f;
@@ -393,7 +344,6 @@ public class Role
         }
     }
 
-    //	// Token: 0x0600236C RID: 9068 RVA: 0x000EFE58 File Offset: 0x000EE058
     //	public bool IsDieing()
     //	{
     //		return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
@@ -407,7 +357,6 @@ public class Role
         }
     }
 
-    //	// Token: 0x0600236E RID: 9070 RVA: 0x000EFE84 File Offset: 0x000EE084
     //	public bool IsEnemy(Role role)
     //	{
     //		ModOrganization modOrganization = role.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
@@ -423,13 +372,11 @@ public class Role
         }
     }
 
-    //	// Token: 0x06002370 RID: 9072 RVA: 0x000EFED0 File Offset: 0x000EE0D0
     //	public virtual List<MonsterSkill> GetUseableSkill(int skillType)
     //	{
     //		return null;
     //	}
 
-    //	// Token: 0x06002371 RID: 9073 RVA: 0x000EFED4 File Offset: 0x000EE0D4
     //	public virtual List<MonsterSkill> GetUseableSkill()
     //	{
     //		return null;
@@ -491,7 +438,6 @@ public class Role
         return null;
     }
 
-    //	// Token: 0x06002376 RID: 9078 RVA: 0x000F0004 File Offset: 0x000EE204
     //	public bool GetBuff(int id)
     //	{
     //		ModBuffProperty modBuffProperty = (ModBuffProperty)this.GetModule(MODULE_TYPE.MT_BUFF);

@@ -147,16 +147,16 @@ public class KeyManager : MonoBehaviour
         //按下Shift键退出训练模式
         //if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Singleton<DrillSystem>.GetInstance().IsDrillState)
         //{
-        //	Singleton<DrillSystem>.GetInstance().ExitDrill();
+        //    Singleton<DrillSystem>.GetInstance().ExitDrill();
         //}
-        //      if (!KeyManager.hotKeyEnabled)
-        //{
-        //	return;
-        //}
-        //if (SceneManager.GetActiveScene().name == "Landing")
-        //{
-        //	return;
-        //}
+        if (!KeyManager.hotKeyEnabled)
+        {
+            return;
+        }
+        if (SceneManager.GetActiveScene().name == "Landing")
+        {
+            return;
+        }
 
         if (Player.Instance != null)
         {
@@ -200,33 +200,34 @@ public class KeyManager : MonoBehaviour
 		{
 			return;
 		}
-		this.currentEvent = Event.current;
-		this.LockMouse(this.currentEvent);
-		KeyManager.Numeric = this.currentEvent.numeric;
-		KeyManager.CapsLock = this.currentEvent.capsLock;
-		KeyManager.Control = this.currentEvent.control;
-		KeyManager.Shift = this.currentEvent.shift;
-		KeyManager.Alt = this.currentEvent.alt;
-		if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.UIKey) != KeyManager.eKeyGroupMask.None && (this.currentEvent.functionKey || this.currentEvent.isKey))
-		{
-			//this.onUIKeyFunction(this.currentEvent);
-		}
-		if (!KeyManager.hotKeyEnabled)
-		{
-			return;
-		}
-		if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseClick) != KeyManager.eKeyGroupMask.None && this.currentEvent.isMouse)
-		{
-			//this.onMouseClickEvent(this.currentEvent);
-		}
-		if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseScroll) != KeyManager.eKeyGroupMask.None && this.currentEvent.type == EventType.ScrollWheel)
-		{
-			//this.onMouseScrollWheel(this.currentEvent);
-		}
-		if (((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.NormalHotKey) != KeyManager.eKeyGroupMask.None && this.currentEvent.functionKey) || this.currentEvent.isKey)
-		{
-			//this.onKeyFunction(this.currentEvent);
-		}
+        //绘制按钮
+		//this.currentEvent = Event.current;
+		//this.LockMouse(this.currentEvent);
+		//KeyManager.Numeric = this.currentEvent.numeric;
+		//KeyManager.CapsLock = this.currentEvent.capsLock;
+		//KeyManager.Control = this.currentEvent.control;
+		//KeyManager.Shift = this.currentEvent.shift;
+		//KeyManager.Alt = this.currentEvent.alt;
+		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.UIKey) != KeyManager.eKeyGroupMask.None && (this.currentEvent.functionKey || this.currentEvent.isKey))
+		//{
+		//	//this.onUIKeyFunction(this.currentEvent);
+		//}
+		//if (!KeyManager.hotKeyEnabled)
+		//{
+		//	return;
+		//}
+		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseClick) != KeyManager.eKeyGroupMask.None && this.currentEvent.isMouse)
+		//{
+		//	//this.onMouseClickEvent(this.currentEvent);
+		//}
+		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseScroll) != KeyManager.eKeyGroupMask.None && this.currentEvent.type == EventType.ScrollWheel)
+		//{
+		//	//this.onMouseScrollWheel(this.currentEvent);
+		//}
+		//if (((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.NormalHotKey) != KeyManager.eKeyGroupMask.None && this.currentEvent.functionKey) || this.currentEvent.isKey)
+		//{
+		//	//this.onKeyFunction(this.currentEvent);
+		//}
 	}
 
 	private void LockMouse(Event e)

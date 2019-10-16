@@ -6,49 +6,49 @@ using UnityEngine.SceneManagement;
 
 public class Player : Role
 {
-//    private const string strBaseRoleCfg = "BasePlayerProperty";
+    private const string strBaseRoleCfg = "BasePlayerProperty";
 
-//    private const string strBaseAdeptCfg = "AdeptConfig";
+    private const string strBaseAdeptCfg = "AdeptConfig";
 
-//    private const string strBaseMixtureCfg = "MixtureConfig";
+    private const string strBaseMixtureCfg = "MixtureConfig";
 
-//    public Character m_cCharacter;
+    //public Character m_cCharacter;
 
-//    public ModAttribute m_cModAttribute;
+    //public ModAttribute m_cModAttribute;
 
-//    public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
+    //public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
-      public ModCamera m_cModCamera;
+    public ModCamera m_cModCamera;
 
-      public ModFight m_cModFight;
+    public ModFight m_cModFight;
 
-    //    public AdeptTalent m_cAdeptSystem = new AdeptTalent();
+    //public AdeptTalent m_cAdeptSystem = new AdeptTalent();
 
-    //    public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
+    //public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
 
-    //    public BottleSystem m_BottleSystem = new BottleSystem();
+    //public BottleSystem m_BottleSystem = new BottleSystem();
 
-    //    private AmbitSystem m_cAmbitSystem = new AmbitSystem();
+    //private AmbitSystem m_cAmbitSystem = new AmbitSystem();
 
-    //    private FigureSystem m_cFigureSystem = new FigureSystem();
+    //private FigureSystem m_cFigureSystem = new FigureSystem();
 
-    //    private Handbook m_cHandbook = new Handbook();
+    //private Handbook m_cHandbook = new Handbook();
 
-    //    public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
+    //public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
 
-    //    public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
+    //public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
 
-    //    private ModMission m_cModMission;
+    //private ModMission m_cModMission;
 
-    //    private Hbar hpBar;
+    //private Hbar hpBar;
 
-    //    private Mbar mpBar;
+    //private Mbar mpBar;
 
-    //    private GameObject _currentMob;
+    private GameObject _currentMob;
 
-    //    public HelpBase _helpBase = new HelpBase();
+    //public HelpBase _helpBase = new HelpBase();
 
-    //    private MobCharacter Mob;
+    //private MobCharacter Mob;
 
     public ModAnimation modAnimation;
 
@@ -62,17 +62,17 @@ public class Player : Role
 
     private static Player instance;
 
-    //    public WeaponManager weaponManager = new WeaponManager();
+    //public WeaponManager weaponManager = new WeaponManager();
 
-    //    public EquipReplace equipReplace;
+    //public EquipReplace equipReplace;
 
-    //    public ItemFolderContainer ItemFolder;
+    //public ItemFolderContainer ItemFolder;
 
-    //    public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
+    //public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
 
-    //    private SoundData fightSD = new SoundData();
+    private SoundData fightSD = new SoundData();
 
-    //    private bool m_bFightingSound;
+    private bool m_bFightingSound;
 
     public Player()
     {
@@ -900,6 +900,7 @@ public class Player : Role
         Vector3 vector2 = base.GetPos() + vector;
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
+        Debug.Log(currentStateId);
         if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
         {
             if (currentStateId != CONTROL_STATE.WALK_FORWARD)
@@ -940,7 +941,7 @@ public class Player : Role
             }
             else
             {
-                //this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+                this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
             }
         }
         else

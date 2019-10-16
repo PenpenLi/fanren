@@ -199,28 +199,6 @@ public class FanrenSceneManager : MonoBehaviour
     //	Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>().Show();
     //	yield break;
     //}
-
-    //public static void LoadPrevLevel()
-    //{
-    //	int num = Application.loadedLevel;
-    //	if (num > 1)
-    //	{
-    //		num--;
-    //		SceneManager.currentTeleport = null;
-    //		SceneManager.LoadLevel(num, true, true);
-    //	}
-    //}
-
-    //public static void LoadNextLevel()
-    //{
-    //	int num = Application.loadedLevel;
-    //	if (num < Application.levelCount - 1)
-    //	{
-    //		num++;
-    //		SceneManager.currentTeleport = null;
-    //		SceneManager.LoadLevel(num, true, true);
-    //	}
-    //}
      
     private void Init()
     {

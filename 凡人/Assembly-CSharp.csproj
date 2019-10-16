@@ -79,7 +79,9 @@
     <Compile Include="Assets\Scripts\KeyManager\Callback\Callback.cs" />
     <Compile Include="Assets\Scripts\KeyManager\KeyManager.cs" />
     <Compile Include="Assets\Scripts\Main\BroadcastManager.cs" />
-    <Compile Include="Assets\Scripts\Main\FantasyWorld.cs" />
+    <Compile Include="Assets\Scripts\Main\FantasyWorld\FantasyAssist.cs" />
+    <Compile Include="Assets\Scripts\Main\FantasyWorld\FantasyGod.cs" />
+    <Compile Include="Assets\Scripts\Main\FantasyWorld\FantasyWorld.cs" />
     <Compile Include="Assets\Scripts\Main\Main.cs" />
     <Compile Include="Assets\Scripts\Main\MouseManager.cs" />
     <Compile Include="Assets\Scripts\MapControl\ArtResourceConfig.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationType.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\RoleBodyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\RoleHatred.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Assets\Scripts\Role\RoleModelInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleWearEquipPos.cs" />
     <Compile Include="Assets\Scripts\Role\Rotate.cs" />
+    <Compile Include="Assets\Scripts\Role\Spawn\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Role\TransPhysicsCast.cs" />
     <Compile Include="Assets\Scripts\Role\UpdateBevBase.cs" />
     <Compile Include="Assets\Scripts\Save\SaveData.cs" />

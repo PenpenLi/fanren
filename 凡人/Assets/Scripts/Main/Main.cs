@@ -127,13 +127,7 @@ public class Main : MonoBehaviour
     {
         Main.MainGo.AddComponent<KeyManager>();
         Main.MainGo.AddComponent<MouseManager>();
-        Main.MainGo.AddComponent<BroadcastManager>();
-        if (Application.isEditor)
-        {
-            //KeyManager.addNormalKey(KeyCode.F7, new Callback(SceneManager.LoadPrevLevel));
-            //KeyManager.addNormalKey(KeyCode.F8, new Callback(SceneManager.LoadNextLevel));
-        }
-        //KeyManager.addUIKey(KeyCode.SysReq, new Callback(Main.Instance.CaptureScreenshot));
+        Main.MainGo.AddComponent<BroadcastManager>();      
         //KeyManager.addShiftKey(KeyCode.M, new Callback(Main.instance.ShowMemory));
         FantasyWorld fantasyWorld = new GameObject("FantasyWorld")
         {
@@ -142,12 +136,13 @@ public class Main : MonoBehaviour
                 parent = Main.MainGo.transform
             }
         }.AddComponent<FantasyWorld>();
-        //if (!fantasyWorld.Create())
-        //{
-        //    UnityEngine.Debug.LogError("FantasyWorld created failed!");
-        //}
+        if (!fantasyWorld.Create())
+        {
+            UnityEngine.Debug.LogError("FantasyWorld created failed!");
+        }
     }
 
+    //截图
     //public void CaptureScreenshot()
     //{
     //	string text = Config.APPLICATION_NAME;

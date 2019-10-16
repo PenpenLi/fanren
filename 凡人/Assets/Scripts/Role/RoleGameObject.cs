@@ -561,7 +561,7 @@ public class RoleGameObject
 
     private void SetBodyInfo(Transform root)
     {
-        //RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
+        RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
         //if (component == null)
         //{
         //    return;

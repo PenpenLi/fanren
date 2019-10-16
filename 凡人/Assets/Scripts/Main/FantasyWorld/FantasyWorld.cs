@@ -12,11 +12,10 @@ public class FantasyWorld : MonoBehaviour
 
     public bool IsCreated;
 
-    //public FantasyGod Creator = new FantasyGod();
+    public FantasyGod Creator = new FantasyGod();
 
-    //public FantasyAssist Assist = new FantasyAssist();
+    public FantasyAssist Assist = new FantasyAssist();
 
-    // Token: 0x040011E6 RID: 4582
     private GameObject _excuteObject;
 
     public GameObject ExcuteObject
@@ -33,7 +32,7 @@ public class FantasyWorld : MonoBehaviour
 
 	public bool Create()
 	{
-		//this._excuteObject = new GameObject("ExcuteCenter");
+		this._excuteObject = new GameObject("ExcuteCenter");
 		//if (!this.Assist.Create())
 		//{
 		//	Debug.LogError("FantasyAssist created failed!");
