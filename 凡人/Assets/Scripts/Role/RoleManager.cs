@@ -770,25 +770,24 @@ public class RoleManager : MonoBehaviour
     public void AddRole(Role role)
     {
         this.RoleObjList.Add(role);
-        //foreach (Role role2 in this.ignoreColliderRole)
-        //{
-        //    if (role2 != null)
-        //    {
-        //        if (role.roleGameObject.RoleController.enabled)
-        //        {
-        //            if (role2.roleGameObject.RoleController.enabled)
-        //            {
-        //                if (role.roleGameObject.RoleController.active && role2.roleGameObject.RoleController.active)
-        //                {
-        //                    Physics.IgnoreCollision(role.roleGameObject.RoleController, role2.roleGameObject.RoleController, true);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        foreach (Role role2 in this.ignoreColliderRole)
+        {
+            if (role2 != null)
+            {
+                if (role.roleGameObject.RoleController.enabled)
+                {
+                    if (role2.roleGameObject.RoleController.enabled)
+                    {
+                        //if (role.roleGameObject.RoleController.active && role2.roleGameObject.RoleController.active)
+                        //{
+                        //    Physics.IgnoreCollision(role.roleGameObject.RoleController, role2.roleGameObject.RoleController, true);
+                        //}
+                    }
+                }
+            }
+        }
     }
 
-    //	// Token: 0x06002473 RID: 9331 RVA: 0x000F7DA0 File Offset: 0x000F5FA0
     //	public void DestroyAllRole()
     //	{
     //		foreach (Role role in this.RoleObjList)

@@ -244,8 +244,7 @@ public class FanrenSceneManager : MonoBehaviour
         PlayerInfo.PLAYER_REVIVE_ROTATION = new Vector3(0f, FanrenSceneManager.currScenenInfo.revive_rot_y, 0f);
         this.AddComponentMaker();
         
-           // this.DoScriptMoudle();
-        
+        // this.DoScriptMoudle();        
     }
 
     //public void DoScriptMoudle()
@@ -289,12 +288,15 @@ public class FanrenSceneManager : MonoBehaviour
         //CSkillManager.Instance = gameObject2.AddComponent<CSkillManager>();
     }
 
-    //private void EnterScene()
-    //{
-    //	this.PlayGameBgSound();
-    //	TeleportManager.InitTeleport(SceneManager.scenenInfo.id);
-    //	SystemSetting.SceneSetting();
-    //}
+    /// <summary>
+    /// 进入场景
+    /// </summary>
+    private void EnterScene()
+    {
+        this.PlayGameBgSound();
+        //TeleportManager.InitTeleport(SceneManager.scenenInfo.id);
+        //SystemSetting.SceneSetting();
+    }
 
     /// <summary>
     /// 播放背景音乐

@@ -38,27 +38,27 @@ public class ModControlMFS : Module
         }
     }
 
-    //public void ChangeStateToIdle()
-    //{
-    //	if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
-    //	{
-    //		if (((Player)this._role).weaponManager.weaponeActive)
-    //		{
-    //			ControlEventRestoreAttackIdle tmpEvent = new ControlEventRestoreAttackIdle(false);
-    //			this.ChangeState(tmpEvent);
-    //		}
-    //		else
-    //		{
-    //			ControlEventRestoreIdle tmpEvent2 = new ControlEventRestoreIdle(false);
-    //			this.ChangeState(tmpEvent2);
-    //		}
-    //	}
-    //	else
-    //	{
-    //		ControlEventRestoreIdle tmpEvent3 = new ControlEventRestoreIdle(false);
-    //		this.ChangeState(tmpEvent3);
-    //	}
-    //}
+    public void ChangeStateToIdle()
+    {
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
+        {
+            //if (((Player)this._role).weaponManager.weaponeActive)
+            //{
+            //    ControlEventRestoreAttackIdle tmpEvent = new ControlEventRestoreAttackIdle(false);
+            //    this.ChangeState(tmpEvent);
+            //}
+            //else
+            //{
+            //    ControlEventRestoreIdle tmpEvent2 = new ControlEventRestoreIdle(false);
+            //    this.ChangeState(tmpEvent2);
+            //}
+        }
+        else
+        {
+            //ControlEventRestoreIdle tmpEvent3 = new ControlEventRestoreIdle(false);
+            //this.ChangeState(tmpEvent3);
+        }
+    }
 
     //public void ChangeStateToAttackIdle()
     //{
@@ -110,12 +110,12 @@ public class ModControlMFS : Module
         ControlStateBase cCurrentState = this.m_cCurrentState;
         if (cCurrentState != null)
         {
-            //if (!cCurrentState.Destory())
-            //{
-            //    this.m_cCurrentState = cCurrentState;
-            //    return false;
-            //}
-            //cCurrentState.ExitProcess();
+            if (!cCurrentState.Destory())
+            {
+                this.m_cCurrentState = cCurrentState;
+                return false;
+            }
+            cCurrentState.ExitProcess();
         }
 
         if (!stateByInput2.OnEnter(tmpEvent))

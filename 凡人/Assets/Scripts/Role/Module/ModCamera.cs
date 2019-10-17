@@ -495,7 +495,7 @@ public class ModCamera : Module
 	{
 		Vector3 vector = this.cameraControl.transform.position + new Vector3(0f, 1f, 0f);
 		Vector3 vector2 = vector - this.cameraTransform.forward * this.currentDistance;
-		//Logger.DrawLine(vector, vector2, Color.green);
+		Debug.DrawLine(vector, vector2, Color.green);
 		int num = 8194;
 		float num2 = 0f;
 		RaycastHit raycastHit;

@@ -420,18 +420,18 @@ public class Player : Role
         this.AddMod(MODULE_TYPE.MT_MOTION);
         this.AddMod(MODULE_TYPE.MT_MOVE);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
-        //this.AddMod(MODULE_TYPE.MT_FIGHT);
-        //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
-        //this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
-        //this.AddMod(MODULE_TYPE.MT_BUFF);
-        //this.AddMod(MODULE_TYPE.MT_COLLIDER);
-        //this.AddMod(MODULE_TYPE.MT_MISSION);
+        this.AddMod(MODULE_TYPE.MT_FIGHT);
+        this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
+        this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
+        this.AddMod(MODULE_TYPE.MT_BUFF);
+        this.AddMod(MODULE_TYPE.MT_COLLIDER);
+        this.AddMod(MODULE_TYPE.MT_MISSION);
         this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
-        //this.AddMod(MODULE_TYPE.MT_SKILL);
-        //this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
-        //this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
-        //this.AddMod(MODULE_TYPE.MT_VOICE);
-        //this.ReadPlayerPropertyInfoConfig();
+        this.AddMod(MODULE_TYPE.MT_SKILL);
+        this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
+        this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
+        this.AddMod(MODULE_TYPE.MT_VOICE);
+        this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
         this.Init();
         //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");
@@ -1097,39 +1097,38 @@ public class Player : Role
         //}
     }
 
-    //	// Token: 0x060022E6 RID: 8934 RVA: 0x000EE15C File Offset: 0x000EC35C
-    //	public void ReadPlayerPropertyInfoConfig()
-    //	{
-    //		List<string> list = RoleBaseFun.LoadConfInAssets("BasePlayerProperty");
-    //		if (list == null)
-    //		{
-    //			return;
-    //		}
-    //		List<ATTRIBUTE_TYPE> list2 = new List<ATTRIBUTE_TYPE>();
-    //		foreach (string text in list)
-    //		{
-    //			string[] array = text.Split(CacheData.separator);
-    //			if (array != null)
-    //			{
-    //				if (array.Length >= 2)
-    //				{
-    //					ATTRIBUTE_TYPE attribute_TYPE = (ATTRIBUTE_TYPE)Convert.ToInt32(array[0]);
-    //					if (this.m_cfgBaseInfo.IsHaveKey(attribute_TYPE))
-    //					{
-    //						this.m_cfgBaseInfo.dyPropertyKey[attribute_TYPE] = (float)Convert.ToDouble(array[1]);
-    //						list2.Add(attribute_TYPE);
-    //					}
-    //				}
-    //			}
-    //		}
-    //		this.m_cModAttribute.m_cfgBaseInfo = this.m_cfgBaseInfo;
-    //		for (int i = 0; i < list2.Count; i++)
-    //		{
-    //			this.m_cModAttribute.SetAttributeNum(list2[i], this.m_cfgBaseInfo.dyPropertyKey[list2[i]], true);
-    //		}
-    //		this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_CHAPTER, 1f, true);
-    //		this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);
-    //	}
+    public void ReadPlayerPropertyInfoConfig()
+    {
+        List<string> list = RoleBaseFun.LoadConfInAssets("BasePlayerProperty");
+        if (list == null)
+        {
+            return;
+        }
+        //List<ATTRIBUTE_TYPE> list2 = new List<ATTRIBUTE_TYPE>();
+        //foreach (string text in list)
+        //{
+        //    string[] array = text.Split(CacheData.separator);
+        //    if (array != null)
+        //    {
+        //        if (array.Length >= 2)
+        //        {
+        //            ATTRIBUTE_TYPE attribute_TYPE = (ATTRIBUTE_TYPE)Convert.ToInt32(array[0]);
+        //            if (this.m_cfgBaseInfo.IsHaveKey(attribute_TYPE))
+        //            {
+        //                this.m_cfgBaseInfo.dyPropertyKey[attribute_TYPE] = (float)Convert.ToDouble(array[1]);
+        //                list2.Add(attribute_TYPE);
+        //            }
+        //        }
+        //    }
+        //}
+        //this.m_cModAttribute.m_cfgBaseInfo = this.m_cfgBaseInfo;
+        //for (int i = 0; i < list2.Count; i++)
+        //{
+        //    this.m_cModAttribute.SetAttributeNum(list2[i], this.m_cfgBaseInfo.dyPropertyKey[list2[i]], true);
+        //}
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_CHAPTER, 1f, true);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);
+    }
 
     public void InitRoleBaseInfo()
     {

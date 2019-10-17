@@ -115,6 +115,8 @@
     <Compile Include="Assets\Scripts\Resource\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourcePath.cs" />
     <Compile Include="Assets\Scripts\Role\ACTION_INDEX.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ATTRIBUTE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ModAttribute.cs" />
     <Compile Include="Assets\Scripts\Role\BindRole.cs" />
     <Compile Include="Assets\Scripts\Role\BindRoleInfo.cs" />
     <Compile Include="Assets\Scripts\Role\CItemManager.cs" />
@@ -125,10 +127,10 @@
     <Compile Include="Assets\Scripts\Role\Collider\HitEventArgs.cs" />
     <Compile Include="Assets\Scripts\Role\CONTROL_INPUT.cs" />
     <Compile Include="Assets\Scripts\Role\CONTROL_STATE.cs" />
-    <Compile Include="Assets\Scripts\Role\ControlEventBase.cs" />
-    <Compile Include="Assets\Scripts\Role\ControlEventMoveForward.cs" />
-    <Compile Include="Assets\Scripts\Role\ControlStateBase.cs" />
-    <Compile Include="Assets\Scripts\Role\ControlStateWalkForward.cs" />
+    <Compile Include="Assets\Scripts\Role\ControlStateBase\ControlEventBase.cs" />
+    <Compile Include="Assets\Scripts\Role\ControlStateBase\ControlEventMoveForward.cs" />
+    <Compile Include="Assets\Scripts\Role\ControlStateBase\ControlStateBase.cs" />
+    <Compile Include="Assets\Scripts\Role\ControlStateBase\ControlStateWalkForward.cs" />
     <Compile Include="Assets\Scripts\Role\EASING_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjectBevBase.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjSpawn.cs" />
@@ -189,6 +191,7 @@
     <None Include="Assets\Resources\conf\res\RenderSettings.txt" />
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
+    <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
     <None Include="Assets\Resources\conf\ScriptMoudle.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />
     <None Include="Assets\Resources\conf\RoleModelConfig.txt" />
