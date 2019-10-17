@@ -159,10 +159,6 @@ public class ModCamera : Module
 
 	private void Start()
 	{
-        if (Application.isEditor)
-        {
-            this.isMouseOrbit = false;
-        }
         if (this._role == null)
 		{
             return;
@@ -461,9 +457,9 @@ public class ModCamera : Module
 	{
 		if (KeyManager.hotKeyEnabled && this._target && this.cameraTransform && Time.timeScale != 0f)
 		{
-			if (this.isMouseOrbit)
+            if (this.isMouseOrbit)
 			{
-				this.x += Input.GetAxis("Mouse X") * this.xSpeed * this.offsetSpeed;
+                this.x += Input.GetAxis("Mouse X") * this.xSpeed * this.offsetSpeed;
 				this.y -= Input.GetAxis("Mouse Y") * this.ySpeed * this.offsetSpeed;
 				this.y = ModCamera.ClampAngle(this.y, this.yMinLimit, this.yMaxLimit);
 			}

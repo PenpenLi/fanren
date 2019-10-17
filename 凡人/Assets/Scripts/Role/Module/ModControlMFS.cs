@@ -92,11 +92,10 @@ public class ModControlMFS : Module
 
         if (this.m_cCurrentState != null)
         {
-            Debug.Log("执行");
-            //if (this.m_cCurrentState.IsLocked)
-            //{
-            //    return false;
-            //}
+            if (this.m_cCurrentState.IsLocked)
+            {
+                return false;
+            }
             ////if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
             ////{
             ////    return false;
