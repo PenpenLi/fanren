@@ -491,7 +491,6 @@ public class Role
         return this.roleGameObject.RoleTransform;
     }
 
-    //	// Token: 0x0600237E RID: 9086 RVA: 0x000F00F8 File Offset: 0x000EE2F8
     //	public virtual bool IsOutOfSpawnBox()
     //	{
     //		return false;
@@ -752,7 +751,6 @@ public class Role
         }
     }
 
-    //	// Token: 0x06002397 RID: 9111 RVA: 0x000F0658 File Offset: 0x000EE858
     //	public virtual bool ChangeMeshColor(Color col)
     //	{
     //		return true;

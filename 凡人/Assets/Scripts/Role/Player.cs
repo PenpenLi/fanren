@@ -14,9 +14,9 @@ public class Player : Role
 
     //public Character m_cCharacter;
 
-    //public ModAttribute m_cModAttribute;
+    public ModAttribute m_cModAttribute;
 
-    //public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
+    public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
     public ModCamera m_cModCamera;
 
@@ -371,22 +371,22 @@ public class Player : Role
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
 
         //设置角色动画 这里要改成新动画系统
-        //if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
-        //{
-        //    Animation roleAnimation = base.roleGameObject.RoleAnimation;
-        //    if (null != roleAnimation)
-        //    {
-        //        UnityEngine.Object.DestroyImmediate(roleAnimation, false);
-        //    }
+        if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
+        {
+            Animation roleAnimation = base.roleGameObject.RoleAnimation;
+            if (null != roleAnimation)
+            {
+                UnityEngine.Object.DestroyImmediate(roleAnimation, false);
+            }
 
-        //    for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
-        //    {
-        //        if (roleAnimationType != RoleAnimationType.Movie)
-        //        {
-        //            Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
-        //        }
-        //    }
-        //}
+            for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
+            {
+                if (roleAnimationType != RoleAnimationType.Movie)
+                {
+                    Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
+                }
+            }
+        }
 
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);
@@ -1097,6 +1097,9 @@ public class Player : Role
         //}
     }
 
+    /// <summary>
+    /// 读取玩家信息
+    /// </summary>
     public void ReadPlayerPropertyInfoConfig()
     {
         List<string> list = RoleBaseFun.LoadConfInAssets("BasePlayerProperty");
@@ -1104,30 +1107,30 @@ public class Player : Role
         {
             return;
         }
-        //List<ATTRIBUTE_TYPE> list2 = new List<ATTRIBUTE_TYPE>();
-        //foreach (string text in list)
-        //{
-        //    string[] array = text.Split(CacheData.separator);
-        //    if (array != null)
-        //    {
-        //        if (array.Length >= 2)
-        //        {
-        //            ATTRIBUTE_TYPE attribute_TYPE = (ATTRIBUTE_TYPE)Convert.ToInt32(array[0]);
-        //            if (this.m_cfgBaseInfo.IsHaveKey(attribute_TYPE))
-        //            {
-        //                this.m_cfgBaseInfo.dyPropertyKey[attribute_TYPE] = (float)Convert.ToDouble(array[1]);
-        //                list2.Add(attribute_TYPE);
-        //            }
-        //        }
-        //    }
-        //}
-        //this.m_cModAttribute.m_cfgBaseInfo = this.m_cfgBaseInfo;
-        //for (int i = 0; i < list2.Count; i++)
-        //{
-        //    this.m_cModAttribute.SetAttributeNum(list2[i], this.m_cfgBaseInfo.dyPropertyKey[list2[i]], true);
-        //}
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_CHAPTER, 1f, true);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);
+        List<ATTRIBUTE_TYPE> list2 = new List<ATTRIBUTE_TYPE>();
+        foreach (string text in list)
+        {
+            string[] array = text.Split(CacheData.separator);
+            if (array != null)
+            {
+                if (array.Length >= 2)
+                {
+                    ATTRIBUTE_TYPE attribute_TYPE = (ATTRIBUTE_TYPE)Convert.ToInt32(array[0]);
+                    if (this.m_cfgBaseInfo.IsHaveKey(attribute_TYPE))
+                    {
+                        this.m_cfgBaseInfo.dyPropertyKey[attribute_TYPE] = (float)Convert.ToDouble(array[1]);
+                        list2.Add(attribute_TYPE);
+                    }
+                }
+            }
+        }
+        this.m_cModAttribute.m_cfgBaseInfo = this.m_cfgBaseInfo;
+        for (int i = 0; i < list2.Count; i++)
+        {
+            this.m_cModAttribute.SetAttributeNum(list2[i], this.m_cfgBaseInfo.dyPropertyKey[list2[i]], true);
+        }
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_CHAPTER, 1f, true);//章
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);//出生
     }
 
     public void InitRoleBaseInfo()

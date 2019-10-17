@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\Role\ACTION_INDEX.cs" />
     <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ATTRIBUTE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ModAttribute.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\PlayerPropertyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\BindRole.cs" />
     <Compile Include="Assets\Scripts\Role\BindRoleInfo.cs" />
     <Compile Include="Assets\Scripts\Role\CItemManager.cs" />

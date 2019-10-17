@@ -77,6 +77,7 @@ public class FanrenSceneManager : MonoBehaviour
         //    //Singleton<CResourcesStaticManager>.GetInstance();
         //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
         //}
+
         //if (Application.loadedLevelName == "Landing")
         //{
         //    //EZGUIManager._BindRunTimeObj.AddLandUI();
@@ -86,6 +87,7 @@ public class FanrenSceneManager : MonoBehaviour
         //{
         //    //EZGUIManager._BindRunTimeObj.RemoveLandUI();
         //}
+
         //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
         //{
         //    //this.ReStartGame(false);

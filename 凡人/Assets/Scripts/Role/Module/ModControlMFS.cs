@@ -45,7 +45,7 @@ public class ModControlMFS : Module
             //if (((Player)this._role).weaponManager.weaponeActive)
             //{
             //    ControlEventRestoreAttackIdle tmpEvent = new ControlEventRestoreAttackIdle(false);
-            //    this.ChangeState(tmpEvent);
+                //this.ChangeState(tmpEvent);
             //}
             //else
             //{

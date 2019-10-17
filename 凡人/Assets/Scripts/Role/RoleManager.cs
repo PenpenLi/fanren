@@ -78,14 +78,13 @@ public class RoleManager : MonoBehaviour
         //this.UpdateSceneBySave();
         this.CreateRole();
         //this.UpdatePlayerBySave();
-        //this.InitPlayer();
+        this.InitPlayer();
         //this.InitOther();
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
         //Singleton<HpCautionEffect>.GetInstance().AdjustSize();
     }
 
-    //	// Token: 0x0600244E RID: 9294 RVA: 0x000F6790 File Offset: 0x000F4990
     //	private void InitOther()
     //	{
     //		FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
@@ -125,16 +124,16 @@ public class RoleManager : MonoBehaviour
         }
     }
 
-    //	private void CreateObject()
-    //	{
-    //		foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)
-    //		{
-    //			if (gameObjSpawn.transform.active && gameObjSpawn.SpawnManID == -1)
-    //			{
-    //				gameObjSpawn.Enable();
-    //			}
-    //		}
-    //	}
+    private void CreateObject()
+    {
+        foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)
+        {
+            //if (gameObjSpawn.transform.active && gameObjSpawn.SpawnManID == -1)
+            //{
+            //    gameObjSpawn.Enable();
+            //}
+        }
+    }
 
     private void UpdateSceneBySave()
     {
@@ -207,7 +206,6 @@ public class RoleManager : MonoBehaviour
         //}
     }
 
-    //	// Token: 0x06002453 RID: 9299 RVA: 0x000F6CD0 File Offset: 0x000F4ED0
     //	private void UpdatePlayerBySave()
     //	{
     //		Player player = SceneManager.RoleMan.GetPlayer();
@@ -293,7 +291,6 @@ public class RoleManager : MonoBehaviour
     //		}
     //	}
 
-    //	// Token: 0x06002454 RID: 9300 RVA: 0x000F70FC File Offset: 0x000F52FC
     //	public Role GetRoleByType(ROLE_TYPE roleType, int type)
     //	{
     //		for (int i = 0; i < this.RoleObjList.Count; i++)
@@ -339,7 +336,6 @@ public class RoleManager : MonoBehaviour
         }
     }
 
-    //	// Token: 0x06002456 RID: 9302 RVA: 0x000F72A0 File Offset: 0x000F54A0
     //	public SpawnManager GetSMById(int id)
     //	{
     //		for (int i = 0; i < this.SpawnManList.Count; i++)
@@ -352,7 +348,6 @@ public class RoleManager : MonoBehaviour
     //		return null;
     //	}
 
-    //	// Token: 0x06002457 RID: 9303 RVA: 0x000F72F0 File Offset: 0x000F54F0
     //	public List<GameObjSpawn> GetSpawnListByAdminId(int id)
     //	{
     //		List<GameObjSpawn> list = new List<GameObjSpawn>();
@@ -366,7 +361,6 @@ public class RoleManager : MonoBehaviour
     //		return list;
     //	}
 
-    //	// Token: 0x06002458 RID: 9304 RVA: 0x000F7360 File Offset: 0x000F5560
     //	public GameObjSpawn GetSpawnInfoByID(int ID)
     //	{
     //		foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)
@@ -379,7 +373,6 @@ public class RoleManager : MonoBehaviour
     //		return null;
     //	}
 
-    //	// Token: 0x06002459 RID: 9305 RVA: 0x000F73E4 File Offset: 0x000F55E4
     //	public int GetSpawnInfoCount()
     //	{
     //		return this.MobSpawnList.Count;
@@ -428,7 +421,6 @@ public class RoleManager : MonoBehaviour
         return this._player;
     }
 
-    //	// Token: 0x0600245F RID: 9311 RVA: 0x000F74B4 File Offset: 0x000F56B4
     //	private void CreateOperableRootGo()
     //	{
     //		if (this.operableRootGo == null)
@@ -438,7 +430,6 @@ public class RoleManager : MonoBehaviour
     //		}
     //	}
 
-    //	// Token: 0x06002460 RID: 9312 RVA: 0x000F74F0 File Offset: 0x000F56F0
     //	public Role GetCurControlRole()
     //	{
     //		for (int i = 0; i < this.RoleObjList.Count; i++)
@@ -454,7 +445,6 @@ public class RoleManager : MonoBehaviour
     //		return null;
     //	}
 
-    //	// Token: 0x06002461 RID: 9313 RVA: 0x000F7554 File Offset: 0x000F5754
     //	public ModCamera GetCurPlayerCamera()
     //	{
     //		Role curControlRole = this.GetCurControlRole();
@@ -470,7 +460,6 @@ public class RoleManager : MonoBehaviour
     //		return modCamera;
     //	}
 
-    //    // Token: 0x06002462 RID: 9314 RVA: 0x000F7588 File Offset: 0x000F5788
     //    //private OperableChest CreateChestGo(GameObjSpawn.SpawnInfo spawnInfo)
     //    //{
     //    //	OperableChestInfo chestInfo = GameData.Instance.chest.GetChestInfo(spawnInfo.ObjectType);
@@ -492,7 +481,6 @@ public class RoleManager : MonoBehaviour
     //    //	return operableChest;
     //    //}
 
-    //    //// Token: 0x06002463 RID: 9315 RVA: 0x000F7670 File Offset: 0x000F5870
     //    //private OperableChest CreateChestGo(OperableSaveDataBase ocsd)
     //    //{
     //    //	GameObject gameObject = new GameObject("Chest");
@@ -778,10 +766,7 @@ public class RoleManager : MonoBehaviour
                 {
                     if (role2.roleGameObject.RoleController.enabled)
                     {
-                        //if (role.roleGameObject.RoleController.active && role2.roleGameObject.RoleController.active)
-                        //{
-                        //    Physics.IgnoreCollision(role.roleGameObject.RoleController, role2.roleGameObject.RoleController, true);
-                        //}
+                        Physics.IgnoreCollision(role.roleGameObject.RoleController, role2.roleGameObject.RoleController, true);
                     }
                 }
             }
@@ -1517,20 +1502,8 @@ public class RoleManager : MonoBehaviour
         {
             this.RoleObjList.Remove(item);
         }
-        //if (Config.DEBUG && Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    if (GMConsole.instance == null)
-        //    {
-        //        GMConsole.OpenConsole();
-        //    }
-        //    else
-        //    {
-        //        GMConsole.CloseConsole();
-        //    }
-        //}
     }
 
-    //	// Token: 0x06002495 RID: 9365 RVA: 0x000F9168 File Offset: 0x000F7368
     //	public void AddIgnoreColliderRole(Role role)
     //	{
     //		if (this.ignoreColliderRole.Contains(role))
@@ -1541,7 +1514,6 @@ public class RoleManager : MonoBehaviour
     //		this.ignoreColliderRole.Add(role);
     //	}
 
-    //	// Token: 0x06002496 RID: 9366 RVA: 0x000F919C File Offset: 0x000F739C
     //	public void RemoveIgnoreColliderRole(Role role)
     //	{
     //		if (!this.ignoreColliderRole.Contains(role))
@@ -1552,7 +1524,6 @@ public class RoleManager : MonoBehaviour
     //		this.ignoreColliderRole.Remove(role);
     //	}
 
-    //	// Token: 0x06002497 RID: 9367 RVA: 0x000F91C8 File Offset: 0x000F73C8
     //	private void IgnoreRoleCollider(Role role, bool ignore)
     //	{
     //		for (int i = 0; i < this.RoleObjList.Count; i++)

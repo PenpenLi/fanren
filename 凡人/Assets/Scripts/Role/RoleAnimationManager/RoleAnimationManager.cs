@@ -450,12 +450,7 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     }
 
     public bool AttachAnimation(RoleAnimationType attachType, Role role, bool detachOther)
-    {
-        if (!this.IsSwitch)
-        {
-            return false;
-        }
-
+    {      
         if (role == null)
         {
             return false;
@@ -468,11 +463,11 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
 
         if (role.roleGameObject.RoleAnimation == null)
         {
-            //Animation animation = role.roleGameObject.RoleBody.AddComponent<Animation>();
-            //animation.playAutomatically = true;
-            //animation.animatePhysics = false;
-            //animation.cullingType = AnimationCullingType.BasedOnUserBounds;
-            //animation.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
+            Animation animation = role.roleGameObject.RoleBody.AddComponent<Animation>();
+            animation.playAutomatically = true;
+            animation.animatePhysics = false;
+            animation.cullingType = AnimationCullingType.BasedOnRenderers;
+            animation.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
         }
 
         //ArrayList arrayList = this.FindAniIndexByRoleAniType(attachType);
