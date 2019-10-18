@@ -187,11 +187,11 @@ public class KeyManager : MonoBehaviour
                 Player.Instance.RunSpeed = 5f;
             }
         }
-        //if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
-        //{
-        //    //Player.Instance.m_cModFight.StartGatherStrength();
-        //}
-        //KeyManager.calculationTime();
+        if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
+        {
+            //Player.Instance.m_cModFight.StartGatherStrength();//积聚力量
+        }
+        KeyManager.calculationTime();
     }
 
     private void OnGUI()
@@ -234,7 +234,7 @@ public class KeyManager : MonoBehaviour
 	{
 		if (!Cursor.visible)
 		{
-			MouseManager.LockCursor(true);
+			MouseManager.LockCursor();
 		}
 	}
 
@@ -380,16 +380,17 @@ public class KeyManager : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x060015EB RID: 5611 RVA: 0x000AD998 File Offset: 0x000ABB98
-    //private static void calculationTime()
-    //{
-    //	if (KeyManager.startTime != 0f)
-    //	{
-    //		KeyManager.pressedTime = GameTime.time - KeyManager.startTime;
-    //	}
-    //}
+    /// <summary>
+    /// 计算时间
+    /// </summary>
+    private static void calculationTime()
+    {
+        if (KeyManager.startTime != 0f)
+        {
+            KeyManager.pressedTime = GameTime.time - KeyManager.startTime;
+        }
+    }
 
-    //// Token: 0x060015EC RID: 5612 RVA: 0x000AD9BC File Offset: 0x000ABBBC
     //private static void clearTime()
     //{
     //	KeyManager.pressedTime = 0f;

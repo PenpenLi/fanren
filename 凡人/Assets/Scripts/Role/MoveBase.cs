@@ -42,7 +42,7 @@ public class MoveBase
     public MoveBase(Role role, CharacterController cc)
 	{
 		this.m_cRole = role;
-		//this.m_cAnimation = (ModAnimation)role.GetModule(MODULE_TYPE.MT_MOTION);
+		this.m_cAnimation = (ModAnimation)role.GetModule(MODULE_TYPE.MT_MOTION);
 		this.m_cController = cc;
 	}
 
@@ -93,19 +93,19 @@ public class MoveBase
 			//	return false;
 			//}
 		}
-		//if (this.m_bGravity)
-		//{
-			this.m_cController.Move(Vector3.up * -17f);
-		//}
-		//if (!this.isStart)
-		//{
-		//	if (this.m_eAction != ACTION_INDEX.AN_NONE)
-		//	{
-		//		//this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
-		//	}
-		//	this.isStart = true;
-		//}
-		return true;
+        if (this.m_bGravity)
+        {
+            this.m_cController.Move(Vector3.up * -17f);
+        }
+        //if (!this.isStart)
+        //{
+        //	if (this.m_eAction != ACTION_INDEX.AN_NONE)
+        //	{
+        //		//this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
+        //	}
+        //	this.isStart = true;
+        //}
+        return true;
 	}
 
 	public virtual void Reset(ACTION_INDEX ai, float speed)

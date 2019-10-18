@@ -77,18 +77,18 @@ public class ModControlMFS : Module
 
     public bool ChangeState(ControlEventBase tmpEvent)
     {
-        //if (tmpEvent.Forced)
-        //{    
-        //    //ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
-        //    if (this.m_cCurrentState != null)
-        //    {
-        //        this.m_cCurrentState.Destory();
-        //        this.m_cCurrentState.ExitProcess();
-        //    }
-        //    //this.m_cCurrentState = stateByInput;
-        //    //this.m_cCurrentState.OnEnter(tmpEvent);
-        //    return true;
-        //}
+        if (tmpEvent.Forced)//强迫的
+        {
+            ////ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
+            //if (this.m_cCurrentState != null)
+            //{
+            //    this.m_cCurrentState.Destory();
+            //    this.m_cCurrentState.ExitProcess();
+            //}
+            ////this.m_cCurrentState = stateByInput;
+            //this.m_cCurrentState.OnEnter(tmpEvent);
+            return true;
+        }
 
         if (this.m_cCurrentState != null)
         {
@@ -144,7 +144,7 @@ public class ModControlMFS : Module
 
         private Dictionary<CONTROL_INPUT, ControlStateBase> m_mapInpuStates = new Dictionary<CONTROL_INPUT, ControlStateBase>();
 
-        //private MFSTable m_mapEventTable;
+        private MFSTable m_mapEventTable;
 
         public WrapState(Role role, CharacterController control, ModControlMFS mcm)
         {
@@ -212,7 +212,7 @@ public class ModControlMFS : Module
             //this.m_mapInpuStates.Add(CONTROL_INPUT.WALK_SURROUND, this.m_mapOutputStates[CONTROL_STATE.WALK_SURROUND]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.GATHER_STRENGTH, this.m_mapOutputStates[CONTROL_STATE.GATHER_STRENGTH]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.BOSS_SHOW, this.m_mapOutputStates[CONTROL_STATE.BOSS_SHOW]);
-            //this.m_mapEventTable = Singleton<MFSTableManager>.GetInstance().GetTableByType(mcm._role.MFSType);
+            this.m_mapEventTable = Singleton<MFSTableManager>.GetInstance().GetTableByType(mcm._role.MFSType);
         }
 
         public ControlStateBase GetStateByInput(CONTROL_INPUT ci)

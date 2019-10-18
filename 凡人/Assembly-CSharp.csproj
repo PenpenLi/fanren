@@ -115,7 +115,11 @@
     <Compile Include="Assets\Scripts\Resource\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourcePath.cs" />
     <Compile Include="Assets\Scripts\Role\ACTION_INDEX.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\AttackFormula.cs" />
     <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ATTRIBUTE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\CItemBase.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\DefenceFormula.cs" />
+    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\FightInfo.cs" />
     <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ModAttribute.cs" />
     <Compile Include="Assets\Scripts\Role\ATTRIBUTE\PlayerPropertyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\BindRole.cs" />
@@ -137,9 +141,12 @@
     <Compile Include="Assets\Scripts\Role\GameObjSpawn.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\MFS_TALBE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\MFSTable.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\MFSTableManager.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModAnimation.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModCamera.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModFight.cs" />
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
@@ -150,6 +157,8 @@
     <Compile Include="Assets\Scripts\Role\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Role.cs" />
     <Compile Include="Assets\Scripts\Role\ROLE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleAnimationManager\AniInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleAnimationManager\AniInfoStaticManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationType.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
@@ -185,10 +194,12 @@
     <Compile Include="Assets\Scripts\UI\LandPlane.cs" />
     <Compile Include="Assets\Scripts\UI\UICamera.cs" />
     <Compile Include="Assets\Scripts\UtilityLoader.cs" />
+    <None Include="Assets\Resources\conf\DataFile\MFSTable.txt" />
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
     <None Include="Assets\Resources\conf\res\normalInfo.txt" />
     <None Include="Assets\Model\RoleModel\Player\cike\动画帧数刺客.txt" />
+    <None Include="Assets\Resources\conf\Anim\Animation.txt" />
     <None Include="Assets\Resources\conf\res\RenderSettings.txt" />
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />

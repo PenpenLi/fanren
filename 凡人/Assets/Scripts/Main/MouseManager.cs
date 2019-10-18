@@ -38,24 +38,17 @@ public class MouseManager : MonoBehaviour
     /// <param name="isShow"></param>
 	public static void ShowCursor(bool isShow)
 	{
-		if (!Application.isEditor)
-		{
-            Cursor.visible = isShow;
-            MouseManager.LockCursor(!isShow);
-		}
-	}
+        Cursor.visible = isShow;
+    }
 
     /// <summary>
     /// 锁定鼠标
     /// </summary>
     /// <param name="isLock"></param>
-    public static void LockCursor(bool isLock)
+    public static void LockCursor()
 	{
-		if (!Application.isEditor)
-		{
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-	}
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
 	private void OnGUI()
 	{

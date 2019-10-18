@@ -52,7 +52,7 @@ public class ControlStateWalkForward : ControlStateBase
         //ModBuffProperty modBuffProperty = (ModBuffProperty)this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF);
         //if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC && modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND) != 0)
         //{
-        //    return false;
+            return false;
         //}
         base.OnEnter(ceb);
         Vector3 vector = Vector3.zero;
@@ -120,8 +120,8 @@ public class ControlStateWalkForward : ControlStateBase
 
     private void SetSpeed()
     {
-        //float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
-        //this.m_cMove.Speed = attributeValue;
+        float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        this.m_cMove.Speed = attributeValue;
         //float attributeValue2 = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN);
         //if (attributeValue2 == 0f)
         //{

@@ -39,7 +39,7 @@ public class Role
 
     private int bevTreeID;
 
-    //private MFS_TALBE_TYPE m_eMFSType;
+    private MFS_TALBE_TYPE m_eMFSType;
 
     //private MonsterHp _monsterHp;
 
@@ -98,17 +98,17 @@ public class Role
     //		}
     //	}
 
-    //	public MFS_TALBE_TYPE MFSType
-    //	{
-    //		get
-    //		{
-    //			return this.m_eMFSType;
-    //		}
-    //		set
-    //		{
-    //			this.m_eMFSType = value;
-    //		}
-    //	}
+    public MFS_TALBE_TYPE MFSType
+    {
+        get
+        {
+            return this.m_eMFSType;
+        }
+        set
+        {
+            this.m_eMFSType = value;
+        }
+    }
 
     //	public int BevTreeID
     //	{

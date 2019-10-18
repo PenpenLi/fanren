@@ -11,7 +11,7 @@ public class MoveTarget : MoveBase
 
     private bool enableSoundEffect;
 
-    //private ModAttribute modAtt;
+    private ModAttribute modAtt;
 
     //private ModVoice modVoice;
 
@@ -21,10 +21,10 @@ public class MoveTarget : MoveBase
 
     public MoveTarget(Role role, CharacterController cc) : base(role, cc)
 	{
-		//this.rotate = new Rotate(role.GetTrans(), 800f, Vector3.zero);
-		//this.modAtt = (ModAttribute)role.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
-		//this.modVoice = (ModVoice)role.GetModule(MODULE_TYPE.MT_VOICE);
-	}
+        this.rotate = new Rotate(role.GetTrans(), 800f, Vector3.zero);
+        this.modAtt = (ModAttribute)role.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
+        //this.modVoice = (ModVoice)role.GetModule(MODULE_TYPE.MT_VOICE);
+    }
 
 	public bool EnableDirtEffect { get; set; }
 

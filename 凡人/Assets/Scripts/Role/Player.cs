@@ -238,6 +238,9 @@ public class Player : Role
     //		return this.playerInfo.headPath;
     //	}
 
+    /// <summary>
+    /// 每帧执行
+    /// </summary>
     public override void RoleProcess()
     {
         base.RoleProcess();
@@ -269,30 +272,9 @@ public class Player : Role
         //this.m_BottleSystem.Update();
     }
 
-    //	// Token: 0x060022B8 RID: 8888 RVA: 0x000ECA8C File Offset: 0x000EAC8C
-    //	private void Update()
-    //	{
-    //		if (Application.isEditor)
-    //		{
-    //			if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha8))
-    //			{
-    //				this.m_cAmbitSystem.AddRageSoule(5f);
-    //			}
-    //			if (UnityEngine.Input.GetKeyDown(KeyCode.N))
-    //			{
-    //				this.m_cAmbitSystem.SkillHotKey();
-    //			}
-    //			if (UnityEngine.Input.GetKeyDown(KeyCode.Alpha0))
-    //			{
-    //				this.m_cAmbitSystem.LevelUp();
-    //			}
-    //		}
-    //	}
-
-    //	// Token: 0x060022B9 RID: 8889 RVA: 0x000ECAF0 File Offset: 0x000EACF0
-    //	private void CheckFighting()
-    //	{
-    //	}
+    private void CheckFighting()
+    {
+    }
 
     //	// Token: 0x060022BA RID: 8890 RVA: 0x000ECAF4 File Offset: 0x000EACF4
     //	public virtual bool ChangeModelByRole(int modelID, bool destroyOld)
@@ -518,7 +500,6 @@ public class Player : Role
         //CameraEffectManager.GetAllCameraEffectComponent();
     }
 
-    //	// Token: 0x060022C0 RID: 8896 RVA: 0x000ED208 File Offset: 0x000EB408
     //	public void BindAutoMisson()
     //	{
     //		ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
@@ -887,7 +868,6 @@ public class Player : Role
 
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;
-        Debug.Log(this.m_cModCamera.cameraState);
         if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
         {
             if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
@@ -946,14 +926,15 @@ public class Player : Role
         }
         else
         {
+            //攻击待机
             //if (!this.weaponManager.weaponeActive)
             //{
             //    this.modMFS.ChangeState(new ControlEventIdle(false));
             //}
-            //if (vector != Vector3.zero)
-            //{
-            //    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-            //}
+            if (vector != Vector3.zero)
+            {
+                this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+            }
         }
     }
 
@@ -1072,6 +1053,12 @@ public class Player : Role
         return result;
     }
 
+    /// <summary>
+    /// 设置目标
+    /// </summary>
+    /// <param name="VerInput"></param>
+    /// <param name="HorInput"></param>
+    /// <param name="distance"></param>
     public void SetTargetByKey(float VerInput, float HorInput, float distance)
     {
         //this.m_cModFight.VerInput = VerInput;

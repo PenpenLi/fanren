@@ -22,13 +22,13 @@ public class ModAttribute : Module
 
     //private List<ModAttribute.Attribute> AttPercentType = new List<ModAttribute.Attribute>();
 
-    //private AttackFormula _PhyAttackMan;
+    private AttackFormula _PhyAttackMan;
 
-    //private AttackFormula _MagAttackMan;
+    private AttackFormula _MagAttackMan;
 
-    //private DefenceFormula _PhyDefenceMan;
+    private DefenceFormula _PhyDefenceMan;
 
-    //private DefenceFormula _MagDefenceMan;
+    private DefenceFormula _MagDefenceMan;
 
     private Player player;
 
@@ -37,69 +37,69 @@ public class ModAttribute : Module
 		base.ModType = MODULE_TYPE.MT_ATTRIBUTE;
 	}
 
-    //public AttackFormula PhyAttackMan
-    //{
-    //	get
-    //	{
-    //		if (this._PhyAttackMan == null)
-    //		{
-    //			this._PhyAttackMan = new AttackFormula(this._role, true);
-    //		}
-    //		return this._PhyAttackMan;
-    //	}
-    //	private set
-    //	{
-    //		this._PhyAttackMan = value;
-    //	}
-    //}
+    public AttackFormula PhyAttackMan
+    {
+        get
+        {
+            if (this._PhyAttackMan == null)
+            {
+                this._PhyAttackMan = new AttackFormula(this._role, true);
+            }
+            return this._PhyAttackMan;
+        }
+        private set
+        {
+            this._PhyAttackMan = value;
+        }
+    }
 
-    //public AttackFormula MagAttackMan
-    //{
-    //	get
-    //	{
-    //		if (this._MagAttackMan == null)
-    //		{
-    //			this._MagAttackMan = new AttackFormula(this._role, false);
-    //		}
-    //		return this._MagAttackMan;
-    //	}
-    //	private set
-    //	{
-    //		this._MagAttackMan = value;
-    //	}
-    //}
+    public AttackFormula MagAttackMan
+    {
+        get
+        {
+            if (this._MagAttackMan == null)
+            {
+                this._MagAttackMan = new AttackFormula(this._role, false);
+            }
+            return this._MagAttackMan;
+        }
+        private set
+        {
+            this._MagAttackMan = value;
+        }
+    }
 
-    //public DefenceFormula PhyDefenceMan
-    //{
-    //	get
-    //	{
-    //		if (this._PhyDefenceMan == null)
-    //		{
-    //			this._PhyDefenceMan = new DefenceFormula(this._role, true);
-    //		}
-    //		return this._PhyDefenceMan;
-    //	}
-    //	private set
-    //	{
-    //		this._PhyDefenceMan = value;
-    //	}
-    //}
+    public DefenceFormula PhyDefenceMan
+    {
+        get
+        {
+            if (this._PhyDefenceMan == null)
+            {
+                this._PhyDefenceMan = new DefenceFormula(this._role, true);
+            }
+            return this._PhyDefenceMan;
+        }
+        private set
+        {
+            this._PhyDefenceMan = value;
+        }
+    }
 
-    //public DefenceFormula MagDefenceMan
-    //{
-    //	get
-    //	{
-    //		if (this._MagDefenceMan == null)
-    //		{
-    //			this._MagDefenceMan = new DefenceFormula(this._role, false);
-    //		}
-    //		return this._MagDefenceMan;
-    //	}
-    //	private set
-    //	{
-    //		this._MagDefenceMan = value;
-    //	}
-    //}
+    public DefenceFormula MagDefenceMan
+    {
+        get
+        {
+            if (this._MagDefenceMan == null)
+            {
+                this._MagDefenceMan = new DefenceFormula(this._role, false);
+            }
+            return this._MagDefenceMan;
+        }
+        private set
+        {
+            this._MagDefenceMan = value;
+        }
+    }
 
     public override bool Init()
     {
@@ -133,7 +133,12 @@ public class ModAttribute : Module
     //	this.AttList.Remove(attribute);
     //}
 
-
+    /// <summary>
+    /// 设置属性数值
+    /// </summary>
+    /// <param name="attType"></param>
+    /// <param name="value"></param>
+    /// <param name="bBase"></param>
     public void SetAttributeNum(ATTRIBUTE_TYPE attType, float value, bool bBase)
     {
         ModAttribute.Att_Numerical att_Numerical = this.GetAttributeCreate(attType) as ModAttribute.Att_Numerical;
@@ -353,32 +358,37 @@ public class ModAttribute : Module
     //	att_StringIndex.AddStr(strIdx);
     //}
 
+    /// <summary>
+    /// 获取属性值
+    /// </summary>
+    /// <param name="attType"></param>
+    /// <returns></returns>
     public float GetAttributeValue(ATTRIBUTE_TYPE attType)
     {
-        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_ATK)
-        //{
-        //    return this.PhyAttackMan.GetStaticAttackValue();
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_ATK)
-        //{
-        //    return this.MagAttackMan.GetStaticAttackValue();
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_DEF)
-        //{
-        //    return this.PhyDefenceMan.GetDefenceValue();
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_DEF)
-        //{
-        //    return this.MagDefenceMan.GetDefenceValue();
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_HURTLESS)
-        //{
-        //    float defenceValue = this.PhyDefenceMan.GetDefenceValue();
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_HURTLESS)
-        //{
-        //    float defenceValue2 = this.MagDefenceMan.GetDefenceValue();
-        //}
+        if (attType == ATTRIBUTE_TYPE.ATT_PHY_ATK)
+        {
+            return this.PhyAttackMan.GetStaticAttackValue();
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_MAG_ATK)
+        {
+            return this.MagAttackMan.GetStaticAttackValue();
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_PHY_DEF)
+        {
+            return this.PhyDefenceMan.GetDefenceValue();
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_MAG_DEF)
+        {
+            return this.MagDefenceMan.GetDefenceValue();
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_PHY_HURTLESS)
+        {
+            float defenceValue = this.PhyDefenceMan.GetDefenceValue();
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_MAG_HURTLESS)
+        {
+            float defenceValue2 = this.MagDefenceMan.GetDefenceValue();
+        }
         if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK)
         {
             this.UpdateFiveAttribute(attType);
