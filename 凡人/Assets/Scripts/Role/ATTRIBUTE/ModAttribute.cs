@@ -17,8 +17,8 @@ public class ModAttribute : Module
 
     public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
-    //[HideInInspector]
-    //public List<ModAttribute.Attribute> AttList = new List<ModAttribute.Attribute>();
+    [HideInInspector]
+    public List<ModAttribute.Attribute> AttList = new List<ModAttribute.Attribute>();
 
     //private List<ModAttribute.Attribute> AttPercentType = new List<ModAttribute.Attribute>();
 
@@ -137,38 +137,38 @@ public class ModAttribute : Module
     public void SetAttributeNum(ATTRIBUTE_TYPE attType, float value, bool bBase)
     {
         ModAttribute.Att_Numerical att_Numerical = this.GetAttributeCreate(attType) as ModAttribute.Att_Numerical;
-        //if (this.IsFightType(attType) && !bBase)
-        //{
-        //    return;
-        //}
-        //att_Numerical.Reset();
-        //if (attType == ATTRIBUTE_TYPE.ATT_HP)
-        //{
-        //    bBase = true;
-        //}
-        //if (attType == ATTRIBUTE_TYPE.ATT_LEVEL)
-        //{
-        //    bBase = true;
-        //    int num = (int)value;
-        //    if (num < 0)
-        //    {
-        //        num = 0;
-        //    }
-        //    if (num > 6)
-        //    {
-        //        num = 6;
-        //    }
-        //    value = (float)num;
-        //}
-        //if (bBase)
-        //{
-        //    att_Numerical.BaseValue = value;
-        //}
-        //else
-        //{
-        //    att_Numerical.AddValue = value;
-        //}
-        //this.UpdateFiveAttribute(attType);
+        if (this.IsFightType(attType) && !bBase)
+        {
+            return;
+        }
+        att_Numerical.Reset();
+        if (attType == ATTRIBUTE_TYPE.ATT_HP)
+        {
+            bBase = true;
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_LEVEL)
+        {
+            bBase = true;
+            int num = (int)value;
+            if (num < 0)
+            {
+                num = 0;
+            }
+            if (num > 6)
+            {
+                num = 6;
+            }
+            value = (float)num;
+        }
+        if (bBase)
+        {
+            att_Numerical.BaseValue = value;
+        }
+        else
+        {
+            att_Numerical.AddValue = value;
+        }
+        this.UpdateFiveAttribute(attType);
         //this.UpdateCriticalAttribute(attType);
         //if (this._role._roleType == ROLE_TYPE.RT_PLAYER && (attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP))
         //{
@@ -353,48 +353,47 @@ public class ModAttribute : Module
     //	att_StringIndex.AddStr(strIdx);
     //}
 
-    //// Token: 0x06002199 RID: 8601 RVA: 0x000E544C File Offset: 0x000E364C
-    //public float GetAttributeValue(ATTRIBUTE_TYPE attType)
-    //{
-    //	if (attType == ATTRIBUTE_TYPE.ATT_PHY_ATK)
-    //	{
-    //		return this.PhyAttackMan.GetStaticAttackValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_MAG_ATK)
-    //	{
-    //		return this.MagAttackMan.GetStaticAttackValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_PHY_DEF)
-    //	{
-    //		return this.PhyDefenceMan.GetDefenceValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_MAG_DEF)
-    //	{
-    //		return this.MagDefenceMan.GetDefenceValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_PHY_HURTLESS)
-    //	{
-    //		float defenceValue = this.PhyDefenceMan.GetDefenceValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_MAG_HURTLESS)
-    //	{
-    //		float defenceValue2 = this.MagDefenceMan.GetDefenceValue();
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK)
-    //	{
-    //		this.UpdateFiveAttribute(attType);
-    //	}
-    //	ModAttribute.Att_Numerical att_Numerical = this.GetAttribute(attType) as ModAttribute.Att_Numerical;
-    //	if (att_Numerical == null)
-    //	{
-    //		return 0f;
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK)
-    //	{
-    //		return att_Numerical.BaseValue * (1f + att_Numerical.AddValue);
-    //	}
-    //	return att_Numerical.Value;
-    //}
+    public float GetAttributeValue(ATTRIBUTE_TYPE attType)
+    {
+        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_ATK)
+        //{
+        //    return this.PhyAttackMan.GetStaticAttackValue();
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_ATK)
+        //{
+        //    return this.MagAttackMan.GetStaticAttackValue();
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_DEF)
+        //{
+        //    return this.PhyDefenceMan.GetDefenceValue();
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_DEF)
+        //{
+        //    return this.MagDefenceMan.GetDefenceValue();
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_PHY_HURTLESS)
+        //{
+        //    float defenceValue = this.PhyDefenceMan.GetDefenceValue();
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_MAG_HURTLESS)
+        //{
+        //    float defenceValue2 = this.MagDefenceMan.GetDefenceValue();
+        //}
+        if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK)
+        {
+            this.UpdateFiveAttribute(attType);
+        }
+        ModAttribute.Att_Numerical att_Numerical = this.GetAttribute(attType) as ModAttribute.Att_Numerical;
+        if (att_Numerical == null)
+        {
+            return 0f;
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK)
+        {
+            return att_Numerical.BaseValue * (1f + att_Numerical.AddValue);
+        }
+        return att_Numerical.Value;
+    }
 
     //// Token: 0x0600219A RID: 8602 RVA: 0x000E551C File Offset: 0x000E371C
     //public float GetAttributeBaseNum(ATTRIBUTE_TYPE attType)
@@ -767,40 +766,38 @@ public class ModAttribute : Module
     private ModAttribute.Attribute GetAttributeCreate(ATTRIBUTE_TYPE attType)
     {
         ModAttribute.Attribute attribute = this.GetAttribute(attType);
-        //if (attribute == null)
-        //{
-        //    if (attType < ATTRIBUTE_TYPE.ATT_NUMERICAL_END)
-        //    {
-        //        attribute = new ModAttribute.Att_Numerical();
-        //    }
-        //    else
-        //    {
-        //        //attribute = new ModAttribute.Att_StringIndex();
-        //    }
-        //    //attribute.attType = attType;
-        //   // this.AttList.Add(attribute);
-        //}
-        //if (attribute == null)
-        //{
-        //    Debug.Log("Attribute is also null");
-        //}
+        if (attribute == null)
+        {
+            if (attType < ATTRIBUTE_TYPE.ATT_NUMERICAL_END)
+            {
+                attribute = new ModAttribute.Att_Numerical();
+            }
+            else
+            {
+                attribute = new ModAttribute.Att_StringIndex();
+            }
+            attribute.attType = attType;
+            this.AttList.Add(attribute);
+        }
+        if (attribute == null)
+        {
+            Debug.Log("Attribute is also null");
+        }
         return attribute;
     }
 
     public ModAttribute.Attribute GetAttribute(ATTRIBUTE_TYPE attType)
     {
-        //for (int i = 0; i < this.AttList.Count; i++)
-        //{
-        //    if (this.AttList[i].attType == attType)
-        //    {
-        //        return this.AttList[i];
-        //    }
-        //}
+        for (int i = 0; i < this.AttList.Count; i++)
+        {
+            if (this.AttList[i].attType == attType)
+            {
+                return this.AttList[i];
+            }
+        }
         return null;
     }
 
-    //// Token: 0x17000413 RID: 1043
-    //// (get) Token: 0x060021A4 RID: 8612 RVA: 0x000E5F0C File Offset: 0x000E410C
     //private Player MainPlayer
     //{
     //	get
@@ -910,34 +907,33 @@ public class ModAttribute : Module
     //	}
     //}
 
-    //// Token: 0x060021A6 RID: 8614 RVA: 0x000E6224 File Offset: 0x000E4424
-    //private void UpdateFiveAttribute(ATTRIBUTE_TYPE attType)
-    //{
-    //	if (this.eFiveTypes == null)
-    //	{
-    //		return;
-    //	}
-    //	bool flag = false;
-    //	for (int i = 0; i < this.eFiveTypes.Length; i++)
-    //	{
-    //		if (attType == this.eFiveTypes[i])
-    //		{
-    //			flag = true;
-    //			break;
-    //		}
-    //	}
-    //	if (!flag)
-    //	{
-    //		return;
-    //	}
-    //	float num = 0f;
-    //	for (int j = 0; j < this.eFiveTypes.Length; j++)
-    //	{
-    //		num += this.GetAttributeValue(this.eFiveTypes[j]);
-    //	}
-    //	num /= 5f;
-    //	this.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK, num, true);
-    //}
+    private void UpdateFiveAttribute(ATTRIBUTE_TYPE attType)
+    {
+        if (this.eFiveTypes == null)
+        {
+            return;
+        }
+        bool flag = false;
+        for (int i = 0; i < this.eFiveTypes.Length; i++)
+        {
+            if (attType == this.eFiveTypes[i])
+            {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag)
+        {
+            return;
+        }
+        float num = 0f;
+        for (int j = 0; j < this.eFiveTypes.Length; j++)
+        {
+            num += this.GetAttributeValue(this.eFiveTypes[j]);
+        }
+        num /= 5f;
+        this.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK, num, true);
+    }
 
     //// Token: 0x060021A7 RID: 8615 RVA: 0x000E62B8 File Offset: 0x000E44B8
     //private void UpdateCriticalAttribute(ATTRIBUTE_TYPE attType)
@@ -1001,11 +997,10 @@ public class ModAttribute : Module
     //	return num;
     //}
 
-    //// Token: 0x060021AA RID: 8618 RVA: 0x00017475 File Offset: 0x00015675
-    //private bool IsFightType(ATTRIBUTE_TYPE type)
-    //{
-    //	return type == ATTRIBUTE_TYPE.ATT_PHY_ATK || type == ATTRIBUTE_TYPE.ATT_MAG_ATK || type == ATTRIBUTE_TYPE.ATT_PHY_DEF || type == ATTRIBUTE_TYPE.ATT_MAG_DEF;
-    //}
+    private bool IsFightType(ATTRIBUTE_TYPE type)
+    {
+        return type == ATTRIBUTE_TYPE.ATT_PHY_ATK || type == ATTRIBUTE_TYPE.ATT_MAG_ATK || type == ATTRIBUTE_TYPE.ATT_PHY_DEF || type == ATTRIBUTE_TYPE.ATT_MAG_DEF;
+    }
 
     //// Token: 0x060021AB RID: 8619 RVA: 0x000E6444 File Offset: 0x000E4644
     //private float GetReferLevel(float boundary)
@@ -1103,29 +1098,23 @@ public class ModAttribute : Module
     //	return 0f;
     //}
 
-    //// Token: 0x04001E84 RID: 7812
-    //public const int ATTACK_DESIRE_CRITICAL = 100;
+    public const int ATTACK_DESIRE_CRITICAL = 100;
 
-    //// Token: 0x04001E85 RID: 7813
-    //private ATTRIBUTE_TYPE[] eFiveTypes = new ATTRIBUTE_TYPE[]
-    //{
-    //	ATTRIBUTE_TYPE.ATT_METAL_ELEMENT,
-    //	ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT,
-    //	ATTRIBUTE_TYPE.ATT_WATER_ELEMENT,
-    //	ATTRIBUTE_TYPE.ATT_FIRE_ELEMENT,
-    //	ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT
-    //};
+    private ATTRIBUTE_TYPE[] eFiveTypes = new ATTRIBUTE_TYPE[]
+    {
+        ATTRIBUTE_TYPE.ATT_METAL_ELEMENT,
+        ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT,
+        ATTRIBUTE_TYPE.ATT_WATER_ELEMENT,
+        ATTRIBUTE_TYPE.ATT_FIRE_ELEMENT,
+        ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT
+    };
 
+    public class HpReduceInfo
+    {
+        public float time;
 
-    //// Token: 0x02000518 RID: 1304
-    //public class HpReduceInfo
-    //{
-    //	// Token: 0x04001E92 RID: 7826
-    //	public float time;
-
-    //	// Token: 0x04001E93 RID: 7827
-    //	public float value;
-    //}
+        public float value;
+    }
 
     [Serializable]
     public class Attribute
@@ -1187,60 +1176,53 @@ public class ModAttribute : Module
         }
     }
 
-    //[Serializable]
-    //public class Att_StringIndex : ModAttribute.Attribute
-    //{
-    //	// Token: 0x060021B8 RID: 8632 RVA: 0x00017525 File Offset: 0x00015725
-    //	public bool AddStr(int strIdx)
-    //	{
-    //		if (this._strIdxList.Contains(strIdx))
-    //		{
-    //			return false;
-    //		}
-    //		this._strIdxList.Add(strIdx);
-    //		return true;
-    //	}
+    [Serializable]
+    public class Att_StringIndex : ModAttribute.Attribute
+    {
+        private List<int> _strIdxList = new List<int>();
 
-    //	// Token: 0x060021B9 RID: 8633 RVA: 0x00017547 File Offset: 0x00015747
-    //	public void ClearStrList()
-    //	{
-    //		this._strIdxList.Clear();
-    //	}
+        public bool AddStr(int strIdx)
+        {
+            if (this._strIdxList.Contains(strIdx))
+            {
+                return false;
+            }
+            this._strIdxList.Add(strIdx);
+            return true;
+        }
 
-    //	// Token: 0x060021BA RID: 8634 RVA: 0x00017554 File Offset: 0x00015754
-    //	public int GetStrListCount()
-    //	{
-    //		return this._strIdxList.Count;
-    //	}
+        public void ClearStrList()
+        {
+            this._strIdxList.Clear();
+        }
 
-    //	// Token: 0x060021BB RID: 8635 RVA: 0x000E6648 File Offset: 0x000E4848
-    //	public int GetRandomStrIdx()
-    //	{
-    //		int nIdx = UnityEngine.Random.Range(0, this.GetStrListCount());
-    //		return this.GetStrByIndex(nIdx);
-    //	}
+        public int GetStrListCount()
+        {
+            return this._strIdxList.Count;
+        }
 
-    //	// Token: 0x060021BC RID: 8636 RVA: 0x00017561 File Offset: 0x00015761
-    //	public int GetStrByIndex(int nIdx)
-    //	{
-    //		if (nIdx < 0 || nIdx >= this._strIdxList.Count)
-    //		{
-    //			return -1;
-    //		}
-    //		return this._strIdxList[nIdx];
-    //	}
+        public int GetRandomStrIdx()
+        {
+            int nIdx = UnityEngine.Random.Range(0, this.GetStrListCount());
+            return this.GetStrByIndex(nIdx);
+        }
 
-    //	// Token: 0x060021BD RID: 8637 RVA: 0x00017589 File Offset: 0x00015789
-    //	public int GetStrIdx()
-    //	{
-    //		if (this._strIdxList.Count <= 0)
-    //		{
-    //			return -1;
-    //		}
-    //		return this.GetStrByIndex(0);
-    //	}
+        public int GetStrByIndex(int nIdx)
+        {
+            if (nIdx < 0 || nIdx >= this._strIdxList.Count)
+            {
+                return -1;
+            }
+            return this._strIdxList[nIdx];
+        }
 
-    //	// Token: 0x04001E98 RID: 7832
-    //	private List<int> _strIdxList = new List<int>();
-    //}
-}
+        public int GetStrIdx()
+        {
+            if (this._strIdxList.Count <= 0)
+            {
+                return -1;
+            }
+            return this.GetStrByIndex(0);
+        }
+    }
+    }

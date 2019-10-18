@@ -456,8 +456,8 @@ public class Player : Role
                 //module = new ModOrganization(this);
                 break;
             case MODULE_TYPE.MT_ATTRIBUTE:
-                //module = new ModAttribute(this);
-                //this.m_cModAttribute = (ModAttribute)module;
+                module = new ModAttribute(this);
+                this.m_cModAttribute = (ModAttribute)module;
                 break;
             case MODULE_TYPE.MT_FIGHT:
                 //module = new ModFight(this);

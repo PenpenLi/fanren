@@ -13,9 +13,18 @@ public enum MODULE_TYPE
     /// 摄像机
     /// </summary>
 	MT_CAMERA,
+    /// <summary>
+    /// 运动
+    /// </summary>
 	MT_MOTION,
 	MT_ORGANIZATION,
+    /// <summary>
+    /// 属性
+    /// </summary>
 	MT_ATTRIBUTE,
+    /// <summary>
+    /// 战斗
+    /// </summary>
 	MT_FIGHT,
 	MT_SKILL,
 	MT_BUFF,
