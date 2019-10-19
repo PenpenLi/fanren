@@ -6,8 +6,14 @@ using UnityEngine;
 
 public class Role
 {
+    /// <summary>
+    /// 最大ID
+    /// </summary>
     public const int nMaxID = 100000;
 
+    /// <summary>
+    /// 角色类型
+    /// </summary>
     public ROLE_TYPE _roleType;
 
     /// <summary>
@@ -25,7 +31,7 @@ public class Role
 
     private string _roleName;
 
-    //private GameObjSpawn.SpawnInfo _spawnInfo;
+    private GameObjSpawn.SpawnInfo _spawnInfo;
 
     private bool _bRagdoll;
 
@@ -47,8 +53,10 @@ public class Role
 
     //private bool invincible;
 
-    //private bool isDestroyed;
-
+    /// <summary>
+    /// 是否被销毁
+    /// </summary>
+    private bool isDestroyed;
 
     private static Transform zeroTrans;
 
@@ -426,6 +434,11 @@ public class Role
         return false;
     }
 
+    /// <summary>
+    /// 获得模块
+    /// </summary>
+    /// <param name="mt"></param>
+    /// <returns></returns>
     public Module GetModule(MODULE_TYPE mt)
     {
         for (int i = 0; i < this._modList.Count; i++)
@@ -606,16 +619,19 @@ public class Role
         }
     }
 
-    //	// Token: 0x06002389 RID: 9097 RVA: 0x000F02DC File Offset: 0x000EE4DC
-    //	public int GetCurHp()
-    //	{
-    //		ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //		if (modAttribute == null)
-    //		{
-    //			return 0;
-    //		}
-    //		return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
-    //	}
+    /// <summary>
+    /// 获得当前HP
+    /// </summary>
+    /// <returns></returns>
+    public int GetCurHp()
+    {
+        ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        if (modAttribute == null)
+        {
+            return 0;
+        }
+        return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
+    }
 
     //	// Token: 0x0600238A RID: 9098 RVA: 0x000F0308 File Offset: 0x000EE508
     //	public float GetCurHpPercent()
@@ -627,11 +643,14 @@ public class Role
     //		return (float)this.GetCurHp() / (float)this.GetMaxHp();
     //	}
 
-    //	// Token: 0x0600238B RID: 9099 RVA: 0x000F0338 File Offset: 0x000EE538
-    //	public bool isAlive()
-    //	{
-    //		return !this.isDestroyed && (!(this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute) || this.GetCurHp() > 0);
-    //	}
+    /// <summary>
+    /// 是否存活
+    /// </summary>
+    /// <returns></returns>
+    public bool isAlive()
+    {
+        return !this.isDestroyed && (!(this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute) || this.GetCurHp() > 0);
+    }
 
     //	// Token: 0x0600238C RID: 9100 RVA: 0x000F0378 File Offset: 0x000EE578
     //	public int GetMaxHp()
@@ -941,7 +960,6 @@ public class Role
     //		return modBuffProperty != null && modBuffProperty.ContainBuff(buffId);
     //	}
 
-    //	// Token: 0x060023A6 RID: 9126 RVA: 0x000F0A58 File Offset: 0x000EEC58
     //	public void AddRetinue(Role role)
     //	{
     //		if (role == null || this.RetinueList.Contains(role))
@@ -952,7 +970,6 @@ public class Role
     //		role.ParentRole = this;
     //	}
 
-    //	// Token: 0x060023A7 RID: 9127 RVA: 0x000F0A88 File Offset: 0x000EEC88
     //	public void DelRetinue(Role role)
     //	{
     //		if (role == null || !this.RetinueList.Contains(role))

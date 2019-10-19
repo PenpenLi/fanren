@@ -6,8 +6,17 @@
 public enum ATTRIBUTE_TYPE
 {
 	ATT_NONE = -1,
+    /// <summary>
+    /// 等级
+    /// </summary>
 	ATT_LEVEL,
+    /// <summary>
+    /// 当前HP
+    /// </summary>
 	ATT_HP,
+    /// <summary>
+    /// 最大HP
+    /// </summary>
 	ATT_MAXHP,
 	ATT_MP,
 	ATT_MAXMP,

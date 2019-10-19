@@ -17,6 +17,9 @@ public class RoleManager : MonoBehaviour
             5031
     };
 
+    /// <summary>
+    /// 当前ID
+    /// </summary>
     private int currentId;
 
     /// <summary>
@@ -51,8 +54,8 @@ public class RoleManager : MonoBehaviour
     [HideInInspector]
     public List<SpawnManager> SpawnManList = new List<SpawnManager>();
 
-    //[HideInInspector]
-    //public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
+    [HideInInspector]
+    public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
 
     //[HideInInspector]
     //public List<HelpManager> HelpList = new List<HelpManager>();
@@ -336,17 +339,17 @@ public class RoleManager : MonoBehaviour
         }
     }
 
-    //	public SpawnManager GetSMById(int id)
-    //	{
-    //		for (int i = 0; i < this.SpawnManList.Count; i++)
-    //		{
-    //			if (id == this.SpawnManList[i].ID)
-    //			{
-    //				return this.SpawnManList[i];
-    //			}
-    //		}
-    //		return null;
-    //	}
+    public SpawnManager GetSMById(int id)
+    {
+        for (int i = 0; i < this.SpawnManList.Count; i++)
+        {
+            if (id == this.SpawnManList[i].ID)
+            {
+                return this.SpawnManList[i];
+            }
+        }
+        return null;
+    }
 
     //	public List<GameObjSpawn> GetSpawnListByAdminId(int id)
     //	{
@@ -668,84 +671,84 @@ public class RoleManager : MonoBehaviour
     //		return false;
     //	}
 
-    //	//// Token: 0x0600246E RID: 9326 RVA: 0x000F7B04 File Offset: 0x000F5D04
-    //	//public OperableItemBase CreateOperItemGo(GameObjSpawn.SpawnInfo spawnInfo)
-    //	//{
-    //	//	while (this.HaveObjectOnPos(spawnInfo.position))
-    //	//	{
-    //	//		spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
-    //	//	}
-    //	//	if (spawnInfo.SType == GameObjSpawn.SpawnType.CHEST)
-    //	//	{
-    //	//		return this.CreateChestGo(spawnInfo);
-    //	//	}
-    //	//	if (spawnInfo.SType == GameObjSpawn.SpawnType.HERBAL)
-    //	//	{
-    //	//		return this.CreateHerbalGo(spawnInfo);
-    //	//	}
-    //	//	if (spawnInfo.SType == GameObjSpawn.SpawnType.SOULBALL)
-    //	//	{
-    //	//		return this.CreateSoulBall(spawnInfo);
-    //	//	}
-    //	//	if (spawnInfo.SType == GameObjSpawn.SpawnType.ORGAN)
-    //	//	{
-    //	//		return this.CreateOrganGo(spawnInfo);
-    //	//	}
-    //	//	return null;
-    //	//}
+    public OperableItemBase CreateOperItemGo(GameObjSpawn.SpawnInfo spawnInfo)
+    {
+        //while (this.HaveObjectOnPos(spawnInfo.position))
+        //{
+        //    spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.CHEST)
+        //{
+        //    return this.CreateChestGo(spawnInfo);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.HERBAL)
+        //{
+        //    return this.CreateHerbalGo(spawnInfo);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.SOULBALL)
+        //{
+        //    return this.CreateSoulBall(spawnInfo);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.ORGAN)
+        //{
+        //    return this.CreateOrganGo(spawnInfo);
+        //}
+        return null;
+    }
 
-    //	//// Token: 0x0600246F RID: 9327 RVA: 0x000F7B98 File Offset: 0x000F5D98
-    //	//public OperableItemBase CreateOperItemGo(OperableSaveDataBase osdb)
-    //	//{
-    //	//	if (osdb.type == OperableItemBase.OperableItemType.Op_ChestOpe)
-    //	//	{
-    //	//		return this.CreateChestGo(osdb);
-    //	//	}
-    //	//	if (osdb.type == OperableItemBase.OperableItemType.Op_HerbalOpe)
-    //	//	{
-    //	//		return this.CreateHerbalGo(osdb);
-    //	//	}
-    //	//	if (osdb.type == OperableItemBase.OperableItemType.Op_SoulBall)
-    //	//	{
-    //	//	}
-    //	//	if (osdb.type == OperableItemBase.OperableItemType.Op_OrganOpe)
-    //	//	{
-    //	//	}
-    //	//	return null;
-    //	//}
+    public OperableItemBase CreateOperItemGo(OperableSaveDataBase osdb)
+    {
+        //if (osdb.type == OperableItemBase.OperableItemType.Op_ChestOpe)
+        //{
+        //    return this.CreateChestGo(osdb);
+        //}
+        //if (osdb.type == OperableItemBase.OperableItemType.Op_HerbalOpe)
+        //{
+        //    return this.CreateHerbalGo(osdb);
+        //}
+        if (osdb.type == OperableItemBase.OperableItemType.Op_SoulBall)
+        {
+        }
+        if (osdb.type == OperableItemBase.OperableItemType.Op_OrganOpe)
+        {
+        }
+        return null;
+    }
 
-    //	// Token: 0x06002470 RID: 9328 RVA: 0x000F7BE8 File Offset: 0x000F5DE8
-    //	public Role CreateRoleGO(GameObjSpawn.SpawnInfo spawnInfo, bool isSave)
-    //	{
-    //		Role role = null;
-    //		while (this.HaveObjectOnPos(spawnInfo.position))
-    //		{
-    //			spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
-    //		}
-    //		if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
-    //		{
-    //			role = this.CreateMonsterGO(spawnInfo);
-    //		}
-    //		if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
-    //		{
-    //			role = this.CreateNpcGo(spawnInfo);
-    //		}
-    //		if (!isSave && role != null)
-    //		{
-    //			if (this.StageRoleList.Contains(role))
-    //			{
-    //				Debug.Log(DU.Err(new object[]
-    //				{
-    //					role.name
-    //				}));
-    //			}
-    //			else
-    //			{
-    //				this.StageRoleList.Add(role);
-    //			}
-    //		}
-    //		return role;
-    //	}
+    /// <summary>
+    /// 创建角色对象
+    /// </summary>
+    /// <param name="spawnInfo"></param>
+    /// <param name="isSave"></param>
+    /// <returns></returns>
+    public Role CreateRoleGO(GameObjSpawn.SpawnInfo spawnInfo, bool isSave)
+    {
+        Role role = null;
+        //while (this.HaveObjectOnPos(spawnInfo.position))
+        //{
+        //    spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
+        //{
+        //    role = this.CreateMonsterGO(spawnInfo);
+        //}
+        //if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
+        //{
+        //    role = this.CreateNpcGo(spawnInfo);
+        //}
+        if (!isSave && role != null)
+        {
+            if (this.StageRoleList.Contains(role))
+            {
+                Debug.Log(role.name);
+            }
+            else
+            {
+                this.StageRoleList.Add(role);
+            }
+        }
+        return role;
+    }
 
     //	// Token: 0x06002471 RID: 9329 RVA: 0x000F7C98 File Offset: 0x000F5E98
     //	public void ClearRole()

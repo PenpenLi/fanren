@@ -1,20 +1,36 @@
 ﻿using System;
 
-// Token: 0x02000539 RID: 1337
+/// <summary>
+/// 角色类型
+/// </summary>
 public enum ROLE_TYPE
 {
-	// Token: 0x04001FE8 RID: 8168
+    /// <summary>
+    /// 玩家
+    /// </summary>
 	RT_PLAYER = 1,
-	// Token: 0x04001FE9 RID: 8169
+    /// <summary>
+    /// 伙伴
+    /// </summary>
 	RT_COMRADE,
-	// Token: 0x04001FEA RID: 8170
+    /// <summary>
+    /// 宠物
+    /// </summary>
 	RT_PET,
-	// Token: 0x04001FEB RID: 8171
+    /// <summary>
+    /// 怪物
+    /// </summary>
 	RT_MONSTER,
-	// Token: 0x04001FEC RID: 8172
+    /// <summary>
+    /// NPC
+    /// </summary>
 	RT_NPC,
-	// Token: 0x04001FED RID: 8173
+    /// <summary>
+    /// 防卫
+    /// </summary>
 	RT_ROLEPART,
-	// Token: 0x04001FEE RID: 8174
+    /// <summary>
+    /// 傀儡
+    /// </summary>
 	RT_PUPPET
 }

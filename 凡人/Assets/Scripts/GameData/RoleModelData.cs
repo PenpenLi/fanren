@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityUtility;
 
-
+/// <summary>
+/// 角色模型数据
+/// </summary>
 public class RoleModelData : Singleton<RoleModelData>
 {
     private const string MODEL_CONFIG = "conf/RoleModelConfig";

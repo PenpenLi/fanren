@@ -19,7 +19,7 @@ public class GameData
 
     //public SDM_SpawnMonster SDM_SpawnMon = new SDM_SpawnMonster();
 
-    //public RoleDateInfo RoleData = new RoleDateInfo();
+    public RoleDateInfo RoleData = new RoleDateInfo();
 
     //public SDM_ScriptsGroup SDM_ScrGro = new SDM_ScriptsGroup();
 
@@ -118,7 +118,7 @@ public class GameData
 		//GameData.Instance.NpcTalk2Data.ReadTextInf();
 		//GameData.Instance.NpcTalk3Data.ReadTextInf();
 		//GameData.Instance.NpcTalkMultiAniMan.ReadTextInf();
-		//GameData.Instance.RoleData.LoadConf();
+		GameData.Instance.RoleData.LoadConf();
 		//GameData.Instance.triggerData.ReadData();
 		//GameData.Instance.SDM_SpawnMon.ReadData();
 		//GameData.Instance.SDM_ScrGro.ReadData();

@@ -174,8 +174,8 @@ public class KeyManager : MonoBehaviour
             }
 
             //if (KeyManager.Shift)
-            //{               
-            //    Player.Instance.RunSpeed = 8f;               
+            //{
+            //    Player.Instance.RunSpeed = 8f;
             //}
             //else
             //{
