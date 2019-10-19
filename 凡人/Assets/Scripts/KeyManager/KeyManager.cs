@@ -173,19 +173,19 @@ public class KeyManager : MonoBehaviour
                 KeyManager.controlRole.Input(axisRaw, axisRaw2);
             }
 
-            if (KeyManager.Shift)
-            {               
-                Player.Instance.RunSpeed = 8f;               
-            }
-            else
-            {
-                //ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-                //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-                //{
-                //    return;
-                //}
-                Player.Instance.RunSpeed = 5f;
-            }
+            //if (KeyManager.Shift)
+            //{               
+            //    Player.Instance.RunSpeed = 8f;               
+            //}
+            //else
+            //{
+            //    //ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
+            //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
+            //    //{
+            //    //    return;
+            //    //}
+            //    Player.Instance.RunSpeed = 5f;
+            //}
         }
         if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
         {

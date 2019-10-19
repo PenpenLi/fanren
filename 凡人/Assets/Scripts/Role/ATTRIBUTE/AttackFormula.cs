@@ -135,62 +135,66 @@ public class AttackFormula
     //	return (num7 * num8 * (1f + num + num2 + num3) + num4) * (1f + num5) + num6;
     //}
 
-    //private void UpdateData(FightInfo fight)
-    //{
-    //    if (this._role == null)
-    //    {
-    //        return;
-    //    }
-    //    ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //    if (modAttribute == null)
-    //    {
-    //        return;
-    //    }
-    //    this.ClearData();
-    //    Player player = null;
-    //    if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
-    //    {
-    //        player = (Player)this._role;
-    //    }
-    //    ATTRIBUTE_TYPE attribute_TYPE = this._IsPhyAttack ? ATTRIBUTE_TYPE.ATT_PHY_ATK : ATTRIBUTE_TYPE.ATT_MAG_ATK;
-    //    //this.fBaseValue = modAttribute.GetAttributeBaseNum(attribute_TYPE);
-    //    if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
-    //    {
-    //       // this.fBaseValue += player.ItemFolder.WearOperate.GetDependEquipBaseValue(attribute_TYPE);
-    //    }
-    //    if (fight != null)
-    //    {
-    //        this.fSkillValue = Mathf.Abs(fight._damage);
-    //    }
-    //    this.fWeaponFactor = 1f;
-    //    if (this._role._roleType == ROLE_TYPE.RT_PLAYER && this._IsPhyAttack && fight != null && player != null)
-    //    {
-    //        //this.fWeaponFactor = player.ItemFolder.WearOperate.GetWearWeaponFactor((int)player.ItemFolder.WearOperate.GetWearWeaponType());
-    //    }
-    //    if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
-    //    {
-    //        if (this._IsPhyAttack)
-    //        {
-    //           // this.fEquipPercent = player.ItemFolder.WearOperate.GetDependEquipAddValue(ITEM_ADD_ATTRIBUTE.IAAT_PHYATK_PERCENT);
-    //        }
-    //        else
-    //        {
-    //            //this.fEquipPercent = player.ItemFolder.WearOperate.GetDependEquipAddValue(ITEM_ADD_ATTRIBUTE.IAAT_MAGATK_PERCENT);
-    //        }
-    //        this.fAdeptPercent = ((!this._IsPhyAttack) ? player.m_cAdeptSystem.AddCount.MagAtk : player.m_cAdeptSystem.AddCount.PhyAtk);
-    //        this.fFEPercent = ((!this._IsPhyAttack) ? this.GetFiveAddValue(ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT) : this.GetFiveAddValue(ATTRIBUTE_TYPE.ATT_METAL_ELEMENT));
-    //    }
-    //    ModBuffProperty modBuffProperty = (ModBuffProperty)this._role.GetModule(MODULE_TYPE.MT_BUFF);
-    //    if (modBuffProperty != null)
-    //    {
-    //        this.fBuffAndOtherPercent = ((!this._IsPhyAttack) ? modBuffProperty.GetMAttackPercent() : modBuffProperty.GetAttackPercent());
-    //        if (this._role._roleType == ROLE_TYPE.RT_PLAYER && player.SystemAmbit != null)
-    //        {
-    //            this.fBuffAndOtherPercent += player.SystemAmbit.GetAddAttackPer(this._IsPhyAttack);
-    //        }
-    //        this.fBuffAndOtherValue = (float)((!this._IsPhyAttack) ? modBuffProperty.GetMAttackValues() : modBuffProperty.GetAttackValues());
-    //    }
-    //}
+    /// <summary>
+    /// 更新数据
+    /// </summary>
+    /// <param name="fight"></param>
+    private void UpdateData(FightInfo fight)
+    {
+        if (this._role == null)
+        {
+            return;
+        }
+        ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        if (modAttribute == null)
+        {
+            return;
+        }
+        this.ClearData();
+        Player player = null;
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
+        {
+            player = (Player)this._role;
+        }
+        ATTRIBUTE_TYPE attribute_TYPE = this._IsPhyAttack ? ATTRIBUTE_TYPE.ATT_PHY_ATK : ATTRIBUTE_TYPE.ATT_MAG_ATK;
+        //this.fBaseValue = modAttribute.GetAttributeBaseNum(attribute_TYPE);
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
+        {
+            // this.fBaseValue += player.ItemFolder.WearOperate.GetDependEquipBaseValue(attribute_TYPE);
+        }
+        if (fight != null)
+        {
+            this.fSkillValue = Mathf.Abs(fight._damage);
+        }
+        this.fWeaponFactor = 1f;
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER && this._IsPhyAttack && fight != null && player != null)
+        {
+            //this.fWeaponFactor = player.ItemFolder.WearOperate.GetWearWeaponFactor((int)player.ItemFolder.WearOperate.GetWearWeaponType());
+        }
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
+        {
+            if (this._IsPhyAttack)
+            {
+                // this.fEquipPercent = player.ItemFolder.WearOperate.GetDependEquipAddValue(ITEM_ADD_ATTRIBUTE.IAAT_PHYATK_PERCENT);
+            }
+            else
+            {
+                //this.fEquipPercent = player.ItemFolder.WearOperate.GetDependEquipAddValue(ITEM_ADD_ATTRIBUTE.IAAT_MAGATK_PERCENT);
+            }
+            //this.fAdeptPercent = ((!this._IsPhyAttack) ? player.m_cAdeptSystem.AddCount.MagAtk : player.m_cAdeptSystem.AddCount.PhyAtk);
+            this.fFEPercent = ((!this._IsPhyAttack) ? this.GetFiveAddValue(ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT) : this.GetFiveAddValue(ATTRIBUTE_TYPE.ATT_METAL_ELEMENT));
+        }
+        //ModBuffProperty modBuffProperty = (ModBuffProperty)this._role.GetModule(MODULE_TYPE.MT_BUFF);
+        //if (modBuffProperty != null)
+        //{
+        //    this.fBuffAndOtherPercent = ((!this._IsPhyAttack) ? modBuffProperty.GetMAttackPercent() : modBuffProperty.GetAttackPercent());
+        //    //if (this._role._roleType == ROLE_TYPE.RT_PLAYER && player.SystemAmbit != null)
+        //    //{
+        //    //    this.fBuffAndOtherPercent += player.SystemAmbit.GetAddAttackPer(this._IsPhyAttack);
+        //    //}
+        //    this.fBuffAndOtherValue = (float)((!this._IsPhyAttack) ? modBuffProperty.GetMAttackValues() : modBuffProperty.GetAttackValues());
+        //}
+    }
 
     public float GetAttackValue(FightInfo fight)
     {
@@ -198,7 +202,7 @@ public class AttackFormula
         {
             return 0f;
         }
-        //this.UpdateData(fight);
+        this.UpdateData(fight);
         this.CalculateData();
         return this._fValue;
     }
@@ -209,7 +213,7 @@ public class AttackFormula
         {
             return 0f;
         }
-        //this.UpdateData(null);
+        this.UpdateData(null);
         this.CalculateStaticData();
         return this._fStaticValue;
     }

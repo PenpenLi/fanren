@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ModAttribute : Module
 {
-    //public List<ModAttribute.HpReduceInfo> HpReduceList = new List<ModAttribute.HpReduceInfo>();
+    public List<ModAttribute.HpReduceInfo> HpReduceList = new List<ModAttribute.HpReduceInfo>();
 
     public float TotalReduceHp;
 
@@ -142,7 +142,7 @@ public class ModAttribute : Module
     public void SetAttributeNum(ATTRIBUTE_TYPE attType, float value, bool bBase)
     {
         ModAttribute.Att_Numerical att_Numerical = this.GetAttributeCreate(attType) as ModAttribute.Att_Numerical;
-        if (this.IsFightType(attType) && !bBase)
+        if (this.IsFightType(attType) && !bBase)//如果是战斗属性并且不是基础属性返回
         {
             return;
         }
@@ -173,12 +173,12 @@ public class ModAttribute : Module
         {
             att_Numerical.AddValue = value;
         }
-        this.UpdateFiveAttribute(attType);
-        //this.UpdateCriticalAttribute(attType);
-        //if (this._role._roleType == ROLE_TYPE.RT_PLAYER && (attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP))
-        //{
-        //    Singleton<HpCautionEffect>.GetInstance().Check();
-        //}
+        this.UpdateFiveAttribute(attType);//更新五行属性
+        this.UpdateCriticalAttribute(attType);
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER && (attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP))
+        {
+            //Singleton<HpCautionEffect>.GetInstance().Check();
+        }
     }
 
     public void SetAttributeNumEx(ATTRIBUTE_TYPE attType, float value, bool bBase)
@@ -282,11 +282,10 @@ public class ModAttribute : Module
     //	}
     //}
 
-    //// Token: 0x06002195 RID: 8597 RVA: 0x00017453 File Offset: 0x00015653
-    //public void UpdateAttributeNum(ATTRIBUTE_TYPE attType, float value, bool bBase)
-    //{
-    //	this.UpdateAttribute(attType, value, bBase, true);
-    //}
+    public void UpdateAttributeNum(ATTRIBUTE_TYPE attType, float value, bool bBase)
+    {
+        this.UpdateAttribute(attType, value, bBase, true);
+    }
 
     //// Token: 0x06002196 RID: 8598 RVA: 0x0001745F File Offset: 0x0001565F
     //public void UpdateAttributePercent(ATTRIBUTE_TYPE attType, float percent, bool bBase)
@@ -405,7 +404,6 @@ public class ModAttribute : Module
         return att_Numerical.Value;
     }
 
-    //// Token: 0x0600219A RID: 8602 RVA: 0x000E551C File Offset: 0x000E371C
     //public float GetAttributeBaseNum(ATTRIBUTE_TYPE attType)
     //{
     //	ModAttribute.Att_Numerical att_Numerical = this.GetAttribute(attType) as ModAttribute.Att_Numerical;
@@ -824,99 +822,102 @@ public class ModAttribute : Module
     //	}
     //}
 
-    //// Token: 0x060021A5 RID: 8613 RVA: 0x000E5F5C File Offset: 0x000E415C
-    //private void UpdateAttribute(ATTRIBUTE_TYPE attType, float value, bool bBase, bool bNum)
-    //{
-    //	if ((attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP) && !bNum && attType == ATTRIBUTE_TYPE.ATT_LEVEL)
-    //	{
-    //		return;
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_HP)
-    //	{
-    //		bBase = true;
-    //	}
-    //	if (!bBase)
-    //	{
-    //		if (this.IsFightType(attType))
-    //		{
-    //			return;
-    //		}
-    //		if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK && bNum)
-    //		{
-    //			Debug.LogError("UpdateAttribute not allow set addvalue and non num types: " + attType);
-    //			return;
-    //		}
-    //	}
-    //	ModAttribute.Att_Numerical att_Numerical = this.GetAttributeCreate(attType) as ModAttribute.Att_Numerical;
-    //	if (!bNum)
-    //	{
-    //		float num = att_Numerical.Value * Math.Abs(value);
-    //		if (value < 0f)
-    //		{
-    //			num = -num;
-    //		}
-    //		value = num;
-    //	}
-    //	value = this.VerifyAttributeRang(attType, att_Numerical, value);
-    //	if (attType == ATTRIBUTE_TYPE.ATT_LEVEL)
-    //	{
-    //		bBase = true;
-    //		if (att_Numerical.Value > 6f)
-    //		{
-    //			return;
-    //		}
-    //		int num2 = (int)value;
-    //		value += (float)num2;
-    //	}
-    //	if (bBase)
-    //	{
-    //		att_Numerical.BaseValue += value;
-    //	}
-    //	else
-    //	{
-    //		att_Numerical.AddValue += value;
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_MAXHP)
-    //	{
-    //		float attributeValue = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
-    //		if (attributeValue > att_Numerical.Value)
-    //		{
-    //			this.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, att_Numerical.Value, true);
-    //		}
-    //	}
-    //	if (attType == ATTRIBUTE_TYPE.ATT_HP && value < 0f)
-    //	{
-    //		this.TotalReduceHp += value;
-    //		ModAttribute.HpReduceInfo hpReduceInfo = new ModAttribute.HpReduceInfo();
-    //		hpReduceInfo.value = value;
-    //		hpReduceInfo.time = GameTime.time;
-    //		this.HpReduceList.Add(hpReduceInfo);
-    //	}
-    //	this.UpdateFiveAttribute(attType);
-    //	this.UpdateCriticalAttribute(attType);
-    //	if (this._role._roleType == ROLE_TYPE.RT_PLAYER && (attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP))
-    //	{
-    //		Singleton<HpCautionEffect>.GetInstance().Check();
-    //	}
-    //	if (this._role._roleType == ROLE_TYPE.RT_PLAYER && attType == ATTRIBUTE_TYPE.ATT_HP)
-    //	{
-    //		if (this.MainPlayer.m_RoleGrowDatas.dan_count <= 2 && (float)this.player.GetCurHp() < (float)this.player.GetMaxHp() * 0.3f && (PropsPlane.m_keyA > 0UL || PropsPlane.m_keyB > 0UL))
-    //		{
-    //			this.MainPlayer.m_RoleGrowDatas.dan_count++;
-    //			GameData.Instance.ScrMan.Exec(44, 1000011);
-    //			return;
-    //		}
-    //		if (this.MainPlayer.m_RoleGrowDatas.dan_count > 2 && (float)this.player.GetCurHp() < (float)this.player.GetMaxHp() * 0.3f && (PropsPlane.m_keyA > 0UL || PropsPlane.m_keyB > 0UL))
-    //		{
-    //			GameData.Instance.ScrMan.Exec(44, 1000012);
-    //		}
-    //	}
-    //	if ((attType == ATTRIBUTE_TYPE.ATT_LIANTI || attType == ATTRIBUTE_TYPE.ATT_LIANSHEN) && att_Numerical.Value >= 3f)
-    //	{
-    //		att_Numerical.BaseValue = 0f;
-    //	}
-    //}
+    private void UpdateAttribute(ATTRIBUTE_TYPE attType, float value, bool bBase, bool bNum)
+    {
+        if ((attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP) && !bNum && attType == ATTRIBUTE_TYPE.ATT_LEVEL)
+        {
+            return;
+        }
+        if (attType == ATTRIBUTE_TYPE.ATT_HP)
+        {
+            bBase = true;
+        }
+        if (!bBase)
+        {
+            if (this.IsFightType(attType))
+            {
+                return;
+            }
+            if (attType == ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK && bNum)
+            {
+                Debug.LogError("UpdateAttribute not allow set addvalue and non num types: " + attType);
+                return;
+            }
+        }
+        ModAttribute.Att_Numerical att_Numerical = this.GetAttributeCreate(attType) as ModAttribute.Att_Numerical;
+        if (!bNum)
+        {
+            float num = att_Numerical.Value * Math.Abs(value);
+            if (value < 0f)
+            {
+                num = -num;
+            }
+            value = num;
+        }
+        //value = this.VerifyAttributeRang(attType, att_Numerical, value);
+        //if (attType == ATTRIBUTE_TYPE.ATT_LEVEL)
+        //{
+        //    bBase = true;
+        //    if (att_Numerical.Value > 6f)
+        //    {
+        //        return;
+        //    }
+        //    int num2 = (int)value;
+        //    value += (float)num2;
+        //}
+        //if (bBase)
+        //{
+        //    att_Numerical.BaseValue += value;
+        //}
+        //else
+        //{
+        //    att_Numerical.AddValue += value;
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_MAXHP)
+        //{
+        //    float attributeValue = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
+        //    if (attributeValue > att_Numerical.Value)
+        //    {
+        //        this.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, att_Numerical.Value, true);
+        //    }
+        //}
+        //if (attType == ATTRIBUTE_TYPE.ATT_HP && value < 0f)
+        //{
+        //    this.TotalReduceHp += value;
+        //    ModAttribute.HpReduceInfo hpReduceInfo = new ModAttribute.HpReduceInfo();
+        //    hpReduceInfo.value = value;
+        //    hpReduceInfo.time = GameTime.time;
+        //    this.HpReduceList.Add(hpReduceInfo);
+        //}
+        //this.UpdateFiveAttribute(attType);
+        //this.UpdateCriticalAttribute(attType);
+        //if (this._role._roleType == ROLE_TYPE.RT_PLAYER && (attType == ATTRIBUTE_TYPE.ATT_HP || attType == ATTRIBUTE_TYPE.ATT_MAXHP))
+        //{
+        //    Singleton<HpCautionEffect>.GetInstance().Check();
+        //}
+        //if (this._role._roleType == ROLE_TYPE.RT_PLAYER && attType == ATTRIBUTE_TYPE.ATT_HP)
+        //{
+        //    if (this.MainPlayer.m_RoleGrowDatas.dan_count <= 2 && (float)this.player.GetCurHp() < (float)this.player.GetMaxHp() * 0.3f && (PropsPlane.m_keyA > 0UL || PropsPlane.m_keyB > 0UL))
+        //    {
+        //        this.MainPlayer.m_RoleGrowDatas.dan_count++;
+        //        GameData.Instance.ScrMan.Exec(44, 1000011);
+        //        return;
+        //    }
+        //    if (this.MainPlayer.m_RoleGrowDatas.dan_count > 2 && (float)this.player.GetCurHp() < (float)this.player.GetMaxHp() * 0.3f && (PropsPlane.m_keyA > 0UL || PropsPlane.m_keyB > 0UL))
+        //    {
+        //        GameData.Instance.ScrMan.Exec(44, 1000012);
+        //    }
+        //}
+        if ((attType == ATTRIBUTE_TYPE.ATT_LIANTI || attType == ATTRIBUTE_TYPE.ATT_LIANSHEN) && att_Numerical.Value >= 3f)
+        {
+            att_Numerical.BaseValue = 0f;
+        }
+    }
 
+    /// <summary>
+    /// 更新五行属性
+    /// </summary>
+    /// <param name="attType"></param>
     private void UpdateFiveAttribute(ATTRIBUTE_TYPE attType)
     {
         if (this.eFiveTypes == null)
@@ -945,19 +946,17 @@ public class ModAttribute : Module
         this.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_FIVE_ELEMENT_ATK, num, true);
     }
 
-    //// Token: 0x060021A7 RID: 8615 RVA: 0x000E62B8 File Offset: 0x000E44B8
-    //private void UpdateCriticalAttribute(ATTRIBUTE_TYPE attType)
-    //{
-    //	if (attType != ATTRIBUTE_TYPE.ATT_CRITICAL)
-    //	{
-    //		return;
-    //	}
-    //	float attributeValue = this.GetAttributeValue(attType);
-    //	float value = attributeValue / (attributeValue + 16.4f * attributeValue / 10f + 173f);
-    //	this.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_CRITCHANCE, value, true);
-    //}
+    private void UpdateCriticalAttribute(ATTRIBUTE_TYPE attType)
+    {
+        if (attType != ATTRIBUTE_TYPE.ATT_CRITICAL)
+        {
+            return;
+        }
+        float attributeValue = this.GetAttributeValue(attType);
+        float value = attributeValue / (attributeValue + 16.4f * attributeValue / 10f + 173f);
+        this.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_CRITCHANCE, value, true);
+    }
 
-    //// Token: 0x060021A8 RID: 8616 RVA: 0x000E62F8 File Offset: 0x000E44F8
     //private float VerifyAttributeRang(ATTRIBUTE_TYPE type, ModAttribute.Att_Numerical att, float value)
     //{
     //	if (type == ATTRIBUTE_TYPE.ATT_HP)
@@ -981,7 +980,6 @@ public class ModAttribute : Module
     //	return value;
     //}
 
-    //// Token: 0x060021A9 RID: 8617 RVA: 0x000E6358 File Offset: 0x000E4558
     //private float GetAllAttributeForEquip(ATTRIBUTE_TYPE type)
     //{
     //	float num = 0f;
@@ -1007,12 +1005,16 @@ public class ModAttribute : Module
     //	return num;
     //}
 
+    /// <summary>
+    /// 是否是战斗属性类型
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     private bool IsFightType(ATTRIBUTE_TYPE type)
     {
         return type == ATTRIBUTE_TYPE.ATT_PHY_ATK || type == ATTRIBUTE_TYPE.ATT_MAG_ATK || type == ATTRIBUTE_TYPE.ATT_PHY_DEF || type == ATTRIBUTE_TYPE.ATT_MAG_DEF;
     }
 
-    //// Token: 0x060021AB RID: 8619 RVA: 0x000E6444 File Offset: 0x000E4644
     //private float GetReferLevel(float boundary)
     //{
     //	if (boundary == 0f)
@@ -1052,24 +1054,24 @@ public class ModAttribute : Module
         {
             return;
         }
-        //if (this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP) < this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP))
-        //{
-        //    float attributeValue = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BLOODREGAIN);
-        //    if (attributeValue > 0f)
-        //    {
-        //        float num = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP) * attributeValue;
-        //        this.UpdateAttributeNum(ATTRIBUTE_TYPE.ATT_HP, num * GameTime.deltaTime, false);
-        //    }
-        //}
-        //if (this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MP) < this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXMP))
-        //{
-        //    float attributeValue2 = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAGICREGAIN);
-        //    if (attributeValue2 > 0f)
-        //    {
-        //        float num2 = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXMP) * attributeValue2;
-        //        this.UpdateAttributeNum(ATTRIBUTE_TYPE.ATT_MP, num2 * GameTime.deltaTime, false);
-        //    }
-        //}
+        if (this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP) < this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP))
+        {
+            float attributeValue = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BLOODREGAIN);
+            if (attributeValue > 0f)
+            {
+                float num = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP) * attributeValue;
+                this.UpdateAttributeNum(ATTRIBUTE_TYPE.ATT_HP, num * GameTime.deltaTime, false);
+            }
+        }
+        if (this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MP) < this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXMP))
+        {
+            float attributeValue2 = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAGICREGAIN);
+            if (attributeValue2 > 0f)
+            {
+                float num2 = this.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXMP) * attributeValue2;
+                this.UpdateAttributeNum(ATTRIBUTE_TYPE.ATT_MP, num2 * GameTime.deltaTime, false);
+            }
+        }
     }
 
     //private float GetFiveAddValue(ATTRIBUTE_TYPE fivetype)
@@ -1140,6 +1142,9 @@ public class ModAttribute : Module
     {
         private float _fTotalValue;
 
+        /// <summary>
+        /// 基础数值
+        /// </summary>
         private float _fBaseValue;
 
         private float _fAddValue;

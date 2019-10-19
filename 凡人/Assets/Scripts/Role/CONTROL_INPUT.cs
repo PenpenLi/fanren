@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// 管理输入
+/// </summary>
 public enum CONTROL_INPUT
 {
 	IDLE,

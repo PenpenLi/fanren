@@ -52,13 +52,13 @@ public class ControlStateWalkForward : ControlStateBase
         //ModBuffProperty modBuffProperty = (ModBuffProperty)this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF);
         //if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC && modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND) != 0)
         //{
-            return false;
+        //    return false;
         //}
         base.OnEnter(ceb);
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;
         bool b = true;
-        float num = 7f;//this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        float num = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
         Vector3[] array = null;
         CONTROL_INPUT inputId = ceb.InputId;
         if (inputId == CONTROL_INPUT.WALK_FORWARD)
@@ -70,50 +70,51 @@ public class ControlStateWalkForward : ControlStateBase
             array = ((ControlEventMoveForward)ceb).Path;
         }
         this.m_cMove.Reset(ai, num);
-        //this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);
-        //if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
-        //{
-        //    if (array != null)
-        //    {
-        //        if (this.m_lstPathPoints == null)
-        //        {
-        //            this.m_lstPathPoints = new List<Vector3>();
-        //        }
-        //        this.m_lstPathPoints.Clear();
-        //        foreach (Vector3 item in array)
-        //        {
-        //            this.m_lstPathPoints.Add(item);
-        //        }
-        //        this.m_iPointIndex = 0;
-        //        this.m_iPointNum = this.m_lstPathPoints.Count;
-        //        if (this.m_iPointNum > 0)
-        //        {
-        //            this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
-        //        }
-        //        else
-        //        {
-        //            this.m_cMove.Stop();
-        //        }
-        //    }
-        //    else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
-        //    {
-        //        this.Setm_lstPathPoints(vector);
-        //    }
-        //    else
-        //    {
+        this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);
+        if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
+        {
+            //如果角色类型不是玩家
+            if (array != null)
+            {
+                if (this.m_lstPathPoints == null)
+                {
+                    this.m_lstPathPoints = new List<Vector3>();
+                }
+                this.m_lstPathPoints.Clear();
+                foreach (Vector3 item in array)
+                {
+                    this.m_lstPathPoints.Add(item);
+                }
+                this.m_iPointIndex = 0;
+                this.m_iPointNum = this.m_lstPathPoints.Count;
+                if (this.m_iPointNum > 0)
+                {
+                    this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
+                }
+                else
+                {
+                    this.m_cMove.Stop();
+                }
+            }
+            //else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
+            //{
+            //    this.Setm_lstPathPoints(vector);
+            //}
+            else
+            {
                 this.m_cMove.SetTargetPos(vector);
-        //    }
-        //    this.m_cMove.RotateWhenMove = true;
-        //}
-        //else
-        //{
-        this.m_cMove.SetTargetPos(vector);
-        this.m_cMove.RotateWhenMove = false;
-        this.m_cMove.EnableSoundEffect = true;
-        this.m_cMove.EnableDirtEffect = true;
-        //this.m_cMove.SetTurnSpeed(1300f);
-        //}
-        //this.m_cMove.SwitchRotate(b);
+            }
+            this.m_cMove.RotateWhenMove = true;
+        }
+        else
+        {
+            this.m_cMove.SetTargetPos(vector);
+            this.m_cMove.RotateWhenMove = false;
+            this.m_cMove.EnableSoundEffect = true;
+            this.m_cMove.EnableDirtEffect = true;
+            this.m_cMove.SetTurnSpeed(1300f);
+        }
+        this.m_cMove.SwitchRotate(b);
         this.m_cMove.SwitchGravity(true);
         return true;
     }

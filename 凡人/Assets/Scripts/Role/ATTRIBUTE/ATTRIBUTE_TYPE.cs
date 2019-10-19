@@ -39,6 +39,9 @@ public enum ATTRIBUTE_TYPE
 	ATT_VIEW_RANGE,
 	ATT_ATTACK_RANGE,
 	ATT_ATTACK_INTERVAL,
+    /// <summary>
+    /// 移动速度
+    /// </summary>
 	ATT_MOVESPEED,
 	ATT_TRUNSPEED,
 	ATT_HMOVESPEED,

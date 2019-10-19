@@ -416,9 +416,9 @@ public class Player : Role
         this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
         this.Init();
-        //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");
-        //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");
-        //this.m_BottleSystem.LoadConfig();
+        //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//熟练系统
+        //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
+        //this.m_BottleSystem.LoadConfig();//瓶子
     }
 
     public Module AddMod(MODULE_TYPE mt)
@@ -490,7 +490,7 @@ public class Player : Role
 
     private void Init()
     {
-        //base.roleGameObject.EnableRagdoll(false);
+        base.roleGameObject.EnableRagdoll(false);
         base.RunSpeed = this.playerInfo.runSpeed;
         //this.weaponManager.initialize(this);
         base.SetRat(PlayerInfo.PLAYER_ROTATION);

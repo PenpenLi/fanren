@@ -163,7 +163,7 @@ public class ModCamera : Module
 		{
             return;
 		}
-		if (this._role._roleType != ROLE_TYPE.RT_PLAYER)
+		if (this._role._roleType != ROLE_TYPE.RT_PLAYER)//如果角色不是玩家 锁定摄像机
 		{
 			this.isLockCamera = true;
 		}
@@ -173,7 +173,8 @@ public class ModCamera : Module
 		}
 		if (!this.cameraTransform)
 		{
-			this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
+            Debug.Log("执行");
+            this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
 			Debug.Log("Please assign a camera to the modCamera script.");
 			this.m_bEnabled = false;
 		}
@@ -236,43 +237,43 @@ public class ModCamera : Module
 
 	public override void Process()
 	{
-		if (!this.m_bEnabled)
+        if (!this.m_bEnabled)
 		{
-			return;
+            return;
 		}
 		if (this.isLockCamera)
 		{
-			return;
+            return;
 		}
 		if (!this.cameraTransform)
 		{
-			return;
+            return;
 		}
-		switch (this.cameraState)
-		{
-		case ModCamera.CameraState.LockCamera:
-			this.LockCamera();
-			break;
-		case ModCamera.CameraState.FollowPositionAutoRotation:
-			this.CameraFollowPositionAutoRotation();
-			break;
-		case ModCamera.CameraState.LockPositionAutoLook:
-			this.CameraLockPositionAutoLook();
-			break;
-		case ModCamera.CameraState.MouseOrbit:
-			this.UpdateMouseOrbit();
-			break;
-		case ModCamera.CameraState.LookTarget:
-			this.LookTarget();
-			break;
-		case ModCamera.CameraState.Stop:
-			this.StopCamera();
-			break;
-		case ModCamera.CameraState.FollowPositionLockAxis:
-			this.UpdateFollowPositionLockAxis();
-			break;
-		}
-		this.CheckCameraHit();
+        switch (this.cameraState)
+        {
+            case ModCamera.CameraState.LockCamera:
+                this.LockCamera();
+                break;
+            case ModCamera.CameraState.FollowPositionAutoRotation:
+                this.CameraFollowPositionAutoRotation();
+                break;
+            case ModCamera.CameraState.LockPositionAutoLook:
+                this.CameraLockPositionAutoLook();
+                break;
+            case ModCamera.CameraState.MouseOrbit:
+                this.UpdateMouseOrbit();
+                break;
+            case ModCamera.CameraState.LookTarget:
+                this.LookTarget();
+                break;
+            case ModCamera.CameraState.Stop:
+                this.StopCamera();
+                break;
+            case ModCamera.CameraState.FollowPositionLockAxis:
+                this.UpdateFollowPositionLockAxis();
+                break;
+        }
+        this.CheckCameraHit();
 	}
 
 	public void SetCameraState(ModCamera.CameraState state)
@@ -491,6 +492,10 @@ public class ModCamera : Module
 		}
 	}
 
+    /// <summary>
+    /// 检查摄像机碰撞
+    /// </summary>
+    /// <returns></returns>
 	private float CheckCameraHit()
 	{
 		Vector3 vector = this.cameraControl.transform.position + new Vector3(0f, 1f, 0f);

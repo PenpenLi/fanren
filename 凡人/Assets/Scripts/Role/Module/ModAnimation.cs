@@ -612,76 +612,72 @@ public class ModAnimation : Module
     //{
     //}
 
-    //// Token: 0x06002151 RID: 8529 RVA: 0x00017166 File Offset: 0x00015366
-    //private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation)
-    //{
-    //	this.PlayAnimation(aniName, isBlend, resetAnimation, this.GetCullingType());
-    //}
+    private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation)
+    {
+        this.PlayAnimation(aniName, isBlend, resetAnimation, this.GetCullingType());
+    }
 
-    //// Token: 0x06002152 RID: 8530 RVA: 0x00017177 File Offset: 0x00015377
-    //private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation, AnimationCullingType act)
-    //{
-    //	this.PlayAnimation(aniName, isBlend, resetAnimation, act, 0.3f);
-    //}
+    private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation, AnimationCullingType act)
+    {
+        this.PlayAnimation(aniName, isBlend, resetAnimation, act, 0.3f);
+    }
 
-    //// Token: 0x06002153 RID: 8531 RVA: 0x000E34E0 File Offset: 0x000E16E0
-    //private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
-    //{
-    //	if (aniName == null || aniName.Length == 0)
-    //	{
-    //		return;
-    //	}
-    //	this._animation.cullingType = act;
-    //	if (isBlend)
-    //	{
-    //		if (this._animation.IsPlaying(this.m_strLastAniName))
-    //		{
-    //			this._animation[aniName].blendMode = AnimationBlendMode.Blend;
-    //			this._animation[aniName].layer = -1;
-    //			this._animation.Blend(aniName);
-    //			this.faceAniName = aniName;
-    //		}
-    //	}
-    //	else
-    //	{
-    //		if (this._animation[aniName].wrapMode == WrapMode.Once)
-    //		{
-    //			this._animation[aniName].wrapMode = WrapMode.ClampForever;
-    //		}
-    //		if (this._animation[aniName].wrapMode == WrapMode.ClampForever && this._animation[aniName].time >= this._animation[aniName].length)
-    //		{
-    //			this._animation[aniName].time = 0f;
-    //		}
-    //		this.m_cCurrentAniState = this.GetAnimationState(aniName);
-    //		this.m_fAniStartTime = GameTime.time;
-    //		this.m_fCurrentMaxAniLength = this.GetAnimationLength(aniName);
-    //		this.m_cCurrentSoundData = Singleton<AnimationSoundData>.GetInstance().GetData(this.m_cCurAniNode.SoundIdx);
-    //		if (this.m_strLastAniName != aniName || resetAnimation)
-    //		{
-    //			this.m_fCurrentAniLength = this.m_cCurrentAniState.length;
-    //			this.ResetEffectAndMove();
-    //			this.RemoveLastSound();
-    //			this.ResetSound();
-    //		}
-    //		if (resetAnimation)
-    //		{
-    //			this._animation[aniName].time = 0f;
-    //			this._animation.CrossFade(aniName, fadeLength);
-    //		}
-    //		else
-    //		{
-    //			this._animation.CrossFade(aniName, fadeLength);
-    //			if (MovieManager.MovieMag.IsPlaying() && this._animation[aniName].wrapMode != WrapMode.Loop && this._animation.IsPlaying(this.faceAniName))
-    //			{
-    //				this._animation[this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE)].wrapMode = WrapMode.Loop;
-    //				this._animation.CrossFadeQueued(this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE), fadeLength);
-    //			}
-    //		}
-    //		this.m_strLastAniName = aniName;
-    //	}
-    //}
+    private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
+    {
+        if (aniName == null || aniName.Length == 0)
+        {
+            return;
+        }
+        this._animation.cullingType = act;
+        if (isBlend)
+        {
+            if (this._animation.IsPlaying(this.m_strLastAniName))
+            {
+                this._animation[aniName].blendMode = AnimationBlendMode.Blend;
+                this._animation[aniName].layer = -1;
+                this._animation.Blend(aniName);
+                this.faceAniName = aniName;
+            }
+        }
+        else
+        {
+            if (this._animation[aniName].wrapMode == WrapMode.Once)
+            {
+                this._animation[aniName].wrapMode = WrapMode.ClampForever;
+            }
+            if (this._animation[aniName].wrapMode == WrapMode.ClampForever && this._animation[aniName].time >= this._animation[aniName].length)
+            {
+                this._animation[aniName].time = 0f;
+            }
+            //this.m_cCurrentAniState = this.GetAnimationState(aniName);
+            //this.m_fAniStartTime = GameTime.time;
+            //this.m_fCurrentMaxAniLength = this.GetAnimationLength(aniName);
+            //this.m_cCurrentSoundData = Singleton<AnimationSoundData>.GetInstance().GetData(this.m_cCurAniNode.SoundIdx);
+            //if (this.m_strLastAniName != aniName || resetAnimation)
+            //{
+            //    this.m_fCurrentAniLength = this.m_cCurrentAniState.length;
+            //    this.ResetEffectAndMove();
+            //    this.RemoveLastSound();
+            //    this.ResetSound();
+            //}
+            if (resetAnimation)
+            {
+                this._animation[aniName].time = 0f;
+                this._animation.CrossFade(aniName, fadeLength);
+            }
+            else
+            {
+                this._animation.CrossFade(aniName, fadeLength);
+                //if (MovieManager.MovieMag.IsPlaying() && this._animation[aniName].wrapMode != WrapMode.Loop && this._animation.IsPlaying(this.faceAniName))
+                //{
+                //    this._animation[this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE)].wrapMode = WrapMode.Loop;
+                //    this._animation.CrossFadeQueued(this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE), fadeLength);
+                //}
+            }
+            this.m_strLastAniName = aniName;
+        }
+    }
 
-    //// Token: 0x06002154 RID: 8532 RVA: 0x00017189 File Offset: 0x00015389
     //public void PlayAnimationRandom(ACTION_INDEX actIdx)
     //{
     //	this.PlayAnimationRandom(actIdx, 1f, WrapMode.Once, false, false);

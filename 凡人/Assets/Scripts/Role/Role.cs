@@ -596,14 +596,13 @@ public class Role
     {
         get
         {
-            return 7;
-            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-            //return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
         }
         set
         {
-            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-            //modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
+            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
         }
     }
 
