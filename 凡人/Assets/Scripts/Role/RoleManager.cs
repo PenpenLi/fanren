@@ -632,18 +632,22 @@ public class RoleManager : MonoBehaviour
     //    //    });
     //    //}
 
-    //    // Token: 0x0600246B RID: 9323 RVA: 0x000F7A14 File Offset: 0x000F5C14
-    //    public Role CreateMonsterGO(GameObjSpawn.SpawnInfo spawnInfo)
-    //	{
-    //		MonsterInfo monsterInfoByID = GameData.Instance.RoleData.GetMonsterInfoByID(spawnInfo.ObjectType);
-    //		if (monsterInfoByID == null)
-    //		{
-    //			return null;
-    //		}
-    //		Monster monster = Monster.Create(this._monsterRootGo, spawnInfo, monsterInfoByID);
-    //		this.AddRole(monster);
-    //		return monster;
-    //	}
+    /// <summary>
+    /// 创建怪物物体
+    /// </summary>
+    /// <param name="spawnInfo"></param>
+    /// <returns></returns>
+    public Role CreateMonsterGO(GameObjSpawn.SpawnInfo spawnInfo)
+    {
+        MonsterInfo monsterInfoByID = GameData.Instance.RoleData.GetMonsterInfoByID(spawnInfo.ObjectType);
+        if (monsterInfoByID == null)
+        {
+            return null;
+        }
+        Monster monster = Monster.Create(this._monsterRootGo, spawnInfo, monsterInfoByID);
+        this.AddRole(monster);
+        return monster;
+    }
 
     //	// Token: 0x0600246C RID: 9324 RVA: 0x000F7A58 File Offset: 0x000F5C58
     //	private Role CreateNpcGo(GameObjSpawn.SpawnInfo spawnInfo)
@@ -658,18 +662,22 @@ public class RoleManager : MonoBehaviour
     //		return npc;
     //	}
 
-    //	// Token: 0x0600246D RID: 9325 RVA: 0x000F7A9C File Offset: 0x000F5C9C
-    //	public bool HaveObjectOnPos(Vector3 pos)
-    //	{
-    //		for (int i = 0; i < this.RoleObjList.Count; i++)
-    //		{
-    //			if (this.RoleObjList[i] != null && (pos - this.RoleObjList[i].GetPos()).sqrMagnitude < 1f)
-    //			{
-    //				return true;
-    //			}
-    //		}
-    //		return false;
-    //	}
+    /// <summary>
+    /// 坐标位置有物体
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public bool HaveObjectOnPos(Vector3 pos)
+    {
+        for (int i = 0; i < this.RoleObjList.Count; i++)
+        {
+            if (this.RoleObjList[i] != null && (pos - this.RoleObjList[i].GetPos()).sqrMagnitude < 1f)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public OperableItemBase CreateOperItemGo(GameObjSpawn.SpawnInfo spawnInfo)
     {
@@ -724,18 +732,18 @@ public class RoleManager : MonoBehaviour
     public Role CreateRoleGO(GameObjSpawn.SpawnInfo spawnInfo, bool isSave)
     {
         Role role = null;
-        //while (this.HaveObjectOnPos(spawnInfo.position))
-        //{
-        //    spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
-        //{
-        //    role = this.CreateMonsterGO(spawnInfo);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
-        //{
-        //    role = this.CreateNpcGo(spawnInfo);
-        //}
+        while (this.HaveObjectOnPos(spawnInfo.position))
+        {
+            spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
+        }
+        if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
+        {
+            role = this.CreateMonsterGO(spawnInfo);
+        }
+        if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
+        {
+            //role = this.CreateNpcGo(spawnInfo);
+        }
         if (!isSave && role != null)
         {
             if (this.StageRoleList.Contains(role))
@@ -750,13 +758,14 @@ public class RoleManager : MonoBehaviour
         return role;
     }
 
-    //	// Token: 0x06002471 RID: 9329 RVA: 0x000F7C98 File Offset: 0x000F5E98
-    //	public void ClearRole()
-    //	{
-    //		this.RoleObjList.Clear();
-    //		this.ignoreColliderRole.Clear();
-    //	}
-
+    /// <summary>
+    /// 清除角色
+    /// </summary>
+    public void ClearRole()
+    {
+        this.RoleObjList.Clear();
+        this.ignoreColliderRole.Clear();
+    }
 
     public void AddRole(Role role)
     {

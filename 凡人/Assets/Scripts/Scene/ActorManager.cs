@@ -146,7 +146,6 @@ public class ActorManager : Singleton<ActorManager>
 		}
 	}
 
-	// Token: 0x0600157B RID: 5499 RVA: 0x000AAF20 File Offset: 0x000A9120
 	public void ShowBack()
 	{
 		foreach (ActorManager.MovieMemoryInfo movieMemoryInfo in this.m_lstHiden)

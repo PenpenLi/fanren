@@ -405,24 +405,26 @@ namespace NS_RoleBaseFun
         //		return ray.GetPoint(UnityEngine.Random.Range((float)num, radius));
         //	}
 
-        //	// Token: 0x060023DD RID: 9181 RVA: 0x000F2BE4 File Offset: 0x000F0DE4
-        //	public static Vector3 GetRandomPosInRadius(Vector3 pos, float radius)
-        //	{
-        //		int num = 1;
-        //		if (radius <= 1f)
-        //		{
-        //			Logger.LogWarning(new object[]
-        //			{
-        //				"radius must max than 1"
-        //			});
-        //			return Vector3.zero;
-        //		}
-        //		float angle = UnityEngine.Random.Range(0f, 360f);
-        //		Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
-        //		Vector3 direction = rotation * Vector3.forward;
-        //		Ray ray = new Ray(pos, direction);
-        //		return ray.GetPoint(UnityEngine.Random.Range((float)num, radius));
-        //	}
+        /// <summary>
+        /// 背景内随机返回一个点
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
+        public static Vector3 GetRandomPosInRadius(Vector3 pos, float radius)
+        {
+            int num = 1;
+            if (radius <= 1f)
+            {
+                Debug.LogWarning("半径必须大于1");
+                return Vector3.zero;
+            }
+            float angle = UnityEngine.Random.Range(0f, 360f);
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            Vector3 direction = rotation * Vector3.forward;
+            Ray ray = new Ray(pos, direction);
+            return ray.GetPoint(UnityEngine.Random.Range((float)num, radius));
+        }
 
         //	// Token: 0x060023DE RID: 9182 RVA: 0x000F2C5C File Offset: 0x000F0E5C
         //	public static bool PointOutBox(Vector3 position, Vector3 pointPosition, string boxName)

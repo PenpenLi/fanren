@@ -155,6 +155,7 @@
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
+    <Compile Include="Assets\Scripts\Role\Monster\Monster.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\MonsterInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\MonsterSkill.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\SkillUselRule.cs" />
@@ -221,6 +222,7 @@
     <None Include="Assets\Resources\conf\res\RenderSettings.txt" />
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
+    <None Include="Assets\Resources\conf\NpcInfo.txt" />
     <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
     <None Include="Assets\Resources\conf\ScriptMoudle.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />

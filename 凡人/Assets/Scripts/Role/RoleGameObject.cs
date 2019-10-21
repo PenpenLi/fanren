@@ -562,10 +562,10 @@ public class RoleGameObject
     private void SetBodyInfo(Transform root)
     {
         RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
-        //if (component == null)
-        //{
-        //    return;
-        //}
+        if (component == null)
+        {
+            return;
+        }
         //this.m_cRoleController = component.Controller;
         //this.m_cRoleAnimation = component.Animation;
         //this.m_mapEffectTrans.Clear();

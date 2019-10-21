@@ -167,6 +167,7 @@ MonoBehaviour:
   ID: 0
   ObjectType: 0
   partroName: 
+  orgType: 0
   spaType: 0
   SpawnManID: 0
   areaName: 
@@ -407,6 +408,7 @@ MonoBehaviour:
   ID: 0
   ObjectType: 0
   partroName: 
+  orgType: 0
   spaType: 0
   SpawnManID: 0
   areaName: 
@@ -436,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570043113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.606018, y: 0.7857446, z: 8.121532}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1512575820}

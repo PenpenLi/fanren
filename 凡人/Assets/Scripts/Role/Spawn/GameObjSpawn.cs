@@ -16,6 +16,7 @@ public class GameObjSpawn : MonoBehaviour
 
     public ORG_TYPE orgType;
 
+    [Header("生成类型")]
     public GameObjSpawn.SpawnType spaType;
 
     public int SpawnManID;
@@ -41,6 +42,9 @@ public class GameObjSpawn : MonoBehaviour
     /// </summary>
     public enum SpawnType
     {
+        /// <summary>
+        /// 怪物
+        /// </summary>
         MONSTER,
         NPC,
         CHEST,
