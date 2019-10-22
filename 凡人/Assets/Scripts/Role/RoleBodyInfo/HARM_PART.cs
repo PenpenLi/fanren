@@ -1,0 +1,18 @@
+﻿using System;
+
+
+public enum HARM_PART
+{
+	HEAD = 1,
+	RIGHT_HAND,
+	LEFT_HAND,
+	RIGHT_LEG,
+	LEFT_LEG,
+	TAIL,
+	CHESH,
+	PART1,
+	PART2,
+	PART3,
+	PART4,
+	PART5
+}

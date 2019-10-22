@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using NS_RoleBaseFun;
 using UnityEngine;
 
+/// <summary>
+/// 动画模块 移动也在这个模块 需要重构
+/// </summary>
 public class ModAnimation : Module
 {
     private CharacterController m_cCharacterController;

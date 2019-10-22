@@ -77,7 +77,7 @@ public class ModControlMFS : Module
 
     public bool ChangeState(ControlEventBase tmpEvent)
     {
-        if (tmpEvent.Forced)//强迫的
+        if (tmpEvent.Forced)//强制的
         {
             ////ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
             //if (this.m_cCurrentState != null)
@@ -94,15 +94,17 @@ public class ModControlMFS : Module
         {
             if (this.m_cCurrentState.IsLocked)
             {
+                Debug.Log("m_cCurrentState.IsLocked");
                 return false;
             }
-            ////if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
-            ////{
-            ////    return false;
-            ////}
+            //if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
+            //{
+            //    return false;
+            //}
         }
 
         ControlStateBase stateByInput2 = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
+        
         //if (!stateByInput2.IsEffectTive(tmpEvent))
         //{
         //    return false;
@@ -124,17 +126,17 @@ public class ModControlMFS : Module
         }
         stateByInput2.EnterProcess();
         this.m_cCurrentState = stateByInput2;
-        //if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER && CameraBoxsSelect.Instance != null)
-        //{
-        //    if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
-        //    {
-        //        CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
-        //    }
-        //    else
-        //    {
-        //        CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
-        //    }
-        //}
+        if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER)//&& CameraBoxsSelect.Instance != null
+        {
+            if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
+            {
+                //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
+            }
+            else
+            {
+                //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
+            }
+        }
         return true;
     }
 

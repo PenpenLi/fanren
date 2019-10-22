@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-//using FantasyTools;
+using FantasyTools;
 using NS_RoleBaseFun;
 using UnityEngine;
 
-
+/// <summary>
+/// 角色动画管理器
+/// </summary>
 public class RoleAnimationManager : Singleton<RoleAnimationManager>
 {
     private const string CFG_PATH = "Anim/RoleAniTypeDefine";
@@ -14,7 +16,7 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
 
     private Dictionary<RoleAnimationType, ArrayList> _aniTypeTable = new Dictionary<RoleAnimationType, ArrayList>();
 
-    //private List<RoleAniCollect> _table = new List<RoleAniCollect>();
+    private List<RoleAniCollect> _table = new List<RoleAniCollect>();
 
     private Hashtable _nowRunAnimation = new Hashtable();
 
@@ -26,160 +28,144 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
         this.Collect();
     }
 
-	//public int Count
-	//{
-	//	get
-	//	{
-	//		return (this._table != null) ? this._table.Count : 0;
-	//	}
-	//}
+    public int Count
+    {
+        get
+        {
+            return (this._table != null) ? this._table.Count : 0;
+        }
+    }
 
-	//public void Clear()
-	//{
-	//	this._table.Clear();
-	//	this._nowRunAnimation.Clear();
-	//}
+    public void Clear()
+    {
+        this._table.Clear();
+        this._nowRunAnimation.Clear();
+    }
 
     /// <summary>
     /// 初始化数据
     /// </summary>
 	private void InitData()
 	{
-		//this._aniTypeTable.Clear();
-		//List<string> list = RoleBaseFun.LoadConfInAssets("Anim/RoleAniTypeDefine");
-		//if (list != null)
-		//{
-		//	string[] separator = new string[]
-		//	{
-		//		"\t"
-		//	};
-		//	foreach (string text in list)
-		//	{
-		//		string[] array = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-		//		if (array != null && array.Length >= 2)
-		//		{
-		//			//int num = Toolset.Get<int>(array[0]);
-		//			//if (Toolset.IsEnumDefined(typeof(RoleAnimationType), num))
-		//			//{
-		//			//	ArrayList arrayList = new ArrayList();
-		//			//	RoleAnimationType key = (RoleAnimationType)num;
-		//			//	for (int i = 1; i < array.Length; i++)
-		//			//	{
-		//			//		arrayList.Clear();
-		//			//		if (array[i].Contains("-"))
-		//			//		{
-		//			//			int num2 = array[i].IndexOf("-");
-		//			//			string obj = array[i].Substring(0, num2);
-		//			//			string obj2 = array[i].Substring(num2 + 1, array[i].Length - num2 - 1);
-		//			//			int num3 = Toolset.Get<int>(obj);
-		//			//			int num4 = Toolset.Get<int>(obj2);
-		//			//			for (int j = num3; j <= num4; j++)
-		//			//			{
-		//			//				arrayList.Add(j);
-		//			//			}
-		//			//		}
-		//			//		else
-		//			//		{
-		//			//			arrayList.Add(Toolset.Get<int>(array[i]));
-		//			//		}
-		//			//		foreach (object obj3 in arrayList)
-		//			//		{
-		//			//			int num5 = (int)obj3;
-		//			//			if (this._aniTypeTable.ContainsKey(key))
-		//			//			{
-		//			//				this._aniTypeTable[key].Add(num5);
-		//			//			}
-		//			//			else
-		//			//			{
-		//			//				ArrayList arrayList2 = new ArrayList();
-		//			//				arrayList2.Add(num5);
-		//			//				this._aniTypeTable.Add(key, arrayList2);
-		//			//			}
-		//			//		}
-		//			//	}
-		//			//}
-		//		}
-		//	}
-		//}
-	}
+		this._aniTypeTable.Clear();
+		List<string> list = RoleBaseFun.LoadConfInAssets("Anim/RoleAniTypeDefine");
+        if (list != null)
+        {
+            string[] separator = new string[]
+            {
+                "\t"
+            };
+            foreach (string text in list)
+            {
+                string[] array = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                if (array != null && array.Length >= 2)
+                {
+                    int num = Toolset.Get<int>(array[0]);
+                    if (Toolset.IsEnumDefined(typeof(RoleAnimationType), num))
+                    {
+                        ArrayList arrayList = new ArrayList();
+                        RoleAnimationType key = (RoleAnimationType)num;
+                        for (int i = 1; i < array.Length; i++)
+                        {
+                            arrayList.Clear();
+                            if (array[i].Contains("-"))
+                            {
+                                int num2 = array[i].IndexOf("-");
+                                string obj = array[i].Substring(0, num2);
+                                string obj2 = array[i].Substring(num2 + 1, array[i].Length - num2 - 1);
+                                int num3 = Toolset.Get<int>(obj);
+                                int num4 = Toolset.Get<int>(obj2);
+                                for (int j = num3; j <= num4; j++)
+                                {
+                                    arrayList.Add(j);
+                                }
+                            }
+                            else
+                            {
+                                arrayList.Add(Toolset.Get<int>(array[i]));
+                            }
+                            foreach (object obj3 in arrayList)
+                            {
+                                int num5 = (int)obj3;
+                                if (this._aniTypeTable.ContainsKey(key))
+                                {
+                                    this._aniTypeTable[key].Add(num5);
+                                }
+                                else
+                                {
+                                    ArrayList arrayList2 = new ArrayList();
+                                    arrayList2.Add(num5);
+                                    this._aniTypeTable.Add(key, arrayList2);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 	private void Collect()
 	{
-		//if (Singleton<RoleModelData>.GetInstance().MapRoleModelInfos != null)
-		//{
-		//	//this.Clear();
-		//	Dictionary<int, int> dictionary = new Dictionary<int, int>();
-		//	foreach (RoleModelInfo roleModelInfo in Singleton<RoleModelData>.GetInstance().MapRoleModelInfos.Values)
-		//	{
-		//		if (roleModelInfo.ID == 1)
-		//		{
-		//			if (!dictionary.ContainsKey(roleModelInfo.ID))
-		//			{
-		//				dictionary.Add(roleModelInfo.ID, roleModelInfo.AnimationIndex);
-		//			}
-		//			else
-		//			{
-		//				Debug.LogError(string.Concat(new object[]
-		//				{
-		//					"RoleModelInfo ",
-		//					roleModelInfo.Name,
-		//					" id already exists ! Info : ",
-		//					roleModelInfo.ID
-		//				}));
-		//			}
-		//		}
-		//	}
-		//	ArrayList arrayList = new ArrayList();
-		//	ArrayList arrayList2 = new ArrayList();
-		//	foreach (KeyValuePair<int, int> keyValuePair in dictionary)
-		//	{
-		//		//foreach (AniInfo aniInfo in Singleton<AniInfoStaticManager>.GetInstance().AniInfoData.Values)
-		//		//{
-		//		//	foreach (AniInfo.AniInfoNode aniInfoNode in aniInfo.AniNameList)
-		//		//	{
-		//		//		if (aniInfoNode.meshIndex == keyValuePair.Value || aniInfoNode.meshIndex == 9999)
-		//		//		{
-		//		//			RoleAniCollect roleAniCollect = new RoleAniCollect();
-		//		//			roleAniCollect.meshID = aniInfoNode.meshIndex;
-		//		//			roleAniCollect.aniName = aniInfoNode.Name;
-		//		//			if (!arrayList2.Contains(aniInfoNode.Name))
-		//		//			{
-		//		//				arrayList2.Add(aniInfoNode.Name);
-		//		//			}
-		//		//			if (!arrayList.Contains(roleAniCollect))
-		//		//			{
-		//		//				arrayList.Add(roleAniCollect);
-		//		//				roleAniCollect.modelID = keyValuePair.Key;
-		//		//				roleAniCollect.aniIndex = aniInfoNode.animatioIndex;
-		//		//				roleAniCollect.weaponIndex = aniInfoNode.weapoIndex;
-		//		//				roleAniCollect.ContainsType = this.FindRoleAniTypeAll(roleAniCollect.aniIndex);
-		//		//				if (!this._table.Contains(roleAniCollect))
-		//		//				{
-		//		//					this._table.Add(roleAniCollect);
-		//		//				}
-		//		//				else
-		//		//				{
-		//		//					Debug.LogError(string.Concat(new object[]
-		//		//					{
-		//		//						"modelID = ",
-		//		//						roleAniCollect.modelID,
-		//		//						" meshID= ",
-		//		//						roleAniCollect.meshID,
-		//		//						" aniIndex = ",
-		//		//						roleAniCollect.aniIndex,
-		//		//						" aniName= ",
-		//		//						roleAniCollect.aniName
-		//		//					}));
-		//		//				}
-		//		//			}
-		//		//		}
-		//		//	}
-		//		//}
-		//	}
-		//	arrayList.Clear();
-		//	dictionary.Clear();
-		//}
-	}
+        if (Singleton<RoleModelData>.GetInstance().MapRoleModelInfos != null)
+        {
+            this.Clear();
+            Dictionary<int, int> dictionary = new Dictionary<int, int>();
+            foreach (RoleModelInfo roleModelInfo in Singleton<RoleModelData>.GetInstance().MapRoleModelInfos.Values)
+            {
+                if (roleModelInfo.ID == 1)
+                {
+                    if (!dictionary.ContainsKey(roleModelInfo.ID))
+                    {
+                        dictionary.Add(roleModelInfo.ID, roleModelInfo.AnimationIndex);
+                    }
+                    else
+                    {
+                        Debug.LogError( "RoleModelInfo "+roleModelInfo.Name+" id already exists ! Info : "+roleModelInfo.ID);
+                    }
+                }
+            }
+            ArrayList arrayList = new ArrayList();
+            ArrayList arrayList2 = new ArrayList();
+            foreach (KeyValuePair<int, int> keyValuePair in dictionary)
+            {
+                foreach (AniInfo aniInfo in Singleton<AniInfoStaticManager>.GetInstance().AniInfoData.Values)
+                {
+                    foreach (AniInfo.AniInfoNode aniInfoNode in aniInfo.AniNameList)
+                    {
+                        if (aniInfoNode.meshIndex == keyValuePair.Value || aniInfoNode.meshIndex == 9999)
+                        {
+                            RoleAniCollect roleAniCollect = new RoleAniCollect();
+                            roleAniCollect.meshID = aniInfoNode.meshIndex;
+                            roleAniCollect.aniName = aniInfoNode.Name;
+                            if (!arrayList2.Contains(aniInfoNode.Name))
+                            {
+                                arrayList2.Add(aniInfoNode.Name);
+                            }
+                            if (!arrayList.Contains(roleAniCollect))
+                            {
+                                arrayList.Add(roleAniCollect);
+                                roleAniCollect.modelID = keyValuePair.Key;
+                                roleAniCollect.aniIndex = aniInfoNode.animatioIndex;
+                                roleAniCollect.weaponIndex = aniInfoNode.weapoIndex;
+                                roleAniCollect.ContainsType = this.FindRoleAniTypeAll(roleAniCollect.aniIndex);
+                                if (!this._table.Contains(roleAniCollect))
+                                {
+                                    this._table.Add(roleAniCollect);
+                                }
+                                else
+                                {
+                                    Debug.LogError("modelID = "+roleAniCollect.modelID+" meshID= "+roleAniCollect.meshID+ " aniIndex = "+roleAniCollect.aniIndex+" aniName= "+roleAniCollect.aniName);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            arrayList.Clear();
+            dictionary.Clear();
+        }
+    }
 
     //public bool IsExistsRoleAniType(RoleAnimationType tp, int aniIdx)
     //{
@@ -235,23 +221,22 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //	return this._table.Exists((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx && rac.weaponIndex == weaponIndex);
     //}
 
-    //// Token: 0x06002448 RID: 9288 RVA: 0x000F2160 File Offset: 0x000F0360
-    //public ArrayList FindRoleAniTypeAll(int aniIdx)
-    //{
-    //	ArrayList arrayList = null;
-    //	foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
-    //	{
-    //		if (keyValuePair.Value.Contains(aniIdx))
-    //		{
-    //			if (arrayList == null)
-    //			{
-    //				arrayList = new ArrayList();
-    //			}
-    //			arrayList.Add(keyValuePair.Key);
-    //		}
-    //	}
-    //	return arrayList;
-    //}
+    public ArrayList FindRoleAniTypeAll(int aniIdx)
+    {
+        ArrayList arrayList = null;
+        foreach (KeyValuePair<RoleAnimationType, ArrayList> keyValuePair in this._aniTypeTable)
+        {
+            if (keyValuePair.Value.Contains(aniIdx))
+            {
+                if (arrayList == null)
+                {
+                    arrayList = new ArrayList();
+                }
+                arrayList.Add(keyValuePair.Key);
+            }
+        }
+        return arrayList;
+    }
 
     public ArrayList FindAniIndexByRoleAniType(RoleAnimationType type)
     {
@@ -263,10 +248,10 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //    return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID);
     //}
 
-    //public List<RoleAniCollect> FindByModelIDAndAniIndex(int modID, int aniIdx)
-    //{
-    //	return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
-    //}
+    public List<RoleAniCollect> FindByModelIDAndAniIndex(int modID, int aniIdx)
+    {
+        return this._table.FindAll((RoleAniCollect rac) => rac.modelID == modID && rac.aniIndex == aniIdx);
+    }
 
     //public RoleAniCollect FindPlayerAnimation(int aniIdx, int weaponIndex)
     //{
@@ -440,6 +425,12 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //	return this.AttachAnimation((RoleAnimationType)num4, role);
     //}
 
+    /// <summary>
+    /// 添加动画控制器
+    /// </summary>
+    /// <param name="attachType"></param>
+    /// <param name="role"></param>
+    /// <returns></returns>
     public bool AttachAnimation(RoleAnimationType attachType, Role role)
     {
         return this.AttachAnimation(attachType, role, false);
@@ -476,57 +467,49 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
         foreach (object obj in arrayList)
         {
             int aniIdx = (int)obj;
-            //List<RoleAniCollect> list = this.FindByModelIDAndAniIndex(role.roleGameObject.ModelID, aniIdx);
-            //foreach (RoleAniCollect roleAniCollect in list)
-            //{
-            //    if (roleAniCollect.ContainsType != null && roleAniCollect.ContainsType.Contains(attachType))
-            //    {
-            //        AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(roleAniCollect.aniName);
-            //        if (animationClip == null)
-            //        {
-            //            animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
-            //            if (animationClip == null)
-            //            {
-            //                this.print(LogType.Warning, new object[]
-            //                {
-            //                    "AttachAnimation Continue :",
-            //                    attachType,
-            //                    " .No find AnimationClip ",
-            //                    roleAniCollect.aniName,
-            //                    " RoleModeID=",
-            //                    role.roleGameObject.ModelID
-            //                });
-            //                continue;
-            //            }
-            //            role.roleGameObject.RoleAnimation.AddClip(animationClip, roleAniCollect.aniName);
-            //        }
-            //        if (!this._nowRunAnimation.ContainsKey(attachType))
-            //        {
-            //            ArrayList arrayList2 = new ArrayList();
-            //            arrayList2.Add(roleAniCollect.aniName);
-            //            this._nowRunAnimation.Add(attachType, arrayList2);
-            //        }
-            //        else
-            //        {
-            //            ArrayList arrayList3 = this._nowRunAnimation[attachType] as ArrayList;
-            //            arrayList3.Add(roleAniCollect.aniName);
-            //        }
-            //    }
-            //}
+            List<RoleAniCollect> list = this.FindByModelIDAndAniIndex(role.roleGameObject.ModelID, aniIdx);
+            foreach (RoleAniCollect roleAniCollect in list)
+            {
+                if (roleAniCollect.ContainsType != null && roleAniCollect.ContainsType.Contains(attachType))
+                {
+                    AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(roleAniCollect.aniName);
+                    if (animationClip == null)
+                    {
+                        animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
+                        if (animationClip == null)
+                        {
+                            Debug.Log("AttachAnimation Continue :"+attachType+" .No find AnimationClip "+roleAniCollect.aniName+" RoleModeID="+role.roleGameObject.ModelID);
+                            continue;
+                        }
+                        role.roleGameObject.RoleAnimation.AddClip(animationClip, roleAniCollect.aniName);
+                    }
+                    //if (!this._nowRunAnimation.ContainsKey(attachType))
+                    //{
+                    //    ArrayList arrayList2 = new ArrayList();
+                    //    arrayList2.Add(roleAniCollect.aniName);
+                    //    this._nowRunAnimation.Add(attachType, arrayList2);
+                    //}
+                    //else
+                    //{
+                    //    ArrayList arrayList3 = this._nowRunAnimation[attachType] as ArrayList;
+                    //    arrayList3.Add(roleAniCollect.aniName);
+                    //}
+                }
+            }
         }
-        //AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip("zhanli");
-        //if (clip != null)
-        //{
-        //    role.roleGameObject.RoleAnimation.clip = clip;
-        //    role.roleGameObject.RoleAnimation.Play("zhanli");
-        //}
+        ////AnimationClip clip = role.roleGameObject.RoleAnimation.GetClip("zhanli");
+        ////if (clip != null)
+        ////{
+        ////    role.roleGameObject.RoleAnimation.clip = clip;
+        ////    role.roleGameObject.RoleAnimation.Play("zhanli");
+        ////}
         return true;
     }
 
-    //private AnimationClip LoadAnimation(string name)
-    //{
-    //	return ResourceLoader.Load(name, typeof(AnimationClip)) as AnimationClip;
-    //}
+    private AnimationClip LoadAnimation(string name)
+    {
+        return ResourceLoader.Load(name, typeof(AnimationClip)) as AnimationClip;
+    }
 
     //public void AddRes(string name, AnimationClip ac)
     //{
@@ -537,7 +520,6 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //	this._tempRes.Add(name, ac);
     //}
 
-    //// Token: 0x06002457 RID: 9303 RVA: 0x00018C7F File Offset: 0x00016E7F
     //public void ClearRes()
     //{
     //	this._tempRes.Clear();

@@ -34,10 +34,10 @@ public class MoveTarget : MoveBase
         //{
         //    return false;
         //}
-        //if (this.m_cTarget == null && this.m_vecTarget == Vector3.zero)
-        //{
-        //    return false;
-        //}
+        if (this.m_cTarget == null && this.m_vecTarget == Vector3.zero)
+        {
+            return false;
+        }
         Vector3 a = Vector3.zero;
         if (this.m_vecTarget != Vector3.zero)
         {
@@ -49,71 +49,70 @@ public class MoveTarget : MoveBase
         }
         Vector3 vector = a - this.m_cRole.GetTrans().position;
         vector.y = 0f;
-        //if (vector.magnitude <= this.m_fSpeed * GameTime.deltaTime)
-        //{
-        Debug.Log(vector);
+        if (vector.magnitude <= this.m_fSpeed * GameTime.deltaTime)
+        {
             this.m_cRole.roleGameObject.RoleController.Move(vector);
-        //    this.Stop();
-        //    return false;
-        //}
-        //vector = vector.normalized;
-        //bool flag = this.rotateWhenMove;
-        //if (this.m_bRotate)
-        //{
-        //    this.rotate.LookDirection = vector;
-        //    if (!this.rotate.Update())
-        //    {
-        //        this.rotate.Reset();
-        //        flag = true;
-        //    }
-        //}
-        //else
-        //{
-        //    Vector3 worldPosition = new Vector3(a.x, this.m_cRole.GetPos().y, a.z);
-        //    this.m_cRole.GetTrans().LookAt(worldPosition);
-        //    flag = true;
-        //}
-        //if (flag)
-        //{
-        //    Vector3 motion = this.m_cRole.GetTrans().forward * this.m_fSpeed * GameTime.deltaTime;
-        //    this.m_cController.Move(motion);
-        //}
-        //if ((this.enableSoundEffect || this.EnableDirtEffect) && this.m_cRole._roleType == ROLE_TYPE.RT_PLAYER && this.walkSoundTime != null && this.walkSoundTime.Length > 0)
-        //{
-        //    if (this.isCreated.Count != this.walkSoundTime.Length || this.m_cAnimation.GetAniProgress() == 0f)
-        //    {
-        //        this.isCreated.Clear();
-        //        for (int i = 0; i < this.walkSoundTime.Length; i++)
-        //        {
-        //            this.isCreated.Add(false);
-        //        }
-        //    }
-        //    int num = 0;
-        //    int num2 = 0;
-        //    Vector3 vector2 = Vector3.zero;
-        //    for (int j = 0; j < this.walkSoundTime.Length; j++)
-        //    {
-        //        if (this.m_cAnimation.GetAniProgress() >= this.walkSoundTime[j] && !this.isCreated[j])
-        //        {
-        //            RaycastHit raycastHit;
-        //            if (Physics.Raycast(this.m_cRole.GetTrans().position + new Vector3(0f, this.m_cRole.roleGameObject.RoleController.height - 0.1f, 0f), -Vector3.up, out raycastHit, this.m_cRole.roleGameObject.RoleController.height, 8195))
-        //            {
-        //                num = Singleton<PlayerWalkSoundData>.GetInstance().GetSoundID(raycastHit.collider.gameObject.tag);
-        //                num2 = Singleton<PlayerWalkSoundData>.GetInstance().GetEffectID(raycastHit.collider.gameObject.tag);
-        //                vector2 = raycastHit.point + new Vector3(0f, 0.05f, 0f);
-        //            }
-        //            if (this.EnableDirtEffect && num2 > 0)
-        //            {
-        //                SingletonMono<EffectManager>.GetInstance().AddEffect(num2, vector2, vector2, vector2, this.m_cRole.GetTrans().rotation, null, false);
-        //            }
-        //            if (this.enableSoundEffect && num > 0)
-        //            {
-        //                this.modVoice.PlayOneShotSound(num);
-        //            }
-        //            this.isCreated[j] = true;
-        //        }
-        //    }
-        //}
+            this.Stop();
+            return false;
+        }
+        vector = vector.normalized;
+        bool flag = this.rotateWhenMove;
+        if (this.m_bRotate)
+        {
+            this.rotate.LookDirection = vector;
+            if (!this.rotate.Update())
+            {
+                this.rotate.Reset();
+                flag = true;
+            }
+        }
+        else
+        {
+            Vector3 worldPosition = new Vector3(a.x, this.m_cRole.GetPos().y, a.z);
+            this.m_cRole.GetTrans().LookAt(worldPosition);
+            flag = true;
+        }
+        if (flag)
+        {
+            Vector3 motion = this.m_cRole.GetTrans().forward * this.m_fSpeed * GameTime.deltaTime;
+            this.m_cController.Move(motion);
+        }
+        if ((this.enableSoundEffect || this.EnableDirtEffect) && this.m_cRole._roleType == ROLE_TYPE.RT_PLAYER && this.walkSoundTime != null && this.walkSoundTime.Length > 0)
+        {
+            //if (this.isCreated.Count != this.walkSoundTime.Length || this.m_cAnimation.GetAniProgress() == 0f)
+            //{
+            //    this.isCreated.Clear();
+            //    for (int i = 0; i < this.walkSoundTime.Length; i++)
+            //    {
+            //        this.isCreated.Add(false);
+            //    }
+            //}
+            //int num = 0;
+            //int num2 = 0;
+            //Vector3 vector2 = Vector3.zero;
+            //for (int j = 0; j < this.walkSoundTime.Length; j++)
+            //{
+            //    if (this.m_cAnimation.GetAniProgress() >= this.walkSoundTime[j] && !this.isCreated[j])
+            //    {
+            //        RaycastHit raycastHit;
+            //        if (Physics.Raycast(this.m_cRole.GetTrans().position + new Vector3(0f, this.m_cRole.roleGameObject.RoleController.height - 0.1f, 0f), -Vector3.up, out raycastHit, this.m_cRole.roleGameObject.RoleController.height, 8195))
+            //        {
+            //            num = Singleton<PlayerWalkSoundData>.GetInstance().GetSoundID(raycastHit.collider.gameObject.tag);
+            //            num2 = Singleton<PlayerWalkSoundData>.GetInstance().GetEffectID(raycastHit.collider.gameObject.tag);
+            //            vector2 = raycastHit.point + new Vector3(0f, 0.05f, 0f);
+            //        }
+            //        if (this.EnableDirtEffect && num2 > 0)
+            //        {
+            //            SingletonMono<EffectManager>.GetInstance().AddEffect(num2, vector2, vector2, vector2, this.m_cRole.GetTrans().rotation, null, false);
+            //        }
+            //        if (this.enableSoundEffect && num > 0)
+            //        {
+            //            this.modVoice.PlayOneShotSound(num);
+            //        }
+            //        this.isCreated[j] = true;
+            //    }
+            //}
+        }
         return true;
     }
 

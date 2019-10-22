@@ -1217,11 +1217,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 3612214489493573270}
   Animation: {fileID: 4569385382464743594}
+  HarmPartType: 
   HarmCheckPart: []
+  HurtPartType: 
   HurtPart: []
+  EffectType: 
   EffectTrans: []
+  MeshType: 
   Mesh: []
+  RagDollType: 
   RagDollRigidbody: []
+  ArmType: 
   ArmTrans: []
 --- !u!1 &4569385382453752064
 GameObject:

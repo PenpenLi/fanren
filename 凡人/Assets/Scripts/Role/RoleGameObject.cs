@@ -19,6 +19,9 @@ public class RoleGameObject
 
     private Animation m_cRoleAnimation;
 
+    /// <summary>
+    /// 角色控制器
+    /// </summary>
     private CharacterController m_cRoleController;
 
     private BindRole m_cRoleBind;
@@ -27,21 +30,27 @@ public class RoleGameObject
 
     private ColliderCheckCharacterController m_cColliderCheck;
 
-    //   private List<RoleGameObject.BindEffectInfo> m_cEffectList = new List<RoleGameObject.BindEffectInfo>();
+    private List<RoleGameObject.BindEffectInfo> m_cEffectList = new List<RoleGameObject.BindEffectInfo>();
 
-    //   private Dictionary<CHILD_EFFECT_POINT, Transform> m_mapEffectTrans = new Dictionary<CHILD_EFFECT_POINT, Transform>();
+    /// <summary>
+    /// 特效
+    /// </summary>
+    private Dictionary<CHILD_EFFECT_POINT, Transform> m_mapEffectTrans = new Dictionary<CHILD_EFFECT_POINT, Transform>();
 
-    //   private Dictionary<CHILD_MESH_POINT, Renderer> m_mapMeshTrans = new Dictionary<CHILD_MESH_POINT, Renderer>();
+    private Dictionary<CHILD_MESH_POINT, Renderer> m_mapMeshTrans = new Dictionary<CHILD_MESH_POINT, Renderer>();
 
-    //   private Dictionary<CHILD_RAGDOLL_POINT, Rigidbody> m_mapRagDollTrans = new Dictionary<CHILD_RAGDOLL_POINT, Rigidbody>();
+    private Dictionary<CHILD_RAGDOLL_POINT, Rigidbody> m_mapRagDollTrans = new Dictionary<CHILD_RAGDOLL_POINT, Rigidbody>();
 
-    //   private Dictionary<ATTACHMENT, GameObject> m_mapAttachmentGo = new Dictionary<ATTACHMENT, GameObject>();
+    //private Dictionary<ATTACHMENT, GameObject> m_mapAttachmentGo = new Dictionary<ATTACHMENT, GameObject>();
 
-    //   private Dictionary<CHILD_ARM_POINT, Transform> m_mapArmTrans = new Dictionary<CHILD_ARM_POINT, Transform>();
+    /// <summary>
+    /// 手臂位置
+    /// </summary>
+    private Dictionary<CHILD_ARM_POINT, Transform> m_mapArmTrans = new Dictionary<CHILD_ARM_POINT, Transform>();
 
-    //   private Dictionary<HARM_PART, ColliderCheckObject> m_mapHarm = new Dictionary<HARM_PART, ColliderCheckObject>();
+    private Dictionary<HARM_PART, ColliderCheckObject> m_mapHarm = new Dictionary<HARM_PART, ColliderCheckObject>();
 
-    //   private Dictionary<HURT_PART, HurtRoleGameObject> m_mapHurt = new Dictionary<HURT_PART, HurtRoleGameObject>();
+    private Dictionary<HURT_PART, HurtRoleGameObject> m_mapHurt = new Dictionary<HURT_PART, HurtRoleGameObject>();
 
     private Rigidbody[] rigidbodys;
 
@@ -51,19 +60,19 @@ public class RoleGameObject
     {
         public GameObject effectObj;
 
-        //public CHILD_EFFECT_POINT pointType;
+        public CHILD_EFFECT_POINT pointType;
 
-        //public Vector3 posOffest;
+        public Vector3 posOffest;
 
-        //public Vector3 eulerOffest;
+        public Vector3 eulerOffest;
 
-        //public BindEffectInfo(GameObject effect, CHILD_EFFECT_POINT type, Vector3 pos, Vector3 euler)
-        //{
-        //    this.effectObj = effect;
-        //    this.pointType = type;
-        //    this.posOffest = pos;
-        //    this.eulerOffest = euler;
-        //}
+        public BindEffectInfo(GameObject effect, CHILD_EFFECT_POINT type, Vector3 pos, Vector3 euler)
+        {
+            this.effectObj = effect;
+            this.pointType = type;
+            this.posOffest = pos;
+            this.eulerOffest = euler;
+        }
     }
 
     //   public Renderer[] Renderers
@@ -80,13 +89,13 @@ public class RoleGameObject
 
     //public bool IsHiding { get; private set; }
 
-    //public Dictionary<CHILD_EFFECT_POINT, Transform> EffectTrans
-    //{
-    //	get
-    //	{
-    //		return this.m_mapEffectTrans;
-    //	}
-    //}
+    public Dictionary<CHILD_EFFECT_POINT, Transform> EffectTrans
+    {
+        get
+        {
+            return this.m_mapEffectTrans;
+        }
+    }
 
 
     //public Dictionary<CHILD_MESH_POINT, Renderer> MeshTrans
@@ -137,13 +146,13 @@ public class RoleGameObject
     //	}
     //}
 
-    //public RoleModelInfo ModelInfo
-    //{
-    //	get
-    //	{
-    //		return this.m_cModelInfo;
-    //	}
-    //}
+    public RoleModelInfo ModelInfo
+    {
+        get
+        {
+            return this.m_cModelInfo;
+        }
+    }
 
     public string Name
     {
@@ -265,13 +274,13 @@ public class RoleGameObject
     //	}
     //}
 
-    //public int ModelID
-    //{
-    //	get
-    //	{
-    //		return this.m_iModelId;
-    //	}
-    //}
+    public int ModelID
+    {
+        get
+        {
+            return this.m_iModelId;
+        }
+    }
 
     public void Init(Role role)
     {
@@ -441,26 +450,29 @@ public class RoleGameObject
     //	}
     //}
 
+    /// <summary>
+    /// 更正特效
+    /// </summary>
     private void CorrectEffect()
     {
-        //if (this.m_cEffectList.Count <= 0)
-        //{
-        //    return;
-        //}
-        //for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
-        //{
-        //    if (!(this.m_cEffectList[i].effectObj == null))
-        //    {
-        //        Transform transform = this.EffectTrans[this.m_cEffectList[i].pointType];
-        //        if (transform == null)
-        //        {
-        //            transform = this.m_cTrans;
-        //        }
-        //        this.m_cEffectList[i].effectObj.transform.parent = transform;
-        //        this.m_cEffectList[i].effectObj.transform.localPosition = this.m_cEffectList[i].posOffest / this.m_fModelScale;
-        //        this.m_cEffectList[i].effectObj.transform.localEulerAngles = this.m_cEffectList[i].eulerOffest;
-        //    }
-        //}
+        if (this.m_cEffectList.Count <= 0)
+        {
+            return;
+        }
+        for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
+        {
+            if (!(this.m_cEffectList[i].effectObj == null))
+            {
+                Transform transform = this.EffectTrans[this.m_cEffectList[i].pointType];
+                if (transform == null)
+                {
+                    transform = this.m_cTrans;
+                }
+                this.m_cEffectList[i].effectObj.transform.parent = transform;
+                this.m_cEffectList[i].effectObj.transform.localPosition = this.m_cEffectList[i].posOffest / this.m_fModelScale;
+                this.m_cEffectList[i].effectObj.transform.localEulerAngles = this.m_cEffectList[i].eulerOffest;
+            }
+        }
     }
 
     /// <summary>
@@ -558,6 +570,10 @@ public class RoleGameObject
     //	this.m_mapAttachmentGo.Clear();
     //}
 
+    /// <summary>
+    /// 设置身体信息
+    /// </summary>
+    /// <param name="root"></param>
     private void SetBodyInfo(Transform root)
     {
         RoleBodyInfo component = root.GetComponent<RoleBodyInfo>();
@@ -567,79 +583,78 @@ public class RoleGameObject
         }
         this.m_cRoleController = component.Controller;
         this.m_cRoleAnimation = component.Animation;
-        //this.m_mapEffectTrans.Clear();
-        //this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
-        //for (int i = 0; i < component.EffectType.Count; i++)
-        //{
-        //    if (!this.m_mapEffectTrans.ContainsKey(component.EffectType[i]))
-        //    {
-        //        this.m_mapEffectTrans.Add(component.EffectType[i], component.EffectTrans[i]);
-        //    }
-        //}
-        //this.m_mapArmTrans.Clear();
-        //for (int j = 0; j < component.ArmType.Count; j++)
-        //{
-        //    this.m_mapArmTrans.Add(component.ArmType[j], component.ArmTrans[j]);
-        //}
-        //this.m_mapMeshTrans.Clear();
-        //for (int k = 0; k < component.MeshType.Count; k++)
-        //{
-        //    this.m_mapMeshTrans.Add(component.MeshType[k], component.Mesh[k]);
-        //}
-        //this.m_mapRagDollTrans.Clear();
-        //for (int l = 0; l < component.RagDollType.Count; l++)
-        //{
-        //    this.m_mapRagDollTrans.Add(component.RagDollType[l], component.RagDollRigidbody[l]);
-        //}
-        //this.m_mapHarm.Clear();
-        //for (int m = 0; m < component.HarmPartType.Count; m++)
-        //{
-        //    this.m_mapHarm.Add(component.HarmPartType[m], component.HarmCheckPart[m]);
-        //    if (component.HarmCheckPart[m] != null)
-        //    {
-        //        component.HarmCheckPart[m].CloseCheck();
-        //        if (this.RoleController != null)
-        //        {
-        //            Collider[] allCollider = component.HarmCheckPart[m].GetAllCollider();
-        //            if (allCollider != null && allCollider.Length > 0)
-        //            {
-        //                foreach (Collider collider in allCollider)
-        //                {
-        //                    if (collider != null)
-        //                    {
-        //                        Physics.IgnoreCollision(collider, this.RoleController);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-        //this.m_mapHurt.Clear();
-        //for (int num = 0; num < component.HurtPartType.Count; num++)
-        //{
-        //    this.m_mapHurt.Add(component.HurtPartType[num], component.HurtPart[num]);
-        //    if (component.HurtPart[num] != null)
-        //    {
-        //        component.HurtPart[num].SetRole(this.m_cRole);
-        //        if (this.RoleController != null)
-        //        {
-        //            Collider[] collider2 = component.HurtPart[num].GetCollider();
-        //            if (collider2 != null)
-        //            {
-        //                foreach (Collider collider3 in collider2)
-        //                {
-        //                    if (collider3 != null)
-        //                    {
-        //                        Physics.IgnoreCollision(collider3, this.RoleController);
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
+        this.m_mapEffectTrans.Clear();
+        this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
+        for (int i = 0; i < component.EffectType.Count; i++)
+        {
+            if (!this.m_mapEffectTrans.ContainsKey(component.EffectType[i]))
+            {
+                this.m_mapEffectTrans.Add(component.EffectType[i], component.EffectTrans[i]);
+            }
+        }
+        this.m_mapArmTrans.Clear();
+        for (int j = 0; j < component.ArmType.Count; j++)
+        {
+            this.m_mapArmTrans.Add(component.ArmType[j], component.ArmTrans[j]);
+        }
+        this.m_mapMeshTrans.Clear();
+        for (int k = 0; k < component.MeshType.Count; k++)
+        {
+            this.m_mapMeshTrans.Add(component.MeshType[k], component.Mesh[k]);
+        }
+        this.m_mapRagDollTrans.Clear();
+        for (int l = 0; l < component.RagDollType.Count; l++)
+        {
+            this.m_mapRagDollTrans.Add(component.RagDollType[l], component.RagDollRigidbody[l]);
+        }
+        this.m_mapHarm.Clear();
+        for (int m = 0; m < component.HarmPartType.Count; m++)
+        {
+            this.m_mapHarm.Add(component.HarmPartType[m], component.HarmCheckPart[m]);
+            if (component.HarmCheckPart[m] != null)
+            {
+                component.HarmCheckPart[m].CloseCheck();
+                if (this.RoleController != null)
+                {
+                    Collider[] allCollider = component.HarmCheckPart[m].GetAllCollider();
+                    if (allCollider != null && allCollider.Length > 0)
+                    {
+                        foreach (Collider collider in allCollider)
+                        {
+                            if (collider != null)
+                            {
+                                Physics.IgnoreCollision(collider, this.RoleController);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        this.m_mapHurt.Clear();
+        for (int num = 0; num < component.HurtPartType.Count; num++)
+        {
+            this.m_mapHurt.Add(component.HurtPartType[num], component.HurtPart[num]);
+            if (component.HurtPart[num] != null)
+            {
+                component.HurtPart[num].SetRole(this.m_cRole);
+                if (this.RoleController != null)
+                {
+                    Collider[] collider2 = component.HurtPart[num].GetCollider();
+                    if (collider2 != null)
+                    {
+                        foreach (Collider collider3 in collider2)
+                        {
+                            if (collider3 != null)
+                            {
+                                Physics.IgnoreCollision(collider3, this.RoleController);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    //// Token: 0x06002424 RID: 9252 RVA: 0x000F43BC File Offset: 0x000F25BC
     //public void AttachWeapon(ATTACHMENT attchPart, HARM_PART harmPart, GameObject weapon)
     //{
     //	if (weapon == null)

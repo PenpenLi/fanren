@@ -58,7 +58,7 @@ public class ControlStateWalkForward : ControlStateBase
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;
         bool b = true;
-        float num = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        float num = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);//获取移动速度
         Vector3[] array = null;
         CONTROL_INPUT inputId = ceb.InputId;
         if (inputId == CONTROL_INPUT.WALK_FORWARD)
@@ -69,42 +69,42 @@ public class ControlStateWalkForward : ControlStateBase
             b = ((ControlEventMoveForward)ceb).Rotate;
             array = ((ControlEventMoveForward)ceb).Path;
         }
-        this.m_cMove.Reset(ai, num);
+        this.m_cMove.Reset(ai, num);//重置
         this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);
         if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
         {
-            //如果角色类型不是玩家
-            if (array != null)
-            {
-                if (this.m_lstPathPoints == null)
-                {
-                    this.m_lstPathPoints = new List<Vector3>();
-                }
-                this.m_lstPathPoints.Clear();
-                foreach (Vector3 item in array)
-                {
-                    this.m_lstPathPoints.Add(item);
-                }
-                this.m_iPointIndex = 0;
-                this.m_iPointNum = this.m_lstPathPoints.Count;
-                if (this.m_iPointNum > 0)
-                {
-                    this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
-                }
-                else
-                {
-                    this.m_cMove.Stop();
-                }
-            }
-            //else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
+            ////如果角色类型不是玩家
+            //if (array != null)
             //{
-            //    this.Setm_lstPathPoints(vector);
+            //    if (this.m_lstPathPoints == null)
+            //    {
+            //        this.m_lstPathPoints = new List<Vector3>();
+            //    }
+            //    this.m_lstPathPoints.Clear();
+            //    foreach (Vector3 item in array)
+            //    {
+            //        this.m_lstPathPoints.Add(item);
+            //    }
+            //    this.m_iPointIndex = 0;
+            //    this.m_iPointNum = this.m_lstPathPoints.Count;
+            //    if (this.m_iPointNum > 0)
+            //    {
+            //        this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
+            //    }
+            //    else
+            //    {
+            //        this.m_cMove.Stop();
+            //    }
             //}
-            else
-            {
-                this.m_cMove.SetTargetPos(vector);
-            }
-            this.m_cMove.RotateWhenMove = true;
+            ////else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
+            ////{
+            ////    this.Setm_lstPathPoints(vector);
+            ////}
+            //else
+            //{
+            //    this.m_cMove.SetTargetPos(vector);
+            //}
+            //this.m_cMove.RotateWhenMove = true;
         }
         else
         {

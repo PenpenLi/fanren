@@ -63,6 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BundleObject.cs" />
+    <Compile Include="Assets\Scripts\FantasyTools\FantasyTimer.cs" />
+    <Compile Include="Assets\Scripts\FantasyTools\IO.cs" />
+    <Compile Include="Assets\Scripts\FantasyTools\TDelayTimeData.cs" />
+    <Compile Include="Assets\Scripts\FantasyTools\THeartbeatPacket.cs" />
+    <Compile Include="Assets\Scripts\FantasyTools\Toolset.cs" />
     <Compile Include="Assets\Scripts\GameData\BgSoundInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\CacheData.cs" />
     <Compile Include="Assets\Scripts\GameData\GameData.cs" />
@@ -117,13 +122,6 @@
     <Compile Include="Assets\Scripts\Resource\ResourceLoader.cs" />
     <Compile Include="Assets\Scripts\Resource\ResourcePath.cs" />
     <Compile Include="Assets\Scripts\Role\ACTION_INDEX.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\AttackFormula.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ATTRIBUTE_TYPE.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\CItemBase.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\DefenceFormula.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\FightInfo.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\ModAttribute.cs" />
-    <Compile Include="Assets\Scripts\Role\ATTRIBUTE\PlayerPropertyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\BindRole.cs" />
     <Compile Include="Assets\Scripts\Role\BindRoleInfo.cs" />
     <Compile Include="Assets\Scripts\Role\CItemManager.cs" />
@@ -132,15 +130,23 @@
     <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckObject.cs" />
     <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckRay.cs" />
     <Compile Include="Assets\Scripts\Role\Collider\HitEventArgs.cs" />
-    <Compile Include="Assets\Scripts\Role\CONTROL_INPUT.cs" />
-    <Compile Include="Assets\Scripts\Role\CONTROL_STATE.cs" />
     <Compile Include="Assets\Scripts\Role\EASING_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\AttackFormula.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\ATTRIBUTE_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\CItemBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\DefenceFormula.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\FightInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\ModAttribute.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\ModFight.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\PlayerPropertyInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\TargetQuadrant.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjectBevBase.cs" />
     <Compile Include="Assets\Scripts\Role\Hatred\HatredType.cs" />
     <Compile Include="Assets\Scripts\Role\Hatred\RoleHatred.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventBase.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventMoveForward.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventRestoreIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateBase.cs" />
@@ -152,7 +158,6 @@
     <Compile Include="Assets\Scripts\Role\MFS\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModAnimation.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModCamera.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\ModFight.cs" />
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
@@ -170,15 +175,24 @@
     <Compile Include="Assets\Scripts\Role\OperableItemBase\ObjectState.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableItemBase.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableSaveDataBase.cs" />
-    <Compile Include="Assets\Scripts\Role\Player.cs" />
-    <Compile Include="Assets\Scripts\Role\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Role.cs" />
     <Compile Include="Assets\Scripts\Role\ROLE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\AniInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\AniInfoStaticManager.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAniCollect.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationManager.cs" />
     <Compile Include="Assets\Scripts\Role\RoleAnimationManager\RoleAnimationType.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBaseInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CHILD_ARM_POINT.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CHILD_EFFECT_POINT.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CHILD_MESH_POINT.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CHILD_RAGDOLL_POINT.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CONTROL_INPUT.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\CONTROL_STATE.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\HARM_PART.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleBodyInfo\HURT_PART.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBodyInfo\RoleBodyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\RoleEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleGameObject.cs" />
@@ -232,6 +246,7 @@
     <None Include="Assets\Resources\conf\SoundTable.txt" />
     <None Include="Assets\Resources\conf\res\mapinfo.txt" />
     <None Include="Assets\Resources\conf\RoleBaseConfig.txt" />
+    <None Include="Assets\Resources\conf\Anim\RoleAniTypeDefine.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
