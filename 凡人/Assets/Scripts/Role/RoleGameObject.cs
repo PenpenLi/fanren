@@ -529,7 +529,6 @@ public class RoleGameObject
         this.CorrectEffect();
     }
 
-    //// Token: 0x06002421 RID: 9249 RVA: 0x000F3F7C File Offset: 0x000F217C
     //public void CloneGO(GameObject clone)
     //{
     //	if (clone == null)
@@ -566,8 +565,8 @@ public class RoleGameObject
         {
             return;
         }
-        //this.m_cRoleController = component.Controller;
-        //this.m_cRoleAnimation = component.Animation;
+        this.m_cRoleController = component.Controller;
+        this.m_cRoleAnimation = component.Animation;
         //this.m_mapEffectTrans.Clear();
         //this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
         //for (int i = 0; i < component.EffectType.Count; i++)
