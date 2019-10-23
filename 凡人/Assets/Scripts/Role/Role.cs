@@ -663,11 +663,10 @@ public class Role
     //		return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP);
     //	}
 
-    //	// Token: 0x0600238D RID: 9101 RVA: 0x000F03A4 File Offset: 0x000EE5A4
-    //	public bool IsDead()
-    //	{
-    //		return this.isDestroyed || (this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute && this.GetCurHp() <= 0);
-    //	}
+    public bool IsDead()
+    {
+        return this.isDestroyed || (this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute && this.GetCurHp() <= 0);
+    }
 
     //	// Token: 0x0600238E RID: 9102 RVA: 0x000F03E4 File Offset: 0x000EE5E4
     //	public bool AddRolePart(int id)

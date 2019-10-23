@@ -79,14 +79,14 @@ public class ModControlMFS : Module
     {
         if (tmpEvent.Forced)//强制的
         {
-            ////ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
-            //if (this.m_cCurrentState != null)
-            //{
-            //    this.m_cCurrentState.Destory();
-            //    this.m_cCurrentState.ExitProcess();
-            //}
-            ////this.m_cCurrentState = stateByInput;
-            //this.m_cCurrentState.OnEnter(tmpEvent);
+            ControlStateBase stateByInput = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
+            if (this.m_cCurrentState != null)
+            {
+                this.m_cCurrentState.Destory();
+                this.m_cCurrentState.ExitProcess();
+            }
+            this.m_cCurrentState = stateByInput;
+            this.m_cCurrentState.OnEnter(tmpEvent);
             return true;
         }
 

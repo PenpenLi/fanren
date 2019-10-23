@@ -62,7 +62,7 @@ public class Player : Role
 
     private static Player instance;
 
-    //public WeaponManager weaponManager = new WeaponManager();
+    public WeaponManager weaponManager = new WeaponManager();
 
     //public EquipReplace equipReplace;
 
@@ -276,7 +276,6 @@ public class Player : Role
     {
     }
 
-    //	// Token: 0x060022BA RID: 8890 RVA: 0x000ECAF4 File Offset: 0x000EACF4
     //	public virtual bool ChangeModelByRole(int modelID, bool destroyOld)
     //	{
     //		return base.ChangeModel(modelID, destroyOld);
@@ -351,24 +350,6 @@ public class Player : Role
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
-
-        //设置角色动画 这里要改成新动画系统
-        //if (Singleton<RoleAnimationManager>.GetInstance().IsSwitch)
-        //{
-        //    Animation roleAnimation = base.roleGameObject.RoleAnimation;
-        //    if (null != roleAnimation)
-        //    {
-        //        UnityEngine.Object.DestroyImmediate(roleAnimation, false);
-        //    }
-
-        //    for (RoleAnimationType roleAnimationType = RoleAnimationType.Normal; roleAnimationType < RoleAnimationType.Movie; roleAnimationType++)
-        //    {
-        //        if (roleAnimationType != RoleAnimationType.Movie)
-        //        {
-        //            Singleton<RoleAnimationManager>.GetInstance().AttachAnimation(roleAnimationType, this);
-        //        }
-        //    }
-        //}
 
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);
@@ -449,7 +430,7 @@ public class Player : Role
                 //module = new ModSkillProperty(this);
                 break;
             case MODULE_TYPE.MT_BUFF:
-                //module = new ModBuffProperty(this);
+                module = new ModBuffProperty(this);
                 break;
             case MODULE_TYPE.MT_MISSION:
                 //module = new ModMission(this);
@@ -492,7 +473,7 @@ public class Player : Role
     {
         base.roleGameObject.EnableRagdoll(false);
         base.RunSpeed = this.playerInfo.runSpeed;
-        //this.weaponManager.initialize(this);
+        this.weaponManager.initialize(this);
         base.SetRat(PlayerInfo.PLAYER_ROTATION);
         //this.m_cAdeptSystem.OwnerPlayer = this;
         //ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
@@ -861,21 +842,13 @@ public class Player : Role
 
     public override void Input(float VerInput, float HorInput)
     {
-        //if (base.IsDead())
-        //{
-        //    return;
-        //}
+        if (base.IsDead())
+        {
+            return;
+        }
 
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
-        if (this.m_cModCamera.cameraState == ModCamera.CameraState.FollowPositionAutoRotation)
-        {
-            if (Mathf.Abs(this.m_cModCamera.cameraTransform.rotation.eulerAngles.x - 90f) <= 5f)
-            {
-                a = this.m_cModCamera.cameraTransform.up;
-            }
-            a.y = 0f;
-        }
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
@@ -1182,7 +1155,6 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x060022E9 RID: 8937 RVA: 0x000EE580 File Offset: 0x000EC780
     //	public static void LoadAttackRes(EquipCfgType equipType, int level)
     //	{
     //		KeyValuePair<string, Type>[] attackTableResource = UtilityRoleResource.GetAttackTableResource((int)equipType, level);

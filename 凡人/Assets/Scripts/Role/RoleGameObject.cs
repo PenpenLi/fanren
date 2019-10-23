@@ -242,8 +242,6 @@ public class RoleGameObject
         }
     }
 
-    //// Token: 0x17000443 RID: 1091
-    //// (get) Token: 0x0600240F RID: 9231 RVA: 0x000F38A0 File Offset: 0x000F1AA0
     //public BodyColliderBehaviour[] RoleBodyCollider
     //{
     //	get
@@ -256,8 +254,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x17000444 RID: 1092
-    //// (get) Token: 0x06002410 RID: 9232 RVA: 0x000F38C0 File Offset: 0x000F1AC0
     //public ColliderCheckCharacterController RoleColliderCheck
     //{
     //	get
@@ -303,8 +299,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x17000447 RID: 1095
-    //// (get) Token: 0x06002414 RID: 9236 RVA: 0x000F3958 File Offset: 0x000F1B58
     //public SkinnedMeshRenderer[] SkinMeshRensers
     //{
     //	get
@@ -321,7 +315,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x06002415 RID: 9237 RVA: 0x000F399C File Offset: 0x000F1B9C
     //public void AddMeshMeterial(int meterialId)
     //{
     //	Material material = null;
@@ -347,7 +340,6 @@ public class RoleGameObject
     //	}
     //}
 
-    //// Token: 0x06002416 RID: 9238 RVA: 0x000F3A3C File Offset: 0x000F1C3C
     //public void AddMaterialeffect(int meterialId, float time)
     //{
     //	if (this.RoleBody == null)
@@ -362,7 +354,6 @@ public class RoleGameObject
     //	materialAdder.AddMaterial(meterialId, this, time);
     //}
 
-    //// Token: 0x06002417 RID: 9239 RVA: 0x000F3A88 File Offset: 0x000F1C88
     //public void AddMaterialeffect(int meterialId, float time, float fadeInSpeed, float fadeOutSpeed)
     //{
     //	if (this.RoleBody == null)
@@ -377,7 +368,6 @@ public class RoleGameObject
     //	materialAdder.AddMaterial(meterialId, this, time, fadeInSpeed, fadeOutSpeed);
     //}
 
-    //// Token: 0x06002418 RID: 9240 RVA: 0x000F3AD8 File Offset: 0x000F1CD8
     //public void RemoveMaterialeffect(int meterialId)
     //{
     //	if (this.RoleBody == null)
@@ -392,53 +382,50 @@ public class RoleGameObject
     //	component.RemoveMaterial(meterialId);
     //}
 
-    //// Token: 0x06002419 RID: 9241 RVA: 0x000F3B18 File Offset: 0x000F1D18
-    //public int BindEffect(CHILD_EFFECT_POINT point, int id, Vector3 posOffest, Vector3 eulerOffest)
-    //{
-    //	if (id <= 0)
-    //	{
-    //		return -1;
-    //	}
-    //	if (!this.EffectTrans.ContainsKey(point))
-    //	{
-    //		return -1;
-    //	}
-    //	Transform transform = this.EffectTrans[point];
-    //	if (transform == null)
-    //	{
-    //		return -1;
-    //	}
-    //	int num = SingletonMono<EffectManager>.GetInstance().AddEffectBind(id, transform.gameObject);
-    //	if (num < 0)
-    //	{
-    //		return -1;
-    //	}
-    //	GameObject @object = Singleton<ActorManager>.GetInstance().GetObject(num);
-    //	if (@object == null)
-    //	{
-    //		return -1;
-    //	}
-    //	@object.transform.localPosition = posOffest / this.m_fModelScale;
-    //	@object.transform.localEulerAngles = eulerOffest;
-    //	RoleGameObject.BindEffectInfo item = new RoleGameObject.BindEffectInfo(@object, point, posOffest, eulerOffest);
-    //	this.m_cEffectList.Add(item);
-    //	this.RemoveEmptyEffect();
-    //	return num;
-    //}
+    public int BindEffect(CHILD_EFFECT_POINT point, int id, Vector3 posOffest, Vector3 eulerOffest)
+    {
+        if (id <= 0)
+        {
+            return -1;
+        }
+        if (!this.EffectTrans.ContainsKey(point))
+        {
+            return -1;
+        }
+        Transform transform = this.EffectTrans[point];
+        if (transform == null)
+        {
+            return -1;
+        }
+        int num = SingletonMono<EffectManager>.GetInstance().AddEffectBind(id, transform.gameObject);
+        if (num < 0)
+        {
+            return -1;
+        }
+        GameObject @object = Singleton<ActorManager>.GetInstance().GetObject(num);
+        if (@object == null)
+        {
+            return -1;
+        }
+        @object.transform.localPosition = posOffest / this.m_fModelScale;
+        @object.transform.localEulerAngles = eulerOffest;
+        RoleGameObject.BindEffectInfo item = new RoleGameObject.BindEffectInfo(@object, point, posOffest, eulerOffest);
+        this.m_cEffectList.Add(item);
+        this.RemoveEmptyEffect();
+        return num;
+    }
 
-    //// Token: 0x0600241A RID: 9242 RVA: 0x000F3BD4 File Offset: 0x000F1DD4
-    //private void RemoveEmptyEffect()
-    //{
-    //	for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
-    //	{
-    //		if (this.m_cEffectList[i].effectObj == null)
-    //		{
-    //			this.m_cEffectList.RemoveAt(i);
-    //		}
-    //	}
-    //}
+    private void RemoveEmptyEffect()
+    {
+        for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)
+        {
+            if (this.m_cEffectList[i].effectObj == null)
+            {
+                this.m_cEffectList.RemoveAt(i);
+            }
+        }
+    }
 
-    //// Token: 0x0600241B RID: 9243 RVA: 0x000F3C2C File Offset: 0x000F1E2C
     //public void DetachEffect()
     //{
     //	for (int i = this.m_cEffectList.Count - 1; i >= 0; i--)

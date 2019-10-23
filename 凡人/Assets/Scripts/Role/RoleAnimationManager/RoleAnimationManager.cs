@@ -12,8 +12,6 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
 {
     private const string CFG_PATH = "Anim/RoleAniTypeDefine";
 
-    public bool IsSwitch = true;
-
     private Dictionary<RoleAnimationType, ArrayList> _aniTypeTable = new Dictionary<RoleAnimationType, ArrayList>();
 
     private List<RoleAniCollect> _table = new List<RoleAniCollect>();
@@ -424,17 +422,6 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //	Debug.Log("attach = " + (RoleAnimationType)num4);
     //	return this.AttachAnimation((RoleAnimationType)num4, role);
     //}
-
-    /// <summary>
-    /// 添加动画控制器
-    /// </summary>
-    /// <param name="attachType"></param>
-    /// <param name="role"></param>
-    /// <returns></returns>
-    public bool AttachAnimation(RoleAnimationType attachType, Role role)
-    {
-        return this.AttachAnimation(attachType, role, false);
-    }
 
     public bool AttachAnimation(RoleAnimationType attachType, Role role, bool detachOther)
     {      
