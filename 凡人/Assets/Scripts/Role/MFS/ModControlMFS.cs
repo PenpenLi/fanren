@@ -97,18 +97,17 @@ public class ModControlMFS : Module
                 Debug.Log("m_cCurrentState.IsLocked");
                 return false;
             }
-            //if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
-            //{
-            //    return false;
-            //}
+            if (!this.m_cCurrentState.IsFree && !this.m_cCurrentState.BreakEvent.Contains(tmpEvent.InputId) && !this.m_cWrapState.IsEventForbid(tmpEvent.InputId, this.m_cCurrentState.GetState()))
+            {
+                return false;
+            }
         }
 
         ControlStateBase stateByInput2 = this.m_cWrapState.GetStateByInput(tmpEvent.InputId);
-        
-        //if (!stateByInput2.IsEffectTive(tmpEvent))
-        //{
-        //    return false;
-        //}
+        if (!stateByInput2.IsEffectTive(tmpEvent))
+        {
+            return false;
+        }
         ControlStateBase cCurrentState = this.m_cCurrentState;
         if (cCurrentState != null)
         {
@@ -126,17 +125,17 @@ public class ModControlMFS : Module
         }
         stateByInput2.EnterProcess();
         this.m_cCurrentState = stateByInput2;
-        if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER)//&& CameraBoxsSelect.Instance != null
-        {
-            if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
-            {
-                //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
-            }
-            else
-            {
-                //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
-            }
-        }
+        //if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER)//&& CameraBoxsSelect.Instance != null
+        //{
+        //    if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
+        //    {
+        //        //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
+        //    }
+        //    else
+        //    {
+        //        //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
+        //    }
+        //}
         return true;
     }
 
@@ -182,7 +181,7 @@ public class ModControlMFS : Module
             //this.m_mapOutputStates.Add(CONTROL_STATE.GATHER_STRENGTH, new ControlStateGatherStrength(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BOSS_SHOW, new ControlStateBossShow(role, control, mcm));
             this.m_mapInpuStates.Clear();
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.JUMP, this.m_mapOutputStates[CONTROL_STATE.JUMP]);
@@ -235,9 +234,15 @@ public class ModControlMFS : Module
             return null;
         }
 
-        //public bool IsEventForbid(CONTROL_INPUT ci, CONTROL_STATE cs)
-        //{
-        //    return this.m_mapEventTable.GetTableData(ci, cs);
-        //}
+        /// <summary>
+        /// 事件禁止
+        /// </summary>
+        /// <param name="ci"></param>
+        /// <param name="cs"></param>
+        /// <returns></returns>
+        public bool IsEventForbid(CONTROL_INPUT ci, CONTROL_STATE cs)
+        {
+            return this.m_mapEventTable.GetTableData(ci, cs);
+        }
     }
 }

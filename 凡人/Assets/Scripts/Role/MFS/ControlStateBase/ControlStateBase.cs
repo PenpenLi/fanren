@@ -14,7 +14,7 @@ public class ControlStateBase
 
     protected ModControlMFS m_cControlMfs;
 
-    //protected ModBehaviorAI modBevAi;
+    protected ModBehaviorAI modBevAi;
 
     protected ModAttribute modAtt;
 
@@ -35,7 +35,7 @@ public class ControlStateBase
 		this.m_cRole = role;
 		this.m_cControl = control;
 		this.m_cAnimation = (ModAnimation)this.m_cRole.GetModule(MODULE_TYPE.MT_MOTION);
-        //this.modBevAi = (this.m_cRole.GetModule(MODULE_TYPE.MT_AI_BEHAVIOR) as ModBehaviorAI);
+        this.modBevAi = (this.m_cRole.GetModule(MODULE_TYPE.MT_AI_BEHAVIOR) as ModBehaviorAI);
         this.modAtt = (this.m_cRole.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
         this.m_cControlMfs = mcm;
 		this.m_eStateId = cs;
@@ -109,7 +109,7 @@ public class ControlStateBase
 
 	public virtual bool Update()
 	{
-        return this.m_cRole != null; //&& this.m_cAnimation != null;
+        return this.m_cRole != null&& this.m_cAnimation != null;
 	}
 
 	public CONTROL_STATE GetState()
@@ -157,14 +157,14 @@ public class ControlStateBase
 
 	protected void CheckToFallingState()
 	{
-		//if (this.m_cControl == null || !this.m_cControl.active)
-		//{
-		//	return;
-		//}
-		this.m_cControl.Move(Vector3.up * -17f);
+        if (this.m_cControl == null)
+        {
+            return;
+        }
+        this.m_cControl.Move(Vector3.up * -17f);
         if (!this.m_cControl.isGrounded)
         {
-            //this.m_cControlMfs.ChangeState(new ControlEventFalling(false));
+            this.m_cControlMfs.ChangeState(new ControlEventFalling(false));
         }
     }
 }

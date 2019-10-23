@@ -151,14 +151,17 @@
     <Compile Include="Assets\Scripts\Role\Fight\FightInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\ModAttribute.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\ModFight.cs" />
+    <Compile Include="Assets\Scripts\Role\Fight\PlayerFightData.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\PlayerPropertyInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\TargetQuadrant.cs" />
     <Compile Include="Assets\Scripts\Role\GameObjectBevBase.cs" />
     <Compile Include="Assets\Scripts\Role\Hatred\HatredType.cs" />
     <Compile Include="Assets\Scripts\Role\Hatred\RoleHatred.cs" />
+    <Compile Include="Assets\Scripts\Role\HelpManager\HelpManager.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventBase.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventFalling.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventMoveForward.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventRestoreIdle.cs" />
@@ -168,6 +171,7 @@
     <Compile Include="Assets\Scripts\Role\MFS\MFS_TALBE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\MFSTable.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\MFSTableManager.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ModBehaviorAI.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModAnimation.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModCamera.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\Monster.cs" />
+    <Compile Include="Assets\Scripts\Role\Monster\MonsterHp.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\MonsterInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\MonsterSkill.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\SkillUselRule.cs" />
@@ -188,6 +193,8 @@
     <Compile Include="Assets\Scripts\Role\OperableItemBase\ObjectState.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableItemBase.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableSaveDataBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\Character.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\EquipReplace.cs" />
     <Compile Include="Assets\Scripts\Role\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Role\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Role.cs" />
@@ -207,6 +214,10 @@
     <Compile Include="Assets\Scripts\Role\RoleBodyInfo\HARM_PART.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBodyInfo\HURT_PART.cs" />
     <Compile Include="Assets\Scripts\Role\RoleBodyInfo\RoleBodyInfo.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleChildren\RoleChildren.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleChildren\RoleChildType.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleDeadArgs.cs" />
+    <Compile Include="Assets\Scripts\Role\RoleDeadEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleEventHandler.cs" />
     <Compile Include="Assets\Scripts\Role\RoleGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\RoleHurtArgs.cs" />

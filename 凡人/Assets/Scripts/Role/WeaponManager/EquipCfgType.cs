@@ -1,28 +1,52 @@
 ﻿using System;
 
-// Token: 0x0200035E RID: 862
+/// <summary>
+/// 装备类型
+/// </summary>
 public enum EquipCfgType
 {
-	// Token: 0x04001565 RID: 5477
+    /// <summary>
+    /// 未知
+    /// </summary>
 	EQCHILD_CT_UNKNOWN,
-	// Token: 0x04001566 RID: 5478
+    /// <summary>
+    /// 武器
+    /// </summary>
 	EQCHILD_CT_WEAPON,
-	// Token: 0x04001567 RID: 5479
+    /// <summary>
+    /// 魔法武器
+    /// </summary>
 	EQCHILD_CT_MAGICWEAPON,
-	// Token: 0x04001568 RID: 5480
+    /// <summary>
+    /// 除草剂
+    /// </summary>
 	EQCHILD_CT_DWEAPON,
-	// Token: 0x04001569 RID: 5481
+    /// <summary>
+    /// 肩
+    /// </summary>
 	EQCHILD_CT_SHOULDER = 11,
-	// Token: 0x0400156A RID: 5482
+    /// <summary>
+    /// 衣服
+    /// </summary>
 	EQCHILD_CT_CLOTHES,
-	// Token: 0x0400156B RID: 5483
+    /// <summary>
+    /// 下摆
+    /// </summary>
 	EQCHILD_CT_CUFF,
-	// Token: 0x0400156C RID: 5484
+    /// <summary>
+    /// 脚
+    /// </summary>
 	EQCHILD_CT_FOOT,
-	// Token: 0x0400156D RID: 5485
+    /// <summary>
+    /// 戒指
+    /// </summary>
 	EQCHILD_CT_RING,
-	// Token: 0x0400156E RID: 5486
+    /// <summary>
+    /// 
+    /// </summary>
 	EQCHILD_CT_SHELTER = 21,
-	// Token: 0x0400156F RID: 5487
+    /// <summary>
+    /// 时装
+    /// </summary>
 	EQCHILD_CT_FASHION = 91
 }

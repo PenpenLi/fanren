@@ -12,7 +12,7 @@ public class Player : Role
 
     private const string strBaseMixtureCfg = "MixtureConfig";
 
-    //public Character m_cCharacter;
+    public Character m_cCharacter;
 
     public ModAttribute m_cModAttribute;
 
@@ -64,7 +64,7 @@ public class Player : Role
 
     public WeaponManager weaponManager = new WeaponManager();
 
-    //public EquipReplace equipReplace;
+    public EquipReplace equipReplace;
 
     //public ItemFolderContainer ItemFolder;
 
@@ -350,14 +350,13 @@ public class Player : Role
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
-
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
         this.hatred.selfRole = Player.Instance;
         KeyManager.controlRole = this;
-        //this.equipReplace = new EquipReplace(this);//装备
+        this.equipReplace = new EquipReplace(this);//装备
         //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
         //this.m_cAmbitSystem.Init(this);
         this.InitRoleBaseInfo();
@@ -365,8 +364,8 @@ public class Player : Role
         //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
         //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
         //this.m_cFigureSystem.Init(this);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);//s
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
         if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
         {
             base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
@@ -827,7 +826,6 @@ public class Player : Role
     //		return false;
     //	}
 
-    //	// Token: 0x060022DE RID: 8926 RVA: 0x000ED9D8 File Offset: 0x000EBBD8
     //	public void Roll()
     //	{
     //		CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
@@ -850,7 +848,7 @@ public class Player : Role
         this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
-        Vector3 vector2 = base.GetPos() + vector;
+        Vector3 vector2 = base.GetPos() + vector;//移动目标点
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
         Debug.Log(currentStateId);
@@ -864,6 +862,7 @@ public class Player : Role
                     {
                         if (!(vector == Vector3.zero))
                         {
+                            Debug.Log("ControlEventMoveForward");
                             this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
                         }
                     }
@@ -1005,24 +1004,24 @@ public class Player : Role
     //	}
 
     /// <summary>
-    /// 获得距离
+    /// 获得选择距离
     /// </summary>
     /// <returns></returns>
     private float GetSelectDistance()
     {
         float result = 4f;
-        //if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
-        //{
-        //    result = Singleton<PlayerFightData>.GetInstance().MagicSelectDistance;
-        //}
-        //else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_WEAPON)
-        //{
-        //    result = Singleton<PlayerFightData>.GetInstance().SwordSelectDistance;
-        //}
-        //else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_DWEAPON)
-        //{
-        //    result = Singleton<PlayerFightData>.GetInstance().DaggerSelectDistance;
-        //}
+        if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
+        {
+            result = Singleton<PlayerFightData>.GetInstance().MagicSelectDistance;
+        }
+        else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_WEAPON)
+        {
+            result = Singleton<PlayerFightData>.GetInstance().SwordSelectDistance;
+        }
+        else if (this.weaponManager.currentWeaponType == EquipCfgType.EQCHILD_CT_DWEAPON)
+        {
+            result = Singleton<PlayerFightData>.GetInstance().DaggerSelectDistance;
+        }
         return result;
     }
 

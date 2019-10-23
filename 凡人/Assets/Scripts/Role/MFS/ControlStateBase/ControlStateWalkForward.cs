@@ -21,14 +21,14 @@ public class ControlStateWalkForward : ControlStateBase
 
 	public override bool Update()
 	{
-        //if (this.m_cRole.IsDead())
-        //{
-        //	return false;
-        //}
-        //if (!base.Update())
-        //{
-        //    return false;
-        //}
+        if (this.m_cRole.IsDead())
+        {
+            return false;
+        }
+        if (!base.Update())
+        {
+            return false;
+        }
         this.SetSpeed();
         if (!this.m_cMove.Update())
 		{

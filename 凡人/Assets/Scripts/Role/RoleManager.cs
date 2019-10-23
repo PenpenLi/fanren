@@ -57,9 +57,12 @@ public class RoleManager : MonoBehaviour
     [HideInInspector]
     public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
 
-    //[HideInInspector]
-    //public List<HelpManager> HelpList = new List<HelpManager>();
+    [HideInInspector]
+    public List<HelpManager> HelpList = new List<HelpManager>();
 
+    /// <summary>
+    /// 怪物HpRoot
+    /// </summary>
     public GameObject MonsterHpRoot
     {
         get
@@ -95,7 +98,9 @@ public class RoleManager : MonoBehaviour
     //		Singleton<EZGUIManager>.GetInstance().GetGUI<PlayerGUI>().Show();
     //	}
 
-
+    /// <summary>
+    /// 创建角色
+    /// </summary>
     private void CreateRole()
     {
         this.CreatePlayer();
@@ -396,6 +401,9 @@ public class RoleManager : MonoBehaviour
         return gameObject;
     }
 
+    /// <summary>
+    /// 创建玩家
+    /// </summary>
     private void CreatePlayer()
     {
         Player player = new Player();
@@ -408,6 +416,9 @@ public class RoleManager : MonoBehaviour
         this.AddRole(player);
     }
 
+    /// <summary>
+    /// 初始化玩家
+    /// </summary>
     private void InitPlayer()
     {
         Player player = this.GetPlayer();
@@ -801,40 +812,37 @@ public class RoleManager : MonoBehaviour
     //		this.ClearRole();
     //	}
 
-    //	// Token: 0x06002474 RID: 9332 RVA: 0x000F7E28 File Offset: 0x000F6028
-    //	public List<Role> GetRoleList()
-    //	{
-    //		return this.RoleObjList;
-    //	}
+    public List<Role> GetRoleList()
+    {
+        return this.RoleObjList;
+    }
 
-    //	// Token: 0x06002475 RID: 9333 RVA: 0x000F7E30 File Offset: 0x000F6030
-    //	public Role GetRole(int roleId)
-    //	{
-    //		foreach (Role role in this.RoleObjList)
-    //		{
-    //			if (role.ID == roleId)
-    //			{
-    //				return role;
-    //			}
-    //		}
-    //		return null;
-    //	}
+    public Role GetRole(int roleId)
+    {
+        foreach (Role role in this.RoleObjList)
+        {
+            if (role.ID == roleId)
+            {
+                return role;
+            }
+        }
+        return null;
+    }
 
-    //	// Token: 0x06002476 RID: 9334 RVA: 0x000F7EA8 File Offset: 0x000F60A8
-    //	public bool DelRole(Role role)
-    //	{
-    //		if (role == null)
-    //		{
-    //			return false;
-    //		}
-    //		role.DestroyRole();
-    //		this.RoleObjList.Remove(role);
-    //		if (this.ignoreColliderRole.Contains(role))
-    //		{
-    //			this.ignoreColliderRole.Remove(role);
-    //		}
-    //		return true;
-    //	}
+    public bool DelRole(Role role)
+    {
+        if (role == null)
+        {
+            return false;
+        }
+        role.DestroyRole();
+        this.RoleObjList.Remove(role);
+        if (this.ignoreColliderRole.Contains(role))
+        {
+            this.ignoreColliderRole.Remove(role);
+        }
+        return true;
+    }
 
     //	// Token: 0x06002477 RID: 9335 RVA: 0x000F7EF0 File Offset: 0x000F60F0
     //	public bool DelRole(int roleId)

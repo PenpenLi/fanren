@@ -35,11 +35,11 @@ public class Role
 
     private bool _bRagdoll;
 
-    //private RoleChildren _roleChildren = new RoleChildren();
+    private RoleChildren _roleChildren = new RoleChildren();
 
     public ModControlMFS modMFS;
 
-    //public ModBehaviorAI modAi;
+    public ModBehaviorAI modAi;
 
     private bool _bAniMove;
 
@@ -47,11 +47,11 @@ public class Role
 
     private MFS_TALBE_TYPE m_eMFSType;
 
-    //private MonsterHp _monsterHp;
+    private MonsterHp _monsterHp;
 
-    //private MonsterHp _monsterHpBottom;
+    private MonsterHp _monsterHpBottom;
 
-    //private bool invincible;
+    private bool invincible;
 
     /// <summary>
     /// 是否被销毁
@@ -70,7 +70,7 @@ public class Role
 
     public Role ParentRole;
 
-    //public event RoleDeadEventHandler beforeDead;
+    public event RoleDeadEventHandler beforeDead;
 
     public static Transform ZeroTrans
     {
@@ -86,25 +86,25 @@ public class Role
 
     public RoleEventHandler EventHandlerManager { get; private set; }
 
-    //	public virtual void BeforeDead(object sender, RoleDeadArgs e)
-    //	{
-    //		if (this.beforeDead != null)
-    //		{
-    //			this.beforeDead(sender, e);
-    //		}
-    //	}
+    public virtual void BeforeDead(object sender, RoleDeadArgs e)
+    {
+        if (this.beforeDead != null)
+        {
+            this.beforeDead(sender, e);
+        }
+    }
 
-    //	public bool Invincible
-    //	{
-    //		get
-    //		{
-    //			return this.invincible;
-    //		}
-    //		set
-    //		{
-    //			this.invincible = value;
-    //		}
-    //	}
+    public bool Invincible
+    {
+        get
+        {
+            return this.invincible;
+        }
+        set
+        {
+            this.invincible = value;
+        }
+    }
 
     public MFS_TALBE_TYPE MFSType
     {
@@ -118,29 +118,29 @@ public class Role
         }
     }
 
-    //	public int BevTreeID
-    //	{
-    //		get
-    //		{
-    //			return this.bevTreeID;
-    //		}
-    //		set
-    //		{
-    //			this.bevTreeID = value;
-    //		}
-    //	}
+    public int BevTreeID
+    {
+        get
+        {
+            return this.bevTreeID;
+        }
+        set
+        {
+            this.bevTreeID = value;
+        }
+    }
 
-    //	public bool BRagdoll
-    //	{
-    //		get
-    //		{
-    //			return this._bRagdoll;
-    //		}
-    //		set
-    //		{
-    //			this._bRagdoll = value;
-    //		}
-    //	}
+    public bool BRagdoll
+    {
+        get
+        {
+            return this._bRagdoll;
+        }
+        set
+        {
+            this._bRagdoll = value;
+        }
+    }
 
     public int ID
     {
@@ -154,17 +154,17 @@ public class Role
         }
     }
 
-    //	public GameObjSpawn.SpawnInfo SpawnInfo
-    //	{
-    //		get
-    //		{
-    //			return this._spawnInfo;
-    //		}
-    //		set
-    //		{
-    //			this._spawnInfo = value;
-    //		}
-    //	}
+    public GameObjSpawn.SpawnInfo SpawnInfo
+    {
+        get
+        {
+            return this._spawnInfo;
+        }
+        set
+        {
+            this._spawnInfo = value;
+        }
+    }
 
     public string RoleName
     {
@@ -178,53 +178,53 @@ public class Role
         }
     }
 
-    //	public RoleChildren RoleChildObj
-    //	{
-    //		get
-    //		{
-    //			return this._roleChildren;
-    //		}
-    //		set
-    //		{
-    //			this._roleChildren = value;
-    //		}
-    //	}
+    public RoleChildren RoleChildObj
+    {
+        get
+        {
+            return this._roleChildren;
+        }
+        set
+        {
+            this._roleChildren = value;
+        }
+    }
 
-    //	public bool BAniMove
-    //	{
-    //		get
-    //		{
-    //			return this._bAniMove;
-    //		}
-    //		set
-    //		{
-    //			this._bAniMove = value;
-    //		}
-    //	}
+    public bool BAniMove
+    {
+        get
+        {
+            return this._bAniMove;
+        }
+        set
+        {
+            this._bAniMove = value;
+        }
+    }
 
-    //	public MonsterHp MonsterHP
-    //	{
-    //		get
-    //		{
-    //			return this._monsterHp;
-    //		}
-    //		set
-    //		{
-    //			this._monsterHp = value;
-    //		}
-    //	}
+    public MonsterHp MonsterHP
+    {
+        get
+        {
+            return this._monsterHp;
+        }
+        set
+        {
+            this._monsterHp = value;
+        }
+    }
 
-    //	public MonsterHp MonsterHpBottom
-    //	{
-    //		get
-    //		{
-    //			return this._monsterHpBottom;
-    //		}
-    //		set
-    //		{
-    //			this._monsterHpBottom = value;
-    //		}
-    //	}
+    public MonsterHp MonsterHpBottom
+    {
+        get
+        {
+            return this._monsterHpBottom;
+        }
+        set
+        {
+            this._monsterHpBottom = value;
+        }
+    }
 
     public virtual void Create()
     {
@@ -239,110 +239,110 @@ public class Role
     {
     }
 
-    //	public virtual string GetHeadPath()
-    //	{
-    //		return null;
-    //	}
+    public virtual string GetHeadPath()
+    {
+        return null;
+    }
 
-    //	public virtual string GetShoutTalk()
-    //	{
-    //		return null;
-    //	}
+    public virtual string GetShoutTalk()
+    {
+        return null;
+    }
 
-    //	public virtual string GetFleeWord()
-    //	{
-    //		return null;
-    //	}
+    public virtual string GetFleeWord()
+    {
+        return null;
+    }
 
-    //	public virtual bool GetCanFlee()
-    //	{
-    //		return false;
-    //	}
+    public virtual bool GetCanFlee()
+    {
+        return false;
+    }
 
-    //	public virtual RoleStaticInfo GetStaticRoleInfo()
-    //	{
-    //		return null;
-    //	}
+    public virtual RoleStaticInfo GetStaticRoleInfo()
+    {
+        return null;
+    }
 
-    //	public virtual string GetName()
-    //	{
-    //		return null;
-    //	}
+    public virtual string GetName()
+    {
+        return null;
+    }
 
-    //	public virtual float GetPrepareDis()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float GetPrepareDis()
+    {
+        return 0f;
+    }
 
-    //	public virtual float FleeHpPercent()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float FleeHpPercent()
+    {
+        return 0f;
+    }
 
-    //	public virtual float BegProbability()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float BegProbability()
+    {
+        return 0f;
+    }
 
-    //	public virtual int SkillAttact()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int SkillAttact()
+    {
+        return 0;
+    }
 
-    //	public virtual int SkillAssault()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int SkillAssault()
+    {
+        return 0;
+    }
 
-    //	public virtual int SkillAggress()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int SkillAggress()
+    {
+        return 0;
+    }
 
-    //	public virtual int SkillBuff()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int SkillBuff()
+    {
+        return 0;
+    }
 
-    //	public virtual int SkillBlood()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int SkillBlood()
+    {
+        return 0;
+    }
 
-    //	public virtual IdentityType Identity()
-    //	{
-    //		return (IdentityType)0;
-    //	}
+    public virtual IdentityType Identity()
+    {
+        return (IdentityType)0;
+    }
 
-    //	public virtual float NextAtkTime()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float NextAtkTime()
+    {
+        return 0f;
+    }
 
-    //	public virtual float Height()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float Height()
+    {
+        return 0f;
+    }
 
-    //	public virtual int GetHurtID()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int GetHurtID()
+    {
+        return 0;
+    }
 
-    //	public virtual float Distance()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float Distance()
+    {
+        return 0f;
+    }
 
-    //	public virtual int GetBloodType()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int GetBloodType()
+    {
+        return 0;
+    }
 
-    //	public virtual float HpHigh()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float HpHigh()
+    {
+        return 0f;
+    }
 
     public RoleGameObject roleGameObject
     {
@@ -352,10 +352,10 @@ public class Role
         }
     }
 
-    //	public bool IsDieing()
-    //	{
-    //		return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
-    //	}
+    public bool IsDieing()
+    {
+        return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
+    }
 
     public string name
     {
@@ -365,12 +365,12 @@ public class Role
         }
     }
 
-    //	public bool IsEnemy(Role role)
-    //	{
-    //		ModOrganization modOrganization = role.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
-    //		ModOrganization modOrganization2 = this.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
-    //		return modOrganization != null && modOrganization2 != null && modOrganization2.IsEnmity(modOrganization);
-    //	}
+    //public bool IsEnemy(Role role)
+    //{
+    //    ModOrganization modOrganization = role.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
+    //    ModOrganization modOrganization2 = this.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
+    //    return modOrganization != null && modOrganization2 != null && modOrganization2.IsEnmity(modOrganization);
+    //}
 
     public GameObject gameObject
     {
@@ -380,15 +380,15 @@ public class Role
         }
     }
 
-    //	public virtual List<MonsterSkill> GetUseableSkill(int skillType)
-    //	{
-    //		return null;
-    //	}
+    public virtual List<MonsterSkill> GetUseableSkill(int skillType)
+    {
+        return null;
+    }
 
-    //	public virtual List<MonsterSkill> GetUseableSkill()
-    //	{
-    //		return null;
-    //	}
+    public virtual List<MonsterSkill> GetUseableSkill()
+    {
+        return null;
+    }
 
     public void InitRole()
     {
@@ -400,7 +400,7 @@ public class Role
     }
 
     /// <summary>
-    /// 添加模块
+    /// 添加模块到列表
     /// </summary>
     /// <param name="md"></param>
     /// <returns></returns>
@@ -451,11 +451,11 @@ public class Role
         return null;
     }
 
-    //	public bool GetBuff(int id)
-    //	{
-    //		ModBuffProperty modBuffProperty = (ModBuffProperty)this.GetModule(MODULE_TYPE.MT_BUFF);
-    //		return false;
-    //	}
+    public bool GetBuff(int id)
+    {
+        ModBuffProperty modBuffProperty = (ModBuffProperty)this.GetModule(MODULE_TYPE.MT_BUFF);
+        return false;
+    }
 
     public Vector3 GetPos()
     {
@@ -466,23 +466,20 @@ public class Role
         return this.GetTrans().position;
     }
 
-    //	// Token: 0x06002378 RID: 9080 RVA: 0x000F0050 File Offset: 0x000EE250
-    //	public void SetPos(Vector3 pos)
-    //	{
-    //		this.roleGameObject.RoleTransform.position = pos;
-    //	}
+    public void SetPos(Vector3 pos)
+    {
+        this.roleGameObject.RoleTransform.position = pos;
+    }
 
-    //	// Token: 0x06002379 RID: 9081 RVA: 0x000F0064 File Offset: 0x000EE264
-    //	public virtual int GetDetailType()
-    //	{
-    //		return 0;
-    //	}
+    public virtual int GetDetailType()
+    {
+        return 0;
+    }
 
-    //	// Token: 0x0600237A RID: 9082 RVA: 0x000F0068 File Offset: 0x000EE268
-    //	public Quaternion GetRat()
-    //	{
-    //		return this.roleGameObject.RoleTransform.rotation;
-    //	}
+    public Quaternion GetRat()
+    {
+        return this.roleGameObject.RoleTransform.rotation;
+    }
 
     public void SetRat(Vector3 rat)
     {
@@ -504,106 +501,98 @@ public class Role
         return this.roleGameObject.RoleTransform;
     }
 
-    //	public virtual bool IsOutOfSpawnBox()
-    //	{
-    //		return false;
-    //	}
+    public virtual bool IsOutOfSpawnBox()
+    {
+        return false;
+    }
 
-    //	// Token: 0x0600237F RID: 9087 RVA: 0x000F00FC File Offset: 0x000EE2FC
-    //	public virtual bool IsOutOfSpawnBox(Vector3 pos)
-    //	{
-    //		return false;
-    //	}
+    public virtual bool IsOutOfSpawnBox(Vector3 pos)
+    {
+        return false;
+    }
 
-    //	// Token: 0x06002380 RID: 9088 RVA: 0x000F0100 File Offset: 0x000EE300
-    //	public virtual long GetMeshIdx()
-    //	{
-    //		if (this.roleGameObject.ModelInfo != null)
-    //		{
-    //			return (long)this.roleGameObject.ModelInfo.AnimationIndex;
-    //		}
-    //		return -1L;
-    //	}
+    public virtual long GetMeshIdx()
+    {
+        if (this.roleGameObject.ModelInfo != null)
+        {
+            return (long)this.roleGameObject.ModelInfo.AnimationIndex;
+        }
+        return -1L;
+    }
 
-    //	// Token: 0x06002381 RID: 9089 RVA: 0x000F0134 File Offset: 0x000EE334
-    //	public virtual long GetWeaponIdx()
-    //	{
-    //		return 0L;
-    //	}
+    public virtual long GetWeaponIdx()
+    {
+        return 0L;
+    }
 
-    //	// Token: 0x06002382 RID: 9090 RVA: 0x000F0138 File Offset: 0x000EE338
-    //	public virtual long GetHorseIdx()
-    //	{
-    //		return 0L;
-    //	}
+    public virtual long GetHorseIdx()
+    {
+        return 0L;
+    }
 
-    //	// Token: 0x06002383 RID: 9091 RVA: 0x000F013C File Offset: 0x000EE33C
-    //	public virtual float GetTurnSpeed()
-    //	{
-    //		return 0f;
-    //	}
+    public virtual float GetTurnSpeed()
+    {
+        return 0f;
+    }
 
-    //	// Token: 0x06002384 RID: 9092 RVA: 0x000F0144 File Offset: 0x000EE344
-    //	public virtual float GetMassNumber()
-    //	{
-    //		return 1f;
-    //	}
+    public virtual float GetMassNumber()
+    {
+        return 1f;
+    }
 
-    //	// Token: 0x06002385 RID: 9093 RVA: 0x000F014C File Offset: 0x000EE34C
-    //	public virtual bool ChangeModel(int modelID, bool destroyOld)
-    //	{
-    //		Vector3 position = this.GetTrans().position;
-    //		Quaternion rotation = this.GetTrans().rotation;
-    //		GameObject gameObject = RoleGameObject.CreatRoleGameObject(modelID, position, rotation);
-    //		if (gameObject == null)
-    //		{
-    //			return false;
-    //		}
-    //		Transform parent = this.GetTrans().parent;
-    //		if (destroyOld)
-    //		{
-    //			this.roleGameObject.RoleBody.active = false;
-    //			this.roleGameObject.DetachEffect();
-    //			this.roleGameObject.DestroyGO();
-    //		}
-    //		else
-    //		{
-    //			this.roleGameObject.RoleBind.Remove();
-    //		}
-    //		this.roleGameObject.SetGO(gameObject);
-    //		if (parent != null)
-    //		{
-    //			this.GetTrans().parent = parent;
-    //		}
-    //		return true;
-    //	}
+    public virtual bool ChangeModel(int modelID, bool destroyOld)
+    {
+        Vector3 position = this.GetTrans().position;
+        Quaternion rotation = this.GetTrans().rotation;
+        GameObject gameObject = RoleGameObject.CreatRoleGameObject(modelID, position, rotation);
+        if (gameObject == null)
+        {
+            return false;
+        }
+        Transform parent = this.GetTrans().parent;
+        if (destroyOld)
+        {
+            //this.roleGameObject.RoleBody.active = false;
+            //this.roleGameObject.DetachEffect();
+            //this.roleGameObject.DestroyGO();
+        }
+        else
+        {
+            this.roleGameObject.RoleBind.Remove();
+        }
+        this.roleGameObject.SetGO(gameObject);
+        if (parent != null)
+        {
+            this.GetTrans().parent = parent;
+        }
+        return true;
+    }
 
-    //	// Token: 0x06002386 RID: 9094 RVA: 0x000F01FC File Offset: 0x000EE3FC
-    //	public virtual bool ChangeModel(GameObject gameObject, bool destroyOld)
-    //	{
-    //		if (gameObject == null)
-    //		{
-    //			return false;
-    //		}
-    //		Transform parent = this.GetTrans().parent;
-    //		Vector3 position = this.GetTrans().position;
-    //		Quaternion rotation = this.GetTrans().rotation;
-    //		if (destroyOld)
-    //		{
-    //			this.roleGameObject.DetachEffect();
-    //			this.roleGameObject.DestroyGO();
-    //		}
-    //		else
-    //		{
-    //			this.roleGameObject.RoleBind.Remove();
-    //		}
-    //		this.roleGameObject.SetGO(gameObject, position, rotation);
-    //		if (parent != null)
-    //		{
-    //			this.GetTrans().parent = parent;
-    //		}
-    //		return true;
-    //	}
+    public virtual bool ChangeModel(GameObject gameObject, bool destroyOld)
+    {
+        if (gameObject == null)
+        {
+            return false;
+        }
+        Transform parent = this.GetTrans().parent;
+        Vector3 position = this.GetTrans().position;
+        Quaternion rotation = this.GetTrans().rotation;
+        if (destroyOld)
+        {
+            //this.roleGameObject.DetachEffect();
+            //this.roleGameObject.DestroyGO();
+        }
+        else
+        {
+            this.roleGameObject.RoleBind.Remove();
+        }
+        this.roleGameObject.SetGO(gameObject, position, rotation);
+        if (parent != null)
+        {
+            this.GetTrans().parent = parent;
+        }
+        return true;
+    }
 
     public float RunSpeed
     {
@@ -633,15 +622,14 @@ public class Role
         return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
     }
 
-    //	// Token: 0x0600238A RID: 9098 RVA: 0x000F0308 File Offset: 0x000EE508
-    //	public float GetCurHpPercent()
-    //	{
-    //		if (this.GetMaxHp() == 0)
-    //		{
-    //			return 0f;
-    //		}
-    //		return (float)this.GetCurHp() / (float)this.GetMaxHp();
-    //	}
+    public float GetCurHpPercent()
+    {
+        if (this.GetMaxHp() == 0)
+        {
+            return 0f;
+        }
+        return (float)this.GetCurHp() / (float)this.GetMaxHp();
+    }
 
     /// <summary>
     /// 是否存活
@@ -652,44 +640,40 @@ public class Role
         return !this.isDestroyed && (!(this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute) || this.GetCurHp() > 0);
     }
 
-    //	// Token: 0x0600238C RID: 9100 RVA: 0x000F0378 File Offset: 0x000EE578
-    //	public int GetMaxHp()
-    //	{
-    //		ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //		if (modAttribute == null)
-    //		{
-    //			return 0;
-    //		}
-    //		return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP);
-    //	}
+    public int GetMaxHp()
+    {
+        ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        if (modAttribute == null)
+        {
+            return 0;
+        }
+        return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP);
+    }
 
     public bool IsDead()
     {
         return this.isDestroyed || (this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute && this.GetCurHp() <= 0);
     }
 
-    //	// Token: 0x0600238E RID: 9102 RVA: 0x000F03E4 File Offset: 0x000EE5E4
-    //	public bool AddRolePart(int id)
-    //	{
-    //		return true;
-    //	}
+    public bool AddRolePart(int id)
+    {
+        return true;
+    }
 
-    //	// Token: 0x0600238F RID: 9103 RVA: 0x000F03E8 File Offset: 0x000EE5E8
-    //	public Role GetRolePart(int id)
-    //	{
-    //		RolePart rolePart = null;
-    //		foreach (Role role in this.rolePartsList)
-    //		{
-    //			rolePart = (role as RolePart);
-    //			if (rolePart.ID == id)
-    //			{
-    //				return rolePart;
-    //			}
-    //		}
-    //		return rolePart;
-    //	}
+    //public Role GetRolePart(int id)
+    //{
+    //    RolePart rolePart = null;
+    //    foreach (Role role in this.rolePartsList)
+    //    {
+    //        rolePart = (role as RolePart);
+    //        if (rolePart.ID == id)
+    //        {
+    //            return rolePart;
+    //        }
+    //    }
+    //    return rolePart;
+    //}
 
-    //	// Token: 0x06002390 RID: 9104 RVA: 0x000F0468 File Offset: 0x000EE668
     //	public bool RolePartContains(int id)
     //	{
     //		RolePartInfo rolePart = GameData.Instance.RoleData.GetRolePart(id);
@@ -708,7 +692,6 @@ public class Role
     //		return false;
     //	}
 
-    //	// Token: 0x06002391 RID: 9105 RVA: 0x000F0520 File Offset: 0x000EE720
     //	public bool RemoveRolePart(int id)
     //	{
     //		for (int i = this.rolePartsList.Count - 1; i >= 0; i--)
@@ -911,21 +894,21 @@ public class Role
     //		RoleBaseFun.SetRigidSleep(this.roleGameObject.RoleTransform);
     //	}
 
-    //	public virtual void DestroyRole()
-    //	{
-    //		this.RoleChildObj.ClearTable();
-    //		this.roleGameObject.DestroyGO();
-    //		if (this._roleType != ROLE_TYPE.RT_PLAYER)
-    //		{
-    //			ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //			if (modAttribute != null)
-    //			{
-    //				modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, 0f, true);
-    //			}
-    //		}
-    //		this.rolePartsList.Clear();
-    //		this.isDestroyed = true;
-    //	}
+    public virtual void DestroyRole()
+    {
+        //this.RoleChildObj.ClearTable();
+        //this.roleGameObject.DestroyGO();
+        if (this._roleType != ROLE_TYPE.RT_PLAYER)
+        {
+            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            if (modAttribute != null)
+            {
+                modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, 0f, true);
+            }
+        }
+        this.rolePartsList.Clear();
+        this.isDestroyed = true;
+    }
 
     //	public void AddBindRole(BindRoleInfo bri)
     //	{
