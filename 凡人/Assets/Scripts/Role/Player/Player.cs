@@ -862,7 +862,6 @@ public class Player : Role
                     {
                         if (!(vector == Vector3.zero))
                         {
-                            Debug.Log("ControlEventMoveForward");
                             this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
                         }
                     }

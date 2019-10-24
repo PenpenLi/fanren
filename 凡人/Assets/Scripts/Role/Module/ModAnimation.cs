@@ -754,35 +754,30 @@ public class ModAnimation : Module
     //	this.PlayAnimation(this.m_strLastAniName, isBlend, resetAnimaton, act, fadeLength);
     //}
 
-    //// Token: 0x06002159 RID: 8537 RVA: 0x000171C1 File Offset: 0x000153C1
-    //public void PlayAnimation(ACTION_INDEX actIdx)
-    //{
-    //	this.PlayAnimation(actIdx, WrapMode.Once);
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx)
+    {
+        this.PlayAnimation(actIdx, WrapMode.Once);
+    }
 
-    //// Token: 0x0600215A RID: 8538 RVA: 0x000171CB File Offset: 0x000153CB
-    //public void PlayAnimation(ACTION_INDEX actIdx, float speed)
-    //{
-    //	this.PlayAnimation(actIdx, speed, WrapMode.Once, false, false);
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx, float speed)
+    {
+        this.PlayAnimation(actIdx, speed, WrapMode.Once, false, false);
+    }
 
-    //// Token: 0x0600215B RID: 8539 RVA: 0x000171D8 File Offset: 0x000153D8
-    //public void PlayAnimation(ACTION_INDEX actIdx, WrapMode wrapMode)
-    //{
-    //	this.PlayAnimation(actIdx, 1f, wrapMode, false, false);
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx, WrapMode wrapMode)
+    {
+        this.PlayAnimation(actIdx, 1f, wrapMode, false, false);
+    }
 
-    //// Token: 0x0600215C RID: 8540 RVA: 0x000171E9 File Offset: 0x000153E9
-    //public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation)
-    //{
-    //	this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, this.GetCullingType());
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation)
+    {
+        this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, this.GetCullingType());
+    }
 
-    //// Token: 0x0600215D RID: 8541 RVA: 0x000171FE File Offset: 0x000153FE
-    //public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act)
-    //{
-    //	this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act, 0.3f);
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act)
+    {
+        this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act, 0.3f);
+    }
 
     //// Token: 0x0600215E RID: 8542 RVA: 0x000E38E4 File Offset: 0x000E1AE4
     //public void SetAnimationTime(ACTION_INDEX actIdx, float time)
@@ -806,62 +801,61 @@ public class ModAnimation : Module
     //	this.SetAnimationTime(actIdx, animationLength);
     //}
 
-    //// Token: 0x06002160 RID: 8544 RVA: 0x000E395C File Offset: 0x000E1B5C
-    //public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
-    //{
-    //	if (this._animation == null)
-    //	{
-    //		return;
-    //	}
-    //	if (actIdx == ACTION_INDEX.AN_NONE)
-    //	{
-    //		return;
-    //	}
-    //	AniInfo.AniInfoNode aniInfoNodeRandom = this.GetAniInfoNodeRandom(actIdx);
-    //	if (aniInfoNodeRandom == null)
-    //	{
-    //		Logger.LogWarningOnce(new object[]
-    //		{
-    //			string.Concat(new object[]
-    //			{
-    //				this._role._roleType.ToString(),
-    //				" The Animation ",
-    //				actIdx,
-    //				" is None"
-    //			})
-    //		});
-    //		return;
-    //	}
-    //	if (this._animation[aniInfoNodeRandom.Name] == null)
-    //	{
-    //		Logger.LogWarningOnce(new object[]
-    //		{
-    //			this._role._roleType.ToString() + " The Animation " + aniInfoNodeRandom.Name + " is None"
-    //		});
-    //		return;
-    //	}
-    //	this._animation.cullingType = act;
-    //	this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
-    //	this._animation[aniInfoNodeRandom.Name].speed = this.m_fCurrentAniSpeed * GameTime.timeScale * this.AniSpeed;
-    //	this._animation[aniInfoNodeRandom.Name].wrapMode = wrapMode;
-    //	this.m_cCurAniNode = aniInfoNodeRandom.Clone();
-    //	this._curAniIndex = actIdx;
-    //	this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
-    //	bool bLoop = wrapMode == WrapMode.Loop;
-    //	this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
-    //	foreach (Role role in this._role.rolePartsList)
-    //	{
-    //		RolePart rolePart = (RolePart)role;
-    //		if (rolePart != null)
-    //		{
-    //			ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
-    //			if (modAnimation != null)
-    //			{
-    //				modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
-    //			}
-    //		}
-    //	}
-    //}
+    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
+    {
+        if (this._animation == null)
+        {
+            return;
+        }
+        if (actIdx == ACTION_INDEX.AN_NONE)
+        {
+            return;
+        }
+        //AniInfo.AniInfoNode aniInfoNodeRandom = this.GetAniInfoNodeRandom(actIdx);
+        //if (aniInfoNodeRandom == null)
+        //{
+        //    //Logger.LogWarningOnce(new object[]
+        //    //{
+        //    //    string.Concat(new object[]
+        //    //    {
+        //    //        this._role._roleType.ToString(),
+        //    //        " The Animation ",
+        //    //        actIdx,
+        //    //        " is None"
+        //    //    })
+        //    //});
+        //    return;
+        //}
+        //if (this._animation[aniInfoNodeRandom.Name] == null)
+        //{
+        //    //Logger.LogWarningOnce(new object[]
+        //    //{
+        //    //    this._role._roleType.ToString() + " The Animation " + aniInfoNodeRandom.Name + " is None"
+        //    //});
+        //    return;
+        //}
+        this._animation.cullingType = act;
+        //this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
+        //this._animation[aniInfoNodeRandom.Name].speed = this.m_fCurrentAniSpeed * GameTime.timeScale * this.AniSpeed;
+        //this._animation[aniInfoNodeRandom.Name].wrapMode = wrapMode;
+        //this.m_cCurAniNode = aniInfoNodeRandom.Clone();
+        this._curAniIndex = actIdx;
+        //this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
+        bool bLoop = wrapMode == WrapMode.Loop;
+        //this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
+        foreach (Role role in this._role.rolePartsList)
+        {
+            //RolePart rolePart = (RolePart)role;
+            //if (rolePart != null)
+            //{
+            //    ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
+            //    if (modAnimation != null)
+            //    {
+            //        modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
+            //    }
+            //}
+        }
+    }
 
     //// Token: 0x06002161 RID: 8545 RVA: 0x000E3B54 File Offset: 0x000E1D54
     //public bool IsPlaying(ACTION_INDEX actIdx)

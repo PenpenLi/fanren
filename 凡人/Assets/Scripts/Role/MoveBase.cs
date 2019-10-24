@@ -72,19 +72,19 @@ public class MoveBase
 
 	public virtual bool Update()
 	{
-		//if (!this.m_bEnbale)
-		//{
-		//	return false;
-		//}
-		//if (this.m_cRole == null)
-		//{
-		//	return false;
-		//}
-		//if (this.m_cController == null)
-		//{
-		//	return false;
-		//}
-		if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC)
+        //if (!this.m_bEnbale)
+        //{
+        //	return false;
+        //}
+        if (this.m_cRole == null)
+        {
+            return false;
+        }
+        if (this.m_cController == null)
+        {
+            return false;
+        }
+        if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC)
 		{
 			//ModBuffProperty modBuffProperty = this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
 			//float num = (float)modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND);
@@ -97,14 +97,15 @@ public class MoveBase
         {
             this.m_cController.Move(Vector3.up * -17f);
         }
-        //if (!this.isStart)
-        //{
-        //	if (this.m_eAction != ACTION_INDEX.AN_NONE)
-        //	{
-        //		//this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
-        //	}
-        //	this.isStart = true;
-        //}
+        if (!this.isStart)
+        {
+            if (this.m_eAction != ACTION_INDEX.AN_NONE)
+            {
+                //Debug.Log(m_eAction);
+                //this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
+            }
+            this.isStart = true;
+        }
         return true;
 	}
 

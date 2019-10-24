@@ -19,10 +19,19 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
     public static SceneInfo currScenenInfo;
 
+    /// <summary>
+    /// 传送点信息
+    /// </summary>
     public static TeleportInfo currentTeleport;
 
+    /// <summary>
+    /// 角色管理
+    /// </summary>
     private static RoleManager _roleManager;
-
+    
+    /// <summary>
+    /// 场景管理
+    /// </summary>
     public static FanrenSceneManager Instance;
 
     public static bool loading;
@@ -47,6 +56,7 @@ public class FanrenSceneManager : MonoBehaviour
 
     private void Awake()
 	{
+        UnityEngine.Object.DontDestroyOnLoad(gameObject);
         FanrenSceneManager.Instance = this;
         FanrenSceneManager.loading = false;
         this.GameStart();
@@ -206,7 +216,7 @@ public class FanrenSceneManager : MonoBehaviour
     {
         this.GetSceneInfo();
         Main.InitMain();
-        //UICamera.InitUICamera();
+        UICamera.InitUICamera();
         //SystemSetting.initialize();
         //Singleton<ActorManager>.GetInstance().Clear();
 

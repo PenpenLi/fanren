@@ -123,14 +123,14 @@ public class ControlStateWalkForward : ControlStateBase
     {
         float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
         this.m_cMove.Speed = attributeValue;
-        //float attributeValue2 = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN);
-        //if (attributeValue2 == 0f)
-        //{
-        //    this.m_cAnimation.AniSpeed = 1f;
-        //    return;
-        //}
-        //float aniSpeed = attributeValue / attributeValue2;
-        //this.m_cAnimation.AniSpeed = aniSpeed;
+        float attributeValue2 = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN);
+        if (attributeValue2 == 0f)
+        {
+            this.m_cAnimation.AniSpeed = 1f;
+            return;
+        }
+        float aniSpeed = attributeValue / attributeValue2;
+        this.m_cAnimation.AniSpeed = aniSpeed;
     }
 
     public override void OnExit()
@@ -139,20 +139,20 @@ public class ControlStateWalkForward : ControlStateBase
         this.m_cControlMfs.ChangeStateToIdle();
     }
 
-    //private void Setm_lstPathPoints(Vector3 targetPoint)
-    //{
-    //	this.m_lstPathPoints = Pathfinding.GetPath(this.m_cRole.GetTrans().position, targetPoint, 1.5f);
-    //	this.m_iPointIndex = 0;
-    //	this.m_iPointNum = this.m_lstPathPoints.Count;
-    //	if (this.m_iPointNum > 0)
-    //	{
-    //		this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
-    //	}
-    //	else
-    //	{
-    //		this.m_cMove.Stop();
-    //	}
-    //}
+    private void Setm_lstPathPoints(Vector3 targetPoint)
+    {
+        //this.m_lstPathPoints = Pathfinding.GetPath(this.m_cRole.GetTrans().position, targetPoint, 1.5f);
+        this.m_iPointIndex = 0;
+        this.m_iPointNum = this.m_lstPathPoints.Count;
+        if (this.m_iPointNum > 0)
+        {
+            this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
+        }
+        else
+        {
+            this.m_cMove.Stop();
+        }
+    }
 
     public override bool Destory()
 	{
