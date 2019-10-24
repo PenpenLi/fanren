@@ -56,7 +56,6 @@ public class FanrenSceneManager : MonoBehaviour
 
     private void Awake()
 	{
-        UnityEngine.Object.DontDestroyOnLoad(gameObject);
         FanrenSceneManager.Instance = this;
         FanrenSceneManager.loading = false;
         this.GameStart();
@@ -88,15 +87,15 @@ public class FanrenSceneManager : MonoBehaviour
         //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
         //}
 
-        //if (Application.loadedLevelName == "Landing")
-        //{
-        //    //EZGUIManager._BindRunTimeObj.AddLandUI();
-        //    //this.ReStartGame(true);
-        //}
-        //else
-        //{
-        //    //EZGUIManager._BindRunTimeObj.RemoveLandUI();
-        //}
+        if (SceneManager.GetActiveScene().name == "Landing")
+        {
+            //EZGUIManager._BindRunTimeObj.AddLandUI();//显示UI
+            //this.ReStartGame(true);
+        }
+        else
+        {
+            //EZGUIManager._BindRunTimeObj.RemoveLandUI();
+        }
 
         //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
         //{
@@ -220,10 +219,12 @@ public class FanrenSceneManager : MonoBehaviour
         //SystemSetting.initialize();
         //Singleton<ActorManager>.GetInstance().Clear();
 
-        //if (SceneManager.GetActiveScene().name== "Start")
-        //{
-        //    GameData.Instance.ScrMan.Exec(31, 10110);
-        //}
+        if (SceneManager.GetActiveScene().name == "Start")
+        {
+            GameData.Instance.ScrMan.Exec(31, 10099);
+            Main.Instance.StartCoroutine(this.ShowLoadPlane());
+            //GameData.Instance.ScrMan.Exec(31, 10110);
+        }
     }
 
     /// <summary>
@@ -317,5 +318,19 @@ public class FanrenSceneManager : MonoBehaviour
     {
         SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.currScenenInfo.bgSoundId, 0f, 1f, 0f);
         SingletonMono<AudioManager>.GetInstance().PauseAll(true);
+    }
+
+    private IEnumerator ShowLoadPlane()
+    {
+        //if (Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>() != null)
+        //{
+        //    Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>().Show();
+        //}
+        //else
+        //{
+        //    yield return new WaitForFixedUpdate();
+        //    Main.Instance.StartCoroutine(this.ShowLoadPlane());
+        //}
+        yield break;
     }
 }

@@ -75,7 +75,6 @@
     <Compile Include="Assets\Scripts\GameData\RoleDateInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\RoleModelData.cs" />
     <Compile Include="Assets\Scripts\GameData\SceneInfo.cs" />
-    <Compile Include="Assets\Scripts\GameData\ScriptManager.cs" />
     <Compile Include="Assets\Scripts\GameData\SoundTable.cs" />
     <Compile Include="Assets\Scripts\GameData\TeleportInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\UserData.cs" />
@@ -244,9 +243,10 @@
     <Compile Include="Assets\Scripts\Scene\ActorManager.cs" />
     <Compile Include="Assets\Scripts\Scene\FanrenSceneManager.cs" />
     <Compile Include="Assets\Scripts\Scene\SystemSetting.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_SwitchScene.cs" />
     <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\Singleton\SingletonMono.cs" />
-    <Compile Include="Assets\Scripts\SM_Script\SM_SwitchScene.cs" />
     <Compile Include="Assets\Scripts\TransBevBase.cs" />
     <Compile Include="Assets\Scripts\UI\EZGUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\GUI_TYPE.cs" />
