@@ -68,30 +68,28 @@ public class FanrenSceneManager : MonoBehaviour
 	{
         this.Init();
 
-        if (SceneManager.GetActiveScene().name != "Start" && SceneManager.GetActiveScene().name != "Landing" && SceneManager.GetActiveScene().name != "End")
+        string Scenename = SceneManager.GetActiveScene().name;
+
+        if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
         {
             this.InitScene();
             GameTime.Init();
         }
 
-        if (SceneManager.GetActiveScene().name == "Landing")
+        if (Scenename == "Landing")
         {
             this.PlayGameBgSound();
         }
 
-        //if (Application.loadedLevelName != "Start" && Application.loadedLevelName != "Landing" && Application.loadedLevelName != "End" && Application.loadedLevelName != "Credits")
-        //{
-        //    //GUIControl.MovieClose();
-        //    //this.EnterScene();
-        //    //Singleton<CResourcesStaticManager>.GetInstance();
-        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
-        //}
+        if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
+        {
+            //GUIControl.MovieClose();
+            //this.EnterScene();
+            //Singleton<CResourcesStaticManager>.GetInstance();
+            //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
+        }
 
-        //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
-        //{
-        //    //this.ReStartGame(false);
-        //}
-        //Main.Instance.DelayGC(20f);
+        Main.Instance.DelayGC(20f);//播放剧情
     }
 
     //private void ReStartGame(bool show)
@@ -227,6 +225,9 @@ public class FanrenSceneManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 初始化场景
+    /// </summary>
     private void InitScene()
     {
         ////出生点
@@ -243,27 +244,27 @@ public class FanrenSceneManager : MonoBehaviour
         //复活点
         PlayerInfo.PLAYER_REVIVE_POSITION = new Vector3(FanrenSceneManager.currScenenInfo.revive_x, FanrenSceneManager.currScenenInfo.revive_y, FanrenSceneManager.currScenenInfo.revive_z);
         PlayerInfo.PLAYER_REVIVE_ROTATION = new Vector3(0f, FanrenSceneManager.currScenenInfo.revive_rot_y, 0f);
-        this.AddComponentMaker();
+        this.AddComponentMaker();//添加组件
         
-        // this.DoScriptMoudle();        
+        this.DoScriptMoudle(); //执行脚本模块        
     }
 
-    //public void DoScriptMoudle()
-    //{
-    //	if (!GUIBind.binded || Player.Instance == null)
-    //	{
-    //		TimeOutManager.SetTimeOut(Main.Instance.transform, 0.02f, new Callback(this.DoScriptMoudle));
-    //	}
-    //	else
-    //	{
-    //		TimeOutManager.SetTimeOut(Main.Instance.transform, 0.5f, new Callback(this.HideLoading));
-    //		if (SceneManager.scenenInfo != null && SceneManager.scenenInfo.scriptModId != -1)
-    //		{
-    //			GameData.Instance.ScrMan.Exec(27, SceneManager.scenenInfo.scriptModId);
-    //		}
-    //		TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, new Callback(Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Hide));
-    //	}
-    //}
+    public void DoScriptMoudle()
+    {
+        //if (!GUIBind.binded || Player.Instance == null)
+        //{
+        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 0.02f, new Callback(this.DoScriptMoudle));
+        //}
+        //else
+        //{
+        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 0.5f, new Callback(this.HideLoading));
+        //    if (SceneManager.scenenInfo != null && SceneManager.scenenInfo.scriptModId != -1)
+        //    {
+        //        GameData.Instance.ScrMan.Exec(27, SceneManager.scenenInfo.scriptModId);
+        //    }
+        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, new Callback(Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Hide));
+        //}
+    }
 
     //private void HideLoading()
     //{
@@ -285,7 +286,7 @@ public class FanrenSceneManager : MonoBehaviour
         //MovieManager movieMag = gameObject.AddComponent<MovieManager>();
         //MovieManager.MovieMag = movieMag;
         //Singleton<ActorManager>.GetInstance().MainCamera = base.gameObject;
-        //GameObject gameObject2 = new GameObject("SkillManager");
+        GameObject gameObject2 = new GameObject("SkillManager");
         //CSkillManager.Instance = gameObject2.AddComponent<CSkillManager>();
     }
 

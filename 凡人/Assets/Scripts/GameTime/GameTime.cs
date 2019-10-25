@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// 游戏时间
+/// </summary>
 public class GameTime
 {
     private static float m_fStartTime;
@@ -62,7 +65,7 @@ public class GameTime
 		GameTime.m_fScale = 0f;
 		GameTime.m_fLastTimeScale = Time.timeScale;
 		Time.timeScale = 1f;
-		//ComponentStateControl.StopState();
+		ComponentStateControl.StopState();
 	}
 
 	public static void ReturnGame()
@@ -75,7 +78,7 @@ public class GameTime
 		GameTime.m_fStartScaleTime = Time.time;
 		Time.timeScale = GameTime.m_fLastTimeScale;
 		GameTime.m_fScale = 1f;
-		//ComponentStateControl.PlayState();
+		ComponentStateControl.PlayState();
 	}
 
 	public static bool IsPause

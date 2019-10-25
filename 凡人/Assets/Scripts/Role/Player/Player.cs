@@ -105,17 +105,17 @@ public class Player : Role
     //		}
     //	}
 
-    //	public GameObject CurrentMob
-    //	{
-    //		get
-    //		{
-    //			return this._currentMob;
-    //		}
-    //		set
-    //		{
-    //			this._currentMob = value;
-    //		}
-    //	}
+    public GameObject CurrentMob
+    {
+        get
+        {
+            return this._currentMob;
+        }
+        set
+        {
+            this._currentMob = value;
+        }
+    }
 
     //	public ModMission ModMis
     //	{
@@ -150,10 +150,10 @@ public class Player : Role
         }
     }
 
-    //	public override float GetTurnSpeed()
-    //	{
-    //		return 1000f;
-    //	}
+    public override float GetTurnSpeed()
+    {
+        return 1000f;
+    }
 
     //	// Token: 0x060022B0 RID: 8880 RVA: 0x000EC6A0 File Offset: 0x000EA8A0
     //	public override float GetMassNumber()
@@ -244,8 +244,10 @@ public class Player : Role
     public override void RoleProcess()
     {
         base.RoleProcess();
-        //this.CheckDead();
-        //SceneManager.RoleMan.CheckRoleInView(this);
+        this.CheckDead();
+        Player.Instance.m_cModCamera.cameraControl.transform.position = Player.Instance.GetPos();
+        MouseManager.ShowCursor(false);
+        FanrenSceneManager.RoleMan.CheckRoleInView(this);
         //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
         //{
         //    GameData.Instance.ItemMan.CreateItem(4010001UL, 3, ItemOwner.ITO_HEROFOLDER);
@@ -753,28 +755,26 @@ public class Player : Role
     //		this.modMFS.ChangeState(tmpEvent);
     //	}
 
-    //	// Token: 0x060022D8 RID: 8920 RVA: 0x000ED838 File Offset: 0x000EBA38
-    //	private void CheckDead()
-    //	{
-    //		if (base.IsDead())
-    //		{
-    //			this.Die(false);
-    //		}
-    //	}
+    private void CheckDead()
+    {
+        if (base.IsDead())
+        {
+            this.Die(false);
+        }
+    }
 
-    //	// Token: 0x060022D9 RID: 8921 RVA: 0x000ED84C File Offset: 0x000EBA4C
-    //	public override void Die(bool qte)
-    //	{
-    //		if (this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE)
-    //		{
-    //			return;
-    //		}
-    //		base.Die(qte);
-    //		this.modMFS.ChangeState(new ControlEventDie(false));
-    //		CameraEffectManager.MainGrayscaleEffect.enabled = true;
-    //		Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().Show();
-    //		GameTime.PauseGame();
-    //	}
+    public override void Die(bool qte)
+    {
+        if (this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE)
+        {
+            return;
+        }
+        base.Die(qte);
+        //this.modMFS.ChangeState(new ControlEventDie(false));
+        //CameraEffectManager.MainGrayscaleEffect.enabled = true;
+        //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().Show();
+        GameTime.PauseGame();
+    }
 
     //	// Token: 0x060022DA RID: 8922 RVA: 0x000ED8A4 File Offset: 0x000EBAA4
     //	public void Revive()
@@ -845,7 +845,7 @@ public class Player : Role
             return;
         }
 
-        this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
+        //this.SetTargetByKey(VerInput, HorInput, this.GetSelectDistance());
         Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;//移动目标点
@@ -867,28 +867,28 @@ public class Player : Role
                     }
                     else if (UnityEngine.Input.GetKey(KeyCode.Space))
                     {
-                        //this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
+                        this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
                     }
                     else
                     {
-                        //this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));//飞
+                       this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));//飞
                     }
                 }
                 else
                 {
-                    //this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
+                    this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
                 }
             }
             else if (vector == Vector3.zero)
             {
-                //if (this.weaponManager.weaponeActive)
-                //{
-                //    this.modMFS.ChangeState(new ControlEventAttackIdle(false));
-                //}
-                //else
-                //{
-                     //this.modMFS.ChangeState(new ControlEventIdle(false));
-                //}
+                if (this.weaponManager.weaponeActive)
+                {
+                    this.modMFS.ChangeState(new ControlEventAttackIdle(false));
+                }
+                else
+                {
+                    this.modMFS.ChangeState(new ControlEventIdle(false));
+                }
             }
             else
             {
@@ -898,10 +898,10 @@ public class Player : Role
         else
         {
             //攻击待机
-            //if (!this.weaponManager.weaponeActive)
-            //{
-            //    this.modMFS.ChangeState(new ControlEventIdle(false));
-            //}
+            if (!this.weaponManager.weaponeActive)
+            {
+                this.modMFS.ChangeState(new ControlEventIdle(false));
+            }
             if (vector != Vector3.zero)
             {
                 this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));

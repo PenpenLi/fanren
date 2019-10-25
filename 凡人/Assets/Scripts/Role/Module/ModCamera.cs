@@ -167,7 +167,7 @@ public class ModCamera : Module
 		{
 			this.isLockCamera = true;
 		}
-		if (!this.cameraTransform && Camera.main)
+        if (!this.cameraTransform && Camera.main)
 		{
             this.cameraTransform = Camera.main.transform;
 		}

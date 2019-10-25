@@ -720,15 +720,13 @@ public class Role
     //		return -1f;
     //	}
 
-    //	// Token: 0x06002393 RID: 9107 RVA: 0x000F05C0 File Offset: 0x000EE7C0
-    //	public virtual void Die(bool qte)
-    //	{
-    //	}
+    public virtual void Die(bool qte)
+    {
+    }
 
-    //	// Token: 0x06002394 RID: 9108 RVA: 0x000F05C4 File Offset: 0x000EE7C4
-    //	public virtual void Die(bool qte, float corpseTime)
-    //	{
-    //	}
+    public virtual void Die(bool qte, float corpseTime)
+    {
+    }
 
     //	// Token: 0x06002395 RID: 9109 RVA: 0x000F05C8 File Offset: 0x000EE7C8
     //	public virtual void Render()

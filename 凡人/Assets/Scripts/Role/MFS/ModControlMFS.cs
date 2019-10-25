@@ -151,9 +151,9 @@ public class ModControlMFS : Module
         {
             this.m_mapOutputStates.Clear();
             this.m_mapOutputStates.Add(CONTROL_STATE.IDLE, new ControlStateIdle(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.JUMP, new ControlStateJump(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.BUFF, new ControlStateBuff(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.HURT, new ControlStateHurt(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.JUMP, new ControlStateJump(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.BUFF, new ControlStateBuff(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.HURT, new ControlStateHurt(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.FALLING, new ControlStateFalling(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK, new ControlStateAttack(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BACK_WEAPON, new ControlStateBackWeapon(role, control, mcm));
@@ -175,14 +175,14 @@ public class ModControlMFS : Module
             //this.m_mapOutputStates.Add(CONTROL_STATE.QTE, new ControlStateQTE(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BE_CONTROLL, new ControlStateBeControl(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.SWIM, new ControlStateSwim(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.FLY, new ControlStateFly(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.FLY, new ControlStateFly(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.PUSH, new ControlStatePush(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.WALK_SURROUND, new ControlStateWalkSurround(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.GATHER_STRENGTH, new ControlStateGatherStrength(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.BOSS_SHOW, new ControlStateBossShow(role, control, mcm));
             this.m_mapInpuStates.Clear();
             this.m_mapInpuStates.Add(CONTROL_INPUT.IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
-            this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
+            //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.JUMP, this.m_mapOutputStates[CONTROL_STATE.JUMP]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.BUFF, this.m_mapOutputStates[CONTROL_STATE.BUFF]);

@@ -109,11 +109,11 @@ public class Main : MonoBehaviour
     //	}
     //}
 
-    //public void DelayGC(float delayTime)
-    //{
-    //	this.CancelGC();
-    //	base.Invoke("GC", delayTime);
-    //}
+    public void DelayGC(float delayTime)
+    {
+        //this.CancelGC();
+        //base.Invoke("GC", delayTime);
+    }
 
     //public void CancelGC()
     //{

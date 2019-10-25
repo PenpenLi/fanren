@@ -78,7 +78,8 @@
     <Compile Include="Assets\Scripts\GameData\SoundTable.cs" />
     <Compile Include="Assets\Scripts\GameData\TeleportInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\UserData.cs" />
-    <Compile Include="Assets\Scripts\GameTime.cs" />
+    <Compile Include="Assets\Scripts\GameTime\ComponentStateControl.cs" />
+    <Compile Include="Assets\Scripts\GameTime\GameTime.cs" />
     <Compile Include="Assets\Scripts\KeyManager\Callback\Callback.2.cs" />
     <Compile Include="Assets\Scripts\KeyManager\Callback\Callback.3.cs" />
     <Compile Include="Assets\Scripts\KeyManager\Callback\Callback.4.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckObject.cs" />
     <Compile Include="Assets\Scripts\Role\Collider\ColliderCheckRay.cs" />
     <Compile Include="Assets\Scripts\Role\Collider\HitEventArgs.cs" />
+    <Compile Include="Assets\Scripts\Role\CSkillManager\CSkillManager.cs" />
     <Compile Include="Assets\Scripts\Role\EASING_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\AttackFormula.cs" />
     <Compile Include="Assets\Scripts\Role\Fight\ATTRIBUTE_TYPE.cs" />
@@ -159,13 +161,20 @@
     <Compile Include="Assets\Scripts\Role\HelpManager\HelpManager.cs" />
     <Compile Include="Assets\Scripts\Role\HurtGameObject.cs" />
     <Compile Include="Assets\Scripts\Role\HurtRoleGameObject.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventAttackIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventBase.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventFalling.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventFly.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventMoveForward.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventRestoreIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventSwim.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateBase.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateBuff.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateFly.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateHurt.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateJump.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateWalkForward.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\MFS_TALBE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\MFSTable.cs" />
@@ -174,6 +183,7 @@
     <Compile Include="Assets\Scripts\Role\MFS\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModAnimation.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModCamera.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\ModOrganization.cs" />
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
@@ -229,6 +239,7 @@
     <Compile Include="Assets\Scripts\Role\Spawn\GameObjSpawn.cs" />
     <Compile Include="Assets\Scripts\Role\Spawn\ORG_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Spawn\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Role\StageManager.cs" />
     <Compile Include="Assets\Scripts\Role\TransPhysicsCast.cs" />
     <Compile Include="Assets\Scripts\Role\UpdateBevBase.cs" />
     <Compile Include="Assets\Scripts\Role\WeaponManager\EquipCfgType.cs" />
@@ -301,17 +312,17 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
