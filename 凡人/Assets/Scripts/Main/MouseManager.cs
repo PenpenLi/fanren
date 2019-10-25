@@ -45,9 +45,16 @@ public class MouseManager : MonoBehaviour
     /// 锁定鼠标
     /// </summary>
     /// <param name="isLock"></param>
-    public static void LockCursor()
+    public static void LockCursor(bool isLock)
 	{
-        Cursor.lockState = CursorLockMode.Locked;
+        if (isLock)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }       
     }
 
 	private void OnGUI()

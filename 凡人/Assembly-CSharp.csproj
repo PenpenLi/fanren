@@ -248,11 +248,16 @@
     <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\Singleton\SingletonMono.cs" />
     <Compile Include="Assets\Scripts\TransBevBase.cs" />
+    <Compile Include="Assets\Scripts\UI\EZCameraSettings.cs" />
     <Compile Include="Assets\Scripts\UI\EZGUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\GUI_TYPE.cs" />
     <Compile Include="Assets\Scripts\UI\GUIBase.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIBind.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIControl.cs" />
     <Compile Include="Assets\Scripts\UI\LandPlane.cs" />
+    <Compile Include="Assets\Scripts\UI\LoadingMain.cs" />
     <Compile Include="Assets\Scripts\UI\UICamera.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UtilityLoader.cs" />
     <None Include="Assets\Resources\conf\DataFile\MFSTable.txt" />
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
@@ -265,6 +270,7 @@
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
     <None Include="Assets\Resources\conf\NpcInfo.txt" />
+    <None Include="Assets\Resources\conf\map\Landing.txt" />
     <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
     <None Include="Assets\Resources\conf\ScriptMoudle.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />
@@ -300,6 +306,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

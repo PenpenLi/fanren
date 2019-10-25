@@ -276,7 +276,6 @@ public class AudioManager : SingletonMono<AudioManager>
 		this.soundData.Clear();
 	}
 
-	// Token: 0x06002EC6 RID: 11974 RVA: 0x0001C296 File Offset: 0x0001A496
 	public void PauseSound(int index, bool pause)
 	{
 		if (!this.soundData.ContainsKey(index))
@@ -286,7 +285,6 @@ public class AudioManager : SingletonMono<AudioManager>
 		this.PauseSound(this.soundData[index], pause);
 	}
 
-	// Token: 0x06002EC7 RID: 11975 RVA: 0x00168984 File Offset: 0x00166B84
 	private void PauseSound(SoundData data, bool pause)
 	{
 		if (data.audioSource == null)
@@ -316,7 +314,6 @@ public class AudioManager : SingletonMono<AudioManager>
 		}
 	}
 
-	// Token: 0x06002EC8 RID: 11976 RVA: 0x0001C2BD File Offset: 0x0001A4BD
 	public void PlaySound(int index)
 	{
 		if (this.soundData.ContainsKey(index))
@@ -325,7 +322,10 @@ public class AudioManager : SingletonMono<AudioManager>
 		}
 	}
 
-	// Token: 0x06002EC9 RID: 11977 RVA: 0x00168A28 File Offset: 0x00166C28
+    /// <summary>
+    /// 暂停所有音乐
+    /// </summary>
+    /// <param name="pause"></param>
 	public void PauseAll(bool pause)
 	{
 		foreach (SoundData data in this.soundData.Values)
@@ -334,7 +334,6 @@ public class AudioManager : SingletonMono<AudioManager>
 		}
 	}
 
-	// Token: 0x06002ECA RID: 11978 RVA: 0x00168A88 File Offset: 0x00166C88
 	public void PauseSound(SoundType type, bool pause)
 	{
 		foreach (SoundData soundData in this.soundData.Values)
@@ -620,7 +619,6 @@ public class AudioManager : SingletonMono<AudioManager>
 		}
 	}
 
-	// Token: 0x06002EDF RID: 11999 RVA: 0x0001C329 File Offset: 0x0001A529
 	private int CreatSoundIndex()
 	{
 		this.currentSoundIndex++;

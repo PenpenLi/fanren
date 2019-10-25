@@ -12,13 +12,13 @@ public class UICamera : MonoBehaviour
 
     public Camera uiCamera;
 
-    //public GUIControl guiControl;
+    public GUIControl guiControl;
 
-    //public UIManager uiManager;
+    public UIManager uiManager;
 
     private int mask = 17408;
 
-    //private EZCameraSettings uiCameraSetting = new EZCameraSettings();
+    private EZCameraSettings uiCameraSetting = new EZCameraSettings();
 
     public static UICamera Instance
 	{
@@ -54,23 +54,23 @@ public class UICamera : MonoBehaviour
 		UICamera.instance.uiCamera.cullingMask = UICamera.instance.mask;
 		UICamera.instance.uiCamera.orthographic = true;
 		UICamera.instance.uiCamera.orthographicSize = 10f;
-		UICamera.instance.uiCamera.near = 0.3f;
-		UICamera.instance.uiCamera.far = 50f;
+		UICamera.instance.uiCamera.nearClipPlane = 0.3f;
+		UICamera.instance.uiCamera.farClipPlane = 50f;
 		UICamera.instance.uiCamera.depth = 2f;
 	}
 
 	private static void CreateUIManager()
 	{
-		//UICamera.instance.uiManager = UICamera.instance.uiCamera.gameObject.AddComponent<UIManager>();
-		//UICamera.instance.uiManager.pointerType = UIManager.POINTER_TYPE.MOUSE;
-		//UICamera.instance.uiManager.rayDepth = 50f;
-		//UICamera.instance.uiManager.rayMask = UICamera.instance.mask;
-		//UICamera.instance.uiCameraSetting.camera = UICamera.instance.uiCamera;
-		//UICamera.instance.uiCameraSetting.mask = UICamera.instance.mask;
-		//UICamera.instance.uiCameraSetting.rayDepth = 50f;
-		//UICamera.instance.uiManager.uiCameras[0] = UICamera.instance.uiCameraSetting;
-		//UICamera.instance.uiManager.rayCamera = UICamera.instance.uiCamera;
-		//UICamera.instance.uiManager.Init();
-		//UICamera.instance.guiControl = UICamera.instance.uiCamera.gameObject.AddComponent<GUIControl>();
+		UICamera.instance.uiManager = UICamera.instance.uiCamera.gameObject.AddComponent<UIManager>();
+		UICamera.instance.uiManager.pointerType = UIManager.POINTER_TYPE.MOUSE;
+		UICamera.instance.uiManager.rayDepth = 50f;
+		UICamera.instance.uiManager.rayMask = UICamera.instance.mask;
+		UICamera.instance.uiCameraSetting.camera = UICamera.instance.uiCamera;
+		UICamera.instance.uiCameraSetting.mask = UICamera.instance.mask;
+		UICamera.instance.uiCameraSetting.rayDepth = 50f;
+		UICamera.instance.uiManager.uiCameras[0] = UICamera.instance.uiCameraSetting;
+		UICamera.instance.uiManager.rayCamera = UICamera.instance.uiCamera;
+		UICamera.instance.uiManager.Init();
+		UICamera.instance.guiControl = UICamera.instance.uiCamera.gameObject.AddComponent<GUIControl>();
 	}
 }

@@ -269,82 +269,78 @@ public class Main : MonoBehaviour
     //	this.bIsShowInfo = !this.bIsShowInfo;
     //}
 
-    //private void OnGUI()
-    //{
-    //	if (!Config.DEBUG)
-    //	{
-    //		return;
-    //	}
-    //	if (this.bIsShowInfo && Player.Instance != null && Player.Instance.m_cModAttribute != null)
-    //	{
-    //		GUI.color = Color.red;
-    //		string text = "HanLi HP base:" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
-    //		text = text + "__add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
-    //		text = text + "\n MaxHp base :" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
-    //		text = text + "__ add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
-    //		GUI.Label(new Rect(100f, 0f, 220f, 100f), text);
-    //	}
-    //	if (this.bIsShowInfo)
-    //	{
-    //		string text2 = "\n";
-    //		text2 += SystemInfo.deviceModel;
-    //		text2 += "\n";
-    //		text2 += SystemInfo.graphicsDeviceName;
-    //		text2 += "\t(";
-    //		text2 += SystemInfo.graphicsMemorySize;
-    //		text2 += " MB)";
-    //		text2 += SystemInfo.graphicsDeviceVersion;
-    //		text2 += "\n";
-    //		long num = 0L;
-    //		long num2 = 0L;
-    //		Main.MEMORY_INFO memory_INFO = default(Main.MEMORY_INFO);
-    //		Main.GlobalMemoryStatus(ref memory_INFO);
-    //		long num3 = Convert.ToInt64(memory_INFO.dwTotalPhys.ToString()) / 1024L / 1024L;
-    //		long num4 = Convert.ToInt64(memory_INFO.dwAvailPhys.ToString()) / 1024L / 1024L;
-    //		long num5 = num3 - num4;
-    //		IntPtr currentProcess = Main.GetCurrentProcess();
-    //		Main.PROCESS_MEMORY_COUNTERS process_MEMORY_COUNTERS = default(Main.PROCESS_MEMORY_COUNTERS);
-    //		process_MEMORY_COUNTERS.cb = (uint)Marshal.SizeOf(process_MEMORY_COUNTERS);
-    //		if (Main.GetProcessMemoryInfo(currentProcess, out process_MEMORY_COUNTERS, process_MEMORY_COUNTERS.cb))
-    //		{
-    //			num = Convert.ToInt64(process_MEMORY_COUNTERS.PagefileUsage.ToString()) / 1024L / 1024L;
-    //			num2 = Convert.ToInt64(process_MEMORY_COUNTERS.WorkingSetSize.ToString()) / 1024L / 1024L;
-    //		}
-    //		string text3 = text2;
-    //		text2 = string.Concat(new object[]
-    //		{
-    //			text3,
-    //			"Memory : \nTotalUsed = ",
-    //			num5,
-    //			"MB\n"
-    //		});
-    //		text3 = text2;
-    //		text2 = string.Concat(new object[]
-    //		{
-    //			text3,
-    //			"HaveMemory = ",
-    //			num4,
-    //			" MB\n"
-    //		});
-    //		text3 = text2;
-    //		text2 = string.Concat(new object[]
-    //		{
-    //			text3,
-    //			"Application Working Used = ",
-    //			num2,
-    //			" MB\n"
-    //		});
-    //		text3 = text2;
-    //		text2 = string.Concat(new object[]
-    //		{
-    //			text3,
-    //			"Application Page Used = ",
-    //			num,
-    //			" MB\n"
-    //		});
-    //		GUI.color = ((num4 <= 256L) ? Color.red : Color.yellow);
-    //		GUI.Label(new Rect(5f, 50f, (float)Screen.width - 20f, (float)Screen.height - 20f), text2);
-    //		GUI.color = Color.black;
-    //	}
-    //}
+    private void OnGUI()
+    {     
+        if (this.bIsShowInfo && Player.Instance != null && Player.Instance.m_cModAttribute != null)
+        {
+            GUI.color = Color.red;
+            //string text = "HanLi HP base:" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
+            //text = text + "__add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
+            //text = text + "\n MaxHp base :" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
+            //text = text + "__ add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
+            //GUI.Label(new Rect(100f, 0f, 220f, 100f), text);
+        }
+        if (this.bIsShowInfo)
+        {
+            string text2 = "\n";
+            text2 += SystemInfo.deviceModel;
+            text2 += "\n";
+            text2 += SystemInfo.graphicsDeviceName;
+            text2 += "\t(";
+            text2 += SystemInfo.graphicsMemorySize;
+            text2 += " MB)";
+            text2 += SystemInfo.graphicsDeviceVersion;
+            text2 += "\n";
+            long num = 0L;
+            long num2 = 0L;
+            Main.MEMORY_INFO memory_INFO = default(Main.MEMORY_INFO);
+            Main.GlobalMemoryStatus(ref memory_INFO);
+            long num3 = Convert.ToInt64(memory_INFO.dwTotalPhys.ToString()) / 1024L / 1024L;
+            long num4 = Convert.ToInt64(memory_INFO.dwAvailPhys.ToString()) / 1024L / 1024L;
+            long num5 = num3 - num4;
+            IntPtr currentProcess = Main.GetCurrentProcess();
+            Main.PROCESS_MEMORY_COUNTERS process_MEMORY_COUNTERS = default(Main.PROCESS_MEMORY_COUNTERS);
+            process_MEMORY_COUNTERS.cb = (uint)Marshal.SizeOf(process_MEMORY_COUNTERS);
+            if (Main.GetProcessMemoryInfo(currentProcess, out process_MEMORY_COUNTERS, process_MEMORY_COUNTERS.cb))
+            {
+                num = Convert.ToInt64(process_MEMORY_COUNTERS.PagefileUsage.ToString()) / 1024L / 1024L;
+                num2 = Convert.ToInt64(process_MEMORY_COUNTERS.WorkingSetSize.ToString()) / 1024L / 1024L;
+            }
+            string text3 = text2;
+            text2 = string.Concat(new object[]
+            {
+                text3,
+                "Memory : \nTotalUsed = ",
+                num5,
+                "MB\n"
+            });
+            text3 = text2;
+            text2 = string.Concat(new object[]
+            {
+                text3,
+                "HaveMemory = ",
+                num4,
+                " MB\n"
+            });
+            text3 = text2;
+            text2 = string.Concat(new object[]
+            {
+                text3,
+                "Application Working Used = ",
+                num2,
+                " MB\n"
+            });
+            text3 = text2;
+            text2 = string.Concat(new object[]
+            {
+                text3,
+                "Application Page Used = ",
+                num,
+                " MB\n"
+            });
+            GUI.color = ((num4 <= 256L) ? Color.red : Color.yellow);
+            GUI.Label(new Rect(5f, 50f, (float)Screen.width - 20f, (float)Screen.height - 20f), text2);
+            GUI.color = Color.black;
+        }
+    }
 }

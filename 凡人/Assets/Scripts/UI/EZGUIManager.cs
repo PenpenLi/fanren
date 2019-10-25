@@ -11,7 +11,7 @@ public class EZGUIManager : Singleton<EZGUIManager>
 
     private static GameObject _cObj;
 
-    //public static GUIBind _BindRunTimeObj;
+    public static GUIBind _BindRunTimeObj;
 
     private static bool _bFuntion;
 
@@ -166,12 +166,12 @@ public class EZGUIManager : Singleton<EZGUIManager>
 		//{
 		//	return false;
 		//}
-		//EZGUIManager._cObj = new GameObject();
-		//EZGUIManager._cObj.name = "EZGUI";
-		//EZGUIManager._cObj = (UnityEngine.Object.Instantiate(EZGUIManager._cObj, Vector3.zero, Quaternion.identity) as GameObject);
-		//EZGUIManager._cObj.layer = 10;
-		//EZGUIManager._cObj.transform.parent = GameObject.FindWithTag("UICam").transform;
-		//EZGUIManager._BindRunTimeObj = EZGUIManager._cObj.AddComponent<GUIBind>();
+		EZGUIManager._cObj = new GameObject();
+		EZGUIManager._cObj.name = "EZGUI";
+		EZGUIManager._cObj = (UnityEngine.Object.Instantiate(EZGUIManager._cObj, Vector3.zero, Quaternion.identity) as GameObject);
+		EZGUIManager._cObj.layer = 10;
+		EZGUIManager._cObj.transform.parent = GameObject.FindWithTag("UICam").transform;
+		EZGUIManager._BindRunTimeObj = EZGUIManager._cObj.AddComponent<GUIBind>();
 		//this.SetSound();
 		return true;
 	}

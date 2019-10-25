@@ -87,16 +87,6 @@ public class FanrenSceneManager : MonoBehaviour
         //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
         //}
 
-        if (SceneManager.GetActiveScene().name == "Landing")
-        {
-            //EZGUIManager._BindRunTimeObj.AddLandUI();//显示UI
-            //this.ReStartGame(true);
-        }
-        else
-        {
-            //EZGUIManager._BindRunTimeObj.RemoveLandUI();
-        }
-
         //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
         //{
         //    //this.ReStartGame(false);
@@ -215,7 +205,6 @@ public class FanrenSceneManager : MonoBehaviour
     {
         this.GetSceneInfo();
         Main.InitMain();
-        UICamera.InitUICamera();
         //SystemSetting.initialize();
         //Singleton<ActorManager>.GetInstance().Clear();
 
@@ -223,7 +212,6 @@ public class FanrenSceneManager : MonoBehaviour
         {
             GameData.Instance.ScrMan.Exec(31, 10099);
             Main.Instance.StartCoroutine(this.ShowLoadPlane());
-            //GameData.Instance.ScrMan.Exec(31, 10110);
         }
     }
 

@@ -50,13 +50,11 @@ public class GUIBase : MonoBehaviour
 		this._bIsShow = false;
 	}
 
-	// Token: 0x06000A05 RID: 2565 RVA: 0x0003F664 File Offset: 0x0003D864
 	//public virtual int OnEZMessage(GUI_TYPE type, POINTER_INFO pt)
 	//{
 	//	return 0;
 	//}
 
-	//// Token: 0x06000A06 RID: 2566 RVA: 0x0003F668 File Offset: 0x0003D868
 	//public virtual int OnChildEZMessage(GUI_TYPE type, string strChildKey, POINTER_INFO pt)
 	//{
 	//	return 0;
@@ -92,11 +90,6 @@ public class GUIBase : MonoBehaviour
 			pData.name = this.GUIKey;
 		}
 	}
-
-    public bool RegisterGUI()
-    {
-        return Singleton<EZGUIManager>.GetInstance().Register(this);
-    }
 
     //// Token: 0x06000A0C RID: 2572 RVA: 0x0003F720 File Offset: 0x0003D920
     //public bool MenuGUI(string name, GameObject go)

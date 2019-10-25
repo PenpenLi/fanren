@@ -234,10 +234,7 @@ public class KeyManager : MonoBehaviour
 
 	private void LockMouse(Event e)
 	{
-		if (!Cursor.visible)
-		{
-			MouseManager.LockCursor();
-		}
+		MouseManager.LockCursor(true);
 	}
 
     //private void onMouseScrollWheel(Event e)
