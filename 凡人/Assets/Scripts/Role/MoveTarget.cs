@@ -30,10 +30,10 @@ public class MoveTarget : MoveBase
 
     public override bool Update()
     {
-        //if (!base.Update())
-        //{
-        //    return false;
-        //}
+        if (!base.Update())
+        {
+            return false;
+        }
         if (this.m_cTarget == null && this.m_vecTarget == Vector3.zero)
         {
             return false;
@@ -79,6 +79,7 @@ public class MoveTarget : MoveBase
         }
         if ((this.enableSoundEffect || this.EnableDirtEffect) && this.m_cRole._roleType == ROLE_TYPE.RT_PLAYER && this.walkSoundTime != null && this.walkSoundTime.Length > 0)
         {
+            Debug.Log("执行");
             //if (this.isCreated.Count != this.walkSoundTime.Length || this.m_cAnimation.GetAniProgress() == 0f)
             //{
             //    this.isCreated.Clear();

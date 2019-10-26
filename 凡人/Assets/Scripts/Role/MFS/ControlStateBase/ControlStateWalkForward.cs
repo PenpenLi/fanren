@@ -69,8 +69,8 @@ public class ControlStateWalkForward : ControlStateBase
             b = ((ControlEventMoveForward)ceb).Rotate;
             array = ((ControlEventMoveForward)ceb).Path;
         }
-        this.m_cMove.Reset(ai, num);//重置
-        this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);
+        this.m_cMove.Reset(ai, num);//移动重置
+        this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);//设置移动速度
         if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
         {
             ////如果角色类型不是玩家
@@ -108,17 +108,20 @@ public class ControlStateWalkForward : ControlStateBase
         }
         else
         {
-            this.m_cMove.SetTargetPos(vector);
+            this.m_cMove.SetTargetPos(vector);//设置目标位置
             this.m_cMove.RotateWhenMove = false;
-            this.m_cMove.EnableSoundEffect = true;
+            this.m_cMove.EnableSoundEffect = true;//开启音效
             this.m_cMove.EnableDirtEffect = true;
-            this.m_cMove.SetTurnSpeed(1300f);
+            this.m_cMove.SetTurnSpeed(1300f);//转身速度
         }
-        this.m_cMove.SwitchRotate(b);
-        this.m_cMove.SwitchGravity(true);
+        this.m_cMove.SwitchRotate(b);//是否旋转
+        this.m_cMove.SwitchGravity(true);//重力
         return true;
     }
 
+    /// <summary>
+    /// 设置速度
+    /// </summary>
     private void SetSpeed()
     {
         float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
@@ -136,7 +139,8 @@ public class ControlStateWalkForward : ControlStateBase
     public override void OnExit()
     {
         base.OnExit();
-        this.m_cControlMfs.ChangeStateToIdle();
+        Debug.Log("状态切换为Idle");
+        this.m_cControlMfs.ChangeStateToIdle();//退出状态时切换为Idle
     }
 
     private void Setm_lstPathPoints(Vector3 targetPoint)

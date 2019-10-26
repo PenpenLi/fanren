@@ -38,34 +38,43 @@ public class ModControlMFS : Module
         }
     }
 
+    /// <summary>
+    /// 切换状态为Idle
+    /// </summary>
     public void ChangeStateToIdle()
     {
         if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
         {
-            //if (((Player)this._role).weaponManager.weaponeActive)
-            //{
-            //    ControlEventRestoreAttackIdle tmpEvent = new ControlEventRestoreAttackIdle(false);
-            //    this.ChangeState(tmpEvent);
-            //}
-            //else
-            //{
+            if (((Player)this._role).weaponManager.weaponeActive)
+            {
+                ControlEventRestoreAttackIdle tmpEvent = new ControlEventRestoreAttackIdle(false);
+                this.ChangeState(tmpEvent);
+            }
+            else
+            {
                 ControlEventRestoreIdle tmpEvent2 = new ControlEventRestoreIdle(false);
                 this.ChangeState(tmpEvent2);
-           // }
+            }
         }
         else
         {
-            //ControlEventRestoreIdle tmpEvent3 = new ControlEventRestoreIdle(false);
-            //this.ChangeState(tmpEvent3);
+            ControlEventRestoreIdle tmpEvent3 = new ControlEventRestoreIdle(false);
+            this.ChangeState(tmpEvent3);
         }
     }
 
-    //public void ChangeStateToAttackIdle()
-    //{
-    //	ControlEventAttackIdle tmpEvent = new ControlEventAttackIdle(false);
-    //	this.ChangeState(tmpEvent);
-    //}
+    /// <summary>
+    /// 切换状态为AttackIdle
+    /// </summary>
+    public void ChangeStateToAttackIdle()
+    {
+        ControlEventAttackIdle tmpEvent = new ControlEventAttackIdle(false);
+        this.ChangeState(tmpEvent);
+    }
 
+    /// <summary>
+    /// 获取当前状态ID
+    /// </summary>
     public CONTROL_STATE GetCurrentStateId()
     {
         if (this.m_cCurrentState == null)
@@ -75,6 +84,9 @@ public class ModControlMFS : Module
         return this.m_cCurrentState.GetState();
     }
 
+    /// <summary>
+    /// 切换状态为
+    /// </summary>
     public bool ChangeState(ControlEventBase tmpEvent)
     {
         if (tmpEvent.Forced)//强制的
@@ -216,6 +228,11 @@ public class ModControlMFS : Module
             this.m_mapEventTable = Singleton<MFSTableManager>.GetInstance().GetTableByType(mcm._role.MFSType);
         }
 
+        /// <summary>
+        /// 获取输入状态
+        /// </summary>
+        /// <param name="ci"></param>
+        /// <returns></returns>
         public ControlStateBase GetStateByInput(CONTROL_INPUT ci)
         {
             if (this.m_mapInpuStates.ContainsKey(ci))
@@ -225,6 +242,11 @@ public class ModControlMFS : Module
             return null;
         }
 
+        /// <summary>
+        /// 获取输出状态
+        /// </summary>
+        /// <param name="ci"></param>
+        /// <returns></returns>
         public ControlStateBase GetStateByOutput(CONTROL_STATE cs)
         {
             if (this.m_mapOutputStates.ContainsKey(cs))

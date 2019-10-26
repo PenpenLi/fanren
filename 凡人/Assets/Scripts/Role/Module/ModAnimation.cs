@@ -803,14 +803,15 @@ public class ModAnimation : Module
 
     public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
     {
-        if (this._animation == null)
-        {
-            return;
-        }
-        if (actIdx == ACTION_INDEX.AN_NONE)
-        {
-            return;
-        }
+        _animation.Play("Run");
+        //if (this._animation == null)
+        //{
+        //    return;
+        //}
+        //if (actIdx == ACTION_INDEX.AN_NONE)
+        //{
+        //    return;
+        //}
         //AniInfo.AniInfoNode aniInfoNodeRandom = this.GetAniInfoNodeRandom(actIdx);
         //if (aniInfoNodeRandom == null)
         //{
@@ -834,27 +835,27 @@ public class ModAnimation : Module
         //    //});
         //    return;
         //}
-        this._animation.cullingType = act;
-        //this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
-        //this._animation[aniInfoNodeRandom.Name].speed = this.m_fCurrentAniSpeed * GameTime.timeScale * this.AniSpeed;
-        //this._animation[aniInfoNodeRandom.Name].wrapMode = wrapMode;
-        //this.m_cCurAniNode = aniInfoNodeRandom.Clone();
-        this._curAniIndex = actIdx;
-        //this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
-        bool bLoop = wrapMode == WrapMode.Loop;
-        //this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
-        foreach (Role role in this._role.rolePartsList)
-        {
-            //RolePart rolePart = (RolePart)role;
-            //if (rolePart != null)
-            //{
-            //    ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
-            //    if (modAnimation != null)
-            //    {
-            //        modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
-            //    }
-            //}
-        }
+        //this._animation.cullingType = act;
+        ////this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
+        ////this._animation[aniInfoNodeRandom.Name].speed = this.m_fCurrentAniSpeed * GameTime.timeScale * this.AniSpeed;
+        ////this._animation[aniInfoNodeRandom.Name].wrapMode = wrapMode;
+        ////this.m_cCurAniNode = aniInfoNodeRandom.Clone();
+        //this._curAniIndex = actIdx;
+        ////this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
+        //bool bLoop = wrapMode == WrapMode.Loop;
+        ////this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
+        //foreach (Role role in this._role.rolePartsList)
+        //{
+        //    //RolePart rolePart = (RolePart)role;
+        //    //if (rolePart != null)
+        //    //{
+        //    //    ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
+        //    //    if (modAnimation != null)
+        //    //    {
+        //    //        modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
+        //    //    }
+        //    //}
+        //}
     }
 
     //// Token: 0x06002161 RID: 8545 RVA: 0x000E3B54 File Offset: 0x000E1D54

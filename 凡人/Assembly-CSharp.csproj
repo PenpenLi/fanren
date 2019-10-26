@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventFly.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventMoveForward.cs" />
+    <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventRestoreAttackIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventRestoreIdle.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlEventSwim.cs" />
     <Compile Include="Assets\Scripts\Role\MFS\ControlStateBase\ControlStateBase.cs" />

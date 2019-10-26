@@ -155,6 +155,9 @@ public class ControlStateBase
 		this.m_lstBreakEvent.Clear();
 	}
 
+    /// <summary>
+    /// 检查着地
+    /// </summary>
 	protected void CheckToFallingState()
 	{
         if (this.m_cControl == null)

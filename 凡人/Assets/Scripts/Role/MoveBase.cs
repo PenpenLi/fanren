@@ -72,10 +72,10 @@ public class MoveBase
 
 	public virtual bool Update()
 	{
-        //if (!this.m_bEnbale)
-        //{
-        //	return false;
-        //}
+        if (!this.m_bEnbale)
+        {
+            return false;
+        }
         if (this.m_cRole == null)
         {
             return false;
@@ -101,8 +101,7 @@ public class MoveBase
         {
             if (this.m_eAction != ACTION_INDEX.AN_NONE)
             {
-                //Debug.Log(m_eAction);
-                //this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
+                this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
             }
             this.isStart = true;
         }
