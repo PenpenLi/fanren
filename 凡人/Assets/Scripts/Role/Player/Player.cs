@@ -54,8 +54,14 @@ public class Player : Role
 
     private int playerId;
 
+    /// <summary>
+    /// 当前玩家ID
+    /// </summary>
     public static int currentPlayerId = 1;
 
+    /// <summary>
+    /// 玩家信息
+    /// </summary>
     public PlayerInfo playerInfo;
 
     public RoleBaseInfo roleinfo;
@@ -334,7 +340,7 @@ public class Player : Role
     {
         Player.instance = this;
         this.playerId++;
-        int id = this.playerId;
+        int id = this.playerId;//玩家ID 1
         base.ID = id;
         Player.currentPlayerId = id;
         this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);//主角信息
@@ -1114,44 +1120,43 @@ public class Player : Role
         //}
     }
 
-    //	// Token: 0x060022E8 RID: 8936 RVA: 0x000EE3E8 File Offset: 0x000EC5E8
-    //	public static void LoadPlayerRes(Player player)
-    //	{
-    //		RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(player.SystemAmbit.ModelChangeID);
-    //		if (roleModelInfo != null)
-    //		{
-    //			Debug.Log(roleModelInfo.Path);
-    //			ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject));
-    //			KeyValuePair<string, Type>[] effectResPath = UtilityRoleResource.GetEffectResPath(663);
-    //			if (effectResPath != null)
-    //			{
-    //				foreach (KeyValuePair<string, Type> keyValuePair in effectResPath)
-    //				{
-    //					Debug.Log(keyValuePair.Key);
-    //					ResourceLoader.Load(keyValuePair.Key, keyValuePair.Value);
-    //				}
-    //			}
-    //			effectResPath = UtilityRoleResource.GetEffectResPath(780);
-    //			if (effectResPath != null)
-    //			{
-    //				foreach (KeyValuePair<string, Type> keyValuePair2 in effectResPath)
-    //				{
-    //					Debug.Log(keyValuePair2.Key);
-    //					ResourceLoader.Load(keyValuePair2.Key, keyValuePair2.Value);
-    //				}
-    //			}
-    //		}
-    //		foreach (AdeptTalent.AdeptData adeptData in player.m_cAdeptSystem.AdeptTalentConfig.Values)
-    //		{
-    //			if (!adeptData.IsLock)
-    //			{
-    //				if (adeptData.IsUnLockAnimation == 1)
-    //				{
-    //					Player.LoadAttackRes(adeptData.WeaponType, adeptData.AmbitID);
-    //				}
-    //			}
-    //		}
-    //	}
+    public static void LoadPlayerRes(Player player)
+    {
+        //RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(player.SystemAmbit.ModelChangeID);
+        //if (roleModelInfo != null)
+        //{
+        //    Debug.Log(roleModelInfo.Path);
+        //    ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject));
+        //    //KeyValuePair<string, Type>[] effectResPath = UtilityRoleResource.GetEffectResPath(663);
+        //    //if (effectResPath != null)
+        //    //{
+        //    //    foreach (KeyValuePair<string, Type> keyValuePair in effectResPath)
+        //    //    {
+        //    //        Debug.Log(keyValuePair.Key);
+        //    //        ResourceLoader.Load(keyValuePair.Key, keyValuePair.Value);
+        //    //    }
+        //    //}
+        //    //effectResPath = UtilityRoleResource.GetEffectResPath(780);
+        //    //if (effectResPath != null)
+        //    //{
+        //    //    foreach (KeyValuePair<string, Type> keyValuePair2 in effectResPath)
+        //    //    {
+        //    //        Debug.Log(keyValuePair2.Key);
+        //    //        ResourceLoader.Load(keyValuePair2.Key, keyValuePair2.Value);
+        //    //    }
+        //    //}
+        //}
+        //foreach (AdeptTalent.AdeptData adeptData in player.m_cAdeptSystem.AdeptTalentConfig.Values)
+        //{
+        //    if (!adeptData.IsLock)
+        //    {
+        //        if (adeptData.IsUnLockAnimation == 1)
+        //        {
+        //            Player.LoadAttackRes(adeptData.WeaponType, adeptData.AmbitID);
+        //        }
+        //    }
+        //}
+    }
 
     //	public static void LoadAttackRes(EquipCfgType equipType, int level)
     //	{

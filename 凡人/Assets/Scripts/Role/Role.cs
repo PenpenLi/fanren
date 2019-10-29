@@ -142,6 +142,9 @@ public class Role
         }
     }
 
+    /// <summary>
+    /// 角色ID
+    /// </summary>
     public int ID
     {
         get
@@ -365,12 +368,17 @@ public class Role
         }
     }
 
-    //public bool IsEnemy(Role role)
-    //{
-    //    ModOrganization modOrganization = role.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
-    //    ModOrganization modOrganization2 = this.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
-    //    return modOrganization != null && modOrganization2 != null && modOrganization2.IsEnmity(modOrganization);
-    //}
+    /// <summary>
+    /// 是否敌人
+    /// </summary>
+    /// <param name="role"></param>
+    /// <returns></returns>
+    public bool IsEnemy(Role role)
+    {
+        ModOrganization modOrganization = role.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
+        ModOrganization modOrganization2 = this.GetModule(MODULE_TYPE.MT_ORGANIZATION) as ModOrganization;
+        return modOrganization != null && modOrganization2 != null && modOrganization2.IsEnmity(modOrganization);
+    }
 
     public GameObject gameObject
     {
@@ -728,7 +736,6 @@ public class Role
     {
     }
 
-    //	// Token: 0x06002395 RID: 9109 RVA: 0x000F05C8 File Offset: 0x000EE7C8
     //	public virtual void Render()
     //	{
     //		for (int i = 0; i < this._modList.Count; i++)

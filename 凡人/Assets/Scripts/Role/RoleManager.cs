@@ -427,7 +427,7 @@ public class RoleManager : MonoBehaviour
             return;
         }
         //player.BindAutoMisson();
-        //Player.LoadPlayerRes(player);
+        Player.LoadPlayerRes(player);
     }
 
     public Player GetPlayer()

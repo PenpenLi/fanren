@@ -184,7 +184,8 @@
     <Compile Include="Assets\Scripts\Role\MFS\ModControlMFS.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModAnimation.cs" />
     <Compile Include="Assets\Scripts\Role\Module\ModCamera.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\ModOrganization.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\ModOrganization\ModOrganization.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\ModOrganization\OrganizationInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Module\Module.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MODULE_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
