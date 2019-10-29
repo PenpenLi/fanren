@@ -358,8 +358,9 @@ public class Player : Role
         PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));
+
         base.roleGameObject.RoleBind.SetRole(this);
-        this.SetChildrenGameObj(base.roleGameObject.RoleBody);
+        this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
         this.hatred.selfRole = Player.Instance;

@@ -8,18 +8,39 @@ public class RoleModelInfo
 {
     private const int ATTACK_NUM = 5;
 
+    /// <summary>
+    /// 模型id
+    /// </summary>
     private int m_iID;
 
+    /// <summary>
+    /// 名称
+    /// </summary>
     private string m_strName;
 
+    /// <summary>
+    /// 模型资源路径
+    /// </summary>
     private string m_strModelPath;
 
+    /// <summary>
+    /// 模型子信息
+    /// </summary>
     private int m_iChildInfoID;
 
+    /// <summary>
+    /// 材质类型
+    /// </summary>
     private int m_iMaterialType;
 
+    /// <summary>
+    /// 动画信息
+    /// </summary>
     private int m_iAniIndex;
 
+    /// <summary>
+    /// 五套连招
+    /// </summary>
     private List<int> m_lstAttack = new List<int>();
 
     public RoleModelInfo(RoleModelInfo clone)

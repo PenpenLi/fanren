@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// 绑定角色
+/// </summary>
 public class BindRole : HurtRoleGameObject
 {
 	private new void Start()
@@ -20,15 +23,15 @@ public class BindRole : HurtRoleGameObject
 		}
 		switch (this.role._roleType)
 		{
-		case ROLE_TYPE.RT_PLAYER:
-			base.gameObject.tag = "Player";
-			base.gameObject.layer = LayerMask.NameToLayer("zhujue");
-			return;
-		case ROLE_TYPE.RT_MONSTER:
-			base.gameObject.layer = LayerMask.NameToLayer("Monster");
-			this.SetLayer(LayerMask.NameToLayer("Monster"));
-			return;
-		}
+            case ROLE_TYPE.RT_PLAYER:
+                base.gameObject.tag = "Player";
+                base.gameObject.layer = LayerMask.NameToLayer("zhujue");
+                return;
+            case ROLE_TYPE.RT_MONSTER:
+                base.gameObject.layer = LayerMask.NameToLayer("Monster");
+                this.SetLayer(LayerMask.NameToLayer("Monster"));
+                return;
+        }
 		base.gameObject.layer = LayerMask.NameToLayer("Monster");
 		this.SetLayer(LayerMask.NameToLayer("Monster"));
 	}

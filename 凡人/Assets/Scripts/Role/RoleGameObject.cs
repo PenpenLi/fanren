@@ -7,12 +7,21 @@ public class RoleGameObject
 {
     private Role m_cRole;
 
+    /// <summary>
+    /// 模型ID
+    /// </summary>
     private int m_iModelId;
 
     private float m_fModelScale;
 
+    /// <summary>
+    /// 游戏物体
+    /// </summary>
     private GameObject m_cGO;
 
+    /// <summary>
+    /// 角色模型信息
+    /// </summary>
     private RoleModelInfo m_cModelInfo;
 
     private Transform m_cTrans;
@@ -166,6 +175,9 @@ public class RoleGameObject
         }
     }
 
+    /// <summary>
+    /// 角色物体
+    /// </summary>
     public GameObject RoleBody
     {
         get
@@ -490,6 +502,12 @@ public class RoleGameObject
     //	}
     //}
 
+    /// <summary>
+    /// 设置物体
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
     public void SetGO(GameObject gameObject, Vector3 position, Quaternion rotation)
     {
         this.SetGO(gameObject);
@@ -500,6 +518,10 @@ public class RoleGameObject
         }
     }
 
+    /// <summary>
+    /// 设置物体
+    /// </summary>
+    /// <param name="gameObject"></param>
     public void SetGO(GameObject gameObject)
     {
         if (gameObject == null)
@@ -801,23 +823,28 @@ public class RoleGameObject
     //	}
     //}
 
-    //public static GameObject CreatRoleGameObject(int modelID)
-    //{
-    //	RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);
-    //	if (roleModelInfo == null)
-    //	{
-    //		return null;
-    //	}
-    //	GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;
-    //	if (gameObject == null)
-    //	{
-    //		return null;
-    //	}
-    //	gameObject = (LoadMachine.InstantiateObject(gameObject) as GameObject);
-    //	BindRole bindRole = gameObject.AddComponent<BindRole>();
-    //	bindRole.SetModelID(modelID);
-    //	return gameObject;
-    //}
+    /// <summary>
+    /// 创建角色物体
+    /// </summary>
+    /// <param name="modelID">模型ID</param>
+    /// <returns></returns>
+    public static GameObject CreatRoleGameObject(int modelID)
+    {
+        RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);//角色模型信息
+        if (roleModelInfo == null)
+        {
+            return null;
+        }
+        GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;//加载模型到缓存
+        if (gameObject == null)
+        {
+            return null;
+        }
+        gameObject = (LoadMachine.InstantiateObject(gameObject) as GameObject);//实例化物体
+        BindRole bindRole = gameObject.AddComponent<BindRole>();
+        bindRole.SetModelID(modelID);//设置模型ID
+        return gameObject;
+    }
 
     /// <summary>
     /// 创建角色物体
@@ -828,19 +855,19 @@ public class RoleGameObject
     /// <returns></returns>
     public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
-        RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);
+        RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);//角色模型信息
         if (roleModelInfo == null)
         {
             Debug.LogWarning("modelID:" + modelID);
             return null;
         }
-        GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;
+        GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;//加载模型到缓存
         if (gameObject == null)
         {
             Debug.LogWarning("modelID:" + roleModelInfo.Path);
             return null;
         }
-        gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);
+        gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);//实例化物体
         BindRole bindRole = gameObject.AddComponent<BindRole>();
         bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;
