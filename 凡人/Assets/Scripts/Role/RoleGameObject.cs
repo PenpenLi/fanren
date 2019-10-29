@@ -278,6 +278,10 @@ public class RoleGameObject
         }
     }
 
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    /// <param name="role"></param>
     public void Init(Role role)
     {
         this.m_cRole = role;
@@ -463,7 +467,7 @@ public class RoleGameObject
     }
 
     /// <summary>
-    /// 创建对象
+    /// 创建对象并设置
     /// </summary>
     /// <param name="modelId"></param>
     /// <param name="position"></param>
@@ -818,9 +822,9 @@ public class RoleGameObject
     /// <summary>
     /// 创建角色物体
     /// </summary>
-    /// <param name="modelID"></param>
-    /// <param name="position"></param>
-    /// <param name="rotation"></param>
+    /// <param name="modelID">模型ID</param>
+    /// <param name="position">位置</param>
+    /// <param name="rotation">朝向</param>
     /// <returns></returns>
     public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {

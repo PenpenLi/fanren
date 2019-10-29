@@ -37,27 +37,27 @@ public class PlayerInfo
 	public int weaponId;
 
     /// <summary>
-    /// 
+    /// 玩家位置
     /// </summary>
 	public static Vector3 PLAYER_POSITION = Vector3.zero;
 
     /// <summary>
-    /// 
+    /// 玩家复活位置
     /// </summary>
 	public static Vector3 PLAYER_REVIVE_POSITION = Vector3.zero;
 
     /// <summary>
-    /// 
+    /// 玩家旋转角度 朝向
     /// </summary>
 	public static Vector3 PLAYER_ROTATION = Vector3.zero;
 
     /// <summary>
-    /// 
+    /// 玩家复活朝向
     /// </summary>
 	public static Vector3 PLAYER_REVIVE_ROTATION = Vector3.zero;
 
     /// <summary>
-    /// 
+    /// 右手
     /// </summary>
 	public static string RIGHT_HAND = "Bip01 R Hand";
 }
