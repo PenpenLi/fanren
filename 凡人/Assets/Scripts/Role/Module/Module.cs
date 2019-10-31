@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-
+/// <summary>
+/// 模块基类
+/// </summary>
 public class Module
 {
     private MODULE_TYPE _modType;

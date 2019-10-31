@@ -6,7 +6,9 @@ using NS_RoleBaseFun;
 using UnityEngine;
 using UnityUtility;
 
-
+/// <summary>
+/// 角色数据信息
+/// </summary>
 public class RoleDateInfo
 {
     public static string BPN_HEAD = "Bip01 Head";
@@ -23,7 +25,7 @@ public class RoleDateInfo
 
     private List<string> _PatrolInfo = new List<string>();
 
-    //private List<OrganizationInfo> _orgList = new List<OrganizationInfo>();
+    private List<OrganizationInfo> _orgList = new List<OrganizationInfo>();
 
     //private List<ScriptNodeBase> _scriptList = new List<ScriptNodeBase>();
 
@@ -74,7 +76,7 @@ public class RoleDateInfo
 		//this.ReadChapterInfo();
 		//this.ReadSoulBallInfo();
 		//this.ReadRandomSkillInfo();
-		//this.ReadOrganizationInfo();
+		this.ReadOrganizationInfo();
 		//BevTreeData.LoadFromTxt();
 		//this.ReadDropItemRule();
 		//this.ReadOrganizationInfo();
@@ -485,155 +487,153 @@ public class RoleDateInfo
 		nHorse = (int)id;
 	}
 
-	//public void ReadSoulBallInfo()
-	//{
-	//	this.SoulBallInfoList.Clear();
-	//	List<string> list = UtilityLoader.LoadConfText("conf/SoulBallInfo");
-	//	int i = 0;
-	//	while (i < list.Count)
-	//	{
-	//		SoulBallInfo soulBallInfo = new SoulBallInfo();
-	//		soulBallInfo.ID = Convert.ToInt32(list[i]);
-	//		i++;
-	//		soulBallInfo.PrefabPath = list[i];
-	//		i++;
-	//		int num = Convert.ToInt32(list[i]);
-	//		soulBallInfo.AutoActive = (num == 1);
-	//		i++;
-	//		soulBallInfo.ModId = Convert.ToInt32(list[i]);
-	//		i++;
-	//		soulBallInfo.ModData = Convert.ToSingle(list[i]);
-	//		i++;
-	//		soulBallInfo.LastTime = Convert.ToSingle(list[i]);
-	//		i++;
-	//		soulBallInfo.roleEffectIdx = Convert.ToInt32(list[i]);
-	//		i++;
-	//		this.SoulBallInfoList.Add(soulBallInfo);
-	//	}
-	//}
+    //public void ReadSoulBallInfo()
+    //{
+    //	this.SoulBallInfoList.Clear();
+    //	List<string> list = UtilityLoader.LoadConfText("conf/SoulBallInfo");
+    //	int i = 0;
+    //	while (i < list.Count)
+    //	{
+    //		SoulBallInfo soulBallInfo = new SoulBallInfo();
+    //		soulBallInfo.ID = Convert.ToInt32(list[i]);
+    //		i++;
+    //		soulBallInfo.PrefabPath = list[i];
+    //		i++;
+    //		int num = Convert.ToInt32(list[i]);
+    //		soulBallInfo.AutoActive = (num == 1);
+    //		i++;
+    //		soulBallInfo.ModId = Convert.ToInt32(list[i]);
+    //		i++;
+    //		soulBallInfo.ModData = Convert.ToSingle(list[i]);
+    //		i++;
+    //		soulBallInfo.LastTime = Convert.ToSingle(list[i]);
+    //		i++;
+    //		soulBallInfo.roleEffectIdx = Convert.ToInt32(list[i]);
+    //		i++;
+    //		this.SoulBallInfoList.Add(soulBallInfo);
+    //	}
+    //}
 
-	//// Token: 0x06000770 RID: 1904 RVA: 0x000203C0 File Offset: 0x0001E5C0
-	//public SoulBallInfo GetSoulBallInfoById(int id)
-	//{
-	//	for (int i = 0; i < this.SoulBallInfoList.Count; i++)
-	//	{
-	//		if (id == this.SoulBallInfoList[i].ID)
-	//		{
-	//			return this.SoulBallInfoList[i];
-	//		}
-	//	}
-	//	return null;
-	//}
+    //// Token: 0x06000770 RID: 1904 RVA: 0x000203C0 File Offset: 0x0001E5C0
+    //public SoulBallInfo GetSoulBallInfoById(int id)
+    //{
+    //	for (int i = 0; i < this.SoulBallInfoList.Count; i++)
+    //	{
+    //		if (id == this.SoulBallInfoList[i].ID)
+    //		{
+    //			return this.SoulBallInfoList[i];
+    //		}
+    //	}
+    //	return null;
+    //}
 
-	//// Token: 0x06000771 RID: 1905 RVA: 0x00020410 File Offset: 0x0001E610
-	//public void ReadScriptNodeInfo()
-	//{
-	//	this._scriptList.Clear();
-	//	List<string> list = RoleBaseFun.LoadConfInAssets("ScriptInfo");
-	//	foreach (string text in list)
-	//	{
-	//		string[] array = text.Split(CacheData.separator);
-	//		int num = 0;
-	//		uint id = (uint)Convert.ToInt32(array[num]);
-	//		num++;
-	//		SCRIPT_NODE_TYPE script_NODE_TYPE = (SCRIPT_NODE_TYPE)Convert.ToInt32(array[num]);
-	//		SCRIPT_NODE_TYPE script_NODE_TYPE2 = script_NODE_TYPE;
-	//		if (script_NODE_TYPE2 != SCRIPT_NODE_TYPE.SNT_SCRIPT)
-	//		{
-	//			if (script_NODE_TYPE2 == SCRIPT_NODE_TYPE.SNT_PLAYANIM)
-	//			{
-	//				num++;
-	//				ACTION_INDEX actIdx = (ACTION_INDEX)Convert.ToInt32(array[num]);
-	//				PlayAniScriptNode item = new PlayAniScriptNode(id, script_NODE_TYPE, actIdx);
-	//				this._scriptList.Add(item);
-	//			}
-	//		}
-	//	}
-	//}
+    //// Token: 0x06000771 RID: 1905 RVA: 0x00020410 File Offset: 0x0001E610
+    //public void ReadScriptNodeInfo()
+    //{
+    //	this._scriptList.Clear();
+    //	List<string> list = RoleBaseFun.LoadConfInAssets("ScriptInfo");
+    //	foreach (string text in list)
+    //	{
+    //		string[] array = text.Split(CacheData.separator);
+    //		int num = 0;
+    //		uint id = (uint)Convert.ToInt32(array[num]);
+    //		num++;
+    //		SCRIPT_NODE_TYPE script_NODE_TYPE = (SCRIPT_NODE_TYPE)Convert.ToInt32(array[num]);
+    //		SCRIPT_NODE_TYPE script_NODE_TYPE2 = script_NODE_TYPE;
+    //		if (script_NODE_TYPE2 != SCRIPT_NODE_TYPE.SNT_SCRIPT)
+    //		{
+    //			if (script_NODE_TYPE2 == SCRIPT_NODE_TYPE.SNT_PLAYANIM)
+    //			{
+    //				num++;
+    //				ACTION_INDEX actIdx = (ACTION_INDEX)Convert.ToInt32(array[num]);
+    //				PlayAniScriptNode item = new PlayAniScriptNode(id, script_NODE_TYPE, actIdx);
+    //				this._scriptList.Add(item);
+    //			}
+    //		}
+    //	}
+    //}
 
-	//// Token: 0x06000772 RID: 1906 RVA: 0x00020500 File Offset: 0x0001E700
-	//public void ReadOrganizationInfo()
-	//{
-	//	this._orgList.Clear();
-	//	List<string> list = RoleBaseFun.LoadConfInAssets("OrganizationInfo");
-	//	foreach (string text in list)
-	//	{
-	//		string[] array = text.Split(CacheData.separator);
-	//		if (array.Length >= 3)
-	//		{
-	//			int num = 0;
-	//			OrganizationInfo organizationInfo = new OrganizationInfo();
-	//			organizationInfo.OrgType = (ORG_TYPE)Convert.ToInt32(array[num]);
-	//			organizationInfo.RepList.Clear();
-	//			num++;
-	//			for (int i = 0; i < 3; i++)
-	//			{
-	//				if (organizationInfo.OrgType == (ORG_TYPE)i)
-	//				{
-	//					num++;
-	//				}
-	//				else
-	//				{
-	//					OrganizationInfo.Reputation reputation = new OrganizationInfo.Reputation();
-	//					reputation.orgType = (ORG_TYPE)i;
-	//					reputation.value = Convert.ToInt32(array[num]);
-	//					num++;
-	//					organizationInfo.RepList.Add(reputation);
-	//				}
-	//			}
-	//			this._orgList.Add(organizationInfo);
-	//		}
-	//	}
-	//}
+    public void ReadOrganizationInfo()
+    {
+        this._orgList.Clear();
+        List<string> list = RoleBaseFun.LoadConfInAssets("OrganizationInfo");
+        foreach (string text in list)
+        {
+            string[] array = text.Split(CacheData.separator);
+            if (array.Length >= 3)
+            {
+                int num = 0;
+                OrganizationInfo organizationInfo = new OrganizationInfo();
+                organizationInfo.OrgType = (ORG_TYPE)Convert.ToInt32(array[num]);
+                organizationInfo.RepList.Clear();
+                num++;
+                for (int i = 0; i < 3; i++)
+                {
+                    if (organizationInfo.OrgType == (ORG_TYPE)i)
+                    {
+                        num++;
+                    }
+                    else
+                    {
+                        OrganizationInfo.Reputation reputation = new OrganizationInfo.Reputation();
+                        reputation.orgType = (ORG_TYPE)i;
+                        reputation.value = Convert.ToInt32(array[num]);
+                        num++;
+                        organizationInfo.RepList.Add(reputation);
+                    }
+                }
+                this._orgList.Add(organizationInfo);
+            }
+        }
+    }
 
-	//// Token: 0x06000773 RID: 1907 RVA: 0x00020628 File Offset: 0x0001E828
-	//public OrganizationInfo GetOrgInfoByType(ORG_TYPE orgType)
-	//{
-	//	foreach (OrganizationInfo organizationInfo in this._orgList)
-	//	{
-	//		if (organizationInfo.OrgType == orgType)
-	//		{
-	//			return organizationInfo;
-	//		}
-	//	}
-	//	return null;
-	//}
+    public OrganizationInfo GetOrgInfoByType(ORG_TYPE orgType)
+    {
+        foreach (OrganizationInfo organizationInfo in this._orgList)
+        {
+            if (organizationInfo.OrgType == orgType)
+            {
+                return organizationInfo;
+            }
+        }
+        return null;
+    }
 
-	//// Token: 0x06000774 RID: 1908 RVA: 0x000206A0 File Offset: 0x0001E8A0
-	//public RolePartInfo GetRolePart(int id)
-	//{
-	//	for (int i = 0; i < this.rolePartInfoList.Count; i++)
-	//	{
-	//		if (id == this.rolePartInfoList[i].ID)
-	//		{
-	//			return this.rolePartInfoList[i];
-	//		}
-	//	}
-	//	return null;
-	//}
+    //// Token: 0x06000774 RID: 1908 RVA: 0x000206A0 File Offset: 0x0001E8A0
+    //public RolePartInfo GetRolePart(int id)
+    //{
+    //	for (int i = 0; i < this.rolePartInfoList.Count; i++)
+    //	{
+    //		if (id == this.rolePartInfoList[i].ID)
+    //		{
+    //			return this.rolePartInfoList[i];
+    //		}
+    //	}
+    //	return null;
+    //}
 
-	//// Token: 0x06000775 RID: 1909 RVA: 0x000206F0 File Offset: 0x0001E8F0
-	//public void ReadRolePartInfo()
-	//{
-	//	List<string> list = UtilityLoader.LoadConfText("conf/roleparts");
-	//	this.rolePartInfoList.Clear();
-	//	int i = 0;
-	//	while (i < list.Count)
-	//	{
-	//		RolePartInfo rolePartInfo = new RolePartInfo();
-	//		rolePartInfo.ID = Convert.ToInt32(list[i]);
-	//		i++;
-	//		rolePartInfo.rolePartType = (RolePartType)Convert.ToInt32(list[i]);
-	//		i++;
-	//		rolePartInfo.PrefabPath = list[i];
-	//		i++;
-	//		rolePartInfo.BindPos = (RoleChildType)Convert.ToInt32(list[i]);
-	//		i++;
-	//		this.rolePartInfoList.Add(rolePartInfo);
-	//	}
-	//}
+    //// Token: 0x06000775 RID: 1909 RVA: 0x000206F0 File Offset: 0x0001E8F0
+    //public void ReadRolePartInfo()
+    //{
+    //	List<string> list = UtilityLoader.LoadConfText("conf/roleparts");
+    //	this.rolePartInfoList.Clear();
+    //	int i = 0;
+    //	while (i < list.Count)
+    //	{
+    //		RolePartInfo rolePartInfo = new RolePartInfo();
+    //		rolePartInfo.ID = Convert.ToInt32(list[i]);
+    //		i++;
+    //		rolePartInfo.rolePartType = (RolePartType)Convert.ToInt32(list[i]);
+    //		i++;
+    //		rolePartInfo.PrefabPath = list[i];
+    //		i++;
+    //		rolePartInfo.BindPos = (RoleChildType)Convert.ToInt32(list[i]);
+    //		i++;
+    //		this.rolePartInfoList.Add(rolePartInfo);
+    //	}
+    //}
 
-	public void ReadMonsterInfo()
+    public void ReadMonsterInfo()
 	{
 		List<string> list = UtilityLoader.LoadConfText("conf/monster");
 		this.monsterTable.Clear();

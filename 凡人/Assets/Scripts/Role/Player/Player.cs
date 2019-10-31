@@ -38,7 +38,7 @@ public class Player : Role
 
     //public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
 
-    //private ModMission m_cModMission;
+    private ModMission m_cModMission;
 
     //private Hbar hpBar;
 
@@ -85,7 +85,7 @@ public class Player : Role
         this._roleType = ROLE_TYPE.RT_PLAYER;
     }
 
-    //	public ModPlayerControl ModPlayerControl { get; private set; }
+    public ModPlayerControl ModPlayerControl { get; private set; }
 
     //	public AmbitSystem SystemAmbit
     //	{
@@ -135,7 +135,7 @@ public class Player : Role
     //		}
     //	}
 
-    //	public ModMutualPlayer ModMutual { get; private set; }
+    public ModMutualPlayer ModMutual { get; private set; }
 
     public static Player Instance
     {
@@ -251,8 +251,6 @@ public class Player : Role
     {
         base.RoleProcess();
         this.CheckDead();
-        Player.Instance.m_cModCamera.cameraControl.transform.position = Player.Instance.GetPos();
-        MouseManager.ShowCursor(false);
         FanrenSceneManager.RoleMan.CheckRoleInView(this);
         //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
         //{
@@ -362,23 +360,23 @@ public class Player : Role
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
         this.CreateModule();//创建模块
-        this.addPlayerHotKey();//添加热键
-        this.hatred.selfRole = Player.Instance;
-        KeyManager.controlRole = this;
-        this.equipReplace = new EquipReplace(this);//装备
-        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
-        //this.m_cAmbitSystem.Init(this);
-        this.InitRoleBaseInfo();
-        //this.m_RoleGrowDatas.Init();
-        //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //this.m_cFigureSystem.Init(this);
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
-        {
-            base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        }
+        //this.addPlayerHotKey();//添加热键
+        //this.hatred.selfRole = Player.Instance;
+        //KeyManager.controlRole = this;
+        //this.equipReplace = new EquipReplace(this);//装备
+        ////this.ItemFolder = new ItemFolderContainer(base.ID);//物品
+        ////this.m_cAmbitSystem.Init(this);
+        //this.InitRoleBaseInfo();
+        ////this.m_RoleGrowDatas.Init();
+        ////GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        ////GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        ////this.m_cFigureSystem.Init(this);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        //if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
+        //{
+        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
+        //}
     }
 
     /// <summary>
@@ -387,7 +385,7 @@ public class Player : Role
     public override void CreateModule()
     {
         base.CreateModule();
-        this._roleType = ROLE_TYPE.RT_PLAYER;
+        this._roleType = ROLE_TYPE.RT_PLAYER;//设置角色类型
         this.AddMod(MODULE_TYPE.MT_MOTION);
         this.AddMod(MODULE_TYPE.MT_MOVE);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
@@ -404,7 +402,7 @@ public class Player : Role
         this.AddMod(MODULE_TYPE.MT_VOICE);
         this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
-        this.Init();
+        //this.Init();
         //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//熟练系统
         //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
         //this.m_BottleSystem.LoadConfig();//瓶子
@@ -424,7 +422,7 @@ public class Player : Role
                 this.modAnimation = (ModAnimation)module;
                 break;
             case MODULE_TYPE.MT_ORGANIZATION:
-                //module = new ModOrganization(this);
+                module = new ModOrganization(this);
                 break;
             case MODULE_TYPE.MT_ATTRIBUTE:
                 module = new ModAttribute(this);
@@ -435,17 +433,17 @@ public class Player : Role
                 this.m_cModFight = (ModFight)module;
                 break;
             case MODULE_TYPE.MT_SKILL:
-                //module = new ModSkillProperty(this);
+                module = new ModSkillProperty(this);
                 break;
             case MODULE_TYPE.MT_BUFF:
                 module = new ModBuffProperty(this);
                 break;
             case MODULE_TYPE.MT_MISSION:
-                //module = new ModMission(this);
-                //this.m_cModMission = (module as ModMission);
+                module = new ModMission(this);
+                this.m_cModMission = (module as ModMission);
                 break;
             case MODULE_TYPE.MT_COLLIDER:
-                //module = new ModColliderProperty(this);
+                module = new ModColliderProperty(this);
                 break;
             case MODULE_TYPE.MT_CONTROL_MFS:
                 module = new ModControlMFS(base.gameObject, this);
@@ -458,15 +456,15 @@ public class Player : Role
                 //module = new ModMultiverseSpace(this);
                 break;
             case MODULE_TYPE.MT_PLAYERCONTROL:
-                //module = new ModPlayerControl(this);
-                //this.ModPlayerControl = (ModPlayerControl)module;
+                module = new ModPlayerControl(this);
+                this.ModPlayerControl = (ModPlayerControl)module;
                 break;
             case MODULE_TYPE.MT_PLAYERMUTUAL:
-                //module = new ModMutualPlayer(this);
-                //this.ModMutual = (ModMutualPlayer)module;
+                module = new ModMutualPlayer(this);
+                this.ModMutual = (ModMutualPlayer)module;
                 break;
             case MODULE_TYPE.MT_VOICE:
-                //module = new ModVoice(this);
+                module = new ModVoice(this);
                 break;
         }
 
@@ -783,7 +781,6 @@ public class Player : Role
         GameTime.PauseGame();
     }
 
-    //	// Token: 0x060022DA RID: 8922 RVA: 0x000ED8A4 File Offset: 0x000EBAA4
     //	public void Revive()
     //	{
     //		CameraEffectManager.MainGrayscaleEffect.enabled = false;

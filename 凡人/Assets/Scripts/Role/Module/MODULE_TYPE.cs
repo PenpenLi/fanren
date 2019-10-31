@@ -17,6 +17,9 @@ public enum MODULE_TYPE
     /// 运动
     /// </summary>
 	MT_MOTION,
+    /// <summary>
+    /// 社交
+    /// </summary>
 	MT_ORGANIZATION,
     /// <summary>
     /// 属性

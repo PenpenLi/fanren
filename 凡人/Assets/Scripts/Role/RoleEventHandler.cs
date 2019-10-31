@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// 角色事件处理者
+/// </summary>
 public class RoleEventHandler
 {
     private Role owner;

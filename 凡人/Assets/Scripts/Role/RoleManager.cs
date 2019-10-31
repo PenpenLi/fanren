@@ -1505,7 +1505,7 @@ public class RoleManager : MonoBehaviour
 
     private void Update()
     {
-        List<Role> list = new List<Role>();
+        List<Role> list = new List<Role>();//等待移除列表
         for (int i = 0; i < this.RoleObjList.Count; i++)
         {
             if (this.RoleObjList[i] != null)

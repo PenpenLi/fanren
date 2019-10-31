@@ -21,6 +21,9 @@ public class Role
     /// </summary>
     public RoleHatred hatred = new RoleHatred();
 
+    /// <summary>
+    /// 模块列表
+    /// </summary>
     protected List<Module> _modList = new List<Module>();
 
     public List<Role> rolePartsList = new List<Role>();
