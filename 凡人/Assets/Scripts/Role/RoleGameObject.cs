@@ -299,21 +299,21 @@ public class RoleGameObject
         this.m_cRole = role;
     }
 
-    //public Rigidbody[] Rigidbodys
-    //{
-    //	get
-    //	{
-    //		if (this.m_cGO == null)
-    //		{
-    //			return null;
-    //		}
-    //		if (this.rigidbodys == null)
-    //		{
-    //			this.rigidbodys = this.m_cGO.GetComponentsInChildren<Rigidbody>(true);
-    //		}
-    //		return this.rigidbodys;
-    //	}
-    //}
+    public Rigidbody[] Rigidbodys
+    {
+        get
+        {
+            if (this.m_cGO == null)
+            {
+                return null;
+            }
+            if (this.rigidbodys == null)
+            {
+                this.rigidbodys = this.m_cGO.GetComponentsInChildren<Rigidbody>(true);
+            }
+            return this.rigidbodys;
+        }
+    }
 
     //public SkinnedMeshRenderer[] SkinMeshRensers
     //{
@@ -716,32 +716,32 @@ public class RoleGameObject
     /// <param name="enable"></param>
     public void EnableRagdoll(bool enable)
     {
-        //if (this.Rigidbodys == null)
-        //{
-        //    return;
-        //}
-        //foreach (Rigidbody rigidbody in this.Rigidbodys)
-        //{
-        //    rigidbody.gameObject.layer = 24;
-        //    if (rigidbody.GetComponent<Joint>() != null)
-        //    {
-        //        rigidbody.isKinematic = !enable;
-        //        rigidbody.useGravity = enable;
-        //        if (rigidbody.collider != null)
-        //        {
-        //            rigidbody.collider.enabled = enable;
-        //        }
-        //    }
-        //    else if (rigidbody.GetComponent<HurtGameObject>() == null)
-        //    {
-        //        rigidbody.isKinematic = !enable;
-        //        rigidbody.useGravity = enable;
-        //        if (rigidbody.collider != null)
-        //        {
-        //            rigidbody.collider.enabled = enable;
-        //        }
-        //    }
-        //}
+        if (this.Rigidbodys == null)
+        {
+            return;
+        }
+        foreach (Rigidbody rigidbody in this.Rigidbodys)
+        {
+            rigidbody.gameObject.layer = 24;
+            //if (rigidbody.GetComponent<Joint>() != null)
+            //{
+            //    rigidbody.isKinematic = !enable;
+            //    rigidbody.useGravity = enable;
+            //    if (rigidbody.collider != null)
+            //    {
+            //        rigidbody.collider.enabled = enable;
+            //    }
+            //}
+            //else if (rigidbody.GetComponent<HurtGameObject>() == null)
+            //{
+            //    rigidbody.isKinematic = !enable;
+            //    rigidbody.useGravity = enable;
+            //    if (rigidbody.collider != null)
+            //    {
+            //        rigidbody.collider.enabled = enable;
+            //    }
+            //}
+        }
     }
 
     //// Token: 0x06002427 RID: 9255 RVA: 0x000F4580 File Offset: 0x000F2780

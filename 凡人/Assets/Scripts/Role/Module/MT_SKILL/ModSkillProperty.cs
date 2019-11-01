@@ -47,20 +47,22 @@ public class ModSkillProperty : Module
         }
     }
 
-    //// Token: 0x0600256D RID: 9581 RVA: 0x000FFDEC File Offset: 0x000FDFEC
-    //public void DelSkill(int index)
-    //{
-    //	if (this.m_cSkills[index] != null)
-    //	{
-    //		this.m_cSkills[index] = null;
-    //	}
-    //}
+    /// <summary>
+    /// 删除技能
+    /// </summary>
+    /// <param name="index"></param>
+    public void DelSkill(int index)
+    {
+        if (this.m_cSkills[index] != null)
+        {
+            this.m_cSkills[index] = null;
+        }
+    }
 
-    //// Token: 0x0600256E RID: 9582 RVA: 0x000FFE04 File Offset: 0x000FE004
-    //public override bool Init()
-    //{
-    //	return base.Init();
-    //}
+    public override bool Init()
+    {
+        return base.Init();
+    }
 
     //// Token: 0x0600256F RID: 9583 RVA: 0x000FFE0C File Offset: 0x000FE00C
     //public bool IsReady(SKILL_ID id)
@@ -199,30 +201,35 @@ public class ModSkillProperty : Module
     //	return modControlMFS.ChangeState(new ControlEventSkill(false, this.m_cSkills[index].ID, targetRole, targetPos));
     //}
 
-    //// Token: 0x0600257A RID: 9594 RVA: 0x001001BC File Offset: 0x000FE3BC
-    //public bool AddSkill(int id, int index)
-    //{
-    //	this.str = id.ToString();
-    //	CSkillBase skill = Singleton<CSkillStaticManager>.GetInstance().GetSkill(id);
-    //	if (skill == null)
-    //	{
-    //		return false;
-    //	}
-    //	if (index < 0 || index >= this.m_cSkills.Length || this.m_cSkills[index] != null)
-    //	{
-    //		return false;
-    //	}
-    //	SSkillCoolTime sskillCoolTime = new SSkillCoolTime(index, skill.ID, skill.CoolTime);
-    //	if (this.m_cSkills[index] != null)
-    //	{
-    //		return false;
-    //	}
-    //	if (this._role is Player)
-    //	{
-    //	}
-    //	this.m_cSkills[index] = sskillCoolTime;
-    //	return true;
-    //}
+    /// <summary>
+    /// 添加技能
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public bool AddSkill(int id, int index)
+    {
+        this.str = id.ToString();
+        CSkillBase skill = Singleton<CSkillStaticManager>.GetInstance().GetSkill(id);
+        if (skill == null)
+        {
+            return false;
+        }
+        //if (index < 0 || index >= this.m_cSkills.Length || this.m_cSkills[index] != null)
+        //{
+        //    return false;
+        //}
+        //SSkillCoolTime sskillCoolTime = new SSkillCoolTime(index, skill.ID, skill.CoolTime);
+        //if (this.m_cSkills[index] != null)
+        //{
+        //    return false;
+        //}
+        //if (this._role is Player)
+        //{
+        //}
+        //this.m_cSkills[index] = sskillCoolTime;
+        return true;
+    }
 
     //// Token: 0x0600257B RID: 9595 RVA: 0x0010024C File Offset: 0x000FE44C
     //public bool IsSkillExist(int id)
@@ -251,56 +258,64 @@ public class ModSkillProperty : Module
     //	return num >= 8;
     //}
 
-    //// Token: 0x0600257D RID: 9597 RVA: 0x001002D0 File Offset: 0x000FE4D0
-    //public bool AddSkill(int id)
-    //{
-    //	int i;
-    //	for (i = 0; i < this.m_cSkills.Length; i++)
-    //	{
-    //		if (this.m_cSkills[i] == null)
-    //		{
-    //			break;
-    //		}
-    //	}
-    //	if (i >= this.m_cSkills.Length)
-    //	{
-    //		Debug.LogError("The Skill is Full");
-    //		return false;
-    //	}
-    //	if (this._role._roleType == ROLE_TYPE.RT_PLAYER && this.ChangeSkill(id) != -1)
-    //	{
-    //		i = this.ChangeSkill(id);
-    //	}
-    //	return this.AddSkill(id, i);
-    //}
+    /// <summary>
+    /// 添加技能
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public bool AddSkill(int id)
+    {
+        int i;
+        for (i = 0; i < this.m_cSkills.Length; i++)
+        {
+            if (this.m_cSkills[i] == null)
+            {
+                break;
+            }
+        }
+        if (i >= this.m_cSkills.Length)
+        {
+            Debug.LogError("The Skill is Full");
+            return false;
+        }
+        if (this._role._roleType == ROLE_TYPE.RT_PLAYER && this.ChangeSkill(id) != -1)
+        {
+            i = this.ChangeSkill(id);
+        }
+        return this.AddSkill(id, i);
+    }
 
-    //// Token: 0x0600257E RID: 9598 RVA: 0x00100350 File Offset: 0x000FE550
-    //public int ChangeSkill(int id)
-    //{
-    //	int[] sortedSkillID = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.FIRE);
-    //	int[] sortedSkillID2 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.SHIELD);
-    //	int[] sortedSkillID3 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.PUPPET);
-    //	int[] sortedSkillID4 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.SWORD);
-    //	int[][] array = new int[][]
-    //	{
-    //		sortedSkillID,
-    //		sortedSkillID2,
-    //		sortedSkillID3,
-    //		sortedSkillID4
-    //	};
-    //	for (int i = 0; i < 4; i++)
-    //	{
-    //		for (int j = 0; j < array[i].Length; j++)
-    //		{
-    //			if (array[i][j] == id)
-    //			{
-    //				this.DelSkill(i);
-    //				return i;
-    //			}
-    //		}
-    //	}
-    //	return -1;
-    //}
+    /// <summary>
+    /// 改变技能
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public int ChangeSkill(int id)
+    {
+        int[] sortedSkillID = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.FIRE);
+        int[] sortedSkillID2 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.SHIELD);
+        int[] sortedSkillID3 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.PUPPET);
+        int[] sortedSkillID4 = Singleton<PlayerSkillData>.GetInstance().GetSortedSkillID(PLAYER_SKILL_TYPE.SWORD);
+        int[][] array = new int[][]
+        {
+            sortedSkillID,
+            sortedSkillID2,
+            sortedSkillID3,
+            sortedSkillID4
+        };
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < array[i].Length; j++)
+            {
+                if (array[i][j] == id)
+                {
+                    this.DelSkill(i);
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
 
     //// Token: 0x0600257F RID: 9599 RVA: 0x001003F8 File Offset: 0x000FE5F8
     //public SSkillCoolTime GetSkillCoolTimeByIndex(int index)

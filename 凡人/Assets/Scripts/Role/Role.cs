@@ -492,6 +492,10 @@ public class Role
         return this.roleGameObject.RoleTransform.rotation;
     }
 
+    /// <summary>
+    /// 设置旋转
+    /// </summary>
+    /// <param name="rat"></param>
     public void SetRat(Vector3 rat)
     {
         this.roleGameObject.RoleTransform.rotation = Quaternion.Euler(rat);

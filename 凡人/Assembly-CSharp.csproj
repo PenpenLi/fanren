@@ -193,7 +193,13 @@
     <Compile Include="Assets\Scripts\Role\Module\MT_ORGANIZATION\OrganizationInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_PLAYERCONTROL\ModPlayerControl.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_PLAYERMUTUAL\ModMutualPlayer.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CSkillBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CSkillStaticManager.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\ModSkillProperty.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PLAYER_SKILL_TYPE.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PlayerSkillData.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateHZC.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateRay.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SSkillCoolTime.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_VOICE\ModVoice.cs" />
     <Compile Include="Assets\Scripts\Role\Monster\IdentityType.cs" />
@@ -212,6 +218,7 @@
     <Compile Include="Assets\Scripts\Role\OperableItemBase\ObjectState.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableItemBase.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableSaveDataBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\AdeptTalent\AdeptTalent.cs" />
     <Compile Include="Assets\Scripts\Role\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Role\Player\EquipReplace.cs" />
     <Compile Include="Assets\Scripts\Role\Player\Player.cs" />
@@ -292,6 +299,7 @@
     <None Include="Assets\Resources\conf\MissionInfo.txt" />
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
+    <None Include="Assets\Resources\conf\DataFile\Skill\SkillScript.txt" />
     <None Include="Assets\Resources\conf\NpcInfo.txt" />
     <None Include="Assets\Resources\conf\map\Landing.txt" />
     <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
@@ -302,6 +310,7 @@
     <None Include="Assets\Resources\conf\SoundTable.txt" />
     <None Include="Assets\Resources\conf\res\mapinfo.txt" />
     <None Include="Assets\Resources\conf\RoleBaseConfig.txt" />
+    <None Include="Assets\Resources\conf\DataFile\PlayerSkill\PlayerSkill.txt" />
     <None Include="Assets\Resources\conf\Anim\RoleAniTypeDefine.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Projects/fanren/凡人/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

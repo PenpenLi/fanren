@@ -22,7 +22,7 @@ public class Player : Role
 
     public ModFight m_cModFight;
 
-    //public AdeptTalent m_cAdeptSystem = new AdeptTalent();
+    public AdeptTalent m_cAdeptSystem = new AdeptTalent();
 
     //public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
 
@@ -402,7 +402,7 @@ public class Player : Role
         this.AddMod(MODULE_TYPE.MT_VOICE);
         this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
-        //this.Init();
+        this.Init();
         //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//熟练系统
         //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
         //this.m_BottleSystem.LoadConfig();//瓶子
@@ -475,15 +475,18 @@ public class Player : Role
         return null;
     }
 
+    /// <summary>
+    /// 初始化
+    /// </summary>
     private void Init()
     {
         base.roleGameObject.EnableRagdoll(false);
         base.RunSpeed = this.playerInfo.runSpeed;
         this.weaponManager.initialize(this);
         base.SetRat(PlayerInfo.PLAYER_ROTATION);
-        //this.m_cAdeptSystem.OwnerPlayer = this;
-        //ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
-        //modSkillProperty.AddSkill(2025);
+        this.m_cAdeptSystem.OwnerPlayer = this;
+        ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
+        modSkillProperty.AddSkill(2025);
         //CameraEffectManager.GetAllCameraEffectComponent();
     }
 
