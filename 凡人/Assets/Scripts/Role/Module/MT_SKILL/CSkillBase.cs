@@ -254,8 +254,6 @@ public class CSkillBase
 		this.m_iSkillHitID = Convert.ToInt32(infoList[index++]);
 	}
 
-	// Token: 0x1700047A RID: 1146
-	// (get) Token: 0x060025CA RID: 9674 RVA: 0x00102578 File Offset: 0x00100778
 	public int ID
 	{
 		get

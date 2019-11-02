@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-
+/// <summary>
+/// 技能
+/// </summary>
 public class ModSkillProperty : Module
 {
     private SSkillCoolTime[] m_cSkills = new SSkillCoolTime[11];
@@ -215,23 +217,19 @@ public class ModSkillProperty : Module
         {
             return false;
         }
-        //if (index < 0 || index >= this.m_cSkills.Length || this.m_cSkills[index] != null)
-        //{
-        //    return false;
-        //}
-        //SSkillCoolTime sskillCoolTime = new SSkillCoolTime(index, skill.ID, skill.CoolTime);
-        //if (this.m_cSkills[index] != null)
-        //{
-        //    return false;
-        //}
-        //if (this._role is Player)
-        //{
-        //}
-        //this.m_cSkills[index] = sskillCoolTime;
+        if (index < 0 || index >= this.m_cSkills.Length || this.m_cSkills[index] != null)
+        {
+            return false;
+        }
+        SSkillCoolTime sskillCoolTime = new SSkillCoolTime(index, skill.ID, skill.CoolTime);
+        if (this.m_cSkills[index] != null)
+        {
+            return false;
+        }
+        this.m_cSkills[index] = sskillCoolTime;
         return true;
     }
 
-    //// Token: 0x0600257B RID: 9595 RVA: 0x0010024C File Offset: 0x000FE44C
     //public bool IsSkillExist(int id)
     //{
     //	foreach (SSkillCoolTime sskillCoolTime in this.m_cSkills)

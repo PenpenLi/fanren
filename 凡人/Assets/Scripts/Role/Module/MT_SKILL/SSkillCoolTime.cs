@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityUtility;
 
-
+/// <summary>
+/// 技能冷却时间
+/// </summary>
 [Serializable]
 public class SSkillCoolTime
 {

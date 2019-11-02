@@ -83,13 +83,15 @@ public class CSkillStaticManager : Singleton<CSkillStaticManager>
 		{
 			string typeName = list[i++];
 			Type type = Type.GetType(typeName);
-            Debug.Log(typeName);
-			//CSkillBase cskillBase = (CSkillBase)Activator.CreateInstance(type);
-			//cskillBase.TextRead(list, ref i);
-   //         if (cskillBase != null)
-   //         {
-   //             this.m_mapSkillData.Add(cskillBase.ID, cskillBase);
-   //         }
+            if (type!=null)
+            {
+                CSkillBase cskillBase = (CSkillBase)Activator.CreateInstance(type);
+                cskillBase.TextRead(list, ref i);
+                if (cskillBase != null)
+                {
+                    this.m_mapSkillData.Add(cskillBase.ID, cskillBase);
+                }
+            }          
         }
 	}
 }

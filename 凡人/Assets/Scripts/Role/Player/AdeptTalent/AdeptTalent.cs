@@ -10,9 +10,9 @@ public class AdeptTalent
 {
     private Player _OwnerPlayer;
 
-    //private SortedDictionary<int, AdeptTalent.AdeptData> _AdeptTalentConfig = new SortedDictionary<int, AdeptTalent.AdeptData>();
+    private SortedDictionary<int, AdeptTalent.AdeptData> _AdeptTalentConfig = new SortedDictionary<int, AdeptTalent.AdeptData>();
 
-    //private ModAttribute _OwnerMod;
+    private ModAttribute _OwnerMod;
 
     //private AdeptTalent.AddValue _AddCount;
 
@@ -401,14 +401,16 @@ public class AdeptTalent
     //	return !this._AdeptTalentConfig.ContainsKey(_ID) || this._AdeptTalentConfig[_ID].IsLock;
     //}
 
-    //// Token: 0x06001DF5 RID: 7669 RVA: 0x000D1020 File Offset: 0x000CF220
-    //public void ClearAdeptTalent()
-    //{
-    //	if (this._AdeptTalentConfig != null)
-    //	{
-    //		this._AdeptTalentConfig.Clear();
-    //	}
-    //}
+    /// <summary>
+    /// 清空熟练度
+    /// </summary>
+    public void ClearAdeptTalent()
+    {
+        if (this._AdeptTalentConfig != null)
+        {
+            this._AdeptTalentConfig.Clear();
+        }
+    }
 
     //// Token: 0x06001DF6 RID: 7670 RVA: 0x000D1038 File Offset: 0x000CF238
     //public int GetAdeptValue()
@@ -619,115 +621,118 @@ public class AdeptTalent
     //	Singleton<EZGUIManager>.GetInstance().GetGUI<AdeptTalentPlane>().SetLeftSoul(data._LeftSoulHelpID);
     //}
 
-    //// Token: 0x06001DFF RID: 7679 RVA: 0x000D1670 File Offset: 0x000CF870
-    //public bool LoadAdeptConfig(ModAttribute pMod, string strFilePath)
-    //{
-    //	if (strFilePath == null || pMod == null)
-    //	{
-    //		return false;
-    //	}
-    //	List<string> list = RoleBaseFun.LoadConfInAssets(strFilePath);
-    //	if (list.Count <= 0)
-    //	{
-    //		Debug.LogWarning("Adept Config no found!");
-    //		return false;
-    //	}
-    //	this.ClearAdeptTalent();
-    //	foreach (string text in list)
-    //	{
-    //		string[] array = text.Split(CacheData.separator);
-    //		if (array.Length >= 8)
-    //		{
-    //			int i = 0;
-    //			AdeptTalent.AdeptData adeptData = new AdeptTalent.AdeptData();
-    //			adeptData.WeaponType = (EquipCfgType)Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.IsLock = (Convert.ToInt32(array[i]) == 0);
-    //			i++;
-    //			adeptData.AmbitID = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.PhaseID = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.Level = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.Count = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.IsUnLockAnimation = Convert.ToInt32(array[i]);
-    //			if (!adeptData.IsLock && adeptData.IsUnLockAnimation == 1)
-    //			{
-    //				Singleton<RoleAnimationManager>.GetInstance().AttachAnimationAdeptTalent(adeptData.WeaponType, adeptData.AmbitID, Player.Instance);
-    //			}
-    //			i++;
-    //			adeptData.DeltaCount = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.Name = array[i];
-    //			i++;
-    //			adeptData.Desc = array[i];
-    //			i++;
-    //			adeptData.Desc2 = array[i];
-    //			i++;
-    //			adeptData.HelpID = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.LianjiLev = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.XuliLev = Convert.ToInt32(array[i]);
-    //			i++;
-    //			adeptData.ZhuijiLev = Convert.ToInt32(array[i]);
-    //			for (i++; i < array.Length; i++)
-    //			{
-    //				int num = Convert.ToInt32(array[i]);
-    //				if (num == -1)
-    //				{
-    //					i++;
-    //				}
-    //				else
-    //				{
-    //					ADEPT_ATTRIBUTE adept_ATTRIBUTE = (ADEPT_ATTRIBUTE)num;
-    //					i++;
-    //					string text2 = array[i];
-    //					if (adept_ATTRIBUTE == ADEPT_ATTRIBUTE.AAT_WEAPON_SKILL && text2.IndexOf('/') != -1)
-    //					{
-    //						string[] array2 = text2.Split(AdeptTalent.separator);
-    //						if (array2.Length >= 3)
-    //						{
-    //							float val = (float)Convert.ToDouble(array2[0]);
-    //							int level = Convert.ToInt32(array2[1]);
-    //							float probability = (float)Convert.ToDouble(array2[2]);
-    //							AdeptTalent.AdeptData.AddRoleAttribute addRoleAttribute = new AdeptTalent.AdeptData.AddRoleAttribute(adept_ATTRIBUTE, val);
-    //							addRoleAttribute.level = level;
-    //							addRoleAttribute.probability = probability;
-    //							adeptData.AddAttributesList.Add(addRoleAttribute);
-    //						}
-    //					}
-    //					else
-    //					{
-    //						float val2 = (float)Convert.ToDouble(text2);
-    //						AdeptTalent.AdeptData.AddRoleAttribute item = new AdeptTalent.AdeptData.AddRoleAttribute(adept_ATTRIBUTE, val2);
-    //						adeptData.AddAttributesList.Add(item);
-    //					}
-    //				}
-    //			}
-    //			if (this._AdeptTalentConfig.ContainsKey(adeptData.ID))
-    //			{
-    //				Logger.LogWarning(new object[]
-    //				{
-    //					"LoadAdeptConfig failed! ContainsKey error : " + adeptData.ID
-    //				});
-    //			}
-    //			else
-    //			{
-    //				this._AdeptTalentConfig.Add(adeptData.ID, adeptData);
-    //			}
-    //		}
-    //	}
-    //	this._OwnerMod = pMod;
-    //	return true;
-    //}
+    /// <summary>
+    /// 加载熟练度配置文件
+    /// </summary>
+    /// <param name="pMod"></param>
+    /// <param name="strFilePath"></param>
+    /// <returns></returns>
+    public bool LoadAdeptConfig(ModAttribute pMod, string strFilePath)
+    {
+        if (strFilePath == null || pMod == null)
+        {
+            return false;
+        }
+        List<string> list = RoleBaseFun.LoadConfInAssets(strFilePath);
+        if (list.Count <= 0)
+        {
+            Debug.LogWarning("Adept Config no found!");
+            return false;
+        }
+        this.ClearAdeptTalent();
+        foreach (string text in list)
+        {
+            string[] array = text.Split(CacheData.separator);
+            if (array.Length >= 8)
+            {
+                int i = 0;
+                AdeptTalent.AdeptData adeptData = new AdeptTalent.AdeptData();
+                adeptData.WeaponType = (EquipCfgType)Convert.ToInt32(array[i]);
+                i++;
+                adeptData.IsLock = (Convert.ToInt32(array[i]) == 0);
+                i++;
+                adeptData.AmbitID = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.PhaseID = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.Level = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.Count = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.IsUnLockAnimation = Convert.ToInt32(array[i]);
+                if (!adeptData.IsLock && adeptData.IsUnLockAnimation == 1)
+                {
+                    //解锁精通动作
+                    //Singleton<RoleAnimationManager>.GetInstance().AttachAnimationAdeptTalent(adeptData.WeaponType, adeptData.AmbitID, Player.Instance);
+                }
+                i++;
+                adeptData.DeltaCount = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.Name = array[i];
+                i++;
+                adeptData.Desc = array[i];
+                i++;
+                adeptData.Desc2 = array[i];
+                i++;
+                adeptData.HelpID = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.LianjiLev = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.XuliLev = Convert.ToInt32(array[i]);
+                i++;
+                adeptData.ZhuijiLev = Convert.ToInt32(array[i]);
+                for (i++; i < array.Length; i++)
+                {
+                    int num = Convert.ToInt32(array[i]);
+                    if (num == -1)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        ADEPT_ATTRIBUTE adept_ATTRIBUTE = (ADEPT_ATTRIBUTE)num;
+                        i++;
+                        string text2 = array[i];
+                        if (adept_ATTRIBUTE == ADEPT_ATTRIBUTE.AAT_WEAPON_SKILL && text2.IndexOf('/') != -1)
+                        {
+                            string[] array2 = text2.Split(AdeptTalent.separator);
+                            if (array2.Length >= 3)
+                            {
+                                float val = (float)Convert.ToDouble(array2[0]);
+                                int level = Convert.ToInt32(array2[1]);
+                                float probability = (float)Convert.ToDouble(array2[2]);
+                                AdeptTalent.AdeptData.AddRoleAttribute addRoleAttribute = new AdeptTalent.AdeptData.AddRoleAttribute(adept_ATTRIBUTE, val);
+                                addRoleAttribute.level = level;
+                                addRoleAttribute.probability = probability;
+                                adeptData.AddAttributesList.Add(addRoleAttribute);
+                            }
+                        }
+                        else
+                        {
+                            float val2 = (float)Convert.ToDouble(text2);
+                            AdeptTalent.AdeptData.AddRoleAttribute item = new AdeptTalent.AdeptData.AddRoleAttribute(adept_ATTRIBUTE, val2);
+                            adeptData.AddAttributesList.Add(item);
+                        }
+                    }
+                }
+                if (this._AdeptTalentConfig.ContainsKey(adeptData.ID))
+                {
+                    Debug.LogWarning("LoadAdeptConfig failed! ContainsKey error : " + adeptData.ID);
+                }
+                else
+                {
+                    this._AdeptTalentConfig.Add(adeptData.ID, adeptData);
+                }
+            }
+        }
+        this._OwnerMod = pMod;
+        return true;
+    }
 
-    //public static char[] separator = new char[]
-    //{
-    //	'/'
-    //};
+    public static char[] separator = new char[]
+    {
+        '/'
+    };
 
     //// Token: 0x02000484 RID: 1156
     //[Serializable]
@@ -755,365 +760,287 @@ public class AdeptTalent
     //	public float MagDef;
     //}
 
-    //[Serializable]
-    //public class AdeptData
-    //{
-    //	// Token: 0x1700033F RID: 831
-    //	// (get) Token: 0x06001E03 RID: 7683 RVA: 0x000D1A48 File Offset: 0x000CFC48
-    //	// (set) Token: 0x06001E04 RID: 7684 RVA: 0x000D1A50 File Offset: 0x000CFC50
-    //	public EquipCfgType WeaponType
-    //	{
-    //		get
-    //		{
-    //			return this._WeaponType;
-    //		}
-    //		set
-    //		{
-    //			this._WeaponType = value;
-    //		}
-    //	}
+    [Serializable]
+    public class AdeptData
+    {
+        private EquipCfgType _WeaponType;
 
-    //	// Token: 0x17000340 RID: 832
-    //	// (get) Token: 0x06001E05 RID: 7685 RVA: 0x000D1A5C File Offset: 0x000CFC5C
-    //	// (set) Token: 0x06001E06 RID: 7686 RVA: 0x000D1A64 File Offset: 0x000CFC64
-    //	public int Level
-    //	{
-    //		get
-    //		{
-    //			return this._Level;
-    //		}
-    //		set
-    //		{
-    //			this._Level = value;
-    //		}
-    //	}
+        private int _Level;
 
-    //	// Token: 0x17000341 RID: 833
-    //	// (get) Token: 0x06001E07 RID: 7687 RVA: 0x000D1A70 File Offset: 0x000CFC70
-    //	// (set) Token: 0x06001E08 RID: 7688 RVA: 0x000D1A78 File Offset: 0x000CFC78
-    //	public int AmbitID
-    //	{
-    //		get
-    //		{
-    //			return this._AmbitID;
-    //		}
-    //		set
-    //		{
-    //			this._AmbitID = value;
-    //			int weaponType = (int)this._WeaponType;
-    //			if (!int.TryParse(weaponType.ToString() + this._AmbitID.ToString() + this._PhaseID.ToString(), out this._ID))
-    //			{
-    //				this._ID = 0;
-    //			}
-    //		}
-    //	}
+        private int _AmbitID;
 
-    //	// Token: 0x17000342 RID: 834
-    //	// (get) Token: 0x06001E09 RID: 7689 RVA: 0x000D1ACC File Offset: 0x000CFCCC
-    //	// (set) Token: 0x06001E0A RID: 7690 RVA: 0x000D1AD4 File Offset: 0x000CFCD4
-    //	public int PhaseID
-    //	{
-    //		get
-    //		{
-    //			return this._PhaseID;
-    //		}
-    //		set
-    //		{
-    //			this._PhaseID = value;
-    //			int weaponType = (int)this._WeaponType;
-    //			if (!int.TryParse(weaponType.ToString() + this._AmbitID.ToString() + this._PhaseID.ToString(), out this._ID))
-    //			{
-    //				this._ID = 0;
-    //			}
-    //		}
-    //	}
+        private int _PhaseID;
 
-    //	// Token: 0x17000343 RID: 835
-    //	// (get) Token: 0x06001E0B RID: 7691 RVA: 0x000D1B28 File Offset: 0x000CFD28
-    //	// (set) Token: 0x06001E0C RID: 7692 RVA: 0x000D1B30 File Offset: 0x000CFD30
-    //	public int Count
-    //	{
-    //		get
-    //		{
-    //			return this._Count;
-    //		}
-    //		set
-    //		{
-    //			this._Count = value;
-    //		}
-    //	}
+        private int _ID;
 
-    //	// Token: 0x17000344 RID: 836
-    //	// (get) Token: 0x06001E0D RID: 7693 RVA: 0x000D1B3C File Offset: 0x000CFD3C
-    //	// (set) Token: 0x06001E0E RID: 7694 RVA: 0x000D1B44 File Offset: 0x000CFD44
-    //	public int IsUnLockAnimation
-    //	{
-    //		get
-    //		{
-    //			return this._IsUnLockAnimation;
-    //		}
-    //		set
-    //		{
-    //			this._IsUnLockAnimation = value;
-    //		}
-    //	}
+        private int _Count;
 
-    //	// Token: 0x17000345 RID: 837
-    //	// (get) Token: 0x06001E0F RID: 7695 RVA: 0x000D1B50 File Offset: 0x000CFD50
-    //	// (set) Token: 0x06001E10 RID: 7696 RVA: 0x000D1B58 File Offset: 0x000CFD58
-    //	public int DeltaCount
-    //	{
-    //		get
-    //		{
-    //			return this._DeltaCount;
-    //		}
-    //		set
-    //		{
-    //			this._DeltaCount = value;
-    //		}
-    //	}
+        private int _IsUnLockAnimation;
 
-    //	// Token: 0x17000346 RID: 838
-    //	// (get) Token: 0x06001E11 RID: 7697 RVA: 0x000D1B64 File Offset: 0x000CFD64
-    //	// (set) Token: 0x06001E12 RID: 7698 RVA: 0x000D1B6C File Offset: 0x000CFD6C
-    //	public bool IsLock
-    //	{
-    //		get
-    //		{
-    //			return this._IsLock;
-    //		}
-    //		set
-    //		{
-    //			this._IsLock = value;
-    //		}
-    //	}
+        private int _DeltaCount;
 
-    //	// Token: 0x17000347 RID: 839
-    //	// (get) Token: 0x06001E13 RID: 7699 RVA: 0x000D1B78 File Offset: 0x000CFD78
-    //	// (set) Token: 0x06001E14 RID: 7700 RVA: 0x000D1B80 File Offset: 0x000CFD80
-    //	public string Name
-    //	{
-    //		get
-    //		{
-    //			return this._strName;
-    //		}
-    //		set
-    //		{
-    //			this._strName = value;
-    //		}
-    //	}
+        private int _Lianji = -1;
 
-    //	// Token: 0x17000348 RID: 840
-    //	// (get) Token: 0x06001E15 RID: 7701 RVA: 0x000D1B8C File Offset: 0x000CFD8C
-    //	// (set) Token: 0x06001E16 RID: 7702 RVA: 0x000D1B94 File Offset: 0x000CFD94
-    //	public string Desc
-    //	{
-    //		get
-    //		{
-    //			return this._strDesc;
-    //		}
-    //		set
-    //		{
-    //			this._strDesc = value;
-    //		}
-    //	}
+        private int _Xuli = -1;
 
-    //	// Token: 0x17000349 RID: 841
-    //	// (get) Token: 0x06001E17 RID: 7703 RVA: 0x000D1BA0 File Offset: 0x000CFDA0
-    //	// (set) Token: 0x06001E18 RID: 7704 RVA: 0x000D1BA8 File Offset: 0x000CFDA8
-    //	public string Desc2
-    //	{
-    //		get
-    //		{
-    //			return this._strDesc2;
-    //		}
-    //		set
-    //		{
-    //			this._strDesc2 = value;
-    //		}
-    //	}
+        private int _Zhuiji = -1;
 
-    //	// Token: 0x1700034A RID: 842
-    //	// (get) Token: 0x06001E19 RID: 7705 RVA: 0x000D1BB4 File Offset: 0x000CFDB4
-    //	// (set) Token: 0x06001E1A RID: 7706 RVA: 0x000D1BBC File Offset: 0x000CFDBC
-    //	public List<AdeptTalent.AdeptData.AddRoleAttribute> AddAttributesList
-    //	{
-    //		get
-    //		{
-    //			return this._lstAddAttributes;
-    //		}
-    //		set
-    //		{
-    //			this._lstAddAttributes = value;
-    //		}
-    //	}
+        private bool _IsLock = true;
 
-    //	// Token: 0x1700034B RID: 843
-    //	// (get) Token: 0x06001E1B RID: 7707 RVA: 0x000D1BC8 File Offset: 0x000CFDC8
-    //	// (set) Token: 0x06001E1C RID: 7708 RVA: 0x000D1BD0 File Offset: 0x000CFDD0
-    //	public int ID
-    //	{
-    //		get
-    //		{
-    //			return this._ID;
-    //		}
-    //		set
-    //		{
-    //			this._ID = value;
-    //		}
-    //	}
+        private string _strName;
 
-    //	// Token: 0x1700034C RID: 844
-    //	// (get) Token: 0x06001E1D RID: 7709 RVA: 0x000D1BDC File Offset: 0x000CFDDC
-    //	// (set) Token: 0x06001E1E RID: 7710 RVA: 0x000D1BE4 File Offset: 0x000CFDE4
-    //	public int LianjiLev
-    //	{
-    //		get
-    //		{
-    //			return this._Lianji;
-    //		}
-    //		set
-    //		{
-    //			this._Lianji = value;
-    //		}
-    //	}
+        private string _strDesc;
 
-    //	// Token: 0x1700034D RID: 845
-    //	// (get) Token: 0x06001E1F RID: 7711 RVA: 0x000D1BF0 File Offset: 0x000CFDF0
-    //	// (set) Token: 0x06001E20 RID: 7712 RVA: 0x000D1BF8 File Offset: 0x000CFDF8
-    //	public int XuliLev
-    //	{
-    //		get
-    //		{
-    //			return this._Xuli;
-    //		}
-    //		set
-    //		{
-    //			this._Xuli = value;
-    //		}
-    //	}
+        private string _strDesc2;
 
-    //	// Token: 0x1700034E RID: 846
-    //	// (get) Token: 0x06001E21 RID: 7713 RVA: 0x000D1C04 File Offset: 0x000CFE04
-    //	// (set) Token: 0x06001E22 RID: 7714 RVA: 0x000D1C0C File Offset: 0x000CFE0C
-    //	public int ZhuijiLev
-    //	{
-    //		get
-    //		{
-    //			return this._Zhuiji;
-    //		}
-    //		set
-    //		{
-    //			this._Zhuiji = value;
-    //		}
-    //	}
+        private int _helpID = -1;
 
-    //	// Token: 0x1700034F RID: 847
-    //	// (get) Token: 0x06001E23 RID: 7715 RVA: 0x000D1C18 File Offset: 0x000CFE18
-    //	// (set) Token: 0x06001E24 RID: 7716 RVA: 0x000D1C20 File Offset: 0x000CFE20
-    //	public int HelpID
-    //	{
-    //		get
-    //		{
-    //			return this._helpID;
-    //		}
-    //		set
-    //		{
-    //			this._helpID = value;
-    //		}
-    //	}
+        private int _PourSoul;
 
-    //	// Token: 0x17000350 RID: 848
-    //	// (get) Token: 0x06001E25 RID: 7717 RVA: 0x000D1C2C File Offset: 0x000CFE2C
-    //	// (set) Token: 0x06001E26 RID: 7718 RVA: 0x000D1C34 File Offset: 0x000CFE34
-    //	public int PourSoul
-    //	{
-    //		get
-    //		{
-    //			return this._PourSoul;
-    //		}
-    //		set
-    //		{
-    //			this._PourSoul = value;
-    //		}
-    //	}
+        private List<AdeptTalent.AdeptData.AddRoleAttribute> _lstAddAttributes = new List<AdeptTalent.AdeptData.AddRoleAttribute>();
 
-    //	// Token: 0x04001B0B RID: 6923
-    //	private EquipCfgType _WeaponType;
+        public EquipCfgType WeaponType
+        {
+            get
+            {
+                return this._WeaponType;
+            }
+            set
+            {
+                this._WeaponType = value;
+            }
+        }
 
-    //	// Token: 0x04001B0C RID: 6924
-    //	private int _Level;
+        public int Level
+        {
+            get
+            {
+                return this._Level;
+            }
+            set
+            {
+                this._Level = value;
+            }
+        }
 
-    //	// Token: 0x04001B0D RID: 6925
-    //	private int _AmbitID;
+        public int AmbitID
+        {
+            get
+            {
+                return this._AmbitID;
+            }
+            set
+            {
+                this._AmbitID = value;
+                int weaponType = (int)this._WeaponType;
+                if (!int.TryParse(weaponType.ToString() + this._AmbitID.ToString() + this._PhaseID.ToString(), out this._ID))
+                {
+                    this._ID = 0;
+                }
+            }
+        }
 
-    //	// Token: 0x04001B0E RID: 6926
-    //	private int _PhaseID;
+        public int PhaseID
+        {
+            get
+            {
+                return this._PhaseID;
+            }
+            set
+            {
+                this._PhaseID = value;
+                int weaponType = (int)this._WeaponType;
+                if (!int.TryParse(weaponType.ToString() + this._AmbitID.ToString() + this._PhaseID.ToString(), out this._ID))
+                {
+                    this._ID = 0;
+                }
+            }
+        }
 
-    //	// Token: 0x04001B0F RID: 6927
-    //	private int _ID;
+        public int Count
+        {
+            get
+            {
+                return this._Count;
+            }
+            set
+            {
+                this._Count = value;
+            }
+        }
 
-    //	// Token: 0x04001B10 RID: 6928
-    //	private int _Count;
+        public int IsUnLockAnimation
+        {
+            get
+            {
+                return this._IsUnLockAnimation;
+            }
+            set
+            {
+                this._IsUnLockAnimation = value;
+            }
+        }
 
-    //	// Token: 0x04001B11 RID: 6929
-    //	private int _IsUnLockAnimation;
+        public int DeltaCount
+        {
+            get
+            {
+                return this._DeltaCount;
+            }
+            set
+            {
+                this._DeltaCount = value;
+            }
+        }
 
-    //	// Token: 0x04001B12 RID: 6930
-    //	private int _DeltaCount;
+        public bool IsLock
+        {
+            get
+            {
+                return this._IsLock;
+            }
+            set
+            {
+                this._IsLock = value;
+            }
+        }
 
-    //	// Token: 0x04001B13 RID: 6931
-    //	private int _Lianji = -1;
+        public string Name
+        {
+            get
+            {
+                return this._strName;
+            }
+            set
+            {
+                this._strName = value;
+            }
+        }
 
-    //	// Token: 0x04001B14 RID: 6932
-    //	private int _Xuli = -1;
+        public string Desc
+        {
+            get
+            {
+                return this._strDesc;
+            }
+            set
+            {
+                this._strDesc = value;
+            }
+        }
 
-    //	// Token: 0x04001B15 RID: 6933
-    //	private int _Zhuiji = -1;
+        public string Desc2
+        {
+            get
+            {
+                return this._strDesc2;
+            }
+            set
+            {
+                this._strDesc2 = value;
+            }
+        }
 
-    //	// Token: 0x04001B16 RID: 6934
-    //	private bool _IsLock = true;
+        public List<AdeptTalent.AdeptData.AddRoleAttribute> AddAttributesList
+        {
+            get
+            {
+                return this._lstAddAttributes;
+            }
+            set
+            {
+                this._lstAddAttributes = value;
+            }
+        }
 
-    //	// Token: 0x04001B17 RID: 6935
-    //	private string _strName;
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this._ID = value;
+            }
+        }
 
-    //	// Token: 0x04001B18 RID: 6936
-    //	private string _strDesc;
+        public int LianjiLev
+        {
+            get
+            {
+                return this._Lianji;
+            }
+            set
+            {
+                this._Lianji = value;
+            }
+        }
 
-    //	// Token: 0x04001B19 RID: 6937
-    //	private string _strDesc2;
+        public int XuliLev
+        {
+            get
+            {
+                return this._Xuli;
+            }
+            set
+            {
+                this._Xuli = value;
+            }
+        }
 
-    //	// Token: 0x04001B1A RID: 6938
-    //	private int _helpID = -1;
+        public int ZhuijiLev
+        {
+            get
+            {
+                return this._Zhuiji;
+            }
+            set
+            {
+                this._Zhuiji = value;
+            }
+        }
 
-    //	// Token: 0x04001B1B RID: 6939
-    //	private int _PourSoul;
+        public int HelpID
+        {
+            get
+            {
+                return this._helpID;
+            }
+            set
+            {
+                this._helpID = value;
+            }
+        }
 
-    //	// Token: 0x04001B1C RID: 6940
-    //	private List<AdeptTalent.AdeptData.AddRoleAttribute> _lstAddAttributes = new List<AdeptTalent.AdeptData.AddRoleAttribute>();
+        public int PourSoul
+        {
+            get
+            {
+                return this._PourSoul;
+            }
+            set
+            {
+                this._PourSoul = value;
+            }
+        }
 
-    //	// Token: 0x02000486 RID: 1158
-    //	[Serializable]
-    //	public class AddRoleAttribute
-    //	{
-    //		// Token: 0x06001E27 RID: 7719 RVA: 0x000D1C40 File Offset: 0x000CFE40
-    //		public AddRoleAttribute(ADEPT_ATTRIBUTE type, float val)
-    //		{
-    //			this._Type = type;
-    //			this._fVal = val;
-    //		}
+        [Serializable]
+        public class AddRoleAttribute
+        {
+            public ADEPT_ATTRIBUTE _Type;
 
-    //		// Token: 0x04001B1D RID: 6941
-    //		public ADEPT_ATTRIBUTE _Type;
+            public float _fVal;
 
-    //		// Token: 0x04001B1E RID: 6942
-    //		public float _fVal;
+            public int level;
 
-    //		// Token: 0x04001B1F RID: 6943
-    //		public int level;
+            public float probability;
 
-    //		// Token: 0x04001B20 RID: 6944
-    //		public float probability;
-    //	}
-    //}
+            public AddRoleAttribute(ADEPT_ATTRIBUTE type, float val)
+            {
+                this._Type = type;
+                this._fVal = val;
+            }          
+        }
+    }
 }

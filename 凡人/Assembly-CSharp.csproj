@@ -154,6 +154,7 @@
     <Compile Include="Assets\Scripts\Role\Module\MT_BUFF\EffectSoundData.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_BUFF\EffectTableManager.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_BUFF\ModBuffProperty.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CAMERA\CameraEffectManager.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CAMERA\ModCamera.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_COLLIDER\ModColliderProperty.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventAttackIdle.cs" />
@@ -202,6 +203,8 @@
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\ModSkillProperty.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PLAYER_SKILL_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PlayerSkillData.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillPlayer.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateHLHDN.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateHZC.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateRay.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\SSkillCoolTime.cs" />
@@ -222,9 +225,14 @@
     <Compile Include="Assets\Scripts\Role\OperableItemBase\ObjectState.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableItemBase.cs" />
     <Compile Include="Assets\Scripts\Role\OperableItemBase\OperableSaveDataBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\AdeptTalent\ADEPT_ATTRIBUTE.cs" />
     <Compile Include="Assets\Scripts\Role\Player\AdeptTalent\AdeptTalent.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\BottleSystem\BottleSystem.cs" />
     <Compile Include="Assets\Scripts\Role\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Role\Player\EquipReplace.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\MixtureSmelt\MixtureChildType.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\MixtureSmelt\MixtureSmelt.cs" />
+    <Compile Include="Assets\Scripts\Role\Player\MixtureSmelt\MixtureType.cs" />
     <Compile Include="Assets\Scripts\Role\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Role\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Role.cs" />
@@ -291,10 +299,12 @@
     <Compile Include="Assets\Scripts\UI\UICamera.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UtilityLoader.cs" />
+    <None Include="Assets\Resources\conf\MixtureConfig.txt" />
     <None Include="Assets\Resources\conf\DataFile\MFSTable.txt" />
     <None Include="Assets\Resources\conf\OrganizationInfo.txt" />
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
+    <None Include="Assets\Resources\conf\BottleSubTag.txt" />
     <None Include="Assets\Resources\conf\Monster.txt" />
     <None Include="Assets\Resources\conf\res\normalInfo.txt" />
     <None Include="Assets\Model\RoleModel\Player\cike\动画帧数刺客.txt" />
@@ -304,8 +314,10 @@
     <None Include="Assets\Resources\conf\PlayerInfo.txt" />
     <None Include="Assets\Resources\conf\Teleports.txt" />
     <None Include="Assets\Resources\conf\DataFile\Skill\SkillScript.txt" />
+    <None Include="Assets\Resources\conf\AdeptConfig.txt" />
     <None Include="Assets\Resources\conf\NpcInfo.txt" />
     <None Include="Assets\Resources\conf\map\Landing.txt" />
+    <None Include="Assets\Resources\conf\MixtureElements.txt" />
     <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
     <None Include="Assets\Resources\conf\ScriptMoudle.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />
@@ -313,6 +325,7 @@
     <None Include="Assets\Resources\conf\BgSound.txt" />
     <None Include="Assets\Resources\conf\SoundTable.txt" />
     <None Include="Assets\Resources\conf\res\mapinfo.txt" />
+    <None Include="Assets\Resources\conf\BottleConfig.txt" />
     <None Include="Assets\Resources\conf\RoleBaseConfig.txt" />
     <None Include="Assets\Resources\conf\DataFile\PlayerSkill\PlayerSkill.txt" />
     <None Include="Assets\Resources\conf\Anim\RoleAniTypeDefine.txt" />

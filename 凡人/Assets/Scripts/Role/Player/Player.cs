@@ -24,9 +24,9 @@ public class Player : Role
 
     public AdeptTalent m_cAdeptSystem = new AdeptTalent();
 
-    //public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
+    public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
 
-    //public BottleSystem m_BottleSystem = new BottleSystem();
+    public BottleSystem m_BottleSystem = new BottleSystem();
 
     //private AmbitSystem m_cAmbitSystem = new AmbitSystem();
 
@@ -360,7 +360,7 @@ public class Player : Role
         base.roleGameObject.RoleBind.SetRole(this);
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
         this.CreateModule();//创建模块
-        //this.addPlayerHotKey();//添加热键
+        this.addPlayerHotKey();//添加热键
         //this.hatred.selfRole = Player.Instance;
         //KeyManager.controlRole = this;
         //this.equipReplace = new EquipReplace(this);//装备
@@ -403,9 +403,9 @@ public class Player : Role
         this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
         this.Init();
-        //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//熟练系统
-        //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
-        //this.m_BottleSystem.LoadConfig();//瓶子
+        this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//精通系统
+        this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
+        this.m_BottleSystem.LoadConfig();//瓶子
     }
 
     public Module AddMod(MODULE_TYPE mt)
@@ -487,7 +487,7 @@ public class Player : Role
         this.m_cAdeptSystem.OwnerPlayer = this;
         ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
         modSkillProperty.AddSkill(2025);
-        //CameraEffectManager.GetAllCameraEffectComponent();
+        CameraEffectManager.GetAllCameraEffectComponent();
     }
 
     //	public void BindAutoMisson()
@@ -517,10 +517,8 @@ public class Player : Role
 
     private void addPlayerHotKey()
     {
-        //if (Config.DEBUG)
-        //{
-        //    KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
-        //}
+        //KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
+     
         //KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));
         //if (Config.DEBUG)
         //{
@@ -542,7 +540,6 @@ public class Player : Role
         //KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
     }
 
-    //	// Token: 0x060022C3 RID: 8899 RVA: 0x000ED3F8 File Offset: 0x000EB5F8
     //	private void UseSkillA()
     //	{
     //		this.UseSkill(0);

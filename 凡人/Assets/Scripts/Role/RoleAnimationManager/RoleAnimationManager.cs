@@ -378,50 +378,54 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
     //	}
     //}
 
-    //public bool AttachAnimationAdeptTalent(EquipCfgType weapontype, int AmbitID, Role role)
-    //{
-    //	if (!this.IsSwitch)
-    //	{
-    //		return false;
-    //	}
-    //	if (Application.isEditor && !ResourcePath.IS_PUBLISH)
-    //	{
-    //		return false;
-    //	}
-    //	int num = 0;
-    //	int num2 = 0;
-    //	if (weapontype == EquipCfgType.EQCHILD_CT_WEAPON)
-    //	{
-    //		num = 3;
-    //		num2 = 6;
-    //	}
-    //	else if (weapontype == EquipCfgType.EQCHILD_CT_DWEAPON)
-    //	{
-    //		num = 11;
-    //		num2 = 14;
-    //	}
-    //	else if (weapontype == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
-    //	{
-    //		num = 7;
-    //		num2 = 10;
-    //	}
-    //	int num3 = 0;
-    //	int num4 = 0;
-    //	for (int i = num; i <= num2; i++)
-    //	{
-    //		num3++;
-    //		if (AmbitID != num3)
-    //		{
-    //			this.DetachAnimation((RoleAnimationType)i, role);
-    //		}
-    //		else
-    //		{
-    //			num4 = i;
-    //		}
-    //	}
-    //	Debug.Log("attach = " + (RoleAnimationType)num4);
-    //	return this.AttachAnimation((RoleAnimationType)num4, role);
-    //}
+    /// <summary>
+    /// 加上精通动画(解锁精通动作)
+    /// </summary>
+    /// <param name="weapontype"></param>
+    /// <param name="AmbitID"></param>
+    /// <param name="role"></param>
+    /// <returns></returns>
+    public bool AttachAnimationAdeptTalent(EquipCfgType weapontype, int AmbitID, Role role)
+    {
+        if (Application.isEditor && !ResourcePath.IS_PUBLISH)
+        {
+            return false;
+        }
+        int num = 0;
+        int num2 = 0;
+        if (weapontype == EquipCfgType.EQCHILD_CT_WEAPON)
+        {
+            num = 3;
+            num2 = 6;
+        }
+        else if (weapontype == EquipCfgType.EQCHILD_CT_DWEAPON)
+        {
+            num = 11;
+            num2 = 14;
+        }
+        else if (weapontype == EquipCfgType.EQCHILD_CT_MAGICWEAPON)
+        {
+            num = 7;
+            num2 = 10;
+        }
+        int num3 = 0;
+        int num4 = 0;
+        for (int i = num; i <= num2; i++)
+        {
+            num3++;
+            if (AmbitID != num3)
+            {
+                //this.DetachAnimation((RoleAnimationType)i, role);
+            }
+            else
+            {
+                num4 = i;
+            }
+        }
+        Debug.Log("attach = " + (RoleAnimationType)num4);
+        //return this.AttachAnimation((RoleAnimationType)num4, role);
+        return true;
+    }
 
     public bool AttachAnimation(RoleAnimationType attachType, Role role, bool detachOther)
     {      

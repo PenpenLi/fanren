@@ -1,0 +1,32 @@
+﻿using System;
+
+// Token: 0x020004F6 RID: 1270
+public enum MixtureChildType
+{
+	// Token: 0x04001D63 RID: 7523
+	MCT_HUIFU,
+	// Token: 0x04001D64 RID: 7524
+	MCT_GONGJI,
+	// Token: 0x04001D65 RID: 7525
+	MCT_FANGYU,
+	// Token: 0x04001D66 RID: 7526
+	MCT_MUDU,
+	// Token: 0x04001D67 RID: 7527
+	MCT_XUEBING,
+	// Token: 0x04001D68 RID: 7528
+	MCT_QIANGHUA,
+	// Token: 0x04001D69 RID: 7529
+	MCT_1,
+	// Token: 0x04001D6A RID: 7530
+	MCT_2,
+	// Token: 0x04001D6B RID: 7531
+	MCT_3,
+	// Token: 0x04001D6C RID: 7532
+	MCT_4,
+	// Token: 0x04001D6D RID: 7533
+	MCT_5,
+	// Token: 0x04001D6E RID: 7534
+	MCT_6,
+	// Token: 0x04001D6F RID: 7535
+	MCT_NULL = 100
+}
