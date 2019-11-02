@@ -4,11 +4,66 @@ using NS_RoleBaseFun;
 using UnityEngine;
 using UnityUtility;
 
-// Token: 0x02000601 RID: 1537
+
 public class SkillUpdateRay : CSkillBase
 {
-	// Token: 0x06002B8B RID: 11147 RVA: 0x00148FD4 File Offset: 0x001471D4
-	public SkillUpdateRay()
+    private const short SKILL_VALUE_COUNT = 1;
+
+    private const short SKILL_STATUS_NONE = 0;
+
+    private const short SKILL_STATUS_BEGIN = 1;
+
+    private const short SKILL_STATUS_SHOOT_BEGIN = 2;
+
+    private const short SKILL_STATUS_SHOOT_MIDDLE = 3;
+
+    private const short SKILL_STATUS_SHOOT_END = 4;
+
+    private const short SKILL_STATUS_END = 5;
+
+    private int m_iAnimation;
+
+    private float m_fAnimationSpeed;
+
+    private string m_strReadyEffectPart;
+
+    private int m_iReadyEffect;
+
+    private float m_fBreakTime;
+
+    private string m_strShootEffectPart;
+
+    private float m_fOffsetTime;
+
+    private Vector3 m_vecOffsetPos;
+
+    private int m_iShootEffect;
+    
+    private int m_iBoomEffect;
+
+    private float m_fSpeed;
+
+    private int m_iBuffId;
+
+    private int m_iAreaId;
+
+    private int m_iFaetureId;
+
+    private int m_iInitalId;
+
+    private bool m_bIsOffsetTime;
+
+    private bool m_bIsBreak;
+
+    private int m_iNowEffectId;
+
+    private Vector3 m_vecShootTarget;
+
+    private GameObject Go;
+
+    private FightCameraArea fca;
+
+    public SkillUpdateRay()
 	{
 		this.m_sTargetType = 2;
 		this.m_sRangeType = 3;
@@ -43,31 +98,31 @@ public class SkillUpdateRay : CSkillBase
 		{
 			list.AddRange(base.GetRes());
 		}
-		KeyValuePair<string, Type>[] effectResPath = UtilityRoleResource.GetEffectResPath(this.m_iReadyEffect);
-		if (effectResPath != null)
-		{
-			list.AddRange(effectResPath);
-		}
-		KeyValuePair<string, Type>[] effectResPath2 = UtilityRoleResource.GetEffectResPath(this.m_iShootEffect);
-		if (effectResPath2 != null)
-		{
-			list.AddRange(effectResPath2);
-		}
-		KeyValuePair<string, Type>[] effectResPath3 = UtilityRoleResource.GetEffectResPath(this.m_iBoomEffect);
-		if (effectResPath3 != null)
-		{
-			list.AddRange(effectResPath3);
-		}
-		KeyValuePair<string, Type>[] effectResPath4 = UtilityRoleResource.GetEffectResPath(291);
-		if (effectResPath4 != null)
-		{
-			list.AddRange(effectResPath4);
-		}
-		KeyValuePair<string, Type>[] effectResPath5 = UtilityRoleResource.GetEffectResPath(760);
-		if (effectResPath5 != null)
-		{
-			list.AddRange(effectResPath5);
-		}
+		//KeyValuePair<string, Type>[] effectResPath = UtilityRoleResource.GetEffectResPath(this.m_iReadyEffect);
+		//if (effectResPath != null)
+		//{
+		//	list.AddRange(effectResPath);
+		//}
+		//KeyValuePair<string, Type>[] effectResPath2 = UtilityRoleResource.GetEffectResPath(this.m_iShootEffect);
+		//if (effectResPath2 != null)
+		//{
+		//	list.AddRange(effectResPath2);
+		//}
+		//KeyValuePair<string, Type>[] effectResPath3 = UtilityRoleResource.GetEffectResPath(this.m_iBoomEffect);
+		//if (effectResPath3 != null)
+		//{
+		//	list.AddRange(effectResPath3);
+		//}
+		//KeyValuePair<string, Type>[] effectResPath4 = UtilityRoleResource.GetEffectResPath(291);
+		//if (effectResPath4 != null)
+		//{
+		//	list.AddRange(effectResPath4);
+		//}
+		//KeyValuePair<string, Type>[] effectResPath5 = UtilityRoleResource.GetEffectResPath(760);
+		//if (effectResPath5 != null)
+		//{
+		//	list.AddRange(effectResPath5);
+		//}
 		return list.ToArray();
 	}
 
@@ -78,8 +133,8 @@ public class SkillUpdateRay : CSkillBase
 		for (int i = 0; i < 1; i++)
 		{
 			cs.Write(this.m_lstValueScope[i]);
-			string value = UtilityFunction.AnalyticalIntValue(this.m_lstValue[i]);
-			cs.Write(value);
+			//string value = UtilityFunction.AnalyticalIntValue(this.m_lstValue[i]);
+			//cs.Write(value);
 		}
 		cs.Write(this.m_iAnimation);
 		cs.Write(this.m_fAnimationSpeed);
@@ -108,11 +163,11 @@ public class SkillUpdateRay : CSkillBase
 		{
 			this.m_lstValueScope.Add(cs.ReadFloat());
 			string str = cs.ReadStr();
-			List<List<int>> list = UtilityFunction.AnalyticalStringValue(str);
-			if (list.Count > 0)
-			{
-				this.m_lstValue.Add(list);
-			}
+			//List<List<int>> list = UtilityFunction.AnalyticalStringValue(str);
+			//if (list.Count > 0)
+			//{
+			//	this.m_lstValue.Add(list);
+			//}
 		}
 		this.m_iAnimation = cs.ReadInt32();
 		this.m_fAnimationSpeed = cs.ReadFloat();
@@ -141,11 +196,11 @@ public class SkillUpdateRay : CSkillBase
 		{
 			this.m_lstValueScope.Add(Convert.ToSingle(infoList[index++]));
 			string str = infoList[index++];
-			List<List<int>> list = UtilityFunction.AnalyticalStringValue(str);
-			if (list.Count > 0)
-			{
-				this.m_lstValue.Add(list);
-			}
+			//List<List<int>> list = UtilityFunction.AnalyticalStringValue(str);
+			//if (list.Count > 0)
+			//{
+			//	this.m_lstValue.Add(list);
+			//}
 		}
 		this.m_iAnimation = Convert.ToInt32(infoList[index++]);
 		this.m_fAnimationSpeed = Convert.ToSingle(infoList[index++]);
@@ -193,10 +248,10 @@ public class SkillUpdateRay : CSkillBase
 		{
 		case 1:
 		{
-			this.fca = BroadcastManager.Instance.GetArea(this.m_iAreaId);
+			//this.fca = BroadcastManager.Instance.GetArea(this.m_iAreaId);
 			if (this.fca != null)
 			{
-				this.fca.ApplyFeature(this.m_iFaetureId, null);
+				//this.fca.ApplyFeature(this.m_iFaetureId, null);
 			}
 			else
 			{
@@ -266,24 +321,24 @@ public class SkillUpdateRay : CSkillBase
 					{
 						this.m_iNowEffectId = SingletonMono<EffectManager>.GetInstance().AddEffectRay(this.m_iShootEffect, meshPosByBone, this.m_cSourceRole.GetTrans().rotation, Vector3.forward * this.m_fSpeed);
 					}
-					Singleton<ActorManager>.GetInstance().GetObject(this.m_iNowEffectId).GetComponent<EffectRadial>().SetCallBackFun(new Callback<int, GameObject, ContactPoint[]>(this.EffCollisionEnter));
-					if (base.ID == 210)
-					{
-						Singleton<ActorManager>.GetInstance().GetObject(this.m_iNowEffectId).AddComponent<KeepFloatOnGround>();
-					}
+					//Singleton<ActorManager>.GetInstance().GetObject(this.m_iNowEffectId).GetComponent<EffectRadial>().SetCallBackFun(new Callback<int, GameObject, ContactPoint[]>(this.EffCollisionEnter));
+					//if (base.ID == 210)
+					//{
+					//	Singleton<ActorManager>.GetInstance().GetObject(this.m_iNowEffectId).AddComponent<KeepFloatOnGround>();
+					//}
 					Collider component = Singleton<ActorManager>.GetInstance().GetObject(this.m_iNowEffectId).GetComponent<Collider>();
-					List<Role> allyRole = SceneManager.RoleMan.GetAllyRole(this.m_cSourceRole);
+					//List<Role> allyRole = SceneManager.RoleMan.GetAllyRole(this.m_cSourceRole);
 					if (this.m_cSourceRole.GetTrans().GetComponent<Collider>() != null && this.m_cSourceRole.GetTrans().GetComponent<Collider>().enabled && this.m_cSourceRole.GetTrans().gameObject.activeSelf)
 					{
 						Physics.IgnoreCollision(component, this.m_cSourceRole.GetTrans().GetComponent<Collider>());
-						foreach (Role role in allyRole)
-						{
-							Collider component2 = role.GetTrans().GetComponent<Collider>();
-							if (component2 != null && component2.enabled && role.GetTrans().gameObject.activeSelf)
-							{
-								Physics.IgnoreCollision(component, component2);
-							}
-						}
+						//foreach (Role role in allyRole)
+						//{
+						//	Collider component2 = role.GetTrans().GetComponent<Collider>();
+						//	if (component2 != null && component2.enabled && role.GetTrans().gameObject.activeSelf)
+						//	{
+						//		Physics.IgnoreCollision(component, component2);
+						//	}
+						//}
 					}
 				}
 				else
@@ -291,18 +346,18 @@ public class SkillUpdateRay : CSkillBase
 					Debug.LogError("The Effect type is Error or there is no Effect." + effectInfo2.Name);
 				}
 			}
-			if (!modAnimation2.IsPlaying((ACTION_INDEX)this.m_iAnimation) && this.m_bIsBreak)
-			{
-				if (this.fca != null)
-				{
-					this.fca.ApplyFeature(this.m_iInitalId, null);
-				}
-				else
-				{
-					Debug.LogWarning("** FightCameraArea  is  Null**");
-				}
-				this.m_sUpdateStatus += 1;
-			}
+			//if (!modAnimation2.IsPlaying((ACTION_INDEX)this.m_iAnimation) && this.m_bIsBreak)
+			//{
+			//	if (this.fca != null)
+			//	{
+			//		this.fca.ApplyFeature(this.m_iInitalId, null);
+			//	}
+			//	else
+			//	{
+			//		Debug.LogWarning("** FightCameraArea  is  Null**");
+			//	}
+			//	this.m_sUpdateStatus += 1;
+			//}
 			break;
 		}
 		case 4:
@@ -314,7 +369,6 @@ public class SkillUpdateRay : CSkillBase
 		return true;
 	}
 
-	// Token: 0x06002B94 RID: 11156 RVA: 0x00149B94 File Offset: 0x00147D94
 	private void EffCollisionEnter(int id, GameObject go, ContactPoint[] contactPoints)
 	{
 		SingletonMono<EffectManager>.GetInstance().Delete(id);
@@ -322,133 +376,48 @@ public class SkillUpdateRay : CSkillBase
 		{
 			return;
 		}
-		Role roleScriptFromGo = RoleBaseFun.GetRoleScriptFromGo(go);
-		if (roleScriptFromGo == null)
-		{
-			if (base.ID == 220)
-			{
-				SingletonMono<EffectManager>.GetInstance().AddEffectFixure(760, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
-			}
-			else
-			{
-				SingletonMono<EffectManager>.GetInstance().AddEffectFixure(this.m_iBoomEffect, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
-			}
-		}
-		else if (roleScriptFromGo._roleType != this.m_cSourceRole._roleType)
-		{
-			base.CalculationValue(0, this.m_cSourceRole, roleScriptFromGo, contactPoints[0].point);
-			if (this.m_iBuffId != 0)
-			{
-				ModBuffProperty modBuffProperty = (ModBuffProperty)roleScriptFromGo.GetModule(MODULE_TYPE.MT_BUFF);
-				if (modBuffProperty != null)
-				{
-					modBuffProperty.AddBuff(this.m_iBuffId);
-				}
-			}
-			if (base.ID == 211 || base.ID == 210)
-			{
-				GameObject gameObject = base.GetMeshObjByBone(roleScriptFromGo, "MobMesh/Bip001").gameObject;
-				SingletonMono<EffectManager>.GetInstance().AddEffectBind(291, gameObject);
-			}
-			if (base.ID == 220)
-			{
-				GameObject gameObject2 = base.GetMeshObjByBone(roleScriptFromGo, "Bip01").gameObject;
-				SingletonMono<EffectManager>.GetInstance().AddEffectBind(310, gameObject2);
-			}
-			else
-			{
-				SingletonMono<EffectManager>.GetInstance().AddEffectFixure(this.m_iBoomEffect, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
-			}
-		}
+		//Role roleScriptFromGo = RoleBaseFun.GetRoleScriptFromGo(go);
+		//if (roleScriptFromGo == null)
+		//{
+		//	if (base.ID == 220)
+		//	{
+		//		SingletonMono<EffectManager>.GetInstance().AddEffectFixure(760, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
+		//	}
+		//	else
+		//	{
+		//		SingletonMono<EffectManager>.GetInstance().AddEffectFixure(this.m_iBoomEffect, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
+		//	}
+		//}
+		//else if (roleScriptFromGo._roleType != this.m_cSourceRole._roleType)
+		//{
+		//	base.CalculationValue(0, this.m_cSourceRole, roleScriptFromGo, contactPoints[0].point);
+		//	if (this.m_iBuffId != 0)
+		//	{
+		//		ModBuffProperty modBuffProperty = (ModBuffProperty)roleScriptFromGo.GetModule(MODULE_TYPE.MT_BUFF);
+		//		if (modBuffProperty != null)
+		//		{
+		//			modBuffProperty.AddBuff(this.m_iBuffId);
+		//		}
+		//	}
+		//	if (base.ID == 211 || base.ID == 210)
+		//	{
+		//		GameObject gameObject = base.GetMeshObjByBone(roleScriptFromGo, "MobMesh/Bip001").gameObject;
+		//		SingletonMono<EffectManager>.GetInstance().AddEffectBind(291, gameObject);
+		//	}
+		//	if (base.ID == 220)
+		//	{
+		//		GameObject gameObject2 = base.GetMeshObjByBone(roleScriptFromGo, "Bip01").gameObject;
+		//		SingletonMono<EffectManager>.GetInstance().AddEffectBind(310, gameObject2);
+		//	}
+		//	else
+		//	{
+		//		SingletonMono<EffectManager>.GetInstance().AddEffectFixure(this.m_iBoomEffect, contactPoints[0].point, this.m_cSourceRole.GetTrans().rotation);
+		//	}
+		//}
 	}
 
-	// Token: 0x06002B95 RID: 11157 RVA: 0x00149D40 File Offset: 0x00147F40
 	public override void Destory()
 	{
 		base.Destory();
 	}
-
-	// Token: 0x04002DBE RID: 11710
-	private const short SKILL_VALUE_COUNT = 1;
-
-	// Token: 0x04002DBF RID: 11711
-	private const short SKILL_STATUS_NONE = 0;
-
-	// Token: 0x04002DC0 RID: 11712
-	private const short SKILL_STATUS_BEGIN = 1;
-
-	// Token: 0x04002DC1 RID: 11713
-	private const short SKILL_STATUS_SHOOT_BEGIN = 2;
-
-	// Token: 0x04002DC2 RID: 11714
-	private const short SKILL_STATUS_SHOOT_MIDDLE = 3;
-
-	// Token: 0x04002DC3 RID: 11715
-	private const short SKILL_STATUS_SHOOT_END = 4;
-
-	// Token: 0x04002DC4 RID: 11716
-	private const short SKILL_STATUS_END = 5;
-
-	// Token: 0x04002DC5 RID: 11717
-	private int m_iAnimation;
-
-	// Token: 0x04002DC6 RID: 11718
-	private float m_fAnimationSpeed;
-
-	// Token: 0x04002DC7 RID: 11719
-	private string m_strReadyEffectPart;
-
-	// Token: 0x04002DC8 RID: 11720
-	private int m_iReadyEffect;
-
-	// Token: 0x04002DC9 RID: 11721
-	private float m_fBreakTime;
-
-	// Token: 0x04002DCA RID: 11722
-	private string m_strShootEffectPart;
-
-	// Token: 0x04002DCB RID: 11723
-	private float m_fOffsetTime;
-
-	// Token: 0x04002DCC RID: 11724
-	private Vector3 m_vecOffsetPos;
-
-	// Token: 0x04002DCD RID: 11725
-	private int m_iShootEffect;
-
-	// Token: 0x04002DCE RID: 11726
-	private int m_iBoomEffect;
-
-	// Token: 0x04002DCF RID: 11727
-	private float m_fSpeed;
-
-	// Token: 0x04002DD0 RID: 11728
-	private int m_iBuffId;
-
-	// Token: 0x04002DD1 RID: 11729
-	private int m_iAreaId;
-
-	// Token: 0x04002DD2 RID: 11730
-	private int m_iFaetureId;
-
-	// Token: 0x04002DD3 RID: 11731
-	private int m_iInitalId;
-
-	// Token: 0x04002DD4 RID: 11732
-	private bool m_bIsOffsetTime;
-
-	// Token: 0x04002DD5 RID: 11733
-	private bool m_bIsBreak;
-
-	// Token: 0x04002DD6 RID: 11734
-	private int m_iNowEffectId;
-
-	// Token: 0x04002DD7 RID: 11735
-	private Vector3 m_vecShootTarget;
-
-	// Token: 0x04002DD8 RID: 11736
-	private GameObject Go;
-
-	// Token: 0x04002DD9 RID: 11737
-	private FightCameraArea fca;
 }

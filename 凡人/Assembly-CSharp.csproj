@@ -193,8 +193,12 @@
     <Compile Include="Assets\Scripts\Role\Module\MT_ORGANIZATION\OrganizationInfo.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_PLAYERCONTROL\ModPlayerControl.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_PLAYERMUTUAL\ModMutualPlayer.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CameraBaseAction.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CameraLook.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CameraMove.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CSkillBase.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\CSkillStaticManager.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\FightCameraArea.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\ModSkillProperty.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PLAYER_SKILL_TYPE.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_SKILL\PlayerSkillData.cs" />
