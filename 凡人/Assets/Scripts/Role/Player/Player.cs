@@ -28,7 +28,7 @@ public class Player : Role
 
     public BottleSystem m_BottleSystem = new BottleSystem();
 
-    //private AmbitSystem m_cAmbitSystem = new AmbitSystem();
+    private AmbitSystem m_cAmbitSystem = new AmbitSystem();
 
     //private FigureSystem m_cFigureSystem = new FigureSystem();
 
@@ -72,7 +72,10 @@ public class Player : Role
 
     public EquipReplace equipReplace;
 
-    //public ItemFolderContainer ItemFolder;
+    /// <summary>
+    /// 物品背包
+    /// </summary>
+    public ItemFolderContainer ItemFolder;
 
     //public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
 
@@ -186,38 +189,41 @@ public class Player : Role
     //		}
     //	}
 
-    //	// Token: 0x060022B3 RID: 8883 RVA: 0x000EC70C File Offset: 0x000EA90C
-    //	public void Operable()
-    //	{
-    //		float num = float.MaxValue;
-    //		List<OperableItemBase> list = new List<OperableItemBase>();
-    //		List<OperableItemBase> list2 = new List<OperableItemBase>();
-    //		foreach (KeyValuePair<int, OperableItemBase> keyValuePair in this.EnableOperableList)
-    //		{
-    //			if (!keyValuePair.Value.useAble)
-    //			{
-    //				list.Add(keyValuePair.Value);
-    //			}
-    //			else
-    //			{
-    //				float num2 = Vector3.Distance(base.GetPos(), keyValuePair.Value.GetPos());
-    //				if (num2 <= num && num2 < 2f)
-    //				{
-    //					num = num2;
-    //					OperableItemBase value = keyValuePair.Value;
-    //					list2.Add(value);
-    //				}
-    //			}
-    //		}
-    //		foreach (OperableItemBase item in list)
-    //		{
-    //			this.RemoveEnableOperable(item);
-    //		}
-    //		foreach (OperableItemBase operableItemBase in list2)
-    //		{
-    //			operableItemBase.Call();
-    //		}
-    //	}
+    /// <summary>
+    /// 可操作
+    /// </summary>
+    public void Operable()
+    {
+        Debug.Log("按下F");
+        //float num = float.MaxValue;
+        //List<OperableItemBase> list = new List<OperableItemBase>();
+        //List<OperableItemBase> list2 = new List<OperableItemBase>();
+        //foreach (KeyValuePair<int, OperableItemBase> keyValuePair in this.EnableOperableList)
+        //{
+        //    if (!keyValuePair.Value.useAble)
+        //    {
+        //        list.Add(keyValuePair.Value);
+        //    }
+        //    else
+        //    {
+        //        float num2 = Vector3.Distance(base.GetPos(), keyValuePair.Value.GetPos());
+        //        if (num2 <= num && num2 < 2f)
+        //        {
+        //            num = num2;
+        //            OperableItemBase value = keyValuePair.Value;
+        //            list2.Add(value);
+        //        }
+        //    }
+        //}
+        //foreach (OperableItemBase item in list)
+        //{
+        //    //this.RemoveEnableOperable(item);
+        //}
+        //foreach (OperableItemBase operableItemBase in list2)
+        //{
+        //    operableItemBase.Call();
+        //}
+    }
 
     //	public override long GetWeaponIdx()
     //	{
@@ -361,12 +367,12 @@ public class Player : Role
         this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
-        //this.hatred.selfRole = Player.Instance;
-        //KeyManager.controlRole = this;
-        //this.equipReplace = new EquipReplace(this);//装备
-        ////this.ItemFolder = new ItemFolderContainer(base.ID);//物品
-        ////this.m_cAmbitSystem.Init(this);
-        //this.InitRoleBaseInfo();
+        this.hatred.selfRole = Player.Instance;
+        KeyManager.controlRole = this;
+        this.equipReplace = new EquipReplace(this);//装备
+        this.ItemFolder = new ItemFolderContainer(base.ID);//物品
+        this.m_cAmbitSystem.Init(this);
+        this.InitRoleBaseInfo();
         ////this.m_RoleGrowDatas.Init();
         ////GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
         ////GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
@@ -515,6 +521,9 @@ public class Player : Role
     //		}
     //	}
 
+    /// <summary>
+    /// 添加热键
+    /// </summary>
     private void addPlayerHotKey()
     {
         //KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
@@ -537,7 +546,7 @@ public class Player : Role
         //    KeyManager.addNormalKey(KeyCode.Alpha7, new Callback(this.UseSkillG));
         //}
         //KeyManager.addNormalKey(KeyCode.F4, new Callback(Main.Quit));
-        //KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
+        KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
     }
 
     //	private void UseSkillA()
@@ -1095,13 +1104,16 @@ public class Player : Role
         this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);//出生
     }
 
+    /// <summary>
+    /// 初始化角色基础信息
+    /// </summary>
     public void InitRoleBaseInfo()
     {
         if (this.roleinfo == null)
         {
             return;
         }
-        //GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
         //foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
         //{
         //    if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))

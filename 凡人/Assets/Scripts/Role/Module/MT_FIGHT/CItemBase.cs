@@ -1,5 +1,8 @@
 ﻿using System;
 
+/// <summary>
+/// 物品基类
+/// </summary>
 public class CItemBase
 {
     //private ItemPropertyConfig _pOriginalData = new ItemPropertyConfig();

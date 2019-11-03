@@ -202,47 +202,47 @@ public class KeyManager : MonoBehaviour
 			return;
 		}
         //绘制按钮
-		//this.currentEvent = Event.current;
-		//this.LockMouse(this.currentEvent);
-		//KeyManager.Numeric = this.currentEvent.numeric;
-		//KeyManager.CapsLock = this.currentEvent.capsLock;
-		//KeyManager.Control = this.currentEvent.control;
-		//KeyManager.Shift = this.currentEvent.shift;
-		//KeyManager.Alt = this.currentEvent.alt;
-		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.UIKey) != KeyManager.eKeyGroupMask.None && (this.currentEvent.functionKey || this.currentEvent.isKey))
-		//{
-		//	//this.onUIKeyFunction(this.currentEvent);
-		//}
-		//if (!KeyManager.hotKeyEnabled)
-		//{
-		//	return;
-		//}
-		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseClick) != KeyManager.eKeyGroupMask.None && this.currentEvent.isMouse)
-		//{
-		//	//this.onMouseClickEvent(this.currentEvent);
-		//}
-		//if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseScroll) != KeyManager.eKeyGroupMask.None && this.currentEvent.type == EventType.ScrollWheel)
-		//{
-		//	//this.onMouseScrollWheel(this.currentEvent);
-		//}
-		//if (((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.NormalHotKey) != KeyManager.eKeyGroupMask.None && this.currentEvent.functionKey) || this.currentEvent.isKey)
-		//{
-		//	//this.onKeyFunction(this.currentEvent);
-		//}
-	}
+		this.currentEvent = Event.current;
+        //this.LockMouse(this.currentEvent);
+        KeyManager.Numeric = this.currentEvent.numeric;
+        KeyManager.CapsLock = this.currentEvent.capsLock;
+        KeyManager.Control = this.currentEvent.control;
+        KeyManager.Shift = this.currentEvent.shift;
+        KeyManager.Alt = this.currentEvent.alt;
+        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.UIKey) != KeyManager.eKeyGroupMask.None && (this.currentEvent.functionKey || this.currentEvent.isKey))
+        {
+            //this.onUIKeyFunction(this.currentEvent);
+        }
+        if (!KeyManager.hotKeyEnabled)
+        {
+            return;
+        }
+        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseClick) != KeyManager.eKeyGroupMask.None && this.currentEvent.isMouse)
+        {
+            //this.onMouseClickEvent(this.currentEvent);
+        }
+        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseScroll) != KeyManager.eKeyGroupMask.None && this.currentEvent.type == EventType.ScrollWheel)
+        {
+            this.onMouseScrollWheel(this.currentEvent);
+        }
+        if (((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.NormalHotKey) != KeyManager.eKeyGroupMask.None && this.currentEvent.functionKey) || this.currentEvent.isKey)
+        {
+            this.onKeyFunction(this.currentEvent);
+        }
+    }
 
-	private void LockMouse(Event e)
-	{
-		MouseManager.LockCursor(true);
-	}
+    private void LockMouse(Event e)
+    {
+        MouseManager.LockCursor(true);
+    }
 
-    //private void onMouseScrollWheel(Event e)
-    //{
-    //	if (this.KeyForHelp(2, 2, KeyCode.None, "null") && Player.Instance != null)
-    //	{
-    //		Player.Instance.m_cModCamera.ScaleCamera(e.delta.y);
-    //	}
-    //}
+    private void onMouseScrollWheel(Event e)
+    {
+        if (this.KeyForHelp(2, 2, KeyCode.None, "null") && Player.Instance != null)
+        {
+            Player.Instance.m_cModCamera.ScaleCamera(e.delta.y);
+        }
+    }
 
     //private void onMouseClickEvent(Event e)
     //{
@@ -395,23 +395,29 @@ public class KeyManager : MonoBehaviour
     //	KeyManager.startTime = 0f;
     //}
 
-    //// Token: 0x060015ED RID: 5613 RVA: 0x000AD9D4 File Offset: 0x000ABBD4
-    //public static void addNormalKey(KeyCode keyCode, Callback callback)
-    //{
-    //	KeyManager.removeNormalKey(keyCode);
-    //	KeyManager.NormalHotKeys.Add(keyCode, callback);
-    //}
+    /// <summary>
+    /// 添加通常按键
+    /// </summary>
+    /// <param name="keyCode"></param>
+    /// <param name="callback"></param>
+    public static void addNormalKey(KeyCode keyCode, Callback callback)
+    {
+        KeyManager.removeNormalKey(keyCode);
+        KeyManager.NormalHotKeys.Add(keyCode, callback);
+    }
 
-    //// Token: 0x060015EE RID: 5614 RVA: 0x000AD9E8 File Offset: 0x000ABBE8
-    //public static void removeNormalKey(KeyCode keyCode)
-    //{
-    //	if (KeyManager.NormalHotKeys.ContainsKey(keyCode))
-    //	{
-    //		KeyManager.NormalHotKeys.Remove(keyCode);
-    //	}
-    //}
+    /// <summary>
+    /// 移除通常按键
+    /// </summary>
+    /// <param name="keyCode"></param>
+    public static void removeNormalKey(KeyCode keyCode)
+    {
+        if (KeyManager.NormalHotKeys.ContainsKey(keyCode))
+        {
+            KeyManager.NormalHotKeys.Remove(keyCode);
+        }
+    }
 
-    //// Token: 0x060015EF RID: 5615 RVA: 0x000ADA08 File Offset: 0x000ABC08
     //public static void addUIKey(KeyCode keyCode, Callback callback)
     //{
     //	KeyManager.removeUIKey(keyCode);
@@ -475,50 +481,53 @@ public class KeyManager : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x060015F7 RID: 5623 RVA: 0x000ADAD8 File Offset: 0x000ABCD8
-    //private void onKeyFunction(Event e)
-    //{
-    //	if (e.type == EventType.KeyDown)
-    //	{
-    //		if (!KeyManager.Control && !KeyManager.Alt && !KeyManager.Shift)
-    //		{
-    //			foreach (KeyValuePair<KeyCode, Callback> keyValuePair in KeyManager.NormalHotKeys)
-    //			{
-    //				this.callBackFunction(keyValuePair, e.keyCode);
-    //			}
-    //		}
-    //		else if (KeyManager.Control && !KeyManager.Alt && !KeyManager.Shift)
-    //		{
-    //			foreach (KeyValuePair<KeyCode, Callback> keyValuePair2 in KeyManager.CtrlHotKeys)
-    //			{
-    //				this.callBackFunction(keyValuePair2, e.keyCode);
-    //			}
-    //		}
-    //		else if (!KeyManager.Control && KeyManager.Alt && !KeyManager.Shift)
-    //		{
-    //			foreach (KeyValuePair<KeyCode, Callback> keyValuePair3 in KeyManager.AltHotKeys)
-    //			{
-    //				this.callBackFunction(keyValuePair3, e.keyCode);
-    //			}
-    //		}
-    //		else if (!KeyManager.Control && !KeyManager.Alt && KeyManager.Shift)
-    //		{
-    //			foreach (KeyValuePair<KeyCode, Callback> keyValuePair4 in KeyManager.ShiftHotKeys)
-    //			{
-    //				this.callBackFunction(keyValuePair4, e.keyCode);
-    //			}
-    //		}
-    //		else if (!KeyManager.Control || !KeyManager.Alt || KeyManager.Shift)
-    //		{
-    //			if (!KeyManager.Control || KeyManager.Alt || !KeyManager.Shift)
-    //			{
-    //				if (!KeyManager.Control || !KeyManager.Alt || KeyManager.Shift)
-    //				{
-    //				}
-    //			}
-    //		}
-    //	}
-    //}
+    /// <summary>
+    /// 按下按键
+    /// </summary>
+    /// <param name="e"></param>
+    private void onKeyFunction(Event e)
+    {
+        if (e.type == EventType.KeyDown)
+        {
+            if (!KeyManager.Control && !KeyManager.Alt && !KeyManager.Shift)
+            {
+                foreach (KeyValuePair<KeyCode, Callback> keyValuePair in KeyManager.NormalHotKeys)
+                {
+                    this.callBackFunction(keyValuePair, e.keyCode);
+                }
+            }
+            else if (KeyManager.Control && !KeyManager.Alt && !KeyManager.Shift)
+            {
+                foreach (KeyValuePair<KeyCode, Callback> keyValuePair2 in KeyManager.CtrlHotKeys)
+                {
+                    this.callBackFunction(keyValuePair2, e.keyCode);
+                }
+            }
+            else if (!KeyManager.Control && KeyManager.Alt && !KeyManager.Shift)
+            {
+                foreach (KeyValuePair<KeyCode, Callback> keyValuePair3 in KeyManager.AltHotKeys)
+                {
+                    this.callBackFunction(keyValuePair3, e.keyCode);
+                }
+            }
+            else if (!KeyManager.Control && !KeyManager.Alt && KeyManager.Shift)
+            {
+                foreach (KeyValuePair<KeyCode, Callback> keyValuePair4 in KeyManager.ShiftHotKeys)
+                {
+                    this.callBackFunction(keyValuePair4, e.keyCode);
+                }
+            }
+            else if (!KeyManager.Control || !KeyManager.Alt || KeyManager.Shift)
+            {
+                if (!KeyManager.Control || KeyManager.Alt || !KeyManager.Shift)
+                {
+                    if (!KeyManager.Control || !KeyManager.Alt || KeyManager.Shift)
+                    {
+                    }
+                }
+            }
+        }
+    }
 
     //// Token: 0x060015F8 RID: 5624 RVA: 0x000ADD58 File Offset: 0x000ABF58
     //private void onUIKeyFunction(Event e)
@@ -532,17 +541,16 @@ public class KeyManager : MonoBehaviour
     //	}
     //}
 
-    //// Token: 0x060015F9 RID: 5625 RVA: 0x000ADDD0 File Offset: 0x000ABFD0
-    //private void callBackFunction(KeyValuePair<KeyCode, Callback> keyValuePair, KeyCode keyCode)
-    //{
-    //	if (!this.KeyForHelp(1, -1, keyCode, "null"))
-    //	{
-    //		return;
-    //	}
-    //	if (keyValuePair.Key == keyCode)
-    //	{
-    //		KeyManager.callBack = keyValuePair.Value;
-    //		KeyManager.callBack();
-    //	}
-    //}
+    private void callBackFunction(KeyValuePair<KeyCode, Callback> keyValuePair, KeyCode keyCode)
+    {
+        if (!this.KeyForHelp(1, -1, keyCode, "null"))
+        {
+            return;
+        }
+        if (keyValuePair.Key == keyCode)
+        {
+            KeyManager.callBack = keyValuePair.Value;
+            KeyManager.callBack();
+        }
+    }
 }
