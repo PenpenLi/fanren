@@ -41,7 +41,7 @@ public class GameData
 
     public UserData userData = new UserData();
 
-    //public CItemStaticManager ItemStaticMan = new CItemStaticManager();
+    public CItemStaticManager ItemStaticMan = new CItemStaticManager();
 
     public CItemManager ItemMan = new CItemManager();
 
@@ -133,7 +133,7 @@ public class GameData
 		//GameData.Instance.chest.ReadInfo();
 		//GameData.Instance.herbal.ReadInfo();
 		//GameData.Instance.organ.ReadInfo();
-		//GameData.Instance.ItemStaticMan.Load();
+		GameData.Instance.ItemStaticMan.Load();
 		GameData.Instance.ItemMan.Clear();
 		//GameData.Instance.weaponInfo.initialize();
 		//GameData.Instance.popInfo.initialize();

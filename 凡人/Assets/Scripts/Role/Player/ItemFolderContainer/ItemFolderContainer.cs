@@ -47,9 +47,6 @@ public class ItemFolderContainer
 		}
 	}
 
-	// Token: 0x1700023F RID: 575
-	// (get) Token: 0x0600148D RID: 5261 RVA: 0x000A51D8 File Offset: 0x000A33D8
-	// (set) Token: 0x0600148E RID: 5262 RVA: 0x000A5208 File Offset: 0x000A3408
 	public RoleWear WearOperate
 	{
 		get

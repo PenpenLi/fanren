@@ -1,0 +1,14 @@
+﻿using System;
+
+// Token: 0x02000354 RID: 852
+public enum StuffCfgType
+{
+	// Token: 0x04001552 RID: 5458
+	SFCHILD_CT_UNKNOWN,
+	// Token: 0x04001553 RID: 5459
+	SFCHILD_CT_WARE,
+	// Token: 0x04001554 RID: 5460
+	SFCHILD_CT_PLT,
+	// Token: 0x04001555 RID: 5461
+	SFCHILD_CT_AML
+}

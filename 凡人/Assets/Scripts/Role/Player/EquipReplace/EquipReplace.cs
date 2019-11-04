@@ -24,32 +24,32 @@ public class EquipReplace
 		this.Init();
 	}
 
-    //public GameObject RoleBody
-    //{
-    //	get
-    //	{
-    //		if (this.roleBody == null)
-    //		{
-    //			if (this._Player._roleType == ROLE_TYPE.RT_PUPPET)
-    //			{
-    //				this.roleBody = PuppetRole.Instance.roleGameObject.RoleBody;
-    //			}
-    //			else
-    //			{
-    //				this.roleBody = Player.Instance.roleGameObject.RoleBody;
-    //			}
-    //			if (this.roleBody == null)
-    //			{
-    //				Debug.Log("roleBody is not Instance");
-    //			}
-    //		}
-    //		return this.roleBody;
-    //	}
-    //	set
-    //	{
-    //		this.roleBody = value;
-    //	}
-    //}
+    public GameObject RoleBody
+    {
+        get
+        {
+            if (this.roleBody == null)
+            {
+                if (this._Player._roleType == ROLE_TYPE.RT_PUPPET)
+                {
+                    //this.roleBody = PuppetRole.Instance.roleGameObject.RoleBody;
+                }
+                else
+                {
+                    this.roleBody = Player.Instance.roleGameObject.RoleBody;
+                }
+                if (this.roleBody == null)
+                {
+                    Debug.Log("roleBody is not Instance");
+                }
+            }
+            return this.roleBody;
+        }
+        set
+        {
+            this.roleBody = value;
+        }
+    }
 
     private void Init()
     {
@@ -59,32 +59,31 @@ public class EquipReplace
         this.equipPosDict.Add(RoleWearEquipPos.WEAR_FOOT, "foot");
     }
 
-    //// Token: 0x06000FDC RID: 4060 RVA: 0x00088E34 File Offset: 0x00087034
-    //public void TakeOn(RoleWearEquipPos pos, CItemBase item)
-    //{
-    //	if (this.RoleBody == null)
-    //	{
-    //		return;
-    //	}
-    //	if (this.equipPosDict.ContainsKey(pos))
-    //	{
-    //		this.Generate(item, pos);
-    //		this.CreatWearEffect(item.ITEM_STATIC_ID);
-    //	}
-    //	if (pos == RoleWearEquipPos.WEAR_WEAPON)
-    //	{
-    //		EquipCfgType item_CHILDTYPE_ID = (EquipCfgType)item.DynamicData.ITEM_CHILDTYPE_ID;
-    //		if (this._Player._roleType == ROLE_TYPE.RT_PUPPET)
-    //		{
-    //			PuppetRole.Instance.weaponManager.changeWeapon(item_CHILDTYPE_ID, item);
-    //		}
-    //		else
-    //		{
-    //			Player.Instance.weaponManager.changeWeapon(item_CHILDTYPE_ID, item);
-    //		}
-    //	}
-    //	this._Player.roleGameObject.ResetRender();
-    //}
+    public void TakeOn(RoleWearEquipPos pos, CItemBase item)
+    {
+        if (this.RoleBody == null)
+        {
+            return;
+        }
+        if (this.equipPosDict.ContainsKey(pos))
+        {
+            this.Generate(item, pos);
+            //this.CreatWearEffect(item.ITEM_STATIC_ID);
+        }
+        //if (pos == RoleWearEquipPos.WEAR_WEAPON)
+        //{
+        //    EquipCfgType item_CHILDTYPE_ID = (EquipCfgType)item.DynamicData.ITEM_CHILDTYPE_ID;
+        //    if (this._Player._roleType == ROLE_TYPE.RT_PUPPET)
+        //    {
+        //        PuppetRole.Instance.weaponManager.changeWeapon(item_CHILDTYPE_ID, item);
+        //    }
+        //    else
+        //    {
+        //        Player.Instance.weaponManager.changeWeapon(item_CHILDTYPE_ID, item);
+        //    }
+        //}
+        //this._Player.roleGameObject.ResetRender();
+    }
 
     //// Token: 0x06000FDD RID: 4061 RVA: 0x00088ED4 File Offset: 0x000870D4
     //public void TakeOff(RoleWearEquipPos pos)
@@ -126,49 +125,48 @@ public class EquipReplace
     //	this._Player.roleGameObject.ResetRender();
     //}
 
-    //// Token: 0x06000FDE RID: 4062 RVA: 0x00088FF4 File Offset: 0x000871F4
-    //public void Generate(CItemBase item, RoleWearEquipPos pos)
-    //{
-    //	string item_RES_PREB = item.DynamicData.ITEM_RES_PREB;
-    //	GameObject gameObject = ResourceLoader.Load(item_RES_PREB, typeof(GameObject)) as GameObject;
-    //	if (gameObject == null)
-    //	{
-    //		return;
-    //	}
-    //	GameObject gameObject2 = (GameObject)LoadMachine.InstantiateObject(gameObject);
-    //	foreach (Animation animation in gameObject2.GetComponentsInChildren<Animation>())
-    //	{
-    //		animation.cullingType = AnimationCullingType.AlwaysAnimate;
-    //	}
-    //	Transform[] componentsInChildren2 = this.RoleBody.GetComponentsInChildren<Transform>();
-    //	SkinnedMeshRenderer[] componentsInChildren3 = gameObject2.GetComponentsInChildren<SkinnedMeshRenderer>(true);
-    //	foreach (SkinnedMeshRenderer skinnedMeshRenderer in componentsInChildren3)
-    //	{
-    //		EquipElement equipElement = new EquipElement();
-    //		equipElement.item = item;
-    //		equipElement.pos = pos;
-    //		equipElement.skinName = skinnedMeshRenderer.name;
-    //		equipElement.materials.AddRange(skinnedMeshRenderer.materials);
-    //		CombineInstance item2 = default(CombineInstance);
-    //		item2.mesh = skinnedMeshRenderer.sharedMesh;
-    //		item2.subMeshIndex = 0;
-    //		equipElement.combineInstances.Add(item2);
-    //		foreach (Transform transform in skinnedMeshRenderer.bones)
-    //		{
-    //			foreach (Transform transform2 in componentsInChildren2)
-    //			{
-    //				if (!(transform2.name != transform.name))
-    //				{
-    //					equipElement.bones.Add(transform2);
-    //					break;
-    //				}
-    //			}
-    //		}
-    //		this.elementList.Add(equipElement);
-    //	}
-    //	UnityEngine.Object.Destroy(gameObject2);
-    //	this.BuildSkinnedMeshRenderer(false);
-    //}
+    public void Generate(CItemBase item, RoleWearEquipPos pos)
+    {
+        string item_RES_PREB = item.DynamicData.ITEM_RES_PREB;
+        GameObject gameObject = ResourceLoader.Load(item_RES_PREB, typeof(GameObject)) as GameObject;
+        if (gameObject == null)
+        {
+            return;
+        }
+        GameObject gameObject2 = (GameObject)LoadMachine.InstantiateObject(gameObject);
+        foreach (Animation animation in gameObject2.GetComponentsInChildren<Animation>())
+        {
+            animation.cullingType = AnimationCullingType.AlwaysAnimate;
+        }
+        Transform[] componentsInChildren2 = this.RoleBody.GetComponentsInChildren<Transform>();
+        SkinnedMeshRenderer[] componentsInChildren3 = gameObject2.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+        foreach (SkinnedMeshRenderer skinnedMeshRenderer in componentsInChildren3)
+        {
+            //EquipElement equipElement = new EquipElement();
+            //equipElement.item = item;
+            //equipElement.pos = pos;
+            //equipElement.skinName = skinnedMeshRenderer.name;
+            //equipElement.materials.AddRange(skinnedMeshRenderer.materials);
+            //CombineInstance item2 = default(CombineInstance);
+            //item2.mesh = skinnedMeshRenderer.sharedMesh;
+            //item2.subMeshIndex = 0;
+            //equipElement.combineInstances.Add(item2);
+            //foreach (Transform transform in skinnedMeshRenderer.bones)
+            //{
+            //    foreach (Transform transform2 in componentsInChildren2)
+            //    {
+            //        if (!(transform2.name != transform.name))
+            //        {
+            //            equipElement.bones.Add(transform2);
+            //            break;
+            //        }
+            //    }
+            //}
+            //this.elementList.Add(equipElement);
+        }
+        UnityEngine.Object.Destroy(gameObject2);
+        //this.BuildSkinnedMeshRenderer(false);
+    }
 
     //// Token: 0x06000FDF RID: 4063 RVA: 0x000891A0 File Offset: 0x000873A0
     //public void ReGenerate()

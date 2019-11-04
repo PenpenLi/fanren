@@ -30,11 +30,11 @@ public class Player : Role
 
     private AmbitSystem m_cAmbitSystem = new AmbitSystem();
 
-    //private FigureSystem m_cFigureSystem = new FigureSystem();
+    private FigureSystem m_cFigureSystem = new FigureSystem();
 
     //private Handbook m_cHandbook = new Handbook();
 
-    //public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
+    public RoleGrowData m_RoleGrowDatas = new RoleGrowData();
 
     //public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
 
@@ -70,6 +70,9 @@ public class Player : Role
 
     public WeaponManager weaponManager = new WeaponManager();
 
+    /// <summary>
+    /// 装备替换
+    /// </summary>
     public EquipReplace equipReplace;
 
     /// <summary>
@@ -373,16 +376,16 @@ public class Player : Role
         this.ItemFolder = new ItemFolderContainer(base.ID);//物品
         this.m_cAmbitSystem.Init(this);
         this.InitRoleBaseInfo();
-        ////this.m_RoleGrowDatas.Init();
-        ////GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        ////GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        ////this.m_cFigureSystem.Init(this);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        //if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
-        //{
-        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        //}
+        this.m_RoleGrowDatas.Init();
+        GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        this.m_cFigureSystem.Init(this);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
+        {
+            base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
+        }
     }
 
     /// <summary>
@@ -1114,20 +1117,20 @@ public class Player : Role
             return;
         }
         GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
-        //{
-        //    if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
-        //    {
-        //        Dictionary<ulong, CItemBase> dictionary = new Dictionary<ulong, CItemBase>();
-        //        if (GameData.Instance.ItemMan.TryGetItemsByID(keyValuePair.Value, out dictionary))
-        //        {
-        //            foreach (CItemBase item in dictionary.Values)
-        //            {
-        //                this.ItemFolder.WearOperate.TakeOn(item);
-        //            }
-        //        }
-        //    }
-        //}
+        foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
+        {
+            if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
+            {
+                Dictionary<ulong, CItemBase> dictionary = new Dictionary<ulong, CItemBase>();
+                if (GameData.Instance.ItemMan.TryGetItemsByID(keyValuePair.Value, out dictionary))
+                {
+                    foreach (CItemBase item in dictionary.Values)
+                    {
+                        this.ItemFolder.WearOperate.TakeOn(item);
+                    }
+                }
+            }
+        }
     }
 
     public static void LoadPlayerRes(Player player)

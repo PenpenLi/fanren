@@ -1,49 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 public class CItemManager
 {
 
-    //   public const int ITEM_SORT_START_INDEX = 0;
+    public const int ITEM_SORT_START_INDEX = 0;
 
-    //   public const int ITEM_SORT_END_INDEX = 9999;
+    public const int ITEM_SORT_END_INDEX = 9999;
 
-    //   // Token: 0x04001504 RID: 5380
-    //   private Dictionary<ulong, CItemBase> m_mapItemInfo = new Dictionary<ulong, CItemBase>();
+    private Dictionary<ulong, CItemBase> m_mapItemInfo = new Dictionary<ulong, CItemBase>();
 
-    //   // Token: 0x04001505 RID: 5381
-    //   private Dictionary<ulong, int> m_mapItemDynamicID = new Dictionary<ulong, int>();
+    private Dictionary<ulong, int> m_mapItemDynamicID = new Dictionary<ulong, int>();
 
-    //   // Token: 0x04001506 RID: 5382
-    //   private Dictionary<ItemOwner, Dictionary<ulong, CItemBase>> m_mapFolderContainer = new Dictionary<ItemOwner, Dictionary<ulong, CItemBase>>();
+    private Dictionary<ItemOwner, Dictionary<ulong, CItemBase>> m_mapFolderContainer = new Dictionary<ItemOwner, Dictionary<ulong, CItemBase>>();
 
-    //   public Dictionary<ulong, CItemBase> ITEM_PACKAGE
-    //{
-    //	get
-    //	{
-    //		return this.m_mapItemInfo;
-    //	}
-    //	set
-    //	{
-    //		this.m_mapItemInfo = value;
-    //	}
-    //}
+    /// <summary>
+    /// 物品包裹
+    /// </summary>
+    public Dictionary<ulong, CItemBase> ITEM_PACKAGE
+    {
+        get
+        {
+            return this.m_mapItemInfo;
+        }
+        set
+        {
+            this.m_mapItemInfo = value;
+        }
+    }
 
-    //// Token: 0x17000244 RID: 580
-    //// (get) Token: 0x060014BD RID: 5309 RVA: 0x000A6838 File Offset: 0x000A4A38
-    //// (set) Token: 0x060014BE RID: 5310 RVA: 0x000A6840 File Offset: 0x000A4A40
-    //public Dictionary<ulong, int> ItemDynamicID
-    //{
-    //	get
-    //	{
-    //		return this.m_mapItemDynamicID;
-    //	}
-    //	set
-    //	{
-    //		this.m_mapItemDynamicID = value;
-    //	}
-    //}
+    public Dictionary<ulong, int> ItemDynamicID
+    {
+        get
+        {
+            return this.m_mapItemDynamicID;
+        }
+        set
+        {
+            this.m_mapItemDynamicID = value;
+        }
+    }
 
     //// Token: 0x17000245 RID: 581
     //// (get) Token: 0x060014BF RID: 5311 RVA: 0x000A684C File Offset: 0x000A4A4C
@@ -97,85 +94,82 @@ public class CItemManager
             return false;
         }
         ItemPropertyConfig itemPropertyConfig;
-        //if (!GameData.Instance.ItemStaticMan.TryGetItemInfoByID(ItemSaticID, out itemPropertyConfig))
-        //{
-        //    return false;
-        //}
+        if (!GameData.Instance.ItemStaticMan.TryGetItemInfoByID(ItemSaticID, out itemPropertyConfig))
+        {
+            return false;
+        }
         int num = 0;
         itemList.Clear();
         int i = 0;
-        //while (i < nCount)
-        //{
-        //    if (!this.ItemDynamicID.ContainsKey(ItemSaticID))
-        //    {
-        //        num++;
-        //        this.ItemDynamicID.Add(ItemSaticID, num);
-        //        goto IL_B8;
-        //    }
-        //    if (this.ItemDynamicID[ItemSaticID] + 1 <= 9999)
-        //    {
-        //        Dictionary<ulong, int> itemDynamicID;
-        //        Dictionary<ulong, int> dictionary = itemDynamicID = this.ItemDynamicID;
-        //        int num2 = itemDynamicID[ItemSaticID];
-        //        dictionary[ItemSaticID] = num2 + 1;
-        //        num = this.ItemDynamicID[ItemSaticID];
-        //        goto IL_B8;
-        //    }
-        //    Logger.LogWarning(new object[]
-        //    {
-        //        "CItemManager: Create Item failed! Insert item id Error , continue!"
-        //    });
-        //    IL_1E6:
-        //    i++;
-        //    continue;
-        //    IL_B8:
-        //    CItemBase citemBase;
-        //    if (itemPropertyConfig.ITEM_TYPE_ID == 1)
-        //    {
-        //        if (itemPropertyConfig.ITEM_CHILDTYPE_ID >= 1 && itemPropertyConfig.ITEM_CHILDTYPE_ID <= 3)
-        //        {
-        //            citemBase = new ItemWeapon();
-        //        }
-        //        else
-        //        {
-        //            citemBase = new CItemBase();
-        //        }
-        //    }
-        //    else if (itemPropertyConfig.ITEM_TYPE_ID == 4 && itemPropertyConfig.ITEM_CHILDTYPE_ID == 1)
-        //    {
-        //        citemBase = new ItemMagicFigure();
-        //    }
-        //    else
-        //    {
-        //        citemBase = new CItemBase();
-        //    }
-        //    citemBase.Owner = Ower;
-        //    citemBase.OriginalData = itemPropertyConfig.Clone();
-        //    if (ipc == null)
-        //    {
-        //        citemBase.DynamicData = itemPropertyConfig.Clone();
-        //    }
-        //    else
-        //    {
-        //        citemBase.DynamicData = ipc.Clone();
-        //    }
-        //    citemBase.SmartDynamicID = num;
-        //    this.ITEM_PACKAGE.Add(citemBase.ID, citemBase);
-        //    if (this.m_mapFolderContainer.ContainsKey(Ower))
-        //    {
-        //        this.m_mapFolderContainer[Ower].Add(citemBase.ID, citemBase);
-        //    }
-        //    else
-        //    {
-        //        Dictionary<ulong, CItemBase> dictionary2 = new Dictionary<ulong, CItemBase>();
-        //        dictionary2.Add(citemBase.ID, citemBase);
-        //        this.m_mapFolderContainer.Add(Ower, dictionary2);
-        //    }
-        //    itemList.Add(citemBase);
-        //    PropsPlane.m_bType = false;
-        //    GameData.Instance.ScrMan.Exec(34, (ItemCfgType)citemBase.TYPE_ID, ItemSaticID);
-        //    goto IL_1E6;
-        //}
+        while (i < nCount)
+        {
+            if (!this.ItemDynamicID.ContainsKey(ItemSaticID))
+            {
+                num++;
+                this.ItemDynamicID.Add(ItemSaticID, num);
+                goto IL_B8;
+            }
+            if (this.ItemDynamicID[ItemSaticID] + 1 <= 9999)
+            {
+                Dictionary<ulong, int> itemDynamicID;
+                Dictionary<ulong, int> dictionary = itemDynamicID = this.ItemDynamicID;
+                int num2 = itemDynamicID[ItemSaticID];
+                dictionary[ItemSaticID] = num2 + 1;
+                num = this.ItemDynamicID[ItemSaticID];
+                goto IL_B8;
+            }
+            Debug.LogWarning("CItemManager: Create Item failed! Insert item id Error , continue!");
+            IL_1E6:
+            i++;
+            continue;
+            IL_B8:
+            CItemBase citemBase;
+            if (itemPropertyConfig.ITEM_TYPE_ID == 1)
+            {
+                if (itemPropertyConfig.ITEM_CHILDTYPE_ID >= 1 && itemPropertyConfig.ITEM_CHILDTYPE_ID <= 3)
+                {
+                    citemBase = new ItemWeapon();
+                }
+                else
+                {
+                    citemBase = new CItemBase();
+                }
+            }
+            else if (itemPropertyConfig.ITEM_TYPE_ID == 4 && itemPropertyConfig.ITEM_CHILDTYPE_ID == 1)
+            {
+                citemBase = new ItemMagicFigure();
+            }
+            else
+            {
+                citemBase = new CItemBase();
+            }
+            citemBase.Owner = Ower;
+            citemBase.OriginalData = itemPropertyConfig.Clone();
+            if (ipc == null)
+            {
+                citemBase.DynamicData = itemPropertyConfig.Clone();
+            }
+            else
+            {
+                citemBase.DynamicData = ipc.Clone();
+            }
+            citemBase.SmartDynamicID = num;
+            this.ITEM_PACKAGE.Add(citemBase.ID, citemBase);//添加到物品包裹
+            if (this.m_mapFolderContainer.ContainsKey(Ower))
+            {
+                this.m_mapFolderContainer[Ower].Add(citemBase.ID, citemBase);
+            }
+            else
+            {
+                Dictionary<ulong, CItemBase> dictionary2 = new Dictionary<ulong, CItemBase>();
+                dictionary2.Add(citemBase.ID, citemBase);
+                this.m_mapFolderContainer.Add(Ower, dictionary2);
+            }
+            itemList.Add(citemBase);
+            //PropsPlane.m_bType = false;//属性面板
+            GameData.Instance.ScrMan.Exec(34, (ItemCfgType)citemBase.TYPE_ID, ItemSaticID);
+            goto IL_1E6;
+        }
         return true;
     }
 
@@ -387,22 +381,21 @@ public class CItemManager
     //	return pItems.Count > 0;
     //}
 
-    //// Token: 0x060014D2 RID: 5330 RVA: 0x000A70A8 File Offset: 0x000A52A8
-    //public bool TryGetItemsByID(ulong ItemStaticID, out Dictionary<ulong, CItemBase> pItems)
-    //{
-    //	pItems = null;
-    //	if (!GameData.Instance.ItemStaticMan.IsHaveClassify(ItemStaticID))
-    //	{
-    //		return false;
-    //	}
-    //	pItems = new Dictionary<ulong, CItemBase>();
-    //	foreach (CItemBase citemBase in this.ITEM_PACKAGE.Values)
-    //	{
-    //		if (citemBase.ITEM_STATIC_ID == ItemStaticID)
-    //		{
-    //			pItems.Add(citemBase.ID, citemBase);
-    //		}
-    //	}
-    //	return pItems.Count > 0;
-    //}
+    public bool TryGetItemsByID(ulong ItemStaticID, out Dictionary<ulong, CItemBase> pItems)
+    {
+        pItems = null;
+        if (!GameData.Instance.ItemStaticMan.IsHaveClassify(ItemStaticID))
+        {
+            return false;
+        }
+        pItems = new Dictionary<ulong, CItemBase>();
+        foreach (CItemBase citemBase in this.ITEM_PACKAGE.Values)
+        {
+            if (citemBase.ITEM_STATIC_ID == ItemStaticID)
+            {
+                pItems.Add(citemBase.ID, citemBase);
+            }
+        }
+        return pItems.Count > 0;
+    }
 }

@@ -36,7 +36,7 @@ public class RoleBaseConfig
 
 	public void LoadConfig(string file)
 	{
-		if (string.IsNullOrEmpty(file))
+        if (string.IsNullOrEmpty(file))
 		{
 			return;
 		}
@@ -53,9 +53,7 @@ public class RoleBaseConfig
 			{
 				if (array.Length != 10)
 				{
-                    Debug.Log(
-						"RoleBaseConfig: Read " + file + " failed!"
-					);
+                    Debug.Log("RoleBaseConfig: Read " + file + " failed!");
 				}
 				else
 				{
@@ -64,9 +62,7 @@ public class RoleBaseConfig
 					roleBaseInfo.ID = Convert.ToInt32(array[i]);
 					if (this._PlayerInfos.ContainsKey(roleBaseInfo.ID))
 					{
-                        Debug.Log(
-							"RoleBaseConfig: Player ID " + roleBaseInfo.ID + " failed!"
-						);
+                        Debug.Log("RoleBaseConfig: Player ID " + roleBaseInfo.ID + " failed!");
 					}
 					else
 					{
@@ -82,7 +78,7 @@ public class RoleBaseConfig
 							ulong num2 = Convert.ToUInt64(array[i]);
 							if (num2 == 0UL)
 							{
-								num++;
+                                num++;
 							}
 							else
 							{
