@@ -26,7 +26,7 @@ public class RoleGameObject
 
     private Transform m_cTrans;
 
-    private Animation m_cRoleAnimation;
+    private Animator m_cRoleAnimator;
 
     /// <summary>
     /// 角色控制器
@@ -226,7 +226,7 @@ public class RoleGameObject
         }
     }
 
-    public Animation RoleAnimation
+    public Animator RoleAnimator
     {
         get
         {
@@ -234,23 +234,23 @@ public class RoleGameObject
             {
                 return null;
             }
-            if (this.m_cRoleAnimation == null)
+            if (this.m_cRoleAnimator == null)
             {
-                this.m_cRoleAnimation = this.m_cGO.GetComponent<Animation>();
-                if (this.m_cRoleAnimation == null)
+                this.m_cRoleAnimator = this.m_cGO.GetComponent<Animator>();
+                if (this.m_cRoleAnimator == null)
                 {
                     foreach (object obj in this.m_cGO.transform)
                     {
                         Transform transform = (Transform)obj;
-                        this.m_cRoleAnimation = transform.GetComponent<Animation>();
-                        if (this.m_cRoleAnimation != null)
+                        this.m_cRoleAnimator = transform.GetComponent<Animator>();
+                        if (this.m_cRoleAnimator != null)
                         {
                             break;
                         }
                     }
                 }
             }
-            return this.m_cRoleAnimation;
+            return this.m_cRoleAnimator;
         }
     }
 
@@ -541,7 +541,7 @@ public class RoleGameObject
         colliderCheckCharacterController.ClearHandle();
         colliderCheckCharacterController.CloseCheck();
         this.m_cGO = gameObject;
-        this.m_cRoleAnimation = null;
+        this.m_cRoleAnimator = null;
         this.m_cRoleController = null;
         this.renderers = null;
         this.rigidbodys = null;
@@ -595,7 +595,7 @@ public class RoleGameObject
             return;
         }
         this.m_cRoleController = component.Controller;
-        this.m_cRoleAnimation = component.Animation;
+        this.m_cRoleAnimator = component.Animator;
         this.m_mapEffectTrans.Clear();
         this.m_mapEffectTrans.Add(CHILD_EFFECT_POINT.TOP, root);
         for (int i = 0; i < component.EffectType.Count; i++)

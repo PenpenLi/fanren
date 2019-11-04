@@ -4,13 +4,13 @@ using NS_RoleBaseFun;
 using UnityEngine;
 
 /// <summary>
-/// 动画模块 移动也在这个模块 需要重构
+/// 动画模块 移动模块 
 /// </summary>
 public class ModAnimation : Module
 {
     private CharacterController m_cCharacterController;
 
-    public Animation _animation;
+    public Animator _animator;
 
     /// <summary>
     /// 默认行动指数
@@ -69,10 +69,10 @@ public class ModAnimation : Module
 
     private string faceAniName;
 
-    public ModAnimation(Role role, Animation ani, CharacterController cc) : base(role)
+    public ModAnimation(Role role, Animator ani, CharacterController cc) : base(role)
 	{
 		this.m_cCharacterController = cc;
-		this._animation = ani;
+		this._animator = ani;
 		base.ModType = MODULE_TYPE.MT_MOTION;
 	}
 
@@ -175,30 +175,29 @@ public class ModAnimation : Module
     //	this.m_fCurrentAniSpeed = speed;
     //}
 
-    //// Token: 0x06002144 RID: 8516 RVA: 0x000E2870 File Offset: 0x000E0A70
-    //private long IndexToId(ACTION_INDEX actIdx, bool bDefHorse, bool bDefWeapon, bool bDefMesh)
-    //{
-    //	long nHorse = 99L;
-    //	long nWeaponIndex = 999L;
-    //	long nMeshIndex = 9999L;
-    //	if (!bDefHorse)
-    //	{
-    //		nHorse = this._role.GetHorseIdx();
-    //	}
-    //	if (!bDefWeapon)
-    //	{
-    //		nWeaponIndex = this._role.GetWeaponIdx();
-    //	}
-    //	if (!bDefMesh)
-    //	{
-    //		nMeshIndex = this._role.GetMeshIdx();
-    //	}
-    //	return GameData.Instance.RoleData.GetAniId(nHorse, nWeaponIndex, nMeshIndex, (long)actIdx);
-    //}
+    private long IndexToId(ACTION_INDEX actIdx, bool bDefHorse, bool bDefWeapon, bool bDefMesh)
+    {
+        long nHorse = 99L;
+        long nWeaponIndex = 999L;
+        long nMeshIndex = 9999L;
+        if (!bDefHorse)
+        {
+            nHorse = this._role.GetHorseIdx();
+        }
+        if (!bDefWeapon)
+        {
+            nWeaponIndex = this._role.GetWeaponIdx();
+        }
+        if (!bDefMesh)
+        {
+            nMeshIndex = this._role.GetMeshIdx();
+        }
+        return GameData.Instance.RoleData.GetAniId(nHorse, nWeaponIndex, nMeshIndex, (long)actIdx);
+    }
 
     public override void Process()
     {
-        if (this._animation == null)
+        if (this._animator == null)
         {
             return;
         }
@@ -221,7 +220,7 @@ public class ModAnimation : Module
                 this.m_fCurrentAniLength = 0f;
             }
         }
-        if (this._animation != null)
+        if (this._animator != null)
         {
             this.m_cCurrentAniState.speed = GameTime.timeScale * this.m_fCurrentAniSpeed * this.AniSpeed;
         }
@@ -515,32 +514,31 @@ public class ModAnimation : Module
     //	}
     //}
 
-    //// Token: 0x0600214B RID: 8523 RVA: 0x000E333C File Offset: 0x000E153C
-    //public AniInfo GetAniInfoByIdx(ACTION_INDEX actIdx)
-    //{
-    //	AniInfo aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, false, false, false));
-    //	if (aniInfoById == null)
-    //	{
-    //		aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, false, false));
-    //		if (aniInfoById == null)
-    //		{
-    //			aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, true, false));
-    //			if (aniInfoById == null)
-    //			{
-    //				aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, false, true));
-    //				if (aniInfoById == null)
-    //				{
-    //					aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(ACTION_INDEX.AN_DEFAULT, true, true, false));
-    //					if (aniInfoById == null)
-    //					{
-    //						aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, true, true));
-    //					}
-    //				}
-    //			}
-    //		}
-    //	}
-    //	return aniInfoById;
-    //}
+    public AniInfo GetAniInfoByIdx(ACTION_INDEX actIdx)
+    {
+        AniInfo aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, false, false, false));
+        if (aniInfoById == null)
+        {
+            aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, false, false));
+            if (aniInfoById == null)
+            {
+                aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, true, false));
+                if (aniInfoById == null)
+                {
+                    aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, false, true));
+                    if (aniInfoById == null)
+                    {
+                        aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(ACTION_INDEX.AN_DEFAULT, true, true, false));
+                        if (aniInfoById == null)
+                        {
+                            aniInfoById = Singleton<AniInfoStaticManager>.GetInstance().GetAniInfoById(this.IndexToId(actIdx, true, true, true));
+                        }
+                    }
+                }
+            }
+        }
+        return aniInfoById;
+    }
 
     //// Token: 0x0600214C RID: 8524 RVA: 0x000E33EC File Offset: 0x000E15EC
     //public AniInfo.AniInfoNode GetAniInfoNodeByIdx(ACTION_INDEX actIdx, int idx)
@@ -589,34 +587,32 @@ public class ModAnimation : Module
     //	return this.GetAniInfoNodeByIdx(actIdx, 0);
     //}
 
-    //// Token: 0x0600214F RID: 8527 RVA: 0x000E3480 File Offset: 0x000E1680
-    //public AniInfo.AniInfoNode GetAniInfoNodeRandom(ACTION_INDEX actIdx)
-    //{
-    //	AniInfo aniInfoByIdx = this.GetAniInfoByIdx(actIdx);
-    //	if (aniInfoByIdx == null)
-    //	{
-    //		return null;
-    //	}
-    //	int num = UnityEngine.Random.Range(0, aniInfoByIdx.AniNameList.Count);
-    //	if (aniInfoByIdx != null)
-    //	{
-    //		if (num < 0 || num >= aniInfoByIdx.AniNameList.Count)
-    //		{
-    //			num = 0;
-    //		}
-    //		return aniInfoByIdx.AniNameList[num];
-    //	}
-    //	return null;
-    //}
+    public AniInfo.AniInfoNode GetAniInfoNodeRandom(ACTION_INDEX actIdx)
+    {
+        AniInfo aniInfoByIdx = this.GetAniInfoByIdx(actIdx);
+        if (aniInfoByIdx == null)
+        {
+            return null;
+        }
+        int num = UnityEngine.Random.Range(0, aniInfoByIdx.AniNameList.Count);
+        if (aniInfoByIdx != null)
+        {
+            if (num < 0 || num >= aniInfoByIdx.AniNameList.Count)
+            {
+                num = 0;
+            }
+            return aniInfoByIdx.AniNameList[num];
+        }
+        return null;
+    }
 
-    //// Token: 0x06002150 RID: 8528 RVA: 0x0000221B File Offset: 0x0000041B
     //private void PlayAniSound(int SoundIdx, bool bLoop)
     //{
     //}
 
     private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation)
     {
-        this.PlayAnimation(aniName, isBlend, resetAnimation, this.GetCullingType());
+        this.PlayAnimation(aniName, isBlend, resetAnimation);
     }
 
     private void PlayAnimation(string aniName, bool isBlend, bool resetAnimation, AnimationCullingType act)
@@ -630,54 +626,54 @@ public class ModAnimation : Module
         {
             return;
         }
-        this._animation.cullingType = act;
-        if (isBlend)
-        {
-            if (this._animation.IsPlaying(this.m_strLastAniName))
-            {
-                this._animation[aniName].blendMode = AnimationBlendMode.Blend;
-                this._animation[aniName].layer = -1;
-                this._animation.Blend(aniName);
-                this.faceAniName = aniName;
-            }
-        }
-        else
-        {
-            if (this._animation[aniName].wrapMode == WrapMode.Once)
-            {
-                this._animation[aniName].wrapMode = WrapMode.ClampForever;
-            }
-            if (this._animation[aniName].wrapMode == WrapMode.ClampForever && this._animation[aniName].time >= this._animation[aniName].length)
-            {
-                this._animation[aniName].time = 0f;
-            }
-            //this.m_cCurrentAniState = this.GetAnimationState(aniName);
-            //this.m_fAniStartTime = GameTime.time;
-            //this.m_fCurrentMaxAniLength = this.GetAnimationLength(aniName);
-            //this.m_cCurrentSoundData = Singleton<AnimationSoundData>.GetInstance().GetData(this.m_cCurAniNode.SoundIdx);
-            //if (this.m_strLastAniName != aniName || resetAnimation)
-            //{
-            //    this.m_fCurrentAniLength = this.m_cCurrentAniState.length;
-            //    this.ResetEffectAndMove();
-            //    this.RemoveLastSound();
-            //    this.ResetSound();
-            //}
-            if (resetAnimation)
-            {
-                this._animation[aniName].time = 0f;
-                this._animation.CrossFade(aniName, fadeLength);
-            }
-            else
-            {
-                this._animation.CrossFade(aniName, fadeLength);
-                //if (MovieManager.MovieMag.IsPlaying() && this._animation[aniName].wrapMode != WrapMode.Loop && this._animation.IsPlaying(this.faceAniName))
-                //{
-                //    this._animation[this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE)].wrapMode = WrapMode.Loop;
-                //    this._animation.CrossFadeQueued(this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE), fadeLength);
-                //}
-            }
-            this.m_strLastAniName = aniName;
-        }
+        //this._animator.cullingType = act;
+        //if (isBlend)
+        //{
+        //    if (this._animator.IsPlaying(this.m_strLastAniName))
+        //    {
+        //        this._animator[aniName].blendMode = AnimationBlendMode.Blend;
+        //        this._animator[aniName].layer = -1;
+        //        this._animator.Blend(aniName);
+        //        this.faceAniName = aniName;
+        //    }
+        //}
+        //else
+        //{
+        //    if (this._animator[aniName].wrapMode == WrapMode.Once)
+        //    {
+        //        this._animator[aniName].wrapMode = WrapMode.ClampForever;
+        //    }
+        //    if (this._animator[aniName].wrapMode == WrapMode.ClampForever && this._animator[aniName].time >= this._animator[aniName].length)
+        //    {
+        //        this._animator[aniName].time = 0f;
+        //    }
+        //    //this.m_cCurrentAniState = this.GetAnimationState(aniName);
+        //    //this.m_fAniStartTime = GameTime.time;
+        //    //this.m_fCurrentMaxAniLength = this.GetAnimationLength(aniName);
+        //    //this.m_cCurrentSoundData = Singleton<AnimationSoundData>.GetInstance().GetData(this.m_cCurAniNode.SoundIdx);
+        //    //if (this.m_strLastAniName != aniName || resetAnimation)
+        //    //{
+        //    //    this.m_fCurrentAniLength = this.m_cCurrentAniState.length;
+        //    //    this.ResetEffectAndMove();
+        //    //    this.RemoveLastSound();
+        //    //    this.ResetSound();
+        //    //}
+        //    if (resetAnimation)
+        //    {
+        //        this._animator[aniName].time = 0f;
+        //        this._animator.CrossFade(aniName, fadeLength);
+        //    }
+        //    else
+        //    {
+        //        this._animator.CrossFade(aniName, fadeLength);
+        //        //if (MovieManager.MovieMag.IsPlaying() && this._animation[aniName].wrapMode != WrapMode.Loop && this._animation.IsPlaying(this.faceAniName))
+        //        //{
+        //        //    this._animation[this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE)].wrapMode = WrapMode.Loop;
+        //        //    this._animation.CrossFadeQueued(this.GetAniNameByIdx(ACTION_INDEX.AN_IDLE), fadeLength);
+        //        //}
+        //    }
+        //    this.m_strLastAniName = aniName;
+        //}
     }
 
     //public void PlayAnimationRandom(ACTION_INDEX actIdx)
@@ -770,12 +766,7 @@ public class ModAnimation : Module
 
     public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation)
     {
-        this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, this.GetCullingType());
-    }
-
-    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act)
-    {
-        this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act, 0.3f);
+        this.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, 0.3f);
     }
 
     //// Token: 0x0600215E RID: 8542 RVA: 0x000E38E4 File Offset: 0x000E1AE4
@@ -800,64 +791,55 @@ public class ModAnimation : Module
     //	this.SetAnimationTime(actIdx, animationLength);
     //}
 
-    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, AnimationCullingType act, float fadeLength)
+    /// <summary>
+    /// 播放动画
+    /// </summary>
+    /// <param name="actIdx"></param>
+    /// <param name="speed"></param>
+    /// <param name="wrapMode"></param>
+    /// <param name="isBlend"></param>
+    /// <param name="resetAnimation"></param>
+    /// <param name="act"></param>
+    /// <param name="fadeLength"></param>
+    public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, float fadeLength)
     {
-        _animation.Play("Run");
-        //if (this._animation == null)
-        //{
-        //    return;
-        //}
-        //if (actIdx == ACTION_INDEX.AN_NONE)
-        //{
-        //    return;
-        //}
-        //AniInfo.AniInfoNode aniInfoNodeRandom = this.GetAniInfoNodeRandom(actIdx);
-        //if (aniInfoNodeRandom == null)
-        //{
-        //    //Logger.LogWarningOnce(new object[]
-        //    //{
-        //    //    string.Concat(new object[]
-        //    //    {
-        //    //        this._role._roleType.ToString(),
-        //    //        " The Animation ",
-        //    //        actIdx,
-        //    //        " is None"
-        //    //    })
-        //    //});
-        //    return;
-        //}
-        //if (this._animation[aniInfoNodeRandom.Name] == null)
-        //{
-        //    //Logger.LogWarningOnce(new object[]
-        //    //{
-        //    //    this._role._roleType.ToString() + " The Animation " + aniInfoNodeRandom.Name + " is None"
-        //    //});
-        //    return;
-        //}
-        //this._animation.cullingType = act;
-        ////this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
-        ////this._animation[aniInfoNodeRandom.Name].speed = this.m_fCurrentAniSpeed * GameTime.timeScale * this.AniSpeed;
-        ////this._animation[aniInfoNodeRandom.Name].wrapMode = wrapMode;
-        ////this.m_cCurAniNode = aniInfoNodeRandom.Clone();
-        //this._curAniIndex = actIdx;
-        ////this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
-        //bool bLoop = wrapMode == WrapMode.Loop;
-        ////this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
-        //foreach (Role role in this._role.rolePartsList)
-        //{
-        //    //RolePart rolePart = (RolePart)role;
-        //    //if (rolePart != null)
-        //    //{
-        //    //    ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
-        //    //    if (modAnimation != null)
-        //    //    {
-        //    //        modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
-        //    //    }
-        //    //}
-        //}
+       
+        if (this._animator == null)
+        {
+            return;
+        }
+        if (actIdx == ACTION_INDEX.AN_NONE)
+        {
+            return;
+        }
+        AniInfo.AniInfoNode aniInfoNodeRandom = this.GetAniInfoNodeRandom(actIdx);
+        if (aniInfoNodeRandom == null)
+        {
+            Debug.LogWarning(this._role._roleType.ToString()+" The Animation "+actIdx+" is None");
+            return;
+        }
+        Debug.Log(aniInfoNodeRandom.Name);
+        this.m_fCurrentAniSpeed = speed * aniInfoNodeRandom.SpeedRateBase;
+        _animator.Play(aniInfoNodeRandom.Name);
+        //this.m_cCurAniNode = aniInfoNodeRandom.Clone();
+        this._curAniIndex = actIdx;
+        //this.PlayAnimation(aniInfoNodeRandom.Name, isBlend, resetAnimation, act, fadeLength);
+        bool bLoop = wrapMode == WrapMode.Loop;
+        //this.PlayAniSound(aniInfoNodeRandom.SoundIdx, bLoop);
+        foreach (Role role in this._role.rolePartsList)
+        {
+            //RolePart rolePart = (RolePart)role;
+            //if (rolePart != null)
+            //{
+            //    ModAnimation modAnimation = rolePart.GetModule(MODULE_TYPE.MT_MOTION) as ModAnimation;
+            //    if (modAnimation != null)
+            //    {
+            //        modAnimation.PlayAnimation(actIdx, speed, wrapMode, isBlend, resetAnimation, act);
+            //    }
+            //}
+        }
     }
 
-    //// Token: 0x06002161 RID: 8545 RVA: 0x000E3B54 File Offset: 0x000E1D54
     //public bool IsPlaying(ACTION_INDEX actIdx)
     //{
     //	if (this._animation == null)
@@ -1047,13 +1029,4 @@ public class ModAnimation : Module
     //	}
     //	this.m_lstIsMove.Clear();
     //}
-
-    private AnimationCullingType GetCullingType()
-	{
-		if (base.Role._roleType == ROLE_TYPE.RT_NPC)
-		{
-			return AnimationCullingType.BasedOnUserBounds;
-		}
-		return AnimationCullingType.AlwaysAnimate;
-	}
 }

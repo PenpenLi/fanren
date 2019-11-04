@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 向前走
+/// </summary>
 public class ControlStateWalkForward : ControlStateBase
 {
     private MoveTarget m_cMove;
@@ -49,11 +51,11 @@ public class ControlStateWalkForward : ControlStateBase
 
     public override bool OnEnter(ControlEventBase ceb)
     {
-        //ModBuffProperty modBuffProperty = (ModBuffProperty)this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF);
-        //if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC && modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND) != 0)
-        //{
-        //    return false;
-        //}
+        ModBuffProperty modBuffProperty = (ModBuffProperty)this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF);
+        if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC && modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND) != 0)
+        {
+            return false;
+        }
         base.OnEnter(ceb);
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;
@@ -74,37 +76,37 @@ public class ControlStateWalkForward : ControlStateBase
         if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
         {
             ////如果角色类型不是玩家
-            //if (array != null)
+            if (array != null)
+            {
+                if (this.m_lstPathPoints == null)
+                {
+                    this.m_lstPathPoints = new List<Vector3>();
+                }
+                this.m_lstPathPoints.Clear();
+                foreach (Vector3 item in array)
+                {
+                    this.m_lstPathPoints.Add(item);
+                }
+                this.m_iPointIndex = 0;
+                this.m_iPointNum = this.m_lstPathPoints.Count;
+                if (this.m_iPointNum > 0)
+                {
+                    this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
+                }
+                else
+                {
+                    this.m_cMove.Stop();
+                }
+            }
+            //else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
             //{
-            //    if (this.m_lstPathPoints == null)
-            //    {
-            //        this.m_lstPathPoints = new List<Vector3>();
-            //    }
-            //    this.m_lstPathPoints.Clear();
-            //    foreach (Vector3 item in array)
-            //    {
-            //        this.m_lstPathPoints.Add(item);
-            //    }
-            //    this.m_iPointIndex = 0;
-            //    this.m_iPointNum = this.m_lstPathPoints.Count;
-            //    if (this.m_iPointNum > 0)
-            //    {
-            //        this.m_cMove.SetTargetPos(this.m_lstPathPoints[0]);
-            //    }
-            //    else
-            //    {
-            //        this.m_cMove.Stop();
-            //    }
+            //    this.Setm_lstPathPoints(vector);
             //}
-            ////else if (!Singleton<DrillSystem>.GetInstance().IsDrillState)
-            ////{
-            ////    this.Setm_lstPathPoints(vector);
-            ////}
-            //else
-            //{
-            //    this.m_cMove.SetTargetPos(vector);
-            //}
-            //this.m_cMove.RotateWhenMove = true;
+            else
+            {
+                this.m_cMove.SetTargetPos(vector);
+            }
+            this.m_cMove.RotateWhenMove = true;
         }
         else
         {
@@ -138,8 +140,8 @@ public class ControlStateWalkForward : ControlStateBase
 
     public override void OnExit()
     {
+        Debug.Log("执行Exit");
         base.OnExit();
-        Debug.Log("状态切换为Idle");
         this.m_cControlMfs.ChangeStateToIdle();//退出状态时切换为Idle
     }
 

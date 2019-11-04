@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// 移动目标
+/// </summary>
 public class MoveTarget : MoveBase
 {
     private Rotate rotate;
@@ -13,7 +16,7 @@ public class MoveTarget : MoveBase
 
     private ModAttribute modAtt;
 
-    //private ModVoice modVoice;
+    private ModVoice modVoice;
 
     private List<bool> isCreated = new List<bool>();
 
@@ -23,7 +26,7 @@ public class MoveTarget : MoveBase
 	{
         this.rotate = new Rotate(role.GetTrans(), 800f, Vector3.zero);
         this.modAtt = (ModAttribute)role.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
-        //this.modVoice = (ModVoice)role.GetModule(MODULE_TYPE.MT_VOICE);
+        this.modVoice = (ModVoice)role.GetModule(MODULE_TYPE.MT_VOICE);
     }
 
 	public bool EnableDirtEffect { get; set; }
@@ -175,6 +178,10 @@ public class MoveTarget : MoveBase
 		}
 	}
 
+    /// <summary>
+    /// 设置转身速度
+    /// </summary>
+    /// <param name="speed"></param>
     public void SetTurnSpeed(float speed)
     {
         if (this.rotate != null)

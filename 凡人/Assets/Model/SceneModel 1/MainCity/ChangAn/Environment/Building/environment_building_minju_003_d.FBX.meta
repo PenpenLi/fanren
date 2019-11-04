@@ -1,56 +1,144 @@
 fileFormatVersion: 2
 guid: 19e427986f9ca204fa7963a90e4a0bd9
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: environment_building_minju_003_13
-    100002: //RootNode
-    100004: environment_building_minju_003_01
-    100006: environment_building_minju_003_28
-    100008: environment_building_minju_003_11
-    100010: environment_building_minju_003_10
-    400000: environment_building_minju_003_13
-    400002: //RootNode
-    400004: environment_building_minju_003_01
-    400006: environment_building_minju_003_28
-    400008: environment_building_minju_003_11
-    400010: environment_building_minju_003_10
-    2300000: environment_building_minju_003_13
-    2300002: environment_building_minju_003_01
-    2300004: environment_building_minju_003_28
-    2300006: environment_building_minju_003_11
-    2300008: environment_building_minju_003_10
-    3300000: environment_building_minju_003_13
-    3300002: environment_building_minju_003_01
-    3300004: environment_building_minju_003_28
-    3300006: environment_building_minju_003_11
-    3300008: environment_building_minju_003_10
-    4300000: environment_building_minju_003_10
-    4300002: environment_building_minju_003_11
-    4300004: environment_building_minju_003_28
-    4300006: environment_building_minju_003_01
-    4300008: environment_building_minju_003_13
-    11100000: //RootNode
+  serializedVersion: 26
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: environment_building_minju_003_13
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: environment_building_minju_003_01
+  - first:
+      1: 100006
+    second: environment_building_minju_003_28
+  - first:
+      1: 100008
+    second: environment_building_minju_003_11
+  - first:
+      1: 100010
+    second: environment_building_minju_003_10
+  - first:
+      4: 400000
+    second: environment_building_minju_003_13
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: environment_building_minju_003_01
+  - first:
+      4: 400006
+    second: environment_building_minju_003_28
+  - first:
+      4: 400008
+    second: environment_building_minju_003_11
+  - first:
+      4: 400010
+    second: environment_building_minju_003_10
+  - first:
+      23: 2300000
+    second: environment_building_minju_003_13
+  - first:
+      23: 2300002
+    second: environment_building_minju_003_01
+  - first:
+      23: 2300004
+    second: environment_building_minju_003_28
+  - first:
+      23: 2300006
+    second: environment_building_minju_003_11
+  - first:
+      23: 2300008
+    second: environment_building_minju_003_10
+  - first:
+      33: 3300000
+    second: environment_building_minju_003_13
+  - first:
+      33: 3300002
+    second: environment_building_minju_003_01
+  - first:
+      33: 3300004
+    second: environment_building_minju_003_28
+  - first:
+      33: 3300006
+    second: environment_building_minju_003_11
+  - first:
+      33: 3300008
+    second: environment_building_minju_003_10
+  - first:
+      43: 4300000
+    second: environment_building_minju_003_10
+  - first:
+      43: 4300002
+    second: environment_building_minju_003_11
+  - first:
+      43: 4300004
+    second: environment_building_minju_003_28
+  - first:
+      43: 4300006
+    second: environment_building_minju_003_01
+  - first:
+      43: 4300008
+    second: environment_building_minju_003_13
+  - first:
+      111: 11100000
+    second: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: environment_building_minju_003_01
+    second: {fileID: 2100000, guid: 5a522fc57369c8d4e841a353ae03dcb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: environment_building_minju_003_10
+    second: {fileID: 2100000, guid: 10b5321985fa6774ca7156f8fbd5e3cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: environment_building_minju_003_11
+    second: {fileID: 2100000, guid: 1d92cc47cc9ddec45ab6eba0854a6a80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: environment_building_minju_003_13
+    second: {fileID: 2100000, guid: 49ce7803e55797441bcc5879293cdcf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: environment_building_minju_003_28
+    second: {fileID: 2100000, guid: c143617e22f01c4478e595603af136ab, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 3
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -58,13 +146,23 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -74,9 +172,15 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -86,10 +190,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

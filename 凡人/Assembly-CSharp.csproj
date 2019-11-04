@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BundleObject.cs" />
+    <Compile Include="Assets\Scripts\CameraBoxsSelect\CameraBoxsSelect.cs" />
     <Compile Include="Assets\Scripts\FantasyTools\FantasyTimer.cs" />
     <Compile Include="Assets\Scripts\FantasyTools\IO.cs" />
     <Compile Include="Assets\Scripts\FantasyTools\TDelayTimeData.cs" />
@@ -156,17 +157,22 @@
     <Compile Include="Assets\Scripts\Role\Module\MT_CAMERA\CameraEffectManager.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CAMERA\ModCamera.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_COLLIDER\ModColliderProperty.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventAttackIdle.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventBase.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventFalling.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventFly.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventIdle.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventMoveForward.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventRestoreAttackIdle.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventRestoreIdle.cs" />
-    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlEventSwim.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventAttack.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventAttackIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventBase.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventFalling.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventFly.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventMoveForward.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventRestoreAttackIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventRestoreIdle.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventSwim.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateAttack.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBackWeapon.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBase.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBuff.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateDie.cs" />
+    <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateFalling.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateFly.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateHurt.cs" />
     <Compile Include="Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateIdle.cs" />
@@ -333,12 +339,13 @@
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
     <None Include="Assets\Resources\conf\BottleSubTag.txt" />
+    <None Include="Assets\Model\RoleModel\Monster\nvbing\怪物-近战女兵.txt" />
     <None Include="Assets\Resources\ItemAtlas\iconItem_icon.txt" />
     <None Include="Assets\Resources\conf\DataFile\ItemData\ItemInfoConfig.txt" />
+    <None Include="Assets\Model\RoleModel\NPC\xianzi\动作参数.txt" />
     <None Include="Assets\Resources\conf\AmbitConfig.txt" />
     <None Include="Assets\Resources\conf\Monster.txt" />
     <None Include="Assets\Resources\conf\res\normalInfo.txt" />
-    <None Include="Assets\Model\RoleModel\Player\cike\动画帧数刺客.txt" />
     <None Include="Assets\Resources\conf\Anim\Animation.txt" />
     <None Include="Assets\Resources\conf\res\RenderSettings.txt" />
     <None Include="Assets\Resources\conf\MissionInfo.txt" />
@@ -357,9 +364,11 @@
     <None Include="Assets\Resources\conf\DataFile\ItemData\ItemAtlasConfig.txt" />
     <None Include="Assets\Resources\conf\RoleModelConfig.txt" />
     <None Include="Assets\Resources\conf\BgSound.txt" />
+    <None Include="Assets\Model\RoleModel\Boss\dazhuang\帧数参数.txt" />
     <None Include="Assets\Resources\conf\SoundTable.txt" />
     <None Include="Assets\Resources\conf\res\mapinfo.txt" />
     <None Include="Assets\Resources\conf\BottleConfig.txt" />
+    <None Include="Assets\Model\RoleModel\Monster\qinbing\怪物-亲兵的动画帧数.txt" />
     <None Include="Assets\Resources\conf\RoleBaseConfig.txt" />
     <None Include="Assets\Resources\conf\DataFile\PlayerSkill\PlayerSkill.txt" />
     <None Include="Assets\Resources\conf\Anim\RoleAniTypeDefine.txt" />

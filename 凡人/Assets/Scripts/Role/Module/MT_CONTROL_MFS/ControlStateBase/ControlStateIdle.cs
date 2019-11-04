@@ -19,7 +19,7 @@ public class ControlStateIdle : ControlStateBase
 
 	public override bool OnEnter(ControlEventBase ceb)
 	{
-		//this.m_cAnimation.PlayAnimation(ACTION_INDEX.AN_IDLE, WrapMode.Loop);
+		this.m_cAnimation.PlayAnimation(ACTION_INDEX.AN_IDLE, WrapMode.Loop);
 		return true;
 	}
 

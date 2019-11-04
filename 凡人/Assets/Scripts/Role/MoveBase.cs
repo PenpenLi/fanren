@@ -86,13 +86,13 @@ public class MoveBase
         }
         if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC)
 		{
-			//ModBuffProperty modBuffProperty = this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
-			//float num = (float)modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND);
-			//if (num != 0f)
-			//{
-			//	return false;
-			//}
-		}
+            ModBuffProperty modBuffProperty = this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
+            float num = (float)modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND);
+            if (num != 0f)
+            {
+                return false;
+            }
+        }
         if (this.m_bGravity)
         {
             this.m_cController.Move(Vector3.up * -17f);
@@ -101,7 +101,7 @@ public class MoveBase
         {
             if (this.m_eAction != ACTION_INDEX.AN_NONE)
             {
-                this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, AnimationCullingType.BasedOnUserBounds, 0.2f);
+                this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, 0.2f);
             }
             this.isStart = true;
         }

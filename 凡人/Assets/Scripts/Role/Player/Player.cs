@@ -427,7 +427,7 @@ public class Player : Role
                 this.m_cModCamera = (ModCamera)module;
                 break;
             case MODULE_TYPE.MT_MOTION:
-                module = new ModAnimation(this, base.roleGameObject.RoleAnimation, base.roleGameObject.RoleController);
+                module = new ModAnimation(this, base.roleGameObject.RoleAnimator, base.roleGameObject.RoleController);
                 this.modAnimation = (ModAnimation)module;
                 break;
             case MODULE_TYPE.MT_ORGANIZATION:
@@ -854,6 +854,11 @@ public class Player : Role
     //		}
     //	}
 
+    /// <summary>
+    /// 按键输入
+    /// </summary>
+    /// <param name="VerInput"></param>
+    /// <param name="HorInput"></param>
     public override void Input(float VerInput, float HorInput)
     {
         if (base.IsDead())
@@ -865,7 +870,6 @@ public class Player : Role
         Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;//移动目标点
-        Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
         Debug.Log(currentStateId);
         if (currentStateId != CONTROL_STATE.ATTACK_IDLE)

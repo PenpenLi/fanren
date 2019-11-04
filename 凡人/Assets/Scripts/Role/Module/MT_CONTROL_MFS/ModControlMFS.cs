@@ -137,17 +137,17 @@ public class ModControlMFS : Module
         }
         stateByInput2.EnterProcess();
         this.m_cCurrentState = stateByInput2;
-        //if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER)//&& CameraBoxsSelect.Instance != null
-        //{
-        //    if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
-        //    {
-        //        //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
-        //    }
-        //    else
-        //    {
-        //        //CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
-        //    }
-        //}
+        if (this.m_cCurrentState != null && this._role._roleType == ROLE_TYPE.RT_PLAYER&& CameraBoxsSelect.Instance != null)
+        {
+            if (this.m_cCurrentState.GetState() == CONTROL_STATE.ATTACK)
+            {
+                CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_FIGHT;
+            }
+            else
+            {
+                CameraBoxsSelect.Instance._NowState = CameraBoxsSelect.ChangeState.CS_NORMAL;
+            }
+        }
         return true;
     }
 
@@ -166,10 +166,10 @@ public class ModControlMFS : Module
             this.m_mapOutputStates.Add(CONTROL_STATE.JUMP, new ControlStateJump(role, control, mcm));
             this.m_mapOutputStates.Add(CONTROL_STATE.BUFF, new ControlStateBuff(role, control, mcm));
             this.m_mapOutputStates.Add(CONTROL_STATE.HURT, new ControlStateHurt(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.FALLING, new ControlStateFalling(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK, new ControlStateAttack(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.BACK_WEAPON, new ControlStateBackWeapon(role, control, mcm));
-            //this.m_mapOutputStates.Add(CONTROL_STATE.DIE, new ControlStateDie(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.FALLING, new ControlStateFalling(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK, new ControlStateAttack(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.BACK_WEAPON, new ControlStateBackWeapon(role, control, mcm));
+            this.m_mapOutputStates.Add(CONTROL_STATE.DIE, new ControlStateDie(role, control, mcm));
             this.m_mapOutputStates.Add(CONTROL_STATE.WALK_FORWARD, new ControlStateWalkForward(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.SKILL, new ControlStateSkill(role, control, mcm));
             //this.m_mapOutputStates.Add(CONTROL_STATE.ATTACK_IDLE, new ControlStateAttackIdle(role, control, mcm));
@@ -196,13 +196,13 @@ public class ModControlMFS : Module
             this.m_mapInpuStates.Add(CONTROL_INPUT.IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_IDLE, this.m_mapOutputStates[CONTROL_STATE.IDLE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.RESTORE_ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.JUMP, this.m_mapOutputStates[CONTROL_STATE.JUMP]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.BUFF, this.m_mapOutputStates[CONTROL_STATE.BUFF]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.HURT, this.m_mapOutputStates[CONTROL_STATE.HURT]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.FALLING, this.m_mapOutputStates[CONTROL_STATE.FALLING]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.ATTACK, this.m_mapOutputStates[CONTROL_STATE.ATTACK]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.BACK_WEAPON, this.m_mapOutputStates[CONTROL_STATE.BACK_WEAPON]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.DIE, this.m_mapOutputStates[CONTROL_STATE.DIE]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.JUMP, this.m_mapOutputStates[CONTROL_STATE.JUMP]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.BUFF, this.m_mapOutputStates[CONTROL_STATE.BUFF]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.HURT, this.m_mapOutputStates[CONTROL_STATE.HURT]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.FALLING, this.m_mapOutputStates[CONTROL_STATE.FALLING]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.ATTACK, this.m_mapOutputStates[CONTROL_STATE.ATTACK]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.BACK_WEAPON, this.m_mapOutputStates[CONTROL_STATE.BACK_WEAPON]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.DIE, this.m_mapOutputStates[CONTROL_STATE.DIE]);
             this.m_mapInpuStates.Add(CONTROL_INPUT.WALK_FORWARD, this.m_mapOutputStates[CONTROL_STATE.WALK_FORWARD]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.SKILL, this.m_mapOutputStates[CONTROL_STATE.SKILL]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.ATTACK_IDLE, this.m_mapOutputStates[CONTROL_STATE.ATTACK_IDLE]);
@@ -220,7 +220,7 @@ public class ModControlMFS : Module
             //this.m_mapInpuStates.Add(CONTROL_INPUT.QTE, this.m_mapOutputStates[CONTROL_STATE.QTE]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.BE_CONTROLL, this.m_mapOutputStates[CONTROL_STATE.BE_CONTROLL]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.SWIM, this.m_mapOutputStates[CONTROL_STATE.SWIM]);
-            //this.m_mapInpuStates.Add(CONTROL_INPUT.FLY, this.m_mapOutputStates[CONTROL_STATE.FLY]);
+            this.m_mapInpuStates.Add(CONTROL_INPUT.FLY, this.m_mapOutputStates[CONTROL_STATE.FLY]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.PUSH, this.m_mapOutputStates[CONTROL_STATE.PUSH]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.WALK_SURROUND, this.m_mapOutputStates[CONTROL_STATE.WALK_SURROUND]);
             //this.m_mapInpuStates.Add(CONTROL_INPUT.GATHER_STRENGTH, this.m_mapOutputStates[CONTROL_STATE.GATHER_STRENGTH]);

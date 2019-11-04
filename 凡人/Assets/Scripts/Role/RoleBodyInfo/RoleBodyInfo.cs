@@ -7,7 +7,7 @@ public class RoleBodyInfo : MonoBehaviour
 {
 	public CharacterController Controller;
 
-	public Animation Animation;
+	public Animator Animator;
 
 	public List<HARM_PART> HarmPartType = new List<HARM_PART>();
 

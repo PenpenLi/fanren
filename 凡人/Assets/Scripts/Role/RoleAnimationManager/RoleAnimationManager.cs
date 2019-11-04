@@ -439,13 +439,13 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
             return false;
         }
 
-        if (role.roleGameObject.RoleAnimation == null)
+        if (role.roleGameObject.RoleAnimator == null)
         {
-            Animation animation = role.roleGameObject.RoleBody.AddComponent<Animation>();
-            animation.playAutomatically = true;
-            animation.animatePhysics = false;
-            animation.cullingType = AnimationCullingType.BasedOnRenderers;
-            animation.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
+            Animator animator = role.roleGameObject.RoleBody.AddComponent<Animator>();
+            //animator.playAutomatically = true;
+            //animator.animatePhysics = false;
+            //animator.cullingType = AnimationCullingType.BasedOnRenderers;
+            //animator.localBounds = new Bounds(Vector3.zero, new Vector3(500f, 500f, 500f));
         }
 
         ArrayList arrayList = this.FindAniIndexByRoleAniType(attachType);
@@ -463,17 +463,17 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
             {
                 if (roleAniCollect.ContainsType != null && roleAniCollect.ContainsType.Contains(attachType))
                 {
-                    AnimationClip animationClip = role.roleGameObject.RoleAnimation.GetClip(roleAniCollect.aniName);
-                    if (animationClip == null)
-                    {
-                        animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
-                        if (animationClip == null)
-                        {
-                            Debug.Log("AttachAnimation Continue :"+attachType+" .No find AnimationClip "+roleAniCollect.aniName+" RoleModeID="+role.roleGameObject.ModelID);
-                            continue;
-                        }
-                        role.roleGameObject.RoleAnimation.AddClip(animationClip, roleAniCollect.aniName);
-                    }
+                    //AnimationClip animationClip = role.roleGameObject.RoleAnimator.GetClip(roleAniCollect.aniName);
+                    //if (animationClip == null)
+                    //{
+                    //    animationClip = this.LoadAnimation(role.roleGameObject.ModelInfo.Path + "/" + roleAniCollect.aniName);
+                    //    if (animationClip == null)
+                    //    {
+                    //        Debug.Log("AttachAnimation Continue :"+attachType+" .No find AnimationClip "+roleAniCollect.aniName+" RoleModeID="+role.roleGameObject.ModelID);
+                    //        continue;
+                    //    }
+                    //    role.roleGameObject.RoleAnimator.AddClip(animationClip, roleAniCollect.aniName);
+                    //}
                     //if (!this._nowRunAnimation.ContainsKey(attachType))
                     //{
                     //    ArrayList arrayList2 = new ArrayList();

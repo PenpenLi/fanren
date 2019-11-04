@@ -434,7 +434,7 @@ public class AmbitSystem
 			return;
 		}
 		GameObject roleBody = this.player.roleGameObject.RoleBody;
-		Animation roleAnimation = this.player.roleGameObject.RoleAnimation;
+        Animator roleAnimator = this.player.roleGameObject.RoleAnimator;
 		if (this.player.ChangeModel(this.currentData.BodyId, false))
 		{
 			//RoleBaseFun.CopyAnimation(roleAnimation, this.player.roleGameObject.RoleAnimation);
@@ -450,7 +450,7 @@ public class AmbitSystem
 			return;
 		}
 		GameObject roleBody = this.player.roleGameObject.RoleBody;
-		Animation roleAnimation = this.player.roleGameObject.RoleAnimation;
+        Animator roleAnimator = this.player.roleGameObject.RoleAnimator;
 		if (this.player.ChangeModel(1, false))
 		{
 			//RoleBaseFun.CopyAnimation(roleAnimation, this.player.roleGameObject.RoleAnimation);
