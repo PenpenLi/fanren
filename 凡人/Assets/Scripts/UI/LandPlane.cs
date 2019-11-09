@@ -21,6 +21,14 @@ public class LandPlane : GUIBase
 
     public GameObject SystemPlane;
 
+    public Text Text1;
+
+    public Text Text2;
+
+    public Text Text3;
+
+    public Text Text4;
+
     //   protected POINTER_INFO m_loadPtEv = default(POINTER_INFO);
 
     //   // Token: 0x04000A88 RID: 2696
@@ -199,6 +207,10 @@ public class LandPlane : GUIBase
         KeyManager.hotKeyEnabled = false;
         SingletonMono<AudioManager>.GetInstance().PauseAll(false);//播放音乐
         MouseManager.ShowCursor(true);//显示鼠标
+
+        SDManager.SDSave.Reset();
+        SDManager.SDSave = new SaveData();
+        AddLoadData();
     }
 
     public void OnNewGameBtn()
@@ -304,57 +316,58 @@ public class LandPlane : GUIBase
     //	this._buttonFixOn.AddInputDelegate(new EZInputDelegate(object5.OnCallBackMethod));
     //}
 
-    //// Token: 0x06000AE5 RID: 2789 RVA: 0x0004AFCC File Offset: 0x000491CC
-    //private void AddLoadData()
-    //{
-    //	foreach (SystemTag systemTag in this.m_prefabList.Keys)
-    //	{
-    //		GameObject gameObject;
-    //		SaveInfo saveInfo;
-    //		if (this.m_prefabList.TryGetValue(systemTag, out gameObject) && this.m_saveInfo.TryGetValue(systemTag, out saveInfo) && saveInfo != SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag)))
-    //		{
-    //			this.m_saveInfo[systemTag] = SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag));
-    //			if (this.m_saveInfo[systemTag] != null)
-    //			{
-    //				Transform transform = gameObject.transform.FindChild("MapName");
-    //				if (transform != null)
-    //				{
-    //					SpriteText component = transform.GetComponent<SpriteText>();
-    //					if (component != null)
-    //					{
-    //						component.Text = this.m_saveInfo[systemTag].MapName;
-    //					}
-    //				}
-    //				Transform transform2 = gameObject.transform.FindChild("Time");
-    //				if (transform2 != null)
-    //				{
-    //					SpriteText component2 = transform2.GetComponent<SpriteText>();
-    //					if (component2 != null)
-    //					{
-    //					}
-    //				}
-    //				Transform transform3 = gameObject.transform.FindChild("Ico");
-    //				if (transform3 != null)
-    //				{
-    //					MeshRenderer component3 = transform3.GetComponent<MeshRenderer>();
-    //					if (component3 != null)
-    //					{
-    //						component3.material.mainTexture = SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag)).Capture;
-    //					}
-    //				}
-    //				Transform transform4 = gameObject.transform.FindChild("Date");
-    //				if (transform4 != null)
-    //				{
-    //					SpriteText component4 = transform4.GetComponent<SpriteText>();
-    //					if (component4 != null)
-    //					{
-    //						component4.Text = this.m_saveInfo[systemTag].SaveTime;
-    //					}
-    //				}
-    //			}
-    //		}
-    //	}
-    //}
+    private void AddLoadData()
+    {
+        //foreach (SystemTag systemTag in this.m_prefabList.Keys)
+        //{
+        GameObject gameObject;
+        SaveInfo saveInfo;
+
+        SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(SystemTag.LOAD_CHILD_AUTO));
+        //    //if (this.m_prefabList.TryGetValue(systemTag, out gameObject) && this.m_saveInfo.TryGetValue(systemTag, out saveInfo) && saveInfo != SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag)))
+        //    //{
+        //    //    this.m_saveInfo[systemTag] = SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag));
+        //    //    if (this.m_saveInfo[systemTag] != null)
+        //    //    {
+        //    //        Transform transform = gameObject.transform.FindChild("MapName");
+        //    //        if (transform != null)
+        //    //        {
+        //    //            SpriteText component = transform.GetComponent<SpriteText>();
+        //    //            if (component != null)
+        //    //            {
+        //    //                component.Text = this.m_saveInfo[systemTag].MapName;
+        //    //            }
+        //    //        }
+        //    //        Transform transform2 = gameObject.transform.FindChild("Time");
+        //    //        if (transform2 != null)
+        //    //        {
+        //    //            SpriteText component2 = transform2.GetComponent<SpriteText>();
+        //    //            if (component2 != null)
+        //    //            {
+        //    //            }
+        //    //        }
+        //    //        Transform transform3 = gameObject.transform.FindChild("Ico");
+        //    //        if (transform3 != null)
+        //    //        {
+        //    //            MeshRenderer component3 = transform3.GetComponent<MeshRenderer>();
+        //    //            if (component3 != null)
+        //    //            {
+        //    //                component3.material.mainTexture = SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag)).Capture;
+        //    //            }
+        //    //        }
+        //    //        Transform transform4 = gameObject.transform.FindChild("Date");
+        //    //        if (transform4 != null)
+        //    //        {
+        //    //            SpriteText component4 = transform4.GetComponent<SpriteText>();
+        //    //            if (component4 != null)
+        //    //            {
+        //    //                component4.Text = this.m_saveInfo[systemTag].SaveTime;
+        //    //            }
+        //    //        }
+        //    //    }
+        //    //}
+        //}
+    }
 
     //// Token: 0x06000AE6 RID: 2790 RVA: 0x0004B1B0 File Offset: 0x000493B0
     //public void SetSound(int id)

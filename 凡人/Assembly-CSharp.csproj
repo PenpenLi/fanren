@@ -307,6 +307,8 @@
     <Compile Include="Assets\Scripts\Role\WeaponManager\EquipCfgType.cs" />
     <Compile Include="Assets\Scripts\Role\WeaponManager\WeaponInfoData.cs" />
     <Compile Include="Assets\Scripts\Role\WeaponManager\WeaponManager.cs" />
+    <Compile Include="Assets\Scripts\Save\DES.cs" />
+    <Compile Include="Assets\Scripts\Save\DynamicData.cs" />
     <Compile Include="Assets\Scripts\Save\SaveData.cs" />
     <Compile Include="Assets\Scripts\Save\SaveDataBase.cs" />
     <Compile Include="Assets\Scripts\Save\SaveInfo.cs" />

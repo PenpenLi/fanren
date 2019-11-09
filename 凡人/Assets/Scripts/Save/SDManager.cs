@@ -3,19 +3,28 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-// Token: 0x02000184 RID: 388
+/// <summary>
+/// 存档数据管理
+/// </summary>
 public class SDManager
 {
-	// Token: 0x060007A1 RID: 1953 RVA: 0x0000739E File Offset: 0x0000559E
-	static SDManager()
+    private static string SAVEINFO_FILE_NAME = "SaveInfo.ini";
+
+    public static List<SaveInfo> m_saveInfoList = new List<SaveInfo>();
+
+    public static SaveData m_SDSave = new SaveData();
+
+    public static List<string> SaveFileList = new List<string>();
+
+    static SDManager()
 	{
 		SDManager.SDSave.Reset();
 		SDManager.LoadSaveInfo();
 	}
 
-	// Token: 0x17000134 RID: 308
-	// (get) Token: 0x060007A2 RID: 1954 RVA: 0x000073D7 File Offset: 0x000055D7
-	// (set) Token: 0x060007A3 RID: 1955 RVA: 0x000073DE File Offset: 0x000055DE
+    /// <summary>
+    /// 存档数据
+    /// </summary>
 	public static SaveData SDSave
 	{
 		get
@@ -28,7 +37,6 @@ public class SDManager
 		}
 	}
 
-	// Token: 0x060007A4 RID: 1956 RVA: 0x000073E6 File Offset: 0x000055E6
 	public static string GetSaveDir()
 	{
 		return SaveLoadManager.DIR_PATH;
@@ -46,7 +54,6 @@ public class SDManager
 		return null;
 	}
 
-	// Token: 0x060007A6 RID: 1958 RVA: 0x0003A08C File Offset: 0x0003828C
 	public static SaveInfo GetSaveInfo(SaveLoadManager.tagSL st)
 	{
 		int num = (int)st;
@@ -70,7 +77,6 @@ public class SDManager
 		return null;
 	}
 
-	// Token: 0x060007A7 RID: 1959 RVA: 0x0003A124 File Offset: 0x00038324
 	public static void SetRoleDate()
 	{
 		//if (SceneManager.RoleMan == null)
@@ -145,7 +151,6 @@ public class SDManager
 		//SDManager.SDSave.SaveDateGame.SceneList.Add(curSceneDate);
 	}
 
-	// Token: 0x060007A9 RID: 1961 RVA: 0x000073ED File Offset: 0x000055ED
 	public static void Clear()
 	{
 		SDManager.SDSave.SaveDateGame.SceneList.Clear();
@@ -185,7 +190,9 @@ public class SDManager
 		}
 	}
 
-	// Token: 0x060007AD RID: 1965 RVA: 0x0003A3C0 File Offset: 0x000385C0
+    /// <summary>
+    /// 读取存档信息
+    /// </summary>
 	public static void LoadSaveInfo()
 	{
 		SDManager.m_saveInfoList.Clear();
@@ -194,45 +201,25 @@ public class SDManager
 			Directory.CreateDirectory(SDManager.GetSaveDir());
 		}
 		DirectoryInfo directoryInfo = new DirectoryInfo(SDManager.GetSaveDir());
-		foreach (FileInfo fileInfo in directoryInfo.GetFiles())
-		{
-			string text = fileInfo.Name.Trim();
-			for (SaveLoadManager.tagSL tagSL = SaveLoadManager.tagSL.Save_Auto; tagSL < SaveLoadManager.tagSL.Save_Five; tagSL++)
-			{
-				//if (text == SaveLoadManager.GetFileName(tagSL))
-				//{
-				//	SaveData saveData = SaveLoadManager.ReadSaveFile(fileInfo.Name) as SaveData;
-				//	if (saveData == null)
-				//	{
-				//		Debug.LogWarning(DU.Warning(new object[]
-				//		{
-				//			"Load Err:",
-				//			text
-				//		}));
-				//	}
-				//	else
-				//	{
-				//		if (Config.DEBUG)
-				//		{
-				//			SingletonMono<TestSaveLoad>.GetInstance().ResetData(tagSL, saveData);
-				//		}
-				//		SaveInfo item = new SaveInfo(saveData.SaveDateInfo, saveData.SaveDateBitmap);
-				//		SDManager.m_saveInfoList.Add(item);
-				//	}
-				//}
-			}
-		}
-	}
-
-	// Token: 0x04000675 RID: 1653
-	private static string SAVEINFO_FILE_NAME = "SaveInfo.ini";
-
-	// Token: 0x04000676 RID: 1654
-	public static List<SaveInfo> m_saveInfoList = new List<SaveInfo>();
-
-	// Token: 0x04000677 RID: 1655
-	public static SaveData m_SDSave = new SaveData();
-
-	// Token: 0x04000678 RID: 1656
-	public static List<string> SaveFileList = new List<string>();
+        foreach (FileInfo fileInfo in directoryInfo.GetFiles())
+        {
+            string text = fileInfo.Name.Trim();          
+            for (SaveLoadManager.tagSL tagSL = SaveLoadManager.tagSL.Save_Auto; tagSL < SaveLoadManager.tagSL.Save_Five; tagSL++)
+            {
+                if (text == SaveLoadManager.GetFileName(tagSL))
+                {
+                    SaveData saveData = SaveLoadManager.ReadSaveFile(fileInfo.Name) as SaveData;
+                    if (saveData == null)
+                    {
+                        Debug.LogWarning("Load Err:" + text);
+                    }
+                    else
+                    {
+                        SaveInfo item = new SaveInfo(saveData.SaveDateInfo, saveData.SaveDateBitmap);
+                        SDManager.m_saveInfoList.Add(item);
+                    }
+                }
+            }
+        }
+    }
 }

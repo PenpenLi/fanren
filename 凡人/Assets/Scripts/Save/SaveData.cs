@@ -2,24 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x02000185 RID: 389
+/// <summary>
+/// 存档数据
+/// </summary>
 [Serializable]
 public class SaveData
 {
-	// Token: 0x060007AF RID: 1967 RVA: 0x0000744A File Offset: 0x0000564A
-	public void PrintDate()
+    public SaveData.SDBase SaveDateBase = new SaveData.SDBase();
+
+    public SaveData.SDGame SaveDateGame = new SaveData.SDGame();
+
+    /// <summary>
+    /// 存档图片
+    /// </summary>
+    public List<byte> SaveDateBitmap = new List<byte>();
+
+    public SaveInfo SaveDateInfo = new SaveInfo();
+
+    public bool BeLoaded = true;
+
+    public void PrintDate()
 	{
 		this.SaveDateBase.PrintDate();
 		this.SaveDateGame.PrintDate();
 	}
 
-	// Token: 0x060007B0 RID: 1968 RVA: 0x00007462 File Offset: 0x00005662
 	public void Reset()
 	{
 		this.SaveDateGame.Reset();
 	}
 
-	// Token: 0x060007B1 RID: 1969 RVA: 0x0003A4C8 File Offset: 0x000386C8
 	public static SaveData GetSaveDate(SaveLoadManager.tagSL st)
 	{
 		return new SaveData
@@ -73,22 +85,6 @@ public class SaveData
 	//	}
 	//}
 
-	// Token: 0x04000679 RID: 1657
-	public SaveData.SDBase SaveDateBase = new SaveData.SDBase();
-
-	// Token: 0x0400067A RID: 1658
-	public SaveData.SDGame SaveDateGame = new SaveData.SDGame();
-
-	// Token: 0x0400067B RID: 1659
-	public List<byte> SaveDateBitmap = new List<byte>();
-
-	// Token: 0x0400067C RID: 1660
-	public SaveInfo SaveDateInfo = new SaveInfo();
-
-	// Token: 0x0400067D RID: 1661
-	public bool BeLoaded = true;
-
-	// Token: 0x02000186 RID: 390
 	[Serializable]
 	public class SDSkill
 	{
@@ -115,20 +111,16 @@ public class SaveData
 		//	return null;
 		//}
 
-		// Token: 0x060007B5 RID: 1973 RVA: 0x0000221B File Offset: 0x0000041B
 		public void PrintDate()
 		{
 		}
 
-		// Token: 0x0400067E RID: 1662
 		//public SSkillCoolTime[] m_cSkills = new SSkillCoolTime[11];
 	}
 
-	// Token: 0x02000187 RID: 391
 	[Serializable]
 	public class SDMission
 	{
-		// Token: 0x060007B7 RID: 1975 RVA: 0x0003A680 File Offset: 0x00038880
 		public static SaveData.SDMission GetMission(Player player)
 		{
 			//ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
@@ -150,7 +142,6 @@ public class SaveData
 			return sdmission;
 		}
 
-		// Token: 0x060007B8 RID: 1976 RVA: 0x000074A2 File Offset: 0x000056A2
 		public void Reset()
 		{
 			this.misMask = 0L;
@@ -158,7 +149,6 @@ public class SaveData
 			//this.accMisList.Clear();
 		}
 
-		// Token: 0x060007B9 RID: 1977 RVA: 0x0003A72C File Offset: 0x0003892C
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -223,21 +213,16 @@ public class SaveData
 			//});
 		}
 
-		// Token: 0x0400067F RID: 1663
 		public long misMask;
 
-		// Token: 0x04000680 RID: 1664
 		//public List<ModMission.MisLinkInfo> misLinkList = new List<ModMission.MisLinkInfo>();
 
-		// Token: 0x04000681 RID: 1665
 		//public List<ModMission.AccMisInfo_SD> accMisList = new List<ModMission.AccMisInfo_SD>();
 	}
 
-	// Token: 0x02000188 RID: 392
 	[Serializable]
 	public class SDFigure
 	{
-		// Token: 0x060007BB RID: 1979 RVA: 0x0003A914 File Offset: 0x00038B14
 		public static SaveData.SDFigure GetFigure(Player role)
 		{
 			return new SaveData.SDFigure
@@ -247,63 +232,52 @@ public class SaveData
 				//learnedID = role.SystemFigure.LearnedSkillID
 			};
 		}
-
-		// Token: 0x04000682 RID: 1666
 		public int currentID;
 
-		// Token: 0x04000683 RID: 1667
 		public List<int> learnedID = new List<int>();
 
-		// Token: 0x04000684 RID: 1668
 		public float currentEnergy;
 	}
 
-	// Token: 0x02000189 RID: 393
 	[Serializable]
 	public class SDNote
 	{
-		// Token: 0x060007BD RID: 1981 RVA: 0x0003A95C File Offset: 0x00038B5C
-		//public static SaveData.SDNote GetNote(Player role)
-		//{
-		//	SaveData.SDNote sdnote = new SaveData.SDNote();
-		//	//foreach (int id in role.SystemHandbook.RoleKnown)
-		//	//{
-		//	//	RoleDisplayData.Data roleDisplayData = Singleton<RoleDisplayData>.GetInstance().GetRoleDisplayData(id);
-		//	//	if (roleDisplayData != null)
-		//	//	{
-		//	//		sdnote.roleKonwn.Add(new SaveData.NoteInfo(roleDisplayData.ID, roleDisplayData.Active, roleDisplayData.Index));
-		//	//	}
-		//	//}
-		//	//foreach (int id2 in role.SystemHandbook.CultureKnown)
-		//	//{
-		//	//	CultureData.Data data = Singleton<CultureData>.GetInstance().GetData(id2);
-		//	//	if (data != null)
-		//	//	{
-		//	//		sdnote.cultureKnown.Add(new SaveData.NoteInfo(data.ID, data.Active, -1));
-		//	//	}
-		//	//}
-		//	//foreach (AchievementData.AchData achData in Singleton<AchievementData>.GetInstance().Achievement.Values)
-		//	//{
-		//	//	sdnote.achievement.Add(new SaveData.NoteInfo(achData.ID, achData.Active, achData.Progress));
-		//	//}
-		//	//return sdnote;
-		//}
+        public List<SaveData.NoteInfo> roleKonwn = new List<SaveData.NoteInfo>();
 
-		// Token: 0x04000685 RID: 1669
-		public List<SaveData.NoteInfo> roleKonwn = new List<SaveData.NoteInfo>();
+        public List<SaveData.NoteInfo> cultureKnown = new List<SaveData.NoteInfo>();
 
-		// Token: 0x04000686 RID: 1670
-		public List<SaveData.NoteInfo> cultureKnown = new List<SaveData.NoteInfo>();
+        public List<SaveData.NoteInfo> achievement = new List<SaveData.NoteInfo>();
 
-		// Token: 0x04000687 RID: 1671
-		public List<SaveData.NoteInfo> achievement = new List<SaveData.NoteInfo>();
-	}
+        //public static SaveData.SDNote GetNote(Player role)
+        //{
+        //	SaveData.SDNote sdnote = new SaveData.SDNote();
+        //	//foreach (int id in role.SystemHandbook.RoleKnown)
+        //	//{
+        //	//	RoleDisplayData.Data roleDisplayData = Singleton<RoleDisplayData>.GetInstance().GetRoleDisplayData(id);
+        //	//	if (roleDisplayData != null)
+        //	//	{
+        //	//		sdnote.roleKonwn.Add(new SaveData.NoteInfo(roleDisplayData.ID, roleDisplayData.Active, roleDisplayData.Index));
+        //	//	}
+        //	//}
+        //	//foreach (int id2 in role.SystemHandbook.CultureKnown)
+        //	//{
+        //	//	CultureData.Data data = Singleton<CultureData>.GetInstance().GetData(id2);
+        //	//	if (data != null)
+        //	//	{
+        //	//		sdnote.cultureKnown.Add(new SaveData.NoteInfo(data.ID, data.Active, -1));
+        //	//	}
+        //	//}
+        //	//foreach (AchievementData.AchData achData in Singleton<AchievementData>.GetInstance().Achievement.Values)
+        //	//{
+        //	//	sdnote.achievement.Add(new SaveData.NoteInfo(achData.ID, achData.Active, achData.Progress));
+        //	//}
+        //	//return sdnote;
+        //}
+    }
 
-	// Token: 0x0200018A RID: 394
 	[Serializable]
 	public class NoteInfo
 	{
-		// Token: 0x060007BE RID: 1982 RVA: 0x000074FE File Offset: 0x000056FE
 		public NoteInfo(int id, bool active, int index)
 		{
 			this.ID = id;
@@ -311,22 +285,21 @@ public class SaveData
 			this.Index = index;
 		}
 
-		// Token: 0x04000688 RID: 1672
 		public int ID;
 
-		// Token: 0x04000689 RID: 1673
 		public bool Active;
 
-		// Token: 0x0400068A RID: 1674
 		public int Index;
 	}
 
-	// Token: 0x0200018B RID: 395
 	[Serializable]
 	public class SDAmbit
 	{
-		// Token: 0x060007C0 RID: 1984 RVA: 0x0003AAE0 File Offset: 0x00038CE0
-		public static SaveData.SDAmbit GetData(Player role)
+        public float Energy;
+
+        public int Level;
+
+        public static SaveData.SDAmbit GetData(Player role)
 		{
 			return new SaveData.SDAmbit
 			{
@@ -334,75 +307,67 @@ public class SaveData
 				//Level = (int)role.SystemAmbit.GetAmbitLevel()
 			};
 		}
-
-		// Token: 0x0400068B RID: 1675
-		public float Energy;
-
-		// Token: 0x0400068C RID: 1676
-		public int Level;
 	}
 
-	// Token: 0x0200018C RID: 396
 	[Serializable]
 	public class PosAndRat
 	{
-		// Token: 0x0400068D RID: 1677
 		public float PosX;
 
-		// Token: 0x0400068E RID: 1678
 		public float PosY;
 
-		// Token: 0x0400068F RID: 1679
 		public float PosZ;
 
-		// Token: 0x04000690 RID: 1680
 		public float RatX;
 
-		// Token: 0x04000691 RID: 1681
 		public float RatY;
 
-		// Token: 0x04000692 RID: 1682
 		public float RatZ;
 	}
 
-	// Token: 0x0200018D RID: 397
+
 	[Serializable]
 	public class SDMonsterDate
 	{
-		// Token: 0x060007C3 RID: 1987 RVA: 0x0003AB18 File Offset: 0x00038D18
-		//public static SaveData.SDMonsterDate GetMonsterDate(Monster role)
-		//{
-		//	SaveData.SDMonsterDate sdmonsterDate = new SaveData.SDMonsterDate();
-		//	sdmonsterDate.Type = (int)role._roleType;
-		//	sdmonsterDate.PosRat.PosX = role.GetPos().x;
-		//	sdmonsterDate.PosRat.PosY = role.GetPos().y;
-		//	sdmonsterDate.PosRat.PosZ = role.GetPos().z;
-		//	sdmonsterDate.PosRat.RatX = role.GetRat().eulerAngles.x;
-		//	sdmonsterDate.PosRat.RatY = role.GetRat().eulerAngles.y;
-		//	sdmonsterDate.PosRat.RatZ = role.GetRat().eulerAngles.z;
-		//	sdmonsterDate.SpawnID = role.SpawnInfo.ID;
-		//	SaveData.GetAttributeDate(sdmonsterDate.AttrList, role);
-		//	return sdmonsterDate;
-		//}
+        public int Type;
 
-		// Token: 0x060007C4 RID: 1988 RVA: 0x0003AB18 File Offset: 0x00038D18
-		//public static SaveData.SDMonsterDate GetNPCDate(Npc role)
-		//{
-		//	SaveData.SDMonsterDate sdmonsterDate = new SaveData.SDMonsterDate();
-		//	sdmonsterDate.Type = (int)role._roleType;
-		//	sdmonsterDate.PosRat.PosX = role.GetPos().x;
-		//	sdmonsterDate.PosRat.PosY = role.GetPos().y;
-		//	sdmonsterDate.PosRat.PosZ = role.GetPos().z;
-		//	sdmonsterDate.PosRat.RatX = role.GetRat().eulerAngles.x;
-		//	sdmonsterDate.PosRat.RatY = role.GetRat().eulerAngles.y;
-		//	sdmonsterDate.PosRat.RatZ = role.GetRat().eulerAngles.z;
-		//	sdmonsterDate.SpawnID = role.SpawnInfo.ID;
-		//	SaveData.GetAttributeDate(sdmonsterDate.AttrList, role);
-		//	return sdmonsterDate;
-		//}
+        public SaveData.PosAndRat PosRat = new SaveData.PosAndRat();
 
-		// Token: 0x060007C5 RID: 1989 RVA: 0x0003AC10 File Offset: 0x00038E10
-		public void PrintDate()
+        public int SpawnID;
+
+        //public List<ModAttribute.Attribute> AttrList = new List<ModAttribute.Attribute>();
+
+        //public static SaveData.SDMonsterDate GetMonsterDate(Monster role)
+        //{
+        //	SaveData.SDMonsterDate sdmonsterDate = new SaveData.SDMonsterDate();
+        //	sdmonsterDate.Type = (int)role._roleType;
+        //	sdmonsterDate.PosRat.PosX = role.GetPos().x;
+        //	sdmonsterDate.PosRat.PosY = role.GetPos().y;
+        //	sdmonsterDate.PosRat.PosZ = role.GetPos().z;
+        //	sdmonsterDate.PosRat.RatX = role.GetRat().eulerAngles.x;
+        //	sdmonsterDate.PosRat.RatY = role.GetRat().eulerAngles.y;
+        //	sdmonsterDate.PosRat.RatZ = role.GetRat().eulerAngles.z;
+        //	sdmonsterDate.SpawnID = role.SpawnInfo.ID;
+        //	SaveData.GetAttributeDate(sdmonsterDate.AttrList, role);
+        //	return sdmonsterDate;
+        //}
+
+        //public static SaveData.SDMonsterDate GetNPCDate(Npc role)
+        //{
+        //	SaveData.SDMonsterDate sdmonsterDate = new SaveData.SDMonsterDate();
+        //	sdmonsterDate.Type = (int)role._roleType;
+        //	sdmonsterDate.PosRat.PosX = role.GetPos().x;
+        //	sdmonsterDate.PosRat.PosY = role.GetPos().y;
+        //	sdmonsterDate.PosRat.PosZ = role.GetPos().z;
+        //	sdmonsterDate.PosRat.RatX = role.GetRat().eulerAngles.x;
+        //	sdmonsterDate.PosRat.RatY = role.GetRat().eulerAngles.y;
+        //	sdmonsterDate.PosRat.RatZ = role.GetRat().eulerAngles.z;
+        //	sdmonsterDate.SpawnID = role.SpawnInfo.ID;
+        //	SaveData.GetAttributeDate(sdmonsterDate.AttrList, role);
+        //	return sdmonsterDate;
+        //}
+
+        public void PrintDate()
 		{
 			//Logger.Log(new object[]
 			//{
@@ -456,37 +421,50 @@ public class SaveData
 			//	}
 			//}
 		}
-
-		// Token: 0x04000693 RID: 1683
-		public int Type;
-
-		// Token: 0x04000694 RID: 1684
-		public SaveData.PosAndRat PosRat = new SaveData.PosAndRat();
-
-		// Token: 0x04000695 RID: 1685
-		public int SpawnID;
-
-		// Token: 0x04000696 RID: 1686
-		//public List<ModAttribute.Attribute> AttrList = new List<ModAttribute.Attribute>();
 	}
 
-	// Token: 0x0200018E RID: 398
 	[Serializable]
 	public class MoivePlayDate
 	{
-		// Token: 0x04000697 RID: 1687
 		public int Id;
 
-		// Token: 0x04000698 RID: 1688
 		public int playCount;
 	}
 
-	// Token: 0x0200018F RID: 399
 	[Serializable]
 	public class SDPlayerDate
 	{
-		// Token: 0x060007C8 RID: 1992 RVA: 0x0003AEF8 File Offset: 0x000390F8
-		public void Reset()
+        public int ID;
+
+        public SaveData.PosAndRat PosRat = new SaveData.PosAndRat();
+
+        //public List<ModAttribute.Attribute> AttrList = new List<ModAttribute.Attribute>();
+
+        //public List<ItemSaveData> itemList = new List<ItemSaveData>();
+
+        public SaveData.SDSkill Skill = new SaveData.SDSkill();
+
+        public SaveData.SDMission Mission = new SaveData.SDMission();
+
+        public SaveData.SDNote Note = new SaveData.SDNote();
+
+        public SaveData.SDFigure Figure = new SaveData.SDFigure();
+
+        public SaveData.SDAmbit Ambit = new SaveData.SDAmbit();
+
+        //public AdeptTalentSaveData AdpTlnt = new AdeptTalentSaveData();
+
+        //public MixtureSmeltSaveData MxtSmlt = new MixtureSmeltSaveData();
+
+        //public BottleSystem.BottleSaveData BottleData = new BottleSystem.BottleSaveData();
+
+        //public RoleGrowDataSaveData RoleGrowDatas = new RoleGrowDataSaveData();
+
+        //public HelpSaveData HelpSave = new HelpSaveData();
+
+        //public SDShopData ShopData = new SDShopData();
+
+        public void Reset()
 		{
 			this.PosRat.PosX = 0f;
 			this.PosRat.PosY = 0f;
@@ -503,7 +481,6 @@ public class SaveData
 			//this.RoleGrowDatas.Clear();
 		}
 
-		// Token: 0x060007C9 RID: 1993 RVA: 0x0003AFB4 File Offset: 0x000391B4
 		public static SaveData.SDPlayerDate GetPlayerDate(Player role)
 		{
 			SaveData.SDPlayerDate sdplayerDate = new SaveData.SDPlayerDate();
@@ -537,7 +514,6 @@ public class SaveData
 			return sdplayerDate;
 		}
 
-		// Token: 0x060007CA RID: 1994 RVA: 0x0003B1A4 File Offset: 0x000393A4
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -596,59 +572,17 @@ public class SaveData
 			this.Skill.PrintDate();
 			this.Mission.PrintDate();
 		}
-
-		// Token: 0x04000699 RID: 1689
-		public int ID;
-
-		// Token: 0x0400069A RID: 1690
-		public SaveData.PosAndRat PosRat = new SaveData.PosAndRat();
-
-		// Token: 0x0400069B RID: 1691
-		//public List<ModAttribute.Attribute> AttrList = new List<ModAttribute.Attribute>();
-
-		// Token: 0x0400069C RID: 1692
-		//public List<ItemSaveData> itemList = new List<ItemSaveData>();
-
-		// Token: 0x0400069D RID: 1693
-		public SaveData.SDSkill Skill = new SaveData.SDSkill();
-
-		// Token: 0x0400069E RID: 1694
-		public SaveData.SDMission Mission = new SaveData.SDMission();
-
-		// Token: 0x0400069F RID: 1695
-		public SaveData.SDNote Note = new SaveData.SDNote();
-
-		// Token: 0x040006A0 RID: 1696
-		public SaveData.SDFigure Figure = new SaveData.SDFigure();
-
-		// Token: 0x040006A1 RID: 1697
-		public SaveData.SDAmbit Ambit = new SaveData.SDAmbit();
-
-		// Token: 0x040006A2 RID: 1698
-		//public AdeptTalentSaveData AdpTlnt = new AdeptTalentSaveData();
-
-		// Token: 0x040006A3 RID: 1699
-		//public MixtureSmeltSaveData MxtSmlt = new MixtureSmeltSaveData();
-
-		// Token: 0x040006A4 RID: 1700
-		//public BottleSystem.BottleSaveData BottleData = new BottleSystem.BottleSaveData();
-
-		// Token: 0x040006A5 RID: 1701
-		//public RoleGrowDataSaveData RoleGrowDatas = new RoleGrowDataSaveData();
-
-		// Token: 0x040006A6 RID: 1702
-		//public HelpSaveData HelpSave = new HelpSaveData();
-
-		// Token: 0x040006A7 RID: 1703
-		//public SDShopData ShopData = new SDShopData();
 	}
 
-	// Token: 0x02000190 RID: 400
+
 	[Serializable]
 	public class SDSpawn
 	{
-		// Token: 0x060007CC RID: 1996 RVA: 0x0003B434 File Offset: 0x00039634
-		public static SaveData.SDSpawn GetSpawn(GameObjSpawn mobSpawn)
+        public int ID;
+
+        public bool Active;
+
+        public static SaveData.SDSpawn GetSpawn(GameObjSpawn mobSpawn)
 		{
 			return new SaveData.SDSpawn
 			{
@@ -657,7 +591,6 @@ public class SaveData
 			};
 		}
 
-		// Token: 0x060007CD RID: 1997 RVA: 0x0003B46C File Offset: 0x0003966C
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -671,56 +604,46 @@ public class SaveData
 			//	})
 			//});
 		}
-
-		// Token: 0x040006A8 RID: 1704
-		public int ID;
-
-		// Token: 0x040006A9 RID: 1705
-		public bool Active;
 	}
 
-	// Token: 0x02000191 RID: 401
 	[Serializable]
 	public class SDSpawnMan
 	{
-		// Token: 0x060007CF RID: 1999 RVA: 0x0003B4C0 File Offset: 0x000396C0
-		//public static SaveData.SDSpawnMan GetSpawnMan(SpawnManager spawnMan)
-		//{
-		//	return new SaveData.SDSpawnMan
-		//	{
-		//		ID = spawnMan.ID,
-		//		Active = spawnMan.bPlayedMovieid
-		//	};
-		//}
+        public int ID;
 
-		// Token: 0x060007D0 RID: 2000 RVA: 0x00007539 File Offset: 0x00005739
-		public void PrintDate()
+        public bool Active;
+
+        //public static SaveData.SDSpawnMan GetSpawnMan(SpawnManager spawnMan)
+        //{
+        //	return new SaveData.SDSpawnMan
+        //	{
+        //		ID = spawnMan.ID,
+        //		Active = spawnMan.bPlayedMovieid
+        //	};
+        //}
+
+        public void PrintDate()
 		{
 			//Logger.Log(new object[]
 			//{
 			//	"SDSpawnMan-active:" + this.Active
 			//});
 		}
-
-		// Token: 0x040006AA RID: 1706
-		public int ID;
-
-		// Token: 0x040006AB RID: 1707
-		public bool Active;
 	}
 
-	// Token: 0x02000192 RID: 402
 	[Serializable]
 	public class SDStageState
 	{
-		// Token: 0x060007D2 RID: 2002 RVA: 0x0003B4EC File Offset: 0x000396EC
-		//public static SaveData.SDStageState GetStageData(StageState state)
-		//{
-		//	return state.SaveData();
-		//}
+        public int ID;
 
-		// Token: 0x060007D3 RID: 2003 RVA: 0x0003B504 File Offset: 0x00039704
-		public static bool FindStage(List<SaveData.SDStageState> list, int id, out SaveData.SDStageState sdstage)
+        public int State;
+
+        //public static SaveData.SDStageState GetStageData(StageState state)
+        //{
+        //	return state.SaveData();
+        //}
+
+        public static bool FindStage(List<SaveData.SDStageState> list, int id, out SaveData.SDStageState sdstage)
 		{
 			foreach (SaveData.SDStageState sdstageState in list)
 			{
@@ -733,38 +656,42 @@ public class SaveData
 			sdstage = null;
 			return false;
 		}
-
-		// Token: 0x040006AC RID: 1708
-		public int ID;
-
-		// Token: 0x040006AD RID: 1709
-		public int State;
 	}
 
-	// Token: 0x02000193 RID: 403
 	[Serializable]
 	public class SDMoiveDate
 	{
-		// Token: 0x060007D5 RID: 2005 RVA: 0x0000755E File Offset: 0x0000575E
-		public void Reset()
+        public int ID;
+
+        public int PlayCount;
+
+        public void Reset()
 		{
 			this.ID = 0;
 			this.PlayCount = 0;
 		}
-
-		// Token: 0x040006AE RID: 1710
-		public int ID;
-
-		// Token: 0x040006AF RID: 1711
-		public int PlayCount;
 	}
 
-	// Token: 0x02000194 RID: 404
 	[Serializable]
 	public class SDSceneDate
 	{
-		// Token: 0x060007D7 RID: 2007 RVA: 0x0003B5D4 File Offset: 0x000397D4
-		public void Reset()
+        public string SceneName;
+
+        public List<SaveData.SDMonsterDate> MonsterList = new List<SaveData.SDMonsterDate>();
+
+        //public List<OperableSaveDataBase> OperableList = new List<OperableSaveDataBase>();
+
+        public List<SaveData.SDSpawn> SpawnList = new List<SaveData.SDSpawn>();
+
+        public List<SaveData.SDSpawnMan> SpawnManList = new List<SaveData.SDSpawnMan>();
+
+        public List<SaveData.SDStageState> StageStateList = new List<SaveData.SDStageState>();
+
+        //public SDFantasyExecuteData FantasyData = new SDFantasyExecuteData();
+
+        //public MusicData musicData = new MusicData();
+
+        public void Reset()
 		{
 			this.SceneName = string.Empty;
 			this.StageStateList.Clear();
@@ -775,7 +702,6 @@ public class SaveData
 			//this.FantasyData.Clear();
 		}
 
-		// Token: 0x060007D8 RID: 2008 RVA: 0x0003B630 File Offset: 0x00039830
 		//public static SaveData.SDSceneDate GetCurSceneDate()
 		//{
 		//	//if (GUIControl.OpeText != null && GUIControl.OpeText.active)
@@ -912,7 +838,6 @@ public class SaveData
 		//	//return sdsceneDate;
 		//}
 
-		// Token: 0x060007D9 RID: 2009 RVA: 0x0003BA64 File Offset: 0x00039C64
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -940,38 +865,18 @@ public class SaveData
 			//	operableSaveDataBase.PrintData();
 			//}
 		}
-
-		// Token: 0x040006B0 RID: 1712
-		public string SceneName;
-
-		// Token: 0x040006B1 RID: 1713
-		public List<SaveData.SDMonsterDate> MonsterList = new List<SaveData.SDMonsterDate>();
-
-		// Token: 0x040006B2 RID: 1714
-		//public List<OperableSaveDataBase> OperableList = new List<OperableSaveDataBase>();
-
-		// Token: 0x040006B3 RID: 1715
-		public List<SaveData.SDSpawn> SpawnList = new List<SaveData.SDSpawn>();
-
-		// Token: 0x040006B4 RID: 1716
-		public List<SaveData.SDSpawnMan> SpawnManList = new List<SaveData.SDSpawnMan>();
-
-		// Token: 0x040006B5 RID: 1717
-		public List<SaveData.SDStageState> StageStateList = new List<SaveData.SDStageState>();
-
-		// Token: 0x040006B6 RID: 1718
-		//public SDFantasyExecuteData FantasyData = new SDFantasyExecuteData();
-
-		// Token: 0x040006B7 RID: 1719
-		//public MusicData musicData = new MusicData();
 	}
 
-	// Token: 0x02000195 RID: 405
 	[Serializable]
 	public class SDBase
 	{
-		// Token: 0x060007DC RID: 2012 RVA: 0x0003BBE4 File Offset: 0x00039DE4
-		public static SaveData.SDBase GetBaseDate()
+        public int Version;
+
+        public int ViewPos;
+
+        public string SaveTime;
+
+        public static SaveData.SDBase GetBaseDate()
 		{
 			return new SaveData.SDBase
 			{
@@ -981,7 +886,6 @@ public class SaveData
 			};
 		}
 
-		// Token: 0x060007DD RID: 2013 RVA: 0x00007581 File Offset: 0x00005781
 		public void Reset()
 		{
 			this.Version = 10000;
@@ -989,7 +893,6 @@ public class SaveData
 			this.SaveTime = string.Empty;
 		}
 
-		// Token: 0x060007DE RID: 2014 RVA: 0x0003BC20 File Offset: 0x00039E20
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -1005,23 +908,32 @@ public class SaveData
 			//	})
 			//});
 		}
-
-		// Token: 0x040006B9 RID: 1721
-		public int Version;
-
-		// Token: 0x040006BA RID: 1722
-		public int ViewPos;
-
-		// Token: 0x040006BB RID: 1723
-		public string SaveTime;
 	}
 
-	// Token: 0x02000196 RID: 406
 	[Serializable]
 	public class SDGame
 	{
-		// Token: 0x060007E0 RID: 2016 RVA: 0x000075C9 File Offset: 0x000057C9
-		public void Reset()
+        /// <summary>
+        /// 当前场景名称
+        /// </summary>
+        public string CurSceneName;
+
+        /// <summary>
+        /// 玩家列表
+        /// </summary>
+        public List<SaveData.SDPlayerDate> PlayerList = new List<SaveData.SDPlayerDate>();
+
+        /// <summary>
+        /// 场景列表
+        /// </summary>
+        public List<SaveData.SDSceneDate> SceneList = new List<SaveData.SDSceneDate>();
+
+        /// <summary>
+        /// 电影列表
+        /// </summary>
+        public List<SaveData.SDMoiveDate> MoiveInfoList = new List<SaveData.SDMoiveDate>();
+
+        public void Reset()
 		{
 			this.CurSceneName = string.Empty;
 			this.PlayerList.Clear();
@@ -1029,7 +941,6 @@ public class SaveData
 			this.MoiveInfoList.Clear();
 		}
 
-		// Token: 0x060007E1 RID: 2017 RVA: 0x0003BC84 File Offset: 0x00039E84
 		public static SaveData.SDGame GetGameDate()
 		{
 			SaveData.SDGame sdgame = new SaveData.SDGame();
@@ -1085,7 +996,6 @@ public class SaveData
 			return sdgame;
 		}
 
-		// Token: 0x060007E2 RID: 2018 RVA: 0x0003BE1C File Offset: 0x0003A01C
 		public void PrintDate()
 		{
 			//Logger.Log(new object[]
@@ -1114,17 +1024,5 @@ public class SaveData
 			//	sdsceneDate.PrintDate();
 			//}
 		}
-
-		// Token: 0x040006BC RID: 1724
-		public string CurSceneName;
-
-		// Token: 0x040006BD RID: 1725
-		public List<SaveData.SDPlayerDate> PlayerList = new List<SaveData.SDPlayerDate>();
-
-		// Token: 0x040006BE RID: 1726
-		public List<SaveData.SDSceneDate> SceneList = new List<SaveData.SDSceneDate>();
-
-		// Token: 0x040006BF RID: 1727
-		public List<SaveData.SDMoiveDate> MoiveInfoList = new List<SaveData.SDMoiveDate>();
 	}
 }

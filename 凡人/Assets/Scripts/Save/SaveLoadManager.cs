@@ -8,15 +8,15 @@ using UnityEngine;
 /// </summary>
 public class SaveLoadManager
 {
-    	public const string EncryptKey = "";
+    public const string EncryptKey = "";
 
-    	public static string DIR_PATH = Application.dataPath + "/Save/";
+    public static string DIR_PATH = Application.dataPath + "/Save/";
 
-    //	private static object SaveLoadLock = new object();
+    private static object SaveLoadLock = new object();
 
-    //	//private static DES desObj = new DES();
+    private static DES desObj = new DES();
 
-    //	private static bool m_bKey = false;
+    private static bool m_bKey = false;
 
     [Serializable]
     public enum tagSL
@@ -52,7 +52,6 @@ public class SaveLoadManager
     //		SaveLoadManager.m_bKey = bo;
     //	}
 
-    //	// Token: 0x060007F0 RID: 2032 RVA: 0x00007661 File Offset: 0x00005861
     //	public static bool IsHaveSavedata()
     //	{
     //		return SDManager.m_saveInfoList.Count > 0;
@@ -111,169 +110,165 @@ public class SaveLoadManager
         return SaveLoadManager.tagSL.NONE;
     }
 
-    //	// Token: 0x060007F3 RID: 2035 RVA: 0x0000768C File Offset: 0x0000588C
-    //	public static string GetFileName(SaveLoadManager.tagSL st)
-    //	{
-    //		return "Data" + (int)st + ".sav";
-    //	}
+    public static string GetFileName(SaveLoadManager.tagSL st)
+    {
+        return "Data" + (int)st + ".sav";
+    }
 
-    //	// Token: 0x060007F4 RID: 2036 RVA: 0x0003C318 File Offset: 0x0003A518
-    //	public static SaveInfo Save(SaveLoadManager.tagSL st)
-    //	{
-    //		int num = (int)st;
-    //		if (num >= 10 && num < 20)
-    //		{
-    //			num -= 10;
-    //			st = (SaveLoadManager.tagSL)num;
-    //		}
-    //		if (st == SaveLoadManager.tagSL.Save_Auto)
-    //		{
-    //			Singleton<EZGUIManager>.GetInstance().GetGUI<Tipplane>().SaveTip();
-    //		}
-    //		ModBuffProperty modBuffProperty = Player.Instance.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
-    //		modBuffProperty.DelAllBuff();
-    //		string fileName = SaveLoadManager.GetFileName(st);
-    //		SaveData saveDate = SaveData.GetSaveDate(st);
-    //		SaveInfo saveInfo = null;
-    //		if (SaveLoadManager.WriteSaveFile(fileName, saveDate))
-    //		{
-    //			SDManager.m_saveInfoList.Remove(SDManager.GetSaveInfo(st));
-    //			saveInfo = new SaveInfo(saveDate.SaveDateInfo, saveDate.SaveDateBitmap);
-    //			SDManager.m_saveInfoList.Add(saveInfo);
-    //		}
-    //		FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
-    //		TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, delegate()
-    //		{
-    //			Main.Instance.GC();
-    //		});
-    //		SingletonMono<TestSaveLoad>.GetInstance().ResetData(st, saveDate);
-    //		return saveInfo;
-    //	}
+    public static SaveInfo Save(SaveLoadManager.tagSL st)
+    {
+        int num = (int)st;
+        if (num >= 10 && num < 20)
+        {
+            num -= 10;
+            st = (SaveLoadManager.tagSL)num;
+        }
+        if (st == SaveLoadManager.tagSL.Save_Auto)
+        {
+            //Singleton<EZGUIManager>.GetInstance().GetGUI<Tipplane>().SaveTip();
+        }
+        ModBuffProperty modBuffProperty = Player.Instance.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
+        modBuffProperty.DelAllBuff();
+        string fileName = SaveLoadManager.GetFileName(st);
+        SaveData saveDate = SaveData.GetSaveDate(st);
+        SaveInfo saveInfo = null;
+        if (SaveLoadManager.WriteSaveFile(fileName, saveDate))
+        {
+            SDManager.m_saveInfoList.Remove(SDManager.GetSaveInfo(st));
+            saveInfo = new SaveInfo(saveDate.SaveDateInfo, saveDate.SaveDateBitmap);
+            SDManager.m_saveInfoList.Add(saveInfo);
+        }
+        //FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
+        //TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, delegate ()
+        //{
+        //    Main.Instance.GC();
+        //});
+        //SingletonMono<TestSaveLoad>.GetInstance().ResetData(st, saveDate);
+        return saveInfo;
+    }
 
-    //	// Token: 0x060007F6 RID: 2038 RVA: 0x0003C420 File Offset: 0x0003A620
-    //	public static bool Load(SaveLoadManager.tagSL st)
-    //	{
-    //		int num = (int)st;
-    //		if (num >= 0 && num < 10)
-    //		{
-    //			num += 10;
-    //			st = (SaveLoadManager.tagSL)num;
-    //		}
-    //		SaveInfo saveInfo = SDManager.GetSaveInfo(st);
-    //		if (saveInfo == null)
-    //		{
-    //			Debug.LogWarning(DU.Warning(new object[]
-    //			{
-    //				saveInfo
-    //			}));
-    //			return false;
-    //		}
-    //		SaveData saveData = SaveLoadManager.ReadSaveFile(SaveLoadManager.GetFileName(saveInfo.ShowIndex)) as SaveData;
-    //		if (saveData == null)
-    //		{
-    //			return false;
-    //		}
-    //		SDManager.SDSave.Reset();
-    //		SDManager.SDSave = saveData;
-    //		SDManager.SDSave.BeLoaded = false;
-    //		DynamicData.SetDate(SDManager.SDSave.SaveDateGame.MoiveInfoList);
-    //		SceneManager.LoadLevel(saveData.SaveDateGame.CurSceneName, true, false, true);
-    //		return true;
-    //	}
+    public static bool Load(SaveLoadManager.tagSL st)
+    {
+        int num = (int)st;
+        if (num >= 0 && num < 10)
+        {
+            num += 10;
+            st = (SaveLoadManager.tagSL)num;
+        }
+        SaveInfo saveInfo = SDManager.GetSaveInfo(st);
+        if (saveInfo == null)
+        {
+            //Debug.LogWarning(DU.Warning(new object[]
+            //{
+            //        saveInfo
+            //}));
+            return false;
+        }
+        SaveData saveData = SaveLoadManager.ReadSaveFile(SaveLoadManager.GetFileName(saveInfo.ShowIndex)) as SaveData;
+        if (saveData == null)
+        {
+            return false;
+        }
+        SDManager.SDSave.Reset();
+        SDManager.SDSave = saveData;
+        SDManager.SDSave.BeLoaded = false;
+        DynamicData.SetDate(SDManager.SDSave.SaveDateGame.MoiveInfoList);
+        //SceneManager.LoadLevel(saveData.SaveDateGame.CurSceneName, true, false, true);
+        return true;
+    }
 
-    //	// Token: 0x060007F7 RID: 2039 RVA: 0x0003C4CC File Offset: 0x0003A6CC
-    //	private static bool WriteSaveFile(string fileName, object obj)
-    //	{
-    //		SaveLoadManager.CreateSaveFold();
-    //		string text = SaveLoadManager.DIR_PATH + "tempSave.save";
-    //		fileName = SaveLoadManager.DIR_PATH + fileName;
-    //		bool result = false;
-    //		object saveLoadLock = SaveLoadManager.SaveLoadLock;
-    //		lock (saveLoadLock)
-    //		{
-    //			Stream stream = null;
-    //			try
-    //			{
-    //				stream = File.Open(text, FileMode.Create);
-    //				BinaryFormatter binaryFormatter = new BinaryFormatter();
-    //				binaryFormatter.Serialize(stream, obj);
-    //				stream.Close();
-    //				stream = null;
-    //				result = true;
-    //			}
-    //			catch (Exception ex)
-    //			{
-    //				Debug.LogWarning(DU.Warning(new object[]
-    //				{
-    //					ex.Message
-    //				}));
-    //				Logger.LogError(new object[]
-    //				{
-    //					string.Concat(new string[]
-    //					{
-    //						"SaveLoadManager.WriteSaveFile():Faile to serialize object to file ",
-    //						fileName,
-    //						" (Reason: ",
-    //						ex.ToString(),
-    //						")"
-    //					})
-    //				});
-    //				result = false;
-    //			}
-    //			finally
-    //			{
-    //				if (stream != null)
-    //				{
-    //					stream.Close();
-    //				}
-    //			}
-    //			SaveLoadManager.desObj.EncryptFile(text, fileName);
-    //			File.Delete(text);
-    //		}
-    //		return result;
-    //	}
+    private static bool WriteSaveFile(string fileName, object obj)
+    {
+        //SaveLoadManager.CreateSaveFold();
+        string text = SaveLoadManager.DIR_PATH + "tempSave.save";
+        fileName = SaveLoadManager.DIR_PATH + fileName;
+        bool result = false;
+        object saveLoadLock = SaveLoadManager.SaveLoadLock;
+        lock (saveLoadLock)
+        {
+            Stream stream = null;
+            try
+            {
+                stream = File.Open(text, FileMode.Create);
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(stream, obj);
+                stream.Close();
+                stream = null;
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                //Debug.LogWarning(DU.Warning(new object[]
+                //{
+                //        ex.Message
+                //}));
+                //Logger.LogError(new object[]
+                //{
+                //        string.Concat(new string[]
+                //        {
+                //            "SaveLoadManager.WriteSaveFile():Faile to serialize object to file ",
+                //            fileName,
+                //            " (Reason: ",
+                //            ex.ToString(),
+                //            ")"
+                //        })
+                //});
+                result = false;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+            SaveLoadManager.desObj.EncryptFile(text, fileName);
+            File.Delete(text);
+        }
+        return result;
+    }
 
-    //	// Token: 0x060007F8 RID: 2040 RVA: 0x0003C5E8 File Offset: 0x0003A7E8
-    //	public static object ReadSaveFile(string fileName)
-    //	{
-    //		//string text = SaveLoadManager.DIR_PATH + "tempLoad.save";
-    //		//fileName = SaveLoadManager.DIR_PATH + fileName;
-    //		//object result = null;
-    //		//object saveLoadLock = SaveLoadManager.SaveLoadLock;
-    //		//lock (saveLoadLock)
-    //		//{
-    //		//	Stream stream = null;
-    //		//	try
-    //		//	{
-    //		//		SaveLoadManager.desObj.DecryptFile(fileName, text);
-    //		//		stream = File.Open(text, FileMode.Open, FileAccess.Read);
-    //		//		BinaryFormatter binaryFormatter = new BinaryFormatter();
-    //		//		object obj = binaryFormatter.Deserialize(stream);
-    //		//		stream.Close();
-    //		//		stream = null;
-    //		//		result = obj;
-    //		//	}
-    //		//	catch (Exception ex)
-    //		//	{
-    //		//		Debug.LogWarning(DU.Warning(new object[]
-    //		//		{
-    //		//			"ReadSaveFile Fail:",
-    //		//			fileName
-    //		//		}));
-    //		//		result = null;
-    //		//	}
-    //		//	finally
-    //		//	{
-    //		//		if (stream != null)
-    //		//		{
-    //		//			stream.Close();
-    //		//		}
-    //		//		if (File.Exists(text))
-    //		//		{
-    //		//			File.Delete(text);
-    //		//		}
-    //		//	}
-    //		//}
-    //		return result;
-    //	}
+    /// <summary>
+    /// 读取存档文件
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static object ReadSaveFile(string fileName)
+    {
+        string text = SaveLoadManager.DIR_PATH + "tempLoad.save";
+        fileName = SaveLoadManager.DIR_PATH + fileName;
+        object result = null;
+        object saveLoadLock = SaveLoadManager.SaveLoadLock;
+        lock (saveLoadLock)
+        {
+            Stream stream = null;
+            try
+            {
+                SaveLoadManager.desObj.DecryptFile(fileName, text);
+                stream = File.Open(text, FileMode.Open, FileAccess.Read);
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                object obj = binaryFormatter.Deserialize(stream);
+                stream.Close();
+                stream = null;
+                result = obj;
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning("ReadSaveFile Fail:" + fileName);
+                result = null;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+                if (File.Exists(text))
+                {
+                    File.Delete(text);
+                }
+            }
+        }
+        return result;
+    }
 }

@@ -2,16 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x02000197 RID: 407
+
 [Serializable]
 public class SaveInfo
 {
-	// Token: 0x060007E3 RID: 2019 RVA: 0x00002320 File Offset: 0x00000520
-	public SaveInfo()
+    private const int CaptureWidth = 166;
+
+    private const int CaptureHeight = 117;
+
+    public int Version;
+
+    public SaveLoadManager.tagSL ShowIndex;
+
+    public string SaveTime;
+
+    public string MapName;
+
+    public string DateFileName;
+
+    [NonSerialized]
+    public Texture2D Capture;
+
+    public SaveInfo()
 	{
 	}
 
-	// Token: 0x060007E4 RID: 2020 RVA: 0x0003BF68 File Offset: 0x0003A168
 	public SaveInfo(SaveInfo info, List<byte> buffer)
 	{
 		this.Version = info.Version;
@@ -22,7 +37,7 @@ public class SaveInfo
 		this.Capture = SaveInfo.LoadScreen(buffer);
 	}
 
-	// Token: 0x060007E5 RID: 2021 RVA: 0x0003BFC4 File Offset: 0x0003A1C4
+
 	public static SaveInfo GetInfoDate(SaveLoadManager.tagSL st)
 	{
 		return new SaveInfo
@@ -48,7 +63,6 @@ public class SaveInfo
 		idx++;
 	}
 
-	// Token: 0x060007E7 RID: 2023 RVA: 0x0003C078 File Offset: 0x0003A278
 	public string TextSave()
 	{
 		string[] array = new string[10];
@@ -67,7 +81,6 @@ public class SaveInfo
 		return string.Concat(array);
 	}
 
-	// Token: 0x060007E8 RID: 2024 RVA: 0x0003C0F8 File Offset: 0x0003A2F8
 	public void LogOut()
 	{
 		string[] array = new string[11];
@@ -88,13 +101,11 @@ public class SaveInfo
 		Debug.Log("SaveInfo:" + str);
 	}
 
-	// Token: 0x060007E9 RID: 2025 RVA: 0x000075F7 File Offset: 0x000057F7
 	private static Texture2D CreateTex2d(int width, int height)
 	{
 		return new Texture2D(width, height, TextureFormat.RGB24, false);
 	}
 
-	// Token: 0x060007EA RID: 2026 RVA: 0x0003C190 File Offset: 0x0003A390
 	public static List<byte> SaveScreen()
 	{
 		RenderTexture renderTexture = new RenderTexture(166, 117, 16);
@@ -117,36 +128,10 @@ public class SaveInfo
 		return result;
 	}
 
-	// Token: 0x060007EB RID: 2027 RVA: 0x0003C27C File Offset: 0x0003A47C
 	public static Texture2D LoadScreen(List<byte> buffer)
 	{
 		Texture2D texture2D = SaveInfo.CreateTex2d(166, 117);
 		texture2D.LoadImage(buffer.ToArray());
 		return texture2D;
 	}
-
-	// Token: 0x040006C0 RID: 1728
-	private const int CaptureWidth = 166;
-
-	// Token: 0x040006C1 RID: 1729
-	private const int CaptureHeight = 117;
-
-	// Token: 0x040006C2 RID: 1730
-	public int Version;
-
-	// Token: 0x040006C3 RID: 1731
-	public SaveLoadManager.tagSL ShowIndex;
-
-	// Token: 0x040006C4 RID: 1732
-	public string SaveTime;
-
-	// Token: 0x040006C5 RID: 1733
-	public string MapName;
-
-	// Token: 0x040006C6 RID: 1734
-	public string DateFileName;
-
-	// Token: 0x040006C7 RID: 1735
-	[NonSerialized]
-	public Texture2D Capture;
 }
