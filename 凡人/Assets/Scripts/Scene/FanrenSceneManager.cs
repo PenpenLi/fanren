@@ -68,28 +68,28 @@ public class FanrenSceneManager : MonoBehaviour
 	{
         this.Init();
 
-        string Scenename = SceneManager.GetActiveScene().name;
+        //string Scenename = SceneManager.GetActiveScene().name;
 
-        if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
-        {
-            this.InitScene();
-            GameTime.Init();
-        }
+        //if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
+        //{
+        //    this.InitScene();
+        //    GameTime.Init();
+        //}
 
-        if (Scenename == "Landing")
-        {
-            this.PlayGameBgSound();
-        }
+        //if (Scenename == "Landing")
+        //{
+        //    this.PlayGameBgSound();
+        //}
 
-        if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
-        {
-            //GUIControl.MovieClose();
-            //this.EnterScene();
-            //Singleton<CResourcesStaticManager>.GetInstance();
-            //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
-        }
+        //if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
+        //{
+        //    //GUIControl.MovieClose();
+        //    //this.EnterScene();
+        //    //Singleton<CResourcesStaticManager>.GetInstance();
+        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
+        //}
 
-        Main.Instance.DelayGC(20f);//播放剧情
+        //Main.Instance.DelayGC(20f);//播放剧情
     }
 
     //private void ReStartGame(bool show)
@@ -206,11 +206,11 @@ public class FanrenSceneManager : MonoBehaviour
         //SystemSetting.initialize();
         //Singleton<ActorManager>.GetInstance().Clear();
 
-        if (SceneManager.GetActiveScene().name == "Start")
-        {
-            GameData.Instance.ScrMan.Exec(31, 10099);
-            Main.Instance.StartCoroutine(this.ShowLoadPlane());
-        }
+        //if (SceneManager.GetActiveScene().name == "Start")
+        //{
+        //    GameData.Instance.ScrMan.Exec(31, 10099);
+        //    Main.Instance.StartCoroutine(this.ShowLoadPlane());
+        //}
     }
 
     /// <summary>
