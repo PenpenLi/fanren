@@ -84,10 +84,12 @@ public class EffectManager : SingletonMono<EffectManager>
 			//});
 			return gameObject;
 		}
-		GameObject gameObject2 = LoadMachine.InstantiateObject(gameObject, Vector3.zero, Quaternion.identity) as GameObject;
-		//ComponentStateControl.CheckStateControl(gameObject2);
-		return gameObject2;
-	}
+        //GameObject gameObject2 = LoadMachine.InstantiateObject(gameObject, Vector3.zero, Quaternion.identity) as GameObject;
+        //ComponentStateControl.CheckStateControl(gameObject2);
+        //return gameObject2;
+        return null;
+
+    }
 
 	// Token: 0x06000F1A RID: 3866 RVA: 0x00096850 File Offset: 0x00094A50
 	public EffectBase GetEffectById(int id)

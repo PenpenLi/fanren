@@ -53,7 +53,7 @@ public class GameData
 
     public RoleBaseConfig RoleBaseCfg = new RoleBaseConfig();
 
-    public ArtResourceConfig ArtResConf = new ArtResourceConfig();
+    //public ArtResourceConfig ArtResConf = new ArtResourceConfig();
 
     //public WeaponInfo weaponInfo = new WeaponInfo();
 
@@ -112,7 +112,7 @@ public class GameData
 	private static void Start()
 	{
 		//GameData.instance.bundleInfo.initialize();
-		GameData.Instance.ArtResConf.LoadConf();
+		//GameData.Instance.ArtResConf.LoadConf();
 		GameData.Instance.ScrMan.ReadScrModInfo();
 		//GameData.Instance.NpcTalk1Data.ReadData();
 		//GameData.Instance.NpcTalk2Data.ReadTextInf();

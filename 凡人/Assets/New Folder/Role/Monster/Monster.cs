@@ -163,7 +163,7 @@ public class Monster : Role
 		if (mi.BloodType == 0)
 		{
 			GameObject original = (GameObject)ResourceLoader.Load("Prefabs/Mob/HPGUI", typeof(GameObject));
-			GameObject gameObject = LoadMachine.InstantiateObject(original, Vector3.zero, Quaternion.identity) as GameObject;
+			//GameObject gameObject = LoadMachine.InstantiateObject(original, Vector3.zero, Quaternion.identity) as GameObject;
 			//gameObject.transform.parent = SceneManager.RoleMan.MonsterHpRoot.transform;
 			//monster.MonsterHP = gameObject.transform.GetComponent<MonsterHp>();
 			//if (monster.MonsterHP != null)
@@ -188,7 +188,7 @@ public class Monster : Role
 		if (mi.BloodType == 2)
 		{
 			GameObject original3 = (GameObject)ResourceLoader.Load("Prefabs/Mob/Refine_HPGUI", typeof(GameObject));
-			GameObject gameObject3 = LoadMachine.InstantiateObject(original3, Vector3.zero, Quaternion.identity) as GameObject;
+			//GameObject gameObject3 = LoadMachine.InstantiateObject(original3, Vector3.zero, Quaternion.identity) as GameObject;
 			//gameObject3.transform.parent = SceneManager.RoleMan.MonsterHpRoot.transform;
 			//monster.MonsterHP = gameObject3.transform.GetComponent<MonsterHp>();
 			//if (monster.MonsterHP != null)
@@ -199,7 +199,7 @@ public class Monster : Role
 			//	monster.MonsterHP.gameObject.active = false;
 			//}
 			GameObject original4 = (GameObject)ResourceLoader.Load("Prefabs/Mob/Refine_HpBottom", typeof(GameObject));
-			GameObject gameObject4 = LoadMachine.InstantiateObject(original4, Vector3.zero, Quaternion.identity) as GameObject;
+			//GameObject gameObject4 = LoadMachine.InstantiateObject(original4, Vector3.zero, Quaternion.identity) as GameObject;
 			//monster.MonsterHpBottom = gameObject4.transform.GetComponent<MonsterHp>();
 			//gameObject4.transform.parent = SceneManager.RoleMan.MonsterHpRoot.transform;
 			//if (monster.MonsterHpBottom != null)

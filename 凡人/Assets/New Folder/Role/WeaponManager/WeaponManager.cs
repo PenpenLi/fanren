@@ -224,8 +224,9 @@ public class WeaponManager
 			Debug.Log("not find weapon resources:" + weaponPath);
 			return null;
 		}
-		return (GameObject)LoadMachine.InstantiateObject(gameObject);
-	}
+		//return (GameObject)LoadMachine.InstantiateObject(gameObject);
+        return null;
+    }
 
 	public void SetWeaponClosing(bool closing)
 	{

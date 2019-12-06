@@ -133,38 +133,38 @@ public class EquipReplace
         {
             return;
         }
-        GameObject gameObject2 = (GameObject)LoadMachine.InstantiateObject(gameObject);
-        foreach (Animation animation in gameObject2.GetComponentsInChildren<Animation>())
-        {
-            animation.cullingType = AnimationCullingType.AlwaysAnimate;
-        }
+       // GameObject gameObject2 = (GameObject)LoadMachine.InstantiateObject(gameObject);
+        //foreach (Animation animation in gameObject2.GetComponentsInChildren<Animation>())
+        //{
+        //    animation.cullingType = AnimationCullingType.AlwaysAnimate;
+        //}
         Transform[] componentsInChildren2 = this.RoleBody.GetComponentsInChildren<Transform>();
-        SkinnedMeshRenderer[] componentsInChildren3 = gameObject2.GetComponentsInChildren<SkinnedMeshRenderer>(true);
-        foreach (SkinnedMeshRenderer skinnedMeshRenderer in componentsInChildren3)
-        {
-            //EquipElement equipElement = new EquipElement();
-            //equipElement.item = item;
-            //equipElement.pos = pos;
-            //equipElement.skinName = skinnedMeshRenderer.name;
-            //equipElement.materials.AddRange(skinnedMeshRenderer.materials);
-            //CombineInstance item2 = default(CombineInstance);
-            //item2.mesh = skinnedMeshRenderer.sharedMesh;
-            //item2.subMeshIndex = 0;
-            //equipElement.combineInstances.Add(item2);
-            //foreach (Transform transform in skinnedMeshRenderer.bones)
-            //{
-            //    foreach (Transform transform2 in componentsInChildren2)
-            //    {
-            //        if (!(transform2.name != transform.name))
-            //        {
-            //            equipElement.bones.Add(transform2);
-            //            break;
-            //        }
-            //    }
-            //}
-            //this.elementList.Add(equipElement);
-        }
-        UnityEngine.Object.Destroy(gameObject2);
+        //SkinnedMeshRenderer[] componentsInChildren3 = gameObject2.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+        //foreach (SkinnedMeshRenderer skinnedMeshRenderer in componentsInChildren3)
+        //{
+        //    //EquipElement equipElement = new EquipElement();
+        //    //equipElement.item = item;
+        //    //equipElement.pos = pos;
+        //    //equipElement.skinName = skinnedMeshRenderer.name;
+        //    //equipElement.materials.AddRange(skinnedMeshRenderer.materials);
+        //    //CombineInstance item2 = default(CombineInstance);
+        //    //item2.mesh = skinnedMeshRenderer.sharedMesh;
+        //    //item2.subMeshIndex = 0;
+        //    //equipElement.combineInstances.Add(item2);
+        //    //foreach (Transform transform in skinnedMeshRenderer.bones)
+        //    //{
+        //    //    foreach (Transform transform2 in componentsInChildren2)
+        //    //    {
+        //    //        if (!(transform2.name != transform.name))
+        //    //        {
+        //    //            equipElement.bones.Add(transform2);
+        //    //            break;
+        //    //        }
+        //    //    }
+        //    //}
+        //    //this.elementList.Add(equipElement);
+        //}
+        //UnityEngine.Object.Destroy(gameObject2);
         //this.BuildSkinnedMeshRenderer(false);
     }
 

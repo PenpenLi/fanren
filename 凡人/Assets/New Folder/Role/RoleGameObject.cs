@@ -840,7 +840,7 @@ public class RoleGameObject
         {
             return null;
         }
-        gameObject = (LoadMachine.InstantiateObject(gameObject) as GameObject);//实例化物体
+        //gameObject = (LoadMachine.InstantiateObject(gameObject) as GameObject);//实例化物体
         BindRole bindRole = gameObject.AddComponent<BindRole>();
         bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;
@@ -867,7 +867,7 @@ public class RoleGameObject
             Debug.LogWarning("modelID:" + roleModelInfo.Path);
             return null;
         }
-        gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);//实例化物体
+        //gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);//实例化物体
         BindRole bindRole = gameObject.AddComponent<BindRole>();
         bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;

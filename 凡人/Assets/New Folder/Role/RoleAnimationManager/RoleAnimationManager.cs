@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using FantasyTools;
 using NS_RoleBaseFun;
 using UnityEngine;
 
@@ -58,46 +57,46 @@ public class RoleAnimationManager : Singleton<RoleAnimationManager>
                 string[] array = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                 if (array != null && array.Length >= 2)
                 {
-                    int num = Toolset.Get<int>(array[0]);
-                    if (Toolset.IsEnumDefined(typeof(RoleAnimationType), num))
-                    {
-                        ArrayList arrayList = new ArrayList();
-                        RoleAnimationType key = (RoleAnimationType)num;
-                        for (int i = 1; i < array.Length; i++)
-                        {
-                            arrayList.Clear();
-                            if (array[i].Contains("-"))
-                            {
-                                int num2 = array[i].IndexOf("-");
-                                string obj = array[i].Substring(0, num2);
-                                string obj2 = array[i].Substring(num2 + 1, array[i].Length - num2 - 1);
-                                int num3 = Toolset.Get<int>(obj);
-                                int num4 = Toolset.Get<int>(obj2);
-                                for (int j = num3; j <= num4; j++)
-                                {
-                                    arrayList.Add(j);
-                                }
-                            }
-                            else
-                            {
-                                arrayList.Add(Toolset.Get<int>(array[i]));
-                            }
-                            foreach (object obj3 in arrayList)
-                            {
-                                int num5 = (int)obj3;
-                                if (this._aniTypeTable.ContainsKey(key))
-                                {
-                                    this._aniTypeTable[key].Add(num5);
-                                }
-                                else
-                                {
-                                    ArrayList arrayList2 = new ArrayList();
-                                    arrayList2.Add(num5);
-                                    this._aniTypeTable.Add(key, arrayList2);
-                                }
-                            }
-                        }
-                    }
+                    //int num = Toolset.Get<int>(array[0]);
+                    //if (Toolset.IsEnumDefined(typeof(RoleAnimationType), num))
+                    //{
+                    //    ArrayList arrayList = new ArrayList();
+                    //    RoleAnimationType key = (RoleAnimationType)num;
+                    //    for (int i = 1; i < array.Length; i++)
+                    //    {
+                    //        arrayList.Clear();
+                    //        if (array[i].Contains("-"))
+                    //        {
+                    //            int num2 = array[i].IndexOf("-");
+                    //            string obj = array[i].Substring(0, num2);
+                    //            string obj2 = array[i].Substring(num2 + 1, array[i].Length - num2 - 1);
+                    //            int num3 = Toolset.Get<int>(obj);
+                    //            int num4 = Toolset.Get<int>(obj2);
+                    //            for (int j = num3; j <= num4; j++)
+                    //            {
+                    //                arrayList.Add(j);
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            arrayList.Add(Toolset.Get<int>(array[i]));
+                    //        }
+                    //        foreach (object obj3 in arrayList)
+                    //        {
+                    //            int num5 = (int)obj3;
+                    //            if (this._aniTypeTable.ContainsKey(key))
+                    //            {
+                    //                this._aniTypeTable[key].Add(num5);
+                    //            }
+                    //            else
+                    //            {
+                    //                ArrayList arrayList2 = new ArrayList();
+                    //                arrayList2.Add(num5);
+                    //                this._aniTypeTable.Add(key, arrayList2);
+                    //            }
+                    //        }
+                    //    }
+                    //}
                 }
             }
         }
