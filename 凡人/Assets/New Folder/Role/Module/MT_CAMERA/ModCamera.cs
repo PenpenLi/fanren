@@ -180,7 +180,7 @@ public class ModCamera : Module
 			this.m_bEnabled = false;
 		}
 		this.cameraTransform.name = "Main Camera";
-		SceneInfo scenenInfo = FanrenSceneManager.currScenenInfo;
+		SceneInfo scenenInfo = FanrenSceneManager.curScenenInfo;
 		if (scenenInfo != null)
 		{
 			string name = "CameraRenderBox_" + scenenInfo.name;

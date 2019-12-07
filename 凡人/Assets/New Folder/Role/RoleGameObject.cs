@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 
 public class RoleGameObject
@@ -489,7 +491,6 @@ public class RoleGameObject
         this.SetGO(RoleGameObject.CreatRoleGameObject(modelId, position, rotation));
     }
 
-    //// Token: 0x0600241E RID: 9246 RVA: 0x000F3DD4 File Offset: 0x000F1FD4
     //public void DisableBody(bool hide)
     //{
     //	this.RoleBody.SetActive(!hide);
@@ -528,11 +529,13 @@ public class RoleGameObject
         {
             return;
         }
+
         BindRole component = gameObject.GetComponent<BindRole>();
         if (component == null)
         {
             return;
         }
+
         ColliderCheckCharacterController colliderCheckCharacterController = gameObject.GetComponent<ColliderCheckCharacterController>();
         if (colliderCheckCharacterController == null)
         {
@@ -861,13 +864,13 @@ public class RoleGameObject
             Debug.LogWarning("modelID:" + modelID);
             return null;
         }
-        GameObject gameObject = ResourceLoader.Load(roleModelInfo.Path, typeof(GameObject)) as GameObject;//加载模型到缓存
+        GameObject gameObject = Resources.Load(roleModelInfo.Path) as GameObject;
         if (gameObject == null)
         {
             Debug.LogWarning("modelID:" + roleModelInfo.Path);
             return null;
         }
-        //gameObject = (LoadMachine.InstantiateObject(gameObject, position, rotation) as GameObject);//实例化物体
+        gameObject = UnityEngine.Object.Instantiate(gameObject,position,rotation);
         BindRole bindRole = gameObject.AddComponent<BindRole>();
         bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;

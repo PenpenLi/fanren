@@ -17,12 +17,12 @@ public class FanrenSceneManager : MonoBehaviour
     /// <summary>
     /// 当前场景信息
     /// </summary>
-    public static SceneInfo currScenenInfo;
+    public static SceneInfo curScenenInfo;
 
     /// <summary>
     /// 传送信息
     /// </summary>
-    public static TeleportInfo currentTeleport;
+    public static TeleportInfo curentTeleport;
 
     /// <summary>
     /// 角色管理
@@ -246,8 +246,8 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
     private void GetSceneInfo()
     {
-        FanrenSceneManager.currScenenInfo = GameData.Instance.cacheData.getSceneInfo(SceneManager.GetActiveScene().name);
-        if (FanrenSceneManager.currScenenInfo == null)
+        FanrenSceneManager.curScenenInfo = GameData.Instance.cacheData.getSceneInfo(SceneManager.GetActiveScene().name);
+        if (FanrenSceneManager.curScenenInfo == null)
         {
             Debug.LogError("not find scene info:" + SceneManager.GetActiveScene().name);
         }
@@ -259,19 +259,19 @@ public class FanrenSceneManager : MonoBehaviour
     private void InitScene()
     {
         ////出生点
-        if (FanrenSceneManager.currentTeleport != null)
+        if (FanrenSceneManager.curentTeleport != null)
         {
-            PlayerInfo.PLAYER_POSITION = new Vector3(FanrenSceneManager.currentTeleport.playerX, FanrenSceneManager.currentTeleport.playerY, FanrenSceneManager.currentTeleport.playerZ);
-            PlayerInfo.PLAYER_ROTATION = new Vector3(0f, FanrenSceneManager.currentTeleport.rotY, 0f);
+            PlayerInfo.PLAYER_POSITION = new Vector3(FanrenSceneManager.curentTeleport.playerX, FanrenSceneManager.curentTeleport.playerY, FanrenSceneManager.curentTeleport.playerZ);
+            PlayerInfo.PLAYER_ROTATION = new Vector3(0f, FanrenSceneManager.curentTeleport.rotY, 0f);
         }
         else
         {
-            PlayerInfo.PLAYER_POSITION = new Vector3(FanrenSceneManager.currScenenInfo.posX, FanrenSceneManager.currScenenInfo.posY, FanrenSceneManager.currScenenInfo.posZ);
-            PlayerInfo.PLAYER_ROTATION = new Vector3(0f, FanrenSceneManager.currScenenInfo.rotY, 0f);
+            PlayerInfo.PLAYER_POSITION = new Vector3(FanrenSceneManager.curScenenInfo.posX, FanrenSceneManager.curScenenInfo.posY, FanrenSceneManager.curScenenInfo.posZ);
+            PlayerInfo.PLAYER_ROTATION = new Vector3(0f, FanrenSceneManager.curScenenInfo.rotY, 0f);
         }
         //复活点
-        PlayerInfo.PLAYER_REVIVE_POSITION = new Vector3(FanrenSceneManager.currScenenInfo.revive_x, FanrenSceneManager.currScenenInfo.revive_y, FanrenSceneManager.currScenenInfo.revive_z);
-        PlayerInfo.PLAYER_REVIVE_ROTATION = new Vector3(0f, FanrenSceneManager.currScenenInfo.revive_rot_y, 0f);
+        PlayerInfo.PLAYER_REVIVE_POSITION = new Vector3(FanrenSceneManager.curScenenInfo.revive_x, FanrenSceneManager.curScenenInfo.revive_y, FanrenSceneManager.curScenenInfo.revive_z);
+        PlayerInfo.PLAYER_REVIVE_ROTATION = new Vector3(0f, FanrenSceneManager.curScenenInfo.revive_rot_y, 0f);
         this.AddComponentMaker();//添加组件
         
         this.DoScriptMoudle(); //执行脚本模块        
@@ -279,19 +279,12 @@ public class FanrenSceneManager : MonoBehaviour
 
     public void DoScriptMoudle()
     {
-        //if (!GUIBind.binded || Player.Instance == null)
-        //{
-        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 0.02f, new Callback(this.DoScriptMoudle));
-        //}
-        //else
-        //{
-        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 0.5f, new Callback(this.HideLoading));
-        //    if (SceneManager.scenenInfo != null && SceneManager.scenenInfo.scriptModId != -1)
-        //    {
-        //        GameData.Instance.ScrMan.Exec(27, SceneManager.scenenInfo.scriptModId);
-        //    }
-        //    TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, new Callback(Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Hide));
-        //}
+        //TimeOutManager.SetTimeOut(Main.Instance.transform, 0.5f, new Callback(this.HideLoading));//关闭UI
+        if (FanrenSceneManager.curScenenInfo != null && FanrenSceneManager.curScenenInfo.scriptModId != -1)
+        {
+            GameData.Instance.ScrMan.Exec(27, FanrenSceneManager.curScenenInfo.scriptModId);
+        }
+        //TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, new Callback(Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Hide));
     }
 
     //private void HideLoading()
@@ -314,8 +307,6 @@ public class FanrenSceneManager : MonoBehaviour
         //MovieManager movieMag = gameObject.AddComponent<MovieManager>();
         //MovieManager.MovieMag = movieMag;
         //Singleton<ActorManager>.GetInstance().MainCamera = base.gameObject;
-        //GameObject gameObject2 = new GameObject("SkillManager");
-        //CSkillManager.Instance = gameObject2.AddComponent<CSkillManager>();
     }
 
     /// <summary>
@@ -333,7 +324,7 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
     private void PlayGameBgSound()
     {
-        SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.currScenenInfo.bgSoundId, 0f, 1f, 0f);
+        SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.curScenenInfo.bgSoundId, 0f, 1f, 0f);
         SingletonMono<AudioManager>.GetInstance().PauseAll(true);
     }
 }

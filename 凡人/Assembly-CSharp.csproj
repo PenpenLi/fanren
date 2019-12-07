@@ -273,6 +273,7 @@
     <Compile Include="Assets\New Folder\Save\SystemTag.cs" />
     <Compile Include="Assets\New Folder\Singleton\Singleton.cs" />
     <Compile Include="Assets\New Folder\Singleton\SingletonMono.cs" />
+    <Compile Include="Assets\New Folder\TimeOutManager.cs" />
     <Compile Include="Assets\New Folder\TransBevBase.cs" />
     <Compile Include="Assets\New Folder\UI\EZCameraSettings.cs" />
     <Compile Include="Assets\New Folder\UI\EZGUIManager.cs" />
@@ -305,6 +306,9 @@
     <Compile Include="Assets\Scripts\Main\MouseManager.cs" />
     <Compile Include="Assets\Scripts\Scene\FanrenSceneManager.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SDM_ScriptsGroup.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_ActionScript.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_ExecScripts.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_SwitchScene.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_UpdateProp.cs" />
     <Compile Include="Assets\Scripts\TeleportManager\TeleportManager.cs" />
@@ -312,6 +316,7 @@
     <None Include="Assets\Resources\conf\DataFile\MFSTable.txt" />
     <None Include="Assets\Resources\conf\OrganizationInfo.txt" />
     <None Include="Assets\Resources\conf\res\prefabInfo.txt" />
+    <None Include="Assets\Resources\conf\ScriptData\ScriptsGroup.txt" />
     <None Include="Assets\Resources\conf\Scene.txt" />
     <None Include="Assets\Resources\conf\BottleSubTag.txt" />
     <None Include="Assets\Model\RoleModel\Monster\nvbing\怪物-近战女兵.txt" />

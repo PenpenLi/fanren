@@ -330,12 +330,12 @@ public class RoleManager : MonoBehaviour
 
         if (gameObject == null)
         {
-            gameObject = GameObject.Find("MobSpawn_" + FanrenSceneManager.currScenenInfo.name);
+            gameObject = GameObject.Find("MobSpawn_" + FanrenSceneManager.curScenenInfo.name);
         }
 
         if (gameObject == null)
         {
-            gameObject = GameObject.Find("MobSpawn_M" + FanrenSceneManager.currScenenInfo.name.Substring(1));
+            gameObject = GameObject.Find("MobSpawn_M" + FanrenSceneManager.curScenenInfo.name.Substring(1));
         }
 
         if (gameObject == null)
@@ -423,12 +423,12 @@ public class RoleManager : MonoBehaviour
     {
         Player player = new Player();
         player.Create();//创建玩家
-        //player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
-        //if (player.ID == 1)
-        //{
-        //    this._player = player;
-        //}
-        //this.AddRole(player);//添加到角色列表
+        player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
+        if (player.ID == 1)
+        {
+            this._player = player;
+        }
+        this.AddRole(player);//添加到角色列表
     }
 
     /// <summary>

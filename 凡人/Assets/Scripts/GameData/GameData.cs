@@ -21,7 +21,7 @@ public class GameData
 
     public RoleDateInfo RoleData = new RoleDateInfo();
 
-    //public SDM_ScriptsGroup SDM_ScrGro = new SDM_ScriptsGroup();
+    public SDM_ScriptsGroup SDM_ScrGro = new SDM_ScriptsGroup();
 
     //public TriggerData triggerData = new TriggerData();
 
@@ -121,7 +121,7 @@ public class GameData
 		GameData.Instance.RoleData.LoadConf();
 		//GameData.Instance.triggerData.ReadData();
 		//GameData.Instance.SDM_SpawnMon.ReadData();
-		//GameData.Instance.SDM_ScrGro.ReadData();
+		GameData.Instance.SDM_ScrGro.ReadData();
 		//GameData.Instance.walkPathInfo.ReadWalkPathInfo();
 		//GameData.Instance.helpInfo.ReadHelpInfo();
 		//GameData.Instance.mapNameInfo.ReadMapNameInfo();

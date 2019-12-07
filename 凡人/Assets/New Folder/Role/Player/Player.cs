@@ -366,26 +366,26 @@ public class Player : Role
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
 
-        //base.roleGameObject.RoleBind.SetRole(this);
-        //this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
-        //this.CreateModule();//创建模块
-        //this.addPlayerHotKey();//添加热键
-        //this.hatred.selfRole = Player.Instance;
-        //KeyManager.controlRole = this;
-        //this.equipReplace = new EquipReplace(this);//装备
-        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
-        //this.m_cAmbitSystem.Init(this);
-        //this.InitRoleBaseInfo();
-        //this.m_RoleGrowDatas.Init();
-        //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //this.m_cFigureSystem.Init(this);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        //if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
-        //{
-        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        //}
+        base.roleGameObject.RoleBind.SetRole(this);
+        this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
+        this.CreateModule();//创建模块
+        this.addPlayerHotKey();//添加热键
+        this.hatred.selfRole = Player.Instance;
+        KeyManager.controlRole = this;
+        this.equipReplace = new EquipReplace(this);//装备
+        this.ItemFolder = new ItemFolderContainer(base.ID);//物品
+        this.m_cAmbitSystem.Init(this);
+        this.InitRoleBaseInfo();
+        this.m_RoleGrowDatas.Init();
+        GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        this.m_cFigureSystem.Init(this);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
+        {
+            base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
+        }
     }
 
     /// <summary>

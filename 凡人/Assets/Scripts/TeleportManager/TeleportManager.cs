@@ -29,9 +29,9 @@ public class TeleportManager : MonoBehaviour
 			{
 				return;
 			}
-            FanrenSceneManager.currentTeleport = this.teleportInfo;
+            FanrenSceneManager.curentTeleport = this.teleportInfo;
 			SceneInfo sceneInfo = GameData.Instance.cacheData.getSceneInfo(this.teleportInfo.targetSceneId);
-			if (FanrenSceneManager.currScenenInfo != null && FanrenSceneManager.currScenenInfo.id == sceneInfo.id)
+			if (FanrenSceneManager.curScenenInfo != null && FanrenSceneManager.curScenenInfo.id == sceneInfo.id)
 			{
                 FanrenSceneManager.LoadLevel(sceneInfo.name, false, true, false);
 			}

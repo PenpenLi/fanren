@@ -46,7 +46,7 @@ public class RoleModelData : Singleton<RoleModelData>
 
 	public RoleModelInfo GetRoleModelInfo(int modelId)
 	{
-		if (this.m_mapRoleModelInfos.ContainsKey(modelId))
+        if (this.m_mapRoleModelInfos.ContainsKey(modelId))
 		{
 			return this.m_mapRoleModelInfos[modelId];
 		}
