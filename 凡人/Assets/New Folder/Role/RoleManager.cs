@@ -78,13 +78,13 @@ public class RoleManager : MonoBehaviour
 
     private void Start()
     {
-        GameData.CreatGameData();
-        //this.ReadSpawnInfo();//读取刷怪点信息
-        this.CreateRootObject();
-        //this.UpdateSceneBySave();
-        this.CreateRole();
-        //this.UpdatePlayerBySave();
-        this.InitPlayer();
+        GameData.CreatGameData();//创建游戏数据
+        this.ReadSpawnInfo();//读取刷怪点信息
+        this.CreateRootObject();//创建根节点
+        this.UpdateSceneBySave();//更新场景数据
+        this.CreateRole();//创建角色
+        this.UpdatePlayerBySave();//更新角色数据
+        //this.InitPlayer();
         //this.InitOther();
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
@@ -103,7 +103,7 @@ public class RoleManager : MonoBehaviour
     /// </summary>
     private void CreateRole()
     {
-        this.CreatePlayer();
+        this.CreatePlayer();//创建玩家
         //this.CreateObject();
     }
 
@@ -143,10 +143,14 @@ public class RoleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 根据存档更新场景
+    /// </summary>
     private void UpdateSceneBySave()
     {
         GameData.Instance.ItemMan.Clear();
         SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();
+        Debug.Log(curSceneDate);
         //if (curSceneDate != null)
         //{
         //    foreach (SaveData.SDMonsterDate sdmonsterDate in curSceneDate.MonsterList)
@@ -214,90 +218,90 @@ public class RoleManager : MonoBehaviour
         //}
     }
 
-    //	private void UpdatePlayerBySave()
-    //	{
-    //		Player player = SceneManager.RoleMan.GetPlayer();
-    //		if (player != null)
-    //		{
-    //			foreach (SaveData.SDPlayerDate sdplayerDate in SDManager.SDSave.SaveDateGame.PlayerList)
-    //			{
-    //				if (sdplayerDate.ID == player.ID)
-    //				{
-    //					if (!SDManager.SDSave.BeLoaded)
-    //					{
-    //						SDManager.SDSave.BeLoaded = true;
-    //						Vector3 pos = new Vector3(sdplayerDate.PosRat.PosX, sdplayerDate.PosRat.PosY, sdplayerDate.PosRat.PosZ);
-    //						player.SetPos(pos);
-    //						Vector3 rat = new Vector3(sdplayerDate.PosRat.RatX, sdplayerDate.PosRat.RatY, sdplayerDate.PosRat.RatZ);
-    //						player.SetRat(rat);
-    //					}
-    //					ModCamera modCamera = player.GetModule(MODULE_TYPE.MT_CAMERA) as ModCamera;
-    //					modCamera.InitPosition();
-    //					ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //					if (modAttribute != null)
-    //					{
-    //						modAttribute.SetAttList(sdplayerDate.AttrList);
-    //					}
-    //					GameData.Instance.ItemMan.Clear();
-    //					for (int i = 0; i < sdplayerDate.itemList.Count; i++)
-    //					{
-    //						ItemSaveData itemSaveData = sdplayerDate.itemList[i];
-    //						if (itemSaveData != null)
-    //						{
-    //							List<CItemBase> list = new List<CItemBase>();
-    //							GameData.Instance.ItemMan.CreateItem(itemSaveData.itemType, 1, itemSaveData.itemOwner, itemSaveData.dynamicProperty, ref list);
-    //							if (list.Count >= 1)
-    //							{
-    //								list[0].SetItemFromSaveData(itemSaveData);
-    //							}
-    //						}
-    //					}
-    //					player.ItemFolder.WearOperate.ResetUsedEquip();
-    //					player.ItemFolder.WearOperate.UpdateUsedEquip(true);
-    //					ModSkillProperty modSkillProperty = player.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
-    //					if (modSkillProperty != null)
-    //					{
-    //						modSkillProperty.SetSkillList(sdplayerDate.Skill.m_cSkills);
-    //					}
-    //					ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
-    //					if (modMission != null)
-    //					{
-    //						modMission.MisMask = sdplayerDate.Mission.misMask;
-    //						modMission.misLinkList.Clear();
-    //						for (int j = 0; j < sdplayerDate.Mission.misLinkList.Count; j++)
-    //						{
-    //							modMission.misLinkList.Add(sdplayerDate.Mission.misLinkList[j].Clone());
-    //						}
-    //						for (int k = 0; k < sdplayerDate.Mission.accMisList.Count; k++)
-    //						{
-    //							ModMission.AccMisInfo accMisInfo = sdplayerDate.Mission.accMisList[k].Clone2Nor();
-    //							MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(accMisInfo.ID);
-    //							if (missionInfo != null)
-    //							{
-    //								accMisInfo.MisInfo = missionInfo;
-    //								modMission.accMisList.Add(accMisInfo);
-    //							}
-    //						}
-    //					}
-    //					player.SystemHandbook.GetSDNote(sdplayerDate.Note);
-    //					player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
-    //					player.SystemFigure.GetSDFigure(sdplayerDate.Figure);
-    //					player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
-    //					player.m_cAdeptSystem.PushSDData(sdplayerDate.AdpTlnt, player, sdplayerDate.AdpTlnt._AddCount, sdplayerDate.AdpTlnt._AdeptTalentConfig, sdplayerDate.AdpTlnt._lastAdeptData);
-    //					player.m_cMixtureSmelt.PushSDData(sdplayerDate.MxtSmlt._MixtureDataLst, sdplayerDate.MxtSmlt._MixtureFinalDataLst, sdplayerDate.MxtSmlt._MianLock);
-    //					player.m_BottleSystem.PushSDData(sdplayerDate.BottleData);
-    //					player._helpBase.PushData(sdplayerDate.HelpSave);
-    //					player.m_RoleGrowDatas.PushData(sdplayerDate.RoleGrowDatas);
-    //					GameData.Instance.ShopMan.ShopDataPush(sdplayerDate.ShopData);
-    //				}
-    //			}
-    //			if (SDManager.SDSave.SaveDateGame.PlayerList.Count == 0)
-    //			{
-    //				GameData.Instance.ItemMan.Clear();
-    //			}
-    //			Singleton<HpCautionEffect>.GetInstance().Check();
-    //		}
-    //	}
+    private void UpdatePlayerBySave()
+    {
+        Player player = FanrenSceneManager.RoleMan.GetPlayer();
+        //if (player != null)
+        //{
+        //    foreach (SaveData.SDPlayerDate sdplayerDate in SDManager.SDSave.SaveDateGame.PlayerList)
+        //    {
+        //        if (sdplayerDate.ID == player.ID)
+        //        {
+        //            if (!SDManager.SDSave.BeLoaded)
+        //            {
+        //                SDManager.SDSave.BeLoaded = true;
+        //                Vector3 pos = new Vector3(sdplayerDate.PosRat.PosX, sdplayerDate.PosRat.PosY, sdplayerDate.PosRat.PosZ);
+        //                player.SetPos(pos);
+        //                Vector3 rat = new Vector3(sdplayerDate.PosRat.RatX, sdplayerDate.PosRat.RatY, sdplayerDate.PosRat.RatZ);
+        //                player.SetRat(rat);
+        //            }
+        //            ModCamera modCamera = player.GetModule(MODULE_TYPE.MT_CAMERA) as ModCamera;
+        //            modCamera.InitPosition();
+        //            ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        //            if (modAttribute != null)
+        //            {
+        //               // modAttribute.SetAttList(sdplayerDate.AttrList);
+        //            }
+        //            GameData.Instance.ItemMan.Clear();
+        //            //for (int i = 0; i < sdplayerDate.itemList.Count; i++)
+        //            //{
+        //            //    ItemSaveData itemSaveData = sdplayerDate.itemList[i];
+        //            //    if (itemSaveData != null)
+        //            //    {
+        //            //        List<CItemBase> list = new List<CItemBase>();
+        //            //        GameData.Instance.ItemMan.CreateItem(itemSaveData.itemType, 1, itemSaveData.itemOwner, itemSaveData.dynamicProperty, ref list);
+        //            //        if (list.Count >= 1)
+        //            //        {
+        //            //            list[0].SetItemFromSaveData(itemSaveData);
+        //            //        }
+        //            //    }
+        //            //}
+        //            //player.ItemFolder.WearOperate.ResetUsedEquip();
+        //            //player.ItemFolder.WearOperate.UpdateUsedEquip(true);
+        //            ModSkillProperty modSkillProperty = player.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
+        //            if (modSkillProperty != null)
+        //            {
+        //               // modSkillProperty.SetSkillList(sdplayerDate.Skill.m_cSkills);
+        //            }
+        //            ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
+        //            if (modMission != null)
+        //            {
+        //              //  modMission.MisMask = sdplayerDate.Mission.misMask;
+        //                modMission.misLinkList.Clear();
+        //                //for (int j = 0; j < sdplayerDate.Mission.misLinkList.Count; j++)
+        //                //{
+        //                //    modMission.misLinkList.Add(sdplayerDate.Mission.misLinkList[j].Clone());
+        //                //}
+        //                //for (int k = 0; k < sdplayerDate.Mission.accMisList.Count; k++)
+        //                //{
+        //                //    ModMission.AccMisInfo accMisInfo = sdplayerDate.Mission.accMisList[k].Clone2Nor();
+        //                //    MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(accMisInfo.ID);
+        //                //    if (missionInfo != null)
+        //                //    {
+        //                //        accMisInfo.MisInfo = missionInfo;
+        //                //        modMission.accMisList.Add(accMisInfo);
+        //                //    }
+        //                //}
+        //            }
+        //            //player.SystemHandbook.GetSDNote(sdplayerDate.Note);
+        //            //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
+        //            //player.SystemFigure.GetSDFigure(sdplayerDate.Figure);
+        //            //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
+        //            //player.m_cAdeptSystem.PushSDData(sdplayerDate.AdpTlnt, player, sdplayerDate.AdpTlnt._AddCount, sdplayerDate.AdpTlnt._AdeptTalentConfig, sdplayerDate.AdpTlnt._lastAdeptData);
+        //            //player.m_cMixtureSmelt.PushSDData(sdplayerDate.MxtSmlt._MixtureDataLst, sdplayerDate.MxtSmlt._MixtureFinalDataLst, sdplayerDate.MxtSmlt._MianLock);
+        //            //player.m_BottleSystem.PushSDData(sdplayerDate.BottleData);
+        //            //player._helpBase.PushData(sdplayerDate.HelpSave);
+        //            //player.m_RoleGrowDatas.PushData(sdplayerDate.RoleGrowDatas);
+        //            //GameData.Instance.ShopMan.ShopDataPush(sdplayerDate.ShopData);
+        //        }
+        //    }
+        //    if (SDManager.SDSave.SaveDateGame.PlayerList.Count == 0)
+        //    {
+        //        GameData.Instance.ItemMan.Clear();
+        //    }
+           // Singleton<HpCautionEffect>.GetInstance().Check();
+       // }
+    }
 
     //	public Role GetRoleByType(ROLE_TYPE roleType, int type)
     //	{
@@ -321,8 +325,19 @@ public class RoleManager : MonoBehaviour
     /// </summary>
     private void ReadSpawnInfo()
     {
-        this.MobSpawnList.Clear();
+        this.MobSpawnList.Clear();//清空列表
         GameObject gameObject = GameObject.Find("MobSpawn");
+
+        if (gameObject == null)
+        {
+            gameObject = GameObject.Find("MobSpawn_" + FanrenSceneManager.currScenenInfo.name);
+        }
+
+        if (gameObject == null)
+        {
+            gameObject = GameObject.Find("MobSpawn_M" + FanrenSceneManager.currScenenInfo.name.Substring(1));
+        }
+
         if (gameObject == null)
         {
             Debug.Log("Can't find MobSpawn");
@@ -407,13 +422,13 @@ public class RoleManager : MonoBehaviour
     private void CreatePlayer()
     {
         Player player = new Player();
-        player.Create();
-        player.GetTrans().parent = this._playerRootGo.transform;
-        if (player.ID == 1)
-        {
-            this._player = player;
-        }
-        this.AddRole(player);
+        player.Create();//创建玩家
+        //player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
+        //if (player.ID == 1)
+        //{
+        //    this._player = player;
+        //}
+        //this.AddRole(player);//添加到角色列表
     }
 
     /// <summary>

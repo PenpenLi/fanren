@@ -1126,9 +1126,12 @@ GameObject:
   - component: {fileID: 4209466646652320955}
   - component: {fileID: 7143862881141608708}
   - component: {fileID: 9142074193192930523}
-  m_Layer: 0
+  - component: {fileID: 253065805520545124}
+  - component: {fileID: -8582150894187048364}
+  - component: {fileID: 9029090702591609311}
+  m_Layer: 8
   m_Name: HanLi
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1216,6 +1219,47 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &253065805520545124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209466646642921215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bba609b0e8b8ba4e9f5da8a0604f523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HurtScale: 1
+--- !u!114 &-8582150894187048364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209466646642921215}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d743804922f0b74409461f842c07a0a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectiveLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &9029090702591609311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209466646642921215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bba609b0e8b8ba4e9f5da8a0604f523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HurtScale: 1
 --- !u!1 &4209466646642921217
 GameObject:
   m_ObjectHideFlags: 0

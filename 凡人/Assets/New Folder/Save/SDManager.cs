@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 存档数据管理
@@ -77,92 +78,96 @@ public class SDManager
 		return null;
 	}
 
+    /// <summary>
+    /// 设置角色数据
+    /// </summary>
 	public static void SetRoleDate()
 	{
-		//if (SceneManager.RoleMan == null)
-		//{
-		//	return;
-		//}
-		//SDManager.SDSave.SaveDateGame.PlayerList.Clear();
-		//bool flag = false;
-		//for (int i = 0; i < SceneManager.RoleMan.RoleObjList.Count; i++)
-		//{
-		//	Role role = SceneManager.RoleMan.RoleObjList[i];
-		//	if (role == null && role._roleType == ROLE_TYPE.RT_PLAYER)
-		//	{
-		//		Debug.LogWarning(DU.Warning(new object[]
-		//		{
-		//			"role is null"
-		//		}));
-		//	}
-		//	if (role != null && role._roleType == ROLE_TYPE.RT_PLAYER)
-		//	{
-		//		Player player = role as Player;
-		//		if (player == null)
-		//		{
-		//			Logger.Log(new object[]
-		//			{
-		//				"role is not player"
-		//			});
-		//		}
-		//		SaveData.SDPlayerDate playerDate = SaveData.SDPlayerDate.GetPlayerDate(player);
-		//		if (playerDate == null)
-		//		{
-		//			Debug.LogWarning(DU.Warning(new object[]
-		//			{
-		//				"SetRoleDate"
-		//			}));
-		//		}
-		//		SDManager.SDSave.SaveDateGame.PlayerList.Add(playerDate);
-		//		flag = true;
-		//	}
-		//}
-		//if (!flag)
-		//{
-		//	Debug.LogWarning(DU.Warning(new object[]
-		//	{
-		//		"Not find ",
-		//		Application.loadedLevelName
-		//	}));
-		//}
-	}
+        if (FanrenSceneManager.RoleMan == null)
+        {
+            return;
+        }
+        //SDManager.SDSave.SaveDateGame.PlayerList.Clear();
+        //bool flag = false;
+        //for (int i = 0; i < SceneManager.RoleMan.RoleObjList.Count; i++)
+        //{
+        //	Role role = SceneManager.RoleMan.RoleObjList[i];
+        //	if (role == null && role._roleType == ROLE_TYPE.RT_PLAYER)
+        //	{
+        //		Debug.LogWarning(DU.Warning(new object[]
+        //		{
+        //			"role is null"
+        //		}));
+        //	}
+        //	if (role != null && role._roleType == ROLE_TYPE.RT_PLAYER)
+        //	{
+        //		Player player = role as Player;
+        //		if (player == null)
+        //		{
+        //			Logger.Log(new object[]
+        //			{
+        //				"role is not player"
+        //			});
+        //		}
+        //		SaveData.SDPlayerDate playerDate = SaveData.SDPlayerDate.GetPlayerDate(player);
+        //		if (playerDate == null)
+        //		{
+        //			Debug.LogWarning(DU.Warning(new object[]
+        //			{
+        //				"SetRoleDate"
+        //			}));
+        //		}
+        //		SDManager.SDSave.SaveDateGame.PlayerList.Add(playerDate);
+        //		flag = true;
+        //	}
+        //}
+        //if (!flag)
+        //{
+        //	Debug.LogWarning(DU.Warning(new object[]
+        //	{
+        //		"Not find ",
+        //		Application.loadedLevelName
+        //	}));
+        //}
+    }
 
-	// Token: 0x060007A8 RID: 1960 RVA: 0x0003A250 File Offset: 0x00038450
+    /// <summary>
+    /// 添加当前场景数据
+    /// </summary>
 	public static void AddCurSceneDate()
 	{
-		//SaveData.SDSceneDate curSceneDate = SaveData.SDSceneDate.GetCurSceneDate();
-		//if (curSceneDate == null)
-		//{
-		//	Debug.LogWarning(DU.Warning(new object[]
-		//	{
-		//		"SDManager.AddCurSceneDate "
-		//	}));
-		//	return;
-		//}
-		SaveData.SDSceneDate sdsceneDate = null;
-		//if (curSceneDate.SceneName.Length != 0)
-		//{
-		//	sdsceneDate = SDManager.GetSceneDate(curSceneDate.SceneName);
-		//}
-		//if (sdsceneDate != null)
-		//{
-		//	SDManager.SDSave.SaveDateGame.SceneList.Remove(sdsceneDate);
-		//}
-		//SDManager.SDSave.SaveDateGame.SceneList.Add(curSceneDate);
-	}
+		SaveData.SDSceneDate curSceneDate = SaveData.SDSceneDate.GetCurSceneDate();
+        if (curSceneDate == null)
+        {
+            Debug.LogWarning("SDManager.AddCurSceneDate");
+            return;
+        }
+        SaveData.SDSceneDate sdsceneDate = null;
+        if (curSceneDate.SceneName.Length != 0)
+        {
+            sdsceneDate = SDManager.GetSceneDate(curSceneDate.SceneName);
+        }
+        if (sdsceneDate != null)
+        {
+            SDManager.SDSave.SaveDateGame.SceneList.Remove(sdsceneDate);
+        }
+        SDManager.SDSave.SaveDateGame.SceneList.Add(curSceneDate);
+    }
 
 	public static void Clear()
 	{
 		SDManager.SDSave.SaveDateGame.SceneList.Clear();
 	}
 
-	// Token: 0x060007AA RID: 1962 RVA: 0x00007403 File Offset: 0x00005603
+    /// <summary>
+    /// 获得当前场景数据
+    /// </summary>
+    /// <returns></returns>
 	public static SaveData.SDSceneDate GetCurSceneDate()
 	{
-		return SDManager.GetSceneDate(Application.loadedLevelName);
+		return SDManager.GetSceneDate(SceneManager.GetActiveScene().name);
 	}
 
-	// Token: 0x060007AB RID: 1963 RVA: 0x0003A2D4 File Offset: 0x000384D4
 	public static SaveData.SDSceneDate GetSceneDate(string sceneName)
 	{
 		foreach (SaveData.SDSceneDate sdsceneDate in SDManager.SDSave.SaveDateGame.SceneList)

@@ -149,10 +149,12 @@ public class KeyManager : MonoBehaviour
         //{
         //    Singleton<DrillSystem>.GetInstance().ExitDrill();
         //}
+
         if (!KeyManager.hotKeyEnabled)
         {
             return;
         }
+
         if (SceneManager.GetActiveScene().name == "Landing")
         {
             return;
@@ -164,7 +166,7 @@ public class KeyManager : MonoBehaviour
             //{
             //    return;
             //}
-           
+
             float axisRaw = Input.GetAxisRaw("Vertical");
             float axisRaw2 = Input.GetAxisRaw("Horizontal");
             bool buttonDown = Input.GetButtonDown("Jump");
@@ -188,6 +190,7 @@ public class KeyManager : MonoBehaviour
             //    Player.Instance.RunSpeed = 5f;
             //}
         }
+
         if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
         {
             //Player.Instance.m_cModFight.StartGatherStrength();//积聚力量

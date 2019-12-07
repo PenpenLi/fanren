@@ -149,9 +149,11 @@ public class GameObjSpawn : MonoBehaviour
         {
             this.sm = FanrenSceneManager.RoleMan.GetSMById(this.SpawnManID);
         }
+        Debug.Log(sm);
         if (this.sm != null && this.spawnInfo.bevTreeID == -1)
         {
-            this.spawnInfo.bevTreeID = this.sm.BevTreeID;
+            Debug.Log("执行2");
+            //this.spawnInfo.bevTreeID = this.sm.BevTreeID;
         }
     }
 

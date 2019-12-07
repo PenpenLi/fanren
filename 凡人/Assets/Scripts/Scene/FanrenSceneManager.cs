@@ -20,7 +20,7 @@ public class FanrenSceneManager : MonoBehaviour
     public static SceneInfo currScenenInfo;
 
     /// <summary>
-    /// 传送点信息
+    /// 传送信息
     /// </summary>
     public static TeleportInfo currentTeleport;
 
@@ -41,6 +41,8 @@ public class FanrenSceneManager : MonoBehaviour
     public static bool loadingFromSave;
 
     private Color col = new Color(0f, 0f, 0f, 0f);
+
+    string currSceneName;
 
     public static RoleManager RoleMan
     {
@@ -66,30 +68,43 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
 	public void GameStart()
 	{
+        currSceneName = SceneManager.GetActiveScene().name;
+
         this.Init();
 
-        //string Scenename = SceneManager.GetActiveScene().name;
+        if (currSceneName != "Start" && currSceneName != "Landing" && currSceneName != "End")
+        {
+            this.InitScene();
+            GameTime.Init();
+        }
 
-        //if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
+        if (currSceneName == "Landing")
+        {
+            //this.PlayGameBgSound();//播放背景音乐
+        }
+
+        if (currSceneName != "Start" && currSceneName != "Landing" && currSceneName != "End" && currSceneName != "Credits")
+        {
+            //this.EnterScene();
+           //加载UI
+        }
+
+        //if (Application.loadedLevelName == "Landing")
         //{
-        //    this.InitScene();
-        //    GameTime.Init();
+        //    EZGUIManager._BindRunTimeObj.AddLandUI();
+        //    this.ReStartGame(true);
+        //}
+        //else
+        //{
+        //    EZGUIManager._BindRunTimeObj.RemoveLandUI();
         //}
 
-        //if (Scenename == "Landing")
+        //if (Application.loadedLevelName == "End" || Application.loadedLevelName == "Credits")
         //{
-        //    this.PlayGameBgSound();
+        //    this.ReStartGame(false);
         //}
 
-        //if (Scenename != "Start" && Scenename != "Landing" && Scenename != "End")
-        //{
-        //    //GUIControl.MovieClose();
-        //    //this.EnterScene();
-        //    //Singleton<CResourcesStaticManager>.GetInstance();
-        //    //EZGUIManager._BindRunTimeObj.AddRunGUIEx();
-        //}
-
-        //Main.Instance.DelayGC(20f);//播放剧情
+        //Main.Instance.DelayGC(20f);//延迟GC
     }
 
     //private void ReStartGame(bool show)
@@ -102,21 +117,22 @@ public class FanrenSceneManager : MonoBehaviour
     {
         if (FanrenSceneManager.loading)
         {
-            Debug.LogWarning("Load twice");
+            Debug.LogWarning("加载两次");
             return;
         }
         FanrenSceneManager.loading = true;
-        //LandPlane.m_bAddInput = true;
-        //Singleton<HpCautionEffect>.GetInstance().SetRender(false, false);
+        //Singleton<HpCautionEffect>.GetInstance().SetRender(false, false);//血量警告特效
         if (isShow && name != "Landing")
         {
-            //Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Show();
+            //Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Show();//显示加载UI
         }
-        if (bLoadSave)
+
+        if (bLoadSave)//加载存档
         {
-            //SDManager.SetRoleDate();
-            //SDManager.AddCurSceneDate();
+            SDManager.SetRoleDate();
+            SDManager.AddCurSceneDate();
         }
+
         FanrenSceneManager.loadingFromSave = fromSave;
         Main.Instance.StartCoroutine(FanrenSceneManager.WaitToLoad(name));
     }
@@ -124,10 +140,9 @@ public class FanrenSceneManager : MonoBehaviour
     private static IEnumerator WaitToLoad(string name)
     {
         yield return new WaitForFixedUpdate();
-        //LoadMachine.ClearLoadedObj();
         if (name == "Landing")
         {
-            //SceneManager.ResetSaveData();
+            FanrenSceneManager.ResetSaveData();
         }
         SceneManager.LoadScene(name);
         yield break;
@@ -176,12 +191,15 @@ public class FanrenSceneManager : MonoBehaviour
     //	yield break;
     //}
 
-    //public static void ResetSaveData()
-    //{
-    //	SDManager.SDSave.Reset();
-    //	SDManager.SDSave = new SaveData();
-    //	DynamicData.SetDate(SDManager.SDSave.SaveDateGame.MoiveInfoList);
-    //}
+    /// <summary>
+    /// 重置存档数据
+    /// </summary>
+    public static void ResetSaveData()
+    {
+        SDManager.SDSave.Reset();
+        SDManager.SDSave = new SaveData();
+        DynamicData.SetDate(SDManager.SDSave.SaveDateGame.MoiveInfoList);
+    }
 
     //public static void LoadLanding()
     //{
@@ -198,19 +216,29 @@ public class FanrenSceneManager : MonoBehaviour
     //	Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>().Show();
     //	yield break;
     //}
-     
+
     private void Init()
     {
         this.GetSceneInfo();
         Main.InitMain();
-        //SystemSetting.initialize();
-        //Singleton<ActorManager>.GetInstance().Clear();
 
-        //if (SceneManager.GetActiveScene().name == "Start")
-        //{
-        //    GameData.Instance.ScrMan.Exec(31, 10099);
-        //    Main.Instance.StartCoroutine(this.ShowLoadPlane());
-        //}
+        //SystemSetting.initialize();//加载系统设置
+        //Singleton<ActorManager>.GetInstance().Clear();//清空演员
+
+        if (currSceneName == "Start")
+        {
+            GameData.Instance.ScrMan.Exec(31, 10099);
+        }
+
+        if (currSceneName == "End")
+        {
+            //Main.Instance.StartCoroutine(this.GameOverCG());
+        }
+
+        if (currSceneName == "Credits")
+        {
+            //Main.Instance.StartCoroutine(this.Credits());
+        }
     }
 
     /// <summary>
@@ -286,7 +314,7 @@ public class FanrenSceneManager : MonoBehaviour
         //MovieManager movieMag = gameObject.AddComponent<MovieManager>();
         //MovieManager.MovieMag = movieMag;
         //Singleton<ActorManager>.GetInstance().MainCamera = base.gameObject;
-        GameObject gameObject2 = new GameObject("SkillManager");
+        //GameObject gameObject2 = new GameObject("SkillManager");
         //CSkillManager.Instance = gameObject2.AddComponent<CSkillManager>();
     }
 
@@ -295,7 +323,7 @@ public class FanrenSceneManager : MonoBehaviour
     /// </summary>
     private void EnterScene()
     {
-        this.PlayGameBgSound();
+        //this.PlayGameBgSound();
         //TeleportManager.InitTeleport(SceneManager.scenenInfo.id);
         //SystemSetting.SceneSetting();
     }
@@ -307,19 +335,5 @@ public class FanrenSceneManager : MonoBehaviour
     {
         SingletonMono<MusicManager>.GetInstance().PlayMusic(FanrenSceneManager.currScenenInfo.bgSoundId, 0f, 1f, 0f);
         SingletonMono<AudioManager>.GetInstance().PauseAll(true);
-    }
-
-    private IEnumerator ShowLoadPlane()
-    {
-        //if (Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>() != null)
-        //{
-        //    Singleton<EZGUIManager>.GetInstance().GetGUI<LandPlane>().Show();
-        //}
-        //else
-        //{
-        //    yield return new WaitForFixedUpdate();
-        //    Main.Instance.StartCoroutine(this.ShowLoadPlane());
-        //}
-        yield break;
     }
 }

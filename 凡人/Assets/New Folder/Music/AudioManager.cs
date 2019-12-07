@@ -591,19 +591,19 @@ public class AudioManager : SingletonMono<AudioManager>
 	{
 		if (type == SoundType.bgSound)
 		{
-			if (SystemSetting.bgSoundMute)
-			{
+			//if (SystemSetting.bgSoundMute)
+			//{
 				return 0f;
-			}
-			return SystemSetting.bgSoundValue;
+			//}
+			//return SystemSetting.bgSoundValue;
 		}
 		else if (type == SoundType.gameSound)
 		{
-			if (SystemSetting.gameSoundMute)
-			{
+			//if (SystemSetting.gameSoundMute)
+			//{
 				return 0f;
-			}
-			return SystemSetting.gameSoundValue;
+			//}
+			//return SystemSetting.gameSoundValue;
 		}
 		else
 		{
@@ -611,11 +611,11 @@ public class AudioManager : SingletonMono<AudioManager>
 			{
 				return 1f;
 			}
-			if (SystemSetting.dubSoundMute)
-			{
+			//if (SystemSetting.dubSoundMute)
+			//{
 				return 0f;
-			}
-			return SystemSetting.dubSoundValue;
+			//}
+			//return SystemSetting.dubSoundValue;
 		}
 	}
 
