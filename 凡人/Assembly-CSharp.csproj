@@ -305,7 +305,14 @@
     <Compile Include="Assets\Scripts\Main\Main.cs" />
     <Compile Include="Assets\Scripts\Main\MouseManager.cs" />
     <Compile Include="Assets\Scripts\Scene\FanrenSceneManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ConditionOr.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\Function.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptAction.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptDataManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptNode.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptTrigger.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SDM_ScriptsGroup.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_ActionScript.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\SM_Script\SM_ExecScripts.cs" />
@@ -340,6 +347,7 @@
     <None Include="Assets\Resources\conf\BasePlayerProperty.txt" />
     <None Include="Assets\Model\SceneModel 1\ShanGu\Shader\MogoTransparentDiffuse.shader" />
     <None Include="Assets\Resources\conf\ScriptMoudle.txt" />
+    <None Include="Assets\Resources\conf\ScriptData\ActionScript.txt" />
     <None Include="Assets\Resources\conf\res\materialInfo.txt" />
     <None Include="Assets\Resources\conf\DataFile\ItemData\ItemAtlasConfig.txt" />
     <None Include="Assets\Resources\conf\RoleModelConfig.txt" />
