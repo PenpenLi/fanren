@@ -2,11 +2,28 @@
 using System.Collections.Generic;
 using UnityUtility;
 
-// Token: 0x0200028E RID: 654
+
 public class SDM_ScriptsGroup
 {
-	// Token: 0x0600114B RID: 4427 RVA: 0x000925BC File Offset: 0x000907BC
-	public SDM_ScriptsGroup.ScriptsGroupDate GetScriptsGroupById(int id)
+    public static int MAX_SCRIPT_AMOUNT = 5;
+
+    public List<SDM_ScriptsGroup.ScriptsGroupDate> ScriptsGroupList = new List<SDM_ScriptsGroup.ScriptsGroupDate>();
+
+    public class ScriptDate
+    {
+        public ScrModType smt;
+
+        public int sd;
+    }
+
+    public class ScriptsGroupDate
+    {
+        public int ID;
+
+        public List<SDM_ScriptsGroup.ScriptDate> ScriptsList = new List<SDM_ScriptsGroup.ScriptDate>();
+    }
+
+    public SDM_ScriptsGroup.ScriptsGroupDate GetScriptsGroupById(int id)
 	{
 		for (int i = 0; i < this.ScriptsGroupList.Count; i++)
 		{
@@ -44,31 +61,5 @@ public class SDM_ScriptsGroup
 			}
 			this.ScriptsGroupList.Add(scriptsGroupDate);
 		}
-	}
-
-	// Token: 0x04001261 RID: 4705
-	public static int MAX_SCRIPT_AMOUNT = 5;
-
-	// Token: 0x04001262 RID: 4706
-	public List<SDM_ScriptsGroup.ScriptsGroupDate> ScriptsGroupList = new List<SDM_ScriptsGroup.ScriptsGroupDate>();
-
-	// Token: 0x0200028F RID: 655
-	public class ScriptDate
-	{
-		// Token: 0x04001263 RID: 4707
-		public ScrModType smt;
-
-		// Token: 0x04001264 RID: 4708
-		public int sd;
-	}
-
-	// Token: 0x02000290 RID: 656
-	public class ScriptsGroupDate
-	{
-		// Token: 0x04001265 RID: 4709
-		public int ID;
-
-		// Token: 0x04001266 RID: 4710
-		public List<SDM_ScriptsGroup.ScriptDate> ScriptsList = new List<SDM_ScriptsGroup.ScriptDate>();
 	}
 }

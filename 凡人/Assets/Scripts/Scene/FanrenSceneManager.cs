@@ -279,9 +279,11 @@ public class FanrenSceneManager : MonoBehaviour
 
     public void DoScriptMoudle()
     {
+        Debug.Log("执行");
         //TimeOutManager.SetTimeOut(Main.Instance.transform, 0.5f, new Callback(this.HideLoading));//关闭UI
         if (FanrenSceneManager.curScenenInfo != null && FanrenSceneManager.curScenenInfo.scriptModId != -1)
         {
+            Debug.Log("执行");
             GameData.Instance.ScrMan.Exec(27, FanrenSceneManager.curScenenInfo.scriptModId);
         }
         //TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, new Callback(Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Hide));
