@@ -38,3 +38,5 @@ sysinfo.txt
 *.unitypackage
 *.info
 凡人/Temp/UnityLockfile
+凡人/Temp/
+凡人/Library/
