@@ -309,7 +309,13 @@
     <Compile Include="Assets\Scripts\ScriptManager\Function.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptAction.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptDataManager.cs" />
-    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ActionContainer.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ConditionAnd.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ConditionContainer.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ConditionNot.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ConditionOne.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\ScriptHandle.cs" />
+    <Compile Include="Assets\Scripts\ScriptManager\ScriptHandle\VALUE_TYPE.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptManager.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptNode.cs" />
     <Compile Include="Assets\Scripts\ScriptManager\ScriptTrigger.cs" />

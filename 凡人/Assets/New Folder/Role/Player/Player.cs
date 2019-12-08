@@ -871,7 +871,7 @@ public class Player : Role
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;//移动目标点
         CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-        Debug.Log(currentStateId);
+        //Debug.Log(currentStateId);
         if (currentStateId != CONTROL_STATE.ATTACK_IDLE)
         {
             if (currentStateId != CONTROL_STATE.WALK_FORWARD)

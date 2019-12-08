@@ -303,22 +303,22 @@ public class RoleManager : MonoBehaviour
        // }
     }
 
-    //	public Role GetRoleByType(ROLE_TYPE roleType, int type)
-    //	{
-    //		for (int i = 0; i < this.RoleObjList.Count; i++)
-    //		{
-    //			Role role = this.RoleObjList[i];
-    //			if (role != null)
-    //			{
-    //				if (role._roleType == roleType && role.GetDetailType() == type)
-    //				{
-    //					return role;
-    //				}
-    //			}
-    //		}
-    //		Debug.LogWarning("not find role id:" + type);
-    //		return null;
-    //	}
+    public Role GetRoleByType(ROLE_TYPE roleType, int type)
+    {
+        for (int i = 0; i < this.RoleObjList.Count; i++)
+        {
+            Role role = this.RoleObjList[i];
+            if (role != null)
+            {
+                if (role._roleType == roleType && role.GetDetailType() == type)
+                {
+                    return role;
+                }
+            }
+        }
+        Debug.LogWarning("not find role id:" + type);
+        return null;
+    }
 
     /// <summary>
     /// 读取刷怪信息

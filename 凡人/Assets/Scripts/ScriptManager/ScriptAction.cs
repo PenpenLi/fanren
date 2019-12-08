@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace ActionScript
 {
-	// Token: 0x02000039 RID: 57
+
 	public class ScriptAction : ScriptNode
 	{
-		// Token: 0x0600013A RID: 314 RVA: 0x00002E99 File Offset: 0x00001099
+
 		public ScriptAction()
 		{
 			base.Type = 2;
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x000242F4 File Offset: 0x000224F4
+
 		public override bool Evaluate()
 		{
 			if (GameData.Instance == null)
@@ -28,7 +28,7 @@ namespace ActionScript
 			object[] array = new object[this.param.Length];
 			for (int i = 0; i < this.param.Length; i++)
 			{
-				//array[i] = Function.ConvertParam((VALUE_TYPE)this.param[i].Key, this.param[i].Value);
+				array[i] = Function.ConvertParam((VALUE_TYPE)this.param[i].Key, this.param[i].Value);
 				//if (array[i] == null)
 				//{
 				//	Debug.Log("5..................................");

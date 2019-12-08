@@ -6,7 +6,9 @@ namespace ActionScript
 {
 	public static class Function
 	{
-		public static string[] SplitString(string str)
+        public const char CONNECT_WORD = ',';
+
+        public static string[] SplitString(string str)
 		{
 			return str.Split(new char[]
 			{
@@ -29,7 +31,6 @@ namespace ActionScript
 			return text;
 		}
 
-		// Token: 0x06000151 RID: 337 RVA: 0x000248BC File Offset: 0x00022ABC
 		public static bool TryGetFloat(string str, out float num)
 		{
 			num = 0f;
@@ -50,18 +51,16 @@ namespace ActionScript
 			return true;
 		}
 
-		// Token: 0x06000152 RID: 338 RVA: 0x0002491C File Offset: 0x00022B1C
-		//public static Role GetRoleById(int id)
-		//{
-		//	if (id == 0)
-		//	{
-		//		return Player.Instance;
-		//	}
-		//	return SceneManager.RoleMan.GetRoleByType(ROLE_TYPE.RT_MONSTER, id);
-		//}
+        public static Role GetRoleById(int id)
+        {
+            if (id == 0)
+            {
+                return Player.Instance;
+            }
+            return FanrenSceneManager.RoleMan.GetRoleByType(ROLE_TYPE.RT_MONSTER, id);
+        }
 
-		// Token: 0x06000153 RID: 339 RVA: 0x00024944 File Offset: 0x00022B44
-		public static bool TryGetVector3(string str, out Vector3 point)
+        public static bool TryGetVector3(string str, out Vector3 point)
 		{
 			point = Vector3.zero;
 			if (string.IsNullOrEmpty(str))
@@ -88,63 +87,59 @@ namespace ActionScript
 			return true;
 		}
 
-		// Token: 0x06000154 RID: 340 RVA: 0x000249C8 File Offset: 0x00022BC8
-		//public static object ConvertParam(VALUE_TYPE type, string s)
-		//{
-		//	object result = null;
-		//	float num = 0f;
-		//	int num2 = 0;
-		//	switch (type)
-		//	{
-		//	case VALUE_TYPE.FLOAT:
-		//		num = 0f;
-		//		Function.TryGetFloat(s, out num);
-		//		result = num;
-		//		break;
-		//	case VALUE_TYPE.STRING:
-		//		result = s;
-		//		break;
-		//	case VALUE_TYPE.ROLE:
-		//		num = 0f;
-		//		if (Function.TryGetFloat(s, out num))
-		//		{
-		//			Role roleById = Function.GetRoleById((int)num);
-		//			result = roleById;
-		//		}
-		//		break;
-		//	default:
-		//		if (type != VALUE_TYPE.BOOL)
-		//		{
-		//			int.TryParse(s, out num2);
-		//			result = num2;
-		//		}
-		//		else
-		//		{
-		//			int.TryParse(s, out num2);
-		//			if (num2 == 0)
-		//			{
-		//				result = false;
-		//			}
-		//			else
-		//			{
-		//				result = true;
-		//			}
-		//		}
-		//		break;
-		//	case VALUE_TYPE.POINT_3D:
-		//	{
-		//		Vector3 vector;
-		//		if (Function.TryGetVector3(s, out vector))
-		//		{
-		//			result = vector;
-		//		}
-		//		break;
-		//	}
-		//	}
-		//	return result;
-		//}
-
-		// Token: 0x040000AE RID: 174
-		public const char CONNECT_WORD = ',';
+        public static object ConvertParam(VALUE_TYPE type, string s)
+        {
+            object result = null;
+            float num = 0f;
+            int num2 = 0;
+            switch (type)
+            {
+                case VALUE_TYPE.FLOAT:
+                    num = 0f;
+                    Function.TryGetFloat(s, out num);
+                    result = num;
+                    break;
+                case VALUE_TYPE.STRING:
+                    result = s;
+                    break;
+                case VALUE_TYPE.ROLE:
+                    num = 0f;
+                    if (Function.TryGetFloat(s, out num))
+                    {
+                        Role roleById = Function.GetRoleById((int)num);
+                        result = roleById;
+                    }
+                    break;
+                default:
+                    if (type != VALUE_TYPE.BOOL)
+                    {
+                        int.TryParse(s, out num2);
+                        result = num2;
+                    }
+                    else
+                    {
+                        int.TryParse(s, out num2);
+                        if (num2 == 0)
+                        {
+                            result = false;
+                        }
+                        else
+                        {
+                            result = true;
+                        }
+                    }
+                    break;
+                case VALUE_TYPE.POINT_3D:
+                    {
+                        Vector3 vector;
+                        if (Function.TryGetVector3(s, out vector))
+                        {
+                            result = vector;
+                        }
+                        break;
+                    }
+            }
+            return result;
+        }
 	}
 }

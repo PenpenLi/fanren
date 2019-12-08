@@ -25,6 +25,7 @@ public class ScriptDataManager : Singleton<ScriptDataManager>
 
 	public bool RunScript(int id)
 	{
+        Debug.Log(id);
         return this.ScriptTriggerData.ContainsKey(id)&& this.ScriptTriggerData[id].Evaluate();
     }
 
@@ -36,16 +37,16 @@ public class ScriptDataManager : Singleton<ScriptDataManager>
 		{
 			return;
 		}
-		using (StringReader stringReader = new StringReader(textAsset.text))
-		{
-			while (stringReader.Peek() >= 0)
-			{
-				string str = stringReader.ReadLine();
+        using (StringReader stringReader = new StringReader(textAsset.text))
+        {
+            while (stringReader.Peek() >= 0)
+            {
+                string str = stringReader.ReadLine();
                 string[] array = Function.SplitString(str);
                 if (array.Length == 0)
                 {
                     break;
-                }
+                }          
                 int num = int.Parse(array[0]);
                 for (int i = 0; i < num; i++)
                 {
@@ -54,6 +55,6 @@ public class ScriptDataManager : Singleton<ScriptDataManager>
                     this.ScriptTriggerData.Add(scriptTrigger.ID, scriptTrigger);
                 }
             }
-		}
-	}
+        }
+    }
 }

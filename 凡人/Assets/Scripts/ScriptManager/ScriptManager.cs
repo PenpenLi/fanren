@@ -329,10 +329,7 @@ public class ScriptManager
 
     public void Exec(int moduleID, object[] param)
     {
-        Debug.Log(new object[]
-        {
-            "Exec " + moduleID
-        });
+        Debug.Log("Exec " + moduleID);
         if (moduleID < 0)
         {
             return;

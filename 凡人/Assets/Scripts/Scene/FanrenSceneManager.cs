@@ -85,7 +85,7 @@ public class FanrenSceneManager : MonoBehaviour
 
         if (currSceneName != "Start" && currSceneName != "Landing" && currSceneName != "End" && currSceneName != "Credits")
         {
-            //this.EnterScene();
+            this.EnterScene();
            //加载UI
         }
 
