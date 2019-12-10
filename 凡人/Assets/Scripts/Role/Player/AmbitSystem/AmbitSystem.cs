@@ -134,7 +134,7 @@ public class AmbitSystem
 		{
 			GameData.Instance.ScrMan.Exec(44, 1000056);
 		}
-		SingletonMono<EffectManager>.GetInstance().AddEffect(759, this.player.GetPos(), this.player.GetPos(), this.player.GetPos(), Quaternion.identity, null, false);
+		//SingletonMono<EffectManager>.GetInstance().AddEffect(759, this.player.GetPos(), this.player.GetPos(), this.player.GetPos(), Quaternion.identity, null, false);
 		//this.currentData = this.GetCurrentData();
 		//if (ambitData.BodyId != this.currentData.BodyId && ambitData.BodyId != 1)
 		//{
@@ -416,12 +416,11 @@ public class AmbitSystem
 		this.effectId = this.player.roleGameObject.BindEffect(CHILD_EFFECT_POINT.TOP, ambitData.EffectId, new Vector3(0f, -1f, 0f), Vector3.zero);
 	}
 
-	// Token: 0x06001E66 RID: 7782 RVA: 0x000D2FAC File Offset: 0x000D11AC
 	private void DestroyEffect()
 	{
 		if (this.effectId >= 0)
 		{
-			SingletonMono<EffectManager>.GetInstance().Delete(this.effectId);
+			//SingletonMono<EffectManager>.GetInstance().Delete(this.effectId);
 			this.effectId = -1;
 		}
 	}

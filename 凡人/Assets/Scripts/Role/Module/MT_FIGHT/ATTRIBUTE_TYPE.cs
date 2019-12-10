@@ -41,6 +41,9 @@ public enum ATTRIBUTE_TYPE
 	ATT_FIVE_ELEMENT_ATK,
 	ATT_HunVal,
 	ATT_MONEY,
+    /// <summary>
+    /// 出生
+    /// </summary>
 	ATT_BORN,
 	ATT_FP,
 	ATT_MAXFP,

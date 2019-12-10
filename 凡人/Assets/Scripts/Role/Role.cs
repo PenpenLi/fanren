@@ -465,12 +465,6 @@ public class Role
         return null;
     }
 
-    public bool GetBuff(int id)
-    {
-        ModBuffProperty modBuffProperty = (ModBuffProperty)this.GetModule(MODULE_TYPE.MT_BUFF);
-        return false;
-    }
-
     public Vector3 GetPos()
     {
         if (this.GetTrans() == null)

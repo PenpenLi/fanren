@@ -165,6 +165,6 @@ public class ModColliderProperty : Module
 			//	id = data.EffectID;
 			//}
 		}
-		SingletonMono<EffectManager>.GetInstance().AddEffect(id, Vector3.zero, Vector3.zero, hurtPoint, Quaternion.identity, null, false);
+		//SingletonMono<EffectManager>.GetInstance().AddEffect(id, Vector3.zero, Vector3.zero, hurtPoint, Quaternion.identity, null, false);
 	}
 }

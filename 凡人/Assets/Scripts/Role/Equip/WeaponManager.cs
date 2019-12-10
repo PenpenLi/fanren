@@ -218,7 +218,7 @@ public class WeaponManager
 			CONTROL_STATE currentStateId = this.player.modMFS.GetCurrentStateId();
 			if (currentStateId == CONTROL_STATE.ATTACK_IDLE)
 			{
-				this.player.modMFS.ChangeState(new ControlEventAttackIdle(false));
+				//this.player.modMFS.ChangeState(new ControlEventAttackIdle(false));
 			}
 		}
 	}

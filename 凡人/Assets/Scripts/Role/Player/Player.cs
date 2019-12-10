@@ -20,8 +20,6 @@ public class Player : Role
 
     public ModCamera m_cModCamera;
 
-    public ModFight m_cModFight;
-
     public AdeptTalent m_cAdeptSystem = new AdeptTalent();
 
     public MixtureSmelt m_cMixtureSmelt = new MixtureSmelt();
@@ -38,6 +36,9 @@ public class Player : Role
 
     //public TargetQuadrant targetQuadrant = TargetQuadrant.NONE;
 
+    /// <summary>
+    /// 任务模块
+    /// </summary>
     private ModMission m_cModMission;
 
     //private Hbar hpBar;
@@ -132,17 +133,17 @@ public class Player : Role
         }
     }
 
-    //	public ModMission ModMis
-    //	{
-    //		get
-    //		{
-    //			return this.m_cModMission;
-    //		}
-    //		set
-    //		{
-    //			this.m_cModMission = value;
-    //		}
-    //	}
+    public ModMission ModMis
+    {
+        get
+        {
+            return this.m_cModMission;
+        }
+        set
+        {
+            this.m_cModMission = value;
+        }
+    }
 
     public ModMutualPlayer ModMutual { get; private set; }
 
@@ -170,7 +171,6 @@ public class Player : Role
         return 1000f;
     }
 
-    //	// Token: 0x060022B0 RID: 8880 RVA: 0x000EC6A0 File Offset: 0x000EA8A0
     //	public override float GetMassNumber()
     //	{
     //		return 1f;
@@ -370,7 +370,6 @@ public class Player : Role
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
 
         base.roleGameObject.RoleBind.SetRole(this);
-        this.SetChildrenGameObj(base.roleGameObject.RoleBody);//设置子物体
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
         this.hatred.selfRole = Player.Instance;
@@ -385,6 +384,7 @@ public class Player : Role
         this.m_cFigureSystem.Init(this);
         this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
         this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        this.modMFS.ChangeState(new ControlEventIdle(false));
         if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
         {
             base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
@@ -399,16 +399,12 @@ public class Player : Role
         base.CreateModule();
         this._roleType = ROLE_TYPE.RT_PLAYER;//设置角色类型
         this.AddMod(MODULE_TYPE.MT_MOTION);
-        this.AddMod(MODULE_TYPE.MT_MOVE);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
-        this.AddMod(MODULE_TYPE.MT_FIGHT);
         this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
         this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
-        this.AddMod(MODULE_TYPE.MT_BUFF);
         this.AddMod(MODULE_TYPE.MT_COLLIDER);
         this.AddMod(MODULE_TYPE.MT_MISSION);
         this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
-        this.AddMod(MODULE_TYPE.MT_SKILL);
         this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
         this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
         this.AddMod(MODULE_TYPE.MT_VOICE);
@@ -439,16 +435,6 @@ public class Player : Role
             case MODULE_TYPE.MT_ATTRIBUTE:
                 module = new ModAttribute(this);
                 this.m_cModAttribute = (ModAttribute)module;
-                break;
-            case MODULE_TYPE.MT_FIGHT:
-                module = new ModFight(this);
-                this.m_cModFight = (ModFight)module;
-                break;
-            case MODULE_TYPE.MT_SKILL:
-                module = new ModSkillProperty(this);
-                break;
-            case MODULE_TYPE.MT_BUFF:
-                module = new ModBuffProperty(this);
                 break;
             case MODULE_TYPE.MT_MISSION:
                 module = new ModMission(this);
@@ -497,142 +483,44 @@ public class Player : Role
         this.weaponManager.initialize(this);
         base.SetRat(PlayerInfo.PLAYER_ROTATION);
         this.m_cAdeptSystem.OwnerPlayer = this;
-        ModSkillProperty modSkillProperty = base.GetModule(MODULE_TYPE.MT_SKILL) as ModSkillProperty;
-        modSkillProperty.AddSkill(2025);
         CameraEffectManager.GetAllCameraEffectComponent();
     }
 
-    //	public void BindAutoMisson()
-    //	{
-    //		ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-    //		if (modAttribute == null || modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BORN) == 0f)
-    //		{
-    //			ModMission modMission = base.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
-    //			if (modMission == null)
-    //			{
-    //				return;
-    //			}
-    //			for (int i = 0; i < GameData.Instance.RoleData.MissionInfoList.Count; i++)
-    //			{
-    //				MissionInfo missionInfo = GameData.Instance.RoleData.MissionInfoList[i];
-    //				if (missionInfo != null)
-    //				{
-    //					if (missionInfo.MissType == 0)
-    //					{
-    //						modMission.AcceptMission(missionInfo.ID);
-    //					}
-    //				}
-    //			}
-    //			modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 1f, true);
-    //		}
-    //	}
+    public void BindAutoMisson()
+    {
+        ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        if (modAttribute == null || modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BORN) == 0f)
+        {
+            ModMission modMission = base.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
+            if (modMission == null)
+            {
+                return;
+            }
+            for (int i = 0; i < GameData.Instance.RoleData.MissionInfoList.Count; i++)
+            {
+                MissionInfo missionInfo = GameData.Instance.RoleData.MissionInfoList[i];
+                if (missionInfo != null)
+                {
+                    if (missionInfo.MissType == 0)
+                    {
+                        //modMission.AcceptMission(missionInfo.ID);
+                    }
+                }
+            }
+            modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 1f, true);
+        }
+    }
 
     /// <summary>
     /// 添加热键
     /// </summary>
     private void addPlayerHotKey()
-    {
-        //KeyManager.addNormalKey(KeyCode.Tab, new Callback(this.KillAllEnemy));
-     
-        //KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));
-        //if (Config.DEBUG)
-        //{
-        //    KeyManager.addNormalKey(KeyCode.BackQuote, new Callback(this.EnterFly));
-        //}
-        //KeyManager.addNormalKey(KeyCode.Z, new Callback(this.Rage));
-        //KeyManager.addNormalKey(KeyCode.Space, new Callback(this.Roll));
-        //KeyManager.addNormalKey(KeyCode.Alpha1, new Callback(this.UseSkillA));
-        //KeyManager.addNormalKey(KeyCode.Alpha2, new Callback(this.UseSkillB));
-        //KeyManager.addNormalKey(KeyCode.Alpha3, new Callback(this.UseSkillC));
-        //KeyManager.addNormalKey(KeyCode.Alpha4, new Callback(this.UseSkillD));
-        //if (Application.isEditor)
-        //{
-        //    KeyManager.addNormalKey(KeyCode.Alpha5, new Callback(this.UseSkillE));
-        //    KeyManager.addNormalKey(KeyCode.Alpha6, new Callback(this.UseSkillF));
-        //    KeyManager.addNormalKey(KeyCode.Alpha7, new Callback(this.UseSkillG));
-        //}
+    {          
+        //KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));//改成切换角色
+        //KeyManager.addNormalKey(KeyCode.BackQuote, new Callback(this.EnterFly));    
         //KeyManager.addNormalKey(KeyCode.F4, new Callback(Main.Quit));
         KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
     }
-
-    //	private void UseSkillA()
-    //	{
-    //		this.UseSkill(0);
-    //	}
-
-    //	// Token: 0x060022C4 RID: 8900 RVA: 0x000ED404 File Offset: 0x000EB604
-    //	private void UseSkillB()
-    //	{
-    //		this.UseSkill(1);
-    //	}
-
-    //	// Token: 0x060022C5 RID: 8901 RVA: 0x000ED410 File Offset: 0x000EB610
-    //	private void UseSkillC()
-    //	{
-    //		this.UseSkill(2);
-    //	}
-
-    //	// Token: 0x060022C6 RID: 8902 RVA: 0x000ED41C File Offset: 0x000EB61C
-    //	private void UseSkillD()
-    //	{
-    //		this.UseSkill(3);
-    //	}
-
-    //	// Token: 0x060022C7 RID: 8903 RVA: 0x000ED428 File Offset: 0x000EB628
-    //	private void UseSkillE()
-    //	{
-    //		this.UseSkill(4);
-    //	}
-
-    //	// Token: 0x060022C8 RID: 8904 RVA: 0x000ED434 File Offset: 0x000EB634
-    //	private void UseSkillF()
-    //	{
-    //		this.UseSkill(5);
-    //	}
-
-    //	// Token: 0x060022C9 RID: 8905 RVA: 0x000ED440 File Offset: 0x000EB640
-    //	private void UseSkillG()
-    //	{
-    //		this.UseSkill(6);
-    //	}
-
-    //	// Token: 0x060022CA RID: 8906 RVA: 0x000ED44C File Offset: 0x000EB64C
-    //	private void UseSkill(int index)
-    //	{
-    //		ModSkillProperty modSkillProperty = (ModSkillProperty)Player.Instance.GetModule(MODULE_TYPE.MT_SKILL);
-    //		ModFight modFight = base.GetModule(MODULE_TYPE.MT_FIGHT) as ModFight;
-    //		int skillID = modSkillProperty.GetSkillID(index);
-    //		if (skillID <= 0)
-    //		{
-    //			return;
-    //		}
-    //		CSkillBase skill = Singleton<CSkillStaticManager>.GetInstance().GetSkill(skillID);
-    //		if (skill == null)
-    //		{
-    //			return;
-    //		}
-    //		Role targetRole = null;
-    //		Vector3 zero = Vector3.zero;
-    //		this.GetSkillTarget(skill, out targetRole, out zero);
-    //		modSkillProperty.UseSkill(index, targetRole, zero);
-    //	}
-
-    //	// Token: 0x060022CB RID: 8907 RVA: 0x000ED4BC File Offset: 0x000EB6BC
-    //	public void GetSkillTarget(CSkillBase skill, out Role target, out Vector3 targetPos)
-    //	{
-    //		target = SceneManager.RoleMan.GetNearestEnmity(Player.Instance);
-    //		targetPos = Vector3.zero;
-    //		if (skill is SkillPlayer)
-    //		{
-    //			this.m_cModFight.TargetRole = null;
-    //			this.SetTarget(((SkillPlayer)skill).GetDistance());
-    //			target = this.m_cModFight.TargetRole;
-    //		}
-    //		if (target != null)
-    //		{
-    //			targetPos = target.GetTrans().position;
-    //		}
-    //	}
 
     //	// Token: 0x060022CC RID: 8908 RVA: 0x000ED534 File Offset: 0x000EB734
     //	public void ChangeWeapon()
@@ -652,23 +540,6 @@ public class Player : Role
     //			if (currentStateId == CONTROL_STATE.ATTACK_IDLE)
     //			{
     //				this.modMFS.ChangeState(new ControlEventAttackIdle(false));
-    //			}
-    //		}
-    //	}
-
-    //	// Token: 0x060022CD RID: 8909 RVA: 0x000ED5B8 File Offset: 0x000EB7B8
-    //	public void Rage()
-    //	{
-    //		CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-    //		if (currentStateId != CONTROL_STATE.QTE)
-    //		{
-    //			if (!this.SystemAmbit.IsInRage && this.SystemAmbit.RageNum > 0f)
-    //			{
-    //				this.SystemAmbit.UseRageSkill();
-    //			}
-    //			else if (this.SystemAmbit.IsInRage)
-    //			{
-    //				this.SystemAmbit.StopRageSkill();
     //			}
     //		}
     //	}
@@ -843,18 +714,6 @@ public class Player : Role
     //			return true;
     //		}
     //		return false;
-    //	}
-
-    //	public void Roll()
-    //	{
-    //		CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();
-    //		if (currentStateId != CONTROL_STATE.FLY)
-    //		{
-    //			if (Player.Instance != null)
-    //			{
-    //				this.modMFS.ChangeState(new ControlEventRoll(false, ACTION_INDEX.AN_SHANBI_NAME, this.m_cModFight.AttackDir));
-    //			}
-    //		}
     //	}
 
     /// <summary>

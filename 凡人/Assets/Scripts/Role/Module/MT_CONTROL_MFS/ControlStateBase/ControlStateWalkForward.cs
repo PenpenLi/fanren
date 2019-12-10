@@ -51,11 +51,6 @@ public class ControlStateWalkForward : ControlStateBase
 
     public override bool OnEnter(ControlEventBase ceb)
     {
-        ModBuffProperty modBuffProperty = (ModBuffProperty)this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF);
-        if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC && modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND) != 0)
-        {
-            return false;
-        }
         base.OnEnter(ceb);
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;

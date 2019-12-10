@@ -49,8 +49,6 @@ public class ModAnimation : Module
 
     public bool EnableAnimationMove = true;
 
-    private ModFight m_cModFight;
-
     private float m_fAniStartTime;
 
     private List<bool> m_lstIsEffect = new List<bool>();
@@ -80,18 +78,6 @@ public class ModAnimation : Module
     {
 		base.Init();
 		return true;
-	}
-
-	private ModFight modFight
-	{
-		get
-		{
-			if (this.m_cModFight == null)
-			{
-				//this.m_cModFight = (this._role.GetModule(MODULE_TYPE.MT_FIGHT) as ModFight);
-			}
-			return this.m_cModFight;
-		}
 	}
 
     //public ACTION_INDEX DefaultAni
@@ -802,8 +788,7 @@ public class ModAnimation : Module
     /// <param name="act"></param>
     /// <param name="fadeLength"></param>
     public void PlayAnimation(ACTION_INDEX actIdx, float speed, WrapMode wrapMode, bool isBlend, bool resetAnimation, float fadeLength)
-    {
-       
+    {     
         if (this._animator == null)
         {
             return;

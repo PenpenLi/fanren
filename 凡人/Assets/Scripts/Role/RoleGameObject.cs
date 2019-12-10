@@ -415,22 +415,23 @@ public class RoleGameObject
         {
             return -1;
         }
-        int num = SingletonMono<EffectManager>.GetInstance().AddEffectBind(id, transform.gameObject);
-        if (num < 0)
-        {
-            return -1;
-        }
-        GameObject @object = Singleton<ActorManager>.GetInstance().GetObject(num);
-        if (@object == null)
-        {
-            return -1;
-        }
-        @object.transform.localPosition = posOffest / this.m_fModelScale;
-        @object.transform.localEulerAngles = eulerOffest;
-        RoleGameObject.BindEffectInfo item = new RoleGameObject.BindEffectInfo(@object, point, posOffest, eulerOffest);
-        this.m_cEffectList.Add(item);
-        this.RemoveEmptyEffect();
-        return num;
+        // int num = SingletonMono<EffectManager>.GetInstance().AddEffectBind(id, transform.gameObject);
+        //if (num < 0)
+        //{
+        //    return -1;
+        //}
+        //GameObject @object = Singleton<ActorManager>.GetInstance().GetObject(num);
+        //if (@object == null)
+        //{
+        //    return -1;
+        //}
+        //@object.transform.localPosition = posOffest / this.m_fModelScale;
+        //@object.transform.localEulerAngles = eulerOffest;
+        //RoleGameObject.BindEffectInfo item = new RoleGameObject.BindEffectInfo(@object, point, posOffest, eulerOffest);
+        //this.m_cEffectList.Add(item);
+        //this.RemoveEmptyEffect();
+        //return num;
+        return 0;
     }
 
     private void RemoveEmptyEffect()

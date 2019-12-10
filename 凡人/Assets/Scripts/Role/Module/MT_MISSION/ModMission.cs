@@ -7,26 +7,42 @@ using UnityEngine;
 /// </summary>
 public class ModMission : Module
 {
+    private int _id;
+
+    private long misMask;
+
+    /// <summary>
+    /// 任务链表清空
+    /// </summary>
+    public List<ModMission.MisLinkInfo> misLinkList = new List<ModMission.MisLinkInfo>();
+
+    public List<ModMission.AccMisInfo> accMisList = new List<ModMission.AccMisInfo>();
+
+    //public ModMission.MisEndInfo m_MisEndInfo = new ModMission.MisEndInfo();
+
     public Dictionary<int, Color> m_tTypeColor = new Dictionary<int, Color>();
 
-    //public Dictionary<string, ModMission.MisEndInfoData> m_lstMisEndInfo = new Dictionary<string, ModMission.MisEndInfoData>();
+    /// <summary>
+    /// 任务结束信息数据
+    /// </summary>
+    public Dictionary<string, ModMission.MisEndInfoData> m_lstMisEndInfo = new Dictionary<string, ModMission.MisEndInfoData>();
 
     public ModMission(Role role) : base(role)
 	{
 		base.ModType = MODULE_TYPE.MT_MISSION;
 	}
 
-    //public long MisMask
-    //{
-    //	get
-    //	{
-    //		return this.misMask;
-    //	}
-    //	set
-    //	{
-    //		this.misMask = value;
-    //	}
-    //}
+    public long MisMask
+    {
+        get
+        {
+            return this.misMask;
+        }
+        set
+        {
+            this.misMask = value;
+        }
+    }
 
     public override bool Init()
     {
@@ -71,7 +87,6 @@ public class ModMission : Module
     //	return false;
     //}
 
-    // Token: 0x06002199 RID: 8601 RVA: 0x000E6AA4 File Offset: 0x000E4CA4
     //public void CompleteMission(int ID)
     //{
     //	ModMission.AccMisInfo accMisInfo = this.GetAccMisInfo(ID);
@@ -100,7 +115,6 @@ public class ModMission : Module
     //	this.CheckSkipMission(ID);
     //}
 
-    //// Token: 0x0600219A RID: 8602 RVA: 0x000E6B88 File Offset: 0x000E4D88
     //public void AcceptMission(int ID)
     //{
     //	Logger.Log(new object[]
@@ -142,7 +156,6 @@ public class ModMission : Module
     //	FantasyWorld.Instance.Assist.TimerMan.AddDelayTimeEvent(1f, this, "ShowTask");
     //}
 
-    //// Token: 0x0600219B RID: 8603 RVA: 0x000E6D0C File Offset: 0x000E4F0C
     //public void ShowTask()
     //{
     //	if (Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>() != null)
@@ -151,14 +164,12 @@ public class ModMission : Module
     //	}
     //}
 
-    //// Token: 0x0600219C RID: 8604 RVA: 0x000E6D40 File Offset: 0x000E4F40
     //public bool IsLinkCompleted(int ID)
     //{
     //	MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(ID);
     //	return missionInfo != null && this.IsMisMask(missionInfo.Mask);
     //}
 
-    //// Token: 0x0600219D RID: 8605 RVA: 0x000E6D74 File Offset: 0x000E4F74
     //public bool IsMisMask(int bityIdx)
     //{
     //	return bityIdx >= 0 && bityIdx < 64 && (1L << bityIdx & this.misMask) != 0L;
@@ -428,16 +439,6 @@ public class ModMission : Module
     //	}
     //}
 
-    private int _id;
-
-    private long misMask;
-
-    public List<ModMission.MisLinkInfo> misLinkList = new List<ModMission.MisLinkInfo>();
-
-    public List<ModMission.AccMisInfo> accMisList = new List<ModMission.AccMisInfo>();
-
-    //public ModMission.MisEndInfo m_MisEndInfo = new ModMission.MisEndInfo();
-
     [Serializable]
     public class MisLinkInfo
     {
@@ -566,23 +567,19 @@ public class ModMission : Module
         }
     }
 
-    //public class MisEndInfoData
-    //{
-    //    // Token: 0x060021B5 RID: 8629 RVA: 0x000E75A8 File Offset: 0x000E57A8
-    //    public MisEndInfoData(ModMission.AccMisInfo amDestInfo, Color tDestColor)
-    //    {
-    //        this.amDesc = amDestInfo;
-    //        this.tColor = tDestColor;
-    //    }
+    public class MisEndInfoData
+    {
+        public ModMission.AccMisInfo amDesc;
 
-    //    // Token: 0x04001EDF RID: 7903
-    //    public ModMission.AccMisInfo amDesc;
+        public Color tColor;
 
-    //    // Token: 0x04001EE0 RID: 7904
-    //    public Color tColor;
-    //}
+        public MisEndInfoData(ModMission.AccMisInfo amDestInfo, Color tDestColor)
+        {
+            this.amDesc = amDestInfo;
+            this.tColor = tDestColor;
+        }
+    }
 
-    //// Token: 0x0200050E RID: 1294
     //public class MisEndInfo
     //{
     //    // Token: 0x060021B6 RID: 8630 RVA: 0x000E75C0 File Offset: 0x000E57C0

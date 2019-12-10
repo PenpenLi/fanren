@@ -26,12 +26,12 @@ public enum MODULE_TYPE
     /// </summary>
 	MT_ATTRIBUTE,
     /// <summary>
-    /// 战斗
+    /// 任务
     /// </summary>
-	MT_FIGHT,
-	MT_SKILL,
-	MT_BUFF,
 	MT_MISSION,
+    /// <summary>
+    /// 碰撞
+    /// </summary>
 	MT_COLLIDER,
 	MT_CONTROL_MFS,
 	MT_QTE,

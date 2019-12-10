@@ -126,9 +126,7 @@ public class SaveLoadManager
         if (st == SaveLoadManager.tagSL.Save_Auto)
         {
             //Singleton<EZGUIManager>.GetInstance().GetGUI<Tipplane>().SaveTip();
-        }
-        ModBuffProperty modBuffProperty = Player.Instance.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
-        modBuffProperty.DelAllBuff();
+        }     
         string fileName = SaveLoadManager.GetFileName(st);
         SaveData saveDate = SaveData.GetSaveDate(st);
         SaveInfo saveInfo = null;

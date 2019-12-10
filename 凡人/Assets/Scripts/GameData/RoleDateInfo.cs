@@ -31,9 +31,9 @@ public class RoleDateInfo
 
     public List<NpcInfo> NpcInfoList = new List<NpcInfo>();
 
-    //public List<MissionInfo> MissionInfoList = new List<MissionInfo>();
+    public List<MissionInfo> MissionInfoList = new List<MissionInfo>();
 
-    //public List<MissionContent> MissionContentList = new List<MissionContent>();
+    public List<MissionContent> MissionContentList = new List<MissionContent>();
 
     //public List<ChapterInfo> ChapterInfoList = new List<ChapterInfo>();
 
@@ -72,7 +72,7 @@ public class RoleDateInfo
 		//this.ReadScriptNodeInfo();
 		//this.ReadStringRes();
 		this.ReadNpcInfo();
-		//this.ReadMissionInfo();
+		this.ReadMissionInfo();
 		//this.ReadChapterInfo();
 		//this.ReadSoulBallInfo();
 		//this.ReadRandomSkillInfo();
@@ -180,30 +180,30 @@ public class RoleDateInfo
 		}
 	}
 
-    //private void ReadMissionContent()
-    //{
-    //	this.MissionContentList.Clear();
-    //	List<string> list = RoleBaseFun.LoadConfInAssets("MissionContent");
-    //	foreach (string text in list)
-    //	{
-    //		string[] array = text.Split(CacheData.separator);
-    //		MissionContent missionContent = new MissionContent();
-    //		missionContent.bIsSucceed = false;
-    //		int num = 0;
-    //		if (missionContent.SetMissionID(Convert.ToInt32(array[num])))
-    //		{
-    //			num++;
-    //			if (missionContent.SetStepID(Convert.ToInt32(array[num])))
-    //			{
-    //				num++;
-    //				missionContent.Str = array[num];
-    //				num++;
-    //				missionContent.bIsSucceed = true;
-    //				this.MissionContentList.Add(missionContent);
-    //			}
-    //		}
-    //	}
-    //}
+    private void ReadMissionContent()
+    {
+        this.MissionContentList.Clear();
+        List<string> list = RoleBaseFun.LoadConfInAssets("MissionContent");
+        foreach (string text in list)
+        {
+            string[] array = text.Split(CacheData.separator);
+            MissionContent missionContent = new MissionContent();
+            missionContent.bIsSucceed = false;
+            int num = 0;
+            if (missionContent.SetMissionID(Convert.ToInt32(array[num])))
+            {
+                num++;
+                if (missionContent.SetStepID(Convert.ToInt32(array[num])))
+                {
+                    num++;
+                    missionContent.Str = array[num];
+                    num++;
+                    missionContent.bIsSucceed = true;
+                    this.MissionContentList.Add(missionContent);
+                }
+            }
+        }
+    }
 
     //// Token: 0x06000763 RID: 1891 RVA: 0x0001F8C0 File Offset: 0x0001DAC0
     //public string GetMissionContentByID(int id)
@@ -218,120 +218,119 @@ public class RoleDateInfo
     //	return null;
     //}
 
-    //// Token: 0x06000764 RID: 1892 RVA: 0x0001F93C File Offset: 0x0001DB3C
-    //private void ReadMissionInfo()
-    //{
-    //	this.ReadMissionContent();
-    //	this.MissionInfoList.Clear();
-    //	List<string> list = RoleBaseFun.LoadConfInAssets("MissionInfo");
-    //	Hashtable hashtable = new Hashtable();
-    //	foreach (string text in list)
-    //	{
-    //		string[] array = text.Split(CacheData.separator);
-    //		MissionInfo missionInfo = new MissionInfo();
-    //		int num = 0;
-    //		missionInfo.ID = Convert.ToInt32(array[num++]);
-    //		missionInfo.step = Convert.ToInt32(array[num++]);
-    //		missionInfo.StepAmount = 0;
-    //		int num2 = (int)(missionInfo.Type * (MissionType)1000 + missionInfo.LinkID);
-    //		if (hashtable.Contains(num2))
-    //		{
-    //			int num3 = (int)hashtable[num2];
-    //			hashtable[num2] = num3 + 1;
-    //		}
-    //		else
-    //		{
-    //			hashtable.Add(num2, 1);
-    //		}
-    //		missionInfo.Mask = Convert.ToInt32(array[num]);
-    //		num++;
-    //		missionInfo.Name = array[num];
-    //		num++;
-    //		missionInfo.AimDescribe = array[num];
-    //		num++;
-    //		missionInfo.AimRequire = array[num];
-    //		num++;
-    //		missionInfo.PicPath = array[num];
-    //		num++;
-    //		missionInfo.PicBigPath = array[num];
-    //		num++;
-    //		missionInfo.CompleteNpc = Convert.ToInt32(array[num]);
-    //		num++;
-    //		missionInfo.MissType = Convert.ToInt32(array[num]);
-    //		if (missionInfo.InvalidMissType(missionInfo.MissType))
-    //		{
-    //			Logger.LogError(new object[]
-    //			{
-    //				"MissionInfo File Error !"
-    //			});
-    //		}
-    //		num++;
-    //		missionInfo.MissValCount = Convert.ToInt32(array[num]);
-    //		num++;
-    //		if (array.Length < missionInfo.MissValCount + num)
-    //		{
-    //			Logger.LogError(new object[]
-    //			{
-    //				"MissionInfo File Length Error ! =",
-    //				array.Length.ToString() + "/" + num.ToString()
-    //			});
-    //		}
-    //		else
-    //		{
-    //			missionInfo.MissVal.Clear();
-    //			for (int i = 0; i < missionInfo.MissValCount; i++)
-    //			{
-    //				missionInfo.MissVal.Add(Convert.ToInt32(array[num]));
-    //				num++;
-    //			}
-    //			missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
-    //			num++;
-    //			missionInfo.ComSMTDate = Convert.ToInt32(array[num]);
-    //			num++;
-    //			missionInfo.RewardItemList.Clear();
-    //			int num4 = Convert.ToInt32(array[num]);
-    //			num++;
-    //			missionInfo.MissionAimList.Clear();
-    //			for (int j = 0; j < num4; j++)
-    //			{
-    //				MissionInfo.MissionAimInfo missionAimInfo = new MissionInfo.MissionAimInfo();
-    //				missionAimInfo.AimType = Convert.ToInt32(array[num]);
-    //				num++;
-    //				missionAimInfo.AimDis = array[num];
-    //				num++;
-    //				missionAimInfo.AimData = Convert.ToInt32(array[num]);
-    //				num++;
-    //				missionAimInfo.Count = Convert.ToInt32(array[num]);
-    //				num++;
-    //				missionInfo.MissionAimList.Add(missionAimInfo);
-    //			}
-    //			missionInfo.MissionConList.Clear();
-    //			for (int k = 0; k < this.MissionContentList.Count; k++)
-    //			{
-    //				if (this.MissionContentList[k].ID == missionInfo.ID)
-    //				{
-    //					missionInfo.MissionConList.Add(this.MissionContentList[k]);
-    //				}
-    //			}
-    //			this.MissionInfoList.Add(missionInfo);
-    //		}
-    //	}
-    //	for (int l = 0; l < this.MissionInfoList.Count; l++)
-    //	{
-    //		int num5 = (int)(this.MissionInfoList[l].Type * (MissionType)1000 + this.MissionInfoList[l].LinkID);
-    //		if (hashtable.Contains(num5))
-    //		{
-    //			this.MissionInfoList[l].StepAmount = (int)hashtable[num5];
-    //		}
-    //		else
-    //		{
-    //			Logger.LogWarning(new object[]
-    //			{
-    //				"错误：无法正确设置任务步数。"
-    //			});
-    //		}
-    //	}
-    //}
+    private void ReadMissionInfo()
+    {
+        this.ReadMissionContent();
+        //this.MissionInfoList.Clear();
+        //List<string> list = RoleBaseFun.LoadConfInAssets("MissionInfo");
+        //Hashtable hashtable = new Hashtable();
+        //foreach (string text in list)
+        //{
+        //    string[] array = text.Split(CacheData.separator);
+        //    MissionInfo missionInfo = new MissionInfo();
+        //    int num = 0;
+        //    missionInfo.ID = Convert.ToInt32(array[num++]);
+        //    missionInfo.step = Convert.ToInt32(array[num++]);
+        //    missionInfo.StepAmount = 0;
+        //   // int num2 = (int)(missionInfo.Type * (MissionType)1000 + missionInfo.LinkID);
+        //    //if (hashtable.Contains(num2))
+        //    //{
+        //    //    int num3 = (int)hashtable[num2];
+        //    //    hashtable[num2] = num3 + 1;
+        //    //}
+        //    //else
+        //    //{
+        //    //    hashtable.Add(num2, 1);
+        //    //}
+        //    missionInfo.Mask = Convert.ToInt32(array[num]);
+        //    num++;
+        //    missionInfo.Name = array[num];
+        //    num++;
+        //    missionInfo.AimDescribe = array[num];
+        //    num++;
+        //    missionInfo.AimRequire = array[num];
+        //    num++;
+        //    missionInfo.PicPath = array[num];
+        //    num++;
+        //    missionInfo.PicBigPath = array[num];
+        //    num++;
+        //    missionInfo.CompleteNpc = Convert.ToInt32(array[num]);
+        //    num++;
+        //    missionInfo.MissType = Convert.ToInt32(array[num]);
+        //    if (missionInfo.InvalidMissType(missionInfo.MissType))
+        //    {
+        //        Debug.Log(new object[]
+        //        {
+        //            "MissionInfo File Error !"
+        //        });
+        //    }
+        //    num++;
+        //    missionInfo.MissValCount = Convert.ToInt32(array[num]);
+        //    num++;
+        //    if (array.Length < missionInfo.MissValCount + num)
+        //    {
+        //        Debug.Log(new object[]
+        //        {
+        //            "MissionInfo File Length Error ! =",
+        //            array.Length.ToString() + "/" + num.ToString()
+        //        });
+        //    }
+        //    else
+        //    {
+        //        missionInfo.MissVal.Clear();
+        //        for (int i = 0; i < missionInfo.MissValCount; i++)
+        //        {
+        //            missionInfo.MissVal.Add(Convert.ToInt32(array[num]));
+        //            num++;
+        //        }
+        //       // missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
+        //        num++;
+        //        missionInfo.ComSMTDate = Convert.ToInt32(array[num]);
+        //        num++;
+        //        missionInfo.RewardItemList.Clear();
+        //        int num4 = Convert.ToInt32(array[num]);
+        //        num++;
+        //        missionInfo.MissionAimList.Clear();
+        //        for (int j = 0; j < num4; j++)
+        //        {
+        //            MissionInfo.MissionAimInfo missionAimInfo = new MissionInfo.MissionAimInfo();
+        //            missionAimInfo.AimType = Convert.ToInt32(array[num]);
+        //            num++;
+        //            missionAimInfo.AimDis = array[num];
+        //            num++;
+        //            missionAimInfo.AimData = Convert.ToInt32(array[num]);
+        //            num++;
+        //            missionAimInfo.Count = Convert.ToInt32(array[num]);
+        //            num++;
+        //            missionInfo.MissionAimList.Add(missionAimInfo);
+        //        }
+        //       // missionInfo.MissionConList.Clear();
+        //        for (int k = 0; k < this.MissionContentList.Count; k++)
+        //        {
+        //            if (this.MissionContentList[k].ID == missionInfo.ID)
+        //            {
+        //             //   missionInfo.MissionConList.Add(this.MissionContentList[k]);
+        //            }
+        //        }
+        //        this.MissionInfoList.Add(missionInfo);
+        //    }
+        //}
+        //for (int l = 0; l < this.MissionInfoList.Count; l++)
+        //{
+        //    //int num5 = (int)(this.MissionInfoList[l].Type * (MissionType)1000 + this.MissionInfoList[l].LinkID);
+        //    //if (hashtable.Contains(num5))
+        //    //{
+        //    //    this.MissionInfoList[l].StepAmount = (int)hashtable[num5];
+        //    //}
+        //    //else
+        //    //{
+        //    //    Debug.Log(new object[]
+        //    //    {
+        //    //        "错误：无法正确设置任务步数。"
+        //    //    });
+        //    //}
+        //}
+    }
 
     //// Token: 0x06000765 RID: 1893 RVA: 0x0001FDC0 File Offset: 0x0001DFC0
     //public MissionInfo GetMissionInfo(int ID)

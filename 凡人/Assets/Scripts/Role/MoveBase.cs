@@ -86,12 +86,12 @@ public class MoveBase
         }
         if (this.m_cRole._roleType != ROLE_TYPE.RT_NPC)
 		{
-            ModBuffProperty modBuffProperty = this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
-            float num = (float)modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND);
-            if (num != 0f)
-            {
-                return false;
-            }
+            //ModBuffProperty modBuffProperty = this.m_cRole.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
+            //float num = (float)modBuffProperty.GetValue(BUFF_VALUE_TYPE.BIND);
+            //if (num != 0f)
+            //{
+            //    return false;
+            //}
         }
         if (this.m_bGravity)
         {

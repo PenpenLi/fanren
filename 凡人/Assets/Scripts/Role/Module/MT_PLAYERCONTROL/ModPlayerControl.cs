@@ -9,24 +9,10 @@ public class ModPlayerControl : Module
 {
     private Player player;
 
-    private ModFight m_cModFight;
-
     public ModPlayerControl(Role role) : base(role)
 	{
 		base.ModType = MODULE_TYPE.MT_PLAYERCONTROL;
 		this.player = (Player)role;
-	}
-
-	private ModFight modFight
-	{
-		get
-		{
-			if (this.m_cModFight == null)
-			{
-				this.m_cModFight = (this._role.GetModule(MODULE_TYPE.MT_FIGHT) as ModFight);
-			}
-			return this.m_cModFight;
-		}
 	}
 
 	public void DirectionInput(float VerInput, float HorInput)
