@@ -17,33 +17,33 @@ namespace ActionScript
 
 		public string Name { get; set; }
 
-		//public ConditionContainer ConditionContainer
-		//{
-		//	get
-		//	{
-		//		return (ConditionContainer)this.child[0];
-		//	}
-		//}
+        public ConditionContainer ConditionContainer
+        {
+            get
+            {
+                return (ConditionContainer)this.child[0];
+            }
+        }
 
-		//public ActionContainer ActionContainer
-		//{
-		//	get
-		//	{
-		//		return (ActionContainer)this.child[1];
-		//	}
-		//}
+        public ActionContainer ActionContainer
+        {
+            get
+            {
+                return (ActionContainer)this.child[1];
+            }
+        }
 
-		public override bool Evaluate()
+        public override bool Evaluate()
 		{
 			if (base.Child.Count < 2)
 			{
 				return false;
 			}
-			if (!base.Child[0].Evaluate())
+			if (!base.Child[0].Evaluate())//条件成立
 			{
 				return false;
 			}
-			base.Child[1].Evaluate();
+			base.Child[1].Evaluate();//执行行动
 			return true;
 		}
 
@@ -95,7 +95,7 @@ namespace ActionScript
 		}
 
         private ScriptNode ReadConditionNode(TextReader reader, ScriptNode top)
-        {
+        {        
             string str = reader.ReadLine();
             string[] array = Function.SplitString(str);
             int num = 0;
@@ -119,7 +119,7 @@ namespace ActionScript
                 int num3 = int.Parse(array[num++]);
                 conditionOne.param = new KeyValuePair<int, string>[num3];
                 for (int i = 0; i < num3; i++)
-                {
+                {        
                     int key = int.Parse(array[num++]);
                     string value = array[num++];
                     conditionOne.param[i] = new KeyValuePair<int, string>(key, value);
@@ -197,15 +197,15 @@ namespace ActionScript
 			list.Add(top.Type.ToString());
 			if (top.Type == 3)
 			{
-				//ConditionOne conditionOne = (ConditionOne)top;
-				//list.Add(conditionOne.conditionID.ToString());
-				//list.Add(conditionOne.param.Length.ToString());
-				//for (int i = 0; i < conditionOne.param.Length; i++)
-				//{
-				//	list.Add(conditionOne.param[i].Key.ToString());
-				//	list.Add(conditionOne.param[i].Value);
-				//}
-			}
+                ConditionOne conditionOne = (ConditionOne)top;
+                list.Add(conditionOne.conditionID.ToString());
+                list.Add(conditionOne.param.Length.ToString());
+                for (int i = 0; i < conditionOne.param.Length; i++)
+                {
+                    list.Add(conditionOne.param[i].Key.ToString());
+                    list.Add(conditionOne.param[i].Value);
+                }
+            }
 			else
 			{
 				list.Add(top.Child.Count.ToString());

@@ -20,7 +20,6 @@ namespace ActionScript
 		{
 			foreach (ScriptNode scriptNode in this.child)
 			{
-                Debug.Log(scriptNode);
                 if (!scriptNode.Evaluate())
 				{
 					return false;

@@ -148,48 +148,44 @@ public class FanrenSceneManager : MonoBehaviour
         yield break;
     }
 
-    //public static void LoadLevel(int levIdx, bool isShow, bool bLoadSave)
-    //{
-    //	if (SceneManager.loading)
-    //	{
-    //		Debug.LogWarning(DU.Warning(new object[]
-    //		{
-    //			"Load twice"
-    //		}));
-    //		return;
-    //	}
-    //	SceneManager.loading = true;
-    //	LoadMachine.isLoadCompleted = false;
-    //	Singleton<HpCautionEffect>.GetInstance().SetRender(false, false);
-    //	LandPlane.m_bAddInput = true;
-    //	if (HelpManager._instance != null)
-    //	{
-    //		HelpManager._instance.HelpExitEx();
-    //	}
-    //	if (isShow && levIdx != 1)
-    //	{
-    //		Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Show();
-    //	}
-    //	if (bLoadSave)
-    //	{
-    //		SDManager.SetRoleDate();
-    //		SDManager.AddCurSceneDate();
-    //	}
-    //	SceneManager.loadingFromSave = !bLoadSave;
-    //	Main.Instance.StartCoroutine(SceneManager.WaitToLoad(levIdx));
-    //}
+    public static void LoadLevel(int levIdx, bool isShow, bool bLoadSave)
+    {
+        if (FanrenSceneManager.loading)
+        {
+            Debug.LogWarning("Load twice");
+            return;
+        }
+        FanrenSceneManager.loading = true;
+      
+        //Singleton<HpCautionEffect>.GetInstance().SetRender(false, false);
+       
+        if (HelpManager._instance != null)
+        {
+          // HelpManager._instance.HelpExitEx();
+        }
+        if (isShow && levIdx != 1)
+        {
+            Singleton<EZGUIManager>.GetInstance().GetGUI<LoadingMain>().Show();
+        }
+        if (bLoadSave)
+        {
+            SDManager.SetRoleDate();
+            SDManager.AddCurSceneDate();
+        }
+        FanrenSceneManager.loadingFromSave = !bLoadSave;
+        Main.Instance.StartCoroutine(FanrenSceneManager.WaitToLoad(levIdx));
+    }
 
-    //private static IEnumerator WaitToLoad(int levelindex)
-    //{
-    //	yield return new WaitForFixedUpdate();
-    //	LoadMachine.ClearLoadedObj();
-    //	if (levelindex == 1)
-    //	{
-    //		SceneManager.ResetSaveData();
-    //	}
-    //	Application.LoadLevel(levelindex);
-    //	yield break;
-    //}
+    private static IEnumerator WaitToLoad(int levelindex)
+    {
+        yield return new WaitForFixedUpdate();
+        if (levelindex == 1)
+        {
+            FanrenSceneManager.ResetSaveData();
+        }
+        SceneManager.LoadScene(levelindex);
+        yield break;
+    }
 
     /// <summary>
     /// 重置存档数据
@@ -274,7 +270,7 @@ public class FanrenSceneManager : MonoBehaviour
         PlayerInfo.PLAYER_REVIVE_ROTATION = new Vector3(0f, FanrenSceneManager.curScenenInfo.revive_rot_y, 0f);
         this.AddComponentMaker();//添加组件
         
-        this.DoScriptMoudle(); //执行脚本模块        
+        //this.DoScriptMoudle(); //执行脚本模块        
     }
 
     public void DoScriptMoudle()

@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 9142074193192930523}
-  Animator: {fileID: 0}
+  Animator: {fileID: 4209466646652320955}
   HarmPartType: 
   HarmCheckPart: []
   HurtPartType: 

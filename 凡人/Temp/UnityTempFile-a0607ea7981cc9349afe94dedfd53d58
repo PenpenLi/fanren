@@ -1,0 +1,556 @@
+/target:library
+/nowarn:0169
+/out:Temp/Assembly-CSharp.dll
+/debug:portable
+/optimize-
+/nostdlib+
+/preferreduilang:en-US
+/langversion:latest
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AndroidJNIModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.DSPGraphModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputLegacyModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextCoreModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UmbraModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEditor.dll"
+/reference:Library/ScriptAssemblies/Unity.Timeline.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.VSCode.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
+/reference:Library/ScriptAssemblies/Unity.Timeline.dll
+/reference:Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.Rider.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.TextMeshPro.dll
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/Microsoft.Win32.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.AppContext.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Collections.Concurrent.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Collections.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Collections.NonGeneric.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Collections.Specialized.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ComponentModel.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ComponentModel.EventBasedAsync.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ComponentModel.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ComponentModel.TypeConverter.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Console.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Data.Common.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.Contracts.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.Debug.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.FileVersionInfo.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.Process.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.StackTrace.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.TextWriterTraceListener.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.Tools.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.TraceSource.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Diagnostics.Tracing.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Drawing.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Dynamic.Runtime.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Globalization.Calendars.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Globalization.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Globalization.Extensions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.Compression.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.Compression.ZipFile.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.FileSystem.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.FileSystem.DriveInfo.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.FileSystem.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.FileSystem.Watcher.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.IsolatedStorage.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.MemoryMappedFiles.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.Pipes.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.IO.UnmanagedMemoryStream.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Linq.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Linq.Expressions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Linq.Parallel.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Linq.Queryable.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Http.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.NameResolution.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.NetworkInformation.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Ping.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Requests.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Security.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.Sockets.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.WebHeaderCollection.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.WebSockets.Client.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Net.WebSockets.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ObjectModel.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Reflection.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Reflection.Extensions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Reflection.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Resources.Reader.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Resources.ResourceManager.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Resources.Writer.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.CompilerServices.VisualC.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Extensions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Handles.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.InteropServices.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.InteropServices.RuntimeInformation.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Numerics.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Serialization.Formatters.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Serialization.Json.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Serialization.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Runtime.Serialization.Xml.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Claims.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Cryptography.Algorithms.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Cryptography.Csp.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Cryptography.Encoding.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Cryptography.Primitives.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Cryptography.X509Certificates.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.Principal.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Security.SecureString.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Text.Encoding.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Text.Encoding.Extensions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Text.RegularExpressions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.Overlapped.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.Tasks.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.Tasks.Parallel.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.Thread.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.ThreadPool.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Threading.Timer.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.ValueTuple.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.ReaderWriter.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XDocument.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlDocument.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XmlSerializer.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XPath.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Numerics.Vectors.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.ComponentModel.Composition.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Core.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Data.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Drawing.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.IO.Compression.FileSystem.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Net.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Numerics.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Runtime.Serialization.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.ServiceModel.Web.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Transactions.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Web.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Windows.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Linq.dll"
+/reference:"D:/Program Files (x86)/2019.2.5f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll"
+/define:UNITY_2019_2_5
+/define:UNITY_2019_2
+/define:UNITY_2019
+/define:UNITY_5_3_OR_NEWER
+/define:UNITY_5_4_OR_NEWER
+/define:UNITY_5_5_OR_NEWER
+/define:UNITY_5_6_OR_NEWER
+/define:UNITY_2017_1_OR_NEWER
+/define:UNITY_2017_2_OR_NEWER
+/define:UNITY_2017_3_OR_NEWER
+/define:UNITY_2017_4_OR_NEWER
+/define:UNITY_2018_1_OR_NEWER
+/define:UNITY_2018_2_OR_NEWER
+/define:UNITY_2018_3_OR_NEWER
+/define:UNITY_2018_4_OR_NEWER
+/define:UNITY_2019_1_OR_NEWER
+/define:UNITY_2019_2_OR_NEWER
+/define:PLATFORM_ARCH_64
+/define:UNITY_64
+/define:UNITY_INCLUDE_TESTS
+/define:ENABLE_AUDIO
+/define:ENABLE_CACHING
+/define:ENABLE_CLOTH
+/define:ENABLE_MICROPHONE
+/define:ENABLE_MULTIPLE_DISPLAYS
+/define:ENABLE_PHYSICS
+/define:ENABLE_TEXTURE_STREAMING
+/define:ENABLE_UNET
+/define:ENABLE_LZMA
+/define:ENABLE_UNITYEVENTS
+/define:ENABLE_WEBCAM
+/define:ENABLE_WWW
+/define:ENABLE_CLOUD_SERVICES_COLLAB
+/define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
+/define:ENABLE_CLOUD_SERVICES_ADS
+/define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
+/define:ENABLE_CLOUD_SERVICES_UNET
+/define:ENABLE_CLOUD_SERVICES_BUILD
+/define:ENABLE_CLOUD_LICENSE
+/define:ENABLE_EDITOR_HUB_LICENSE
+/define:ENABLE_WEBSOCKET_CLIENT
+/define:ENABLE_DIRECTOR_AUDIO
+/define:ENABLE_DIRECTOR_TEXTURE
+/define:ENABLE_MANAGED_JOBS
+/define:ENABLE_MANAGED_TRANSFORM_JOBS
+/define:ENABLE_MANAGED_ANIMATION_JOBS
+/define:ENABLE_MANAGED_AUDIO_JOBS
+/define:INCLUDE_DYNAMIC_GI
+/define:ENABLE_MONO_BDWGC
+/define:ENABLE_SCRIPTING_GC_WBARRIERS
+/define:PLATFORM_SUPPORTS_MONO
+/define:RENDER_SOFTWARE_CURSOR
+/define:ENABLE_VIDEO
+/define:PLATFORM_STANDALONE_WIN
+/define:PLATFORM_STANDALONE
+/define:UNITY_STANDALONE_WIN
+/define:UNITY_STANDALONE
+/define:ENABLE_RUNTIME_GI
+/define:ENABLE_MOVIES
+/define:ENABLE_NETWORK
+/define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+/define:ENABLE_UNITYWEBREQUEST
+/define:ENABLE_CLOUD_SERVICES
+/define:ENABLE_CLOUD_SERVICES_ANALYTICS
+/define:ENABLE_CLOUD_SERVICES_PURCHASING
+/define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+/define:ENABLE_OUT_OF_PROCESS_CRASH_HANDLER
+/define:ENABLE_EVENT_QUEUE
+/define:ENABLE_CLUSTER_SYNC
+/define:ENABLE_CLUSTERINPUT
+/define:ENABLE_VR
+/define:ENABLE_AR
+/define:ENABLE_WEBSOCKET_HOST
+/define:ENABLE_MONO
+/define:NET_STANDARD_2_0
+/define:ENABLE_PROFILER
+/define:DEBUG
+/define:TRACE
+/define:UNITY_ASSERTIONS
+/define:UNITY_EDITOR
+/define:UNITY_EDITOR_64
+/define:UNITY_EDITOR_WIN
+/define:ENABLE_UNITY_COLLECTIONS_CHECKS
+/define:ENABLE_BURST_AOT
+/define:UNITY_TEAM_LICENSE
+/define:ENABLE_VSTU
+/define:ENABLE_CUSTOM_RENDER_TEXTURE
+/define:ENABLE_DIRECTOR
+/define:ENABLE_LOCALIZATION
+/define:ENABLE_SPRITES
+/define:ENABLE_TERRAIN
+/define:ENABLE_TILEMAP
+/define:ENABLE_TIMELINE
+/define:CSHARP_7_OR_LATER
+/define:CSHARP_7_3_OR_NEWER
+"Assets\New Folder\ActorManager.cs"
+"Assets\New Folder\BundleObject.cs"
+"Assets\New Folder\CameraBoxsSelect\CameraBoxsSelect.cs"
+"Assets\New Folder\GameTime\ComponentStateControl.cs"
+"Assets\New Folder\GameTime\GameTime.cs"
+"Assets\New Folder\Music\AudioManager.cs"
+"Assets\New Folder\Music\MusicData.cs"
+"Assets\New Folder\Music\MusicManager.cs"
+"Assets\New Folder\Music\SoundData.cs"
+"Assets\New Folder\Music\SoundFadeEffect.cs"
+"Assets\New Folder\Music\SoundsInfo.cs"
+"Assets\New Folder\Music\SoundStartPlay.cs"
+"Assets\New Folder\Music\SoundType.cs"
+"Assets\New Folder\NS_RoleBaseFun\RoleBaseFun.cs"
+"Assets\New Folder\Resource\ResourceLoader.cs"
+"Assets\New Folder\Resource\ResourcePath.cs"
+"Assets\New Folder\Save\DES.cs"
+"Assets\New Folder\Save\DynamicData.cs"
+"Assets\New Folder\Save\SaveData.cs"
+"Assets\New Folder\Save\SaveDataBase.cs"
+"Assets\New Folder\Save\SaveInfo.cs"
+"Assets\New Folder\Save\SaveLoadManager.cs"
+"Assets\New Folder\Save\SDManager.cs"
+"Assets\New Folder\Save\SystemTag.cs"
+"Assets\New Folder\TimeOutManager.cs"
+"Assets\New Folder\TransBevBase.cs"
+"Assets\New Folder\UtilityLoader.cs"
+Assets\Scripts\GameData\BgSoundInfo.cs
+Assets\Scripts\GameData\CacheData.cs
+Assets\Scripts\GameData\GameData.cs
+Assets\Scripts\GameData\RoleBaseConfig.cs
+Assets\Scripts\GameData\RoleDateInfo.cs
+Assets\Scripts\GameData\RoleModelData.cs
+Assets\Scripts\GameData\SceneInfo.cs
+Assets\Scripts\GameData\SoundTable.cs
+Assets\Scripts\GameData\TeleportInfo.cs
+Assets\Scripts\GameData\UserData.cs
+Assets\Scripts\Main\BroadcastManager\BroadcastManager.cs
+Assets\Scripts\Main\KeyManager\Callback\Callback.2.cs
+Assets\Scripts\Main\KeyManager\Callback\Callback.3.cs
+Assets\Scripts\Main\KeyManager\Callback\Callback.4.cs
+Assets\Scripts\Main\KeyManager\Callback\Callback.cs
+Assets\Scripts\Main\KeyManager\KeyManager.cs
+Assets\Scripts\Main\Main.cs
+Assets\Scripts\Main\MouseManager.cs
+Assets\Scripts\MissionState.cs
+Assets\Scripts\Role\ACTION_INDEX.cs
+Assets\Scripts\Role\BindRole.cs
+Assets\Scripts\Role\BindRoleInfo.cs
+Assets\Scripts\Role\Collider\ColliderCheckCharacterController.cs
+Assets\Scripts\Role\Collider\ColliderCheckHandle.cs
+Assets\Scripts\Role\Collider\ColliderCheckObject.cs
+Assets\Scripts\Role\Collider\ColliderCheckRay.cs
+Assets\Scripts\Role\Collider\HitEventArgs.cs
+Assets\Scripts\Role\CSkillManager\CSkillManager.cs
+Assets\Scripts\Role\EASING_TYPE.cs
+Assets\Scripts\Role\GameObjectBevBase.cs
+Assets\Scripts\Role\Hatred\HatredType.cs
+Assets\Scripts\Role\Hatred\RoleHatred.cs
+Assets\Scripts\Role\HelpManager\HelpManager.cs
+Assets\Scripts\Role\HurtGameObject.cs
+Assets\Scripts\Role\HurtRoleGameObject.cs
+Assets\Scripts\Role\Module\Module.cs
+Assets\Scripts\Role\Module\MODULE_TYPE.cs
+Assets\Scripts\Role\Module\MT_ATTRIBUTE\ModAttribute.cs
+Assets\Scripts\Role\Module\MT_BUFF\Buff.cs
+Assets\Scripts\Role\Module\MT_BUFF\BUFF_VALUE_TYPE.cs
+Assets\Scripts\Role\Module\MT_BUFF\BuffData.cs
+Assets\Scripts\Role\Module\MT_BUFF\BuffTableManager.cs
+Assets\Scripts\Role\Module\MT_BUFF\CEffectData.cs
+Assets\Scripts\Role\Module\MT_BUFF\ControlEventBuff.cs
+Assets\Scripts\Role\Module\MT_BUFF\CSerializer.cs
+Assets\Scripts\Role\Module\MT_BUFF\EffectBase.cs
+Assets\Scripts\Role\Module\MT_BUFF\EffectColliderProperty.cs
+Assets\Scripts\Role\Module\MT_BUFF\EffectManager.cs
+Assets\Scripts\Role\Module\MT_BUFF\EffectSoundData.cs
+Assets\Scripts\Role\Module\MT_BUFF\EffectTableManager.cs
+Assets\Scripts\Role\Module\MT_BUFF\ModBuffProperty.cs
+Assets\Scripts\Role\Module\MT_CAMERA\CameraEffectManager.cs
+Assets\Scripts\Role\Module\MT_CAMERA\ModCamera.cs
+Assets\Scripts\Role\Module\MT_COLLIDER\ModColliderProperty.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventAttack.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventAttackIdle.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventBase.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventFalling.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventFly.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventIdle.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventMoveForward.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventRestoreAttackIdle.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventRestoreIdle.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlEventBase\ControlEventSwim.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateAttack.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBackWeapon.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBase.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateBuff.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateDie.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateFalling.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateFly.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateHurt.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateIdle.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateJump.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ControlStateBase\ControlStateWalkForward.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\MFS_TALBE_TYPE.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\MFSTable.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\MFSTableManager.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ModBehaviorAI.cs
+Assets\Scripts\Role\Module\MT_CONTROL_MFS\ModControlMFS.cs
+Assets\Scripts\Role\Module\MT_FIGHT\AttackFormula.cs
+Assets\Scripts\Role\Module\MT_FIGHT\ATTRIBUTE_TYPE.cs
+Assets\Scripts\Role\Module\MT_FIGHT\CItemBase.cs
+Assets\Scripts\Role\Module\MT_FIGHT\DefenceFormula.cs
+Assets\Scripts\Role\Module\MT_FIGHT\FightInfo.cs
+Assets\Scripts\Role\Module\MT_FIGHT\ModFight.cs
+Assets\Scripts\Role\Module\MT_FIGHT\PlayerFightData.cs
+Assets\Scripts\Role\Module\MT_FIGHT\PlayerPropertyInfo.cs
+Assets\Scripts\Role\Module\MT_FIGHT\TargetQuadrant.cs
+Assets\Scripts\Role\Module\MT_MISSION\MissionInfo.cs
+Assets\Scripts\Role\Module\MT_MISSION\ModMission.cs
+Assets\Scripts\Role\Module\MT_MOTION\ModAnimation.cs
+Assets\Scripts\Role\Module\MT_ORGANIZATION\ModOrganization.cs
+Assets\Scripts\Role\Module\MT_ORGANIZATION\OrganizationInfo.cs
+Assets\Scripts\Role\Module\MT_PLAYERCONTROL\ModPlayerControl.cs
+Assets\Scripts\Role\Module\MT_PLAYERMUTUAL\ModMutualPlayer.cs
+Assets\Scripts\Role\Module\MT_SKILL\CameraBaseAction.cs
+Assets\Scripts\Role\Module\MT_SKILL\CameraLook.cs
+Assets\Scripts\Role\Module\MT_SKILL\CameraMove.cs
+Assets\Scripts\Role\Module\MT_SKILL\CSkillBase.cs
+Assets\Scripts\Role\Module\MT_SKILL\CSkillStaticManager.cs
+Assets\Scripts\Role\Module\MT_SKILL\FightCameraArea.cs
+Assets\Scripts\Role\Module\MT_SKILL\ModSkillProperty.cs
+Assets\Scripts\Role\Module\MT_SKILL\PLAYER_SKILL_TYPE.cs
+Assets\Scripts\Role\Module\MT_SKILL\PlayerSkillData.cs
+Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillPlayer.cs
+Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateHLHDN.cs
+Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateHZC.cs
+Assets\Scripts\Role\Module\MT_SKILL\SkillScript\SkillUpdateRay.cs
+Assets\Scripts\Role\Module\MT_SKILL\SSkillCoolTime.cs
+Assets\Scripts\Role\Module\MT_VOICE\ModVoice.cs
+Assets\Scripts\Role\Monster\IdentityType.cs
+Assets\Scripts\Role\Monster\Monster.cs
+Assets\Scripts\Role\Monster\MonsterHp.cs
+Assets\Scripts\Role\Monster\MonsterInfo.cs
+Assets\Scripts\Role\Monster\MonsterSkill.cs
+Assets\Scripts\Role\Monster\SkillUselRule.cs
+Assets\Scripts\Role\MOVE_CLASS.cs
+Assets\Scripts\Role\MoveBase.cs
+Assets\Scripts\Role\MoveTarget.cs
+Assets\Scripts\Role\NPC\NpcInfo.cs
+Assets\Scripts\Role\OperableItemBase\CullableItem.cs
+Assets\Scripts\Role\OperableItemBase\CullState.cs
+Assets\Scripts\Role\OperableItemBase\CullType.cs
+Assets\Scripts\Role\OperableItemBase\ObjectState.cs
+Assets\Scripts\Role\OperableItemBase\OperableItemBase.cs
+Assets\Scripts\Role\OperableItemBase\OperableSaveDataBase.cs
+Assets\Scripts\Role\Player\AdeptTalent\ADEPT_ATTRIBUTE.cs
+Assets\Scripts\Role\Player\AdeptTalent\AdeptTalent.cs
+Assets\Scripts\Role\Player\AmbitSystem\AmbitData.cs
+Assets\Scripts\Role\Player\AmbitSystem\AMBITLEVEL.cs
+Assets\Scripts\Role\Player\AmbitSystem\AmbitStaticData.cs
+Assets\Scripts\Role\Player\AmbitSystem\AmbitSystem.cs
+Assets\Scripts\Role\Player\BottleSystem\BottleSystem.cs
+Assets\Scripts\Role\Player\Character.cs
+Assets\Scripts\Role\Player\EquipReplace\EquipReplace.cs
+Assets\Scripts\Role\Player\FigureSystem\FigureSystem.cs
+Assets\Scripts\Role\Player\ItemFolderContainer\ITEM_ADD_ATTRIBUTE.cs
+Assets\Scripts\Role\Player\ItemFolderContainer\ItemFolderContainer.cs
+Assets\Scripts\Role\Player\ItemFolderContainer\ItemOwner.cs
+Assets\Scripts\Role\Player\ItemFolderContainer\RoleWear.cs
+Assets\Scripts\Role\Player\ItemManager\BuildImageAtlas.cs
+Assets\Scripts\Role\Player\ItemManager\CItemManager.cs
+Assets\Scripts\Role\Player\ItemManager\CItemStaticManager.cs
+Assets\Scripts\Role\Player\ItemManager\ImageGroupManager.cs
+Assets\Scripts\Role\Player\ItemManager\ImgData.cs
+Assets\Scripts\Role\Player\ItemManager\ImgSrcData.cs
+Assets\Scripts\Role\Player\ItemManager\ITEM_ATTRIBUTE_TYPE.cs
+Assets\Scripts\Role\Player\ItemManager\ItemCfgType.cs
+Assets\Scripts\Role\Player\ItemManager\ItemMagicFigure.cs
+Assets\Scripts\Role\Player\ItemManager\ItemPropertyConfig.cs
+Assets\Scripts\Role\Player\ItemManager\ItemSaveData.cs
+Assets\Scripts\Role\Player\ItemManager\ItemWeapon.cs
+Assets\Scripts\Role\Player\ItemManager\MyRect.cs
+Assets\Scripts\Role\Player\ItemManager\OtherCfgType.cs
+Assets\Scripts\Role\Player\ItemManager\PelletCfgType.cs
+Assets\Scripts\Role\Player\ItemManager\PropsPlane.cs
+Assets\Scripts\Role\Player\ItemManager\ScrModType.cs
+Assets\Scripts\Role\Player\ItemManager\StuffCfgType.cs
+Assets\Scripts\Role\Player\MixtureSmelt\MixtureChildType.cs
+Assets\Scripts\Role\Player\MixtureSmelt\MixtureSmelt.cs
+Assets\Scripts\Role\Player\MixtureSmelt\MixtureType.cs
+Assets\Scripts\Role\Player\Player.cs
+Assets\Scripts\Role\Player\PlayerInfo.cs
+Assets\Scripts\Role\Role.cs
+Assets\Scripts\Role\ROLE_TYPE.cs
+Assets\Scripts\Role\RoleAnimationManager\AniInfo.cs
+Assets\Scripts\Role\RoleAnimationManager\AniInfoStaticManager.cs
+Assets\Scripts\Role\RoleAnimationManager\RoleAniCollect.cs
+Assets\Scripts\Role\RoleAnimationManager\RoleAnimationManager.cs
+Assets\Scripts\Role\RoleAnimationManager\RoleAnimationType.cs
+Assets\Scripts\Role\RoleBaseInfo.cs
+Assets\Scripts\Role\RoleBodyInfo\CHILD_ARM_POINT.cs
+Assets\Scripts\Role\RoleBodyInfo\CHILD_EFFECT_POINT.cs
+Assets\Scripts\Role\RoleBodyInfo\CHILD_MESH_POINT.cs
+Assets\Scripts\Role\RoleBodyInfo\CHILD_RAGDOLL_POINT.cs
+Assets\Scripts\Role\RoleBodyInfo\CONTROL_INPUT.cs
+Assets\Scripts\Role\RoleBodyInfo\CONTROL_STATE.cs
+Assets\Scripts\Role\RoleBodyInfo\HARM_PART.cs
+Assets\Scripts\Role\RoleBodyInfo\HURT_PART.cs
+Assets\Scripts\Role\RoleBodyInfo\RoleBodyInfo.cs
+Assets\Scripts\Role\RoleChildren\RoleChildren.cs
+Assets\Scripts\Role\RoleChildren\RoleChildType.cs
+Assets\Scripts\Role\RoleDeadArgs.cs
+Assets\Scripts\Role\RoleDeadEventHandler.cs
+Assets\Scripts\Role\RoleEventHandler.cs
+Assets\Scripts\Role\RoleGameObject.cs
+Assets\Scripts\Role\RoleGrowData.cs
+Assets\Scripts\Role\RoleHurtArgs.cs
+Assets\Scripts\Role\RoleHurtEventHandler.cs
+Assets\Scripts\Role\RoleManager.cs
+Assets\Scripts\Role\RoleModelInfo.cs
+Assets\Scripts\Role\RoleStaticInfo.cs
+Assets\Scripts\Role\RoleWearEquipPos.cs
+Assets\Scripts\Role\Rotate.cs
+Assets\Scripts\Role\Spawn\GameObjSpawn.cs
+Assets\Scripts\Role\Spawn\ORG_TYPE.cs
+Assets\Scripts\Role\Spawn\SpawnManager.cs
+Assets\Scripts\Role\StageManager.cs
+Assets\Scripts\Role\TransPhysicsCast.cs
+Assets\Scripts\Role\UpdateBevBase.cs
+Assets\Scripts\Role\WeaponManager\EquipCfgType.cs
+Assets\Scripts\Role\WeaponManager\WeaponInfoData.cs
+Assets\Scripts\Role\WeaponManager\WeaponManager.cs
+Assets\Scripts\Scene\FanrenSceneManager.cs
+Assets\Scripts\ScriptManager\ConditionOr.cs
+Assets\Scripts\ScriptManager\Function.cs
+Assets\Scripts\ScriptManager\ScriptAction.cs
+Assets\Scripts\ScriptManager\ScriptDataManager.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ActionContainer.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ConditionAnd.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ConditionContainer.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ConditionFunction.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ConditionNot.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ConditionOne.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ScriptConditionData.cs
+Assets\Scripts\ScriptManager\ScriptHandle\ScriptHandle.cs
+Assets\Scripts\ScriptManager\ScriptHandle\VALUE_TYPE.cs
+Assets\Scripts\ScriptManager\ScriptManager.cs
+Assets\Scripts\ScriptManager\ScriptNode.cs
+Assets\Scripts\ScriptManager\ScriptTrigger.cs
+Assets\Scripts\ScriptManager\SM_Script\SDM_ScriptsGroup.cs
+Assets\Scripts\ScriptManager\SM_Script\SM_ActionScript.cs
+Assets\Scripts\ScriptManager\SM_Script\SM_ExecScripts.cs
+Assets\Scripts\ScriptManager\SM_Script\SM_SwitchScene.cs
+Assets\Scripts\ScriptManager\SM_Script\SM_UpdateProp.cs
+Assets\Scripts\Singleton\Singleton.cs
+Assets\Scripts\Singleton\SingletonMono.cs
+Assets\Scripts\TeleportManager\TeleportManager.cs
+Assets\Scripts\UI\EZCameraSettings.cs
+Assets\Scripts\UI\EZGUIManager.cs
+Assets\Scripts\UI\GUI_TYPE.cs
+Assets\Scripts\UI\GUIBase.cs
+Assets\Scripts\UI\GUIBind.cs
+Assets\Scripts\UI\GUIControl.cs
+Assets\Scripts\UI\LandPlane.cs
+Assets\Scripts\UI\LoadingMain.cs
+Assets\Scripts\UI\UICamera.cs
+Assets\Scripts\UI\UIManager.cs
