@@ -221,100 +221,101 @@ public class RoleDateInfo
     private void ReadMissionInfo()
     {
         this.ReadMissionContent();
-        //this.MissionInfoList.Clear();
-        //List<string> list = RoleBaseFun.LoadConfInAssets("MissionInfo");
-        //Hashtable hashtable = new Hashtable();
-        //foreach (string text in list)
-        //{
-        //    string[] array = text.Split(CacheData.separator);
-        //    MissionInfo missionInfo = new MissionInfo();
-        //    int num = 0;
-        //    missionInfo.ID = Convert.ToInt32(array[num++]);
-        //    missionInfo.step = Convert.ToInt32(array[num++]);
-        //    missionInfo.StepAmount = 0;
-        //   // int num2 = (int)(missionInfo.Type * (MissionType)1000 + missionInfo.LinkID);
-        //    //if (hashtable.Contains(num2))
-        //    //{
-        //    //    int num3 = (int)hashtable[num2];
-        //    //    hashtable[num2] = num3 + 1;
-        //    //}
-        //    //else
-        //    //{
-        //    //    hashtable.Add(num2, 1);
-        //    //}
-        //    missionInfo.Mask = Convert.ToInt32(array[num]);
-        //    num++;
-        //    missionInfo.Name = array[num];
-        //    num++;
-        //    missionInfo.AimDescribe = array[num];
-        //    num++;
-        //    missionInfo.AimRequire = array[num];
-        //    num++;
-        //    missionInfo.PicPath = array[num];
-        //    num++;
-        //    missionInfo.PicBigPath = array[num];
-        //    num++;
-        //    missionInfo.CompleteNpc = Convert.ToInt32(array[num]);
-        //    num++;
-        //    missionInfo.MissType = Convert.ToInt32(array[num]);
-        //    if (missionInfo.InvalidMissType(missionInfo.MissType))
-        //    {
-        //        Debug.Log(new object[]
-        //        {
-        //            "MissionInfo File Error !"
-        //        });
-        //    }
-        //    num++;
-        //    missionInfo.MissValCount = Convert.ToInt32(array[num]);
-        //    num++;
-        //    if (array.Length < missionInfo.MissValCount + num)
-        //    {
-        //        Debug.Log(new object[]
-        //        {
-        //            "MissionInfo File Length Error ! =",
-        //            array.Length.ToString() + "/" + num.ToString()
-        //        });
-        //    }
-        //    else
-        //    {
-        //        missionInfo.MissVal.Clear();
-        //        for (int i = 0; i < missionInfo.MissValCount; i++)
-        //        {
-        //            missionInfo.MissVal.Add(Convert.ToInt32(array[num]));
-        //            num++;
-        //        }
-        //       // missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
-        //        num++;
-        //        missionInfo.ComSMTDate = Convert.ToInt32(array[num]);
-        //        num++;
-        //        missionInfo.RewardItemList.Clear();
-        //        int num4 = Convert.ToInt32(array[num]);
-        //        num++;
-        //        missionInfo.MissionAimList.Clear();
-        //        for (int j = 0; j < num4; j++)
-        //        {
-        //            MissionInfo.MissionAimInfo missionAimInfo = new MissionInfo.MissionAimInfo();
-        //            missionAimInfo.AimType = Convert.ToInt32(array[num]);
-        //            num++;
-        //            missionAimInfo.AimDis = array[num];
-        //            num++;
-        //            missionAimInfo.AimData = Convert.ToInt32(array[num]);
-        //            num++;
-        //            missionAimInfo.Count = Convert.ToInt32(array[num]);
-        //            num++;
-        //            missionInfo.MissionAimList.Add(missionAimInfo);
-        //        }
-        //       // missionInfo.MissionConList.Clear();
-        //        for (int k = 0; k < this.MissionContentList.Count; k++)
-        //        {
-        //            if (this.MissionContentList[k].ID == missionInfo.ID)
-        //            {
-        //             //   missionInfo.MissionConList.Add(this.MissionContentList[k]);
-        //            }
-        //        }
-        //        this.MissionInfoList.Add(missionInfo);
-        //    }
-        //}
+        this.MissionInfoList.Clear();
+        List<string> list = RoleBaseFun.LoadConfInAssets("MissionInfo");
+        Hashtable hashtable = new Hashtable();
+        foreach (string text in list)
+        {
+            string[] array = text.Split(CacheData.separator);
+            MissionInfo missionInfo = new MissionInfo();
+            int num = 0;
+            missionInfo.ID = Convert.ToInt32(array[num++]);
+            missionInfo.step = Convert.ToInt32(array[num++]);
+            missionInfo.StepAmount = 0;
+            int num2 = (int)(missionInfo.Type * (MissionType)1000 + missionInfo.LinkID);
+            //if (hashtable.Contains(num2))
+            //{
+            //    int num3 = (int)hashtable[num2];
+            //    hashtable[num2] = num3 + 1;
+            //}
+            //else
+            //{
+            //    hashtable.Add(num2, 1);
+            //}
+            missionInfo.Mask = Convert.ToInt32(array[num]);
+            num++;
+            missionInfo.Name = array[num];
+            num++;
+            missionInfo.AimDescribe = array[num];
+            num++;
+            missionInfo.AimRequire = array[num];
+            num++;
+            missionInfo.PicPath = array[num];
+            num++;
+            missionInfo.PicBigPath = array[num];
+            num++;
+            missionInfo.CompleteNpc = Convert.ToInt32(array[num]);
+            num++;
+            missionInfo.MissType = Convert.ToInt32(array[num]);
+            if (missionInfo.InvalidMissType(missionInfo.MissType))
+            {
+                Debug.Log(new object[]
+                {
+                    "MissionInfo File Error !"
+                });
+            }
+            num++;
+            missionInfo.MissValCount = Convert.ToInt32(array[num]);
+            num++;
+            if (array.Length < missionInfo.MissValCount + num)
+            {
+                Debug.Log(new object[]
+                {
+                    "MissionInfo File Length Error ! =",
+                    array.Length.ToString() + "/" + num.ToString()
+                });
+            }
+            else
+            {
+                missionInfo.MissVal.Clear();
+                for (int i = 0; i < missionInfo.MissValCount; i++)
+                {
+                    missionInfo.MissVal.Add(Convert.ToInt32(array[num]));
+                    num++;
+                }
+                // missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
+                num++;
+                missionInfo.ComSMTDate = Convert.ToInt32(array[num]);
+                num++;
+                missionInfo.RewardItemList.Clear();
+                int num4 = Convert.ToInt32(array[num]);
+                num++;
+                missionInfo.MissionAimList.Clear();
+                for (int j = 0; j < num4; j++)
+                {
+                    MissionInfo.MissionAimInfo missionAimInfo = new MissionInfo.MissionAimInfo();
+                    missionAimInfo.AimType = Convert.ToInt32(array[num]);
+                    num++;
+                    missionAimInfo.AimDis = array[num];
+                    num++;
+                    missionAimInfo.AimData = Convert.ToInt32(array[num]);
+                    num++;
+                    missionAimInfo.Count = Convert.ToInt32(array[num]);
+                    num++;
+                    missionInfo.MissionAimList.Add(missionAimInfo);
+                }
+                // missionInfo.MissionConList.Clear();
+                for (int k = 0; k < this.MissionContentList.Count; k++)
+                {
+                    if (this.MissionContentList[k].ID == missionInfo.ID)
+                    {
+                        //   missionInfo.MissionConList.Add(this.MissionContentList[k]);
+                    }
+                }
+                this.MissionInfoList.Add(missionInfo);
+            }
+        }
+
         //for (int l = 0; l < this.MissionInfoList.Count; l++)
         //{
         //    //int num5 = (int)(this.MissionInfoList[l].Type * (MissionType)1000 + this.MissionInfoList[l].LinkID);
@@ -332,18 +333,17 @@ public class RoleDateInfo
         //}
     }
 
-    //// Token: 0x06000765 RID: 1893 RVA: 0x0001FDC0 File Offset: 0x0001DFC0
-    //public MissionInfo GetMissionInfo(int ID)
-    //{
-    //	for (int i = 0; i < this.MissionInfoList.Count; i++)
-    //	{
-    //		if (this.MissionInfoList[i].ID == ID)
-    //		{
-    //			return this.MissionInfoList[i];
-    //		}
-    //	}
-    //	return null;
-    //}
+    public MissionInfo GetMissionInfo(int ID)
+    {
+        for (int i = 0; i < this.MissionInfoList.Count; i++)
+        {
+            if (this.MissionInfoList[i].ID == ID)
+            {
+                return this.MissionInfoList[i];
+            }
+        }
+        return null;
+    }
 
     private void ReadNpcInfo()
     {

@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\GameData\RoleBaseConfig.cs" />
     <Compile Include="Assets\Scripts\GameData\RoleDateInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\RoleDateInfo\MissionContent.cs" />
+    <Compile Include="Assets\Scripts\GameData\RoleDateInfo\MissionType.cs" />
     <Compile Include="Assets\Scripts\GameData\RoleDateInfo\RoleModelData.cs" />
     <Compile Include="Assets\Scripts\GameData\SceneInfo.cs" />
     <Compile Include="Assets\Scripts\GameData\SoundTable.cs" />

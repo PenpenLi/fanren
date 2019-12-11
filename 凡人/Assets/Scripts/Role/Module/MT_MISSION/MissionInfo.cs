@@ -52,7 +52,7 @@ public class MissionInfo
 
     public List<MissionInfo.MissionAimInfo> MissionAimList = new List<MissionInfo.MissionAimInfo>();
 
-    //public List<MissionContent> MissionConList = new List<MissionContent>();
+    public List<MissionContent> MissionConList = new List<MissionContent>();
 
     public class ItemInfo
     {
@@ -121,36 +121,35 @@ public class MissionInfo
 		}
 	}
 
-	//public MissionType Type
-	//{
-	//	get
-	//	{
-	//		return (MissionType)(this.ID / 100000 - 40);
-	//	}
-	//	set
-	//	{
-	//	}
-	//}
+    public MissionType Type
+    {
+        get
+        {
+            return (MissionType)(this.ID / 100000 - 40);
+        }
+        set
+        {
+        }
+    }
 
-	//public string GetMissionContent(int index)
-	//{
-	//	foreach (MissionContent missionContent in this.MissionConList)
-	//	{
-	//		if (missionContent.StrStep % 100 == index % 100)
-	//		{
-	//			return missionContent.Str;
-	//		}
-	//	}
-	//	return null;
-	//}
+    //public string GetMissionContent(int index)
+    //{
+    //	foreach (MissionContent missionContent in this.MissionConList)
+    //	{
+    //		if (missionContent.StrStep % 100 == index % 100)
+    //		{
+    //			return missionContent.Str;
+    //		}
+    //	}
+    //	return null;
+    //}
 
-	//public bool IsMissionContentEnd(int index)
-	//{
-	//	return index % 100 == this.MissionConList.Count - 4;
-	//}
+    //public bool IsMissionContentEnd(int index)
+    //{
+    //	return index % 100 == this.MissionConList.Count - 4;
+    //}
 
-	// Token: 0x06000683 RID: 1667 RVA: 0x0001CDA8 File Offset: 0x0001AFA8
-	public bool IsMisContUnComplete(int index)
+    public bool IsMisContUnComplete(int index)
 	{
 		return index % 100 == 99;
 	}
