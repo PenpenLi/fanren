@@ -14,22 +14,49 @@ public class MissionInfo
 
     public const int TRIGGERTYPE_MAX = 7;
 
+    /// <summary>
+    /// ID
+    /// </summary>
     public int ID;
 
+    /// <summary>
+    /// 步骤
+    /// </summary>
     public int step;
 
+    /// <summary>
+    /// 步骤数量
+    /// </summary>
     public int StepAmount;
 
+    /// <summary>
+    /// 掩码
+    /// </summary>
     public int Mask;
 
+    /// <summary>
+    /// 任务名
+    /// </summary>
     public string Name;
 
+    /// <summary>
+    /// 任务剧情文字
+    /// </summary>
     public string AimDescribe;
 
+    /// <summary>
+    /// 任务要求
+    /// </summary>
     public string AimRequire;
 
+    /// <summary>
+    /// 任务图片路径
+    /// </summary>
     public string PicPath;
 
+    /// <summary>
+    /// 任务大图片路径
+    /// </summary>
     public string PicBigPath;
 
     public int MissType;
@@ -46,7 +73,7 @@ public class MissionInfo
 
     public List<MissionInfo.ItemInfo> RewardItemList = new List<MissionInfo.ItemInfo>();
 
-    //public ScrModType ComSMT;
+    public ScrModType ComSMT;
 
     public int ComSMTDate;
 
@@ -132,22 +159,22 @@ public class MissionInfo
         }
     }
 
-    //public string GetMissionContent(int index)
-    //{
-    //	foreach (MissionContent missionContent in this.MissionConList)
-    //	{
-    //		if (missionContent.StrStep % 100 == index % 100)
-    //		{
-    //			return missionContent.Str;
-    //		}
-    //	}
-    //	return null;
-    //}
+    public string GetMissionContent(int index)
+    {
+        foreach (MissionContent missionContent in this.MissionConList)
+        {
+            if (missionContent.StrStep % 100 == index % 100)
+            {
+                return missionContent.Str;
+            }
+        }
+        return null;
+    }
 
-    //public bool IsMissionContentEnd(int index)
-    //{
-    //	return index % 100 == this.MissionConList.Count - 4;
-    //}
+    public bool IsMissionContentEnd(int index)
+    {
+        return index % 100 == this.MissionConList.Count - 4;
+    }
 
     public bool IsMisContUnComplete(int index)
 	{
@@ -159,22 +186,22 @@ public class MissionInfo
 		return index % 100 == 98;
 	}
 
-	//public string GetCompleteStr()
-	//{
-	//	return this.GetMissionContent(98);
-	//}
+    public string GetCompleteStr()
+    {
+        return this.GetMissionContent(98);
+    }
 
-	//public string GetUnCompleteStr()
-	//{
-	//	return this.GetMissionContent(99);
-	//}
+    public string GetUnCompleteStr()
+    {
+        return this.GetMissionContent(99);
+    }
 
-	//public string GetDetailStr()
-	//{
-	//	return this.GetMissionContent(97);
-	//}
+    public string GetDetailStr()
+    {
+        return this.GetMissionContent(97);
+    }
 
-	public bool InvalidMissType(int type)
+    public bool InvalidMissType(int type)
 	{
 		return type <= -2 || type >= 3;
 	}

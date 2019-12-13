@@ -232,16 +232,16 @@ public class RoleDateInfo
             missionInfo.ID = Convert.ToInt32(array[num++]);
             missionInfo.step = Convert.ToInt32(array[num++]);
             missionInfo.StepAmount = 0;
-            int num2 = (int)(missionInfo.Type * (MissionType)1000 + missionInfo.LinkID);
-            //if (hashtable.Contains(num2))
-            //{
-            //    int num3 = (int)hashtable[num2];
-            //    hashtable[num2] = num3 + 1;
-            //}
-            //else
-            //{
-            //    hashtable.Add(num2, 1);
-            //}
+            int num2 = (int)((int)missionInfo.Type * (int)(MissionType)1000 + missionInfo.LinkID);
+            if (hashtable.Contains(num2))
+            {
+                int num3 = (int)hashtable[num2];
+                hashtable[num2] = num3 + 1;
+            }
+            else
+            {
+                hashtable.Add(num2, 1);
+            }
             missionInfo.Mask = Convert.ToInt32(array[num]);
             num++;
             missionInfo.Name = array[num];
@@ -283,7 +283,7 @@ public class RoleDateInfo
                     missionInfo.MissVal.Add(Convert.ToInt32(array[num]));
                     num++;
                 }
-                // missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
+                missionInfo.ComSMT = (ScrModType)Convert.ToInt32(array[num]);
                 num++;
                 missionInfo.ComSMTDate = Convert.ToInt32(array[num]);
                 num++;
@@ -304,33 +304,33 @@ public class RoleDateInfo
                     num++;
                     missionInfo.MissionAimList.Add(missionAimInfo);
                 }
-                // missionInfo.MissionConList.Clear();
+                missionInfo.MissionConList.Clear();
                 for (int k = 0; k < this.MissionContentList.Count; k++)
                 {
                     if (this.MissionContentList[k].ID == missionInfo.ID)
                     {
-                        //   missionInfo.MissionConList.Add(this.MissionContentList[k]);
+                        missionInfo.MissionConList.Add(this.MissionContentList[k]);
                     }
                 }
                 this.MissionInfoList.Add(missionInfo);
             }
         }
 
-        //for (int l = 0; l < this.MissionInfoList.Count; l++)
-        //{
-        //    //int num5 = (int)(this.MissionInfoList[l].Type * (MissionType)1000 + this.MissionInfoList[l].LinkID);
-        //    //if (hashtable.Contains(num5))
-        //    //{
-        //    //    this.MissionInfoList[l].StepAmount = (int)hashtable[num5];
-        //    //}
-        //    //else
-        //    //{
-        //    //    Debug.Log(new object[]
-        //    //    {
-        //    //        "错误：无法正确设置任务步数。"
-        //    //    });
-        //    //}
-        //}
+        for (int l = 0; l < this.MissionInfoList.Count; l++)
+        {
+            int num5 = (int)((int)this.MissionInfoList[l].Type * (int)(MissionType)1000 + this.MissionInfoList[l].LinkID);
+            if (hashtable.Contains(num5))
+            {
+                this.MissionInfoList[l].StepAmount = (int)hashtable[num5];
+            }
+            else
+            {
+                Debug.Log(new object[]
+                {
+                    "错误：无法正确设置任务步数。"
+                });
+            }
+        }
     }
 
     public MissionInfo GetMissionInfo(int ID)

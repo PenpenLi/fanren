@@ -51,17 +51,17 @@ public class ModMission : Module
         return base.Init();
     }
 
-    //public ModMission.MisLinkInfo GetInMisLinkList(int linkId)
-    //{
-    //	for (int i = 0; i < this.misLinkList.Count; i++)
-    //	{
-    //		if (this.misLinkList[i].linkId == linkId)
-    //		{
-    //			return this.misLinkList[i];
-    //		}
-    //	}
-    //	return null;
-    //}
+    public ModMission.MisLinkInfo GetInMisLinkList(int linkId)
+    {
+        for (int i = 0; i < this.misLinkList.Count; i++)
+        {
+            if (this.misLinkList[i].linkId == linkId)
+            {
+                return this.misLinkList[i];
+            }
+        }
+        return null;
+    }
 
     //public void DelMisLink(int linkId)
     //{
@@ -75,17 +75,17 @@ public class ModMission : Module
     //	}
     //}
 
-    //public bool IsInAccLinkList(int ID)
-    //{
-    //	foreach (ModMission.AccMisInfo accMisInfo in this.accMisList)
-    //	{
-    //		if (accMisInfo.ID == ID)
-    //		{
-    //			return true;
-    //		}
-    //	}
-    //	return false;
-    //}
+    public bool IsInAccLinkList(int ID)
+    {
+        foreach (ModMission.AccMisInfo accMisInfo in this.accMisList)
+        {
+            if (accMisInfo.ID == ID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //public void CompleteMission(int ID)
     //{
@@ -115,65 +115,67 @@ public class ModMission : Module
     //	this.CheckSkipMission(ID);
     //}
 
-    //public void AcceptMission(int ID)
-    //{
-    //	Logger.Log(new object[]
-    //	{
-    //		"Mission Accept ! ID:" + ID.ToString()
-    //	});
-    //	if (!this.CheckMissionCondition(ID))
-    //	{
-    //		return;
-    //	}
-    //	ModMission.AccMisInfo accMisInfo = new ModMission.AccMisInfo();
-    //	accMisInfo.ID = ID;
-    //	accMisInfo.AimList.Clear();
-    //	MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(ID);
-    //	if (missionInfo != null)
-    //	{
-    //		foreach (MissionInfo.MissionAimInfo missionAimInfo in missionInfo.MissionAimList)
-    //		{
-    //			if (missionAimInfo.Count != 0)
-    //			{
-    //				MissionInfo.MissionAimInfo missionAimInfo2 = new MissionInfo.MissionAimInfo();
-    //				missionAimInfo2.AimType = missionAimInfo.AimType;
-    //				missionAimInfo2.AimDis = missionAimInfo.AimDis;
-    //				missionAimInfo2.AimData = missionAimInfo.AimData;
-    //				missionAimInfo2.Count = 0;
-    //				accMisInfo.AimList.Add(missionAimInfo2);
-    //			}
-    //		}
-    //	}
-    //	accMisInfo.MisInfo = missionInfo;
-    //	this.accMisList.Add(accMisInfo);
-    //	if (this.GetInMisLinkList(accMisInfo.LinkId) == null)
-    //	{
-    //		ModMission.MisLinkInfo misLinkInfo = new ModMission.MisLinkInfo();
-    //		misLinkInfo.linkId = accMisInfo.LinkId;
-    //		misLinkInfo.curStep = accMisInfo.Step;
-    //		this.misLinkList.Add(misLinkInfo);
-    //	}
-    //	FantasyWorld.Instance.Assist.TimerMan.AddDelayTimeEvent(1f, this, "ShowTask");
-    //}
+    /// <summary>
+    /// 接受任务
+    /// </summary>
+    /// <param name="ID"></param>
+    public void AcceptMission(int ID)
+    {
+        Debug.Log( "Mission Accept ! ID:" + ID.ToString());
+        if (!this.CheckMissionCondition(ID))
+        {
+            return;
+        }
+        ModMission.AccMisInfo accMisInfo = new ModMission.AccMisInfo();
+        accMisInfo.ID = ID;
+        accMisInfo.AimList.Clear();
+        MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(ID);
+        if (missionInfo != null)
+        {
+            foreach (MissionInfo.MissionAimInfo missionAimInfo in missionInfo.MissionAimList)
+            {
+                if (missionAimInfo.Count != 0)
+                {
+                    MissionInfo.MissionAimInfo missionAimInfo2 = new MissionInfo.MissionAimInfo();
+                    missionAimInfo2.AimType = missionAimInfo.AimType;
+                    missionAimInfo2.AimDis = missionAimInfo.AimDis;
+                    missionAimInfo2.AimData = missionAimInfo.AimData;
+                    missionAimInfo2.Count = 0;
+                    accMisInfo.AimList.Add(missionAimInfo2);
+                }
+            }
+        }
+        accMisInfo.MisInfo = missionInfo;
+        this.accMisList.Add(accMisInfo);
+        if (this.GetInMisLinkList(accMisInfo.LinkId) == null)
+        {
+            ModMission.MisLinkInfo misLinkInfo = new ModMission.MisLinkInfo();
+            misLinkInfo.linkId = accMisInfo.LinkId;
+            misLinkInfo.curStep = accMisInfo.Step;
+            this.misLinkList.Add(misLinkInfo);
+        }
+        ShowTask();
+    }
 
-    //public void ShowTask()
-    //{
-    //	if (Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>() != null)
-    //	{
-    //		Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>().Show();
-    //	}
-    //}
+    public void ShowTask()
+    {     
+        if (Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>() != null)
+        {
+            Debug.Log("显示UI");
+            Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>().Show();
+        }
+    }
 
-    //public bool IsLinkCompleted(int ID)
-    //{
-    //	MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(ID);
-    //	return missionInfo != null && this.IsMisMask(missionInfo.Mask);
-    //}
+    public bool IsLinkCompleted(int ID)
+    {
+        MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(ID);
+        return missionInfo != null && this.IsMisMask(missionInfo.Mask);
+    }
 
-    //public bool IsMisMask(int bityIdx)
-    //{
-    //	return bityIdx >= 0 && bityIdx < 64 && (1L << bityIdx & this.misMask) != 0L;
-    //}
+    public bool IsMisMask(int bityIdx)
+    {
+        return bityIdx >= 0 && bityIdx < 64 && (1L << bityIdx & this.misMask) != 0L;
+    }
 
     //// Token: 0x0600219E RID: 8606 RVA: 0x000E6DA0 File Offset: 0x000E4FA0
     //public void SetMisMask(int bityIdx)
@@ -378,38 +380,42 @@ public class ModMission : Module
     //	return true;
     //}
 
-    //// Token: 0x060021A4 RID: 8612 RVA: 0x000E7220 File Offset: 0x000E5420
-    //public bool CheckMissionCondition(int nID)
-    //{
-    //	if (GameData.Instance.RoleData.GetMissionInfo(nID) == null)
-    //	{
-    //		return false;
-    //	}
-    //	if (this.IsLinkCompleted(nID))
-    //	{
-    //		Logger.LogWarning(new object[]
-    //		{
-    //			"Mission link " + nID / 1000 + " has completed!"
-    //		});
-    //		return false;
-    //	}
-    //	if (this.IsInAccLinkList(nID))
-    //	{
-    //		Logger.LogWarning(new object[]
-    //		{
-    //			string.Concat(new object[]
-    //			{
-    //				"Mission link ",
-    //				nID % 1000,
-    //				", step ",
-    //				nID % 1000,
-    //				" has accept!"
-    //			})
-    //		});
-    //		return false;
-    //	}
-    //	return true;
-    //}
+    /// <summary>
+    /// 检查任务条件
+    /// </summary>
+    /// <param name="nID"></param>
+    /// <returns></returns>
+    public bool CheckMissionCondition(int nID)
+    {
+        if (GameData.Instance.RoleData.GetMissionInfo(nID) == null)
+        {
+            return false;
+        }
+        if (this.IsLinkCompleted(nID))
+        {
+            Debug.LogWarning(new object[]
+            {
+                "Mission link " + nID / 1000 + " has completed!"
+            });
+            return false;
+        }
+        if (this.IsInAccLinkList(nID))
+        {
+            Debug.LogWarning(new object[]
+            {
+                string.Concat(new object[]
+                {
+                    "Mission link ",
+                    nID % 1000,
+                    ", step ",
+                    nID % 1000,
+                    " has accept!"
+                })
+            });
+            return false;
+        }
+        return true;
+    }
 
     //public void CheckSkipMission(int nID)
     //{

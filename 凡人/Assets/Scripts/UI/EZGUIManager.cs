@@ -39,97 +39,66 @@ public class EZGUIManager : Singleton<EZGUIManager>
 
     public static AudioSource _aEscClose;
 
-    // Token: 0x0400085E RID: 2142
     public static AudioSource _aEscClick;
 
-    // Token: 0x0400085F RID: 2143
     public static AudioSource _aEscOver;
 
-    // Token: 0x04000860 RID: 2144
     public static AudioSource _aPickOpen;
 
-    // Token: 0x04000861 RID: 2145
     public static AudioSource _aMap;
 
-    // Token: 0x04000862 RID: 2146
     public static AudioSource _aWeapon;
 
-    // Token: 0x04000863 RID: 2147
     public static AudioSource _aPickAllPick;
 
-    // Token: 0x04000864 RID: 2148
     public static AudioSource _aTagOne;
 
-    // Token: 0x04000865 RID: 2149
     public static AudioSource _aTagTwo;
 
-    // Token: 0x04000866 RID: 2150
     public static AudioSource _aDragWeapon;
 
-    // Token: 0x04000867 RID: 2151
     public static AudioSource _aDragPills;
 
-    // Token: 0x04000868 RID: 2152
     public static AudioSource _aDragItem;
 
-    // Token: 0x04000869 RID: 2153
     public static AudioSource _aButtonTwoOver;
 
-    // Token: 0x0400086A RID: 2154
     public static AudioSource _aButtonTwoClick;
 
-    // Token: 0x0400086B RID: 2155
     public static AudioSource _aButtonThreeOver;
 
-    // Token: 0x0400086C RID: 2156
     public static AudioSource _aButtonThreeClick;
 
-    // Token: 0x0400086D RID: 2157
     public static AudioSource _aButtoFiveClick;
 
-    // Token: 0x0400086E RID: 2158
     public static AudioSource _aRight;
 
-    // Token: 0x0400086F RID: 2159
     public static AudioSource _aGou;
 
-    // Token: 0x04000870 RID: 2160
     public static AudioSource _aClickMenu;
 
-    // Token: 0x04000871 RID: 2161
     public static AudioSource _aClick;
 
-    // Token: 0x04000872 RID: 2162
     public static AudioSource _aQuest;
 
-    // Token: 0x04000873 RID: 2163
     public static AudioSource _aSkillCancel;
 
-    // Token: 0x04000874 RID: 2164
     public static AudioSource _aSkill;
 
-    // Token: 0x04000875 RID: 2165
     public static AudioSource _aFuMan;
 
-    // Token: 0x04000876 RID: 2166
     public static AudioSource _aNuqiMan;
 
-    // Token: 0x04000877 RID: 2167
     public static AudioSource _aSucces;
 
-    // Token: 0x04000878 RID: 2168
     public static AudioSource _aLianTi;
 
-    // Token: 0x04000879 RID: 2169
     public static AudioSource _aLianShen;
 
-    // Token: 0x0400087A RID: 2170
     public static AudioSource _aJTSuccse;
 
-    // Token: 0x0400087B RID: 2171
     public static AudioSource _aHpMpGrow;
 
-    // Token: 0x0400087C RID: 2172
     public static AudioSource _aTiShiKuang;
 
     public Transform ParentTrans

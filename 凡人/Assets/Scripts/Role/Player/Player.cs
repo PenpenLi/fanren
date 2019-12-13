@@ -486,6 +486,9 @@ public class Player : Role
         CameraEffectManager.GetAllCameraEffectComponent();
     }
 
+    /// <summary>
+    /// 自动构建任务
+    /// </summary>
     public void BindAutoMisson()
     {
         ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
@@ -503,7 +506,7 @@ public class Player : Role
                 {
                     if (missionInfo.MissType == 0)
                     {
-                        //modMission.AcceptMission(missionInfo.ID);
+                        modMission.AcceptMission(missionInfo.ID);
                     }
                 }
             }
@@ -860,7 +863,7 @@ public class Player : Role
         {
             return;
         }
-        GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
         foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
         {
             if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
