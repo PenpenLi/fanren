@@ -38,8 +38,8 @@ public class UICamera : MonoBehaviour
 		GameObject gameObject = new GameObject(UICamera.ClassName);
 		UICamera.instance = gameObject.gameObject.AddComponent<UICamera>();
 		UnityEngine.Object.DontDestroyOnLoad(gameObject);
-		UICamera.CreateUICamera();
-		UICamera.CreateUIManager();
+		UICamera.CreateUICamera();//创建UI摄像机
+        UICamera.CreateUIManager();//创建UIManager
 		//CameraEffectManager.AddCameraEffect();
 	}
 

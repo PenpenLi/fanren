@@ -9,63 +9,46 @@ public class UIManager : MonoBehaviour
 
     public UIManager.POINTER_TYPE pointerType = UIManager.POINTER_TYPE.AUTO_TOUCHPAD;
 
-    //// Token: 0x0400018E RID: 398
     //public float dragThreshold = 8f;
 
-    //// Token: 0x0400018F RID: 399
     //public float rayDragThreshold = 2f;
 
     public float rayDepth = float.PositiveInfinity;
 
     public LayerMask rayMask = -1;
 
-    //// Token: 0x04000192 RID: 402
     //public bool focusWithRay;
 
-    //// Token: 0x04000193 RID: 403
     //public string actionAxis = "Fire1";
 
-    //// Token: 0x04000194 RID: 404
     //public UIManager.OUTSIDE_VIEWPORT inputOutsideViewport = UIManager.OUTSIDE_VIEWPORT.Move_Off;
 
-    //// Token: 0x04000195 RID: 405
     //public bool warnOnNonUiHits = true;
 
-    //// Token: 0x04000196 RID: 406
     //protected Transform raycastingTransform;
 
     public EZCameraSettings[] uiCameras = new EZCameraSettings[1];
 
     public Camera rayCamera;
 
-    //// Token: 0x04000199 RID: 409
     //public bool blockInput;
 
-    //// Token: 0x0400019A RID: 410
     //public float defaultDragOffset = 1f;
 
-    //// Token: 0x0400019B RID: 411
     //public EZAnimation.EASING_TYPE cancelDragEasing = EZAnimation.EASING_TYPE.ExponentialOut;
 
-    //// Token: 0x0400019C RID: 412
     //public float cancelDragDuration = 1f;
 
-    //// Token: 0x0400019D RID: 413
     //public TextAsset defaultFont;
 
-    //// Token: 0x0400019E RID: 414
     //public Material defaultFontMaterial;
 
-    //// Token: 0x0400019F RID: 415
     //protected bool rayActive;
 
-    //// Token: 0x040001A0 RID: 416
     //protected UIManager.RAY_ACTIVE_STATE rayState;
 
-    //// Token: 0x040001A1 RID: 417
     //protected POINTER_INFO[,] pointers;
 
-    //// Token: 0x040001A2 RID: 418
     //protected UIManager.NonUIHitInfo[] nonUIHits;
 
     protected bool[] usedPointers;
@@ -123,33 +106,25 @@ public class UIManager : MonoBehaviour
 
     private int numTouches;
 
-    //// Token: 0x040001B9 RID: 441
     //protected RaycastHit hit;
 
-    //// Token: 0x040001BA RID: 442
     //protected Vector3 tempVec;
 
-    //// Token: 0x040001BB RID: 443
     //private bool down;
 
-    //// Token: 0x040001BC RID: 444
     //private bool rightDown;
 
-    //// Token: 0x040001BD RID: 445
     //private bool lastUpIsRightMouse;
 
-    //// Token: 0x040001BE RID: 446
     //private IUIObject tempObj;
 
-    //// Token: 0x040001BF RID: 447
     //private POINTER_INFO tempPtr;
 
-    //// Token: 0x040001C0 RID: 448
     //private StringBuilder sb = new StringBuilder();
 
     public enum POINTER_TYPE
     {
-        MOUSE,
+        MOUSE,//鼠标
         TOUCHPAD,
         AUTO_TOUCHPAD,
         RAY,
@@ -196,12 +171,8 @@ public class UIManager : MonoBehaviour
     //	public int camIndex;
     //}
 
-    //// Token: 0x020000C9 RID: 201
-    //// (Invoke) Token: 0x06000A3D RID: 2621
     //public delegate void PointerPollerDelegate();
 
-    //// Token: 0x020000CA RID: 202
-    //// (Invoke) Token: 0x06000A41 RID: 2625
     //public delegate void PointerInfoDelegate(POINTER_INFO ptr);
 
     public static UIManager instance
@@ -248,6 +219,7 @@ public class UIManager : MonoBehaviour
         {
             UIManager.s_Instance = this;
         }
+
         if (this.pointerType == UIManager.POINTER_TYPE.TOUCHPAD || this.pointerType == UIManager.POINTER_TYPE.TOUCHPAD_AND_RAY)
         {
             this.numTouches = 11;
@@ -264,6 +236,7 @@ public class UIManager : MonoBehaviour
         {
             this.numTouches = 1;
         }
+
         if (this.pointerType == UIManager.POINTER_TYPE.AUTO_TOUCHPAD || this.pointerType == UIManager.POINTER_TYPE.MOUSE || this.pointerType == UIManager.POINTER_TYPE.MOUSE_AND_RAY)
         {
             this.numTouchPointers = this.numTouches - 1;
@@ -272,6 +245,7 @@ public class UIManager : MonoBehaviour
         {
             this.numTouchPointers = this.numTouches;
         }
+
         if (this.uiCameras.Length < 1)
         {
             this.uiCameras = new EZCameraSettings[1];
@@ -287,6 +261,7 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+
         if (this.rayCamera == null)
         {
             this.rayCamera = this.uiCameras[0].camera;
@@ -294,6 +269,9 @@ public class UIManager : MonoBehaviour
         this.StartSetting();
     }
 
+    /// <summary>
+    /// 开始设置
+    /// </summary>
     protected void StartSetting()
     {
         if (this.m_started)
@@ -415,49 +393,41 @@ public class UIManager : MonoBehaviour
         //}
     }
 
-    //// Token: 0x060002B4 RID: 692 RVA: 0x000133C4 File Offset: 0x000115C4
     //public void SetNonUIHitDelegate(UIManager.PointerInfoDelegate del)
     //{
     //	this.informNonUIHit = del;
     //}
 
-    //// Token: 0x060002B5 RID: 693 RVA: 0x000133D0 File Offset: 0x000115D0
     //public void AddNonUIHitDelegate(UIManager.PointerInfoDelegate del)
     //{
     //	this.informNonUIHit = (UIManager.PointerInfoDelegate)Delegate.Combine(this.informNonUIHit, del);
     //}
 
-    //// Token: 0x060002B6 RID: 694 RVA: 0x000133EC File Offset: 0x000115EC
     //public void RemoveNonUIHitDelegate(UIManager.PointerInfoDelegate del)
     //{
     //	this.informNonUIHit = (UIManager.PointerInfoDelegate)Delegate.Remove(this.informNonUIHit, del);
     //}
 
-    //// Token: 0x060002B7 RID: 695 RVA: 0x00013408 File Offset: 0x00011608
     //public void AddMouseTouchPtrListener(UIManager.PointerInfoDelegate del)
     //{
     //	this.mouseTouchListeners = (UIManager.PointerInfoDelegate)Delegate.Combine(this.mouseTouchListeners, del);
     //}
 
-    //// Token: 0x060002B8 RID: 696 RVA: 0x00013424 File Offset: 0x00011624
     //public void AddRayPtrListener(UIManager.PointerInfoDelegate del)
     //{
     //	this.rayListeners = (UIManager.PointerInfoDelegate)Delegate.Combine(this.rayListeners, del);
     //}
 
-    //// Token: 0x060002B9 RID: 697 RVA: 0x00013440 File Offset: 0x00011640
     //public void RemoveMouseTouchPtrListener(UIManager.PointerInfoDelegate del)
     //{
     //	this.mouseTouchListeners = (UIManager.PointerInfoDelegate)Delegate.Remove(this.mouseTouchListeners, del);
     //}
 
-    //// Token: 0x060002BA RID: 698 RVA: 0x0001345C File Offset: 0x0001165C
     //public void RemoveRayPtrListener(UIManager.PointerInfoDelegate del)
     //{
     //	this.rayListeners = (UIManager.PointerInfoDelegate)Delegate.Remove(this.rayListeners, del);
     //}
 
-    //// Token: 0x060002BB RID: 699 RVA: 0x00013478 File Offset: 0x00011678
     //protected void AddNonUIHit(int ptrIndex, int camIndex)
     //{
     //	if (this.informNonUIHit == null)

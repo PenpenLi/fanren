@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class FanrenSceneManager : MonoBehaviour
 {
+    public GameObject UITaskPlane;
+
     public const string SceneEnd = "End";
 
     public const string SceneLanding = "Landing";
@@ -217,7 +219,6 @@ public class FanrenSceneManager : MonoBehaviour
     {
         this.GetSceneInfo();
         Main.InitMain();
-
         //SystemSetting.initialize();//加载系统设置
         //Singleton<ActorManager>.GetInstance().Clear();//清空演员
 

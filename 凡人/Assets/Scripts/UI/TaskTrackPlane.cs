@@ -197,40 +197,41 @@ public class TaskTrackPlane : GUIBase
 
 	public override void Show()
 	{
-		if (this.m_tTaskPlane.active)
-		{
-			return;
-		}
-		//if (MovieManager.MovieMag.IsPlaying())
-		//{
-		//	return;
-		//}
-		//if (this.m_bKey && FantasyAssist.Instance.TimerMan.IsEvent("TaskHide"))
-		//{
-		//	this.m_bKey = false;
-		//	FantasyAssist.Instance.TimerMan.RemoveEvent("TaskHide");
-		//}
-		this.m_bHide = false;
+        //如果已经打开 返回
+
+        //if (MovieManager.MovieMag.IsPlaying()) //如果播放动画 返回
+        //{
+        //	return;
+        //}
+
+        //if (this.m_bKey && FantasyAssist.Instance.TimerMan.IsEvent("TaskHide"))
+        //{
+        //	this.m_bKey = false;
+        //	FantasyAssist.Instance.TimerMan.RemoveEvent("TaskHide");
+        //}
+        this.m_bHide = false;
 		this.m_bMoving = true;
 		this.m_bTime = false;
-		//if (!this.m_tTaskPlane.active && !PlayerUIManager._bIsSound)
+		//if (!this.m_tTaskPlane.active && !PlayerUIManager._bIsSound)//设置音乐
 		//{
 		//	this.m_tTaskPlane.SetActive(true);
 		//	EZGUIManager.SetSoundEx(5010, EZGUIManager._aQuest);
 		//}
-		//if (Singleton<EZGUIManager>.GetInstance().GetGUI("SystemPlane") != null)
+
+		//if (Singleton<EZGUIManager>.GetInstance().GetGUI("SystemPlane") != null)//系统面板
 		//{
 		//	Singleton<EZGUIManager>.GetInstance().GetGUI<SystemPlane>().ResetText(this.m_tTaskPlane.transform, 24);
 		//}
+
 		this.AdjustPosition();
 		this.AddInformation();
-		//this.m_taskBack.Reveal();
-		//this.m_taskimageback.Reveal();
-		//this.m_taskimage.Reveal();
-		//this.m_tasktextT.Reveal();
-		//this.m_tasktextC.Reveal();
-		this.m_bActive = true;
-		this.m_fCreatTime = GameTime.time;
+		////this.m_taskBack.Reveal();
+		////this.m_taskimageback.Reveal();
+		////this.m_taskimage.Reveal();
+		////this.m_tasktextT.Reveal();
+		////this.m_tasktextC.Reveal();
+		//this.m_bActive = true;
+		//this.m_fCreatTime = GameTime.time;
 		//FantasyAssist.Instance.TimerMan.AddDelayTimeEventEx(7f, "TaskHide", this, "Hide");
 		//if (FantasyAssist.Instance.TimerMan.IsEvent("Task"))
 		//{
@@ -238,7 +239,6 @@ public class TaskTrackPlane : GUIBase
 		//}
 	}
 
-	// Token: 0x06000DE9 RID: 3561 RVA: 0x00090418 File Offset: 0x0008E618
 	public void Key()
 	{
 		if (Time.fixedTime - this.fLastTimer <= this.fSpaceTimer)

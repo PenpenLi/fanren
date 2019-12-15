@@ -158,12 +158,8 @@ public class ModMission : Module
     }
 
     public void ShowTask()
-    {     
-        if (Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>() != null)
-        {
-            Debug.Log("显示UI");
-            Singleton<EZGUIManager>.GetInstance().GetGUI<TaskTrackPlane>().Show();
-        }
+    {
+        FanrenSceneManager.Instance.UITaskPlane.GetComponent<TaskTrackPlane>().Show();
     }
 
     public bool IsLinkCompleted(int ID)
