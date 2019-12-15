@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,13 @@ namespace YouYou
     /// <summary>
     /// 流程组件
     /// </summary>
-    public class ProcedureComponent : YouYouBaseComponent,IUpdateComponent
+    public class ProcedureComponent : YouYouBaseComponent, IUpdateComponent
     {
         /// <summary>
         /// 流程管理器
         /// </summary>
         private ProcedureManager m_ProcedureManager;
+
 
         /// <summary>
         /// 当前的流程状态
@@ -47,6 +49,7 @@ namespace YouYou
         {
             base.OnStart();
 
+            //要在Start时候进行初始化
             m_ProcedureManager.Init();
         }
 

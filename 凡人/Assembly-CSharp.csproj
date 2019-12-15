@@ -655,26 +655,26 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>D:/Program Files (x86)/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="zlib.net">
       <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/zlib.net.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DemiLib/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
       <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
       <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DemiLib/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="LitJson">
-      <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/LitJson.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
       <HintPath>E:/Projects/fanren/凡人/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>

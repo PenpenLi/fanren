@@ -1,20 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace YouYou
 {
     /// <summary>
-    /// ×´Ì¬»ú×é¼ş
+    /// çŠ¶æ€æœºç»„ä»¶
     /// </summary>
     public class FsmComponent : YouYouBaseComponent
     {
         /// <summary>
-        /// ×´Ì¬»ú¹ÜÀíÆ÷
+        /// çŠ¶æ€æœºç®¡ç†å™¨
         /// </summary>
         private FsmManager m_FsmManager;
 
         /// <summary>
-        /// ×´Ì¬»úÁÙÊ±±àºÅ
+        /// çŠ¶æ€æœºçš„ä¸´æ—¶ç¼–å·
         /// </summary>
         private int m_TemFsmId = 0;
 
@@ -24,26 +26,30 @@ namespace YouYou
             m_FsmManager = new FsmManager();
         }
 
+        #region Create åˆ›å»ºçŠ¶æ€æœº
         /// <summary>
-        /// ´´½¨×´Ì¬»ú
+        /// åˆ›å»ºçŠ¶æ€æœº
         /// </summary>
-        /// <typeparam name="T">ÓµÓĞÕßÀàĞÍ</typeparam>
-        /// <param name="owner">ÓµÓĞÕß</param>
-        /// <param name="states">×´Ì¬Êı×é</param>
+        /// <typeparam name="T">æ‹¥æœ‰è€…ç±»å‹</typeparam>
+        /// <param name="owner">æ‹¥æœ‰è€…</param>
+        /// <param name="states">çŠ¶æ€æ•°ç»„</param>
         /// <returns></returns>
         public Fsm<T> Create<T>(T owner, FsmState<T>[] states) where T : class
         {
-            return m_FsmManager.Create<T>(m_TemFsmId++,owner, states);
+            return m_FsmManager.Create<T>(m_TemFsmId++, owner, states);
         }
+        #endregion
 
+        #region DestroyFsm é”€æ¯çŠ¶æ€æœº
         /// <summary>
-        /// Ïú»Ù×´Ì¬»ú
+        /// é”€æ¯çŠ¶æ€æœº
         /// </summary>
         /// <param name="fsmId"></param>
         public void DestroyFsm(int fsmId)
         {
             m_FsmManager.DestroyFsm(fsmId);
         }
+        #endregion
 
         public override void Shutdown()
         {
