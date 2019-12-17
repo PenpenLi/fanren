@@ -24,6 +24,7 @@ namespace YouYou
         public override void OnUpdate()
         {
             base.OnUpdate();
+            GameEntry.Procedure.ChangeState(ProcedureState.Preload);
         }
 
         public override void OnLeave()
