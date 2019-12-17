@@ -105,7 +105,7 @@ namespace YouYou
         /// </summary>
         public void InitStreamingAssetsBundleInfo()
         {
-            GameEntry.Log(LogCategory.Resource, "InitStreamingAssetsBundleInfo");
+            Debug.Log("InitStreamingAssetsBundleInfo");
 
             ReadStreamingAssetsBundle(ConstDefine.VersionFileName, (byte[] buffer) =>
             {
@@ -165,7 +165,7 @@ namespace YouYou
         private void InitCDNAssetBundleInfo()
         {
             string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.VersionFileName);
-            GameEntry.Log(LogCategory.Resource, url);
+            Debug.Log( url);
            // GameEntry.Http.SendData(url, OnInitCDNAssetBundleInfo, isGetData: true);
         }
 
@@ -206,7 +206,7 @@ namespace YouYou
         /// </summary>
         private void CheckVersionFileExistsInLocal()
         {
-            GameEntry.Log(LogCategory.Resource, "CheckVersionFileExistsInLocal");
+            Debug.Log("CheckVersionFileExistsInLocal");
 
             if (LocalAssetsManager.GetVersionFileExists())
             {
@@ -235,7 +235,7 @@ namespace YouYou
         /// </summary>
         private void InitVersionFileFormStreamingAssetsToLocal()
         {
-            GameEntry.Log(LogCategory.Resource, "InitVersionFileFormStreamingAssetsToLocal");
+            Debug.Log("InitVersionFileFormStreamingAssetsToLocal");
 
             m_LocalAssetsVersionDic = new Dictionary<string, AssetBundleInfoEntity>();
 
@@ -266,7 +266,7 @@ namespace YouYou
         /// </summary>
         private void InitLocalAssetsBundleInfo()
         {
-            GameEntry.Log(LogCategory.Resource, "InitLocalAssetsBundleInfo");
+            Debug.Log("InitLocalAssetsBundleInfo");
 
             m_LocalAssetsVersionDic = LocalAssetsManager.GetAssetBundleVersionList(ref m_LocalAssetsVersion);
 
@@ -319,26 +319,26 @@ namespace YouYou
         /// </summary>
         private void CheckVersionChange()
         {
-            GameEntry.Log(LogCategory.Resource, "CheckVersionChange");
+            Debug.Log("CheckVersionChange");
 
             if (LocalAssetsManager.GetVersionFileExists())
             {
                 //判断只读区资源版本号和CDN资源版本号是否一致
                 if (!string.IsNullOrEmpty(m_LocalAssetsVersion) && m_LocalAssetsVersion.Equals(m_CDNVersion))
                 {
-                    GameEntry.Log(LogCategory.Resource, "可写区资源版本号和CDN资源版本号一致");
+                    Debug.Log( "可写区资源版本号和CDN资源版本号一致");
                     //一致 进入预加载流程
                     GameEntry.Procedure.ChangeState(ProcedureState.Preload);
                 }
                 else
                 {
-                    GameEntry.Log(LogCategory.Resource, "可写区资源版本号和CDN资源版本号不一致");
+                    Debug.Log( "可写区资源版本号和CDN资源版本号不一致");
                     BeginCheckVersionChange();
                 }
             }
             else
             {
-                GameEntry.Log(LogCategory.Resource, "下载初始资源");
+                Debug.Log( "下载初始资源");
                 //下载初始资源
                 DownloadInitResources();
             }

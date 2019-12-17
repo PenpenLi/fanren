@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,7 +249,19 @@ MonoBehaviour:
   UICamera: {fileID: 1271359395}
   m_UIRootCanvas: {fileID: 255254258}
   m_UIRootCanvasScaler: {fileID: 255254257}
-  UIGroups: []
+  UIGroups:
+  - Id: 1
+    BaseOrder: 0
+    Group: {fileID: 66756049}
+  - Id: 2
+    BaseOrder: 100
+    Group: {fileID: 834895840}
+  - Id: 3
+    BaseOrder: 5000
+    Group: {fileID: 1699323856}
+  - Id: 4
+    BaseOrder: 8000
+    Group: {fileID: 1064104795}
   m_ClearInterval: 120
   UIExpire: 120
   UIPoolMaxCount: 5

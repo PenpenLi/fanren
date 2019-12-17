@@ -256,49 +256,5 @@ namespace YouYou
                 curr.Value.Shutdown();
             }
         }
-
-        /// <summary>
-        /// 打印日志
-        /// </summary>
-        /// <param name="message"></param>
-        public static void Log(LogCategory catetory, string message, params object[] args)
-        {
-            switch (catetory)
-            {
-                default:
-                case LogCategory.Normal:
-#if DEBUG_LOG_NORMAL
-                    Debug.Log(args.Length == 0 ? message : string.Format(message, args));
-#endif
-                    break;
-                case LogCategory.Procedure:
-#if DEBUG_LOG_PROCEDURE
-                    Debug.Log(string.Format("<color=#ffffff>{0}</color>", args.Length == 0 ? message : string.Format(message, args)));
-#endif
-                    break;
-                case LogCategory.Resource:
-#if DEBUG_LOG_RESOURCE
-                    Debug.Log(string.Format("<color=#ace44a>{0}</color>", args.Length == 0 ? message : string.Format(message, args)));
-#endif
-                    break;
-                case LogCategory.Proto:
-#if DEBUG_LOG_PROTO
-                    Debug.Log(args.Length == 0 ? message : string.Format(message, args));
-#endif
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// 打印错误日志
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="args"></param>
-        public static void LogError(string message, params object[] args)
-        {
-#if DEBUG_LOG_ERROR
-            Debug.LogError(args.Length == 0 ? message : string.Format(message, args));
-#endif
-        }
     }
 }

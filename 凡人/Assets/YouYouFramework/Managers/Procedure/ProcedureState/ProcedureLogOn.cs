@@ -17,12 +17,12 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
+            Debug.Log( "OnEnter ProcedureLogOn");
 
-            GameEntry.Scene.LoadScene(1, onComplete: () =>
-            {
-                GameEntry.Event.CommonEvent.Dispatch(SysEventId.CloseCheckVersionUI);
-            });
+            //GameEntry.Scene.LoadScene(1, onComplete: () =>
+            //{
+            //    GameEntry.Event.CommonEvent.Dispatch(SysEventId.CloseCheckVersionUI);
+            //});
         }
 
         private void LoadRole()
@@ -39,17 +39,12 @@ namespace YouYou
         public override void OnUpdate()
         {
             base.OnUpdate();
-
-            if (Input.GetKeyUp(KeyCode.D))
-            {
-                LoadRole();
-            }
         }
 
         public override void OnLeave()
         {
             base.OnLeave();
-            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureLogOn");
+            Debug.Log( "OnLeave ProcedureLogOn");
         }
     }
 }

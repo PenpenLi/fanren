@@ -22,14 +22,14 @@ public class GUIBind : MonoBehaviour
 
 	public void AddLandUI()
 	{
-		if (this._cGUI == null)
-		{
-			return;
-		}
-		if (this._cGUI.GetComponent<LandPlane>() == null)
-		{
-			this._cGUI.AddComponent<LandPlane>();
-		}
+		//if (this._cGUI == null)
+		//{
+		//	return;
+		//}
+		//if (this._cGUI.GetComponent<LandPlane>() == null)
+		//{
+		//	this._cGUI.AddComponent<LandPlane>();
+		//}
 	}
 
 	// Token: 0x06000A18 RID: 2584 RVA: 0x0003F9A8 File Offset: 0x0003DBA8
@@ -39,18 +39,18 @@ public class GUIBind : MonoBehaviour
 		{
 			return;
 		}
-		LandPlane component = this._cGUI.GetComponent<LandPlane>();
-		if (component == null)
-		{
-			return;
-		}
+		//LandPlane component = this._cGUI.GetComponent<LandPlane>();
+		//if (component == null)
+		//{
+		//	return;
+		//}
 		//Singleton<EZGUIManager>.GetInstance().UnRegister("LandPlane");
 		//if (component._landPlane != null)
 		//{
 		//	LoadMachine.DeleteAsset(component.KEY_LAND_PLANE, typeof(GameObject), true);
 		//	UnityEngine.Object.DestroyImmediate(component._landPlane, false);
 		//}
-		UnityEngine.Object.Destroy(component);
+		//UnityEngine.Object.Destroy(component);
 	}
 
 	// Token: 0x06000A19 RID: 2585 RVA: 0x0003FA2C File Offset: 0x0003DC2C

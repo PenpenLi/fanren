@@ -127,7 +127,7 @@ namespace YouYou
                     AssetBundle assetBundle = m_CurrAssetBundleCreateRequest.assetBundle;
                     if (assetBundle != null)
                     {
-                        GameEntry.Log(LogCategory.Resource, "资源包=>{0} 加载完毕", m_CurrAssetBundleInfo.AssetBundleName);
+                        Debug.Log("资源包=>{0} 加载完毕"+ m_CurrAssetBundleInfo.AssetBundleName);
                         Reset(); //一定要早点Reset
 
                         if (OnLoadAssetBundleComplete != null)
@@ -137,7 +137,7 @@ namespace YouYou
                     }
                     else
                     {
-                        GameEntry.LogError("资源包=>{0} 加载失败", m_CurrAssetBundleInfo.AssetBundleName);
+                        Debug.LogError("资源包=>{0} 加载失败"+ m_CurrAssetBundleInfo.AssetBundleName);
                         Reset();
 
                         if (OnLoadAssetBundleComplete != null)

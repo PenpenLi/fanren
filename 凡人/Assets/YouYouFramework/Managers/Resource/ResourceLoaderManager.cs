@@ -135,7 +135,7 @@ namespace YouYou
                     return entity;
                 }
             }
-            GameEntry.LogError("assetFullName=>{0}不存在", assetFullName);
+            Debug.LogError("assetFullName=>{0}不存在"+ assetFullName);
             return null;
         }
         #endregion

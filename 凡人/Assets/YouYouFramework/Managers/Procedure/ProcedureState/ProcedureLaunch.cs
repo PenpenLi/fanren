@@ -18,7 +18,7 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLaunch");
+            Debug.Log( "OnEnter ProcedureLaunch");
         }   
 
         public override void OnUpdate()
@@ -30,7 +30,7 @@ namespace YouYou
         public override void OnLeave()
         {
             base.OnLeave();
-            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureLaunch");
+            Debug.Log( "OnLeave ProcedureLaunch");
         }
 
         public override void OnDestroy()

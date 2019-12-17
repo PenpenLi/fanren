@@ -153,7 +153,7 @@ namespace YouYou
         /// </summary>
         /// <param name="uiFormId">formId</param>
         /// <param name="userData"></param>
-        public void OpenUIForm(int uiFormId, object userData = null, BaseAction<UIFormBase> onOpen = null)
+        public void OpenUIForm(int uiFormId, object userData = null, Action<UIFormBase> onOpen = null)
         {
             m_UIPool.CheckByOpenUI();
             m_UIManager.OpenUIForm(uiFormId, userData, onOpen);

@@ -34,7 +34,7 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedurePreload");
+            Debug.Log("OnEnter ProcedurePreload");
 
             //GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
             GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);   
@@ -76,7 +76,7 @@ namespace YouYou
         public override void OnLeave()
         {
             base.OnLeave();
-            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedurePreload");
+            Debug.Log("OnLeave ProcedurePreload");
 
             GameEntry.Event.CommonEvent.RemoveEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
         }
@@ -100,8 +100,9 @@ namespace YouYou
         /// <param name="userData"></param>
         private void OnLoadDataTableComplete(object userData)
         {
-            GameEntry.Log(LogCategory.Normal, "加载所有c#表格完毕");
-            GameEntry.UI.OpenUIForm(1);
+            Debug.Log( "加载所有c#表格完毕");
+            GameEntry.UI.OpenUIForm(UIFormId.LogOn);
+            GameEntry.Procedure.ChangeState(ProcedureState.LogOn);
         }
 
         private void LoadShader()
@@ -110,7 +111,7 @@ namespace YouYou
             {
                 bundle.LoadAllAssets();
                 Shader.WarmupAllShaders();
-                GameEntry.Log(LogCategory.Normal, "加载资源包中的自定义Shader完毕");
+                Debug.Log("加载资源包中的自定义Shader完毕");
                 m_TargetProgress = 100;
             });
         }
