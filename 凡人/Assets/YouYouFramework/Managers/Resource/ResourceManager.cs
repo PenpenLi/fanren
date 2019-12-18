@@ -117,7 +117,8 @@ namespace YouYou
                 {
                     m_IsExistsStreamingAssetsBundleInfo = true;
                     m_StreamingAssetsVersionDic = GetAssetBundleVersionList(buffer, ref m_StreamingAssetsVersion);
-                    InitCDNAssetBundleInfo();
+                    //InitCDNAssetBundleInfo();
+                    GameEntry.Procedure.ChangeState(ProcedureState.Preload);
                 }
             });
         }
@@ -307,7 +308,7 @@ namespace YouYou
         public AssetBundleInfoEntity GetAssetBundleInfo(string assetbundlePath)
         {
             AssetBundleInfoEntity entity = null;
-            m_CNDVersionDic.TryGetValue(assetbundlePath, out entity);
+            m_StreamingAssetsVersionDic.TryGetValue(assetbundlePath, out entity);
             return entity;
         }
 

@@ -45,7 +45,7 @@ namespace YouYou
             GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadBegin);
 
             m_TargetProgress = 99;
-            //GameEntry.Resource.InitAssetInfo();
+            GameEntry.Resource.InitAssetInfo();
             GameEntry.DataTable.LoadDataTableAsync();
         }
 
@@ -101,7 +101,6 @@ namespace YouYou
         /// <param name="userData"></param>
         private void OnLoadDataTableComplete(object userData)
         {
-            GameEntry.Log(LogCategory.Normal, "加载所有c#表格完毕");
             LoadShader();
         }
 

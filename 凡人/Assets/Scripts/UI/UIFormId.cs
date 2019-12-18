@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UIFormId
-{
-    /// <summary>
-    /// LogOn
-    /// </summary>
-    public const int LogOn = 1;
-
+{   
     /// <summary>
     /// Loading
     /// </summary>
-    public const int Loading = 2;
+    public const int Loading = 1;
+
+    /// <summary>
+    /// LogOn
+    /// </summary>
+    public const int LogOn = 2;
 
     /// <summary>
     /// 任务列表

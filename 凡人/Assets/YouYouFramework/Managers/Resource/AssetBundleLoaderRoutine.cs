@@ -47,41 +47,41 @@ namespace YouYou
             //检查文件在可写区是否存在
             bool isExistsInLocal = GameEntry.Resource.ResourceManager.LocalAssetsManager.CheckFileExists(assetbundlePath);
 
-            if (isExistsInLocal && !m_CurrAssetBundleInfo.IsEncrypt)
-            {
-                //如果资源包存在于可写区 并且没有加密
-                m_CurrAssetBundleCreateRequest = AssetBundle.LoadFromFileAsync(string.Format("{0}/{1}", Application.persistentDataPath, assetbundlePath));
-            }
-            else
-            {
-                byte[] buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(assetbundlePath);
-                if (buffer == null)
-                {
-                    //如果可写区没有 那么就从只读区获取
-                    GameEntry.Resource.ResourceManager.StreamingAssetsManager.ReadAssetBundle(assetbundlePath, (byte[] buff) =>
-                    {
-                        if (buff == null)
-                        {
-                            Debug.LogError("资源包需要下载assetbundlePath=>" + assetbundlePath);
-                            GameEntry.Download.BeginDownloadSingle(assetbundlePath, onComplete: (string fileUrl) =>
-                            {
-                                Debug.LogError("下载完毕fileUrl=>" + fileUrl);
-                                buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(fileUrl);
-                                Debug.LogError("准备加载资源包=" + buffer);
-                                LoadAssetBundleAsync(buffer);
-                            });
-                        }
-                        else
-                        {
-                            LoadAssetBundleAsync(buff);
-                        }
-                    });
-                }
-                else
-                {
-                    LoadAssetBundleAsync(buffer);
-                }
-            }
+            //if (isExistsInLocal && !m_CurrAssetBundleInfo.IsEncrypt)
+            //{
+            //    //如果资源包存在于可写区 并且没有加密
+            //    m_CurrAssetBundleCreateRequest = AssetBundle.LoadFromFileAsync(string.Format("{0}/{1}", Application.persistentDataPath, assetbundlePath));
+            //}
+            //else
+            //{
+            //    byte[] buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(assetbundlePath);
+            //    if (buffer == null)
+            //    {
+            //        //如果可写区没有 那么就从只读区获取
+            //        GameEntry.Resource.ResourceManager.StreamingAssetsManager.ReadAssetBundle(assetbundlePath, (byte[] buff) =>
+            //        {
+            //            if (buff == null)
+            //            {
+            //                Debug.LogError("资源包需要下载assetbundlePath=>" + assetbundlePath);
+            //                GameEntry.Download.BeginDownloadSingle(assetbundlePath, onComplete: (string fileUrl) =>
+            //                {
+            //                    Debug.LogError("下载完毕fileUrl=>" + fileUrl);
+            //                    buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(fileUrl);
+            //                    Debug.LogError("准备加载资源包=" + buffer);
+            //                    LoadAssetBundleAsync(buffer);
+            //                });
+            //            }
+            //            else
+            //            {
+            //                LoadAssetBundleAsync(buff);
+            //            }
+            //        });
+            //    }
+            //    else
+            //    {
+            //        LoadAssetBundleAsync(buffer);
+            //    }
+            //}
         }
 
         /// <summary>

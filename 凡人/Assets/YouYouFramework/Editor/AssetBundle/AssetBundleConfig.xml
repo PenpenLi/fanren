@@ -3,6 +3,12 @@
   <AssetBundle ResourceVersion="1.0.7">
     <Item Name="DataTable" Tag="DataTable" IsFolder="False" IsFirstData="True" IsEncrypt="True">
       <Path Value="Download/DataTable" />
-    </Item>    
+    </Item>
+    <Item Name="UI预设" Tag="UI" IsFolder="False" IsFirstData="True" IsEncrypt="False">
+      <Path Value="Download/UI/UIPrefab" />
+    </Item>
+    <Item Name="UI字体" Tag="UIFont" IsFolder="False" IsFirstData="True" IsEncrypt="False">
+      <Path Value="Download/UI/UIFont" />
+    </Item>  
   </AssetBundle>
 </Root>

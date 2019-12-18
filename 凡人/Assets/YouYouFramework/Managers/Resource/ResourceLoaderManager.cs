@@ -58,19 +58,19 @@ namespace YouYou
             if (buffer == null)
             {
                 //如果可写区没有 那么就从只读区获取
-                GameEntry.Resource.ResourceManager.StreamingAssetsManager.ReadAssetBundle(ConstDefine.AssetInfoName, (byte[] buff) =>
-                {
-                    if (buff == null)
-                    {
-                        //如果只读区也没有，从CDN读取
-                        string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.AssetInfoName);
-                        GameEntry.Http.SendData(url, OnLoadAssetInfoFromCDN, isGetData: true);
-                    }
-                    else
-                    {
-                        InitAssetInfo(buff);
-                    }
-                });
+                //GameEntry.Resource.ResourceManager.StreamingAssetsManager.ReadAssetBundle(ConstDefine.AssetInfoName, (byte[] buff) =>
+                //{
+                //    if (buff == null)
+                //    {
+                //        //如果只读区也没有，从CDN读取
+                //        string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.AssetInfoName);
+                //        GameEntry.Http.SendData(url, OnLoadAssetInfoFromCDN, isGetData: true);
+                //    }
+                //    else
+                //    {
+                //        InitAssetInfo(buff);
+                //    }
+                //});
             }
             else
             {

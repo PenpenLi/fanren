@@ -24,8 +24,7 @@ namespace YouYou
         public override void OnUpdate()
         {
             base.OnUpdate();
-            //GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
-            GameEntry.Procedure.ChangeState(ProcedureState.Preload);
+            GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
         }
 
         public override void OnLeave()

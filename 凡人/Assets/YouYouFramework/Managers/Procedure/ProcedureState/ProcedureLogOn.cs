@@ -18,7 +18,7 @@ namespace YouYou
         {
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
-
+            GameEntry.UI.OpenUIForm(UIFormId.LogOn);
             //GameEntry.Scene.LoadScene(1, onComplete: () =>
             //{
             //    GameEntry.Event.CommonEvent.Dispatch(SysEventId.CloseCheckVersionUI);
