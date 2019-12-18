@@ -63,13 +63,13 @@ namespace YouYou
                         if (buff == null)
                         {
                             Debug.LogError("资源包需要下载assetbundlePath=>" + assetbundlePath);
-                            //GameEntry.Download.BeginDownloadSingle(assetbundlePath, onComplete: (string fileUrl) =>
-                            //{
-                            //    Debug.LogError("下载完毕fileUrl=>" + fileUrl);
-                            //    buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(fileUrl);
-                            //    Debug.LogError("准备加载资源包=" + buffer);
-                            //    LoadAssetBundleAsync(buffer);
-                            //});
+                            GameEntry.Download.BeginDownloadSingle(assetbundlePath, onComplete: (string fileUrl) =>
+                            {
+                                Debug.LogError("下载完毕fileUrl=>" + fileUrl);
+                                buffer = GameEntry.Resource.ResourceManager.LocalAssetsManager.GetFileBuffer(fileUrl);
+                                Debug.LogError("准备加载资源包=" + buffer);
+                                LoadAssetBundleAsync(buffer);
+                            });
                         }
                         else
                         {
@@ -127,7 +127,7 @@ namespace YouYou
                     AssetBundle assetBundle = m_CurrAssetBundleCreateRequest.assetBundle;
                     if (assetBundle != null)
                     {
-                        Debug.Log("资源包=>{0} 加载完毕"+ m_CurrAssetBundleInfo.AssetBundleName);
+                        GameEntry.Log(LogCategory.Resource, "资源包=>{0} 加载完毕", m_CurrAssetBundleInfo.AssetBundleName);
                         Reset(); //一定要早点Reset
 
                         if (OnLoadAssetBundleComplete != null)
@@ -137,7 +137,7 @@ namespace YouYou
                     }
                     else
                     {
-                        Debug.LogError("资源包=>{0} 加载失败"+ m_CurrAssetBundleInfo.AssetBundleName);
+                        GameEntry.LogError("资源包=>{0} 加载失败", m_CurrAssetBundleInfo.AssetBundleName);
                         Reset();
 
                         if (OnLoadAssetBundleComplete != null)

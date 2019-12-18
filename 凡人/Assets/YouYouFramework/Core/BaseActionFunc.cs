@@ -10,9 +10,9 @@ using UnityEngine;
 namespace YouYou
 {
     public delegate void BaseAction();
-    
+
     public delegate void BaseAction<T1>(T1 t1);
-    
+
     public delegate void BaseAction<T1, T2>(T1 t1, T2 t2);
 
     public delegate void BaseAction<T1, T2, T3>(T1 t1, T2 t2, T3 t3);

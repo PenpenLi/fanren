@@ -35,29 +35,29 @@ public class Menu
 
         Transform trans = Selection.transforms[0];
 
-       // LuaForm luaForm = trans.GetComponent<LuaForm>();
-        //if (luaForm == null)
-        //{
-        //    Debug.LogError("该UI上没有LuaForm脚本");
-        //    return;
-        //}
+        LuaForm luaForm = trans.GetComponent<LuaForm>();
+        if (luaForm == null)
+        {
+            Debug.LogError("该UI上没有LuaForm脚本");
+            return;
+        }
 
         string viewName = trans.gameObject.name;
 
-        //LuaCom[] luaComs = luaForm.LuaComs;
+        LuaCom[] luaComs = luaForm.LuaComs;
 
-        //int len = luaComs.Length;
+        int len = luaComs.Length;
 
         StringBuilder sbr = new StringBuilder();
         sbr.AppendFormat("");
         sbr.AppendFormat("{0}View = {{ }};\n", viewName);
         sbr.AppendFormat("local this = {0}View;\n", viewName);
         sbr.AppendFormat("\n");
-        //for (int i = 0; i < len; i++)
-        //{
-        //    LuaCom com = luaComs[i];
-        //    sbr.AppendFormat("local {0}Index = {1};\n", com.Name, i);
-        //}
+        for (int i = 0; i < len; i++)
+        {
+            LuaCom com = luaComs[i];
+            sbr.AppendFormat("local {0}Index = {1};\n", com.Name, i);
+        }
         sbr.AppendFormat("\n");
         sbr.AppendFormat("function {0}View.OnInit(transform, userData)\n", viewName);
         sbr.AppendFormat("    this.InitView(transform);\n");
@@ -66,11 +66,11 @@ public class Menu
         sbr.AppendFormat("\n");
         sbr.AppendFormat("function {0}View.InitView(transform)\n", viewName);
         sbr.AppendFormat("    this.LuaForm = transform:GetComponent(typeof(CS.YouYou.LuaForm));\n");
-        //for (int i = 0; i < len; i++)
-        //{
-        //    LuaCom com = luaComs[i];
-        //    sbr.AppendFormat("    this.{0} = this.LuaForm:GetLuaComs({0}Index);\n", com.Name);
-        //}
+        for (int i = 0; i < len; i++)
+        {
+            LuaCom com = luaComs[i];
+            sbr.AppendFormat("    this.{0} = this.LuaForm:GetLuaComs({0}Index);\n", com.Name);
+        }
         sbr.AppendFormat("end\n");
         sbr.AppendFormat("\n");
         sbr.AppendFormat("function {0}View.OnOpen(userData)\n", viewName);

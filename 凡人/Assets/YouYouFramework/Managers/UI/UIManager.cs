@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +22,7 @@ namespace YouYou
         /// </summary>
         /// <param name="uiFormId">formId</param>
         /// <param name="userData"></param>
-        internal void OpenUIForm(int uiFormId, object userData = null, Action<UIFormBase> onOpen = null)
+        internal void OpenUIForm(int uiFormId, object userData = null, BaseAction<UIFormBase> onOpen = null)
         {
             if (IsExists(uiFormId))
             {
@@ -35,7 +34,7 @@ namespace YouYou
 
             if (entity == null)
             {
-                Debug.LogError(uiFormId + "对应的UI窗体不存在");
+                GameEntry.LogError(uiFormId + "对应的UI窗体不存在");
                 return;
             }
 
@@ -55,12 +54,12 @@ namespace YouYou
                         break;
                 }
 
-                LoadUIAsset(assetPath, (UnityEngine.Object resourceEntity) =>
+                LoadUIAsset(assetPath, (ResourceEntity resourceEntity) =>
                 {
-                    GameObject uiObj = UnityEngine.Object.Instantiate(resourceEntity) as GameObject;
+                    GameObject uiObj = Object.Instantiate((Object)resourceEntity.Target) as GameObject;
 
                     //把克隆出来的资源 加入实例资源池
-                    //GameEntry.Pool.RegisterInstanceResource(uiObj.GetInstanceID(), resourceEntity);
+                    GameEntry.Pool.RegisterInstanceResource(uiObj.GetInstanceID(), resourceEntity);
 
                     uiObj.transform.SetParent(GameEntry.UI.GetUIGroup(entity.UIGroupId).Group);
                     uiObj.transform.localPosition = Vector3.zero;
@@ -96,15 +95,27 @@ namespace YouYou
         /// </summary>
         /// <param name="assetPath"></param>
         /// <returns></returns>
-        private void LoadUIAsset(string assetPath, Action<UnityEngine.Object> onComplete)
+        private void LoadUIAsset(string assetPath, BaseAction<ResourceEntity> onComplete)
         {
-            string path = string.Format("UI/UIPrefab/{0}", assetPath);
+#if DISABLE_ASSETBUNDLE && UNITY_EDITOR
+            string path = string.Format("Assets/Download/UI/UIPrefab/{0}.prefab", assetPath);
             //加载镜像
-            UnityEngine.Object obj = Resources.Load<GameObject>(path);
+            Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            ResourceEntity re = new ResourceEntity();
+            re.Target = obj;
             if (onComplete != null)
             {
-                onComplete(obj);
+               onComplete(re);
             }
+#else
+            GameEntry.Resource.ResourceLoaderManager.LoadMainAsset(AssetCategory.UIPrefab, string.Format("Assets/Download/UI/UIPrefab/{0}.prefab", assetPath), (ResourceEntity resourceEntity) =>
+            {
+                if (onComplete != null)
+                {
+                    onComplete(resourceEntity);
+                }
+            });
+#endif
         }
         #endregion
 

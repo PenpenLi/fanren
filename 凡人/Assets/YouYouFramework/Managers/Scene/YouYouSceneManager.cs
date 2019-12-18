@@ -82,13 +82,13 @@ namespace YouYou
         {
             if (m_CurrSceneIsLoading)
             {
-                Debug.LogError("场景{0}正在加载中"+ m_CurrLoadSceneId);
+                GameEntry.LogError("场景{0}正在加载中", m_CurrLoadSceneId);
                 return;
             }
 
             if (m_CurrLoadSceneId == sceneId)
             {
-                Debug.LogError("正在重复加载场景{0}"+ sceneId);
+                GameEntry.LogError("正在重复加载场景{0}", sceneId);
                 return;
             }
 
@@ -221,7 +221,7 @@ namespace YouYou
                 }
                 else if (m_CurrProgress >= m_NeedLoadOrUnloadSceneDetailCount)
                 {
-                    Debug.Log("场景加载完毕");
+                    GameEntry.Log(LogCategory.Normal, "场景加载完毕");
                     m_NeedLoadOrUnloadSceneDetailCount = 0;
                     m_CurrLoadOrUnloadSceneDetailCount = 0;
                     m_CurrSceneIsLoading = false;

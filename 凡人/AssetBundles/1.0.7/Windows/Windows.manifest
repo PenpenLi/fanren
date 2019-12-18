@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 1021462713
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: download/datatable.assetbundle
+      Dependencies: {}

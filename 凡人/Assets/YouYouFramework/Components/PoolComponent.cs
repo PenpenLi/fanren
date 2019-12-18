@@ -74,6 +74,7 @@ namespace YouYou
         /// </summary>
         private void InitClassReside()
         {
+            GameEntry.Pool.SetClassObjectResideCount<HttpRoutine>(3);
             GameEntry.Pool.SetClassObjectResideCount<Dictionary<string, object>>(3);
             GameEntry.Pool.SetClassObjectResideCount<AssetBundleLoaderRoutine>(10);
             GameEntry.Pool.SetClassObjectResideCount<AssetLoaderRoutine>(10);
@@ -232,14 +233,14 @@ namespace YouYou
             {
                 m_ReleaseClassObjectNextRunTime = Time.time;
                 PoolManager.ReleaseClassObjectPool();
-                Debug.Log("释放类对象池");
+                GameEntry.Log(LogCategory.Normal, "释放类对象池");
             }
 
             if (Time.time > m_ReleaseAssetBundleNextRunTime + ReleaseAssetBundleInterval)
             {
                 m_ReleaseAssetBundleNextRunTime = Time.time;
                 PoolManager.ReleaseAssetBundlePool();
-                Debug.Log("释放AssetBundle池");
+                GameEntry.Log(LogCategory.Normal, "释放AssetBundle池");
             }
 
             if (Time.time > m_ReleaseAssetNextRunTime + ReleaseAssetInterval)
@@ -247,7 +248,7 @@ namespace YouYou
                 m_ReleaseAssetNextRunTime = Time.time;
                 PoolManager.ReleaseAssetPool();
                 Resources.UnloadUnusedAssets();
-                Debug.Log( "释放Asset池");
+                GameEntry.Log(LogCategory.Normal, "释放Asset池");
             }
         }
 
@@ -309,10 +310,10 @@ namespace YouYou
         /// </summary>
         /// <param name="instanceId"></param>
         /// <param name="resourceEntity"></param>
-        public void RegisterInstanceResource(int instanceId, UnityEngine.Object resourceEntity)
+        public void RegisterInstanceResource(int instanceId, ResourceEntity resourceEntity)
         {
             //Debug.LogError("注册到实例字典instanceId=" + instanceId);
-           // m_InstanceResourceDic[instanceId] = resourceEntity;
+            m_InstanceResourceDic[instanceId] = resourceEntity;
         }
 
         /// <summary>

@@ -1,6 +1,0 @@
-#
-[Build]=false
-#
-[OutAtlasPath]=ItemAtlas/icon
-#
-[OutAtlasName]=Item_icon

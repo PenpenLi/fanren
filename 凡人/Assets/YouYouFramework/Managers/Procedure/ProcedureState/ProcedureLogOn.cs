@@ -17,7 +17,7 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log( "OnEnter ProcedureLogOn");
+            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
 
             //GameEntry.Scene.LoadScene(1, onComplete: () =>
             //{
@@ -39,12 +39,17 @@ namespace YouYou
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            //if (Input.GetKeyUp(KeyCode.D))
+            //{
+            //    LoadRole();
+            //}
         }
 
         public override void OnLeave()
         {
             base.OnLeave();
-            Debug.Log( "OnLeave ProcedureLogOn");
+            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureLogOn");
         }
     }
 }

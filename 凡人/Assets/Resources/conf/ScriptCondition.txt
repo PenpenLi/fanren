@@ -1,3 +1,0 @@
-1	RoleAtt										
-2	MissionState										
-3	PlayerItemNum										

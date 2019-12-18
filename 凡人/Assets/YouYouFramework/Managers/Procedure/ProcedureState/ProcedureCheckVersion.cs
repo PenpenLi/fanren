@@ -17,7 +17,7 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log("OnEnter ProcedureCheckVersion");
+            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureCheckVersion");
 
             GameEntry.Resource.InitStreamingAssetsBundleInfo();
         }
@@ -30,7 +30,7 @@ namespace YouYou
         public override void OnLeave()
         {
             base.OnLeave();
-            Debug.Log("OnLeave ProcedureCheckVersion");
+            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureCheckVersion");
         }
 
         public override void OnDestroy()

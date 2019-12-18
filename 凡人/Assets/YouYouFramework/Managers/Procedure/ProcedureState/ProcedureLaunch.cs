@@ -18,19 +18,20 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log( "OnEnter ProcedureLaunch");
-        }   
+            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLaunch");          
+        }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
+            //GameEntry.Procedure.ChangeState(ProcedureState.CheckVersion);
             GameEntry.Procedure.ChangeState(ProcedureState.Preload);
         }
 
         public override void OnLeave()
         {
             base.OnLeave();
-            Debug.Log( "OnLeave ProcedureLaunch");
+            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureLaunch");
         }
 
         public override void OnDestroy()

@@ -34,17 +34,17 @@ namespace YouYou
         public override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log("OnEnter ProcedurePreload");
+            GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedurePreload");
 
-            //GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
-            GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);   
+            GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
+            GameEntry.Event.CommonEvent.AddEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
 
-            //GameEntry.Log(LogCategory.Normal, "预加载开始");
-            //m_PreloadParams = GameEntry.Pool.DequeueClassObject<BaseParams>();
-            //m_PreloadParams.Reset();
-            //GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadBegin);
+            GameEntry.Log(LogCategory.Normal, "预加载开始");
+            m_PreloadParams = GameEntry.Pool.DequeueClassObject<BaseParams>();
+            m_PreloadParams.Reset();
+            GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadBegin);
 
-            //m_TargetProgress = 99;
+            m_TargetProgress = 99;
             //GameEntry.Resource.InitAssetInfo();
             GameEntry.DataTable.LoadDataTableAsync();
         }
@@ -53,31 +53,32 @@ namespace YouYou
         {
             base.OnUpdate();
 
-            //if (m_CurrProgress < m_TargetProgress)
-            //{
-            //    m_CurrProgress = m_CurrProgress + Time.deltaTime * 200; //根据实际情况调节速度
-            //    m_PreloadParams.FloatParam1 = m_CurrProgress;
-            //    GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadUpdate, m_PreloadParams);
-            //}
-            //else if (m_CurrProgress >= 100)
-            //{
-            //    m_CurrProgress = 100;
-            //    m_PreloadParams.FloatParam1 = m_CurrProgress;
-            //    GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadUpdate, m_PreloadParams);
+            if (m_CurrProgress < m_TargetProgress)
+            {
+                m_CurrProgress = m_CurrProgress + Time.deltaTime * 200; //根据实际情况调节速度
+                m_PreloadParams.FloatParam1 = m_CurrProgress;
+                GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadUpdate, m_PreloadParams);
+            }
+            else if (m_CurrProgress >= 100)
+            {
+                m_CurrProgress = 100;
+                m_PreloadParams.FloatParam1 = m_CurrProgress;
+                GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadUpdate, m_PreloadParams);
 
-            //    GameEntry.Log(LogCategory.Normal, "预加载完毕");
-            //    GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadComplete);
-            //    GameEntry.Pool.EnqueueClassObject(m_PreloadParams);
+                GameEntry.Log(LogCategory.Normal, "预加载完毕");
+                GameEntry.Event.CommonEvent.Dispatch(SysEventId.PreloadComplete);
+                GameEntry.Pool.EnqueueClassObject(m_PreloadParams);
 
-            //    GameEntry.Procedure.ChangeState(ProcedureState.LogOn);
-            //}
+                GameEntry.Procedure.ChangeState(ProcedureState.LogOn);
+            }
         }
 
         public override void OnLeave()
         {
             base.OnLeave();
-            Debug.Log("OnLeave ProcedurePreload");
+            GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedurePreload");
 
+            GameEntry.Event.CommonEvent.RemoveEventListener(SysEventId.LoadOneDataTableComplete, OnLoadOneDataTableComplete);
             GameEntry.Event.CommonEvent.RemoveEventListener(SysEventId.LoadDataTableComplete, OnLoadDataTableComplete);
         }
 
@@ -100,9 +101,8 @@ namespace YouYou
         /// <param name="userData"></param>
         private void OnLoadDataTableComplete(object userData)
         {
-            Debug.Log( "加载所有c#表格完毕");
-            GameEntry.UI.OpenUIForm(UIFormId.LogOn);
-            GameEntry.Procedure.ChangeState(ProcedureState.LogOn);
+            GameEntry.Log(LogCategory.Normal, "加载所有c#表格完毕");
+            LoadShader();
         }
 
         private void LoadShader()
@@ -111,7 +111,7 @@ namespace YouYou
             {
                 bundle.LoadAllAssets();
                 Shader.WarmupAllShaders();
-                Debug.Log("加载资源包中的自定义Shader完毕");
+                GameEntry.Log(LogCategory.Normal, "加载资源包中的自定义Shader完毕");
                 m_TargetProgress = 100;
             });
         }

@@ -64,7 +64,7 @@ namespace YouYou
                     {
                         //如果只读区也没有，从CDN读取
                         string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.AssetInfoName);
-                       // GameEntry.Http.SendData(url, OnLoadAssetInfoFromCDN, isGetData: true);
+                        GameEntry.Http.SendData(url, OnLoadAssetInfoFromCDN, isGetData: true);
                     }
                     else
                     {
@@ -75,6 +75,24 @@ namespace YouYou
             else
             {
                 InitAssetInfo(buffer);
+            }
+        }
+        #endregion
+
+        #region OnLoadAssetInfoFromCDN 从CDN加载资源信息
+        /// <summary>
+        /// 从CDN加载资源信息
+        /// </summary>
+        /// <param name="args"></param>
+        private void OnLoadAssetInfoFromCDN(HttpCallBackArgs args)
+        {
+            if (!args.HasError)
+            {
+                InitAssetInfo(args.Data);
+            }
+            else
+            {
+                GameEntry.Log(LogCategory.Resource, args.Value);
             }
         }
         #endregion
@@ -135,7 +153,7 @@ namespace YouYou
                     return entity;
                 }
             }
-            Debug.LogError("assetFullName=>{0}不存在"+ assetFullName);
+            GameEntry.LogError("assetFullName=>{0}不存在", assetFullName);
             return null;
         }
         #endregion

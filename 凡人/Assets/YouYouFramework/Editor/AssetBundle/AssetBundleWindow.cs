@@ -376,7 +376,6 @@ public class AssetBundleWindow : EditorWindow
 
                 //路径
                 string newPath = folderPath.Substring(index);
-                Debug.Log("newfolderPath=" + newPath);
 
                 //文件名
                 string fileName = newPath.Replace("Assets/", "");

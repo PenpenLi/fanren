@@ -74,7 +74,7 @@ namespace YouYou
                     UnityEngine.Object obj = m_CurrAssetBundleRequest.asset;
                     if (obj != null)
                     {
-                        Debug.Log("资源=>{0} 加载完毕"+ obj.name);
+                        GameEntry.Log(LogCategory.Resource, "资源=>{0} 加载完毕", obj.name);
                         Reset(); //一定要早点Reset
 
                         if (OnLoadAssetComplete != null)
@@ -84,7 +84,7 @@ namespace YouYou
                     }
                     else
                     {
-                        Debug.LogError("资源=>{0} 加载失败"+m_CurrAssetName);
+                        GameEntry.LogError("资源=>{0} 加载失败", m_CurrAssetName);
                         Reset(); //一定要早点Reset
 
                         if (OnLoadAssetComplete != null)
