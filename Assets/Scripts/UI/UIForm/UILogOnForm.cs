@@ -205,21 +205,25 @@ public class UILogOnForm : UIFormBase
 
     private void Start()
     {
-        KeyManager.hotKeyEnabled = false;
-        SingletonMono<AudioManager>.GetInstance().PauseAll(false);//播放音乐
-        MouseManager.ShowCursor(true);//显示鼠标
+        //KeyManager.hotKeyEnabled = false;
+        //SingletonMono<AudioManager>.GetInstance().PauseAll(false);//播放音乐
+        //MouseManager.ShowCursor(true);//显示鼠标
 
-        SDManager.SDSave.Reset();
-        SDManager.SDSave = new SaveData();
-        AddLoadData();
+        //SDManager.SDSave.Reset();
+        //SDManager.SDSave = new SaveData();
+        //AddLoadData();
     }
 
     public void OnNewGameBtn()
     {
+        GameEntry.Scene.LoadScene(1, onComplete: () =>
+        {
+            GameEntry.Event.CommonEvent.Dispatch(SysEventId.CloseCheckVersionUI);
+        });
         //SingletonMono<AudioManager>.GetInstance().StopAllSound();
-        GameData.Instance.ScrMan.Exec(31, 10110);
-        FanrenSceneManager.LoadLevel(0, false, false);
-      
+        //GameData.Instance.ScrMan.Exec(31, 10110);
+        //FanrenSceneManager.LoadLevel(0, false, false);
+
     }
 
     public void OnLoadBtn()
