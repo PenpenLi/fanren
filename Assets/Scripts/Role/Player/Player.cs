@@ -153,10 +153,7 @@ public class Player : Role
         {
             if (Player.instance == null)
             {
-                if (SceneManager.GetActiveScene().name != "Start" && SceneManager.GetActiveScene().name != "Landing" && SceneManager.GetActiveScene().name != "End")
-                {
-                    Debug.Log("Player Instance is null");
-                }
+              
             }
             else if (Player.instance.gameObject == null)
             {

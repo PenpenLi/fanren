@@ -53,7 +53,17 @@ namespace YouYou
             OnProgressUpdate = onProgressUpdate;
             OnLoadSceneComplete = onLoadSceneComplete;
 
-            GameEntry.Resource.ResourceLoaderManager.LoadAssetBundle(GameEntry.Resource.GetSceneAssetBundlePath(sceneName), onComplete: (AssetBundle bundle2) =>
+#if DISABLE_ASSETBUNDLE
+            m_CurrAsync = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            if (m_CurrAsync == null)
+            {
+                if (OnLoadSceneComplete != null)
+                {
+                    OnLoadSceneComplete(this);
+                }
+            }
+#else
+          GameEntry.Resource.ResourceLoaderManager.LoadAssetBundle(GameEntry.Resource.GetSceneAssetBundlePath(sceneName), onComplete: (AssetBundle bundle2) =>
             {
                 //加载场景的资源包
                 m_CurrAsync = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -65,6 +75,7 @@ namespace YouYou
                     }
                 }
             });
+#endif
         }
 
         /// <summary>

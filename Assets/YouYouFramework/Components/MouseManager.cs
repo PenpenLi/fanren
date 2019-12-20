@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using YouYou;
 
 /// <summary>
 /// 鼠标管理器
 /// </summary>
-public class MouseManager : MonoBehaviour
+public class MouseManager : YouYouBaseComponent
 {
     public const int LEFT_MOUSE = 0;
 
@@ -16,21 +17,9 @@ public class MouseManager : MonoBehaviour
 
     public const int CURSOR_B = 2;
 
-    public string ClassName = "MouseManager";
+    public Texture2D _mouseNor;
 
-    private Texture2D _mouseNor;
-
-    private Texture2D _mouseDown;
-
-    private string MouseA = "EZGUI/Main/Mouse1";
-
-    private string MouseB = "EZGUI/Main/Mouse2";
-
-    private void Start()
-	{
-		this._mouseNor = (Texture2D)ResourceLoader.Load(this.MouseA, typeof(Texture2D));
-		this._mouseDown = (Texture2D)ResourceLoader.Load(this.MouseB, typeof(Texture2D));
-	}
+    public Texture2D _mouseDown;
 
     /// <summary>
     /// 显示鼠标
@@ -91,4 +80,10 @@ public class MouseManager : MonoBehaviour
 			Cursor.SetCursor(this._mouseDown, Vector3.zero, CursorMode.Auto);
 		}
 	}
+
+    public override void Shutdown()
+    {
+        _mouseNor = null;
+        _mouseDown = null;
+    }
 }

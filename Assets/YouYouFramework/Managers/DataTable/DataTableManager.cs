@@ -59,8 +59,8 @@ namespace YouYou
             //Sys_SoundDBModel = new Sys_SoundDBModel();
             //Sys_StorySoundDBModel = new Sys_StorySoundDBModel();
             Sys_UIFormDBModel = new Sys_UIFormDBModel();
-            //Sys_SceneDBModel = new Sys_SceneDBModel();
-            //Sys_SceneDetailDBModel = new Sys_SceneDetailDBModel();
+            Sys_SceneDBModel = new Sys_SceneDBModel();
+            Sys_SceneDetailDBModel = new Sys_SceneDetailDBModel();
 
             //ChapterDBModel = new ChapterDBModel();
             //GameLevelDBModel = new GameLevelDBModel();
@@ -80,8 +80,8 @@ namespace YouYou
             //Sys_SoundDBModel.LoadData();
             //Sys_StorySoundDBModel.LoadData();
             Sys_UIFormDBModel.LoadData();
-            //Sys_SceneDBModel.LoadData();
-            //Sys_SceneDetailDBModel.LoadData();
+            Sys_SceneDBModel.LoadData();
+            Sys_SceneDetailDBModel.LoadData();
 
             //ChapterDBModel.LoadData();
             //GameLevelDBModel.LoadData();
@@ -144,8 +144,8 @@ namespace YouYou
             //Sys_SoundDBModel.Clear();
             //Sys_StorySoundDBModel.Clear();
             Sys_UIFormDBModel.Clear();
-            //Sys_SceneDBModel.Clear();
-            //Sys_SceneDetailDBModel.Clear();
+            Sys_SceneDBModel.Clear();
+            Sys_SceneDetailDBModel.Clear();
 
             //ChapterDBModel.Clear();
             //GameLevelDBModel.Clear();

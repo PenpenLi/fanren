@@ -216,10 +216,15 @@ public class UILogOnForm : UIFormBase
 
     public void OnNewGameBtn()
     {
-        GameEntry.Scene.LoadScene(1, onComplete: () =>
+        //RuntimeData.Instance.gameEngine.NewGame();
+
+        
+        GameEntry.Scene.LoadScene(2, onComplete: () =>
         {
-            GameEntry.Event.CommonEvent.Dispatch(SysEventId.CloseCheckVersionUI);
+            
         });
+
+        base.Close();
         //SingletonMono<AudioManager>.GetInstance().StopAllSound();
         //GameData.Instance.ScrMan.Exec(31, 10110);
         //FanrenSceneManager.LoadLevel(0, false, false);

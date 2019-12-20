@@ -120,7 +120,7 @@ namespace YouYou
 
             m_CurrSceneIsLoading = true;
             m_CurrLoadSceneId = sceneId;
-            //先现在当前的场景
+            //先卸载当前的场景
             UnLoadCurrScene();
         }
 
@@ -153,7 +153,6 @@ namespace YouYou
             m_CurrSceneEntity = GameEntry.DataTable.DataTableManager.Sys_SceneDBModel.Get(m_CurrLoadSceneId);
             m_CurrSceneDetailList = GameEntry.DataTable.DataTableManager.Sys_SceneDetailDBModel.GetListBySceneId(m_CurrSceneEntity.Id, 2);
             m_NeedLoadOrUnloadSceneDetailCount = m_CurrSceneDetailList.Count;
-
             for (int i = 0; i < m_NeedLoadOrUnloadSceneDetailCount; i++)
             {
                 SceneLoaderRoutine routine = GameEntry.Pool.DequeueClassObject<SceneLoaderRoutine>();

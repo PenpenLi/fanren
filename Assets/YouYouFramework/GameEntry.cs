@@ -148,6 +148,18 @@ namespace YouYou
             get;
             private set;
         }
+
+        public static MouseManager Mouse
+        {
+            get;
+            private set;
+        }
+
+        public static KeyManager Key
+        {
+            get;
+            private set;
+        }
         #endregion
 
         #region 基础组件管理

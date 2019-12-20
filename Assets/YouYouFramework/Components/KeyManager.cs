@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YouYou;
 
 /// <summary>
 /// 按键管理
 /// </summary>
-public class KeyManager : MonoBehaviour
+public class KeyManager : YouYouBaseComponent
 {
     public const float AttackEffectiveTime = 0.3f;
-
-    public string ClassName = "KeyManager";
 
     private static bool _hotKeyEnabled = true;
 
@@ -190,48 +189,6 @@ public class KeyManager : MonoBehaviour
             //    Player.Instance.RunSpeed = 5f;
             //}
         }
-
-        if (KeyManager.pressedTime > 0.3f && Player.Instance != null)
-        {
-            //Player.Instance.m_cModFight.StartGatherStrength();//积聚力量
-        }
-        KeyManager.calculationTime();
-    }
-
-    private void OnGUI()
-	{
-		if (SceneManager.GetActiveScene().name == "Landing")
-		{
-			return;
-		}
-        //绘制按钮
-		this.currentEvent = Event.current;
-        //this.LockMouse(this.currentEvent);
-        KeyManager.Numeric = this.currentEvent.numeric;
-        KeyManager.CapsLock = this.currentEvent.capsLock;
-        KeyManager.Control = this.currentEvent.control;
-        KeyManager.Shift = this.currentEvent.shift;
-        KeyManager.Alt = this.currentEvent.alt;
-        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.UIKey) != KeyManager.eKeyGroupMask.None && (this.currentEvent.functionKey || this.currentEvent.isKey))
-        {
-            //this.onUIKeyFunction(this.currentEvent);
-        }
-        if (!KeyManager.hotKeyEnabled)
-        {
-            return;
-        }
-        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseClick) != KeyManager.eKeyGroupMask.None && this.currentEvent.isMouse)
-        {
-            //this.onMouseClickEvent(this.currentEvent);
-        }
-        if ((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.MouseScroll) != KeyManager.eKeyGroupMask.None && this.currentEvent.type == EventType.ScrollWheel)
-        {
-            this.onMouseScrollWheel(this.currentEvent);
-        }
-        if (((KeyManager.m_KeyGroupMask & KeyManager.eKeyGroupMask.NormalHotKey) != KeyManager.eKeyGroupMask.None && this.currentEvent.functionKey) || this.currentEvent.isKey)
-        {
-            this.onKeyFunction(this.currentEvent);
-        }
     }
 
     private void LockMouse(Event e)
@@ -371,32 +328,6 @@ public class KeyManager : MonoBehaviour
         //HelpManager.m_isHelp = false;
         return true;
     }
-
-    //// Token: 0x060015EA RID: 5610 RVA: 0x000AD97C File Offset: 0x000ABB7C
-    //private static void initTime()
-    //{
-    //	if (KeyManager.pressedTime == 0f)
-    //	{
-    //		KeyManager.startTime = GameTime.time;
-    //	}
-    //}
-
-    /// <summary>
-    /// 计算时间
-    /// </summary>
-    private static void calculationTime()
-    {
-        if (KeyManager.startTime != 0f)
-        {
-            KeyManager.pressedTime = GameTime.time - KeyManager.startTime;
-        }
-    }
-
-    //private static void clearTime()
-    //{
-    //	KeyManager.pressedTime = 0f;
-    //	KeyManager.startTime = 0f;
-    //}
 
     /// <summary>
     /// 添加通常按键
@@ -555,5 +486,10 @@ public class KeyManager : MonoBehaviour
             KeyManager.callBack = keyValuePair.Value;
             KeyManager.callBack();
         }
+    }
+
+    public override void Shutdown()
+    {
+        
     }
 }
