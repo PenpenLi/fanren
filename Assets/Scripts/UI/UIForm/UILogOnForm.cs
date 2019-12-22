@@ -221,7 +221,7 @@ public class UILogOnForm : UIFormBase
         
         GameEntry.Scene.LoadScene(2, onComplete: () =>
         {
-            
+         
         });
 
         base.Close();

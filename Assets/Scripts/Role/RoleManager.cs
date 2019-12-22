@@ -78,13 +78,13 @@ public class RoleManager : YouYouBaseComponent
 
     private void Start()
     {
-        GameData.CreatGameData();//创建游戏数据
-        this.ReadSpawnInfo();//读取刷怪点信息
-        this.CreateRootObject();//创建根节点
-        //this.UpdateSceneBySave();//更新场景数据
-        this.CreateRole();//创建角色
-        this.UpdatePlayerBySave();//更新角色数据
-        this.InitPlayer();
+        //GameData.CreatGameData();//创建游戏数据
+        //this.ReadSpawnInfo();//读取刷怪点信息
+        //this.CreateRootObject();//创建根节点
+        ////this.UpdateSceneBySave();//更新场景数据
+        //this.CreateRole();//创建角色
+        //this.UpdatePlayerBySave();//更新角色数据
+        //this.InitPlayer();
         //this.InitOther();
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
