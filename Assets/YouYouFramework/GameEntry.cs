@@ -160,6 +160,12 @@ namespace YouYou
             get;
             private set;
         }
+
+        public static RoleManager Role
+        {
+            get;
+            private set;
+        }
         #endregion
 
         #region 基础组件管理

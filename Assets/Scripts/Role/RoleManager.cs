@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using NS_RoleBaseFun;
 using UnityEngine;
+using YouYou;
 
 /// <summary>
 /// 角色管理
 /// </summary>
-public class RoleManager : MonoBehaviour
+public class RoleManager : YouYouBaseComponent
 {
     private int[] id = new int[]
     {
@@ -760,7 +760,7 @@ public class RoleManager : MonoBehaviour
         Role role = null;
         while (this.HaveObjectOnPos(spawnInfo.position))
         {
-            spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
+            //spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
         }
         if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
         {
@@ -1536,6 +1536,11 @@ public class RoleManager : MonoBehaviour
         {
             this.RoleObjList.Remove(item);
         }
+    }
+
+    public override void Shutdown()
+    {
+
     }
 
     //	public void AddIgnoreColliderRole(Role role)
