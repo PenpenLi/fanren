@@ -15,8 +15,6 @@ using YouYou;
 /// </summary>
 public class GameSceneCtrlBase : MonoBehaviour
 {
-    //protected UISceneMainCityView m_MainCityView;
-
     void Awake()
     {      
         OnAwake();
@@ -25,25 +23,15 @@ public class GameSceneCtrlBase : MonoBehaviour
     List<RaycastResult> raycastResults = new List<RaycastResult>();
 
     void Start()
-    {
+    {     
         Debug.Log("加载主UI");
         //GameEntry.UI.OpenUIForm(UIFormId.LogOn,null, OnLoadUIMainCityViewComplete);
+        OnStart();
     }
 
     protected virtual void OnLoadUIMainCityViewComplete(UIFormBase t1)
     {
-        //m_MainCityView = obj.GetComponent<UISceneMainCityView>();
-
-        //if (SceneMgr.Instance.CurrSceneType == SceneType.GameLevel)
-        //{
-        //    m_MainCityView.SetMenuShow(false);
-        //}
-        //else
-        //{
-        //    m_MainCityView.SetMenuShow(true);
-        //}
-
-        OnStart();
+       
         //EffectMgr.Instance.Init(this);
     }
 

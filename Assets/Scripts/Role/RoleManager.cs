@@ -30,23 +30,23 @@ public class RoleManager : YouYouBaseComponent
     [HideInInspector]
     public List<Role> StageRoleList = new List<Role>();
 
-    private GameObject _roleRootGO;
+    public GameObject _roleRootGO;
 
-    private GameObject _playerRootGo;
+    public GameObject _playerRootGo;
 
-    private GameObject _monsterRootGo;
+    public GameObject _monsterRootGo;
 
-    private GameObject operableRootGo;
+    public GameObject operableRootGo;
 
     private GameObject monsterHpRoot;
 
     private List<Role> ignoreColliderRole = new List<Role>();
 
-    private GameObject _npcRootGo;
+    public GameObject _npcRootGo;
 
-    private GameObject _chestRootGo;
+    public GameObject _chestRootGo;
 
-    private Player _player;
+    public Player Player=null;
 
     [HideInInspector]
     public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
@@ -78,9 +78,6 @@ public class RoleManager : YouYouBaseComponent
 
     private void Start()
     {
-        //GameData.CreatGameData();//创建游戏数据
-        //this.ReadSpawnInfo();//读取刷怪点信息
-        //this.CreateRootObject();//创建根节点
         ////this.UpdateSceneBySave();//更新场景数据
         //this.CreateRole();//创建角色
         //this.UpdatePlayerBySave();//更新角色数据
@@ -89,6 +86,37 @@ public class RoleManager : YouYouBaseComponent
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
         //Singleton<HpCautionEffect>.GetInstance().AdjustSize();
+    }
+
+    /// <summary>
+    /// 初始化主角
+    /// </summary>
+    public void InitRole()
+    {
+        ////this.UpdateSceneBySave();//更新场景数据
+        //this.CreateRole();//创建角色
+        //this.UpdatePlayerBySave();//更新角色数据
+        //this.InitPlayer();
+        //this.InitOther();
+        //SingletonMono<StageManager>.GetInstance().Read();
+        //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
+        //Singleton<HpCautionEffect>.GetInstance().AdjustSize();
+
+        //if (m_IsMainPlayerInit) return;
+
+        //if (GlobalInit.Instance.MainPlayerInfo != null)
+        //{
+        //    GameObject mainPlayerObj = Object.Instantiate(GlobalInit.Instance.JobObjectDic[GlobalInit.Instance.MainPlayerInfo.JobId]);
+        //    Object.DontDestroyOnLoad(mainPlayerObj);
+
+
+        //    GlobalInit.Instance.MainPlayerInfo.SetPhySkillId(JobDBModel.Instance.Get(GlobalInit.Instance.MainPlayerInfo.JobId).UsedPhyAttackIds);
+
+        //    GlobalInit.Instance.CurrPlayer = mainPlayerObj.GetComponent<RoleCtrl>();
+        //    GlobalInit.Instance.CurrPlayer.Init(RoleType.MainPlayer, GlobalInit.Instance.MainPlayerInfo, new RoleMainPlayerCityAI(GlobalInit.Instance.CurrPlayer));
+        //}
+
+        //m_IsMainPlayerInit = true;
     }
 
     //	private void InitOther()
@@ -101,35 +129,10 @@ public class RoleManager : YouYouBaseComponent
     /// <summary>
     /// 创建角色
     /// </summary>
-    private void CreateRole()
+    public void CreateRole()
     {
         this.CreatePlayer();//创建玩家
         //this.CreateObject();
-    }
-
-    private void CreateRootObject()
-    {
-        if (this._roleRootGO == null)
-        {
-            this._roleRootGO = this.CreateRootGo("Role");
-        }
-        if (this.operableRootGo == null)
-        {
-            this.operableRootGo = new GameObject();
-            this.operableRootGo.name = "Operable";
-        }
-        if (this._playerRootGo == null)
-        {
-            this._playerRootGo = this.CreateRootGo(this._roleRootGO, "Player");
-        }
-        if (this._monsterRootGo == null)
-        {
-            this._monsterRootGo = this.CreateRootGo(this._roleRootGO, "Monster");
-        }
-        if (this._npcRootGo == null)
-        {
-            this._npcRootGo = this.CreateRootGo(this._roleRootGO, "Npc");
-        }
     }
 
     private void CreateObject()
@@ -401,53 +404,35 @@ public class RoleManager : YouYouBaseComponent
     //		return this.MobSpawnList.Count;
     //	}
 
-    private GameObject CreateRootGo(string name)
-    {
-        return new GameObject
-        {
-            name = name
-        };
-    }
-
-    private GameObject CreateRootGo(GameObject parent, string name)
-    {
-        GameObject gameObject = this.CreateRootGo(name);
-        gameObject.transform.parent = parent.transform;
-        return gameObject;
-    }
-
     /// <summary>
     /// 创建玩家
     /// </summary>
-    private void CreatePlayer()
+    public void CreatePlayer()
     {
-        Player player = new Player();
-        player.Create();//创建玩家
-        player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
-        if (player.ID == 1)
-        {
-            this._player = player;
-        }
-        this.AddRole(player);//添加到角色列表
+        //Player player = new Player();
+        //player.Create();//创建玩家
+        //player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
+        //this.Player = player;        
+        //this.AddRole(player);//添加到角色列表
     }
 
     /// <summary>
     /// 初始化玩家
     /// </summary>
-    private void InitPlayer()
+    public void InitPlayer()
     {
         Player player = this.GetPlayer();
         if (player == null)
         {
             return;
         }
-        player.BindAutoMisson();
+        //player.BindAutoMisson();
         Player.LoadPlayerRes(player);
     }
 
     public Player GetPlayer()
     {
-        return this._player;
+        return this.Player;
     }
 
     //	private void CreateOperableRootGo()

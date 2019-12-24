@@ -218,7 +218,7 @@ public class UILogOnForm : UIFormBase
     {
         //RuntimeData.Instance.gameEngine.NewGame();
 
-        
+        GameEntry.Role.CreatePlayer();
         GameEntry.Scene.LoadScene(2, onComplete: () =>
         {
          

@@ -249,7 +249,9 @@ namespace YouYou
             Resource = GetBaseComponent<ResourceComponent>();
             Download = GetBaseComponent<DownloadComponent>();
             UI = GetBaseComponent<UIComponent>();
-            Lua = GetBaseComponent<LuaComponent>();
+            Mouse = GetBaseComponent<MouseManager>();
+            Role = GetBaseComponent<RoleManager>();
+            Key = GetBaseComponent<KeyManager>();
         }
         #endregion
 
