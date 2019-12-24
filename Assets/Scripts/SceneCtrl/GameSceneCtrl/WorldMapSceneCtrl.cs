@@ -55,6 +55,7 @@ public class WorldMapSceneCtrl : GameSceneCtrlBase
         m_TransPosDic = new Dictionary<int, WorldMapTransCtrl>();
 
         // m_AllRoleDic = new Dictionary<int, RoleCtrl>();
+        GameEntry.Role.CreatePlayer();
     }
     #endregion
 

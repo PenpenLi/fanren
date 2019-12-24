@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3418438173
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 62593cfaabb288687e1b50adef41b4b6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: af57576da81d5d3ce45807ac11234de6
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+Assets:
+- Assets/Download/Role/RolePrefab/Player/Animation/Dali_001/Stand.anim
+Dependencies: []

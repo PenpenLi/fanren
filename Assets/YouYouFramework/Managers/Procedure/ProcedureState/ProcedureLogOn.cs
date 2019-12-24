@@ -19,7 +19,6 @@ namespace YouYou
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
             RuntimeData.Instance.Init();
-            GameEntry.Role.InitPlayer();
             GameEntry.UI.OpenUIForm(UIFormId.LogOn);
         }
 

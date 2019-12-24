@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2038767103
+CRC: 2015630092
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d58dd74475d6559b721d03f9d29ad545
+    Hash: 26a7e7e05e677918634b17406f26c768
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -28,6 +28,7 @@ Assets:
 - Assets/Download/DataTable/SkillLevel.bytes
 - Assets/Download/DataTable/Sys_Sound.bytes
 - Assets/Download/DataTable/Skill.bytes
+- Assets/Download/DataTable/Sys_SceneDetail.bytes
 - Assets/Download/DataTable/Equip.bytes
 - Assets/Download/DataTable/GameLevelGrade.bytes
 - Assets/Download/DataTable/Localization/Chinese.bytes
@@ -36,6 +37,7 @@ Assets:
 - Assets/Download/DataTable/JobLevel.bytes
 - Assets/Download/DataTable/GameLevelRegion.bytes
 - Assets/Download/DataTable/GameLevel.bytes
+- Assets/Download/DataTable/Sys_Scene.bytes
 - Assets/Download/DataTable/ShopCategory.bytes
 - Assets/Download/DataTable/Material.bytes
 - Assets/Download/DataTable/Sys_UIForm.bytes

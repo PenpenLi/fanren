@@ -409,11 +409,29 @@ public class RoleManager : YouYouBaseComponent
     /// </summary>
     public void CreatePlayer()
     {
+        GameEntry.Resource.ResourceLoaderManager.LoadMainAsset(AssetCategory.RolePrefab, string.Format("Assets/Download/Role/RolePrefab/Player/Tianshan_001/Zy_tianshan_002_yxt/Zy_tianshan_002_yxt.prefab"), (ResourceEntity resourceEntity) =>
+        {
+            Debug.LogError("加载角色完毕");
+
+            GameObject obj = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+            obj.transform.position = new Vector3(166.51f, 1.454f, 170.1f);
+        });
+
         //Player player = new Player();
         //player.Create();//创建玩家
         //player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
         //this.Player = player;        
         //this.AddRole(player);//添加到角色列表
+
+        //GameObject mainPlayerObj = Object.Instantiate(GlobalInit.Instance.JobObjectDic[GlobalInit.Instance.MainPlayerInfo.JobId]);
+        //Object.DontDestroyOnLoad(mainPlayerObj);
+
+
+        //GlobalInit.Instance.MainPlayerInfo.SetPhySkillId(JobDBModel.Instance.Get(GlobalInit.Instance.MainPlayerInfo.JobId).UsedPhyAttackIds);
+
+        //GlobalInit.Instance.CurrPlayer = mainPlayerObj.GetComponent<RoleCtrl>();
+        //GlobalInit.Instance.CurrPlayer.Init(RoleType.MainPlayer, GlobalInit.Instance.MainPlayerInfo, new RoleMainPlayerCityAI(GlobalInit.Instance.CurrPlayer));
+
     }
 
     /// <summary>

@@ -1,14 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Root>
-  <AssetBundle ResourceVersion="1.0.7">
+  <AssetBundle ResourceVersion="1.0.7">     
     <Item Name="DataTable" Tag="DataTable" IsFolder="False" IsFirstData="True" IsEncrypt="True">
       <Path Value="Download/DataTable" />
+    </Item>
+    <Item Name="Role" Tag="Role" IsFolder="True" IsFirstData="True" IsEncrypt="False">
+      <Path Value="Download/Role" />
+    </Item>
+    <Item Name="初始场景" Tag="Scene" IsFolder="False" IsFirstData="True" IsEncrypt="False">
+      <Path Value="Download/Scenes/GameScene_DaLi.unity" />
     </Item>
     <Item Name="UI预设" Tag="UI" IsFolder="False" IsFirstData="True" IsEncrypt="False">
       <Path Value="Download/UI/UIPrefab" />
     </Item>
     <Item Name="UI字体" Tag="UIFont" IsFolder="False" IsFirstData="True" IsEncrypt="False">
       <Path Value="Download/UI/UIFont" />
-    </Item>  
+    </Item>
+    <Item Name="UI图集" Tag="UI" IsFolder="False" IsFirstData="True" IsEncrypt="False">
+      <Path Value="Download/UI/UIRes/UICommon" />
+      <Path Value="Download/UI/UIRes/UIFrame" />
+      <Path Value="Download/UI/UIRes/UITitleBar" />
+    </Item>
   </AssetBundle>
 </Root>
