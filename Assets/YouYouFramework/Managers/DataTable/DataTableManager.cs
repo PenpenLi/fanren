@@ -86,6 +86,8 @@ namespace YouYou
             //ChapterDBModel.LoadData();
             //GameLevelDBModel.LoadData();
             //TaskDBModel.LoadData();
+
+            GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadDataTableComplete);
         }
 
         /// <summary>
