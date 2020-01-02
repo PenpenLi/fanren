@@ -192,18 +192,18 @@ public class DefenceFormula
 		this.CalculateData();
 		if (this._fBeforeValue != this._fValue)
 		{
-			ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-			if (modAttribute != null)
-			{
-				float num = 0.0015f;
-				float num2 = 0.6f;
-				float num3 = 230f;
-				float num4 = 0.35f;
-				float num5 = num * (this._fValue + num3) / (num2 + num * (this._fValue + num3)) - num4;
-				float value = (float)Math.Round((double)num5, 4);
-				ATTRIBUTE_TYPE attType = (!this._IsPhyDefence) ? ATTRIBUTE_TYPE.ATT_MAG_HURTLESS : ATTRIBUTE_TYPE.ATT_PHY_HURTLESS;
-				modAttribute.SetAttributeNum(attType, value, true);
-			}
+			//ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+			//if (modAttribute != null)
+			//{
+			//	float num = 0.0015f;
+			//	float num2 = 0.6f;
+			//	float num3 = 230f;
+			//	float num4 = 0.35f;
+			//	float num5 = num * (this._fValue + num3) / (num2 + num * (this._fValue + num3)) - num4;
+			//	float value = (float)Math.Round((double)num5, 4);
+			//	ATTRIBUTE_TYPE attType = (!this._IsPhyDefence) ? ATTRIBUTE_TYPE.ATT_MAG_HURTLESS : ATTRIBUTE_TYPE.ATT_PHY_HURTLESS;
+			//	modAttribute.SetAttributeNum(attType, value, true);
+			//}
 		}
 		this._fBeforeValue = this._fValue;
 		return this._fValue;
@@ -215,41 +215,41 @@ public class DefenceFormula
 		{
 			return 0f;
 		}
-		ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-		if (modAttribute == null)
-		{
-			return 0f;
-		}
-		float attributeValue = modAttribute.GetAttributeValue(fivetype);
+		//ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+		//if (modAttribute == null)
+		//{
+		//	return 0f;
+		//}
+		//float attributeValue = modAttribute.GetAttributeValue(fivetype);
 		if (fivetype == ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT)
 		{
-			if (attributeValue > 0f && attributeValue <= 50f)
-			{
-				return 0.002f;
-			}
-			if (attributeValue > 50f && attributeValue <= 100f)
-			{
-				return 0.003f;
-			}
-			if (attributeValue > 100f && attributeValue <= 99999f)
-			{
-				return 0.004f;
-			}
+			//if (attributeValue > 0f && attributeValue <= 50f)
+			//{
+			//	return 0.002f;
+			//}
+			//if (attributeValue > 50f && attributeValue <= 100f)
+			//{
+			//	return 0.003f;
+			//}
+			//if (attributeValue > 100f && attributeValue <= 99999f)
+			//{
+			//	return 0.004f;
+			//}
 		}
 		else if (fivetype == ATTRIBUTE_TYPE.ATT_WATER_ELEMENT)
 		{
-			if (attributeValue > 0f && attributeValue <= 50f)
-			{
-				return 0.001f;
-			}
-			if (attributeValue > 50f && attributeValue <= 100f)
-			{
-				return 0.002f;
-			}
-			if (attributeValue > 100f && attributeValue <= 99999f)
-			{
-				return 0.003f;
-			}
+			//if (attributeValue > 0f && attributeValue <= 50f)
+			//{
+			//	return 0.001f;
+			//}
+			//if (attributeValue > 50f && attributeValue <= 100f)
+			//{
+			//	return 0.002f;
+			//}
+			//if (attributeValue > 100f && attributeValue <= 99999f)
+			//{
+			//	return 0.003f;
+			//}
 		}
 		return 0f;
 	}

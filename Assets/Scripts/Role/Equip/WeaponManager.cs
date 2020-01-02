@@ -213,14 +213,14 @@ public class WeaponManager
 			this.currentRightWeapon.transform.localScale = new Vector3(1f, 1f, 1f);
 			//PuppetRole.ModifyTagAndLayer(this.currentRightWeapon.transform, PuppetRole.Instance.defultflag, PuppetRole.Instance.defultflag);
 		}
-		if (equipCfgType != this.currentWeaponType && this.player.modMFS != null)
-		{
-			CONTROL_STATE currentStateId = this.player.modMFS.GetCurrentStateId();
-			if (currentStateId == CONTROL_STATE.ATTACK_IDLE)
-			{
-				//this.player.modMFS.ChangeState(new ControlEventAttackIdle(false));
-			}
-		}
+		//if (equipCfgType != this.currentWeaponType && this.player.modMFS != null)
+		//{
+		//	CONTROL_STATE currentStateId = this.player.modMFS.GetCurrentStateId();
+		//	if (currentStateId == CONTROL_STATE.ATTACK_IDLE)
+		//	{
+		//		//this.player.modMFS.ChangeState(new ControlEventAttackIdle(false));
+		//	}
+		//}
 	}
 
 	public GameObject loadWeapon(string weaponPath)

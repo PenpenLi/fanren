@@ -40,10 +40,10 @@ public class ModBehaviorAI : Module
 		{
 			if (this._role._roleType == ROLE_TYPE.RT_MONSTER)
 			{
-				if (this._enmityTarget != null && this._enmityTarget.isAlive())
-				{
-					return Vector3.Distance(this._enmityTarget.GetPos(), this._role.GetPos());
-				}
+				//if (this._enmityTarget != null && this._enmityTarget.isAlive())
+				//{
+				//	return Vector3.Distance(this._enmityTarget.GetPos(), this._role.GetPos());
+				//}
 				return 0f;
 			}
 			else
@@ -117,10 +117,10 @@ public class ModBehaviorAI : Module
 		}
 		if (this._role._roleType == ROLE_TYPE.RT_MONSTER)
 		{
-			if (this.bPause && this._role.isAlive())
-			{
-				return;
-			}
+			//if (this.bPause && this._role.isAlive())
+			//{
+			//	return;
+			//}
 			//if (this._role.Identity() != IdentityType.Bar && this.mfs.GetCurrentStateId() == CONTROL_STATE.QTE)
 			//{
 			//	return;

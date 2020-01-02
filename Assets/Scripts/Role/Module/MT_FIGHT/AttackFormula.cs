@@ -145,11 +145,11 @@ public class AttackFormula
         {
             return;
         }
-        ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        if (modAttribute == null)
-        {
-            return;
-        }
+        //ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        //if (modAttribute == null)
+        //{
+        //    return;
+        //}
         this.ClearData();
         Player player = null;
         if (this._role._roleType == ROLE_TYPE.RT_PLAYER)
@@ -224,42 +224,42 @@ public class AttackFormula
 		{
 			return 0f;
 		}
-		ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-		if (modAttribute == null)
-		{
-			return 0f;
-		}
-		float attributeValue = modAttribute.GetAttributeValue(fivetype);
-		if (fivetype == ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT)
-		{
-			if (attributeValue > 0f && attributeValue <= 50f)
-			{
-				return 0.02f;
-			}
-			if (attributeValue > 50f && attributeValue <= 100f)
-			{
-				return 0.03f;
-			}
-			if (attributeValue > 100f && attributeValue <= 99999f)
-			{
-				return 0.04f;
-			}
-		}
-		else if (fivetype == ATTRIBUTE_TYPE.ATT_WATER_ELEMENT)
-		{
-			if (attributeValue > 0f && attributeValue <= 50f)
-			{
-				return 0.01f;
-			}
-			if (attributeValue > 50f && attributeValue <= 100f)
-			{
-				return 0.02f;
-			}
-			if (attributeValue > 100f && attributeValue <= 99999f)
-			{
-				return 0.03f;
-			}
-		}
+		//ModAttribute modAttribute = this._role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+		//if (modAttribute == null)
+		//{
+		//	return 0f;
+		//}
+		//float attributeValue = modAttribute.GetAttributeValue(fivetype);
+		//if (fivetype == ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT)
+		//{
+		//	if (attributeValue > 0f && attributeValue <= 50f)
+		//	{
+		//		return 0.02f;
+		//	}
+		//	if (attributeValue > 50f && attributeValue <= 100f)
+		//	{
+		//		return 0.03f;
+		//	}
+		//	if (attributeValue > 100f && attributeValue <= 99999f)
+		//	{
+		//		return 0.04f;
+		//	}
+		//}
+		//else if (fivetype == ATTRIBUTE_TYPE.ATT_WATER_ELEMENT)
+		//{
+		//	if (attributeValue > 0f && attributeValue <= 50f)
+		//	{
+		//		return 0.01f;
+		//	}
+		//	if (attributeValue > 50f && attributeValue <= 100f)
+		//	{
+		//		return 0.02f;
+		//	}
+		//	if (attributeValue > 100f && attributeValue <= 99999f)
+		//	{
+		//		return 0.03f;
+		//	}
+		//}
 		return 0f;
 	}
 

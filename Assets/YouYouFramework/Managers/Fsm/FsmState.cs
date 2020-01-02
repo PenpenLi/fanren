@@ -17,6 +17,12 @@ namespace YouYou
     public abstract class FsmState<T> where T : class
     {
         /// <summary>
+        /// 当前动画状态信息
+        /// </summary>
+        public AnimatorStateInfo CurrRoleAnimatorStateInfo { get; set; }
+
+
+        /// <summary>
         /// 状态对应的状态机
         /// </summary>
         public Fsm<T> CurrFsm;

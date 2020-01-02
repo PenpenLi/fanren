@@ -26,18 +26,18 @@ public class ModPlayerControl : Module
 		{
 			return;
 		}
-		ControlStateBase currentState = this._role.modMFS.CurrentState;
-		if (currentState != null)
-		{
-			if (currentState.GetState() == CONTROL_STATE.ATTACK)
-			{
-				this.AttackHandle(currentState);
-			}
-			else if (currentState.GetState() == CONTROL_STATE.ROLL)
-			{
-				this.AttackHandle(currentState);
-			}
-		}
+		//ControlStateBase currentState = this._role.modMFS.CurrentState;
+		//if (currentState != null)
+		//{
+		//	if (currentState.GetState() == CONTROL_STATE.ATTACK)
+		//	{
+		//		this.AttackHandle(currentState);
+		//	}
+		//	else if (currentState.GetState() == CONTROL_STATE.ROLL)
+		//	{
+		//		this.AttackHandle(currentState);
+		//	}
+		//}
 	}
 
 	private void AttackHandle(ControlStateBase state)

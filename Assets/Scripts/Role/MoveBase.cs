@@ -33,8 +33,6 @@ public class MoveBase
 
     protected CharacterController m_cController;
 
-    protected ModAnimation m_cAnimation;
-
     protected Role m_cRole;
 
     protected bool isStart;
@@ -42,7 +40,6 @@ public class MoveBase
     public MoveBase(Role role, CharacterController cc)
 	{
 		this.m_cRole = role;
-		this.m_cAnimation = (ModAnimation)role.GetModule(MODULE_TYPE.MT_MOTION);
 		this.m_cController = cc;
 	}
 
@@ -101,7 +98,7 @@ public class MoveBase
         {
             if (this.m_eAction != ACTION_INDEX.AN_NONE)
             {
-                this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, 0.2f);
+                //this.m_cAnimation.PlayAnimation(this.m_eAction, 1f, WrapMode.Loop, false, false, 0.2f);
             }
             this.isStart = true;
         }

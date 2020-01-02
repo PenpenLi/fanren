@@ -1004,44 +1004,44 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         {
             return;
         }
-        ModAttribute modAttribute = role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        if (modAttribute == null)
-        {
-            return;
-        }
-        float attributeValue = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_VIEW_RANGE);
+       // ModAttribute modAttribute = role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        //if (modAttribute == null)
+        //{
+        //    return;
+        //}
+        //float attributeValue = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_VIEW_RANGE);
         for (int i = 0; i < this.RoleObjList.Count; i++)
         {
             Role role2 = this.RoleObjList[i];
-            if (role2 != null && role2.ID != role.ID && !role2.IsDead())
-            {
-                float num = Vector3.Distance(role.GetPos(), role2.GetPos());
-                if (num <= attributeValue)
-                {
-                    //if (role.hatred.GetHatredInfo(role2) == null)
-                    //{
-                    //    float num2;
-                    //    if (!role.IsEnemy(role2))
-                    //    {
-                    //        num2 = 0f;
-                    //    }
-                    //    else
-                    //    {
-                    //        num2 = RoleHatred.GetInitialHatredValue(role, role2);
-                    //    }
-                    //    if (role2 is Player && role is Monster && num2 > 0f)
-                    //    {
-                    //        Monster monster = (Monster)role;
-                    //        monster.FindPlayer = true;
-                    //    }
-                    //    role.hatred.SetHatred(role2, num2);
-                    //}
-                }
-                else if (num > attributeValue * 1.5f)
-                {
-                   // role.hatred.RemoveRoleFromHatred(role2);
-                }
-            }
+            //if (role2 != null && role2.ID != role.ID && !role2.IsDead())
+            //{
+            //    float num = Vector3.Distance(role.GetPos(), role2.GetPos());
+            //    if (num <= attributeValue)
+            //    {
+            //        //if (role.hatred.GetHatredInfo(role2) == null)
+            //        //{
+            //        //    float num2;
+            //        //    if (!role.IsEnemy(role2))
+            //        //    {
+            //        //        num2 = 0f;
+            //        //    }
+            //        //    else
+            //        //    {
+            //        //        num2 = RoleHatred.GetInitialHatredValue(role, role2);
+            //        //    }
+            //        //    if (role2 is Player && role is Monster && num2 > 0f)
+            //        //    {
+            //        //        Monster monster = (Monster)role;
+            //        //        monster.FindPlayer = true;
+            //        //    }
+            //        //    role.hatred.SetHatred(role2, num2);
+            //        //}
+            //    }
+            //    else if (num > attributeValue * 1.5f)
+            //    {
+            //       // role.hatred.RemoveRoleFromHatred(role2);
+            //    }
+            //}
         }
     }
 

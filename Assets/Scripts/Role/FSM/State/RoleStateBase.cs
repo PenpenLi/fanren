@@ -6,7 +6,7 @@ using YouYou;
 /// <summary>
 /// 角色状态机基类
 /// </summary>
-public class RoleStateBase : FsmState<RoleFSMMgr>
+public class RoleStateBase : FsmState<Role>
 {
     public override void OnEnter()
     {

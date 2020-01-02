@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// 旋转
+/// </summary>
 public class Rotate : TransBevBase
 {
     public float RotateSpeed;

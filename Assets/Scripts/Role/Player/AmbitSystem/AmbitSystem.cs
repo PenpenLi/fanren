@@ -15,8 +15,6 @@ public class AmbitSystem
 
     private Player player;
 
-    private ModAttribute modAtt;
-
     private AmbitData currentData;
 
     private bool m_bIsRage;
@@ -67,7 +65,7 @@ public class AmbitSystem
 			return;
 		}
 		this.player = owner;
-		this.modAtt = (this.player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
+		//this.modAtt = (this.player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
 		//this.CorrectLevel();
 		//this.currentData = this.GetCurrentData();
 		//int level = (int)this.AmbitLevel - 1;
@@ -82,10 +80,10 @@ public class AmbitSystem
 
 	public void SetPlayerLevel(AMBITLEVEL level)
 	{
-		if (this.modAtt == null)
-		{
-			return;
-		}
+		//if (this.modAtt == null)
+		//{
+		//	return;
+		//}
 		//if (this.AmbitLevel == (float)level)
 		//{
 		//	return;
@@ -183,19 +181,19 @@ public class AmbitSystem
 			//	num2 = attributeBaseNum2 - lastData.BaseMP;
 			//}
 		}
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAXHP, num + data.BaseHP, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAXMP, num2 + data.BaseMP, true);
-		this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP), false);
-		//this.modAtt.UpdateAttributePercent(ATTRIBUTE_TYPE.ATT_MP, 1f, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAG_ATK, data.BaseMagicAttack, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAG_DEF, data.BaseMagicDefense, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_PHY_ATK, data.BaseAttack, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_PHY_DEF, data.BaseDefense, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_METAL_ELEMENT, data.ElementMetal, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT, data.ElementWood, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_WATER_ELEMENT, data.ElementWater, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_FIRE_ELEMENT, data.ElementFire, true);
-		this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT, data.ElementEarth, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAXHP, num + data.BaseHP, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAXMP, num2 + data.BaseMP, true);
+		//this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP), false);
+		////this.modAtt.UpdateAttributePercent(ATTRIBUTE_TYPE.ATT_MP, 1f, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAG_ATK, data.BaseMagicAttack, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_MAG_DEF, data.BaseMagicDefense, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_PHY_ATK, data.BaseAttack, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_PHY_DEF, data.BaseDefense, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_METAL_ELEMENT, data.ElementMetal, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_WOOD_ELEMENT, data.ElementWood, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_WATER_ELEMENT, data.ElementWater, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_FIRE_ELEMENT, data.ElementFire, true);
+		//this.modAtt.SetAttributeNumEx(ATTRIBUTE_TYPE.ATT_EARTH_ELEMENT, data.ElementEarth, true);
 	}
 
 	public void LevelUp()

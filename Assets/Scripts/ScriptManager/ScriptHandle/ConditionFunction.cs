@@ -29,20 +29,20 @@ namespace ActionScript
 			return missionState == (int)missionState2;
 		}
 
-		public static bool RoleAtt(Role role, int attType, int compareType, float attValue)
-		{
-			if (role == null)
-			{
-				return false;
-			}
-			ModAttribute modAttribute = role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-			if (modAttribute == null)
-			{
-				return false;
-			}
-			float attributeValue = modAttribute.GetAttributeValue((ATTRIBUTE_TYPE)attType);
-			return ConditionFunction.CompareValue(attributeValue, attValue, compareType);
-		}
+		//public static bool RoleAtt(Role role, int attType, int compareType, float attValue)
+		//{
+		//	if (role == null)
+		//	{
+		//		return false;
+		//	}
+		//	//ModAttribute modAttribute = role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+		//	//if (modAttribute == null)
+		//	//{
+		//	//	return false;
+		//	//}
+		//	//float attributeValue = modAttribute.GetAttributeValue((ATTRIBUTE_TYPE)attType);
+		//	//return ConditionFunction.CompareValue(attributeValue, attValue, compareType);
+		//}
 
 		public static bool PlayerItemNum(int itemType, int compareType, int num)
 		{

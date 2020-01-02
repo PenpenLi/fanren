@@ -105,32 +105,32 @@ public class TaskTrackPlane : GUIBase
 	{
 		this.m_bTime = false;
 		Player player = (Player)FanrenSceneManager.RoleMan.GetRole(Player.currentPlayerId);
-		ModAttribute modAttribute = (ModAttribute)player.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
-		string text = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_CHAPTER).ToString();
-		if (text == "1")
-		{
-			text = "第一章";
-		}
-		else if (text == "2")
-		{
-			text = "第二章";
-		}
-		else if (text == "3")
-		{
-			text = "第三章";
-		}
-		else if (text == "4")
-		{
-			text = "第四章";
-		}
-		else if (text == "5")
-		{
-			text = "第五章";
-		}
-		else if (text == "6")
-		{
-			text = "第六章";
-		}
+		//ModAttribute modAttribute = (ModAttribute)player.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
+		//string text = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_CHAPTER).ToString();
+		//if (text == "1")
+		//{
+		//	text = "第一章";
+		//}
+		//else if (text == "2")
+		//{
+		//	text = "第二章";
+		//}
+		//else if (text == "3")
+		//{
+		//	text = "第三章";
+		//}
+		//else if (text == "4")
+		//{
+		//	text = "第四章";
+		//}
+		//else if (text == "5")
+		//{
+		//	text = "第五章";
+		//}
+		//else if (text == "6")
+		//{
+		//	text = "第六章";
+		//}
 		//this.m_tTextTa.Text = text;
 		ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
 		for (int i = 0; i < modMission.accMisList.Count; i++)

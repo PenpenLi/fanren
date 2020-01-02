@@ -2,7 +2,58 @@
 using System.Collections.Generic;
 using NS_RoleBaseFun;
 using UnityEngine;
+using YouYou;
 
+/// <summary>
+/// 角色动画状态
+/// </summary>
+public enum RoleAnimatorState
+{
+    Idle_Normal = 1,
+    Idle_Fight = 2,
+    Run = 3,
+    Hurt = 4,
+    Die = 5,
+    Select = 6,
+    XiuXian = 7,
+    Died = 8,
+    PhyAttack1 = 11,
+    PhyAttack2 = 12,
+    PhyAttack3 = 13,
+    Skill1 = 14,
+    Skill2 = 15,
+    Skill3 = 16,
+    Skill4 = 17,
+    Skill5 = 18,
+    Skill6 = 19,
+}
+
+public enum ToAnimatorCondition
+{
+    ToIdleNormal,
+    ToIdleFight,
+    ToRun,
+    ToHurt,
+    ToDie,
+    ToDied,
+    ToPhyAttack,
+    ToSkill,
+    ToSelect,
+    ToXiuXian,
+    CurrState
+}
+
+/// <summary>
+/// 流程状态
+/// </summary>
+public enum RoleState
+{
+    Idle = 0,
+    Run = 1,
+    Hurt = 2,
+    Die = 3,
+    Attack = 4,
+}
 
 public class Role
 {
@@ -41,9 +92,42 @@ public class Role
     private RoleChildren _roleChildren = new RoleChildren();
 
     /// <summary>
-    /// 状态机模块
+    /// 角色态机
     /// </summary>
-    public ModControlMFS modMFS;
+    private Fsm<Role> m_CurrFsm;
+
+    /// <summary>
+    /// 当前角色状态机
+    /// </summary>
+    public Fsm<Role> CurrFsm
+    {
+        get
+        {
+            return m_CurrFsm;
+        }
+    }
+
+    /// <summary>
+    /// 当前的角色状态
+    /// </summary>
+    public RoleState CurrRoleState
+    {
+        get
+        {
+            return (RoleState)m_CurrFsm.CurrStateType;
+        }
+    }
+
+    /// <summary>
+    /// 当前的角色
+    /// </summary>
+    public FsmState<Role> CurrProcedure
+    {
+        get
+        {
+            return m_CurrFsm.GetState(m_CurrFsm.CurrStateType);
+        }
+    }
 
     public ModBehaviorAI modAi;
 
@@ -77,6 +161,8 @@ public class Role
     public Role ParentRole;
 
     public event RoleDeadEventHandler beforeDead;
+
+    public Vector3 TargetPos;
 
     public static Transform ZeroTrans
     {
@@ -364,10 +450,10 @@ public class Role
         }
     }
 
-    public bool IsDieing()
-    {
-        return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
-    }
+    //public bool IsDieing()
+    //{
+    //    return this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE;
+    //}
 
     public string name
     {
@@ -409,11 +495,29 @@ public class Role
 
     public void InitRole()
     {
+        FsmState<Role>[] states = new FsmState<Role>[5];
+        states[0] = new RoleStateIdle();
+        states[1] = new RoleStateRun();
+        states[2] = new RoleStateHurt();
+        states[3] = new RoleStateDie();
+        states[4] = new RoleStateAttack();
+
+        m_CurrFsm = GameEntry.Fsm.Create(this, states);
+
         this.EventHandlerManager = new RoleEventHandler(this);
         for (int i = 0; i < this._modList.Count; i++)
         {
             this._modList[i].Init();
         }
+    }
+
+    /// <summary>
+    /// 切换状态
+    /// </summary>
+    /// <param name="state"></param>
+    public void ChangeState(RoleState state)
+    {
+        m_CurrFsm.ChangeState((byte)state);
     }
 
     /// <summary>
@@ -613,62 +717,40 @@ public class Role
     {
         get
         {
-            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-            return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+            // ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            //return modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+            return 5f;
         }
         set
         {
-            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-            modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
+            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            //modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, value, true);
         }
-    }
-
-    /// <summary>
-    /// 获得当前HP
-    /// </summary>
-    /// <returns></returns>
-    public int GetCurHp()
-    {
-        ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        if (modAttribute == null)
-        {
-            return 0;
-        }
-        return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_HP);
-    }
-
-    public float GetCurHpPercent()
-    {
-        if (this.GetMaxHp() == 0)
-        {
-            return 0f;
-        }
-        return (float)this.GetCurHp() / (float)this.GetMaxHp();
     }
 
     /// <summary>
     /// 是否存活
     /// </summary>
     /// <returns></returns>
-    public bool isAlive()
-    {
-        return !this.isDestroyed && (!(this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute) || this.GetCurHp() > 0);
-    }
+    //public bool isAlive()
+    //{
+    //    return !this.isDestroyed && (!(this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute) || this.GetCurHp() > 0);
+    //}
 
-    public int GetMaxHp()
-    {
-        ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        if (modAttribute == null)
-        {
-            return 0;
-        }
-        return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP);
-    }
+    //public int GetMaxHp()
+    //{
+    //    //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+    //    if (modAttribute == null)
+    //    {
+    //        return 0;
+    //    }
+    //    return (int)modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MAXHP);
+    //}
 
-    public bool IsDead()
-    {
-        return this.isDestroyed || (this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute && this.GetCurHp() <= 0);
-    }
+    //public bool IsDead()
+    //{
+    //    return this.isDestroyed || (this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) is ModAttribute && this.GetCurHp() <= 0);
+    //}
 
     public bool AddRolePart(int id)
     {
@@ -753,13 +835,21 @@ public class Role
 
     public virtual void RoleProcess()
     {
+        m_CurrFsm.OnUpate();
+
         if (this.roleGameObject.RoleBody == null)
         {
             return;
         }
+
         for (int i = 0; i < this._modList.Count; i++)
         {
             this._modList[i].Process();
+        }
+
+        if (!this.roleGameObject.RoleController.isGrounded)//让角色着地
+        {
+            this.roleGameObject.RoleController.Move((roleGameObject.RoleBody.transform.position + new Vector3(0, -1000, 0)) - roleGameObject.RoleBody.transform.position);
         }
     }
 
@@ -912,11 +1002,11 @@ public class Role
         //this.roleGameObject.DestroyGO();
         if (this._roleType != ROLE_TYPE.RT_PLAYER)
         {
-            ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-            if (modAttribute != null)
-            {
-                modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, 0f, true);
-            }
+            //ModAttribute modAttribute = this.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+            //if (modAttribute != null)
+            //{
+            //    modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_HP, 0f, true);
+            //}
         }
         this.rolePartsList.Clear();
         this.isDestroyed = true;

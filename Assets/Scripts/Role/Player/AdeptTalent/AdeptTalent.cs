@@ -12,8 +12,6 @@ public class AdeptTalent
 
     private SortedDictionary<int, AdeptTalent.AdeptData> _AdeptTalentConfig = new SortedDictionary<int, AdeptTalent.AdeptData>();
 
-    private ModAttribute _OwnerMod;
-
     //private AdeptTalent.AddValue _AddCount;
 
     //// Token: 0x04001B01 RID: 6913
@@ -627,12 +625,12 @@ public class AdeptTalent
     /// <param name="pMod"></param>
     /// <param name="strFilePath"></param>
     /// <returns></returns>
-    public bool LoadAdeptConfig(ModAttribute pMod, string strFilePath)
+    public bool LoadAdeptConfig(string strFilePath)
     {
-        if (strFilePath == null || pMod == null)
-        {
-            return false;
-        }
+        //if (strFilePath == null || pMod == null)
+        //{
+        //    return false;
+        //}
         List<string> list = RoleBaseFun.LoadConfInAssets(strFilePath);
         if (list.Count <= 0)
         {
@@ -725,7 +723,7 @@ public class AdeptTalent
                 }
             }
         }
-        this._OwnerMod = pMod;
+        //this._OwnerMod = pMod;
         return true;
     }
 

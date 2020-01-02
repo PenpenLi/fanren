@@ -25,11 +25,11 @@ public class MonsterHp : MonoBehaviour
 
 	private void Update()
 	{
-		if (this.monster == null || this.monster.IsDead())
-		{
-			UnityEngine.Object.Destroy(base.gameObject);
-			return;
-		}
+		//if (this.monster == null || this.monster.IsDead())
+		//{
+		//	UnityEngine.Object.Destroy(base.gameObject);
+		//	return;
+		//}
 		this.HPGUI.active = true;
 		if (this.HpTarget == null)
 		{
@@ -53,9 +53,9 @@ public class MonsterHp : MonoBehaviour
 		Transform transform = Camera.main.transform;
 		if (!this.bBack)
 		{
-			float num2 = (float)this.monster.GetCurHp();
-			float num3 = (float)this.monster.GetMaxHp();
-			num = num2 / num3;
+			//float num2 = (float)this.monster.GetCurHp();
+			//float num3 = (float)this.monster.GetMaxHp();
+			//num = num2 / num3;
 		}
 		if (transform.InverseTransformPoint(this.HpTarget.position).z > 0f)
 		{

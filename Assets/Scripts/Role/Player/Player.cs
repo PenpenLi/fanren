@@ -10,11 +10,6 @@ public class Player : Role
 
     private const string strBaseMixtureCfg = "MixtureConfig";
 
-    /// <summary>
-    /// 当前角色有限状态机管理器
-    /// </summary>
-    public RoleFSMMgr CurrRoleFSMMgr = null;
-
     public Character m_cCharacter;
 
     public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
@@ -94,7 +89,6 @@ public class Player : Role
     public Player()
     {
         this._roleType = ROLE_TYPE.RT_PLAYER;
-        CurrRoleFSMMgr = new RoleFSMMgr();
     }
 
     public ModPlayerControl ModPlayerControl { get; private set; }
@@ -253,7 +247,6 @@ public class Player : Role
     public override void RoleProcess()
     {
         base.RoleProcess();
-        CurrRoleFSMMgr.OnUpdate();
         this.CheckDead();
         //FanrenSceneManager.RoleMan.CheckRoleInView(this);
         //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
@@ -291,7 +284,6 @@ public class Player : Role
     //		return base.ChangeModel(modelID, destroyOld);
     //	}
 
-    //	// Token: 0x060022BB RID: 8891 RVA: 0x000ECB00 File Offset: 0x000EAD00
     //	public override bool ChangeModel(int modelID, bool destroyOld)
     //	{
     //		Vector3 position = base.GetTrans().position;
@@ -362,11 +354,7 @@ public class Player : Role
         //this.m_cFigureSystem.Init(this);
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        //this.modMFS.ChangeState(new ControlEventIdle(false));
-        //if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
-        //{
-        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        //}
+        //this.modMFS.ChangeState(new ControlEventIdle(false));  
     }
 
     /// <summary>
@@ -375,8 +363,7 @@ public class Player : Role
     public override void CreateModule()
     {
         base.CreateModule();
-        this._roleType = ROLE_TYPE.RT_PLAYER;//设置角色类型
-        //this.AddMod(MODULE_TYPE.MT_MOTION);
+        this.AddMod(MODULE_TYPE.MT_MOTION);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
         //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
         //this.AddMod(MODULE_TYPE.MT_COLLIDER);
@@ -458,27 +445,27 @@ public class Player : Role
     /// </summary>
     public void BindAutoMisson()
     {
-        ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        if (modAttribute == null || modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BORN) == 0f)
-        {
-            ModMission modMission = base.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
-            if (modMission == null)
-            {
-                return;
-            }
-            for (int i = 0; i < GameData.Instance.RoleData.MissionInfoList.Count; i++)
-            {
-                MissionInfo missionInfo = GameData.Instance.RoleData.MissionInfoList[i];
-                if (missionInfo != null)
-                {
-                    if (missionInfo.MissType == 0)
-                    {
-                        modMission.AcceptMission(missionInfo.ID);
-                    }
-                }
-            }
-            modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 1f, true);
-        }
+        //ModAttribute modAttribute = base.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        //if (modAttribute == null || modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_BORN) == 0f)
+        //{
+        //    ModMission modMission = base.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
+        //    if (modMission == null)
+        //    {
+        //        return;
+        //    }
+        //    for (int i = 0; i < GameData.Instance.RoleData.MissionInfoList.Count; i++)
+        //    {
+        //        MissionInfo missionInfo = GameData.Instance.RoleData.MissionInfoList[i];
+        //        if (missionInfo != null)
+        //        {
+        //            if (missionInfo.MissType == 0)
+        //            {
+        //                modMission.AcceptMission(missionInfo.ID);
+        //            }
+        //        }
+        //    }
+        //    modAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 1f, true);
+        //}
     }
 
     /// <summary>
@@ -618,18 +605,18 @@ public class Player : Role
 
     private void CheckDead()
     {
-        if (base.IsDead())
-        {
-            this.Die(false);
-        }
+        //if (base.IsDead())
+        //{
+        //    this.Die(false);
+        //}
     }
 
     public override void Die(bool qte)
     {
-        if (this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE)
-        {
-            return;
-        }
+        //if (this.modMFS.GetCurrentStateId() == CONTROL_STATE.DIE)
+        //{
+        //    return;
+        //}
         base.Die(qte);
         //this.modMFS.ChangeState(new ControlEventDie(false));
         //CameraEffectManager.MainGrayscaleEffect.enabled = true;
@@ -696,14 +683,15 @@ public class Player : Role
         Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
         Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
         Vector3 vector2 = base.GetPos() + vector;//移动目标点
-        RoleState currentRoleState = CurrRoleFSMMgr.CurrRoleState;//获得当前状态枚举
+        Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
+        TargetPos = vector2;
         if (vector == Vector3.zero)
         {
-            CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+            ChangeState(RoleState.Idle);
         }
         else
         {
-            CurrRoleFSMMgr.ChangeState(RoleState.Run);
+            ChangeState(RoleState.Run);
         }
     }
 

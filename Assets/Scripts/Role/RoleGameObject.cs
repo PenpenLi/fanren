@@ -860,7 +860,7 @@ public class RoleGameObject
     public GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
         GameObject gameObject = null;
-        GameEntry.Role.CreateRole("Dali_001/Sz_dali_001_jht/Sz_dali_001_jht", (ResourceEntity resourceEntity) =>
+        GameEntry.Role.CreateRole("zhujiao_cike_animation", (ResourceEntity resourceEntity) =>
         {
             gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
         });

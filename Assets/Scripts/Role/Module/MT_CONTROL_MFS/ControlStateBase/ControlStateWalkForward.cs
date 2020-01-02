@@ -23,10 +23,10 @@ public class ControlStateWalkForward : ControlStateBase
 
 	public override bool Update()
 	{
-        if (this.m_cRole.IsDead())
-        {
-            return false;
-        }
+        //if (this.m_cRole.IsDead())
+        //{
+        //    return false;
+        //}
         if (!base.Update())
         {
             return false;
@@ -55,7 +55,7 @@ public class ControlStateWalkForward : ControlStateBase
         Vector3 vector = Vector3.zero;
         ACTION_INDEX ai = ACTION_INDEX.AN_IDLE;
         bool b = true;
-        float num = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);//获取移动速度
+        float num = 6;//获取移动速度
         Vector3[] array = null;
         CONTROL_INPUT inputId = ceb.InputId;
         if (inputId == CONTROL_INPUT.WALK_FORWARD)
@@ -67,7 +67,7 @@ public class ControlStateWalkForward : ControlStateBase
             array = ((ControlEventMoveForward)ceb).Path;
         }
         this.m_cMove.Reset(ai, num);//移动重置
-        this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);//设置移动速度
+        //this.modAtt.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, num, true);//设置移动速度
         if (this.m_cRole._roleType != ROLE_TYPE.RT_PLAYER)
         {
             ////如果角色类型不是玩家
@@ -121,16 +121,16 @@ public class ControlStateWalkForward : ControlStateBase
     /// </summary>
     private void SetSpeed()
     {
-        float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
-        this.m_cMove.Speed = attributeValue;
-        float attributeValue2 = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN);
-        if (attributeValue2 == 0f)
-        {
-            this.m_cAnimation.AniSpeed = 1f;
-            return;
-        }
-        float aniSpeed = attributeValue / attributeValue2;
-        this.m_cAnimation.AniSpeed = aniSpeed;
+        //float attributeValue = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED);
+        //this.m_cMove.Speed = attributeValue;
+       // float attributeValue2 = this.modAtt.GetAttributeValue(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN);
+        //if (attributeValue2 == 0f)
+        //{
+        //    this.m_cAnimation.AniSpeed = 1f;
+        //    return;
+        //}
+        //float aniSpeed = attributeValue / attributeValue2;
+        //this.m_cAnimation.AniSpeed = aniSpeed;
     }
 
     public override void OnExit()

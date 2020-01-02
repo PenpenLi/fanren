@@ -20,9 +20,7 @@ public class Monster : Role
 
     private bool _bNeedResetCamera;
 
-    private static int nNextEnemyID = 30000;
-
-    private ModAttribute modAttr;
+    private static int nNextEnemyID = 30000;   
 
     private ModAnimation modAni;
 
@@ -155,11 +153,11 @@ public class Monster : Role
 		{
 			monster.roleGameObject.RoleController.Move(new Vector3(0f, -20f, 0f));
 		}
-		if (monster.modMFS != null)
-		{
-			int bornBev = (spawnInfo.BornBev <= 0) ? mi.BornBev : spawnInfo.BornBev;
-			//monster.modMFS.ChangeState(new ControlEventSpawn(false, bornBev));
-		}
+		//if (monster.modMFS != null)
+		//{
+		//	int bornBev = (spawnInfo.BornBev <= 0) ? mi.BornBev : spawnInfo.BornBev;
+		//	//monster.modMFS.ChangeState(new ControlEventSpawn(false, bornBev));
+		//}
 		if (mi.BloodType == 0)
 		{
 			GameObject original = (GameObject)ResourceLoader.Load("Prefabs/Mob/HPGUI", typeof(GameObject));

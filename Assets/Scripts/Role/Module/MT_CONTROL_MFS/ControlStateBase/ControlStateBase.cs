@@ -16,7 +16,7 @@ public class ControlStateBase
 
     protected ModBehaviorAI modBevAi;
 
-    protected ModAttribute modAtt;
+    //protected ModAttribute modAtt;
 
     protected float m_fStateStartTime;
 
@@ -36,7 +36,7 @@ public class ControlStateBase
 		this.m_cControl = control;
 		this.m_cAnimation = (ModAnimation)this.m_cRole.GetModule(MODULE_TYPE.MT_MOTION);
         this.modBevAi = (this.m_cRole.GetModule(MODULE_TYPE.MT_AI_BEHAVIOR) as ModBehaviorAI);
-        this.modAtt = (this.m_cRole.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
+       // this.modAtt = (this.m_cRole.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute);
         this.m_cControlMfs = mcm;
 		this.m_eStateId = cs;
 	}

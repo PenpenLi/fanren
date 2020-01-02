@@ -37,10 +37,10 @@ public class RoleHatred
     {
         for (int i = this.HatredList.Count - 1; i >= 0; i--)
         {
-            if (!this.HatredList[i].RoleObj.isAlive())
-            {
-                this.HatredList.RemoveAt(i);
-            }
+            //if (!this.HatredList[i].RoleObj.isAlive())
+            //{
+            //    this.HatredList.RemoveAt(i);
+            //}
         }
     }
 

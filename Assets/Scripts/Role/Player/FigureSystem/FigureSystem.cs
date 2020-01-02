@@ -52,7 +52,7 @@ public class FigureSystem
 	public void Init(Player player)
 	{
 		this.m_cPlayer = player;
-		ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+		//ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
 		Dictionary<AMBITLEVEL, AmbitData> ambitData = Singleton<AmbitStaticData>.GetInstance().GetAmbitData(1);
 		//AmbitData ambitData2 = ambitData[AmbitSystem.ConvertLevel(modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_LEVEL))];
 		//this.maxEnergy = ambitData2.MaxEnergy;
