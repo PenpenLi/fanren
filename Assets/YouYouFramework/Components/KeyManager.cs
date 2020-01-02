@@ -7,7 +7,7 @@ using YouYou;
 /// <summary>
 /// 按键管理
 /// </summary>
-public class KeyManager : YouYouBaseComponent
+public class KeyManager : YouYouBaseComponent, IUpdateComponent
 {
     public const float AttackEffectiveTime = 0.3f;
 
@@ -31,6 +31,9 @@ public class KeyManager : YouYouBaseComponent
 
     private static KeyManager.eKeyGroupMask m_KeyGroupMask = KeyManager.eKeyGroupMask.All;
 
+    /// <summary>
+    /// 控制角色
+    /// </summary>
     public static Role controlRole = null;
 
     public static float startTime = 0f;
@@ -141,54 +144,10 @@ public class KeyManager : YouYouBaseComponent
 		}
 	}
 
-	private void Update()
-	{
-        //按下Shift键退出训练模式
-        //if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && Singleton<DrillSystem>.GetInstance().IsDrillState)
-        //{
-        //    Singleton<DrillSystem>.GetInstance().ExitDrill();
-        //}
-
-        if (!KeyManager.hotKeyEnabled)
-        {
-            return;
-        }
-
-        if (SceneManager.GetActiveScene().name == "Landing")
-        {
-            return;
-        }
-
-        if (Player.Instance != null)
-        {
-            //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
-            //{
-            //    return;
-            //}
-
-            float axisRaw = Input.GetAxisRaw("Vertical");
-            float axisRaw2 = Input.GetAxisRaw("Horizontal");
-            bool buttonDown = Input.GetButtonDown("Jump");
-            if (KeyManager.controlRole != null)
-            {
-                KeyManager.controlRole.Input(axisRaw, axisRaw2);
-            }
-
-            //if (KeyManager.Shift)
-            //{
-
-            //    Player.Instance.RunSpeed = 8f;
-            //}
-            //else
-            //{
-            //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-            //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-            //    //{
-            //    //    return;
-            //    //}
-            //    Player.Instance.RunSpeed = 5f;
-            //}
-        }
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        GameEntry.RegisterUpdateComponent(this);
     }
 
     private void LockMouse(Event e)
@@ -491,5 +450,49 @@ public class KeyManager : YouYouBaseComponent
     public override void Shutdown()
     {
         
+    }
+
+    public void OnUpdate()
+    {
+        if (!KeyManager.hotKeyEnabled)
+        {
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Landing")
+        {
+            return;
+        }
+
+        if (Player.Instance != null)
+        {
+            //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
+            //{
+            //    return;
+            //}
+
+            float axisRaw = Input.GetAxisRaw("Vertical");
+            float axisRaw2 = Input.GetAxisRaw("Horizontal");
+            bool buttonDown = Input.GetButtonDown("Jump");
+            if (KeyManager.controlRole != null)
+            {
+                KeyManager.controlRole.Input(axisRaw, axisRaw2);
+            }
+
+            //if (KeyManager.Shift)
+            //{
+
+            //    Player.Instance.RunSpeed = 8f;
+            //}
+            //else
+            //{
+            //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
+            //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
+            //    //{
+            //    //    return;
+            //    //}
+            //    Player.Instance.RunSpeed = 5f;
+            //}
+        }
     }
 }

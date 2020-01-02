@@ -165,31 +165,26 @@ public class ModCamera : Module
 		{
             return;
 		}
+
 		if (this._role._roleType != ROLE_TYPE.RT_PLAYER)//如果角色不是玩家 锁定摄像机
 		{
 			this.isLockCamera = true;
 		}
+
         if (!this.cameraTransform && Camera.main)
 		{
             this.cameraTransform = Camera.main.transform;
         }
-		if (!this.cameraTransform)
-		{
-            this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
-			Debug.Log("Please assign a camera to the modCamera script.");
-			this.m_bEnabled = false;
-		}
+
+		//if (!this.cameraTransform)
+		//{
+  //          this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
+		//	Debug.Log("Please assign a camera to the modCamera script.");
+		//	this.m_bEnabled = false;
+		//}
+
 		this.cameraTransform.name = "Main Camera";
-		SceneInfo scenenInfo = FanrenSceneManager.curScenenInfo;
-		if (scenenInfo != null)
-		{
-			string name = "CameraRenderBox_" + scenenInfo.name;
-			GameObject gameObject = GameObject.Find(name);
-			if (gameObject != null)
-			{
-				gameObject.name = "CameraRenderBox";
-			}
-		}
+	
 		GameObject obj = GameObject.Find("CameFather2");
 		this.cameraFather = new GameObject("CameFather2");
 		this.cameraTransform.parent = this.cameraFather.transform;

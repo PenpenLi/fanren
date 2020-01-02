@@ -44,8 +44,6 @@ namespace YouYou
         /// </summary>
         public GameLevelDBModel GameLevelDBModel { get; private set; }
 
-        public TaskDBModel TaskDBModel { get; private set; }
-
         /// <summary>
         /// 初始化DBModel
         /// </summary>

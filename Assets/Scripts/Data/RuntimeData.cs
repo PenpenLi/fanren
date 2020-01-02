@@ -60,6 +60,9 @@ public class RuntimeData
         }
     }
 
+    /// <summary>
+    /// 初始化运行数据
+    /// </summary>
     public void Init()
     {
         //this.gameEngine = new GameEngine();

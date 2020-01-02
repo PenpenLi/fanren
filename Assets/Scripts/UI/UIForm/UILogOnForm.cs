@@ -216,12 +216,11 @@ public class UILogOnForm : UIFormBase
 
     public void OnNewGameBtn()
     {
-        //RuntimeData.Instance.gameEngine.NewGame();
-
-        GameEntry.Role.CreatePlayer();
+        //RuntimeData.Instance.gameEngine.NewGame();      
         GameEntry.Scene.LoadScene(2, onComplete: () =>
         {
-         
+            GameEntry.Procedure.ChangeState(ProcedureState.WorldMap);
+            
         });
 
         base.Close();

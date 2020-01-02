@@ -429,12 +429,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988337133857764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43cb37428e732be4ba958bf0b3683634, type: 3}
+  m_Script: {fileID: 11500000, guid: d5f60481f0dc8974093805aa18f97278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Scrollbar: {fileID: 114015048614398324}
-  txtTip: {fileID: 466046203283166150}
-  imgBG: {fileID: 114395368611912052}
+  txtTip: {fileID: 0}
+  txtSize: {fileID: 0}
+  txtResourceVersion: {fileID: 0}
+  scrollbar: {fileID: 0}
 --- !u!223 &223887179264670012
 Canvas:
   m_ObjectHideFlags: 0

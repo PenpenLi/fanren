@@ -151,14 +151,6 @@ public class Player : Role
     {
         get
         {
-            if (Player.instance == null)
-            {
-              
-            }
-            else if (Player.instance.gameObject == null)
-            {
-                Player.instance = null;
-            }
             return Player.instance;
         }
     }
@@ -260,7 +252,7 @@ public class Player : Role
     {
         base.RoleProcess();
         this.CheckDead();
-        FanrenSceneManager.RoleMan.CheckRoleInView(this);
+        //FanrenSceneManager.RoleMan.CheckRoleInView(this);
         //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
         //{
         //    GameData.Instance.ItemMan.CreateItem(4010001UL, 3, ItemOwner.ITO_HEROFOLDER);
@@ -350,42 +342,41 @@ public class Player : Role
         int id = this.playerId;//玩家ID 1
         base.ID = id;
         Player.currentPlayerId = id;
-        this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);//主角信息 模型位置 头像
-        if (this.playerInfo == null)
-        {
-            Debug.LogWarning("not find playerInfo by id: " + this.playerId);
-            return;
-        }
-        this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];//角色基本信息 应该是装备或模型
-        if (this.playerInfo == null)
-        {
-            Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
-            return;
-        }
-        PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;//玩家位置 为了防止角色坠落
+        //this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);//主角信息 模型位置 头像
+        //if (this.playerInfo == null)
+        //{
+        //    Debug.LogWarning("not find playerInfo by id: " + this.playerId);
+        //    return;
+        //}
+        //this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];//角色基本信息 应该是装备或模型
+        //if (this.playerInfo == null)
+        //{
+        //    Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
+        //    return;
+        //}
+        //PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;//玩家位置 为了防止角色坠落
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
-
         base.roleGameObject.RoleBind.SetRole(this);
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
         this.hatred.selfRole = Player.Instance;
         KeyManager.controlRole = this;
-        this.equipReplace = new EquipReplace(this);//装备
-        this.ItemFolder = new ItemFolderContainer(base.ID);//物品
-        this.m_cAmbitSystem.Init(this);
-        this.InitRoleBaseInfo();
-        this.m_RoleGrowDatas.Init();
-        GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        this.m_cFigureSystem.Init(this);
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        this.modMFS.ChangeState(new ControlEventIdle(false));
-        if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
-        {
-            base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
-        }
+        //this.equipReplace = new EquipReplace(this);//装备
+        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
+        //this.m_cAmbitSystem.Init(this);
+        //this.InitRoleBaseInfo();
+        //this.m_RoleGrowDatas.Init();
+        //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //this.m_cFigureSystem.Init(this);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        //this.modMFS.ChangeState(new ControlEventIdle(false));
+        //if (!base.roleGameObject.RoleController.isGrounded)//让角色着地
+        //{
+        //    base.roleGameObject.RoleController.Move(-Vector3.up * 20f);
+        //}
     }
 
     /// <summary>
@@ -395,22 +386,22 @@ public class Player : Role
     {
         base.CreateModule();
         this._roleType = ROLE_TYPE.RT_PLAYER;//设置角色类型
-        this.AddMod(MODULE_TYPE.MT_MOTION);
+        //this.AddMod(MODULE_TYPE.MT_MOTION);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
-        this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
-        this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
-        this.AddMod(MODULE_TYPE.MT_COLLIDER);
-        this.AddMod(MODULE_TYPE.MT_MISSION);
-        this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
-        this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
-        this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
-        this.AddMod(MODULE_TYPE.MT_VOICE);
-        this.ReadPlayerPropertyInfoConfig();
+        //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
+        //this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
+        //this.AddMod(MODULE_TYPE.MT_COLLIDER);
+        //this.AddMod(MODULE_TYPE.MT_MISSION);
+        //this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
+        //this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
+        //this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
+        //this.AddMod(MODULE_TYPE.MT_VOICE);
+        //this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
-        this.Init();
-        this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//精通系统
-        this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
-        this.m_BottleSystem.LoadConfig();//瓶子
+        //this.Init();
+        //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//精通系统
+        //this.m_cMixtureSmelt.LoadConfig("MixtureConfig");//合成
+        //this.m_BottleSystem.LoadConfig();//瓶子
     }
 
     public Module AddMod(MODULE_TYPE mt)
@@ -723,50 +714,50 @@ public class Player : Role
     /// <param name="HorInput"></param>
     public override void Input(float VerInput, float HorInput)
     {
-        if (base.IsDead())
-        {
-            return;
-        }
+        //if (base.IsDead())
+        //{
+        //    return;
+        //}
 
-        Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
-        Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
-        Vector3 vector2 = base.GetPos() + vector;//移动目标点
-        CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();//获得当前状态枚举
-        if (currentStateId != CONTROL_STATE.WALK_FORWARD)//当前状态不等于向前步行
-        {
-            if (currentStateId != CONTROL_STATE.SWIM)//当前状态不等于游泳
-            {
-                if (currentStateId != CONTROL_STATE.FLY)//当前状态不等于飞
-                {
-                    if (!(vector == Vector3.zero))//移动目标点不等于0点
-                    {
-                        this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-                    }
-                }
-                else if (UnityEngine.Input.GetKey(KeyCode.Space))
-                {
-                    this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
-                }
-                else
-                {
-                    //当前状态等于飞
-                    this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
-                }
-            }
-            else
-            {
-                //当前状态等于游泳
-                this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
-            }
-        }
-        else if (vector == Vector3.zero)
-        {
-            this.modMFS.ChangeState(new ControlEventIdle(false));
-        }
-        else
-        {
-            this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        }
+        //Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
+        //Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
+        //Vector3 vector2 = base.GetPos() + vector;//移动目标点
+        //CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();//获得当前状态枚举
+        //if (currentStateId != CONTROL_STATE.WALK_FORWARD)//当前状态不等于向前步行
+        //{
+        //    if (currentStateId != CONTROL_STATE.SWIM)//当前状态不等于游泳
+        //    {
+        //        if (currentStateId != CONTROL_STATE.FLY)//当前状态不等于飞
+        //        {
+        //            if (!(vector == Vector3.zero))//移动目标点不等于0点
+        //            {
+        //                this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+        //            }
+        //        }
+        //        else if (UnityEngine.Input.GetKey(KeyCode.Space))
+        //        {
+        //            this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
+        //        }
+        //        else
+        //        {
+        //            //当前状态等于飞
+        //            this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //当前状态等于游泳
+        //        this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
+        //    }
+        //}
+        //else if (vector == Vector3.zero)
+        //{
+        //    this.modMFS.ChangeState(new ControlEventIdle(false));
+        //}
+        //else
+        //{
+        //    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
+        //}
     }
 
     //	private Role GetEnemyByAngleAndArea(float r, float angle, Vector3 direction)

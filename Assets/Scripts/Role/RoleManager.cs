@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using YouYou;
 
 /// <summary>
 /// 角色管理
 /// </summary>
-public class RoleManager : YouYouBaseComponent
+public class RoleManager : YouYouBaseComponent, IUpdateComponent
 {
     private int[] id = new int[]
     {
@@ -76,6 +75,12 @@ public class RoleManager : YouYouBaseComponent
         }
     }
 
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        GameEntry.RegisterUpdateComponent(this);
+    }
+
     private void Start()
     {
         ////this.UpdateSceneBySave();//更新场景数据
@@ -129,10 +134,27 @@ public class RoleManager : YouYouBaseComponent
     /// <summary>
     /// 创建角色
     /// </summary>
-    public void CreateRole()
+    public void CreateRole(string assetPath, BaseAction<ResourceEntity> onComplete)
     {
-        this.CreatePlayer();//创建玩家
-        //this.CreateObject();
+#if DISABLE_ASSETBUNDLE && UNITY_EDITOR
+        string path = string.Format("Assets/Download/Role/RolePrefab/{0}.prefab", assetPath);
+        //加载镜像
+        Object obj = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+        ResourceEntity re = new ResourceEntity();
+        re.Target = obj;
+        if (onComplete != null)
+        {
+            onComplete(re);
+        }
+#else
+            GameEntry.Resource.ResourceLoaderManager.LoadMainAsset(AssetCategory.RolePrefab, string.Format("Assets/Download/UI/UIPrefab/{0}.prefab", assetPath), (ResourceEntity resourceEntity) =>
+            {
+                if (onComplete != null)
+                {
+                    onComplete(resourceEntity);
+                }
+            });
+#endif
     }
 
     private void CreateObject()
@@ -409,29 +431,11 @@ public class RoleManager : YouYouBaseComponent
     /// </summary>
     public void CreatePlayer()
     {
-        GameEntry.Resource.ResourceLoaderManager.LoadMainAsset(AssetCategory.RolePrefab, string.Format("Assets/Download/Role/RolePrefab/Player/Tianshan_001/Zy_tianshan_002_yxt/Zy_tianshan_002_yxt.prefab"), (ResourceEntity resourceEntity) =>
-        {
-            Debug.LogError("加载角色完毕");
-
-            GameObject obj = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
-            obj.transform.position = new Vector3(166.51f, 1.454f, 170.1f);
-        });
-
-        //Player player = new Player();
-        //player.Create();//创建玩家
-        //player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
-        //this.Player = player;        
-        //this.AddRole(player);//添加到角色列表
-
-        //GameObject mainPlayerObj = Object.Instantiate(GlobalInit.Instance.JobObjectDic[GlobalInit.Instance.MainPlayerInfo.JobId]);
-        //Object.DontDestroyOnLoad(mainPlayerObj);
-
-
-        //GlobalInit.Instance.MainPlayerInfo.SetPhySkillId(JobDBModel.Instance.Get(GlobalInit.Instance.MainPlayerInfo.JobId).UsedPhyAttackIds);
-
-        //GlobalInit.Instance.CurrPlayer = mainPlayerObj.GetComponent<RoleCtrl>();
-        //GlobalInit.Instance.CurrPlayer.Init(RoleType.MainPlayer, GlobalInit.Instance.MainPlayerInfo, new RoleMainPlayerCityAI(GlobalInit.Instance.CurrPlayer));
-
+        Player player = new Player();     
+        player.Create();//创建玩家
+        player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
+        this.Player = player;        
+        this.AddRole(player);//添加到角色列表
     }
 
     /// <summary>
@@ -1521,7 +1525,12 @@ public class RoleManager : YouYouBaseComponent
     //		}
     //	}
 
-    private void Update()
+    public override void Shutdown()
+    {
+
+    }
+
+    public void OnUpdate()
     {
         List<Role> list = new List<Role>();//等待移除列表
         for (int i = 0; i < this.RoleObjList.Count; i++)
@@ -1539,11 +1548,6 @@ public class RoleManager : YouYouBaseComponent
         {
             this.RoleObjList.Remove(item);
         }
-    }
-
-    public override void Shutdown()
-    {
-
     }
 
     //	public void AddIgnoreColliderRole(Role role)

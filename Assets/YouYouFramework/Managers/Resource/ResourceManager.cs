@@ -109,17 +109,17 @@ namespace YouYou
 
             ReadStreamingAssetsBundle(ConstDefine.VersionFileName, (byte[] buffer) =>
             {
-                //if (buffer == null)
-                //{
-                //    InitCDNAssetBundleInfo();
-                //}
-                //else
-                //{
-                m_IsExistsStreamingAssetsBundleInfo = true;
-                m_StreamingAssetsVersionDic = GetAssetBundleVersionList(buffer, ref m_StreamingAssetsVersion);
-                //InitCDNAssetBundleInfo();
-                GameEntry.Procedure.ChangeState(ProcedureState.Preload);
-                //}
+                if (buffer == null)
+                {
+                    //InitCDNAssetBundleInfo();
+                }
+                else
+                {
+                    m_IsExistsStreamingAssetsBundleInfo = true;
+                    m_StreamingAssetsVersionDic = GetAssetBundleVersionList(buffer, ref m_StreamingAssetsVersion);
+                    //InitCDNAssetBundleInfo();
+                    GameEntry.Procedure.ChangeState(ProcedureState.Preload);
+                }
             });
         }
         #endregion

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using YouYou;
 
 public class RoleGameObject
 {
@@ -553,9 +553,9 @@ public class RoleGameObject
         this.m_iModelId = component.ModelID;
         this.m_cTrans = this.m_cGO.transform;
         this.m_fModelScale = this.m_cTrans.localScale.x;
-        this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
-        this.SetBodyInfo(this.m_cTrans);//应该是骨骼信息
-        this.CorrectEffect();//特效挂点
+        //this.m_cModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(this.m_iModelId);
+        //this.SetBodyInfo(this.m_cTrans);//应该是骨骼信息
+        //this.CorrectEffect();//特效挂点
     }
 
     //public void CloneGO(GameObject clone)
@@ -859,19 +859,12 @@ public class RoleGameObject
     /// <returns></returns>
     public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
-        RoleModelInfo roleModelInfo = Singleton<RoleModelData>.GetInstance().GetRoleModelInfo(modelID);//角色模型信息
-        if (roleModelInfo == null)
+        GameObject gameObject = null;
+        GameEntry.Role.CreateRole("Dali_001/Sz_dali_001_jht/Sz_dali_001_jht", (ResourceEntity resourceEntity) =>
         {
-            Debug.LogWarning("modelID:" + modelID);
-            return null;
-        }
-        GameObject gameObject = Resources.Load(roleModelInfo.Path) as GameObject;
-        if (gameObject == null)
-        {
-            Debug.LogWarning("modelID:" + roleModelInfo.Path);
-            return null;
-        }
-        gameObject = UnityEngine.Object.Instantiate(gameObject,position,rotation);
+            gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+        });
+        gameObject.transform.position = new Vector3(166.51f, 1.454f, 170.1f);
         BindRole bindRole = gameObject.AddComponent<BindRole>();
         bindRole.SetModelID(modelID);//设置模型ID
         return gameObject;

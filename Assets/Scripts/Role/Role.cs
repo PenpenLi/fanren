@@ -353,6 +353,9 @@ public class Role
         return 0f;
     }
 
+    /// <summary>
+    /// 角色模型实体
+    /// </summary>
     public RoleGameObject roleGameObject
     {
         get
