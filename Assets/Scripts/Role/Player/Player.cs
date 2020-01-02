@@ -6,15 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class Player : Role
 {
-    private const string strBaseRoleCfg = "BasePlayerProperty";
-
     private const string strBaseAdeptCfg = "AdeptConfig";
 
     private const string strBaseMixtureCfg = "MixtureConfig";
 
-    public Character m_cCharacter;
+    /// <summary>
+    /// 当前角色有限状态机管理器
+    /// </summary>
+    public RoleFSMMgr CurrRoleFSMMgr = null;
 
-    public ModAttribute m_cModAttribute;
+    public Character m_cCharacter;
 
     public PlayerPropertyInfo m_cfgBaseInfo = new PlayerPropertyInfo();
 
@@ -93,6 +94,7 @@ public class Player : Role
     public Player()
     {
         this._roleType = ROLE_TYPE.RT_PLAYER;
+        CurrRoleFSMMgr = new RoleFSMMgr();
     }
 
     public ModPlayerControl ModPlayerControl { get; private set; }
@@ -251,6 +253,7 @@ public class Player : Role
     public override void RoleProcess()
     {
         base.RoleProcess();
+        CurrRoleFSMMgr.OnUpdate();
         this.CheckDead();
         //FanrenSceneManager.RoleMan.CheckRoleInView(this);
         //if (Application.isEditor && UnityEngine.Input.GetKeyDown(KeyCode.Alpha9))
@@ -342,19 +345,6 @@ public class Player : Role
         int id = this.playerId;//玩家ID 1
         base.ID = id;
         Player.currentPlayerId = id;
-        //this.playerInfo = GameData.Instance.userData.getPlayerInfo(this.playerId);//主角信息 模型位置 头像
-        //if (this.playerInfo == null)
-        //{
-        //    Debug.LogWarning("not find playerInfo by id: " + this.playerId);
-        //    return;
-        //}
-        //this.roleinfo = GameData.Instance.RoleBaseCfg[this.playerId];//角色基本信息 应该是装备或模型
-        //if (this.playerInfo == null)
-        //{
-        //    Debug.LogWarning("not find RoleBaseInfo by id: " + this.playerId);
-        //    return;
-        //}
-        //PlayerInfo.PLAYER_POSITION.y = PlayerInfo.PLAYER_POSITION.y + 1f;//玩家位置 为了防止角色坠落
         base.roleGameObject.Init(this);
         base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
         base.roleGameObject.RoleBind.SetRole(this);
@@ -389,14 +379,11 @@ public class Player : Role
         //this.AddMod(MODULE_TYPE.MT_MOTION);
         this.AddMod(MODULE_TYPE.MT_CAMERA);
         //this.AddMod(MODULE_TYPE.MT_ORGANIZATION);
-        //this.AddMod(MODULE_TYPE.MT_ATTRIBUTE);
         //this.AddMod(MODULE_TYPE.MT_COLLIDER);
         //this.AddMod(MODULE_TYPE.MT_MISSION);
-        //this.AddMod(MODULE_TYPE.MT_CONTROL_MFS);
         //this.AddMod(MODULE_TYPE.MT_PLAYERCONTROL);
         //this.AddMod(MODULE_TYPE.MT_PLAYERMUTUAL);
         //this.AddMod(MODULE_TYPE.MT_VOICE);
-        //this.ReadPlayerPropertyInfoConfig();
         base.InitRole();
         //this.Init();
         //this.m_cAdeptSystem.LoadAdeptConfig(this.m_cModAttribute, "AdeptConfig");//精通系统
@@ -420,20 +407,12 @@ public class Player : Role
             case MODULE_TYPE.MT_ORGANIZATION:
                 module = new ModOrganization(this);
                 break;
-            case MODULE_TYPE.MT_ATTRIBUTE:
-                module = new ModAttribute(this);
-                this.m_cModAttribute = (ModAttribute)module;
-                break;
             case MODULE_TYPE.MT_MISSION:
                 module = new ModMission(this);
                 this.m_cModMission = (module as ModMission);
                 break;
             case MODULE_TYPE.MT_COLLIDER:
                 module = new ModColliderProperty(this);
-                break;
-            case MODULE_TYPE.MT_CONTROL_MFS:
-                module = new ModControlMFS(base.gameObject, this);
-                this.modMFS = (ModControlMFS)module;
                 break;
             case MODULE_TYPE.MT_QTE:
                 //module = new ModQTEProperty(this);
@@ -714,50 +693,18 @@ public class Player : Role
     /// <param name="HorInput"></param>
     public override void Input(float VerInput, float HorInput)
     {
-        //if (base.IsDead())
-        //{
-        //    return;
-        //}
-
-        //Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
-        //Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
-        //Vector3 vector2 = base.GetPos() + vector;//移动目标点
-        //CONTROL_STATE currentStateId = this.modMFS.GetCurrentStateId();//获得当前状态枚举
-        //if (currentStateId != CONTROL_STATE.WALK_FORWARD)//当前状态不等于向前步行
-        //{
-        //    if (currentStateId != CONTROL_STATE.SWIM)//当前状态不等于游泳
-        //    {
-        //        if (currentStateId != CONTROL_STATE.FLY)//当前状态不等于飞
-        //        {
-        //            if (!(vector == Vector3.zero))//移动目标点不等于0点
-        //            {
-        //                this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        //            }
-        //        }
-        //        else if (UnityEngine.Input.GetKey(KeyCode.Space))
-        //        {
-        //            this.modMFS.ChangeState(new ControlEventFly(true, true, vector2, ACTION_INDEX.AN_FLY, 10f, true));
-        //        }
-        //        else
-        //        {
-        //            //当前状态等于飞
-        //            this.modMFS.ChangeState(new ControlEventFly(true, false, vector2, ACTION_INDEX.AN_RUN, 30f, true));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        //当前状态等于游泳
-        //        this.modMFS.ChangeState(new ControlEventSwim(true, base.GetTrans().position.y, vector2, ACTION_INDEX.AN_RUN, 3f, true));//游泳
-        //    }
-        //}
-        //else if (vector == Vector3.zero)
-        //{
-        //    this.modMFS.ChangeState(new ControlEventIdle(false));
-        //}
-        //else
-        //{
-        //    this.modMFS.ChangeState(new ControlEventMoveForward(false, vector2, ACTION_INDEX.AN_RUN, base.RunSpeed, true));
-        //}
+        Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
+        Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
+        Vector3 vector2 = base.GetPos() + vector;//移动目标点
+        RoleState currentRoleState = CurrRoleFSMMgr.CurrRoleState;//获得当前状态枚举
+        if (vector == Vector3.zero)
+        {
+            CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+        }
+        else
+        {
+            CurrRoleFSMMgr.ChangeState(RoleState.Run);
+        }
     }
 
     //	private Role GetEnemyByAngleAndArea(float r, float angle, Vector3 direction)
@@ -805,68 +752,6 @@ public class Player : Role
     //		}
     //		return role2;
     //	}
-
-    /// <summary>
-    /// 读取玩家信息
-    /// </summary>
-    public void ReadPlayerPropertyInfoConfig()
-    {
-        List<string> list = RoleBaseFun.LoadConfInAssets("BasePlayerProperty");
-        if (list == null)
-        {
-            return;
-        }
-        List<ATTRIBUTE_TYPE> list2 = new List<ATTRIBUTE_TYPE>();
-        foreach (string text in list)
-        {
-            string[] array = text.Split(CacheData.separator);
-            if (array != null)
-            {
-                if (array.Length >= 2)
-                {
-                    ATTRIBUTE_TYPE attribute_TYPE = (ATTRIBUTE_TYPE)Convert.ToInt32(array[0]);
-                    if (this.m_cfgBaseInfo.IsHaveKey(attribute_TYPE))
-                    {
-                        this.m_cfgBaseInfo.dyPropertyKey[attribute_TYPE] = (float)Convert.ToDouble(array[1]);
-                        list2.Add(attribute_TYPE);
-                    }
-                }
-            }
-        }
-        this.m_cModAttribute.m_cfgBaseInfo = this.m_cfgBaseInfo;
-        for (int i = 0; i < list2.Count; i++)
-        {
-            this.m_cModAttribute.SetAttributeNum(list2[i], this.m_cfgBaseInfo.dyPropertyKey[list2[i]], true);
-        }
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_CHAPTER, 1f, true);//章
-        this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_BORN, 0f, true);//出生
-    }
-
-    /// <summary>
-    /// 初始化角色基础信息
-    /// </summary>
-    public void InitRoleBaseInfo()
-    {
-        if (this.roleinfo == null)
-        {
-            return;
-        }
-        //GameData.Instance.ItemMan.CreateItem(1910001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        foreach (KeyValuePair<RoleWearEquipPos, ulong> keyValuePair in this.roleinfo.DefultEquip)
-        {
-            if (GameData.Instance.ItemMan.CreateItem(keyValuePair.Value, 1, ItemOwner.ITO_HEROFOLDER))
-            {
-                Dictionary<ulong, CItemBase> dictionary = new Dictionary<ulong, CItemBase>();
-                if (GameData.Instance.ItemMan.TryGetItemsByID(keyValuePair.Value, out dictionary))
-                {
-                    foreach (CItemBase item in dictionary.Values)
-                    {
-                        this.ItemFolder.WearOperate.TakeOn(item);
-                    }
-                }
-            }
-        }
-    }
 
     public static void LoadPlayerRes(Player player)
     {

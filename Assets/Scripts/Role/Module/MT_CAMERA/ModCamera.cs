@@ -7,8 +7,6 @@ using System.Collections;
 /// </summary>
 public class ModCamera : Module
 {
-    public string ClassName = "ModCamera";
-
     private GameObject cameraControlGO;
 
     public GameObject cameraFather;
@@ -112,6 +110,9 @@ public class ModCamera : Module
         LockCamera,
         FollowPositionAutoRotation,
         LockPositionAutoLook,
+        /// <summary>
+        /// 鼠标操作
+        /// </summary>
         MouseOrbit,
         LookTarget,
         Stop,
@@ -176,14 +177,14 @@ public class ModCamera : Module
             this.cameraTransform = Camera.main.transform;
         }
 
-		//if (!this.cameraTransform)
-		//{
-  //          this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
-		//	Debug.Log("Please assign a camera to the modCamera script.");
-		//	this.m_bEnabled = false;
-		//}
+        if (!this.cameraTransform)
+        {
+            //this.cameraTransform = Singleton<ActorManager>.GetInstance().MainCamera.transform;
+            Debug.Log("Please assign a camera to the modCamera script.");
+            //this.m_bEnabled = false;
+        }
 
-		this.cameraTransform.name = "Main Camera";
+        this.cameraTransform.name = "Main Camera";
 	
 		GameObject obj = GameObject.Find("CameFather2");
 		this.cameraFather = new GameObject("CameFather2");

@@ -559,7 +559,7 @@ public class Role
     {
         Vector3 position = this.GetTrans().position;
         Quaternion rotation = this.GetTrans().rotation;
-        GameObject gameObject = RoleGameObject.CreatRoleGameObject(modelID, position, rotation);
+        //GameObject gameObject = RoleGameObject.CreatRoleGameObject(modelID, position, rotation);
         if (gameObject == null)
         {
             return false;

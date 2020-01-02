@@ -489,7 +489,7 @@ public class RoleGameObject
     /// <param name="rotation">旋转</param>
     public void CreatGO(int modelId, Vector3 position, Quaternion rotation)
     {
-        this.SetGO(RoleGameObject.CreatRoleGameObject(modelId, position, rotation));
+        this.SetGO(CreatRoleGameObject(modelId, position, rotation));
     }
 
     //public void DisableBody(bool hide)
@@ -857,7 +857,7 @@ public class RoleGameObject
     /// <param name="position">位置</param>
     /// <param name="rotation">朝向</param>
     /// <returns></returns>
-    public static GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
+    public GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
     {
         GameObject gameObject = null;
         GameEntry.Role.CreateRole("Dali_001/Sz_dali_001_jht/Sz_dali_001_jht", (ResourceEntity resourceEntity) =>

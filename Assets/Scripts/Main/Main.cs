@@ -261,15 +261,15 @@ public class Main : MonoBehaviour
 
     private void OnGUI()
     {     
-        if (this.bIsShowInfo && Player.Instance != null && Player.Instance.m_cModAttribute != null)
-        {
-            GUI.color = Color.red;
-            //string text = "HanLi HP base:" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
-            //text = text + "__add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
-            //text = text + "\n MaxHp base :" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
-            //text = text + "__ add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
-            //GUI.Label(new Rect(100f, 0f, 220f, 100f), text);
-        }
+        //if (this.bIsShowInfo && Player.Instance != null && Player.Instance.m_cModAttribute != null)
+        //{
+        //    GUI.color = Color.red;
+        //    //string text = "HanLi HP base:" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
+        //    //text = text + "__add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_HP).ToString();
+        //    //text = text + "\n MaxHp base :" + Player.Instance.m_cModAttribute.GetAttributeBaseNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
+        //    //text = text + "__ add :" + Player.Instance.m_cModAttribute.GetAttributeAddNum(ATTRIBUTE_TYPE.ATT_MAXHP).ToString();
+        //    //GUI.Label(new Rect(100f, 0f, 220f, 100f), text);
+        //}
         if (this.bIsShowInfo)
         {
             string text2 = "\n";
