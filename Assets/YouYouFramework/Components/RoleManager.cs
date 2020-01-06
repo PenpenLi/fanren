@@ -7,6 +7,31 @@ using YouYou;
 /// </summary>
 public class RoleManager : YouYouBaseComponent, IUpdateComponent
 {
+    #region RoleType 角色类型
+    /// <summary>
+    /// 角色类型
+    /// </summary>
+    public enum RoleType
+    {
+        /// <summary>
+        /// 未设置
+        /// </summary>
+        None = 0,
+        /// <summary>
+        /// 当前玩家
+        /// </summary>
+        MainPlayer = 1,
+        /// <summary>
+        /// 怪
+        /// </summary>
+        Monster = 2,
+        /// <summary>
+        /// 其他玩家
+        /// </summary>
+        OTherRole = 3
+    }
+    #endregion
+
     private int[] id = new int[]
     {
             1,
@@ -45,7 +70,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 
     public GameObject _chestRootGo;
 
-    public Player Player=null;
+    public RoleCtrl Player=null;
 
     [HideInInspector]
     public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
@@ -130,6 +155,8 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     //		Singleton<EZGUIManager>.GetInstance().GetGUI<SkillUIManager>().Show();
     //		Singleton<EZGUIManager>.GetInstance().GetGUI<PlayerGUI>().Show();
     //	}
+
+    
 
     /// <summary>
     /// 创建角色
@@ -431,11 +458,42 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public void CreatePlayer()
     {
-        Player player = new Player();     
-        player.Create();//创建玩家
-        player.GetTrans().parent = this._playerRootGo.transform;//设置根节点
-        this.Player = player;        
-        this.AddRole(player);//添加到角色列表
+        GameObject gameObject = null;
+        GameEntry.Role.CreateRole("zhujiao_cike_animation", (ResourceEntity resourceEntity) =>
+        {
+            gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+        });
+        gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
+        gameObject.transform.position = new Vector3(166.51f, 1.454f, 170.1f);            
+        Player = gameObject.GetComponent<RoleCtrl>();
+        GameEntry.Camera.InitPosition(gameObject);
+        Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
+
+        //this.AddRole(player);//添加到角色列表
+
+        //Player.instance = this;
+        //this.playerId++;
+        //int id = this.playerId;//玩家ID 1
+        //base.ID = id;
+        //Player.currentPlayerId = id;
+        //base.roleGameObject.Init(this);
+        //base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
+        //base.roleGameObject.RoleBind.SetRole(this);
+        //this.CreateModule();//创建模块
+        //this.addPlayerHotKey();//添加热键
+        //this.hatred.selfRole = Player.Instance;
+        //KeyManager.controlRole = this;
+        //this.equipReplace = new EquipReplace(this);//装备
+        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
+        //this.m_cAmbitSystem.Init(this);
+        //this.InitRoleBaseInfo();
+        //this.m_RoleGrowDatas.Init();
+        //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
+        //this.m_cFigureSystem.Init(this);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
+        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
+        //this.modMFS.ChangeState(new ControlEventIdle(false));  
     }
 
     /// <summary>
@@ -449,12 +507,12 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             return;
         }
         //player.BindAutoMisson();
-        Player.LoadPlayerRes(player);
+        //Player.LoadPlayerRes(player);
     }
 
     public Player GetPlayer()
     {
-        return this.Player;
+        return null;
     }
 
     //	private void CreateOperableRootGo()

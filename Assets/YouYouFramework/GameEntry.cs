@@ -166,6 +166,12 @@ namespace YouYou
             get;
             private set;
         }
+
+        public static CameraManager Camera
+        {
+            get;
+            private set;
+        }
         #endregion
 
         #region 基础组件管理
@@ -248,10 +254,11 @@ namespace YouYou
             Setting = GetBaseComponent<SettingComponent>();
             Resource = GetBaseComponent<ResourceComponent>();
             Download = GetBaseComponent<DownloadComponent>();
-            UI = GetBaseComponent<UIComponent>();
+            UI = GetBaseComponent<UIComponent>();          
             Mouse = GetBaseComponent<MouseManager>();
             Role = GetBaseComponent<RoleManager>();
-            Key = GetBaseComponent<KeyManager>();
+            Camera = GetBaseComponent<CameraManager>();
+            Key = GetBaseComponent<KeyManager>();     
         }
         #endregion
 

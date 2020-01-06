@@ -155,14 +155,6 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
         MouseManager.LockCursor(true);
     }
 
-    private void onMouseScrollWheel(Event e)
-    {
-        if (this.KeyForHelp(2, 2, KeyCode.None, "null") && Player.Instance != null)
-        {
-            Player.Instance.m_cModCamera.ScaleCamera(e.delta.y);
-        }
-    }
-
     //private void onMouseClickEvent(Event e)
     //{
     //	if (e.type == EventType.MouseDown)
@@ -453,46 +445,51 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
     }
 
     public void OnUpdate()
-    {
-        if (!KeyManager.hotKeyEnabled)
+    {   
+        if (GameEntry.Role.Player != null)
         {
-            return;
-        }
-
-        if (SceneManager.GetActiveScene().name == "Landing")
-        {
-            return;
-        }
-
-        if (Player.Instance != null)
-        {
-            //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
-            //{
-            //    return;
-            //}
+            //    //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
+            //    //{
+            //    //    return;
+            //    //}
 
             float axisRaw = Input.GetAxisRaw("Vertical");
             float axisRaw2 = Input.GetAxisRaw("Horizontal");
             bool buttonDown = Input.GetButtonDown("Jump");
-            if (KeyManager.controlRole != null)
-            {
-                KeyManager.controlRole.Input(axisRaw, axisRaw2);
-            }
-
-            //if (KeyManager.Shift)
+            //if (KeyManager.controlRole != null)
             //{
+            //    KeyManager.controlRole.Input(axisRaw, axisRaw2);
+            //}
 
-            //    Player.Instance.RunSpeed = 8f;
+            //Vector3 a = this.m_cModCamera.cameraTransform.forward;//摄像机前方
+            //Vector3 vector = VerInput * a + HorInput * this.m_cModCamera.cameraTransform.right;
+            //Vector3 vector2 = base.GetPos() + vector;//移动目标点
+            //Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
+            //TargetPos = vector2;
+            //if (vector == Vector3.zero)
+            //{
+            //    ChangeState(RoleState.Idle);
             //}
             //else
             //{
-            //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-            //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-            //    //{
-            //    //    return;
-            //    //}
-            //    Player.Instance.RunSpeed = 5f;
+            //    ChangeState(RoleState.Run);
             //}
+
+
+            //    //if (KeyManager.Shift)
+            //    //{
+
+            //    //    Player.Instance.RunSpeed = 8f;
+            //    //}
+            //    //else
+            //    //{
+            //    //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
+            //    //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
+            //    //    //{
+            //    //    //    return;
+            //    //    //}
+            //    //    Player.Instance.RunSpeed = 5f;
+            //    //}
         }
     }
 }

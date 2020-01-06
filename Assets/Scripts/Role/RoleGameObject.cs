@@ -489,7 +489,7 @@ public class RoleGameObject
     /// <param name="rotation">旋转</param>
     public void CreatGO(int modelId, Vector3 position, Quaternion rotation)
     {
-        this.SetGO(CreatRoleGameObject(modelId, position, rotation));
+        //this.SetGO(CreatRoleGameObject(modelId, position, rotation));
     }
 
     //public void DisableBody(bool hide)
@@ -850,23 +850,5 @@ public class RoleGameObject
         return gameObject;
     }
 
-    /// <summary>
-    /// 创建角色物体
-    /// </summary>
-    /// <param name="modelID">模型ID</param>
-    /// <param name="position">位置</param>
-    /// <param name="rotation">朝向</param>
-    /// <returns></returns>
-    public GameObject CreatRoleGameObject(int modelID, Vector3 position, Quaternion rotation)
-    {
-        GameObject gameObject = null;
-        GameEntry.Role.CreateRole("zhujiao_cike_animation", (ResourceEntity resourceEntity) =>
-        {
-            gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
-        });
-        gameObject.transform.position = new Vector3(166.51f, 1.454f, 170.1f);
-        BindRole bindRole = gameObject.AddComponent<BindRole>();
-        bindRole.SetModelID(modelID);//设置模型ID
-        return gameObject;
-    }
+
 }

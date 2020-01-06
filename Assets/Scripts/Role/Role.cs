@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NS_RoleBaseFun;
+using Pathfinding;
 using UnityEngine;
 using YouYou;
 
@@ -55,6 +56,8 @@ public enum RoleState
     Attack = 4,
 }
 
+[RequireComponent(typeof(Seeker))]
+[RequireComponent(typeof(FunnelModifier))]
 public class Role
 {
     /// <summary>
@@ -90,6 +93,28 @@ public class Role
     private bool _bRagdoll;
 
     private RoleChildren _roleChildren = new RoleChildren();
+
+    //======================寻路相关============================
+    [HideInInspector]
+    private Seeker m_Seeker;
+
+    public Seeker Seeker
+    {
+        get { return m_Seeker; }
+    }
+
+    /// <summary>
+    /// 路径
+    /// </summary>
+    [HideInInspector]
+    public ABPath AStartPath;
+
+    /// <summary>
+    /// 当前要去的路径点索引
+    /// </summary>
+    [HideInInspector]
+    public int AStartCurrWayPointIndex = 1;
+
 
     /// <summary>
     /// 角色态机

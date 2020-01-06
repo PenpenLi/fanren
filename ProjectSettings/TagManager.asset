@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - UICam
+  - scene_building
+  - scene_stone
+  - scene_tree
+  - scene_sfx
+  - Ground
+  - scene_water
+  - Road
   layers:
   - Default
   - TransparentFX
@@ -16,8 +23,8 @@ TagManager:
   - 
   - zhujue
   - Monster
-  - 
-  - 
+  - Road
+  - Wall
   - 
   - 
   - 

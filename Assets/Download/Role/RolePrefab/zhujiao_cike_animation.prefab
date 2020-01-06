@@ -450,6 +450,9 @@ GameObject:
   - component: {fileID: 256225124642588397}
   - component: {fileID: 256225124633340041}
   - component: {fileID: 2212599659767300477}
+  - component: {fileID: 7298833572101418009}
+  - component: {fileID: 8087140355721930332}
+  - component: {fileID: 7467302165345315592}
   m_Layer: 0
   m_Name: zhujiao_cike_animation
   m_TagString: Untagged
@@ -514,6 +517,72 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7298833572101418009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256225124642822861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  traversableTagsCompatibility:
+    tagsChange: -1
+    tagsSet: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &8087140355721930332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256225124642822861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f586f285b3847808d79083bd19ef1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7467302165345315592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256225124642822861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2d688775467bf4abf4d7665ce18d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HeadBarPos: {fileID: 0}
+  Animator: {fileID: 256225124633340041}
+  TargetPos: {x: 0, y: 0, z: 0}
+  CharacterController: {fileID: 0}
+  Speed: 10
+  BornPoint: {x: 0, y: 0, z: 0}
+  ViewRange: 0
+  PatrolRange: 0
+  CurrRoleType: 0
+  DieAudioName: 
+  LockEnemy: {fileID: 0}
+  IsDied: 0
+  AStartCurrWayPointIndex: 1
+  PrevFightTime: 0
 --- !u!1 &256225124642822863
 GameObject:
   m_ObjectHideFlags: 0
