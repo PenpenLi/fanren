@@ -2,36 +2,32 @@
 using UnityEngine;
 using YouYou;
 
+#region RoleType 角色类型
+/// <summary>
+/// 角色类型
+/// </summary>
+public enum RoleType
+{
+    /// <summary>
+    /// 未设置
+    /// </summary>
+    None = 0,
+    /// <summary>
+    /// 当前玩家
+    /// </summary>
+    MainPlayer = 1,
+    /// <summary>
+    /// 怪
+    /// </summary>
+    Monster = 2,
+}
+#endregion
+
 /// <summary>
 /// 角色管理
 /// </summary>
 public class RoleManager : YouYouBaseComponent, IUpdateComponent
 {
-    #region RoleType 角色类型
-    /// <summary>
-    /// 角色类型
-    /// </summary>
-    public enum RoleType
-    {
-        /// <summary>
-        /// 未设置
-        /// </summary>
-        None = 0,
-        /// <summary>
-        /// 当前玩家
-        /// </summary>
-        MainPlayer = 1,
-        /// <summary>
-        /// 怪
-        /// </summary>
-        Monster = 2,
-        /// <summary>
-        /// 其他玩家
-        /// </summary>
-        OTherRole = 3
-    }
-    #endregion
-
     private int[] id = new int[]
     {
             1,
@@ -49,7 +45,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 角色列表
     /// </summary>
-    public List<Role> RoleObjList = new List<Role>();
+    public List<RoleCtrl> RoleList = new List<RoleCtrl>();
 
     [HideInInspector]
     public List<Role> StageRoleList = new List<Role>();
@@ -64,7 +60,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 
     private GameObject monsterHpRoot;
 
-    private List<Role> ignoreColliderRole = new List<Role>();
+    private List<RoleCtrl> ignoreColliderRole = new List<RoleCtrl>();
 
     public GameObject _npcRootGo;
 
@@ -78,6 +74,9 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     [HideInInspector]
     public List<SpawnManager> SpawnManList = new List<SpawnManager>();
 
+    /// <summary>
+    /// 可操作物体列表
+    /// </summary>
     [HideInInspector]
     public List<OperableItemBase> OperableItemList = new List<OperableItemBase>();
 
@@ -154,9 +153,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     //		FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
     //		Singleton<EZGUIManager>.GetInstance().GetGUI<SkillUIManager>().Show();
     //		Singleton<EZGUIManager>.GetInstance().GetGUI<PlayerGUI>().Show();
-    //	}
-
-    
+    //	}   
 
     /// <summary>
     /// 创建角色
@@ -275,98 +272,98 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     private void UpdatePlayerBySave()
     {
-        Player player = FanrenSceneManager.RoleMan.GetPlayer();
-        if (player != null)
-        {
-            foreach (SaveData.SDPlayerDate sdplayerDate in SDManager.SDSave.SaveDateGame.PlayerList)
-            {
-                Debug.Log("sdplayerDate"+sdplayerDate);
-                Debug.Log("sdplayerDate.ID" + sdplayerDate.ID);
-                //if (sdplayerDate.ID == player.ID)
-                //{
-                //    if (!SDManager.SDSave.BeLoaded)
-                //    {
-                //        SDManager.SDSave.BeLoaded = true;
-                //        Vector3 pos = new Vector3(sdplayerDate.PosRat.PosX, sdplayerDate.PosRat.PosY, sdplayerDate.PosRat.PosZ);
-                //        player.SetPos(pos);
-                //        Vector3 rat = new Vector3(sdplayerDate.PosRat.RatX, sdplayerDate.PosRat.RatY, sdplayerDate.PosRat.RatZ);
-                //        player.SetRat(rat);
-                //    }
-                //    ModCamera modCamera = player.GetModule(MODULE_TYPE.MT_CAMERA) as ModCamera;
-                //    modCamera.InitPosition();
-                //    ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-                //    if (modAttribute != null)
-                //    {
-                //        // modAttribute.SetAttList(sdplayerDate.AttrList);
-                //    }
-                //    GameData.Instance.ItemMan.Clear();
-                //    //for (int i = 0; i < sdplayerDate.itemList.Count; i++)
-                //    //{
-                //    //    ItemSaveData itemSaveData = sdplayerDate.itemList[i];
-                //    //    if (itemSaveData != null)
-                //    //    {
-                //    //        List<CItemBase> list = new List<CItemBase>();
-                //    //        GameData.Instance.ItemMan.CreateItem(itemSaveData.itemType, 1, itemSaveData.itemOwner, itemSaveData.dynamicProperty, ref list);
-                //    //        if (list.Count >= 1)
-                //    //        {
-                //    //            list[0].SetItemFromSaveData(itemSaveData);
-                //    //        }
-                //    //    }
-                //    //}
-                //    //player.ItemFolder.WearOperate.ResetUsedEquip();
-                //    //player.ItemFolder.WearOperate.UpdateUsedEquip(true);        
-                //    ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
-                //    if (modMission != null)
-                //    {
-                //        //  modMission.MisMask = sdplayerDate.Mission.misMask;
-                //        modMission.misLinkList.Clear();
-                //        //for (int j = 0; j < sdplayerDate.Mission.misLinkList.Count; j++)
-                //        //{
-                //        //    modMission.misLinkList.Add(sdplayerDate.Mission.misLinkList[j].Clone());
-                //        //}
-                //        //for (int k = 0; k < sdplayerDate.Mission.accMisList.Count; k++)
-                //        //{
-                //        //    ModMission.AccMisInfo accMisInfo = sdplayerDate.Mission.accMisList[k].Clone2Nor();
-                //        //    MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(accMisInfo.ID);
-                //        //    if (missionInfo != null)
-                //        //    {
-                //        //        accMisInfo.MisInfo = missionInfo;
-                //        //        modMission.accMisList.Add(accMisInfo);
-                //        //    }
-                //        //}
-                //    }
-                //    //player.SystemHandbook.GetSDNote(sdplayerDate.Note);
-                //    //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
-                //    //player.SystemFigure.GetSDFigure(sdplayerDate.Figure);
-                //    //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
-                //    //player.m_cAdeptSystem.PushSDData(sdplayerDate.AdpTlnt, player, sdplayerDate.AdpTlnt._AddCount, sdplayerDate.AdpTlnt._AdeptTalentConfig, sdplayerDate.AdpTlnt._lastAdeptData);
-                //    //player.m_cMixtureSmelt.PushSDData(sdplayerDate.MxtSmlt._MixtureDataLst, sdplayerDate.MxtSmlt._MixtureFinalDataLst, sdplayerDate.MxtSmlt._MianLock);
-                //    //player.m_BottleSystem.PushSDData(sdplayerDate.BottleData);
-                //    //player._helpBase.PushData(sdplayerDate.HelpSave);
-                //    //player.m_RoleGrowDatas.PushData(sdplayerDate.RoleGrowDatas);
-                //    //GameData.Instance.ShopMan.ShopDataPush(sdplayerDate.ShopData);
-                //}
-            }
-            if (SDManager.SDSave.SaveDateGame.PlayerList.Count == 0)
-            {
-                GameData.Instance.ItemMan.Clear();
-            }
-           // Singleton<HpCautionEffect>.GetInstance().Check();
-        }
+       // Player player = FanrenSceneManager.RoleMan.GetPlayer();
+        //if (player != null)
+        //{
+        //    foreach (SaveData.SDPlayerDate sdplayerDate in SDManager.SDSave.SaveDateGame.PlayerList)
+        //    {
+        //        Debug.Log("sdplayerDate"+sdplayerDate);
+        //        Debug.Log("sdplayerDate.ID" + sdplayerDate.ID);
+        //        //if (sdplayerDate.ID == player.ID)
+        //        //{
+        //        //    if (!SDManager.SDSave.BeLoaded)
+        //        //    {
+        //        //        SDManager.SDSave.BeLoaded = true;
+        //        //        Vector3 pos = new Vector3(sdplayerDate.PosRat.PosX, sdplayerDate.PosRat.PosY, sdplayerDate.PosRat.PosZ);
+        //        //        player.SetPos(pos);
+        //        //        Vector3 rat = new Vector3(sdplayerDate.PosRat.RatX, sdplayerDate.PosRat.RatY, sdplayerDate.PosRat.RatZ);
+        //        //        player.SetRat(rat);
+        //        //    }
+        //        //    ModCamera modCamera = player.GetModule(MODULE_TYPE.MT_CAMERA) as ModCamera;
+        //        //    modCamera.InitPosition();
+        //        //    ModAttribute modAttribute = player.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
+        //        //    if (modAttribute != null)
+        //        //    {
+        //        //        // modAttribute.SetAttList(sdplayerDate.AttrList);
+        //        //    }
+        //        //    GameData.Instance.ItemMan.Clear();
+        //        //    //for (int i = 0; i < sdplayerDate.itemList.Count; i++)
+        //        //    //{
+        //        //    //    ItemSaveData itemSaveData = sdplayerDate.itemList[i];
+        //        //    //    if (itemSaveData != null)
+        //        //    //    {
+        //        //    //        List<CItemBase> list = new List<CItemBase>();
+        //        //    //        GameData.Instance.ItemMan.CreateItem(itemSaveData.itemType, 1, itemSaveData.itemOwner, itemSaveData.dynamicProperty, ref list);
+        //        //    //        if (list.Count >= 1)
+        //        //    //        {
+        //        //    //            list[0].SetItemFromSaveData(itemSaveData);
+        //        //    //        }
+        //        //    //    }
+        //        //    //}
+        //        //    //player.ItemFolder.WearOperate.ResetUsedEquip();
+        //        //    //player.ItemFolder.WearOperate.UpdateUsedEquip(true);        
+        //        //    ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
+        //        //    if (modMission != null)
+        //        //    {
+        //        //        //  modMission.MisMask = sdplayerDate.Mission.misMask;
+        //        //        modMission.misLinkList.Clear();
+        //        //        //for (int j = 0; j < sdplayerDate.Mission.misLinkList.Count; j++)
+        //        //        //{
+        //        //        //    modMission.misLinkList.Add(sdplayerDate.Mission.misLinkList[j].Clone());
+        //        //        //}
+        //        //        //for (int k = 0; k < sdplayerDate.Mission.accMisList.Count; k++)
+        //        //        //{
+        //        //        //    ModMission.AccMisInfo accMisInfo = sdplayerDate.Mission.accMisList[k].Clone2Nor();
+        //        //        //    MissionInfo missionInfo = GameData.Instance.RoleData.GetMissionInfo(accMisInfo.ID);
+        //        //        //    if (missionInfo != null)
+        //        //        //    {
+        //        //        //        accMisInfo.MisInfo = missionInfo;
+        //        //        //        modMission.accMisList.Add(accMisInfo);
+        //        //        //    }
+        //        //        //}
+        //        //    }
+        //        //    //player.SystemHandbook.GetSDNote(sdplayerDate.Note);
+        //        //    //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
+        //        //    //player.SystemFigure.GetSDFigure(sdplayerDate.Figure);
+        //        //    //player.SystemAmbit.GetSaveData(sdplayerDate.Ambit);
+        //        //    //player.m_cAdeptSystem.PushSDData(sdplayerDate.AdpTlnt, player, sdplayerDate.AdpTlnt._AddCount, sdplayerDate.AdpTlnt._AdeptTalentConfig, sdplayerDate.AdpTlnt._lastAdeptData);
+        //        //    //player.m_cMixtureSmelt.PushSDData(sdplayerDate.MxtSmlt._MixtureDataLst, sdplayerDate.MxtSmlt._MixtureFinalDataLst, sdplayerDate.MxtSmlt._MianLock);
+        //        //    //player.m_BottleSystem.PushSDData(sdplayerDate.BottleData);
+        //        //    //player._helpBase.PushData(sdplayerDate.HelpSave);
+        //        //    //player.m_RoleGrowDatas.PushData(sdplayerDate.RoleGrowDatas);
+        //        //    //GameData.Instance.ShopMan.ShopDataPush(sdplayerDate.ShopData);
+        //        //}
+        //    }
+        //    if (SDManager.SDSave.SaveDateGame.PlayerList.Count == 0)
+        //    {
+        //        GameData.Instance.ItemMan.Clear();
+        //    }
+        //   // Singleton<HpCautionEffect>.GetInstance().Check();
+        //}
     }
 
     public Role GetRoleByType(ROLE_TYPE roleType, int type)
     {
-        for (int i = 0; i < this.RoleObjList.Count; i++)
+        for (int i = 0; i < this.RoleList.Count; i++)
         {
-            Role role = this.RoleObjList[i];
-            if (role != null)
-            {
-                if (role._roleType == roleType && role.GetDetailType() == type)
-                {
-                    return role;
-                }
-            }
+            //Role role = this.RoleList[i];
+            //if (role != null)
+            //{
+            //    if (role._roleType == roleType && role.GetDetailType() == type)
+            //    {
+            //        return role;
+            //    }
+            //}
         }
         Debug.LogWarning("not find role id:" + type);
         return null;
@@ -469,7 +466,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         GameEntry.Camera.InitPosition(gameObject);
         Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
 
-        //this.AddRole(player);//添加到角色列表
+        this.AddRole(Player);//添加到角色列表
 
         //Player.instance = this;
         //this.playerId++;
@@ -479,7 +476,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         //base.roleGameObject.Init(this);
         //base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
         //base.roleGameObject.RoleBind.SetRole(this);
-        //this.CreateModule();//创建模块
         //this.addPlayerHotKey();//添加热键
         //this.hatred.selfRole = Player.Instance;
         //KeyManager.controlRole = this;
@@ -501,18 +497,13 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public void InitPlayer()
     {
-        Player player = this.GetPlayer();
-        if (player == null)
-        {
-            return;
-        }
+        //Player player = this.GetPlayer();
+        //if (player == null)
+        //{
+        //    return;
+        //}
         //player.BindAutoMisson();
         //Player.LoadPlayerRes(player);
-    }
-
-    public Player GetPlayer()
-    {
-        return null;
     }
 
     //	private void CreateOperableRootGo()
@@ -728,17 +719,17 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     /// <param name="spawnInfo"></param>
     /// <returns></returns>
-    public Role CreateMonsterGO(GameObjSpawn.SpawnInfo spawnInfo)
-    {
-        MonsterInfo monsterInfoByID = GameData.Instance.RoleData.GetMonsterInfoByID(spawnInfo.ObjectType);
-        if (monsterInfoByID == null)
-        {
-            return null;
-        }
-        Monster monster = Monster.Create(this._monsterRootGo, spawnInfo, monsterInfoByID);
-        this.AddRole(monster);
-        return monster;
-    }
+    //public Role CreateMonsterGO(GameObjSpawn.SpawnInfo spawnInfo)
+    //{
+    //    //MonsterInfo monsterInfoByID = GameData.Instance.RoleData.GetMonsterInfoByID(spawnInfo.ObjectType);
+    //    //if (monsterInfoByID == null)
+    //    //{
+    //    //    return null;
+    //    //}
+    //    //Monster monster = Monster.Create(this._monsterRootGo, spawnInfo, monsterInfoByID);
+    //    //this.AddRole(monster);
+    //    //return monster;
+    //}
 
     //	// Token: 0x0600246C RID: 9324 RVA: 0x000F7A58 File Offset: 0x000F5C58
     //	private Role CreateNpcGo(GameObjSpawn.SpawnInfo spawnInfo)
@@ -760,12 +751,12 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <returns></returns>
     public bool HaveObjectOnPos(Vector3 pos)
     {
-        for (int i = 0; i < this.RoleObjList.Count; i++)
+        for (int i = 0; i < this.RoleList.Count; i++)
         {
-            if (this.RoleObjList[i] != null && (pos - this.RoleObjList[i].GetPos()).sqrMagnitude < 1f)
-            {
-                return true;
-            }
+            //if (this.RoleList[i] != null && (pos - this.RoleList[i].GetPos()).sqrMagnitude < 1f)
+            //{
+            //    return true;
+            //}
         }
         return false;
     }
@@ -829,7 +820,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         }
         if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
         {
-            role = this.CreateMonsterGO(spawnInfo);
+            //role = this.CreateMonsterGO(spawnInfo);
         }
         if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
         {
@@ -854,22 +845,22 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public void ClearRole()
     {
-        this.RoleObjList.Clear();
+        this.RoleList.Clear();
         this.ignoreColliderRole.Clear();
     }
 
-    public void AddRole(Role role)
+    public void AddRole(RoleCtrl role)
     {
-        this.RoleObjList.Add(role);
-        foreach (Role role2 in this.ignoreColliderRole)
+        this.RoleList.Add(role);
+        foreach (RoleCtrl role2 in this.ignoreColliderRole)
         {
             if (role2 != null)
             {
-                if (role.roleGameObject.RoleController.enabled)
+                if (role.CharacterController.enabled)
                 {
-                    if (role2.roleGameObject.RoleController.enabled)
+                    if (role2.CharacterController.enabled)
                     {
-                        Physics.IgnoreCollision(role.roleGameObject.RoleController, role2.roleGameObject.RoleController, true);
+                        Physics.IgnoreCollision(role.CharacterController, role2.CharacterController, true);
                     }
                 }
             }
@@ -890,33 +881,28 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     //			}
     //		}
     //		this.ClearRole();
-    //	}
+    //	}   
 
-    public List<Role> GetRoleList()
-    {
-        return this.RoleObjList;
-    }
+    //public Role GetRole(int roleId)
+    //{
+    //    foreach (Role role in this.RoleList)
+    //    {
+    //        if (role.ID == roleId)
+    //        {
+    //            return role;
+    //        }
+    //    }
+    //    return null;
+    //}
 
-    public Role GetRole(int roleId)
-    {
-        foreach (Role role in this.RoleObjList)
-        {
-            if (role.ID == roleId)
-            {
-                return role;
-            }
-        }
-        return null;
-    }
-
-    public bool DelRole(Role role)
+    public bool DelRole(RoleCtrl role)
     {
         if (role == null)
         {
             return false;
         }
-        role.DestroyRole();
-        this.RoleObjList.Remove(role);
+        //role.DestroyRole();
+        //this.RoleList.Remove(role);
         if (this.ignoreColliderRole.Contains(role))
         {
             this.ignoreColliderRole.Remove(role);
@@ -1068,9 +1054,9 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         //    return;
         //}
         //float attributeValue = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_VIEW_RANGE);
-        for (int i = 0; i < this.RoleObjList.Count; i++)
+        for (int i = 0; i < this.RoleList.Count; i++)
         {
-            Role role2 = this.RoleObjList[i];
+           // Role role2 = this.RoleList[i];
             //if (role2 != null && role2.ID != role.ID && !role2.IsDead())
             //{
             //    float num = Vector3.Distance(role.GetPos(), role2.GetPos());
@@ -1590,21 +1576,21 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 
     public void OnUpdate()
     {
-        List<Role> list = new List<Role>();//等待移除列表
-        for (int i = 0; i < this.RoleObjList.Count; i++)
+        List<RoleCtrl> list = new List<RoleCtrl>();//等待移除列表
+        for (int i = 0; i < this.RoleList.Count; i++)
         {
-            if (this.RoleObjList[i] != null)
+            if (this.RoleList[i] != null)
             {
-                this.RoleObjList[i].RoleProcess();
+                this.RoleList[i].OnUpdate();
             }
             else
             {
-                list.Add(this.RoleObjList[i]);
+                list.Add(this.RoleList[i]);
             }
         }
-        foreach (Role item in list)
+        foreach (RoleCtrl item in list)
         {
-            this.RoleObjList.Remove(item);
+            this.RoleList.Remove(item);
         }
     }
 

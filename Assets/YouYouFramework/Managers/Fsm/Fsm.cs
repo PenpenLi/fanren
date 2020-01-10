@@ -14,7 +14,7 @@ namespace YouYou
         /// <summary>
         /// 当前状态
         /// </summary>
-        private T m_owner;
+        public T m_Owner;
 
         /// <summary>
         /// 当前状态
@@ -39,7 +39,7 @@ namespace YouYou
         /// <param name="states">状态数组</param>
         public Fsm(int fsmId, T owner, FsmState<T>[] states) : base(fsmId)
         {
-            m_owner = owner;
+            m_Owner = owner;
             m_StateDic = new Dictionary<byte, FsmState<T>>();
             m_ParamDic = new Dictionary<string, VariableBase>();
 
@@ -56,16 +56,6 @@ namespace YouYou
             CurrStateType = 0;
             m_CurrState = m_StateDic[CurrStateType];
             m_CurrState.OnEnter(); //第一个状态 要在这里 调用第一次 Enter
-        }
-
-        /// <summary>
-        /// 获取状态
-        /// </summary>
-        /// <param name="stateType"></param>
-        /// <returns></returns>
-        public T GetOwner()
-        {           
-            return m_owner;
         }
 
         /// <summary>

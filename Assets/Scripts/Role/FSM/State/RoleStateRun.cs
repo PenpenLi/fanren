@@ -31,34 +31,86 @@ public class RoleStateRun : RoleStateBase
     public override void OnEnter()
     {
         base.OnEnter();
-        Debug.Log("进入Run状态");
-        CurrFsm.GetOwner().roleGameObject.RoleAnimator.SetBool(ToAnimatorCondition.ToRun.ToString(), true);
+        m_RotationSpeed = 0;
 
-       
+        CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetBool(ToAnimatorCondition.ToRun.ToString(), true);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
-        CurrRoleAnimatorStateInfo = CurrFsm.GetOwner().roleGameObject.RoleAnimator.GetCurrentAnimatorStateInfo(0);
-
+        CurrRoleAnimatorStateInfo = CurrFsm.m_Owner.CurrRoleCtrl.Animator.GetCurrentAnimatorStateInfo(0);
         if (CurrRoleAnimatorStateInfo.IsName(RoleAnimatorState.Run.ToString()))
         {
-            CurrFsm.GetOwner().roleGameObject.RoleAnimator.SetInteger(ToAnimatorCondition.CurrState.ToString(), (int)RoleAnimatorState.Run);
+            CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetInteger(ToAnimatorCondition.CurrState.ToString(), (int)RoleAnimatorState.Run);
         }
         else
         {
-            CurrFsm.GetOwner().roleGameObject.RoleAnimator.SetInteger(ToAnimatorCondition.CurrState.ToString(), 0);
+            CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetInteger(ToAnimatorCondition.CurrState.ToString(), 0);
         }
 
-        CurrFsm.GetOwner().GetTrans().LookAt(CurrFsm.GetOwner().TargetPos);
+        //如果没有路 切换待机
+        if (CurrFsm.m_Owner.CurrRoleCtrl.AStartPath == null)
+        {
+            CurrFsm.m_Owner.ChangeState(RoleState.Idle);
+            return;
+        }
 
+        //如果整个路径走完了 切换待机
+        if (CurrFsm.m_Owner.CurrRoleCtrl.AStartCurrWayPointIndex >= CurrFsm.m_Owner.CurrRoleCtrl.AStartPath.vectorPath.Count)
+        {
+            CurrFsm.m_Owner.ChangeState(RoleState.Idle);
+            return;
+        }
+
+        //方向
+        Vector3 direction = Vector3.zero;
+
+        //临时目标路径点
+        Vector3 temp = new Vector3(CurrFsm.m_Owner.CurrRoleCtrl.AStartPath.vectorPath[CurrFsm.m_Owner.CurrRoleCtrl.AStartCurrWayPointIndex].x,
+            CurrFsm.m_Owner.CurrRoleCtrl.gameObject.transform.position.y,
+            CurrFsm.m_Owner.CurrRoleCtrl.AStartPath.vectorPath[CurrFsm.m_Owner.CurrRoleCtrl.AStartCurrWayPointIndex].z
+            );
+
+        //计算方向
+        direction = temp - CurrFsm.m_Owner.CurrRoleCtrl.gameObject.transform.position;
+
+        direction = direction.normalized; //归一化
+
+        m_MoveSpeed = CurrFsm.m_Owner.CurrRoleCtrl.Speed > 0 ? CurrFsm.m_Owner.CurrRoleCtrl.Speed : CurrFsm.m_Owner.CurrRoleCtrl.Speed;
+
+        direction = direction * Time.deltaTime * m_MoveSpeed;
+        direction.y = 0;
+
+        //让角色缓慢转身
+        if (m_RotationSpeed <= 1)
+        {
+            m_RotationSpeed += 10f * Time.deltaTime;
+            m_TargetQuaternion = Quaternion.LookRotation(direction);
+            CurrFsm.m_Owner.CurrRoleCtrl.transform.rotation = Quaternion.Lerp(CurrFsm.m_Owner.CurrRoleCtrl.transform.rotation, m_TargetQuaternion, m_RotationSpeed);
+
+            if (Quaternion.Angle(CurrFsm.m_Owner.CurrRoleCtrl.transform.rotation, m_TargetQuaternion) < 1)
+            {
+                m_RotationSpeed = 0;
+            }
+        }
+
+        //判断是否应该向下一个点移动
+        float dis = Vector3.Distance(CurrFsm.m_Owner.CurrRoleCtrl.transform.position, temp);
+
+        //当到达临时目标点了
+        if (dis <= direction.magnitude + 0.1f)
+        {
+            CurrFsm.m_Owner.CurrRoleCtrl.AStartCurrWayPointIndex++;
+        }
+
+        CurrFsm.m_Owner.CurrRoleCtrl.CharacterController.Move(direction);
     }
 
     public override void OnLeave()
     {
         base.OnLeave();
-        CurrFsm.GetOwner().roleGameObject.RoleAnimator.SetBool(ToAnimatorCondition.ToRun.ToString(), false);
+        CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetBool(ToAnimatorCondition.ToRun.ToString(), false);
     }
 
     public override void OnDestroy()

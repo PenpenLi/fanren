@@ -343,7 +343,7 @@ public class Player : Role
         this.CreateModule();//创建模块
         this.addPlayerHotKey();//添加热键
         this.hatred.selfRole = Player.Instance;
-        KeyManager.controlRole = this;
+        //KeyManager.controlRole = this;
         //this.equipReplace = new EquipReplace(this);//装备
         //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
         //this.m_cAmbitSystem.Init(this);
@@ -476,7 +476,7 @@ public class Player : Role
         //KeyManager.addNormalKey(KeyCode.Q, new Callback(this.ChangeWeapon));//改成切换角色
         //KeyManager.addNormalKey(KeyCode.BackQuote, new Callback(this.EnterFly));    
         //KeyManager.addNormalKey(KeyCode.F4, new Callback(Main.Quit));
-        KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
+        //KeyManager.addNormalKey(KeyCode.F, new Callback(this.Operable));
     }
 
     //	// Token: 0x060022CC RID: 8908 RVA: 0x000ED534 File Offset: 0x000EB734
@@ -685,14 +685,14 @@ public class Player : Role
         Vector3 vector2 = base.GetPos() + vector;//移动目标点
         Debug.DrawLine(base.GetPos() + Vector3.up, vector2, Color.white);
         TargetPos = vector2;
-        if (vector == Vector3.zero)
-        {
-            ChangeState(RoleState.Idle);
-        }
-        else
-        {
-            ChangeState(RoleState.Run);
-        }
+        //if (vector == Vector3.zero)
+        //{
+        //    ChangeState(RoleState.Idle);
+        //}
+        //else
+        //{
+        //    ChangeState(RoleState.Run);
+        //}
     }
 
     //	private Role GetEnemyByAngleAndArea(float r, float angle, Vector3 direction)

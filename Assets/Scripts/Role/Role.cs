@@ -44,18 +44,6 @@ public enum ToAnimatorCondition
     CurrState
 }
 
-/// <summary>
-/// 流程状态
-/// </summary>
-public enum RoleState
-{
-    Idle = 0,
-    Run = 1,
-    Hurt = 2,
-    Die = 3,
-    Attack = 4,
-}
-
 [RequireComponent(typeof(Seeker))]
 [RequireComponent(typeof(FunnelModifier))]
 public class Role
@@ -132,16 +120,7 @@ public class Role
         }
     }
 
-    /// <summary>
-    /// 当前的角色状态
-    /// </summary>
-    public RoleState CurrRoleState
-    {
-        get
-        {
-            return (RoleState)m_CurrFsm.CurrStateType;
-        }
-    }
+
 
     /// <summary>
     /// 当前的角色
@@ -520,14 +499,14 @@ public class Role
 
     public void InitRole()
     {
-        FsmState<Role>[] states = new FsmState<Role>[5];
-        states[0] = new RoleStateIdle();
-        states[1] = new RoleStateRun();
-        states[2] = new RoleStateHurt();
-        states[3] = new RoleStateDie();
-        states[4] = new RoleStateAttack();
+        //FsmState<Role>[] states = new FsmState<Role>[5];
+        //states[0] = new RoleStateIdle();
+        //states[1] = new RoleStateRun();
+        //states[2] = new RoleStateHurt();
+        //states[3] = new RoleStateDie();
+        //states[4] = new RoleStateAttack();
 
-        m_CurrFsm = GameEntry.Fsm.Create(this, states);
+        //m_CurrFsm = GameEntry.Fsm.Create(this, states);
 
         this.EventHandlerManager = new RoleEventHandler(this);
         for (int i = 0; i < this._modList.Count; i++)
@@ -536,14 +515,14 @@ public class Role
         }
     }
 
-    /// <summary>
-    /// 切换状态
-    /// </summary>
-    /// <param name="state"></param>
-    public void ChangeState(RoleState state)
-    {
-        m_CurrFsm.ChangeState((byte)state);
-    }
+    ///// <summary>
+    ///// 切换状态
+    ///// </summary>
+    ///// <param name="state"></param>
+    //public void ChangeState(RoleState state)
+    //{
+    //    m_CurrFsm.ChangeState((byte)state);
+    //}
 
     /// <summary>
     /// 添加模块到列表

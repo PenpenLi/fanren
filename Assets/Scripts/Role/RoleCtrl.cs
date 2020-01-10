@@ -67,7 +67,7 @@ public class RoleCtrl : MonoBehaviour
     /// <summary>
     /// 当前角色类型
     /// </summary>
-    public RoleManager.RoleType CurrRoleType = RoleManager.RoleType.None;
+    public RoleType CurrRoleType = RoleType.None;
 
     /// <summary>
     /// 死亡声音名称
@@ -123,10 +123,12 @@ public class RoleCtrl : MonoBehaviour
     ///// </summary>
     //public OnValueChangeHandler OnMPChange;
 
-    ///// <summary>
-    ///// 当前角色有限状态机管理器
-    ///// </summary>
-    //public RoleFSMMgr CurrRoleFSMMgr = null;
+    public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
+
+    /// <summary>
+    /// 当前角色有限状态机管理器
+    /// </summary>
+    public RoleFSMMgr CurrRoleFSMMgr = null;
 
     private RoleHeadBarView roleHeadBarView = null;
 
@@ -177,7 +179,7 @@ public class RoleCtrl : MonoBehaviour
     /// <param name="roleType">角色类型</param>
     /// <param name="roleInfo">角色信息</param>
     /// <param name="ai">AI</param>
-    public void Init(RoleManager.RoleType roleType, RoleInfoBase roleInfo, IRoleAI ai)
+    public void Init(RoleType roleType, RoleInfoBase roleInfo, IRoleAI ai)
     {
         CurrRoleType = roleType;
         //CurrRoleInfo = roleInfo;
@@ -200,47 +202,85 @@ public class RoleCtrl : MonoBehaviour
         //寻路 计算路径的类
         m_Seeker = GetComponent<Seeker>();
 
-        if (CurrRoleType == RoleManager.RoleType.MainPlayer)
-        {
-           
-        }
-
-        //CurrRoleFSMMgr = new RoleFSMMgr(this, OnDieCallBack, OnDestroyCallBack);
+        CurrRoleFSMMgr = new RoleFSMMgr(this, OnDieCallBack, OnDestroyCallBack);
         //m_Hurt = new RoleHurt(CurrRoleFSMMgr);
         //m_Hurt.OnRoleHurt = OnRoleHurtCallBack;
         //Attack.SetFSM(CurrRoleFSMMgr);
+
+        if(CurrRoleType== RoleType.MainPlayer)
+        {
+            AddPlayerHotKey();
+        }
     }
 
-    //    private void OnDestroyCallBack()
-    //    {
-    //        if (OnRoleDestroy != null) OnRoleDestroy(transform);
+    private void AddPlayerHotKey()
+    {
+        GameEntry.Event.CommonEvent.AddEventListener(KeyCodeEventId.F, Operable);
+    }
 
-    //        if (SceneMgr.Instance.CurrPlayType == PlayType.PVE && CurrRoleType != RoleType.MainPlayer)
-    //        {
-    //            if (roleHeadBarView != null)
-    //            {
-    //                Destroy(roleHeadBarView.gameObject);
-    //            }
-    //        }
-    //    }
+    private void Operable(object userData)
+    {
+        Debug.Log("按下F键");
+        float num = float.MaxValue;
+        List<OperableItemBase> list = new List<OperableItemBase>();
+        List<OperableItemBase> list2 = new List<OperableItemBase>();
+        foreach (KeyValuePair<int, OperableItemBase> keyValuePair in this.EnableOperableList)
+        {
+            //if (!keyValuePair.Value.useAble)
+            //{
+            //    list.Add(keyValuePair.Value);
+            //}
+            //else
+            //{
+            //    float num2 = Vector3.Distance(base.GetPos(), keyValuePair.Value.GetPos());
+            //    if (num2 <= num && num2 < 2f)
+            //    {
+            //        num = num2;
+            //        OperableItemBase value = keyValuePair.Value;
+            //        list2.Add(value);
+            //    }
+            //}
+        }
+        foreach (OperableItemBase item in list)
+        {
+            //this.RemoveEnableOperable(item);
+        }
+        foreach (OperableItemBase operableItemBase in list2)
+        {
+            operableItemBase.Call();
+        }
+    }
 
-    //    /// <summary>
-    //    /// 角色死亡回调
-    //    /// </summary>
-    //    private void OnDieCallBack()
-    //    {
-    //        //角色死亡时候 禁用了CharacterController
-    //        //角色复活的时候，要重新启用
-    //        if (CharacterController != null)
-    //        {
-    //            CharacterController.enabled = false;
-    //        }
+    private void OnDestroyCallBack()
+    {
+        //if (OnRoleDestroy != null) OnRoleDestroy(transform);
 
-    //        if (OnRoleDie != null && CurrRoleInfo != null)
-    //        {
-    //            OnRoleDie(this);
-    //        }
-    //    }
+        //if (SceneMgr.Instance.CurrPlayType == PlayType.PVE && CurrRoleType != RoleType.MainPlayer)
+        //{
+        //    if (roleHeadBarView != null)
+        //    {
+        //        Destroy(roleHeadBarView.gameObject);
+        //    }
+        //}
+    }
+
+    /// <summary>
+    /// 角色死亡回调
+    /// </summary>
+    private void OnDieCallBack()
+    {
+        ////角色死亡时候 禁用了CharacterController
+        ////角色复活的时候，要重新启用
+        //if (CharacterController != null)
+        //{
+        //    CharacterController.enabled = false;
+        //}
+
+        //if (OnRoleDie != null && CurrRoleInfo != null)
+        //{
+        //    OnRoleDie(this);
+        //}
+    }
 
     //    /// <summary>
     //    /// 角色复活
@@ -303,12 +343,12 @@ public class RoleCtrl : MonoBehaviour
     //        InitHeadBar();
     //    }
 
-    void Update()
+    public void OnUpdate()
     {
-        //if (CurrRoleFSMMgr != null)
-        //{
-        //    CurrRoleFSMMgr.OnUpdate();
-        //}
+        if (CurrRoleFSMMgr != null)
+        {
+            CurrRoleFSMMgr.OnUpdate();
+        }
 
         ////如果角色没有AI 直接返回
         //if (CurrRoleAI == null) return;
@@ -343,7 +383,7 @@ public class RoleCtrl : MonoBehaviour
             CharacterController.Move((transform.position + new Vector3(0, -1000, 0)) - transform.position);
         }
 
-        if (CurrRoleType == RoleManager.RoleType.MainPlayer)
+        if (CurrRoleType == RoleType.MainPlayer)
         {
             //AutoSmallMap();
         }
@@ -393,87 +433,44 @@ public class RoleCtrl : MonoBehaviour
     //        CurrRoleFSMMgr.ChangeState(RoleState.Idle);
     //    }
 
-    //    /// <summary>
-    //    /// 临时测试用
-    //    /// </summary>
-    //    public void ToRun()
-    //    {
-    //        CurrRoleFSMMgr.ChangeState(RoleState.Run);
-    //    }
+    /// <summary>
+    /// 角色移动
+    /// </summary>
+    /// <param name="targetPos"></param>
+    public void MoveTo(Vector3 targetPos)
+    {
+        //if (CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
 
-    //    /// <summary>
-    //    /// 角色移动
-    //    /// </summary>
-    //    /// <param name="targetPos"></param>
-    //    public void MoveTo(Vector3 targetPos)
-    //    {
-    //        if (CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
+        ////如果角色处于僵直状态 则不能移动
+        //if (IsRigidity) return;
 
-    //        //如果角色处于僵直状态 则不能移动
-    //        if (IsRigidity) return;
+        //如果目标点不是原点 进行移动
+        if (targetPos == Vector3.zero) return;
 
-    //        //如果目标点不是原点 进行移动
-    //        if (targetPos == Vector3.zero) return;
+        TargetPos = targetPos;
 
-    //        TargetPos = targetPos;
+        //计算路径
+        m_Seeker.StartPath(transform.position, targetPos, (Path p) =>
+        {
+            if (!p.error)
+            {
+                AStartPath = (ABPath)p;
+                if (Vector3.Distance(AStartPath.endPoint, new Vector3(AStartPath.originalEndPoint.x, AStartPath.endPoint.y, AStartPath.originalEndPoint.z)) > 0.5f)
+                {
+                    AStartPath = null;
+                    return;
+                }
 
-    //        //计算路径
-    //        m_Seeker.StartPath(transform.position, targetPos, (Path p) =>
-    //        {
-    //            if (!p.error)
-    //            {
-    //                AStartPath = (ABPath)p;
-    //                if (Vector3.Distance(AStartPath.endPoint, new Vector3(AStartPath.originalEndPoint.x, AStartPath.endPoint.y, AStartPath.originalEndPoint.z)) > 0.5f)
-    //                {
-    //                    AStartPath = null;
-    //                    return;
-    //                }
-
-    //                if (CurrRoleType == RoleType.MainPlayer)
-    //                {
-    //                    //PVP发送消息给服务器
-    //                    SendPVPMove(targetPos, AStartPath.vectorPath);
-    //                }
-
-    //                AStartCurrWayPointIndex = 1;
-    //                CurrRoleFSMMgr.ChangeState(RoleState.Run);
-    //            }
-    //            else
-    //            {
-    //                AppDebug.Log("寻路出错");
-    //                AStartPath = null;
-    //            }
-    //        });
-
-
-    //    }
-
-    //    private void SendPVPMove(Vector3 targetPos, List<Vector3> path)
-    //    {
-    //        //如果是PVP 则需要发送消息给服务器
-    //        if (SceneMgr.Instance.CurrPlayType == PlayType.PVP)
-    //        {
-    //            float pathLen = GameUtil.GetPathLen(path);
-
-    //            //时间 = 距离 / 速度
-    //            float needTime = pathLen / Speed;
-
-    //            WorldMap_CurrRoleMoveProto proto = new WorldMap_CurrRoleMoveProto();
-
-    //            proto.TargetPosX = targetPos.x;
-    //            proto.TargetPosY = targetPos.y;
-    //            proto.TargetPosZ = targetPos.z;
-    //            proto.ServerTime = GlobalInit.Instance.GetCurrServerTime();
-    //            proto.NeedTime = (int)(needTime * 1000);
-
-    //            //AppDebug.Log("服务器时间=" + proto.ServerTime);
-    //            //AppDebug.Log("角色在PVP场景中 要移动到"+ targetPos);
-    //            //AppDebug.Log("要移动的距离" + pathLen);
-    //            //AppDebug.Log("要移动的时间" + needTime);
-
-    //            NetWorkSocket.Instance.SendMsg(proto.ToArray());
-    //        }
-    //    }
+                AStartCurrWayPointIndex = 1;
+                CurrRoleFSMMgr.ChangeState(RoleState.Run);
+            }
+            else
+            {
+                Debug.Log("寻路出错");
+                AStartPath = null;
+            }
+        });
+    } 
 
     //    /// <summary>
     //    /// 发起攻击

@@ -6,6 +6,11 @@ using YouYou;
 public class CameraManager : YouYouBaseComponent, IUpdateComponent
 {
     /// <summary>
+    /// 主摄像机
+    /// </summary>
+    public Camera MainCamera;
+
+    /// <summary>
     /// 控制摄像机上下 X控制远近
     /// </summary>
     [SerializeField]

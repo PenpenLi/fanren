@@ -104,7 +104,7 @@ public class TaskTrackPlane : GUIBase
 	public void AddInformation()
 	{
 		this.m_bTime = false;
-		Player player = (Player)FanrenSceneManager.RoleMan.GetRole(Player.currentPlayerId);
+		//Player player = (Player)FanrenSceneManager.RoleMan.GetRole(Player.currentPlayerId);
 		//ModAttribute modAttribute = (ModAttribute)player.GetModule(MODULE_TYPE.MT_ATTRIBUTE);
 		//string text = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_CHAPTER).ToString();
 		//if (text == "1")
@@ -132,43 +132,43 @@ public class TaskTrackPlane : GUIBase
 		//	text = "第六章";
 		//}
 		//this.m_tTextTa.Text = text;
-		ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
-		for (int i = 0; i < modMission.accMisList.Count; i++)
-		{
-			ModMission.AccMisInfo accMisInfo = modMission.accMisList[i];
-			if (accMisInfo == null)
-			{
-				Debug.LogError(new object[]
-				{
-					"AddItem failed : AccMisInfo Data Error."
-				});
-			}
-			else if (accMisInfo.MisInfo.Type == MissionType.Main && !accMisInfo.Complete)
-			{
-				char[] array = accMisInfo.MisInfo.AimRequire.ToCharArray();
-				string text2 = string.Empty;
-				string text3 = string.Empty;
-				for (int j = 0; j < accMisInfo.MisInfo.AimRequire.Length; j++)
-				{
-					if (j <= 7)
-					{
-						text2 += array[j];
-					}
-					else if (j == 17 || j == 27 || j == 37 || j == 47 || j == 57 || j == 67 || j == 77)
-					{
-						text3 = text3 + array[j] + "\n";
-					}
-					else
-					{
-						text3 += array[j];
-					}
-				}
-				//this.m_tTextCha.transform.FindChild("TextC1").GetComponent<SpriteText>().Text = "        " + text2;
-				//this.m_tTextCha.transform.FindChild("TextC1").transform.position = new Vector3(this.m_tTextCha.transform.FindChild("TextC1").transform.position.x, this.m_tTextCha.transform.position.y + 0.3f, this.m_tTextCha.transform.FindChild("TextC1").transform.position.z);
-				//this.m_tTextCha.Text = text3;
-				this.m_rImage.material.mainTexture = (Texture)ResourceLoader.Load(accMisInfo.MisInfo.PicPath, typeof(Texture));
-			}
-		}
+		//ModMission modMission = player.GetModule(MODULE_TYPE.MT_MISSION) as ModMission;
+		//for (int i = 0; i < modMission.accMisList.Count; i++)
+		//{
+		//	ModMission.AccMisInfo accMisInfo = modMission.accMisList[i];
+		//	if (accMisInfo == null)
+		//	{
+		//		Debug.LogError(new object[]
+		//		{
+		//			"AddItem failed : AccMisInfo Data Error."
+		//		});
+		//	}
+		//	else if (accMisInfo.MisInfo.Type == MissionType.Main && !accMisInfo.Complete)
+		//	{
+		//		char[] array = accMisInfo.MisInfo.AimRequire.ToCharArray();
+		//		string text2 = string.Empty;
+		//		string text3 = string.Empty;
+		//		for (int j = 0; j < accMisInfo.MisInfo.AimRequire.Length; j++)
+		//		{
+		//			if (j <= 7)
+		//			{
+		//				text2 += array[j];
+		//			}
+		//			else if (j == 17 || j == 27 || j == 37 || j == 47 || j == 57 || j == 67 || j == 77)
+		//			{
+		//				text3 = text3 + array[j] + "\n";
+		//			}
+		//			else
+		//			{
+		//				text3 += array[j];
+		//			}
+		//		}
+		//		//this.m_tTextCha.transform.FindChild("TextC1").GetComponent<SpriteText>().Text = "        " + text2;
+		//		//this.m_tTextCha.transform.FindChild("TextC1").transform.position = new Vector3(this.m_tTextCha.transform.FindChild("TextC1").transform.position.x, this.m_tTextCha.transform.position.y + 0.3f, this.m_tTextCha.transform.FindChild("TextC1").transform.position.z);
+		//		//this.m_tTextCha.Text = text3;
+		//		this.m_rImage.material.mainTexture = (Texture)ResourceLoader.Load(accMisInfo.MisInfo.PicPath, typeof(Texture));
+		//	}
+		//}
 	}
 
 	private void Update()

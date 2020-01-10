@@ -43,20 +43,16 @@ public class OperableItemBase : CullableItem
     //	return true;
     //}
 
-    //Token: 0x0600186B RID: 6251 RVA: 0x000BCC34 File Offset: 0x000BAE34
-
     //public virtual bool CreateBySaveData(OperableSaveDataBase ocsd)
     //{
     //    return true;
     //}
 
-    // Token: 0x0600186C RID: 6252 RVA: 0x000BCC38 File Offset: 0x000BAE38
     public virtual bool ActiveItem()
 	{
 		return true;
 	}
 
-	// Token: 0x0600186D RID: 6253 RVA: 0x000BCC3C File Offset: 0x000BAE3C
 	public virtual void CloseCallBack(List<int> idList)
 	{
 	}
@@ -66,12 +62,10 @@ public class OperableItemBase : CullableItem
 	//	return null;
 	//}
 
-	// Token: 0x0600186F RID: 6255 RVA: 0x000BCC44 File Offset: 0x000BAE44
 	public virtual void Call()
 	{
 	}
 
-	// Token: 0x06001870 RID: 6256 RVA: 0x000BCC48 File Offset: 0x000BAE48
 	public void EnableOperable(bool enable)
 	{
 		if (enable && !this.useAble)

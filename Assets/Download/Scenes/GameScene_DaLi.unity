@@ -16659,6 +16659,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 504986039}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &368542553
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_Name
+      value: npc_sanxianzi_animation
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 166.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07999003
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 182.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400118, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a904843c3e1fad4d8fcb2ee44a80460, type: 3}
 --- !u!4 &370000152
 Transform:
   m_ObjectHideFlags: 0
@@ -67244,7 +67301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1342506609
 Transform:
   m_ObjectHideFlags: 0
@@ -88967,7 +89024,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _MeshColor: {r: 0.125, g: 0.686, b: 0, a: 0.19}
     _AreaColors: []
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 0

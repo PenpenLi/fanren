@@ -48,11 +48,11 @@ public class ModBehaviorAI : Module
 			}
 			else
 			{
-				Player player = (Player)FanrenSceneManager.RoleMan.GetRole(Player.currentPlayerId);
-				if (player != null)
-				{
-					return Vector3.Distance(player.GetPos(), this._role.GetPos());
-				}
+				//Player player = (Player)FanrenSceneManager.RoleMan.GetRole(Player.currentPlayerId);
+				//if (player != null)
+				//{
+				//	return Vector3.Distance(player.GetPos(), this._role.GetPos());
+				//}
 				return 0f;
 			}
 		}
