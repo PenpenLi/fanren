@@ -24,7 +24,7 @@ namespace YouYou
         /// <summary>
         /// 当前场景数据实体
         /// </summary>
-        private Sys_SceneEntity m_CurrSceneEntity;
+        public Sys_SceneEntity m_CurrSceneEntity;
 
         /// <summary>
         /// 当前场景明细

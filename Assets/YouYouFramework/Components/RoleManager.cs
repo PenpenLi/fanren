@@ -195,11 +195,11 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 根据存档更新场景
     /// </summary>
-    private void UpdateSceneBySave()
+    public void UpdateSceneBySave()
     {
-        GameData.Instance.ItemMan.Clear();
-        SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();
-        Debug.Log(curSceneDate);
+        //GameData.Instance.ItemMan.Clear();//清空物品
+        //SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();//获得当前场景数据
+        Debug.Log(GameEntry.Scene.GetSceneName());
         //if (curSceneDate != null)
         //{
         //    foreach (SaveData.SDMonsterDate sdmonsterDate in curSceneDate.MonsterList)
@@ -372,20 +372,10 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 读取刷怪信息
     /// </summary>
-    private void ReadSpawnInfo()
+    public void ReadSpawnInfo()
     {
         this.MobSpawnList.Clear();//清空列表
         GameObject gameObject = GameObject.Find("MobSpawn");
-
-        if (gameObject == null)
-        {
-            gameObject = GameObject.Find("MobSpawn_" + FanrenSceneManager.curScenenInfo.name);
-        }
-
-        if (gameObject == null)
-        {
-            gameObject = GameObject.Find("MobSpawn_M" + FanrenSceneManager.curScenenInfo.name.Substring(1));
-        }
 
         if (gameObject == null)
         {

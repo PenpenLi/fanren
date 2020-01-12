@@ -84,6 +84,9 @@ public class GameData
 		}
 	}
 
+    /// <summary>
+    /// 创建游戏数据
+    /// </summary>
 	public static void CreatGameData()
 	{
 		if (GameData.instance != null)

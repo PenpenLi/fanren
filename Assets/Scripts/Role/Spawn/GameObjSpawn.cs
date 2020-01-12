@@ -145,21 +145,21 @@ public class GameObjSpawn : MonoBehaviour
 
 	private void Start()
 	{
-        if (this.sm == null && this.SpawnManID != -1)
-        {
-            this.sm = FanrenSceneManager.RoleMan.GetSMById(this.SpawnManID);
-        }
-        Debug.Log(sm);
-        if (this.sm != null && this.spawnInfo.bevTreeID == -1)
-        {
-            Debug.Log("执行2");
-            //this.spawnInfo.bevTreeID = this.sm.BevTreeID;
-        }
+        //if (this.sm == null && this.SpawnManID != -1)
+        //{
+        //    this.sm = FanrenSceneManager.RoleMan.GetSMById(this.SpawnManID);
+        //}
+        //Debug.Log(sm);
+        //if (this.sm != null && this.spawnInfo.bevTreeID == -1)
+        //{
+        //    Debug.Log("执行2");
+        //    //this.spawnInfo.bevTreeID = this.sm.BevTreeID;
+        //}
     }
 
 	private void OnDrawGizmos()
 	{
-		Gizmos.DrawIcon(base.transform.position + Vector3.up, "RedFlag32.png");
+		Gizmos.DrawIcon(base.transform.position + Vector3.up, "Joystick.png");
 	}
 
     /// <summary>

@@ -19,6 +19,9 @@ namespace YouYou
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureWorldMap");
             Debug.Log("加载主UI");
+            //GameData.CreatGameData();
+            GameEntry.Role.ReadSpawnInfo();
+            GameEntry.Role.UpdateSceneBySave();
             if (GameEntry.Role.Player == null)
             {
                 GameEntry.Role.CreatePlayer();

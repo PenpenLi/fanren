@@ -33,6 +33,15 @@ namespace YouYou
             m_YouYouSceneManager.LoadScene(sceneId, showLoadingForm, onComplete);
         }
 
+        /// <summary>
+        /// 获得场景名称
+        /// </summary>
+        /// <returns></returns>
+        public string GetSceneName()
+        {         
+            return m_YouYouSceneManager.m_CurrSceneEntity.SceneName;
+        }
+
         public override void Shutdown()
         {
             GameEntry.RemoveUpdateComponent(this);

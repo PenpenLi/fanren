@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CItemManager
 {
-
     public const int ITEM_SORT_START_INDEX = 0;
 
     public const int ITEM_SORT_END_INDEX = 9999;
@@ -42,8 +41,6 @@ public class CItemManager
         }
     }
 
-    //// Token: 0x17000245 RID: 581
-    //// (get) Token: 0x060014BF RID: 5311 RVA: 0x000A684C File Offset: 0x000A4A4C
     //public Dictionary<ItemOwner, Dictionary<ulong, CItemBase>> OWNER_CONTAINER_DATA
     //{
     //	get
@@ -196,9 +193,9 @@ public class CItemManager
 
     public void Clear()
     {
-        //this.ITEM_PACKAGE.Clear();
-        //this.ItemDynamicID.Clear();
-        //this.m_mapFolderContainer.Clear();
+        this.ITEM_PACKAGE.Clear();
+        this.ItemDynamicID.Clear();
+        this.m_mapFolderContainer.Clear();
     }
 
     //// Token: 0x060014C5 RID: 5317 RVA: 0x000A6B34 File Offset: 0x000A4D34
