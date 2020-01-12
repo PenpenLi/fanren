@@ -1,7 +1,7 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2019-07-07 16:18:07
+//创建时间：2020-01-13 00:37:28
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
@@ -23,18 +23,13 @@ public partial class NPCEntity : DataTableEntityBase
     public string PrefabName;
 
     /// <summary>
-    /// 头像
+    /// 描述
     /// </summary>
-    public string HeadPic;
+    public string Desc;
 
     /// <summary>
-    /// 半身像
+    /// 事件 重复次数 名称 类型 条件
     /// </summary>
-    public string HalfBodyPic;
-
-    /// <summary>
-    /// 自言自语
-    /// </summary>
-    public string Talk;
+    public string Event;
 
 }

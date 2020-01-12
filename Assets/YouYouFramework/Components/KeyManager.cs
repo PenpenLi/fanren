@@ -45,9 +45,16 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
     }
 
     public void OnUpdate()
-    {
+    {       
         if (GameEntry.Role.Player != null)
         {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                Transform trans = GameEntry.Role.Player.gameObject.transform;
+                string pos = string.Format("{0}_{1}_{2}_{3}", trans.position.x, trans.position.y, trans.position.z, trans.rotation.eulerAngles.y);
+                Debug.Log("位置信息=" + pos);
+            }
+
             //    //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
             //    //{
             //    //    return;

@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60664208d999dc14a842ca8edffc6160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoleList: []
   _roleRootGO: {fileID: 168994866}
   _playerRootGo: {fileID: 1181234732}
   _monsterRootGo: {fileID: 2115057648}
@@ -1200,6 +1201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423184511}
   - component: {fileID: 1423184512}
+  - component: {fileID: 1423184513}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1264,6 +1266,14 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!81 &1423184513
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423184510}
+  m_Enabled: 1
 --- !u!1 &1426373454
 GameObject:
   m_ObjectHideFlags: 0

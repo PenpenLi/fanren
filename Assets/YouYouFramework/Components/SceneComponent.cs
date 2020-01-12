@@ -42,6 +42,15 @@ namespace YouYou
             return m_YouYouSceneManager.m_CurrSceneEntity.SceneName;
         }
 
+        /// <summary>
+        /// 获得场景名称
+        /// </summary>
+        /// <returns></returns>
+        public Sys_SceneEntity GetSceneEntity()
+        {
+            return m_YouYouSceneManager.m_CurrSceneEntity;
+        }
+
         public override void Shutdown()
         {
             GameEntry.RemoveUpdateComponent(this);

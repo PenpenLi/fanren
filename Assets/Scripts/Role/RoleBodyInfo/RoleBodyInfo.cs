@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddComponentMenu("角色模型信息")]
 public class RoleBodyInfo : MonoBehaviour
 {
 	public CharacterController Controller;

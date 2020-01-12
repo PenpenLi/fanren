@@ -20,6 +20,10 @@ public enum RoleType
     /// 怪
     /// </summary>
     Monster = 2,
+    /// <summary>
+    /// NPC
+    /// </summary>
+    NPC = 3,
 }
 #endregion
 
@@ -122,14 +126,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public void InitRole()
     {
-        ////this.UpdateSceneBySave();//更新场景数据
-        //this.CreateRole();//创建角色
-        //this.UpdatePlayerBySave();//更新角色数据
-        //this.InitPlayer();
-        //this.InitOther();
-        //SingletonMono<StageManager>.GetInstance().Read();
-        //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
-        //Singleton<HpCautionEffect>.GetInstance().AdjustSize();
 
         //if (m_IsMainPlayerInit) return;
 
@@ -181,25 +177,13 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 #endif
     }
 
-    private void CreateObject()
-    {
-        foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)
-        {
-            //if (gameObjSpawn.transform.active && gameObjSpawn.SpawnManID == -1)
-            //{
-            //    gameObjSpawn.Enable();
-            //}
-        }
-    }
-
     /// <summary>
     /// 根据存档更新场景
     /// </summary>
     public void UpdateSceneBySave()
     {
         //GameData.Instance.ItemMan.Clear();//清空物品
-        //SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();//获得当前场景数据
-        Debug.Log(GameEntry.Scene.GetSceneName());
+        SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();//获得当前场景数据
         //if (curSceneDate != null)
         //{
         //    foreach (SaveData.SDMonsterDate sdmonsterDate in curSceneDate.MonsterList)
@@ -369,35 +353,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         return null;
     }
 
-    /// <summary>
-    /// 读取刷怪信息
-    /// </summary>
-    public void ReadSpawnInfo()
-    {
-        this.MobSpawnList.Clear();//清空列表
-        GameObject gameObject = GameObject.Find("MobSpawn");
-
-        if (gameObject == null)
-        {
-            Debug.Log("Can't find MobSpawn");
-        }
-        else
-        {
-            foreach (object obj in gameObject.transform)
-            {
-                Transform transform = (Transform)obj;
-                if (transform.gameObject.activeSelf)
-                {
-                    GameObjSpawn component = transform.GetComponent<GameObjSpawn>();
-                    if (!(component == null))
-                    {
-                        this.MobSpawnList.Add(component);
-                    }
-                }
-            }
-        }
-    }
-
     public SpawnManager GetSMById(int id)
     {
         for (int i = 0; i < this.SpawnManList.Count; i++)
@@ -409,36 +364,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         }
         return null;
     }
-
-    //	public List<GameObjSpawn> GetSpawnListByAdminId(int id)
-    //	{
-    //		List<GameObjSpawn> list = new List<GameObjSpawn>();
-    //		for (int i = 0; i < this.MobSpawnList.Count; i++)
-    //		{
-    //			if (this.MobSpawnList[i] != null && this.MobSpawnList[i].SpawnManID == id)
-    //			{
-    //				list.Add(this.MobSpawnList[i]);
-    //			}
-    //		}
-    //		return list;
-    //	}
-
-    //	public GameObjSpawn GetSpawnInfoByID(int ID)
-    //	{
-    //		foreach (GameObjSpawn gameObjSpawn in this.MobSpawnList)
-    //		{
-    //			if (gameObjSpawn != null && gameObjSpawn.ID == ID)
-    //			{
-    //				return gameObjSpawn;
-    //			}
-    //		}
-    //		return null;
-    //	}
-
-    //	public int GetSpawnInfoCount()
-    //	{
-    //		return this.MobSpawnList.Count;
-    //	}
 
     /// <summary>
     /// 创建玩家
@@ -480,6 +405,35 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
         //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
         //this.modMFS.ChangeState(new ControlEventIdle(false));  
+    }
+
+    /// <summary>
+    /// 创建玩家
+    /// </summary>
+    public void CreateNPC(int index)
+    {       
+        Sys_SceneEntity m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
+
+        NPCWorldMapData data = m_CurrSceneEntity.NPCWorldMapList[index];
+        //NPCEntity entity = NPCDBModel.Instance.Get(data.NPCId);
+        //RoleMgr.Instance.LoadNPC(entity.PrefabName,
+        //    (GameObject obj) =>
+        //    {
+        //        obj.transform.position = data.NPCPostion;
+        //        obj.transform.eulerAngles = new Vector3(0, data.EulerAnglesY, 0);
+        //        NPCCtrl ctrl = obj.GetComponent<NPCCtrl>();
+        //        ctrl.Init(data);
+
+        //        index++;
+        //        if (index == CurrWorldMapEntity.NPCWorldMapList.Count)
+        //        {
+        //            AppDebug.Log("NPC加载完毕");
+        //        }
+        //        else
+        //        {
+        //            LoadNPC(index);
+        //        }
+        //    });
     }
 
     /// <summary>

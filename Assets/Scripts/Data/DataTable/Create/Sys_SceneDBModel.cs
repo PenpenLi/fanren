@@ -1,7 +1,7 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2019-07-07 16:18:10
+//创建时间：2020-01-12 23:17:57
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
@@ -34,6 +34,9 @@ public partial class Sys_SceneDBModel : DataTableDBModelBase<Sys_SceneDBModel, S
             entity.SceneName = ms.ReadUTF8String();
             entity.BGMId = ms.ReadInt();
             entity.SceneType = ms.ReadInt();
+            entity.TransPos = ms.ReadUTF8String();
+            entity.RoleBirthPos = ms.ReadUTF8String();
+            entity.NPCList = ms.ReadUTF8String();
 
             m_List.Add(entity);
             m_Dic[entity.Id] = entity;

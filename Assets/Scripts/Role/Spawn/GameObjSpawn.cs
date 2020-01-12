@@ -27,12 +27,18 @@ public class GameObjSpawn : MonoBehaviour
 
     public GameObjSpawn.SpawnInfo spawnInfo = default(GameObjSpawn.SpawnInfo);
 
+    /// <summary>
+    /// 链接角色
+    /// </summary>
     private Role _linkRole;
 
     private OperableItemBase _operable;
 
     private SpawnManager sm;
 
+    /// <summary>
+    /// 是否创建
+    /// </summary>
     private bool bMadeMob;
 
     public int bevTreeID;
@@ -175,32 +181,33 @@ public class GameObjSpawn : MonoBehaviour
     /// 激活
     /// </summary>
 	public void Enable()
-	{
-		if (this.bMadeMob)
-		{
-			return;
-		}
-		if (this.spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER || this.spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
-		{
-			if (this._linkRole != null)
-			{
-				this._linkRole = null;
-			}
-			this._linkRole = FanrenSceneManager.RoleMan.CreateRoleGO(this.spawnInfo, true);
-		}
-		if (this.spawnInfo.SType == GameObjSpawn.SpawnType.SOULBALL || this.spawnInfo.SType == GameObjSpawn.SpawnType.CHEST || this.spawnInfo.SType == GameObjSpawn.SpawnType.HERBAL || this.spawnInfo.SType == GameObjSpawn.SpawnType.ORGAN)
-		{
-            if (this._operable != null)
-            {
-                this._operable = null;
-            }
-            this._operable = FanrenSceneManager.RoleMan.CreateOperItemGo(this.spawnInfo);
-        }
-        if ((this._linkRole != null || this._operable != null) && this.SpawnManID < 1000)
+	{  
+        if (this.bMadeMob)
         {
-            this.bMadeMob = true;
-            base.gameObject.SetActive(false);
+            Debug.Log("激活");
+            return;
         }
+        if (this.spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER || this.spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
+        {
+            if (this._linkRole != null)
+            {
+                this._linkRole = null;
+            }
+            //this._linkRole = FanrenSceneManager.RoleMan.CreateRoleGO(this.spawnInfo, true);
+        }
+        //if (this.spawnInfo.SType == GameObjSpawn.SpawnType.SOULBALL || this.spawnInfo.SType == GameObjSpawn.SpawnType.CHEST || this.spawnInfo.SType == GameObjSpawn.SpawnType.HERBAL || this.spawnInfo.SType == GameObjSpawn.SpawnType.ORGAN)
+        //{
+        //          if (this._operable != null)
+        //          {
+        //              this._operable = null;
+        //          }
+        //          this._operable = FanrenSceneManager.RoleMan.CreateOperItemGo(this.spawnInfo);
+        //      }
+        //      if ((this._linkRole != null || this._operable != null) && this.SpawnManID < 1000)
+        //      {
+        //          this.bMadeMob = true;
+        //          base.gameObject.SetActive(false);
+        //      }
     }
 
 	public void OnDisable()

@@ -10,6 +10,8 @@ using YouYou;
 /// </summary>
 [RequireComponent(typeof(Seeker))]
 [RequireComponent(typeof(FunnelModifier))]
+[RequireComponent(typeof(CharacterController))]
+[AddComponentMenu("角色模型信息")]
 public class RoleCtrl : MonoBehaviour
 {
     #region 成员变量或属性

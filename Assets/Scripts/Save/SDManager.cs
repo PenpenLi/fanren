@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YouYou;
 
 /// <summary>
 /// 存档数据管理
@@ -165,7 +166,7 @@ public class SDManager
     /// <returns></returns>
 	public static SaveData.SDSceneDate GetCurSceneDate()
 	{
-		return SDManager.GetSceneDate(SceneManager.GetActiveScene().name);
+		return SDManager.GetSceneDate(GameEntry.Scene.GetSceneName());
 	}
 
 	public static SaveData.SDSceneDate GetSceneDate(string sceneName)

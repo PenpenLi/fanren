@@ -673,6 +673,9 @@ public class SaveData
 		}
 	}
 
+    /// <summary>
+    /// 存档数据场景数据
+    /// </summary>
 	[Serializable]
 	public class SDSceneDate
 	{
@@ -912,6 +915,9 @@ public class SaveData
 		}
 	}
 
+    /// <summary>
+    /// 存档数据游戏数据
+    /// </summary>
 	[Serializable]
 	public class SDGame
 	{
