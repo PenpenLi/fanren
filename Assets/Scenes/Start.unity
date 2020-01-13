@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56876e5e7c2e8846986733835c67491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UITaskPlane: {fileID: 0}
   ClassName: FanrenSceneManager
 --- !u!4 &2036547877
 Transform:

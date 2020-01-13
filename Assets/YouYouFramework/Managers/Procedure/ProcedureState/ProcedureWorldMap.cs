@@ -24,7 +24,8 @@ namespace YouYou
             if (GameEntry.Role.Player == null)
             {
                 GameEntry.Role.CreatePlayer();
-            }           
+            }
+            GameEntry.Role.CreateAllNPC();
         }
 
         public override void OnUpdate()

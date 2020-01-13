@@ -408,32 +408,45 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     }
 
     /// <summary>
-    /// 创建玩家
+    /// 创建所有NPC
     /// </summary>
-    public void CreateNPC(int index)
-    {       
+    public void CreateAllNPC()
+    {
         Sys_SceneEntity m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
+        string[] arr1 = m_CurrSceneEntity.NPCList.Split('|');
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            string[] arr2 = arr1[i].Split('_');
 
-        NPCWorldMapData data = m_CurrSceneEntity.NPCWorldMapList[index];
-        //NPCEntity entity = NPCDBModel.Instance.Get(data.NPCId);
-        //RoleMgr.Instance.LoadNPC(entity.PrefabName,
-        //    (GameObject obj) =>
-        //    {
-        //        obj.transform.position = data.NPCPostion;
-        //        obj.transform.eulerAngles = new Vector3(0, data.EulerAnglesY, 0);
-        //        NPCCtrl ctrl = obj.GetComponent<NPCCtrl>();
-        //        ctrl.Init(data);
+            int npcId = 0;
+            int.TryParse(arr2[0], out npcId);
 
-        //        index++;
-        //        if (index == CurrWorldMapEntity.NPCWorldMapList.Count)
-        //        {
-        //            AppDebug.Log("NPC加载完毕");
-        //        }
-        //        else
-        //        {
-        //            LoadNPC(index);
-        //        }
-        //    });
+            float x = 0, y = 0, z = 0, anglesY = 0;
+            float.TryParse(arr2[1], out x);
+            float.TryParse(arr2[2], out y);
+            float.TryParse(arr2[3], out z);
+            float.TryParse(arr2[4], out anglesY);
+
+            CreateNPC(npcId, new Vector3(x, y, z), anglesY);
+        }
+    }
+
+    /// <summary>
+    /// 创建NPC
+    /// </summary>
+    public void CreateNPC(int NPCId, Vector3 NPCPostion, float anglesY)
+    {
+        NPCEntity entity = GameEntry.DataTable.DataTableManager.NPCDBModel.Get(NPCId);
+        GameEntry.Role.CreateRole(entity.PrefabName, (ResourceEntity resourceEntity) =>
+        {
+            GameObject gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+            //gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
+            gameObject.transform.position = NPCPostion;
+            gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
+            RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
+            ctrl.Init(RoleType.NPC, null, new RoleMainPlayerCityAI(ctrl));
+            this.AddRole(ctrl);//添加到角色列表         
+        });      
     }
 
     /// <summary>

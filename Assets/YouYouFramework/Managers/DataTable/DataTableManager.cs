@@ -24,7 +24,7 @@ namespace YouYou
         public int CurrLoadTableCount = 0;
 
         public LocalizationDBModel LocalizationDBModel { get; private set; }
-
+        public NPCDBModel NPCDBModel { get; private set; }
         public Sys_CodeDBModel Sys_CodeDBModel { get; private set; }
         public Sys_EffectDBModel Sys_EffectDBModel { get; private set; }
         public Sys_PrefabDBModel Sys_PrefabDBModel { get; private set; }
@@ -50,6 +50,8 @@ namespace YouYou
         private void InitDBModel()
         {
             //每个表都new
+            NPCDBModel = new NPCDBModel();
+
             //Sys_CodeDBModel = new Sys_CodeDBModel();
             //Sys_EffectDBModel = new Sys_EffectDBModel();
             //LocalizationDBModel = new LocalizationDBModel();
@@ -71,6 +73,7 @@ namespace YouYou
         public void LoadDataTable()
         {
             //每个表都 LoadData
+            NPCDBModel.LoadData();
             //Sys_CodeDBModel.LoadData();
             //Sys_EffectDBModel.LoadData();
             //LocalizationDBModel.LoadData();
