@@ -333,9 +333,9 @@ public class UILogOnForm : UIFormBase
         //foreach (SystemTag systemTag in this.m_prefabList.Keys)
         //{
         GameObject gameObject;
-        SaveInfo saveInfo;
+        //SaveInfo saveInfo;
 
-        SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(SystemTag.LOAD_CHILD_AUTO));
+        //SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(SystemTag.LOAD_CHILD_AUTO));
         //    //if (this.m_prefabList.TryGetValue(systemTag, out gameObject) && this.m_saveInfo.TryGetValue(systemTag, out saveInfo) && saveInfo != SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag)))
         //    //{
         //    //    this.m_saveInfo[systemTag] = SDManager.GetSaveInfo(SaveLoadManager.SystemtagToSL(systemTag));

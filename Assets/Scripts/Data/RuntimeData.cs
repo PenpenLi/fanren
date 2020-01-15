@@ -26,15 +26,15 @@ public class RuntimeData
 
     //public BattleField battleFieldUI;
 
-    /// <summary>
-    /// 队伍
-    /// </summary>
-    public List<Role> Team = new List<Role>();
+    ///// <summary>
+    ///// 队伍
+    ///// </summary>
+    //public List<Role> Team = new List<Role>();
 
-    /// <summary>
-    /// 跟随
-    /// </summary>
-    public List<Role> Follow = new List<Role>();
+    ///// <summary>
+    ///// 跟随
+    ///// </summary>
+    //public List<Role> Follow = new List<Role>();
 
     public string NewbieTask = string.Empty;
 
@@ -146,8 +146,8 @@ public class RuntimeData
 
     public void Clear()
     {
-        this.Team.Clear();
-        this.Follow.Clear();
+        //this.Team.Clear();
+        //this.Follow.Clear();
         //this.Items.Clear();
         //this.Xiangzi.Clear();
         this.KeyValues.Clear();
@@ -189,20 +189,20 @@ public class RuntimeData
 
     public bool NameInTeam(string roleName)
     {
-        foreach (Role role in this.Team)
-        {
-            //if (role.Name.Equals(roleName))
-            //{
-            //    return true;
-            //}
-        }
-        foreach (Role role2 in this.Follow)
-        {
-            //if (role2.Name.Equals(roleName))
-            //{
-            //    return true;
-            //}
-        }
+        //foreach (Role role in this.Team)
+        //{
+        //    //if (role.Name.Equals(roleName))
+        //    //{
+        //    //    return true;
+        //    //}
+        //}
+        //foreach (Role role2 in this.Follow)
+        //{
+        //    //if (role2.Name.Equals(roleName))
+        //    //{
+        //    //    return true;
+        //    //}
+        //}
         return false;
     }
 

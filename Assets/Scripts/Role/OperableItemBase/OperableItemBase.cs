@@ -11,7 +11,7 @@ public class OperableItemBase : CullableItem
 
     public OperableItemBase.OperableItemType type;
 
-    public Role rTarget;
+    //public Role rTarget;
 
     public bool bState;
 

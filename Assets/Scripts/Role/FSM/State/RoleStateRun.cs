@@ -11,8 +11,6 @@ using System.Collections;
 /// </summary>
 public class RoleStateRun : RoleStateBase
 {
-    private MoveTarget m_cMove;
-
     /// <summary>
     /// 转身速度
     /// </summary>

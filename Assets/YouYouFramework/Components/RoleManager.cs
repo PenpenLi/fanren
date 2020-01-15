@@ -51,9 +51,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public List<RoleCtrl> RoleList = new List<RoleCtrl>();
 
-    [HideInInspector]
-    public List<Role> StageRoleList = new List<Role>();
-
     public GameObject _roleRootGO;
 
     public GameObject _playerRootGo;
@@ -71,12 +68,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     public GameObject _chestRootGo;
 
     public RoleCtrl Player=null;
-
-    [HideInInspector]
-    public List<GameObjSpawn> MobSpawnList = new List<GameObjSpawn>();
-
-    [HideInInspector]
-    public List<SpawnManager> SpawnManList = new List<SpawnManager>();
 
     /// <summary>
     /// 可操作物体列表
@@ -183,7 +174,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     public void UpdateSceneBySave()
     {
         //GameData.Instance.ItemMan.Clear();//清空物品
-        SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();//获得当前场景数据
+        //SaveData.SDSceneDate curSceneDate = SDManager.GetCurSceneDate();//获得当前场景数据
         //if (curSceneDate != null)
         //{
         //    foreach (SaveData.SDMonsterDate sdmonsterDate in curSceneDate.MonsterList)
@@ -336,35 +327,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         //}
     }
 
-    public Role GetRoleByType(ROLE_TYPE roleType, int type)
-    {
-        for (int i = 0; i < this.RoleList.Count; i++)
-        {
-            //Role role = this.RoleList[i];
-            //if (role != null)
-            //{
-            //    if (role._roleType == roleType && role.GetDetailType() == type)
-            //    {
-            //        return role;
-            //    }
-            //}
-        }
-        Debug.LogWarning("not find role id:" + type);
-        return null;
-    }
-
-    public SpawnManager GetSMById(int id)
-    {
-        for (int i = 0; i < this.SpawnManList.Count; i++)
-        {
-            if (id == this.SpawnManList[i].ID)
-            {
-                return this.SpawnManList[i];
-            }
-        }
-        return null;
-    }
-
     /// <summary>
     /// 创建玩家
     /// </summary>
@@ -384,29 +346,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
 
         this.AddRole(Player);//添加到角色列表
-
-        //Player.instance = this;
-        //this.playerId++;
-        //int id = this.playerId;//玩家ID 1
-        //base.ID = id;
-        //Player.currentPlayerId = id;
-        //base.roleGameObject.Init(this);
-        //base.roleGameObject.CreatGO(1, PlayerInfo.PLAYER_POSITION, Quaternion.Euler(PlayerInfo.PLAYER_ROTATION));//创建角色物体
-        //base.roleGameObject.RoleBind.SetRole(this);
-        //this.addPlayerHotKey();//添加热键
-        //this.hatred.selfRole = Player.Instance;
-        //KeyManager.controlRole = this;
-        //this.equipReplace = new EquipReplace(this);//装备
-        //this.ItemFolder = new ItemFolderContainer(base.ID);//物品
-        //this.m_cAmbitSystem.Init(this);
-        //this.InitRoleBaseInfo();
-        //this.m_RoleGrowDatas.Init();
-        //GameData.Instance.ItemMan.CreateItem(1020001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //GameData.Instance.ItemMan.CreateItem(1030001UL, 1, ItemOwner.ITO_HEROFOLDER);
-        //this.m_cFigureSystem.Init(this);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED_ORIGN, 6f, true);
-        //this.m_cModAttribute.SetAttributeNum(ATTRIBUTE_TYPE.ATT_MOVESPEED, 6f, true);
-        //this.modMFS.ChangeState(new ControlEventIdle(false));  
     }
 
     /// <summary>
@@ -449,6 +388,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject.tag = "npc";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
             ctrl.Init(RoleType.NPC, null, new RoleMainPlayerCityAI(ctrl));
+            NPCClick npcclick = base.gameObject.AddComponent<NPCClick>();
             this.AddRole(ctrl);//添加到角色列表         
         });      
     }
@@ -722,31 +662,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         return false;
     }
 
-    public OperableItemBase CreateOperItemGo(GameObjSpawn.SpawnInfo spawnInfo)
-    {
-        //while (this.HaveObjectOnPos(spawnInfo.position))
-        //{
-        //    spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.CHEST)
-        //{
-        //    return this.CreateChestGo(spawnInfo);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.HERBAL)
-        //{
-        //    return this.CreateHerbalGo(spawnInfo);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.SOULBALL)
-        //{
-        //    return this.CreateSoulBall(spawnInfo);
-        //}
-        //if (spawnInfo.SType == GameObjSpawn.SpawnType.ORGAN)
-        //{
-        //    return this.CreateOrganGo(spawnInfo);
-        //}
-        return null;
-    }
-
     public OperableItemBase CreateOperItemGo(OperableSaveDataBase osdb)
     {
         //if (osdb.type == OperableItemBase.OperableItemType.Op_ChestOpe)
@@ -764,41 +679,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         {
         }
         return null;
-    }
-
-    /// <summary>
-    /// 创建角色对象
-    /// </summary>
-    /// <param name="spawnInfo"></param>
-    /// <param name="isSave"></param>
-    /// <returns></returns>
-    public Role CreateRoleGO(GameObjSpawn.SpawnInfo spawnInfo, bool isSave)
-    {
-        Role role = null;
-        while (this.HaveObjectOnPos(spawnInfo.position))
-        {
-            //spawnInfo.position = RoleBaseFun.GetRandomPosInRadius(spawnInfo.position, 3f);
-        }
-        if (spawnInfo.SType == GameObjSpawn.SpawnType.MONSTER)
-        {
-            //role = this.CreateMonsterGO(spawnInfo);
-        }
-        if (spawnInfo.SType == GameObjSpawn.SpawnType.NPC)
-        {
-            //role = this.CreateNpcGo(spawnInfo);
-        }
-        if (!isSave && role != null)
-        {
-            if (this.StageRoleList.Contains(role))
-            {
-                Debug.Log(role.name);
-            }
-            else
-            {
-                this.StageRoleList.Add(role);
-            }
-        }
-        return role;
     }
 
     /// <summary>
@@ -1002,53 +882,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     //	{
     //		return this.GetRoleListByOrg(role, 1);
     //	}
-
-    public void CheckRoleInView(Role role)
-    {
-        if (role == null)
-        {
-            return;
-        }
-       // ModAttribute modAttribute = role.GetModule(MODULE_TYPE.MT_ATTRIBUTE) as ModAttribute;
-        //if (modAttribute == null)
-        //{
-        //    return;
-        //}
-        //float attributeValue = modAttribute.GetAttributeValue(ATTRIBUTE_TYPE.ATT_VIEW_RANGE);
-        for (int i = 0; i < this.RoleList.Count; i++)
-        {
-           // Role role2 = this.RoleList[i];
-            //if (role2 != null && role2.ID != role.ID && !role2.IsDead())
-            //{
-            //    float num = Vector3.Distance(role.GetPos(), role2.GetPos());
-            //    if (num <= attributeValue)
-            //    {
-            //        //if (role.hatred.GetHatredInfo(role2) == null)
-            //        //{
-            //        //    float num2;
-            //        //    if (!role.IsEnemy(role2))
-            //        //    {
-            //        //        num2 = 0f;
-            //        //    }
-            //        //    else
-            //        //    {
-            //        //        num2 = RoleHatred.GetInitialHatredValue(role, role2);
-            //        //    }
-            //        //    if (role2 is Player && role is Monster && num2 > 0f)
-            //        //    {
-            //        //        Monster monster = (Monster)role;
-            //        //        monster.FindPlayer = true;
-            //        //    }
-            //        //    role.hatred.SetHatred(role2, num2);
-            //        //}
-            //    }
-            //    else if (num > attributeValue * 1.5f)
-            //    {
-            //       // role.hatred.RemoveRoleFromHatred(role2);
-            //    }
-            //}
-        }
-    }
 
     //	// Token: 0x06002482 RID: 9346 RVA: 0x000F83FC File Offset: 0x000F65FC
     //	public List<Role> GetEnmityRole(Role role)

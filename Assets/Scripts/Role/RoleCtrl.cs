@@ -132,7 +132,7 @@ public class RoleCtrl : MonoBehaviour
     /// </summary>
     public RoleFSMMgr CurrRoleFSMMgr = null;
 
-    private RoleHeadBarView roleHeadBarView = null;
+    //private RoleHeadBarView roleHeadBarView = null;
 
     //======================寻路相关============================
     [HideInInspector]

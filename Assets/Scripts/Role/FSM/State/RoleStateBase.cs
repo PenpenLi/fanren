@@ -4,6 +4,45 @@ using UnityEngine;
 using YouYou;
 
 /// <summary>
+/// 角色动画状态
+/// </summary>
+public enum RoleAnimatorState
+{
+    Idle_Normal = 1,
+    Idle_Fight = 2,
+    Run = 3,
+    Hurt = 4,
+    Die = 5,
+    Select = 6,
+    XiuXian = 7,
+    Died = 8,
+    PhyAttack1 = 11,
+    PhyAttack2 = 12,
+    PhyAttack3 = 13,
+    Skill1 = 14,
+    Skill2 = 15,
+    Skill3 = 16,
+    Skill4 = 17,
+    Skill5 = 18,
+    Skill6 = 19,
+}
+
+public enum ToAnimatorCondition
+{
+    ToIdleNormal,
+    ToIdleFight,
+    ToRun,
+    ToHurt,
+    ToDie,
+    ToDied,
+    ToPhyAttack,
+    ToSkill,
+    ToSelect,
+    ToXiuXian,
+    CurrState
+}
+
+/// <summary>
 /// 角色状态机基类
 /// </summary>
 public class RoleStateBase : FsmState<RoleFSMMgr>
