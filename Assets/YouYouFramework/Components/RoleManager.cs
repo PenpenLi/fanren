@@ -376,8 +376,10 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
         });
         gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
-        gameObject.transform.position = new Vector3(166.51f, 1.454f, 170.1f);            
+        gameObject.transform.position = new Vector3(3f, 10f, 100f);            
         Player = gameObject.GetComponent<RoleCtrl>();
+        gameObject.tag = "player";
+        //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
         GameEntry.Camera.InitPosition(gameObject);
         Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
 
@@ -441,8 +443,10 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         {
             GameObject gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
             //gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
-            gameObject.transform.position = NPCPostion;
+            //gameObject.transform.position = NPCPostion;
+            gameObject.transform.position = new Vector3(4f, 10f, 101f);
             gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
+            gameObject.tag = "npc";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
             ctrl.Init(RoleType.NPC, null, new RoleMainPlayerCityAI(ctrl));
             this.AddRole(ctrl);//添加到角色列表         

@@ -48,6 +48,23 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
     {       
         if (GameEntry.Role.Player != null)
         {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+
+            //判断是否击中了NPC
+            if (Physics.Raycast(ray, out hit))
+            {
+                //如果击中了NPC
+                if (hit.collider.gameObject.tag == "npc")
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
+                    }
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.C))
             {
                 Transform trans = GameEntry.Role.Player.gameObject.transform;
@@ -59,10 +76,10 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
             //    //{
             //    //    return;
             //    //}
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
-            }
+            //if (Input.GetKeyDown(KeyCode.F))
+            //{
+            //    GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
+            //}
 
             if (Input.GetButton("Vertical")|| Input.GetButton("Horizontal"))
             {

@@ -222,35 +222,7 @@ public class RoleCtrl : MonoBehaviour
 
     private void Operable(object userData)
     {
-        Debug.Log("按下F键");
-        float num = float.MaxValue;
-        List<OperableItemBase> list = new List<OperableItemBase>();
-        List<OperableItemBase> list2 = new List<OperableItemBase>();
-        foreach (KeyValuePair<int, OperableItemBase> keyValuePair in this.EnableOperableList)
-        {
-            //if (!keyValuePair.Value.useAble)
-            //{
-            //    list.Add(keyValuePair.Value);
-            //}
-            //else
-            //{
-            //    float num2 = Vector3.Distance(base.GetPos(), keyValuePair.Value.GetPos());
-            //    if (num2 <= num && num2 < 2f)
-            //    {
-            //        num = num2;
-            //        OperableItemBase value = keyValuePair.Value;
-            //        list2.Add(value);
-            //    }
-            //}
-        }
-        foreach (OperableItemBase item in list)
-        {
-            //this.RemoveEnableOperable(item);
-        }
-        foreach (OperableItemBase operableItemBase in list2)
-        {
-            operableItemBase.Call();
-        }
+      
     }
 
     private void OnDestroyCallBack()

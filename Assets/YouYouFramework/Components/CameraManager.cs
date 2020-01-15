@@ -334,7 +334,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
         transform.position = m_target.position;
         AutoLookAt(m_target.position);
 
-        if (this.isMouseOrbit)
+        if (this.isMouseOrbit && Input.GetKey(KeyCode.LeftControl))
         {
             this.x += Input.GetAxis("Mouse X") * this.xSpeed * this.offsetSpeed;
             this.y -= Input.GetAxis("Mouse Y") * this.ySpeed * this.offsetSpeed;
