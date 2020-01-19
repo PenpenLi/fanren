@@ -388,7 +388,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject.tag = "npc";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
             ctrl.Init(RoleType.NPC, null, new RoleMainPlayerCityAI(ctrl));
-            NPCClick npcclick = base.gameObject.AddComponent<NPCClick>();
+            NPCClick npcclick = gameObject.AddComponent<NPCClick>();
             this.AddRole(ctrl);//添加到角色列表         
         });      
     }

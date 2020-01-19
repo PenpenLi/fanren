@@ -60,7 +60,7 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
+                        hit.collider.gameObject.GetComponent<NPCClick>().Call();
                     }
                 }
             }

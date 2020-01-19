@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: yingdi_house02
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: GLOW11_GLOW_VERTEXCOLOR GLOW11_MULTIPLY_VERT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cube:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GlowTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Illum:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 43efdd1abd9d96b42890ac425d4d436f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: 61518bddfe6e2644d8c8467fc8232376, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ToonShade:
+        m_Texture: {fileID: 8900000, guid: b995d4bd9d11078d11005b9844295342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BaseColorPower: 0.75
+    - _CutOff: 0.2
+    - _Cutoff: 0.5
+    - _EmissionLM: 0
+    - _Falloff: 15.86
+    - _FalloffPlanet: 0.4
+    - _GlowStrength: 1
+    - _Outline: 0.0020746267
+    - _Parallax: 0.02
+    - _ReflectPower: 0.75
+    - _Shininess: 0.35158733
+    - _Size: -0.8
+    - _Transparency: 17.62
+    - _TransparencyPlanet: 0.4
+    m_Colors:
+    - _AtmoColor: {r: 0.9264706, g: 0.78176826, b: 0.40192473, a: 1}
+    - _Color: {r: 1, g: 0.9634889, b: 0.86764705, a: 1}
+    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.9852941, g: 0.9349301, b: 0.5288711, a: 1}
+    - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
+    - _SpecColor: {r: 1, g: 0.9545639, b: 0.7647059, a: 0.5019608}

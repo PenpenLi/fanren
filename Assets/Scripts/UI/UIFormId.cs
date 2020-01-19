@@ -15,7 +15,17 @@ public class UIFormId
     public const int LogOn = 2;
 
     /// <summary>
+    /// 对话界面
+    /// </summary>
+    public const int Dialog = 3;
+
+    /// <summary>
+    /// 信息界面
+    /// </summary>
+    public const int MessageBox = 4;
+
+    /// <summary>
     /// 任务列表
     /// </summary>
-    public const int UI_Task = 101;
+    public const int Task = 5;
 }
