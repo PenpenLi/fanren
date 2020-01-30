@@ -1,8 +1,3 @@
-//===================================================
-//作    者：边涯  http://www.u3dol.com
-//创建时间：
-//备    注：
-//===================================================
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,18 +9,27 @@ namespace YouYou
     /// </summary>
     public class ProcedureWorldMap : ProcedureBase
     {
+        private Sys_SceneEntity m_CurrSceneEntity;
+
         public override void OnEnter()
         {
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureWorldMap");
+            m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
             Debug.Log("加载主UI");
-            //GameData.CreatGameData();
             //GameEntry.Role.UpdateSceneBySave();
             if (GameEntry.Role.Player == null)
             {
                 GameEntry.Role.CreatePlayer();
             }
-            GameEntry.Role.CreateAllNPC();
+            else
+            {
+                GameEntry.Role.Player.gameObject.SetActive(true);
+            }
+           
+            GameEntry.Role.CreateAllNPC(m_CurrSceneEntity);
+
+            //DoScriptMoudle();
         }
 
         public override void OnUpdate()
@@ -36,12 +40,34 @@ namespace YouYou
         public override void OnLeave()
         {
             base.OnLeave();
+            GameEntry.Role.Player.gameObject.SetActive(false);
+            GameEntry.Role.ClearRole();
             GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureWorldMap");
         }
 
         public override void OnDestroy()
         {
             base.OnDestroy();
+        }
+
+        public void DoScriptMoudle()
+        {
+            string[] arr1 = m_CurrSceneEntity.ScriptModId.Split('|');
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                string[] arr2 = arr1[i].Split('_');
+
+                int moduleID = 0;
+                int.TryParse(arr2[0], out moduleID);
+
+                int parID = 0;
+                int.TryParse(arr2[1], out parID);
+
+                if (moduleID != -1)
+                {
+                    GameEntry.Script.Exec(moduleID, parID);
+                }              
+            }
         }
     }
 }

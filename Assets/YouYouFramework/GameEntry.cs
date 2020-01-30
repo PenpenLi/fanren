@@ -174,6 +174,15 @@ namespace YouYou
         }
         #endregion
 
+        public static ScriptManager Script = new ScriptManager();
+
+        public static ScriptDataManager ScriptData = new ScriptDataManager();
+
+        public static SaveDataManager SaveData = new SaveDataManager();
+
+        public static SaveLoadManager SaveLoad = new SaveLoadManager();
+
+        public static RuntimeData RuntimeData = new RuntimeData();
         #region 基础组件管理
         /// <summary>
         /// 基础组件列表
@@ -258,7 +267,7 @@ namespace YouYou
             Mouse = GetBaseComponent<MouseManager>();
             Role = GetBaseComponent<RoleManager>();
             Camera = GetBaseComponent<CameraManager>();
-            Key = GetBaseComponent<KeyManager>();     
+            Key = GetBaseComponent<KeyManager>();
         }
         #endregion
 

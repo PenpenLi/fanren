@@ -216,18 +216,14 @@ public class UILogOnForm : UIFormBase
 
     public void OnNewGameBtn()
     {
-        //RuntimeData.Instance.gameEngine.NewGame();      
-        GameEntry.Scene.LoadScene(2, onComplete: () =>
+        NewGame();      
+        GameEntry.Scene.LoadScene(2,true, onComplete: () =>
         {
             GameEntry.Procedure.ChangeState(ProcedureState.WorldMap);
             
         });
 
         base.Close();
-        //SingletonMono<AudioManager>.GetInstance().StopAllSound();
-        //GameData.Instance.ScrMan.Exec(31, 10110);
-        //FanrenSceneManager.LoadLevel(0, false, false);
-
     }
 
     public void OnLoadBtn()
@@ -248,6 +244,15 @@ public class UILogOnForm : UIFormBase
     public void OnSystembackBtn()
     {
         SystemPlane.SetActive(false);
+    }
+
+    public void NewGame()
+    {
+        GameEntry.RuntimeData.Money = 0; ;
+        //GameEntry.RuntimeData.addTeamMember(10001);
+        ////RuntimeData.Instance.addItem(ItemInstance.Generate("大还丹", false), 10);
+        //RuntimeData.Instance.KeyValues["original_主角之家.开场"] = "0";
+        GameEntry.RuntimeData.AutoAcceptMisson();
     }
 
     //public void PushData()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using YouYou;
 
@@ -45,25 +46,35 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
     }
 
     public void OnUpdate()
-    {       
-        if (GameEntry.Role.Player != null)
+    {
+        //防止UI穿透
+        if (IsPointerOverGameObject(Input.mousePosition))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            return;
+        }
 
-            RaycastHit hit;
-
-            //判断是否击中了NPC
-            if (Physics.Raycast(ray, out hit))
+        if (GameEntry.Role.Player != null)
+        {          
+            if (Input.GetMouseButtonDown(0))
             {
-                //如果击中了NPC
-                if (hit.collider.gameObject.tag == "npc")
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastHit hit;
+
+                //判断是否击中了NPC
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    //如果击中了NPC
+                    if (hit.collider.gameObject.tag == "npc")
                     {
                         hit.collider.gameObject.GetComponent<NPCClick>().Call();
                     }
+                    else if (hit.collider.gameObject.tag == "Road")
+                    {
+                        GameEntry.Role.Player.MoveTo(hit.point);
+                    }
                 }
-            }
+            }          
 
             if (Input.GetKeyDown(KeyCode.C))
             {
@@ -90,10 +101,10 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
                 Vector3 vector2 = GameEntry.Role.Player.gameObject.transform.position + vector;//移动目标点    
                 GameEntry.Role.Player.MoveTo(vector2);
             }
-            else
-            {
-                GameEntry.Role.Player.CurrRoleFSMMgr.ChangeState(RoleState.Idle);
-            }
+            //else
+            //{
+            //    GameEntry.Role.Player.CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+            //}
 
             bool buttonDown = Input.GetButtonDown("Jump");
             //    //if (KeyManager.Shift)
@@ -111,5 +122,20 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
             //    //    Player.Instance.RunSpeed = 5f;
             //    //}
         }
+    }
+
+    List<RaycastResult> raycastResults = new List<RaycastResult>();
+    public bool IsPointerOverGameObject(Vector2 screenPosition)
+    {
+        //实例化点击事件  
+        PointerEventData eventDataCurrentPosition = new PointerEventData(UnityEngine.EventSystems.EventSystem.current);
+        //将点击位置的屏幕坐标赋值给点击事件  
+        eventDataCurrentPosition.position = new Vector2(screenPosition.x, screenPosition.y);
+
+        raycastResults.Clear();
+        //向点击处发射射线  
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, raycastResults);
+
+        return raycastResults.Count > 0;
     }
 }

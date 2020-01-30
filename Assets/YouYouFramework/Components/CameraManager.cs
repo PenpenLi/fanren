@@ -3,6 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using YouYou;
 
+public enum CameraState
+{
+    Null,
+    Shake,
+    LockCamera,
+    FollowPositionAutoRotation,
+    LockPositionAutoLook,
+    /// <summary>
+    /// 鼠标操作
+    /// </summary>
+    MouseOrbit,
+    /// <summary>
+    /// 战斗
+    /// </summary>
+    Battle,
+    LookTarget,
+    Stop,
+    FollowPositionLockAxis
+}
+
 public class CameraManager : YouYouBaseComponent, IUpdateComponent
 {
     /// <summary>
@@ -82,7 +102,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
     private float offsetStep;
 
-    private float offsetSpeed = 0.02f;
+    private float offsetSpeed = 0.05f;
 
     private float yMinLimit = 10f;
 
@@ -112,23 +132,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
     private Transform cacheTransform;
 
-    public CameraManager.CameraState cameraState;
-
-    public enum CameraState
-    {
-        Null,
-        Shake,
-        LockCamera,
-        FollowPositionAutoRotation,
-        LockPositionAutoLook,
-        /// <summary>
-        /// 鼠标操作
-        /// </summary>
-        MouseOrbit,
-        LookTarget,
-        Stop,
-        FollowPositionLockAxis
-    }
+    public CameraState cameraState;
 
     protected override void OnAwake()
     {
@@ -165,6 +169,23 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
         Camera.main.transform.localPosition = Vector3.zero;
         Camera.main.transform.localRotation = Quaternion.identity;
         this.isLockCamera = false;
+    }
+
+    /// <summary>
+    /// 初始化位置
+    /// </summary>
+	public void InitBattle()
+    {
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+        m_CameraUpAndDown.localPosition = Vector3.zero;
+        m_CameraUpAndDown.localRotation = Quaternion.identity;
+        m_CameraZoomContainer.localPosition = Vector3.zero;
+        m_CameraZoomContainer.localRotation = Quaternion.identity;
+        m_CameraContainer.localPosition = Vector3.zero;
+        m_CameraContainer.localRotation = Quaternion.identity;
+        Camera.main.transform.localPosition = new Vector3(0f, 40f, -50f);
+        Camera.main.transform.localRotation = Quaternion.Euler(30f, 0f, 0f);
     }
 
     /// <summary>
@@ -334,7 +355,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
         transform.position = m_target.position;
         AutoLookAt(m_target.position);
 
-        if (this.isMouseOrbit && Input.GetKey(KeyCode.LeftControl))
+        if (this.isMouseOrbit && Input.GetMouseButton(1))
         {
             this.x += Input.GetAxis("Mouse X") * this.xSpeed * this.offsetSpeed;
             this.y -= Input.GetAxis("Mouse Y") * this.ySpeed * this.offsetSpeed;
@@ -354,6 +375,12 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
         this.CheckDistance();
         this.m_CameraZoomContainer.transform.localPosition = Vector3.right * this.currentDistance + this.moveDist;
         //}
+    }
+
+    public void UpdateBattle()
+    {
+
+       
     }
 
     /// <summary>
@@ -483,30 +510,17 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
         switch (this.cameraState)
         {
-            case CameraState.LockCamera:
-                //this.LockCamera();
-                break;
-            case CameraState.FollowPositionAutoRotation:
-               // this.CameraFollowPositionAutoRotation();
-                break;
-            case CameraState.LockPositionAutoLook:
-                //this.CameraLockPositionAutoLook();
-                break;
             case CameraState.MouseOrbit:
                 this.UpdateMouseOrbit();
                 break;
-            case CameraState.LookTarget:
-              //  this.LookTarget();
-                break;
-            case CameraState.Stop:
-              //  this.StopCamera();
-                break;
-            case CameraState.FollowPositionLockAxis:
-              //  this.UpdateFollowPositionLockAxis();
+            case CameraState.Battle:
+                this.UpdateBattle();
                 break;
         }
         //this.CheckCameraHit();
     }
+
+    
 
     /// <summary>
     /// 设置摄像机 缩放

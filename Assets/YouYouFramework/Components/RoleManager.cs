@@ -32,6 +32,9 @@ public enum RoleType
 /// </summary>
 public class RoleManager : YouYouBaseComponent, IUpdateComponent
 {
+    public GamePlayFormation playerFormation;
+    public GamePlayFormation foeFormation;
+
     private int[] id = new int[]
     {
             1,
@@ -49,6 +52,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 角色列表
     /// </summary>
+    [HideInInspector]
     public List<RoleCtrl> RoleList = new List<RoleCtrl>();
 
     public GameObject _roleRootGO;
@@ -67,6 +71,10 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 
     public GameObject _chestRootGo;
 
+    /// <summary>
+    /// 玩家
+    /// </summary>
+    [HideInInspector]
     public RoleCtrl Player=null;
 
     /// <summary>
@@ -351,9 +359,9 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 创建所有NPC
     /// </summary>
-    public void CreateAllNPC()
+    public void CreateAllNPC(Sys_SceneEntity SceneEntity)
     {
-        Sys_SceneEntity m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
+        Sys_SceneEntity m_CurrSceneEntity = SceneEntity;
         string[] arr1 = m_CurrSceneEntity.NPCList.Split('|');
         for (int i = 0; i < arr1.Length; i++)
         {
@@ -381,8 +389,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         GameEntry.Role.CreateRole(entity.PrefabName, (ResourceEntity resourceEntity) =>
         {
             GameObject gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
-            //gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
-            //gameObject.transform.position = NPCPostion;
+            gameObject.SetParent(this._npcRootGo.transform);//设置根节点 
             gameObject.transform.position = new Vector3(4f, 10f, 101f);
             gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
             gameObject.tag = "npc";
@@ -391,20 +398,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             NPCClick npcclick = gameObject.AddComponent<NPCClick>();
             this.AddRole(ctrl);//添加到角色列表         
         });      
-    }
-
-    /// <summary>
-    /// 初始化玩家
-    /// </summary>
-    public void InitPlayer()
-    {
-        //Player player = this.GetPlayer();
-        //if (player == null)
-        //{
-        //    return;
-        //}
-        //player.BindAutoMisson();
-        //Player.LoadPlayerRes(player);
     }
 
     //	private void CreateOperableRootGo()
@@ -686,8 +679,13 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// </summary>
     public void ClearRole()
     {
-        this.RoleList.Clear();
-        this.ignoreColliderRole.Clear();
+        int childCount = _npcRootGo.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Destroy(_npcRootGo.transform.GetChild(0).gameObject);
+        }
+        //this.RoleList.Clear();
+        //this.ignoreColliderRole.Clear();
     }
 
     public void AddRole(RoleCtrl role)

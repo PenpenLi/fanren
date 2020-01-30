@@ -78,7 +78,7 @@ namespace YouYou
         /// <param name="sceneId">场景编号</param>
         /// <param name="showLoadingForm">是否显示Loading</param>
         /// <param name="onComplete">加载完毕</param>
-        public void LoadScene(int sceneId, bool showLoadingForm = false, BaseAction onComplete = null)
+        public void LoadScene(int sceneId, bool showLoadingForm = true, BaseAction onComplete = null)
         {
             if (m_CurrSceneIsLoading)
             {

@@ -1,7 +1,7 @@
 
 //===================================================
 //作    者：边涯  http://www.u3dol.com
-//创建时间：2020-01-12 23:17:57
+//创建时间：2020-01-21 15:58:54
 //备    注：此代码为工具生成 请勿手工修改
 //===================================================
 using System.Collections;
@@ -41,5 +41,10 @@ public partial class Sys_SceneEntity : DataTableEntityBase
     /// NPC列表
     /// </summary>
     public string NPCList;
+
+    /// <summary>
+    /// 脚本调用
+    /// </summary>
+    public string ScriptModId;
 
 }

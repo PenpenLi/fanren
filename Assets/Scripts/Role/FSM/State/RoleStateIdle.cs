@@ -33,7 +33,10 @@ public class RoleStateIdle : RoleStateBase
     public override void OnLeave()
     {
         base.OnLeave();
-        CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetBool(ToAnimatorCondition.ToIdleNormal.ToString(), false);
+        if (CurrFsm.m_Owner.CurrRoleCtrl.Animator!=null)
+        {
+            CurrFsm.m_Owner.CurrRoleCtrl.Animator.SetBool(ToAnimatorCondition.ToIdleNormal.ToString(), false);
+        }      
     }
 
     public override void OnDestroy()

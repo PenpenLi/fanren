@@ -6,15 +6,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YouYou;
 
-namespace YouYou
-{
-    /// <summary>
-    /// 数据表管理基类
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="P"></typeparam>
-    public abstract class DataTableDBModelBase<T, P>
+/// <summary>
+/// 数据表管理基类
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <typeparam name="P"></typeparam>
+public abstract class DataTableDBModelBase<T, P>
     where T : class, new()
     where P : DataTableEntityBase
     {
@@ -95,4 +94,3 @@ namespace YouYou
             m_Dic.Clear();
         }
     }
-}

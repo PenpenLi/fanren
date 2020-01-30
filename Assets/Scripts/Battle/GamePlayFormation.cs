@@ -6,32 +6,26 @@ using YouYou;
 
 public class GamePlayFormation : MonoBehaviour
 {
-    //    /// <summary>
-    //    /// 敌人阵型
-    //    /// </summary>
-    //    public GamePlayFormation foeFormation;
-    //    /// <summary>
-    //    /// 是否玩家阵型
-    //    /// </summary>
-    //    public bool isPlayerFormation;
+    /// <summary>
+    /// 敌人阵型
+    /// </summary>
+    public GamePlayFormation foeFormation;
+    /// <summary>
+    /// 是否玩家阵型
+    /// </summary>
+    public bool isPlayerFormation;
     //    public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
     //    /// <summary>
     //    /// 角色状态UI字典
     //    /// </summary>
     //    public readonly Dictionary<int, UICharacterStats> UIStats = new Dictionary<int, UICharacterStats>();
-    //    public Transform[] containers;
-    //    /// <summary>
-    //    /// 角色字典
-    //    /// </summary>
-    //    public readonly Dictionary<int, CharacterEntity> Characters = new Dictionary<int, CharacterEntity>();
 
-    //    private void Start()
-    //    {
-    //        if (isPlayerFormation)
-    //        {
-    //            SetFormationCharacters();
-    //        }                  
-    //    }
+    public Transform[] containers;
+
+    /// <summary>
+    /// 角色字典
+    /// </summary>
+    public readonly Dictionary<int, RoleCtrl> Characters = new Dictionary<int, RoleCtrl>();
 
     //    /// <summary>
     //    /// 设置阵型角色
@@ -46,65 +40,69 @@ public class GamePlayFormation : MonoBehaviour
     //        }
     //    }
 
-    //    public virtual void SetCharacters(string[] items)
+    public virtual void SetCharacters(string[] items)
+    {
+        ClearCharacters();
+        for (var i = 0; i < items.Length; ++i)
+        {
+            //SetCharacter(i, GameEntry.DataTable.GetRole(items[i].ToInt()));
+        }
+    }
+
+    //public void SetCharacter(int position, Role role)
+    //{
+    //    var container = containers[position];
+    //    container.RemoveAllChildren();
+    //    string path = "Characters/" + role.model;
+    //    GameObject go = Resources.Load(path) as GameObject;
+    //    var character = Instantiate(go).GetComponent<CharacterEntity>();
+    //    character.SetFormation(this, position, container);
+    //    character.Role = role;
+    //    Characters[position] = character;
+
+    //    if (character == null)
+    //        return;
+
+    //    UICharacterStats uiStats;
+    //    if (UIStats.TryGetValue(position, out uiStats))
     //    {
-    //        ClearCharacters();
-    //        for (var i = 0; i < items.Length; ++i)
-    //        {
-    //            SetCharacter(i, GameEntry.DataTable.GetRole(items[i].ToInt()));
-    //        }
+    //        Destroy(uiStats.gameObject);
+    //        UIStats.Remove(position);
     //    }
 
-    //    public void SetCharacter(int position, Role role)
+    //    if (Manager != null)
     //    {
-    //        var container = containers[position];
-    //        container.RemoveAllChildren();
-    //        string path = "Characters/" + role.model;
-    //        GameObject go = Resources.Load(path) as GameObject;
-    //        var character = Instantiate(go).GetComponent<CharacterEntity>();
-    //        character.SetFormation(this, position, container);
-    //        character.Role = role;
-    //        Characters[position] = character;
-
-    //        if (character == null)
-    //            return;
-
-    //        UICharacterStats uiStats;
-    //        if (UIStats.TryGetValue(position, out uiStats))
-    //        {
-    //            Destroy(uiStats.gameObject);
-    //            UIStats.Remove(position);
-    //        }
-
-    //        if (Manager != null)
-    //        {
-    //            uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
-    //            uiStats.transform.localScale = Vector3.one;
-    //            uiStats.character = character;
-    //            character.uiCharacterStats = uiStats;
-    //        }
+    //        uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
+    //        uiStats.transform.localScale = Vector3.one;
+    //        uiStats.character = character;
+    //        character.uiCharacterStats = uiStats;
     //    }
+    //}
 
-    //    /// <summary>
-    //    /// 清除角色
-    //    /// </summary>
-    //    public virtual void ClearCharacters()
-    //    {
-    //        foreach (var container in containers)
-    //        {
-    //            container.RemoveAllChildren();
-    //        }
-    //        Characters.Clear();
-    //    }
+    /// <summary>
+    /// 清除角色
+    /// </summary>
+    public virtual void ClearCharacters()
+    {
+        foreach (var container in containers)
+        {
+            int childCount = container.childCount;
+            for (int i = 0; i < childCount; i++)
+            {
+                Destroy(container.GetChild(0).gameObject);
+            }
+        }
+        Characters.Clear();
+    }
 
-    //    public void Revive()
-    //    {
-    //        var characters = Characters.Values;
-    //        foreach (var character in characters)
-    //        {
-    //            character.Revive();
-    //        }
-    //    }
+    public void Revive()
+    {
+        //var characters = Characters.Values;
+        //foreach (var character in characters)
+        //{
+        //    character.Revive();
+        //}
+    }
 
     //    public bool IsAnyCharacterAlive()
     //    {

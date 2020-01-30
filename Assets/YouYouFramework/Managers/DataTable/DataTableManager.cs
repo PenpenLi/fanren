@@ -23,27 +23,19 @@ namespace YouYou
         /// </summary>
         public int CurrLoadTableCount = 0;
 
+        public RoleDBModel RoleDBModel { get; private set; }
         public LocalizationDBModel LocalizationDBModel { get; private set; }
         public NPCDBModel NPCDBModel { get; private set; }
-        public Sys_CodeDBModel Sys_CodeDBModel { get; private set; }
+        public MissionDBModel MissionDBModel { get; private set; }
         public Sys_EffectDBModel Sys_EffectDBModel { get; private set; }
-        public Sys_PrefabDBModel Sys_PrefabDBModel { get; private set; }
         public Sys_SoundDBModel Sys_SoundDBModel { get; private set; }
         public Sys_StorySoundDBModel Sys_StorySoundDBModel { get; private set; }
         public Sys_UIFormDBModel Sys_UIFormDBModel { get; private set; }
         public Sys_SceneDBModel Sys_SceneDBModel { get; private set; }
         public Sys_SceneDetailDBModel Sys_SceneDetailDBModel { get; private set; }
-
-        /// <summary>
-        /// 章表
-        /// </summary>
-        public ChapterDBModel ChapterDBModel { get; private set; }
-
-        /// <summary>
-        /// 关卡表
-        /// </summary>
-        public GameLevelDBModel GameLevelDBModel { get; private set; }
-
+        public ScriptMoudleDBModel ScriptMoudleDBModel { get; private set; }
+        public ScriptTriggerDBModel ScriptTriggerDBModel { get; private set; }
+        public BattleDBModel BattleDBModel { get; private set; }
         /// <summary>
         /// 初始化DBModel
         /// </summary>
@@ -51,20 +43,14 @@ namespace YouYou
         {
             //每个表都new
             NPCDBModel = new NPCDBModel();
-
-            //Sys_CodeDBModel = new Sys_CodeDBModel();
-            //Sys_EffectDBModel = new Sys_EffectDBModel();
-            //LocalizationDBModel = new LocalizationDBModel();
-            //Sys_PrefabDBModel = new Sys_PrefabDBModel();
-            //Sys_SoundDBModel = new Sys_SoundDBModel();
-            //Sys_StorySoundDBModel = new Sys_StorySoundDBModel();
+            MissionDBModel = new MissionDBModel();
+            RoleDBModel = new RoleDBModel();
             Sys_UIFormDBModel = new Sys_UIFormDBModel();
             Sys_SceneDBModel = new Sys_SceneDBModel();
             Sys_SceneDetailDBModel = new Sys_SceneDetailDBModel();
-
-            //ChapterDBModel = new ChapterDBModel();
-            //GameLevelDBModel = new GameLevelDBModel();
-            //TaskDBModel = new TaskDBModel();
+            ScriptMoudleDBModel = new ScriptMoudleDBModel();
+            ScriptTriggerDBModel = new ScriptTriggerDBModel();
+            BattleDBModel = new BattleDBModel();
         }
 
         /// <summary>
@@ -73,20 +59,15 @@ namespace YouYou
         public void LoadDataTable()
         {
             //每个表都 LoadData
+            RoleDBModel.LoadData();
             NPCDBModel.LoadData();
-            //Sys_CodeDBModel.LoadData();
-            //Sys_EffectDBModel.LoadData();
-            //LocalizationDBModel.LoadData();
-            //Sys_PrefabDBModel.LoadData();
-            //Sys_SoundDBModel.LoadData();
-            //Sys_StorySoundDBModel.LoadData();
+            MissionDBModel.LoadData();
             Sys_UIFormDBModel.LoadData();
             Sys_SceneDBModel.LoadData();
             Sys_SceneDetailDBModel.LoadData();
-
-            //ChapterDBModel.LoadData();
-            //GameLevelDBModel.LoadData();
-            //TaskDBModel.LoadData();
+            ScriptMoudleDBModel.LoadData();
+            ScriptTriggerDBModel.LoadData();
+            BattleDBModel.LoadData();
 
             GameEntry.Event.CommonEvent.Dispatch(SysEventId.LoadDataTableComplete);
         }
@@ -140,19 +121,15 @@ namespace YouYou
         public void Clear()
         {
             //每个表都Clear
-            //Sys_CodeDBModel.Clear();
-            //Sys_EffectDBModel.Clear();
-            //LocalizationDBModel.Clear();
-            //Sys_PrefabDBModel.Clear();
-            //Sys_SoundDBModel.Clear();
-            //Sys_StorySoundDBModel.Clear();
+            RoleDBModel.Clear();
+            NPCDBModel.Clear();
+            MissionDBModel.Clear();
             Sys_UIFormDBModel.Clear();
             Sys_SceneDBModel.Clear();
             Sys_SceneDetailDBModel.Clear();
-
-            //ChapterDBModel.Clear();
-            //GameLevelDBModel.Clear();
-            //TaskDBModel.Clear();
+            ScriptMoudleDBModel.Clear();
+            ScriptTriggerDBModel.Clear();
+            BattleDBModel.Clear();
         }
     }
 }

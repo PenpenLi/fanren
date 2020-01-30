@@ -444,7 +444,7 @@ public class RoleCtrl : MonoBehaviour
                 AStartPath = null;
             }
         });
-    } 
+    }
 
     //    /// <summary>
     //    /// 发起攻击
@@ -532,16 +532,17 @@ public class RoleCtrl : MonoBehaviour
 
     //    #endregion
 
-    //    #region OnDestroy 销毁
-    //    /// <summary>
-    //    /// 销毁
-    //    /// </summary>
-    //    void OnDestroy()
-    //    {
-    //        if (m_HeadBar != null)
-    //        {
-    //            Destroy(m_HeadBar);
-    //        }
-    //    }
-    //    #endregion
+    #region OnDestroy 销毁
+    /// <summary>
+    /// 销毁
+    /// </summary>
+    void OnDestroy()
+    {
+        CurrRoleFSMMgr = null;
+        //if (m_HeadBar != null)
+        //{
+        //    Destroy(m_HeadBar);
+        //}
+    }
+    #endregion
 }
