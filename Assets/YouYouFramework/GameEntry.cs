@@ -172,6 +172,12 @@ namespace YouYou
             get;
             private set;
         }
+
+        public static BattleManager Battle
+        {
+            get;
+            private set;
+        }
         #endregion
 
         public static ScriptManager Script = new ScriptManager();
@@ -268,6 +274,7 @@ namespace YouYou
             Role = GetBaseComponent<RoleManager>();
             Camera = GetBaseComponent<CameraManager>();
             Key = GetBaseComponent<KeyManager>();
+            Battle= GetBaseComponent<BattleManager>();
         }
         #endregion
 

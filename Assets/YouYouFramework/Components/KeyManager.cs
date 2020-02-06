@@ -53,78 +53,90 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
             return;
         }
 
-        if (GameEntry.Role.Player != null)
-        {          
-            if (Input.GetMouseButtonDown(0))
+        if (GameEntry.Procedure.CurrProcedureState==ProcedureState.WorldMap)
+        {
+            if (GameEntry.Role.Player != null)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                RaycastHit hit;
-
-                //判断是否击中了NPC
-                if (Physics.Raycast(ray, out hit))
+                if (Input.GetMouseButtonDown(0))
                 {
-                    //如果击中了NPC
-                    if (hit.collider.gameObject.tag == "npc")
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                    RaycastHit hit;
+
+                    //判断是否击中了NPC
+                    if (Physics.Raycast(ray, out hit))
                     {
-                        hit.collider.gameObject.GetComponent<NPCClick>().Call();
-                    }
-                    else if (hit.collider.gameObject.tag == "Road")
-                    {
-                        GameEntry.Role.Player.MoveTo(hit.point);
+                        //如果击中了NPC
+                        if (hit.collider.gameObject.tag == "npc")
+                        {
+                            hit.collider.gameObject.GetComponent<NPCClick>().Call();
+                        }
+                        else if (hit.collider.gameObject.tag == "Road")
+                        {
+                            GameEntry.Role.Player.MoveTo(hit.point);
+                        }
                     }
                 }
-            }          
 
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                Transform trans = GameEntry.Role.Player.gameObject.transform;
-                string pos = string.Format("{0}_{1}_{2}_{3}", trans.position.x, trans.position.y, trans.position.z, trans.rotation.eulerAngles.y);
-                Debug.Log("位置信息=" + pos);
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    Transform trans = GameEntry.Role.Player.gameObject.transform;
+                    string pos = string.Format("{0}_{1}_{2}_{3}", trans.position.x, trans.position.y, trans.position.z, trans.rotation.eulerAngles.y);
+                    Debug.Log("位置信息=" + pos);
+                }
+
+                //    //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
+                //    //{
+                //    //    return;
+                //    //}
+                //if (Input.GetKeyDown(KeyCode.F))
+                //{
+                //    GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
+                //}
+
+                if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+                {
+                    float VerInput = Input.GetAxisRaw("Vertical");
+                    float HorInput = Input.GetAxisRaw("Horizontal");
+                    Vector3 a = GameEntry.Camera.MainCamera.transform.forward;//摄像机前方
+                    Vector3 vector = VerInput * a + HorInput * GameEntry.Camera.MainCamera.transform.right;
+                    Vector3 vector2 = GameEntry.Role.Player.gameObject.transform.position + vector;//移动目标点    
+                    GameEntry.Role.Player.MoveTo(vector2);
+                }
+                //else
+                //{
+                //    GameEntry.Role.Player.CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+                //}
+
+                bool buttonDown = Input.GetButtonDown("Jump");
+                //    //if (KeyManager.Shift)
+                //    //{
+
+                //    //    Player.Instance.RunSpeed = 8f;
+                //    //}
+                //    //else
+                //    //{
+                //    //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
+                //    //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
+                //    //    //{
+                //    //    //    return;
+                //    //    //}
+                //    //    Player.Instance.RunSpeed = 5f;
+                //    //}
             }
+        }
+        else if(GameEntry.Procedure.CurrProcedureState == ProcedureState.GameLevel)
+        {
 
-            //    //if (!this.KeyForHelp(3, 0, KeyCode.None, "Vertical"))
-            //    //{
-            //    //    return;
-            //    //}
-            //if (Input.GetKeyDown(KeyCode.F))
-            //{
-            //    GameEntry.Event.CommonEvent.Dispatch(KeyCodeEventId.F);
-            //}
-
-            if (Input.GetButton("Vertical")|| Input.GetButton("Horizontal"))
-            {
-                float VerInput = Input.GetAxisRaw("Vertical");
-                float HorInput = Input.GetAxisRaw("Horizontal");
-                Vector3 a = GameEntry.Camera.MainCamera.transform.forward;//摄像机前方
-                Vector3 vector = VerInput * a + HorInput * GameEntry.Camera.MainCamera.transform.right;
-                Vector3 vector2 = GameEntry.Role.Player.gameObject.transform.position + vector;//移动目标点    
-                GameEntry.Role.Player.MoveTo(vector2);
-            }
-            //else
-            //{
-            //    GameEntry.Role.Player.CurrRoleFSMMgr.ChangeState(RoleState.Idle);
-            //}
-
-            bool buttonDown = Input.GetButtonDown("Jump");
-            //    //if (KeyManager.Shift)
-            //    //{
-
-            //    //    Player.Instance.RunSpeed = 8f;
-            //    //}
-            //    //else
-            //    //{
-            //    //    ModBuffProperty modBuffProperty = (ModBuffProperty)Player.Instance.GetModule(MODULE_TYPE.MT_BUFF);
-            //    //    //if (modBuffProperty.GetValue(BUFF_VALUE_TYPE.DEL_WALK_SPEED) != 0)
-            //    //    //{
-            //    //    //    return;
-            //    //    //}
-            //    //    Player.Instance.RunSpeed = 5f;
-            //    //}
         }
     }
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
+    /// <summary>
+    /// 防止UI穿透
+    /// </summary>
+    /// <param name="screenPosition"></param>
+    /// <returns></returns>
     public bool IsPointerOverGameObject(Vector2 screenPosition)
     {
         //实例化点击事件  

@@ -14,7 +14,7 @@ public class GamePlayFormation : MonoBehaviour
     /// 是否玩家阵型
     /// </summary>
     public bool isPlayerFormation;
-    //    public GamePlayManager Manager { get { return GamePlayManager.Singleton; } }
+
     //    /// <summary>
     //    /// 角色状态UI字典
     //    /// </summary>
@@ -27,57 +27,26 @@ public class GamePlayFormation : MonoBehaviour
     /// </summary>
     public readonly Dictionary<int, RoleCtrl> Characters = new Dictionary<int, RoleCtrl>();
 
-    //    /// <summary>
-    //    /// 设置阵型角色
-    //    /// </summary>
-    //    public virtual void SetFormationCharacters()
-    //    {
-    //        List<Role> Teamlist = RuntimeData.Instance.Team;
-    //        ClearCharacters();
-    //        for (var i = 0; i < Teamlist.Count; ++i)
-    //        {
-    //            SetCharacter(i, Teamlist[i]);
-    //        }
-    //    }
-
-    public virtual void SetCharacters(string[] items)
+    public void SetCharacters(List<RoleInfo> items)
     {
         ClearCharacters();
-        for (var i = 0; i < items.Length; ++i)
+        for (var i = 0; i < items.Count; ++i)
         {
-            //SetCharacter(i, GameEntry.DataTable.GetRole(items[i].ToInt()));
+            GameObject gameObject = null;
+            GameEntry.Role.CreateRole("zhujiao_cike_animation", (ResourceEntity resourceEntity) =>
+            {
+                gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+            });
+            gameObject.SetParent(containers[i]);//设置根节点 
+            gameObject.transform.localPosition = Vector3.zero;
+            RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
+            //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
+            ctrl.Init(items[i], new RoleMainPlayerCityAI(ctrl));
+            Characters[i]=ctrl;//添加到角色列表
+            GameEntry.Role.AddRole(ctrl);//添加到角色列表
+            ctrl.SetFormation(this, i, containers[i]);
         }
     }
-
-    //public void SetCharacter(int position, Role role)
-    //{
-    //    var container = containers[position];
-    //    container.RemoveAllChildren();
-    //    string path = "Characters/" + role.model;
-    //    GameObject go = Resources.Load(path) as GameObject;
-    //    var character = Instantiate(go).GetComponent<CharacterEntity>();
-    //    character.SetFormation(this, position, container);
-    //    character.Role = role;
-    //    Characters[position] = character;
-
-    //    if (character == null)
-    //        return;
-
-    //    UICharacterStats uiStats;
-    //    if (UIStats.TryGetValue(position, out uiStats))
-    //    {
-    //        Destroy(uiStats.gameObject);
-    //        UIStats.Remove(position);
-    //    }
-
-    //    if (Manager != null)
-    //    {
-    //        uiStats = Instantiate(Manager.uiCharacterStatsPrefab, Manager.uiCharacterStatsContainer);
-    //        uiStats.transform.localScale = Vector3.one;
-    //        uiStats.character = character;
-    //        character.uiCharacterStats = uiStats;
-    //    }
-    //}
 
     /// <summary>
     /// 清除角色
@@ -95,25 +64,16 @@ public class GamePlayFormation : MonoBehaviour
         Characters.Clear();
     }
 
-    public void Revive()
+    public bool IsAnyCharacterAlive()
     {
-        //var characters = Characters.Values;
-        //foreach (var character in characters)
-        //{
-        //    character.Revive();
-        //}
+        var characters = Characters.Values;
+        foreach (var character in characters)
+        {
+            if (character.CurrRoleInfo.CurrHP > 0)
+                return true;
+        }
+        return false;
     }
-
-    //    public bool IsAnyCharacterAlive()
-    //    {
-    //        var characters = Characters.Values;
-    //        foreach (var character in characters)
-    //        {
-    //            if (character.Hp > 0)
-    //                return true;
-    //        }
-    //        return false;
-    //    }
 
     //    public bool TryGetHeadingToFoeRotation(out Quaternion rotation)
     //    {

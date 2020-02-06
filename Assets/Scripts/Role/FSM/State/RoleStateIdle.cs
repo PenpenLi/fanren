@@ -17,7 +17,6 @@ public class RoleStateIdle : RoleStateBase
     {
         base.OnUpdate();
         CurrRoleAnimatorStateInfo = CurrFsm.m_Owner.CurrRoleCtrl.Animator.GetCurrentAnimatorStateInfo(0);
-
         if (CurrRoleAnimatorStateInfo.IsName(RoleAnimatorState.Idle_Normal.ToString()))
         {
             //设置当前动画状态条件的目的是 防止频繁的进入相同 动画状态

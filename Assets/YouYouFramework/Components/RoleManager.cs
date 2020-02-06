@@ -351,7 +351,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         gameObject.tag = "player";
         //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
         GameEntry.Camera.InitPosition(gameObject);
-        Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
+        Player.Init(null, new RoleMainPlayerCityAI(Player));
 
         this.AddRole(Player);//添加到角色列表
     }
@@ -394,7 +394,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
             gameObject.tag = "npc";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
-            ctrl.Init(RoleType.NPC, null, new RoleMainPlayerCityAI(ctrl));
+            ctrl.Init(null, new RoleMainPlayerCityAI(ctrl));
             NPCClick npcclick = gameObject.AddComponent<NPCClick>();
             this.AddRole(ctrl);//添加到角色列表         
         });      

@@ -67,11 +67,6 @@ public class RoleCtrl : MonoBehaviour
     public float PatrolRange;
 
     /// <summary>
-    /// 当前角色类型
-    /// </summary>
-    public RoleType CurrRoleType = RoleType.None;
-
-    /// <summary>
     /// 死亡声音名称
     /// </summary>
     [SerializeField]
@@ -80,7 +75,7 @@ public class RoleCtrl : MonoBehaviour
     /// <summary>
     /// 当前角色信息
     /// </summary>
-    public RoleInfoBase CurrRoleInfo = null;
+    public RoleInfo CurrRoleInfo = null;
 
     /// <summary>
     /// 当前角色AI
@@ -109,21 +104,11 @@ public class RoleCtrl : MonoBehaviour
     [HideInInspector]
     public bool IsDied;
 
-    ///// <summary>
-    ///// 数值变化委托
-    ///// </summary>
-    ///// <param name="type"></param>
-    //public delegate void OnValueChangeHandler(ValueChangeType type);
-
-    ///// <summary>
-    ///// HP变化
-    ///// </summary>
-    //public OnValueChangeHandler OnHPChange;
-
-    ///// <summary>
-    ///// MP变化
-    ///// </summary>
-    //public OnValueChangeHandler OnMPChange;
+    /// <summary>
+    /// 当前时间计数
+    /// </summary>
+    [HideInInspector]
+    public int currentTimeCount;
 
     public Dictionary<int, OperableItemBase> EnableOperableList = new Dictionary<int, OperableItemBase>();
 
@@ -156,17 +141,49 @@ public class RoleCtrl : MonoBehaviour
     public int AStartCurrWayPointIndex = 1;
 
     //=========================战斗相关=================
+    public const string ANIM_KEY_IS_DEAD = "IsDead";
+    public const string ANIM_KEY_SPEED = "Speed";
+    public const string ANIM_KEY_ACTION_STATE = "ActionState";
+    public const string ANIM_KEY_DO_ACTION = "DoAction";
+    public const string ANIM_KEY_HURT = "Hurt";
+    public const int ACTION_ATTACK = -100;
 
-    /// <summary>
-    /// 角色销毁委托
-    /// </summary>
-    public Action<Transform> OnRoleDestroy;
+    public bool IsPlayerCharacter { get { return Formation != null && Formation.isPlayerFormation; } }
 
+    public int Action { get; private set; }
+    public bool IsDoingAction { get; private set; }
     /// <summary>
-    /// 上次战斗的时间
+    /// 行动目标
     /// </summary>
-    [HideInInspector]
-    public float PrevFightTime = 0f;
+    public RoleCtrl ActionTarget { get; private set; }
+
+    public GamePlayFormation Formation { get; protected set; }
+    public int Position { get; protected set; }
+    private Transform container;
+    public Transform Container
+    {
+        get { return container; }
+        set
+        {
+            container = value;
+            TempTransform.SetParent(container);
+            TempTransform.localPosition = Vector3.zero;
+            TempTransform.localEulerAngles = Vector3.zero;
+            TempTransform.localScale = Vector3.one;
+            gameObject.SetActive(true);
+        }
+    }
+
+    private Transform tempTransform;
+    public Transform TempTransform
+    {
+        get
+        {
+            if (tempTransform == null)
+                tempTransform = GetComponent<Transform>();
+            return tempTransform;
+        }
+    }
 
     /// <summary>
     /// 是否初始化
@@ -181,18 +198,16 @@ public class RoleCtrl : MonoBehaviour
     /// <param name="roleType">角色类型</param>
     /// <param name="roleInfo">角色信息</param>
     /// <param name="ai">AI</param>
-    public void Init(RoleType roleType, RoleInfoBase roleInfo, IRoleAI ai)
+    public void Init(RoleInfo roleInfo, IRoleAI ai)
     {
-        CurrRoleType = roleType;
-        //CurrRoleInfo = roleInfo;
-        //CurrRoleAI = ai;
+        CurrRoleInfo = roleInfo;
+        CurrRoleAI = ai;
 
         if (CharacterController != null)
         {
             CharacterController.enabled = true;
         }
 
-        //PrevFightTime = 0;
         IsDied = false;
         m_IsInit = true;
     }
@@ -205,24 +220,50 @@ public class RoleCtrl : MonoBehaviour
         m_Seeker = GetComponent<Seeker>();
 
         CurrRoleFSMMgr = new RoleFSMMgr(this, OnDieCallBack, OnDestroyCallBack);
-        //m_Hurt = new RoleHurt(CurrRoleFSMMgr);
-        //m_Hurt.OnRoleHurt = OnRoleHurtCallBack;
-        //Attack.SetFSM(CurrRoleFSMMgr);
-
-        if(CurrRoleType== RoleType.MainPlayer)
-        {
-            AddPlayerHotKey();
-        }
     }
 
-    private void AddPlayerHotKey()
+    public void ResetStates()
     {
-        GameEntry.Event.CommonEvent.AddEventListener(KeyCodeEventId.F, Operable);
+        Action = ACTION_ATTACK;
+        ActionTarget = null;
+        IsDoingAction = false;
     }
 
-    private void Operable(object userData)
+    public bool DoAction(RoleCtrl target)
     {
-      
+        //if (target == null || target.Hp <= 0)
+        //    return false;
+
+        //if (Action == ACTION_ATTACK)
+        //{
+        //    // Cannot attack self or same team character
+        //    if (target == this || IsSameTeamWith(target))
+        //        return false;
+        //}
+        //else
+        //{
+        //    if (SelectedSkill == null || !SelectedSkill.IsReady())
+        //        return false;
+
+        //    switch (SelectedSkill.CastedSkill.usageScope)
+        //    {
+        //        case SkillUsageScope.Self:
+        //            if (target != this)
+        //                return false;
+        //            break;
+        //        case SkillUsageScope.Enemy:
+        //            if (target == this || IsSameTeamWith(target))
+        //                return false;
+        //            break;
+        //        case SkillUsageScope.Ally:
+        //            if (!IsSameTeamWith(target))
+        //                return false;
+        //            break;
+        //    }
+        //}
+        //ActionTarget = target;
+        //DoAction();
+        return true;
     }
 
     private void OnDestroyCallBack()
@@ -356,11 +397,35 @@ public class RoleCtrl : MonoBehaviour
         {
             CharacterController.Move((transform.position + new Vector3(0, -1000, 0)) - transform.position);
         }
+    }
 
-        if (CurrRoleType == RoleType.MainPlayer)
-        {
-            //AutoSmallMap();
-        }
+    public void SetFormation(GamePlayFormation formation, int position, Transform container)
+    {
+        if (container == null)
+            return;
+
+        Formation = formation;
+        Position = position;
+        Container = container;
+
+        //Quaternion headingRotation;
+        //if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
+        //{
+        //    TempTransform.rotation = headingRotation;
+        //    if (Manager != null)
+        //        TempTransform.position -= Manager.spawnOffset * TempTransform.forward;
+        //}
+    }
+
+    public bool SetAction(int action)
+    {
+        //if (action == ACTION_ATTACK || (action >= 0 && action < Skills.Count))
+        //{
+        //    Action = action;
+        //    Manager.ShowTargetScopesOrDoAction(this);
+        //    return true;
+        //}
+        return false;
     }
 
     //    private void AutoSmallMap()

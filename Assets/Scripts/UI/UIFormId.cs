@@ -28,4 +28,9 @@ public class UIFormId
     /// 任务列表
     /// </summary>
     public const int Task = 5;
+
+    /// <summary>
+    /// 任务列表
+    /// </summary>
+    public const int Battle = 6;
 }

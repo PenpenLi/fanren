@@ -184,7 +184,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
         m_CameraZoomContainer.localRotation = Quaternion.identity;
         m_CameraContainer.localPosition = Vector3.zero;
         m_CameraContainer.localRotation = Quaternion.identity;
-        Camera.main.transform.localPosition = new Vector3(0f, 40f, -50f);
+        Camera.main.transform.localPosition = new Vector3(0f, 4f, -5f);
         Camera.main.transform.localRotation = Quaternion.Euler(30f, 0f, 0f);
     }
 

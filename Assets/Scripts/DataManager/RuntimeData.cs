@@ -33,12 +33,12 @@ public class RuntimeData
     /// <summary>
     /// 队伍角色信息
     /// </summary>
-    public List<RoleInfoBase> Team = new List<RoleInfoBase>();
+    public List<RoleInfo> Team = new List<RoleInfo>();
 
     /// <summary>
     /// 跟随角色信息
     /// </summary>
-    public List<RoleInfoBase> Follow = new List<RoleInfoBase>();
+    public List<RoleInfo> Follow = new List<RoleInfo>();
 
     //    public string NewbieTask = string.Empty;
 
@@ -232,7 +232,14 @@ public class RuntimeData
     /// <param name="roleID">角色ID</param>
     public void addTeamMember(int roleID)
     {
-        //this.Team.Add(GameEntry.DataTable.GetRole(roleID));
+        RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleID);
+        RoleInfo roleInfo = new RoleInfo();
+        roleInfo.RoleId = roleEntity.Id;
+        roleInfo.Level = 1;
+        roleInfo.MaxHP = roleEntity.maxhp;
+        roleInfo.CurrHP = roleEntity.maxhp;
+        roleInfo.ShenFa = roleEntity.shenfa;
+        this.Team.Add(roleInfo);
     }
 
     //    //public void addFollowMember(string roleKey)

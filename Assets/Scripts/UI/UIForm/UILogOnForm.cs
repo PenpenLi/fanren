@@ -216,14 +216,11 @@ public class UILogOnForm : UIFormBase
 
     public void OnNewGameBtn()
     {
-        NewGame();      
+        NewGame();   
         GameEntry.Scene.LoadScene(2,true, onComplete: () =>
         {
             GameEntry.Procedure.ChangeState(ProcedureState.WorldMap);
-            
         });
-
-        base.Close();
     }
 
     public void OnLoadBtn()
@@ -249,7 +246,7 @@ public class UILogOnForm : UIFormBase
     public void NewGame()
     {
         GameEntry.RuntimeData.Money = 0; ;
-        //GameEntry.RuntimeData.addTeamMember(10001);
+        GameEntry.RuntimeData.addTeamMember(1);
         ////RuntimeData.Instance.addItem(ItemInstance.Generate("大还丹", false), 10);
         //RuntimeData.Instance.KeyValues["original_主角之家.开场"] = "0";
         GameEntry.RuntimeData.AutoAcceptMisson();

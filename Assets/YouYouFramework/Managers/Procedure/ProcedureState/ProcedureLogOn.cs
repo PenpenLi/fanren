@@ -33,6 +33,7 @@ namespace YouYou
         {
             base.OnLeave();
             GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureLogOn");
+            GameEntry.UI.CloseUIForm(UIFormId.LogOn);
         }
     }
 }
