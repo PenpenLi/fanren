@@ -20,7 +20,7 @@ namespace YouYou
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
             GameEntry.SaveData.SDSave.Reset();
             GameEntry.SaveData.LoadSaveInfo();
-            GameEntry.RuntimeData.Init();
+            GameEntry.Data.RuntimeDataManager.Clear();
             GameEntry.UI.OpenUIForm(UIFormId.LogOn);
         }
 

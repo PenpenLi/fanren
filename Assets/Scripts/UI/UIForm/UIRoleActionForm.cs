@@ -10,52 +10,31 @@ using YouYou;
 /// </summary>
 public class UIRoleActionForm : UIFormBase
 {
-    public UICharacterAction[] uiActions;
+    public UIRoleAction uiActions;
 
     public ToggleGroup TempToggleGroup;
 
-    public RoleCtrl ActiveCharacter;
-
-    private readonly List<UICharacterAction> UICharacterSkills = new List<UICharacterAction>();
+    private List<UIRoleAction> UIRoleSkills = new List<UIRoleAction>();
 
     protected override void OnInit(object userData)
     {
         base.OnInit(userData);
-        ActiveCharacter = (RoleCtrl)userData;
         TempToggleGroup.allowSwitchOff = false;
-        var skillIndex = 0;
-        foreach (var uiAction in uiActions)
+        for (int i = 0; i < GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList.Count; ++i)
         {
-            uiAction.ActionManager = this;
-            uiAction.IsOn = false;
-            var uiSkill = uiAction;
-            if (uiSkill != null)
-            {
-                uiSkill.skillIndex = skillIndex;
-                UICharacterSkills.Add(uiSkill);
-                ++skillIndex;
-            }
-        }
+            GameObject go=Instantiate(uiActions.gameObject);
+            go.transform.SetParent(transform);
+            go.GetComponent<Toggle>().group = TempToggleGroup;
+            UIRoleAction uIRoleAction = go.GetComponent<UIRoleAction>();
+            uIRoleAction.SkillId = GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList[i].SkillId;
+            UIRoleSkills.Add(uIRoleAction);
+        }     
     }
 
     protected override void OnOpen(object userData)
     {
         base.OnOpen(userData);
-        var i = 0;
-        for (i = 0; i < uiActions.Length; ++i)
-        {
-            uiActions[i].IsOn = false;
-            if (i == 0)
-            {
-                uiActions[i].IsOn = true;
-            }
-        }
-        i = 0;
-        for (; i < UICharacterSkills.Count; ++i)
-        {
-            var ui = UICharacterSkills[i];
-            ui.Close();
-        }
+        UIRoleSkills[0].IsOn = true;
     }
 
     protected override void OnClose()
@@ -66,30 +45,5 @@ public class UIRoleActionForm : UIFormBase
     protected override void OnBeforDestroy()
     {
         base.OnBeforDestroy();
-    }
-
-    private void Update()
-    {
-        //if (!IsPlayerCharacterActive || ActiveCharacter.IsDoingAction)//这里位置最好换个
-        //{
-        //    Hide();
-        //    return;
-        //}
-
-        //var i = 0;
-        //foreach (var skill in Manager.ActiveCharacter.Skills)
-        //{
-        //    if (i >= UICharacterSkills.Count)
-        //        break;
-        //    var ui = UICharacterSkills[i];
-        //    ui.skill = skill as CharacterSkill;
-        //    ui.Show();
-        //    ++i;
-        //}
-        //for (; i < UICharacterSkills.Count; ++i)
-        //{
-        //    var ui = UICharacterSkills[i];
-        //    ui.Hide();
-        //}
     }
 }

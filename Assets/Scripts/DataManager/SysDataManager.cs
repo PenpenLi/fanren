@@ -12,23 +12,10 @@ using UnityEngine;
 /// </summary>
 public class SysDataManager
 {
-    /// <summary>
-    /// 当前的服务器时间
-    /// </summary>
-    public long CurrServerTime;
-
-    /// <summary>
-    /// 当前的渠道设置
-    /// </summary>
-    public ChannelConfigEntity CurrChannelConfig
-    {
-        get;
-        private set;
-    }
 
     public SysDataManager()
     {
-        CurrChannelConfig = new ChannelConfigEntity();
+        
     }
 
     public void Clear()

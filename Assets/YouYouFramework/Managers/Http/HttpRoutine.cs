@@ -86,12 +86,12 @@ namespace YouYou
                     //设备型号
                     dic["deviceModel"] = DeviceUtil.DeviceModel;
 
-                    long t = GameEntry.Data.SysDataManager.CurrServerTime;
+                    //long t = GameEntry.Data.SysDataManager.CurrServerTime;
                     //签名
-                    dic["sign"] = EncryptUtil.Md5(string.Format("{0}:{1}", t, DeviceUtil.DeviceIdentifier));
+                    //dic["sign"] = EncryptUtil.Md5(string.Format("{0}:{1}", t, DeviceUtil.DeviceIdentifier));
 
                     //时间戳
-                    dic["t"] = t;
+                    //dic["t"] = t;
                 }
 
                 string json = string.Empty;

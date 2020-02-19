@@ -36,11 +36,11 @@ public class UITaskFormItemView : MonoBehaviour
         });
     }
 
-    public void SetUI(ServerTaskEntity entity, Action<int> onClick)
-    {
-        m_TaskId = entity.Id;
-        m_OnClick = onClick;
+    //public void SetUI(ServerTaskEntity entity, Action<int> onClick)
+    //{
+    //    m_TaskId = entity.Id;
+    //    m_OnClick = onClick;
 
-        //txtName.text = GameEntry.Localization.GetString(GameEntry.DataTable.DataTableManager.TaskDBModel.Get(m_TaskId).Name);
-    }
+    //    //txtName.text = GameEntry.Localization.GetString(GameEntry.DataTable.DataTableManager.TaskDBModel.Get(m_TaskId).Name);
+    //}
 }

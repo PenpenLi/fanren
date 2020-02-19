@@ -13,7 +13,7 @@ namespace YouYou
         /// <summary>
         /// 临时缓存数据
         /// </summary>
-        public CacheDataManager CacheDataManager
+        public RuntimeDataManager RuntimeDataManager
         {
             get;
             private set;
@@ -28,39 +28,17 @@ namespace YouYou
             private set;
         }
 
-        /// <summary>
-        /// 用户相关数据
-        /// </summary>
-        public UserDataManager UserDataManager
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 关卡地图数据
-        /// </summary>
-        public PVEMapDataManager PVEMapDataManager
-        {
-            get;
-            private set;
-        }
-
         protected override void OnAwake()
         {
             base.OnAwake();
-            CacheDataManager = new CacheDataManager();
+            RuntimeDataManager = new RuntimeDataManager();
             SysDataManager = new SysDataManager();
-            UserDataManager = new UserDataManager();
-            PVEMapDataManager = new PVEMapDataManager();
         }
 
         public override void Shutdown()
         {
-            CacheDataManager.Dispose();
+            RuntimeDataManager.Dispose();
             SysDataManager.Dispose();
-            UserDataManager.Dispose();
-            PVEMapDataManager.Dispose();
         }
     }
 }

@@ -461,7 +461,7 @@ public class ScriptManager
     /// <param name="parID"></param>
     public void UpdateMission(int moduleID, int parID)
     {
-        MissionManager modMission =GameEntry.RuntimeData.modMission;
+        MissionManager modMission = GameEntry.Data.RuntimeDataManager.modMission;
         if (modMission != null)
         {
             modMission.UpdateMissionProgress(moduleID, parID);

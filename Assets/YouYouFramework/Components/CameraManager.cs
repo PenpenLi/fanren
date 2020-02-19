@@ -172,23 +172,6 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
     }
 
     /// <summary>
-    /// 初始化位置
-    /// </summary>
-	public void InitBattle()
-    {
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        m_CameraUpAndDown.localPosition = Vector3.zero;
-        m_CameraUpAndDown.localRotation = Quaternion.identity;
-        m_CameraZoomContainer.localPosition = Vector3.zero;
-        m_CameraZoomContainer.localRotation = Quaternion.identity;
-        m_CameraContainer.localPosition = Vector3.zero;
-        m_CameraContainer.localRotation = Quaternion.identity;
-        Camera.main.transform.localPosition = new Vector3(0f, 4f, -5f);
-        Camera.main.transform.localRotation = Quaternion.Euler(30f, 0f, 0f);
-    }
-
-    /// <summary>
     /// 实时看着主角
     /// </summary>
     /// <param name="pos"></param>
@@ -196,22 +179,6 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
     {
         m_CameraZoomContainer.LookAt(pos);
     }
-
-    //public void SetCameraState(ModCamera.CameraState state)
-    //{
-    //    if (this.cameraState == ModCamera.CameraState.LookTarget && (state == ModCamera.CameraState.FollowPositionAutoRotation || state == ModCamera.CameraState.LockPositionAutoLook || state == ModCamera.CameraState.LockCamera))
-    //    {
-    //        return;
-    //        return;
-    //    }
-    //    this.cameraState = state;
-    //    switch (this.cameraState)
-    //    {
-    //        case ModCamera.CameraState.MouseOrbit:
-    //            this.StartMouseOrbit();
-    //            break;
-    //    }
-    //}
 
     //private void StopCamera()
     //{
@@ -379,8 +346,28 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
     public void UpdateBattle()
     {
+        transform.position = GameEntry.Battle.ActiveRole.transform.position;
+        AutoLookAt(GameEntry.Battle.ActiveRole.transform.position);
 
-       
+        if (this.isMouseOrbit && Input.GetMouseButton(1))
+        {
+            this.x += Input.GetAxis("Mouse X") * this.xSpeed * this.offsetSpeed;
+            this.y -= Input.GetAxis("Mouse Y") * this.ySpeed * this.offsetSpeed;
+
+            this.y = ClampAngle(this.y, this.yMinLimit, this.yMaxLimit);
+        }
+        this.transform.rotation = Quaternion.Euler(0f, this.x, 0f);
+        this.m_CameraUpAndDown.transform.localRotation = Quaternion.Euler(0f, 0f, this.y);
+        //Vector3 position = Vector3.SmoothDamp(this.cameraControl.transform.position, this._target.position, ref this.velocity, this.smoothTime);
+        //this.cameraControl.transform.position = position;
+        //if (this.y < 0f)
+        //{
+        //    this.curDist = Mathf.Lerp(m_MainCamera.transform.localPosition.x, this.minDistance + this.y, Time.deltaTime * this.deltaTime);
+        //    this.checkDistance = 2f;
+        //}
+        this.currentDistance -= Input.GetAxis("Mouse ScrollWheel");
+        this.CheckDistance();
+        this.m_CameraZoomContainer.transform.localPosition = Vector3.right * this.currentDistance + this.moveDist;
     }
 
     /// <summary>
@@ -498,25 +485,23 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
     public void OnUpdate()
     {
-        if (m_target == null)
-        {
-            return;
-        }
-
         if (this.isLockCamera)
         {
             return;
         }
 
-        switch (this.cameraState)
+        if (GameEntry.Procedure.CurrProcedureState == ProcedureState.WorldMap)
         {
-            case CameraState.MouseOrbit:
-                this.UpdateMouseOrbit();
-                break;
-            case CameraState.Battle:
-                this.UpdateBattle();
-                break;
+            if (GameEntry.Role.Player!=null)
+            {
+                UpdateMouseOrbit();
+            }        
         }
+        else if (GameEntry.Procedure.CurrProcedureState == ProcedureState.GameLevel)
+        {
+            UpdateBattle();
+        }
+
         //this.CheckCameraHit();
     }
 

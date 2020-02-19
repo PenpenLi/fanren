@@ -32,9 +32,6 @@ public enum RoleType
 /// </summary>
 public class RoleManager : YouYouBaseComponent, IUpdateComponent
 {
-    public GamePlayFormation playerFormation;
-    public GamePlayFormation foeFormation;
-
     private int[] id = new int[]
     {
             1,
@@ -346,12 +343,12 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
         });
         gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
-        gameObject.transform.position = new Vector3(3f, 10f, 100f);            
+        gameObject.transform.position = new Vector3(1f, 10f, 2f);//设置出生地    
         Player = gameObject.GetComponent<RoleCtrl>();
         gameObject.tag = "player";
         //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
         GameEntry.Camera.InitPosition(gameObject);
-        Player.Init(null, new RoleMainPlayerCityAI(Player));
+        Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
 
         this.AddRole(Player);//添加到角色列表
     }
@@ -359,9 +356,9 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// <summary>
     /// 创建所有NPC
     /// </summary>
-    public void CreateAllNPC(Sys_SceneEntity SceneEntity)
+    public void CreateAllNPC()
     {
-        Sys_SceneEntity m_CurrSceneEntity = SceneEntity;
+        Sys_SceneEntity m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
         string[] arr1 = m_CurrSceneEntity.NPCList.Split('|');
         for (int i = 0; i < arr1.Length; i++)
         {
@@ -390,16 +387,35 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         {
             GameObject gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
             gameObject.SetParent(this._npcRootGo.transform);//设置根节点 
-            gameObject.transform.position = new Vector3(4f, 10f, 101f);
+            gameObject.transform.position = new Vector3(1f, 10f, 3f);
             gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
             gameObject.tag = "npc";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
-            ctrl.Init(null, new RoleMainPlayerCityAI(ctrl));
+            ctrl.Init(RoleType.NPC,null, new RoleMainPlayerCityAI(ctrl));
             NPCClick npcclick = gameObject.AddComponent<NPCClick>();
             this.AddRole(ctrl);//添加到角色列表         
         });      
     }
 
+    public RoleInfo GetRoleInfo(int roleID)
+    {
+        RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleID);
+        RoleInfo roleInfo = new RoleInfo();
+        roleInfo.RoleId = roleEntity.Id;
+        roleInfo.Level = 1;
+        roleInfo.MaxHP = roleEntity.MaxHp;
+        roleInfo.CurrHP = roleEntity.MaxHp;
+        roleInfo.ShenFa = roleEntity.ShenFa;
+        string[] arr = roleEntity.SkillIds.Split(';');
+        for (int i = 0; i < arr.Length; i++)
+        {
+            RoleInfoSkill roleInfoSkill = new RoleInfoSkill();
+            roleInfoSkill.SkillId = arr[i].ToInt();
+            roleInfoSkill.SkillLevel = 1;
+            roleInfo.SkillList.Add(roleInfoSkill);
+        }
+        return roleInfo;
+    }
     //	private void CreateOperableRootGo()
     //	{
     //		if (this.operableRootGo == null)

@@ -577,12 +577,17 @@ MonoBehaviour:
   BornPoint: {x: 0, y: 0, z: 0}
   ViewRange: 0
   PatrolRange: 0
-  CurrRoleType: 0
   DieAudioName: 
-  LockEnemy: {fileID: 0}
+  m_TargetCharacter: {fileID: 0}
   IsDied: 0
+  currentTimeCount: 0
   AStartCurrWayPointIndex: 1
-  PrevFightTime: 0
+  ANIM_KEY_IS_DEAD: IsDead
+  ANIM_KEY_SPEED: Speed
+  ANIM_KEY_ACTION_STATE: ActionState
+  ANIM_KEY_DO_ACTION: DoAction
+  ANIM_KEY_HURT: Hurt
+  selectable: 0
 --- !u!1 &256225124642822863
 GameObject:
   m_ObjectHideFlags: 0

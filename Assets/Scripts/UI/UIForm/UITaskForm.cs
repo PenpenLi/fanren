@@ -79,7 +79,7 @@ public class UITaskForm : UIFormBase
         btnReceive = null;
     }
 
-    private List<ServerTaskEntity> m_ServerTaskList;
+   // private List<ServerTaskEntity> m_ServerTaskList;
 
     /// <summary>
     /// 加载任务列表
@@ -89,16 +89,16 @@ public class UITaskForm : UIFormBase
 
        // m_ServerTaskList = GameEntry.Data.UserDataManager.ServerTaskList;
 
-        multiScroller.DataCount = m_ServerTaskList.Count;
+       // multiScroller.DataCount = m_ServerTaskList.Count;
         multiScroller.ResetScroller();
 
-        OnBtnDetailClick(m_ServerTaskList[0].Id);
+        //OnBtnDetailClick(m_ServerTaskList[0].Id);
     }
 
     private void OnItemCreate(int index, GameObject obj)
     {
         UITaskFormItemView view = obj.GetComponent<UITaskFormItemView>();
-        view.SetUI(m_ServerTaskList[index], OnBtnDetailClick);
+        //view.SetUI(m_ServerTaskList[index], OnBtnDetailClick);
     }
 
     private void OnBtnDetailClick(int id)

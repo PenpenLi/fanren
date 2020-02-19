@@ -115,7 +115,7 @@ namespace YouYou
                         m_FileStream = File.OpenWrite(m_DownloadLocalFilePath);
                         m_FileStream.Seek(0, SeekOrigin.End);
                         m_BeginPos = (uint)m_FileStream.Length;
-                        Download(string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, m_CurrFileUrl), m_BeginPos);
+                        //Download(string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, m_CurrFileUrl), m_BeginPos);
                     }
                 }
                 else
@@ -146,7 +146,7 @@ namespace YouYou
 
             PlayerPrefs.SetString(m_CurrFileUrl, m_CurrAssetBundleInfo.MD5);
             //Debug.LogError("从头下载" + m_CurrFileUrl);
-            Download(string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, m_CurrFileUrl));
+            //Download(string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, m_CurrFileUrl));
         }
 
         /// <summary>

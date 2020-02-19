@@ -9,15 +9,11 @@ namespace YouYou
     /// </summary>
     public class ProcedureWorldMap : ProcedureBase
     {
-        private Sys_SceneEntity m_CurrSceneEntity;
-
         public override void OnEnter()
         {
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureWorldMap");
-            m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
             Debug.Log("加载主UI");
-            //GameEntry.Role.UpdateSceneBySave();
             if (GameEntry.Role.Player == null)
             {
                 GameEntry.Role.CreatePlayer();
@@ -27,7 +23,7 @@ namespace YouYou
                 GameEntry.Role.Player.gameObject.SetActive(true);
             }
            
-            GameEntry.Role.CreateAllNPC(m_CurrSceneEntity);
+            GameEntry.Role.CreateAllNPC();
 
             //DoScriptMoudle();
         }
@@ -52,22 +48,22 @@ namespace YouYou
 
         public void DoScriptMoudle()
         {
-            string[] arr1 = m_CurrSceneEntity.ScriptModId.Split('|');
-            for (int i = 0; i < arr1.Length; i++)
-            {
-                string[] arr2 = arr1[i].Split('_');
+            //string[] arr1 = m_CurrSceneEntity.ScriptModId.Split('|');
+            //for (int i = 0; i < arr1.Length; i++)
+            //{
+            //    string[] arr2 = arr1[i].Split('_');
 
-                int moduleID = 0;
-                int.TryParse(arr2[0], out moduleID);
+            //    int moduleID = 0;
+            //    int.TryParse(arr2[0], out moduleID);
 
-                int parID = 0;
-                int.TryParse(arr2[1], out parID);
+            //    int parID = 0;
+            //    int.TryParse(arr2[1], out parID);
 
-                if (moduleID != -1)
-                {
-                    GameEntry.Script.Exec(moduleID, parID);
-                }              
-            }
+            //    if (moduleID != -1)
+            //    {
+            //        GameEntry.Script.Exec(moduleID, parID);
+            //    }              
+            //}
         }
     }
 }

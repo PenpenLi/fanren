@@ -1,5 +1,10 @@
+
+//===================================================
+//作    者：边涯  http://www.u3dol.com
+//创建时间：2020-02-08 18:41:49
+//备    注：此代码为工具生成 请勿手工修改
+//===================================================
 using System.Collections;
-using YouYou;
 
 /// <summary>
 /// Role实体
@@ -14,106 +19,51 @@ public partial class RoleEntity : DataTableEntityBase
     /// <summary>
     /// 最大血量
     /// </summary>
-    public int maxhp;
+    public int MaxHp;
 
     /// <summary>
     /// 最大法力
     /// </summary>
-    public int maxmp;
+    public int MaxMp;
 
     /// <summary>
-    /// 臂力
+    /// 攻击
     /// </summary>
-    public int bili;
+    public int Attack;
+
+    /// <summary>
+    /// 防御
+    /// </summary>
+    public int Defense;
 
     /// <summary>
     /// 身法
     /// </summary>
-    public int shenfa;
+    public int ShenFa;
 
     /// <summary>
-    /// 悟性
+    /// 职业
     /// </summary>
-    public int wuxing;
-
-    /// <summary>
-    /// 拳掌
-    /// </summary>
-    public int quanzhang;
-
-    /// <summary>
-    /// 剑法
-    /// </summary>
-    public int jianfa;
-
-    /// <summary>
-    /// 刀法
-    /// </summary>
-    public int daofa;
-
-    /// <summary>
-    /// 奇门
-    /// </summary>
-    public int qimen;
-
-    /// <summary>
-    /// 根骨
-    /// </summary>
-    public int gengu;
-
-    /// <summary>
-    /// 武学
-    /// </summary>
-    public int wuxue;
-
-    /// <summary>
-    /// 福源
-    /// </summary>
-    public int fuyuan;
-
-    /// <summary>
-    /// 天赋
-    /// </summary>
-    public string talent;
-
-    /// <summary>
-    /// 成长模版
-    /// </summary>
-    public string grow_template;
+    public int Job;
 
     /// <summary>
     /// 模型名称
     /// </summary>
-    public string model;
+    public string Model;
 
     /// <summary>
     /// 性别 0=男，1=女
     /// </summary>
-    public int female;
-
-    /// <summary>
-    /// 等级
-    /// </summary>
-    public int level;
-
-    /// <summary>
-    /// 特殊技
-    /// </summary>
-    public string special_skills;
-
-    /// <summary>
-    /// 内功
-    /// </summary>
-    public string internal_skills;
-
-    /// <summary>
-    /// 外攻
-    /// </summary>
-    public string skill;
+    public int Female;
 
     /// <summary>
     /// 装备
     /// </summary>
     public string items;
+
+    /// <summary>
+    /// 使用的技能Id
+    /// </summary>
+    public string SkillIds;
 
 }

@@ -165,9 +165,9 @@ namespace YouYou
         /// </summary>
         private void InitCDNAssetBundleInfo()
         {
-            string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.VersionFileName);
-            GameEntry.Log(LogCategory.Resource, url);
-            GameEntry.Http.SendData(url, OnInitCDNAssetBundleInfo, isGetData: true);
+            //string url = string.Format("{0}{1}", GameEntry.Data.SysDataManager.CurrChannelConfig.RealSourceUrl, ConstDefine.VersionFileName);
+           // GameEntry.Log(LogCategory.Resource, url);
+            //GameEntry.Http.SendData(url, OnInitCDNAssetBundleInfo, isGetData: true);
         }
 
         /// <summary>

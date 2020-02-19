@@ -59,7 +59,7 @@ public class ScriptDataManager
         else if (id.ToInt() == 2)
         {
             //ÅÐ¶ÏÈÎÎñ×´Ì¬
-            MissionManager modMission = GameEntry.RuntimeData.modMission;
+            MissionManager modMission = GameEntry.Data.RuntimeDataManager.modMission;
             MissionState missionState2 = modMission.GetMissionState(param[0].ToInt());
             if (param[1].ToInt() == (int)missionState2)
             {

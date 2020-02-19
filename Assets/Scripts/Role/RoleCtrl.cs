@@ -11,7 +11,6 @@ using YouYou;
 [RequireComponent(typeof(Seeker))]
 [RequireComponent(typeof(FunnelModifier))]
 [RequireComponent(typeof(CharacterController))]
-[AddComponentMenu("角色模型信息")]
 public class RoleCtrl : MonoBehaviour
 {
     #region 成员变量或属性
@@ -73,6 +72,11 @@ public class RoleCtrl : MonoBehaviour
     private string DieAudioName;
 
     /// <summary>
+    /// 当前角色类型
+    /// </summary>
+    public RoleType CurrRoleType = RoleType.None;
+
+    /// <summary>
     /// 当前角色信息
     /// </summary>
     public RoleInfo CurrRoleInfo = null;
@@ -83,10 +87,10 @@ public class RoleCtrl : MonoBehaviour
     public IRoleAI CurrRoleAI = null;
 
     /// <summary>
-    /// 锁定敌人
+    /// 移动目标
     /// </summary>
     [HideInInspector]
-    public RoleCtrl LockEnemy;
+    public RoleCtrl targetCharacter;
 
     /// <summary>
     /// 角色受伤委托
@@ -141,38 +145,33 @@ public class RoleCtrl : MonoBehaviour
     public int AStartCurrWayPointIndex = 1;
 
     //=========================战斗相关=================
-    public const string ANIM_KEY_IS_DEAD = "IsDead";
-    public const string ANIM_KEY_SPEED = "Speed";
-    public const string ANIM_KEY_ACTION_STATE = "ActionState";
-    public const string ANIM_KEY_DO_ACTION = "DoAction";
-    public const string ANIM_KEY_HURT = "Hurt";
-    public const int ACTION_ATTACK = -100;
+    public string ANIM_KEY_IS_DEAD = "IsDead";
+    public string ANIM_KEY_SPEED = "Speed";
+    public string ANIM_KEY_ACTION_STATE = "ActionState";
+    public string ANIM_KEY_DO_ACTION = "DoAction";
+    public string ANIM_KEY_HURT = "Hurt";
+
+    [HideInInspector]
+    public bool selectable;
 
     public bool IsPlayerCharacter { get { return Formation != null && Formation.isPlayerFormation; } }
 
-    public int Action { get; private set; }
+    public int SkillId { get; private set; }
     public bool IsDoingAction { get; private set; }
     /// <summary>
     /// 行动目标
     /// </summary>
     public RoleCtrl ActionTarget { get; private set; }
 
-    public GamePlayFormation Formation { get; protected set; }
+    public bool IsMovingToTarget { get; private set; }
+    private Coroutine movingCoroutine;
+
+    public GameFormation Formation { get; protected set; }
     public int Position { get; protected set; }
-    private Transform container;
-    public Transform Container
-    {
-        get { return container; }
-        set
-        {
-            container = value;
-            TempTransform.SetParent(container);
-            TempTransform.localPosition = Vector3.zero;
-            TempTransform.localEulerAngles = Vector3.zero;
-            TempTransform.localScale = Vector3.one;
-            gameObject.SetActive(true);
-        }
-    }
+    private bool isReachedTargetCharacter;
+    private Vector3 targetPosition;
+
+    public Transform InitialTransform;
 
     private Transform tempTransform;
     public Transform TempTransform
@@ -198,8 +197,9 @@ public class RoleCtrl : MonoBehaviour
     /// <param name="roleType">角色类型</param>
     /// <param name="roleInfo">角色信息</param>
     /// <param name="ai">AI</param>
-    public void Init(RoleInfo roleInfo, IRoleAI ai)
+    public void Init(RoleType roleType, RoleInfo roleInfo, IRoleAI ai)
     {
+        CurrRoleType = roleType;
         CurrRoleInfo = roleInfo;
         CurrRoleAI = ai;
 
@@ -224,46 +224,8 @@ public class RoleCtrl : MonoBehaviour
 
     public void ResetStates()
     {
-        Action = ACTION_ATTACK;
         ActionTarget = null;
         IsDoingAction = false;
-    }
-
-    public bool DoAction(RoleCtrl target)
-    {
-        //if (target == null || target.Hp <= 0)
-        //    return false;
-
-        //if (Action == ACTION_ATTACK)
-        //{
-        //    // Cannot attack self or same team character
-        //    if (target == this || IsSameTeamWith(target))
-        //        return false;
-        //}
-        //else
-        //{
-        //    if (SelectedSkill == null || !SelectedSkill.IsReady())
-        //        return false;
-
-        //    switch (SelectedSkill.CastedSkill.usageScope)
-        //    {
-        //        case SkillUsageScope.Self:
-        //            if (target != this)
-        //                return false;
-        //            break;
-        //        case SkillUsageScope.Enemy:
-        //            if (target == this || IsSameTeamWith(target))
-        //                return false;
-        //            break;
-        //        case SkillUsageScope.Ally:
-        //            if (!IsSameTeamWith(target))
-        //                return false;
-        //            break;
-        //    }
-        //}
-        //ActionTarget = target;
-        //DoAction();
-        return true;
     }
 
     private void OnDestroyCallBack()
@@ -298,35 +260,6 @@ public class RoleCtrl : MonoBehaviour
     }
 
     //    /// <summary>
-    //    /// 角色复活
-    //    /// </summary>
-    //    /// <param name="state"></param>
-    //    public void ToResurgence(RoleIdleState state = RoleIdleState.IdleFight)
-    //    {
-    //        if (CharacterController != null)
-    //        {
-    //            CharacterController.enabled = true;
-    //        }
-
-    //        PrevFightTime = 0;
-    //        CurrRoleInfo.CurrHP = CurrRoleInfo.MaxHP; //满血
-    //        CurrRoleInfo.CurrMP = CurrRoleInfo.MaxMP; //满蓝
-    //        LockEnemy = null;
-
-    //        if (OnHPChange != null)
-    //        {
-    //            OnHPChange(ValueChangeType.Add);
-    //        }
-
-    //        if (OnMPChange != null)
-    //        {
-    //            OnMPChange(ValueChangeType.Add);
-    //        }
-
-    //        ToIdle(state);
-    //    }
-
-    //    /// <summary>
     //    /// 角色受伤的回调
     //    /// </summary>
     //    private void OnRoleHurtCallBack()
@@ -342,21 +275,21 @@ public class RoleCtrl : MonoBehaviour
     //        }
     //    }
 
-    //    /// <summary>
-    //    /// 角色出生
-    //    /// </summary>
-    //    /// <param name="pos"></param>
-    //    public void Born(Vector3 pos)
-    //    {
-    //        PrevFightTime = 0f;
-    //        if (CurrRoleFSMMgr != null)
-    //        {
-    //            ToIdle();
-    //        }
-    //        BornPoint = pos;
-    //        transform.position = pos;
-    //        InitHeadBar();
-    //    }
+    /// <summary>
+    /// 角色出生
+    /// </summary>
+    /// <param name="pos"></param>
+    public void Born(Vector3 pos)
+    {
+        //PrevFightTime = 0f;
+        //if (CurrRoleFSMMgr != null)
+        //{
+        //    ToIdle();
+        //}
+        //BornPoint = pos;
+        //transform.position = pos;
+        //InitHeadBar();
+    }
 
     public void OnUpdate()
     {
@@ -395,18 +328,18 @@ public class RoleCtrl : MonoBehaviour
         //让角色贴着地面
         if (!CharacterController.isGrounded)
         {
-            CharacterController.Move((transform.position + new Vector3(0, -1000, 0)) - transform.position);
+            CharacterController.Move((transform.position + new Vector3(0, -100, 0)) - transform.position);
         }
     }
 
-    public void SetFormation(GamePlayFormation formation, int position, Transform container)
+    public void SetFormation(GameFormation formation, int position, Transform container)
     {
         if (container == null)
             return;
 
         Formation = formation;
         Position = position;
-        Container = container;
+        InitialTransform = container;
 
         //Quaternion headingRotation;
         //if (CastedFormation.TryGetHeadingToFoeRotation(out headingRotation))
@@ -417,16 +350,150 @@ public class RoleCtrl : MonoBehaviour
         //}
     }
 
-    public bool SetAction(int action)
+    public void SetAction(int skillId)
     {
-        //if (action == ACTION_ATTACK || (action >= 0 && action < Skills.Count))
-        //{
-        //    Action = action;
-        //    Manager.ShowTargetScopesOrDoAction(this);
-        //    return true;
-        //}
-        return false;
+        SkillId = skillId;
+        GameEntry.Battle.ShowTargetScopesOrDoAction();
     }
+
+    public bool DoAction(RoleCtrl target)
+    {
+        if (target == null || target.CurrRoleInfo.CurrHP <= 0)
+        {
+            return false;
+        }
+
+        //不能攻击自己或相同的团队角色
+        
+
+        ActionTarget = target;
+        DoAction();
+        return true;
+    }
+
+    private void DoAction()
+    {
+        //if (IsDoingAction)
+        //{
+        //    return;
+        //}
+
+        //判断是技能攻击还是普通攻击
+        //if (Action == ACTION_ATTACK)
+        //{
+        DoAttackActionRoutine();
+        //}           
+        //else
+        //{
+        //    //SelectedSkill.OnUseSkill();
+        //    //StartCoroutine(DoSkillActionRoutine());
+        //}
+    }
+
+    public void DoAttackActionRoutine()
+    {
+
+        ////判断是不是范围攻击
+        //IsDoingAction = true;
+        ////var manager = Manager;
+        //AttackAnimationData attackAnimation = null;
+        //if (AttackAnimations.Count > 0)
+        //    attackAnimation = AttackAnimations[Random.Range(0, AttackAnimations.Count - 1)] as AttackAnimationData;
+        //if (!attackAnimation.GetIsRangeAttack())//如果不是范围攻击
+        //{
+        // 移动到目标角色
+        //yield return MoveTo(ActionTarget, GameEntry.Battle.doActionMoveSpeed);
+        RunToTarget();
+        //}
+        // 播放攻击动画
+        //if (attackAnimation != null)
+        //{
+        //    switch (attackAnimation.type)
+        //    {
+        //        case AnimationDataType.ChangeAnimationByState:
+        //            CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, attackAnimation.GetAnimationActionState());
+        //            break;
+        //        case AnimationDataType.ChangeAnimationByClip:
+        //            ChangeActionClip(attackAnimation.GetAnimationClip());
+        //            CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
+        //            break;
+        //    }
+        //}
+        //yield return new WaitForSeconds(attackAnimation.GetHitDuration());
+        // 申请伤害
+        //Attack(ActionTarget, attackAnimation.GetDamage() as Damage);
+        //// 等待赔偿做了
+        //while (Damages.Count > 0)
+        //{
+        //    yield return 0;
+        //}
+        // End attack
+        //var endAttackDuration = attackAnimation.GetAnimationDuration() - attackAnimation.GetHitDuration();
+        //if (endAttackDuration < 0)
+        //    endAttackDuration = 0;
+        //yield return new WaitForSeconds(endAttackDuration);
+        //ClearActionState();
+        //yield return MoveTo(Container.position, GameEntry.Battle.doActionMoveSpeed);
+        //NotifyEndAction();
+        //IsDoingAction = false;
+    }
+
+    /// <summary>
+    /// 攻击者移动到攻击目标前
+    /// </summary>
+    void RunToTarget()
+    {
+        //保存移动前的位置和朝向，因为跑回来还要用
+        //目标的位置
+        //开启移动状态
+        MoveTo(ActionTarget.InitialTransform.position);
+        GameEntry.Battle.isUnitRunningToTarget = true;
+        //移动的控制放到Update里，因为要每一帧判断离目标的距离
+    }
+
+    //IEnumerator DoSkillActionRoutine()
+    //{
+    //    //IsDoingAction = true;
+    //    //var skill = SelectedSkill.CastedSkill;
+    //    //var skillCastAnimation = skill.castAnimation as SkillCastAnimationData;
+    //    //var manager = Manager;
+    //    //// Cast
+    //    //if (skillCastAnimation.GetCastAtMapCenter())
+    //    //    yield return MoveTo(Manager.MapCenterPosition, Manager.doActionMoveSpeed);
+    //    //var castEffects = skillCastAnimation.GetCastEffects();
+    //    //var effects = new List<GameEffect>();
+    //    //if (castEffects != null)
+    //    //    effects.AddRange(castEffects.InstantiatesTo(this));
+    //    //// Play cast animation
+    //    //if (skillCastAnimation != null)
+    //    //{
+    //    //    switch (skillCastAnimation.type)
+    //    //    {
+    //    //        case AnimationDataType.ChangeAnimationByState:
+    //    //            CacheAnimator.SetInteger(ANIM_KEY_ACTION_STATE, skillCastAnimation.GetAnimationActionState());
+    //    //            break;
+    //    //        case AnimationDataType.ChangeAnimationByClip:
+    //    //            ChangeActionClip(skillCastAnimation.GetAnimationClip());
+    //    //            CacheAnimator.SetBool(ANIM_KEY_DO_ACTION, true);
+    //    //            break;
+    //    //    }
+    //    //}
+    //    //yield return new WaitForSeconds(skillCastAnimation.GetAnimationDuration());
+    //    //ClearActionState();
+    //    //foreach (var effect in effects)
+    //    //{
+    //    //    effect.DestroyEffect();
+    //    //}
+    //    //effects.Clear();
+    //    //// Buffs
+    //    //yield return StartCoroutine(ApplyBuffsRoutine());
+    //    //// Attacks
+    //    //yield return StartCoroutine(SkillAttackRoutine());
+    //    //// Move back to formation
+    //    //yield return MoveTo(Container.position, Manager.actionDoneMoveSpeed);
+    //    //NotifyEndAction();
+    //    //IsDoingAction = false;
+    //}
 
     //    private void AutoSmallMap()
     //    {
@@ -463,22 +530,13 @@ public class RoleCtrl : MonoBehaviour
     //        });
     //    }
 
-
-    //    #region 控制角色方法
-
-    //    public void ToIdle(RoleIdleState state = RoleIdleState.IdleNormal)
-    //    {
-    //        CurrRoleFSMMgr.ToIdleState = state;
-    //        CurrRoleFSMMgr.ChangeState(RoleState.Idle);
-    //    }
-
     /// <summary>
     /// 角色移动
     /// </summary>
     /// <param name="targetPos"></param>
     public void MoveTo(Vector3 targetPos)
     {
-        //if (CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
+        if (CurrRoleFSMMgr.CurrRoleStateEnum == RoleState.Die) return;
 
         ////如果角色处于僵直状态 则不能移动
         //if (IsRigidity) return;
@@ -577,6 +635,11 @@ public class RoleCtrl : MonoBehaviour
     //        CurrRoleFSMMgr.ChangeState(RoleState.Select);
     //    }
 
+    public void ToIdle()
+    {
+        CurrRoleFSMMgr.ChangeState(RoleState.Idle);
+    }
+
     //    /// <summary>
     //    /// 播放音效
     //    /// </summary>
@@ -594,8 +657,6 @@ public class RoleCtrl : MonoBehaviour
     //        AudioEffectMgr.Instance.Play(string.Format("Download/Audio/Fight/{0}.assetbundle", audioName), transform.position, is3D: true);
 
     //    }
-
-    //    #endregion
 
     #region OnDestroy 销毁
     /// <summary>

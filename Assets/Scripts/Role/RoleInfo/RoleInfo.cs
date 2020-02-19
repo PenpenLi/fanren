@@ -81,22 +81,6 @@ public class RoleInfo
     }
 
     /// <summary>
-    /// 设置角色的物理攻击
-    /// </summary>
-    /// <param name="phySkillIds"></param>
-    public void SetPhySkillId(string phySkillIds)
-    {
-        string[] ids = phySkillIds.Split(';');
-
-        PhySkillIds = new int[ids.Length];
-
-        for (int i = 0; i < ids.Length; i++)
-        {
-            PhySkillIds[i] = ids[i].ToInt();
-        }
-    }
-
-    /// <summary>
     /// 设置技能的冷却结束时间
     /// </summary>
     /// <param name="skillId"></param>

@@ -1522,7 +1522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4118979153506959681}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 166.51, y: 0.07999003, z: 182.07}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4118979153506737367}
@@ -1627,12 +1627,17 @@ MonoBehaviour:
   BornPoint: {x: 0, y: 0, z: 0}
   ViewRange: 0
   PatrolRange: 0
-  CurrRoleType: 0
   DieAudioName: 
-  LockEnemy: {fileID: 0}
+  m_TargetCharacter: {fileID: 0}
   IsDied: 0
+  currentTimeCount: 0
   AStartCurrWayPointIndex: 1
-  PrevFightTime: 0
+  ANIM_KEY_IS_DEAD: IsDead
+  ANIM_KEY_SPEED: Speed
+  ANIM_KEY_ACTION_STATE: ActionState
+  ANIM_KEY_DO_ACTION: DoAction
+  ANIM_KEY_HURT: Hurt
+  selectable: 0
 --- !u!1 &4118979153506959683
 GameObject:
   m_ObjectHideFlags: 0

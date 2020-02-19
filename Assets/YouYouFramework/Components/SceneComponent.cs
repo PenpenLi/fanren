@@ -43,7 +43,7 @@ namespace YouYou
         }
 
         /// <summary>
-        /// 获得场景名称
+        /// 获得场景数据
         /// </summary>
         /// <returns></returns>
         public Sys_SceneEntity GetSceneEntity()
