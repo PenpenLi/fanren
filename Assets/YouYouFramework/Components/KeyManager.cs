@@ -55,7 +55,7 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
 
         if (GameEntry.Procedure.CurrProcedureState==ProcedureState.WorldMap)
         {
-            if (GameEntry.Role.Player != null)
+            if (GameEntry.Role.CurrPlayer != null)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -73,14 +73,14 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
                         }
                         else if (hit.collider.gameObject.tag == "Road")
                         {
-                            GameEntry.Role.Player.MoveTo(hit.point);
+                            GameEntry.Role.CurrPlayer.MoveTo(hit.point);
                         }
                     }
                 }
 
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    Transform trans = GameEntry.Role.Player.gameObject.transform;
+                    Transform trans = GameEntry.Role.CurrPlayer.gameObject.transform;
                     string pos = string.Format("{0}_{1}_{2}_{3}", trans.position.x, trans.position.y, trans.position.z, trans.rotation.eulerAngles.y);
                     Debug.Log("位置信息=" + pos);
                 }
@@ -100,8 +100,8 @@ public class KeyManager : YouYouBaseComponent, IUpdateComponent
                     float HorInput = Input.GetAxisRaw("Horizontal");
                     Vector3 a = GameEntry.Camera.MainCamera.transform.forward;//摄像机前方
                     Vector3 vector = VerInput * a + HorInput * GameEntry.Camera.MainCamera.transform.right;
-                    Vector3 vector2 = GameEntry.Role.Player.gameObject.transform.position + vector;//移动目标点    
-                    GameEntry.Role.Player.MoveTo(vector2);
+                    Vector3 vector2 = GameEntry.Role.CurrPlayer.gameObject.transform.position + vector;//移动目标点    
+                    GameEntry.Role.CurrPlayer.MoveTo(vector2);
                 }
                 //else
                 //{

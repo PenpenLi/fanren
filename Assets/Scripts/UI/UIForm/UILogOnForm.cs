@@ -18,7 +18,7 @@ public class UILogOnForm : UIFormBase
     public void OnNewGameBtn()
     {
         NewGame();   
-        GameEntry.Scene.LoadScene(SceneId.DaLi,true, onComplete: () =>
+        GameEntry.Scene.LoadScene(4,true, onComplete: () =>
         {
             GameEntry.Procedure.ChangeState(ProcedureState.WorldMap);
         });

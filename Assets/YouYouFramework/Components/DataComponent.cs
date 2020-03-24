@@ -11,7 +11,7 @@ namespace YouYou
     public class DataComponent : YouYouBaseComponent
     {
         /// <summary>
-        /// 临时缓存数据
+        /// 运行数据
         /// </summary>
         public RuntimeDataManager RuntimeDataManager
         {

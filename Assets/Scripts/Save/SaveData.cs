@@ -2,41 +2,51 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 存档数据
+/// </summary>
 [Serializable]
 public class SaveData
 {
-    //	public SaveData.SDBase SaveDateBase = new SaveData.SDBase();
+    /// <summary>
+    /// 存档基类
+    /// </summary>
+    public SaveData.SDBase SaveDateBase = new SaveData.SDBase();
 
+    /// <summary>
+    /// 游戏存档
+    /// </summary>
     public SaveData.SDGame SaveDateGame = new SaveData.SDGame();
 
     public List<byte> SaveDateBitmap = new List<byte>();
 
     public SaveInfo SaveDateInfo = new SaveInfo();
 
-    //	public bool BeLoaded = true;
+    public bool BeLoaded = true;
 
-    //	public void PrintDate()
-    //	{
-    //		this.SaveDateBase.PrintDate();
-    //		this.SaveDateGame.PrintDate();
-    //	}
-
+    /// <summary>
+    /// 重置
+    /// </summary>
     public void Reset()
     {
         this.SaveDateGame.Reset();
     }
 
-    //	public static SaveData GetSaveDate(SaveLoadManager.tagSL st)
-    //	{
-    //		return new SaveData
-    //		{
-    //			SaveDateBase = SaveData.SDBase.GetBaseDate(),
-    //			SaveDateGame = SaveData.SDGame.GetGameDate(),
-    //			SaveDateBitmap = SaveInfo.SaveScreen(),
-    //			SaveDateInfo = SaveInfo.GetInfoDate(st)
-    //		};
-    //	}
+    /// <summary>
+    /// 获得存档数据
+    /// </summary>
+    /// <param name="st"></param>
+    /// <returns></returns>
+    public static SaveData GetSaveDate(SaveLoadManager.tagSL st)
+    {
+        return new SaveData
+        {
+            SaveDateBase = SaveData.SDBase.GetBaseDate(),
+            SaveDateGame = SaveData.SDGame.GetGameDate(),
+            //SaveDateBitmap = SaveInfo.SaveScreen(),
+            SaveDateInfo = SaveInfo.GetInfoDate(st)
+        };
+    }
 
     //	public static void GetAttributeDate(List<ModAttribute.Attribute> attrList, Role role)
     //	{
@@ -80,7 +90,6 @@ public class SaveData
     //		}
     //	}
 
-    //	// Token: 0x02000186 RID: 390
     //	[Serializable]
     //	public class SDSkill
     //	{
@@ -219,7 +228,6 @@ public class SaveData
         //}
     }
 
-    //	// Token: 0x02000188 RID: 392
     //	[Serializable]
     //	public class SDFigure
     //	{
@@ -705,280 +713,261 @@ public class SaveData
     //		public int State;
     //	}
 
-    //	// Token: 0x02000194 RID: 404
-    //	[Serializable]
-    //	public class SDSceneDate
-    //	{
-    //		// Token: 0x060007D7 RID: 2007 RVA: 0x00023700 File Offset: 0x00021900
-    //		public void Reset()
-    //		{
-    //			this.SceneName = string.Empty;
-    //			this.StageStateList.Clear();
-    //			this.MonsterList.Clear();
-    //			this.OperableList.Clear();
-    //			this.SpawnList.Clear();
-    //			this.SpawnManList.Clear();
-    //			this.FantasyData.Clear();
-    //		}
+    /// <summary>
+    /// 剧情动画数据
+    /// </summary>
+    [Serializable]
+    public class SDMoiveDate
+    {
+        public void Reset()
+        {
+            this.ID = 0;
+            this.PlayCount = 0;
+        }
 
-    //		// Token: 0x060007D8 RID: 2008 RVA: 0x0002375C File Offset: 0x0002195C
-    //		public static SaveData.SDSceneDate GetCurSceneDate()
-    //		{
-    //			if (GUIControl.OpeText != null && GUIControl.OpeText.active)
-    //			{
-    //				GUIControl.OpeText.active = false;
-    //			}
-    //			SaveData.SDSceneDate sdsceneDate = new SaveData.SDSceneDate();
-    //			sdsceneDate.Reset();
-    //			sdsceneDate.SceneName = Application.loadedLevelName;
-    //			if (SceneManager.RoleMan != null)
-    //			{
-    //				if (SceneManager.RoleMan.RoleObjList.Count == 0)
-    //				{
-    //					Debug.LogWarning(DU.Warning(new object[]
-    //					{
-    //						Application.loadedLevelName,
-    //						"roleobjlist count = 0"
-    //					}));
-    //				}
-    //				for (int i = 0; i < SceneManager.RoleMan.RoleObjList.Count; i++)
-    //				{
-    //					Role role = SceneManager.RoleMan.RoleObjList[i];
-    //					if (!SceneManager.RoleMan.StageRoleList.Contains(role))
-    //					{
-    //						if (role == null)
-    //						{
-    //							Debug.LogWarning(DU.Warning(new object[]
-    //							{
-    //								Application.loadedLevelName,
-    //								"null"
-    //							}));
-    //						}
-    //						else if (!role.IsDead() || role._roleType == ROLE_TYPE.RT_NPC)
-    //						{
-    //							ROLE_TYPE roleType = role._roleType;
-    //							if (roleType != ROLE_TYPE.RT_MONSTER)
-    //							{
-    //								if (roleType == ROLE_TYPE.RT_NPC)
-    //								{
-    //									Npc npc = role as Npc;
-    //									if (npc == null)
-    //									{
-    //										Debug.LogWarning(DU.Warning(new object[]
-    //										{
-    //											"role is not npc"
-    //										}));
-    //									}
-    //									SaveData.SDMonsterDate npcdate = SaveData.SDMonsterDate.GetNPCDate(npc);
-    //									sdsceneDate.MonsterList.Add(npcdate);
-    //								}
-    //							}
-    //							else
-    //							{
-    //								Monster monster = role as Monster;
-    //								if (monster == null)
-    //								{
-    //									Debug.LogWarning(DU.Warning(new object[]
-    //									{
-    //										"role is not monster"
-    //									}));
-    //								}
-    //								SaveData.SDMonsterDate monsterDate = SaveData.SDMonsterDate.GetMonsterDate(monster);
-    //								sdsceneDate.MonsterList.Add(monsterDate);
-    //							}
-    //						}
-    //					}
-    //				}
-    //				foreach (OperableItemBase operableItemBase in SceneManager.RoleMan.OperableItemList)
-    //				{
-    //					OperableSaveDataBase saveData = operableItemBase.GetSaveData();
-    //					if (saveData != null)
-    //					{
-    //						sdsceneDate.OperableList.Add(saveData);
-    //					}
-    //				}
-    //				for (int j = 0; j < SceneManager.RoleMan.MobSpawnList.Count; j++)
-    //				{
-    //					GameObjSpawn gameObjSpawn = SceneManager.RoleMan.MobSpawnList[j];
-    //					if (!(gameObjSpawn == null))
-    //					{
-    //						SaveData.SDSpawn spawn = SaveData.SDSpawn.GetSpawn(gameObjSpawn);
-    //						sdsceneDate.SpawnList.Add(spawn);
-    //					}
-    //				}
-    //				for (int k = 0; k < SceneManager.RoleMan.SpawnManList.Count; k++)
-    //				{
-    //					SpawnManager spawnManager = SceneManager.RoleMan.SpawnManList[k];
-    //					if (!(spawnManager == null))
-    //					{
-    //						SaveData.SDSpawnMan spawnMan = SaveData.SDSpawnMan.GetSpawnMan(spawnManager);
-    //						sdsceneDate.SpawnManList.Add(spawnMan);
-    //					}
-    //				}
-    //				foreach (StageState stageState in SingletonMono<StageManager>.GetInstance().StageStatic)
-    //				{
-    //					if (stageState == null)
-    //					{
-    //						Debug.LogWarning(DU.Warning(new object[]
-    //						{
-    //							"Has destroy stage",
-    //							stageState
-    //						}));
-    //					}
-    //					else
-    //					{
-    //						SaveData.SDStageState stageData = SaveData.SDStageState.GetStageData(stageState);
-    //						if (stageData != null)
-    //						{
-    //							SaveData.SDStageState sdstageState = null;
-    //							if (SaveData.SDStageState.FindStage(sdsceneDate.StageStateList, stageData.ID, out sdstageState))
-    //							{
-    //								Debug.LogWarning(DU.Warning(new object[]
-    //								{
-    //									"Read Stage Wrong!",
-    //									"Have same id in scene",
-    //									stageState.gameObject,
-    //									stageState.id
-    //								}));
-    //							}
-    //							else
-    //							{
-    //								sdsceneDate.StageStateList.Add(stageData);
-    //							}
-    //						}
-    //					}
-    //				}
-    //				sdsceneDate.StageStateList.Sort((SaveData.SDStageState left, SaveData.SDStageState right) => left.ID.CompareTo(right.ID));
-    //			}
-    //			sdsceneDate.musicData = SingletonMono<MusicManager>.GetInstance().GetCurrentMusicData();
-    //			if (FantasyGod.Instance != null)
-    //			{
-    //				sdsceneDate.FantasyData = SDFantasyExecuteData.GetFantasyExecuteDataSD();
-    //			}
-    //			return sdsceneDate;
-    //		}
+        public int ID;
 
-    //		// Token: 0x060007D9 RID: 2009 RVA: 0x00023BA8 File Offset: 0x00021DA8
-    //		public void PrintDate()
-    //		{
-    //			Logger.Log(new object[]
-    //			{
-    //				"SceneName:" + this.SceneName
-    //			});
-    //			Logger.Log(new object[]
-    //			{
-    //				"MonsterCount:" + this.MonsterList.Count
-    //			});
-    //			foreach (SaveData.SDMonsterDate sdmonsterDate in this.MonsterList)
-    //			{
-    //				sdmonsterDate.PrintDate();
-    //			}
-    //			foreach (SaveData.SDSpawn sdspawn in this.SpawnList)
-    //			{
-    //				sdspawn.PrintDate();
-    //			}
-    //			foreach (SaveData.SDSpawnMan sdspawnMan in this.SpawnManList)
-    //			{
-    //				sdspawnMan.PrintDate();
-    //			}
-    //			foreach (OperableSaveDataBase operableSaveDataBase in this.OperableList)
-    //			{
-    //				operableSaveDataBase.PrintData();
-    //			}
-    //		}
+        public int PlayCount;
+    }
 
-    //		// Token: 0x040006B0 RID: 1712
-    //		public string SceneName;
+    /// <summary>
+    /// 场景数据
+    /// </summary>
+    [Serializable]
+    public class SDSceneDate
+    {
+        /// <summary>
+        /// 场景名称
+        /// </summary>
+        public string SceneName;
 
-    //		// Token: 0x040006B1 RID: 1713
-    //		public List<SaveData.SDMonsterDate> MonsterList = new List<SaveData.SDMonsterDate>();
+        //public List<SaveData.SDMonsterDate> MonsterList = new List<SaveData.SDMonsterDate>();
 
-    //		// Token: 0x040006B2 RID: 1714
-    //		public List<OperableSaveDataBase> OperableList = new List<OperableSaveDataBase>();
+        public List<OperableSaveDataBase> OperableList = new List<OperableSaveDataBase>();
 
-    //		// Token: 0x040006B3 RID: 1715
-    //		public List<SaveData.SDSpawn> SpawnList = new List<SaveData.SDSpawn>();
+        //public List<SaveData.SDSpawn> SpawnList = new List<SaveData.SDSpawn>();
 
-    //		// Token: 0x040006B4 RID: 1716
-    //		public List<SaveData.SDSpawnMan> SpawnManList = new List<SaveData.SDSpawnMan>();
+        //public List<SaveData.SDSpawnMan> SpawnManList = new List<SaveData.SDSpawnMan>();
 
-    //		// Token: 0x040006B5 RID: 1717
-    //		public List<SaveData.SDStageState> StageStateList = new List<SaveData.SDStageState>();
+        //public List<SaveData.SDStageState> StageStateList = new List<SaveData.SDStageState>();
 
-    //		// Token: 0x040006B6 RID: 1718
-    //		public SDFantasyExecuteData FantasyData = new SDFantasyExecuteData();
+        //public SDFantasyExecuteData FantasyData = new SDFantasyExecuteData();
 
-    //		// Token: 0x040006B7 RID: 1719
-    //		public MusicData musicData = new MusicData();
-    //	}
+        //public MusicData musicData = new MusicData();
 
-    //	// Token: 0x02000195 RID: 405
-    //	[Serializable]
-    //	public class SDBase
-    //	{
-    //		// Token: 0x060007DC RID: 2012 RVA: 0x00023D74 File Offset: 0x00021F74
-    //		public static SaveData.SDBase GetBaseDate()
-    //		{
-    //			return new SaveData.SDBase
-    //			{
-    //				Version = 10000,
-    //				ViewPos = 1,
-    //				SaveTime = DateTime.Now.ToString()
-    //			};
-    //		}
+        public void Reset()
+        {
+            this.SceneName = string.Empty;
+            //this.StageStateList.Clear();
+            //this.MonsterList.Clear();
+            this.OperableList.Clear();
+            //this.SpawnList.Clear();
+            //this.SpawnManList.Clear();
+            //this.FantasyData.Clear();
+        }
 
-    //		// Token: 0x060007DD RID: 2013 RVA: 0x00023DB0 File Offset: 0x00021FB0
-    //		public void Reset()
-    //		{
-    //			this.Version = 10000;
-    //			this.ViewPos = 1;
-    //			this.SaveTime = string.Empty;
-    //		}
+  
+        //public static SaveData.SDSceneDate GetCurSceneDate()
+        //{
+        //    if (GUIControl.OpeText != null && GUIControl.OpeText.active)
+        //    {
+        //        GUIControl.OpeText.active = false;
+        //    }
+        //    SaveData.SDSceneDate sdsceneDate = new SaveData.SDSceneDate();
+        //    sdsceneDate.Reset();
+        //    sdsceneDate.SceneName = Application.loadedLevelName;
+        //    if (SceneManager.RoleMan != null)
+        //    {
+        //        if (SceneManager.RoleMan.RoleObjList.Count == 0)
+        //        {
+        //            Debug.LogWarning(DU.Warning(new object[]
+        //            {
+        //                    Application.loadedLevelName,
+        //                    "roleobjlist count = 0"
+        //            }));
+        //        }
+        //        for (int i = 0; i < SceneManager.RoleMan.RoleObjList.Count; i++)
+        //        {
+        //            Role role = SceneManager.RoleMan.RoleObjList[i];
+        //            if (!SceneManager.RoleMan.StageRoleList.Contains(role))
+        //            {
+        //                if (role == null)
+        //                {
+        //                    Debug.LogWarning(DU.Warning(new object[]
+        //                    {
+        //                            Application.loadedLevelName,
+        //                            "null"
+        //                    }));
+        //                }
+        //                else if (!role.IsDead() || role._roleType == ROLE_TYPE.RT_NPC)
+        //                {
+        //                    ROLE_TYPE roleType = role._roleType;
+        //                    if (roleType != ROLE_TYPE.RT_MONSTER)
+        //                    {
+        //                        if (roleType == ROLE_TYPE.RT_NPC)
+        //                        {
+        //                            Npc npc = role as Npc;
+        //                            if (npc == null)
+        //                            {
+        //                                Debug.LogWarning(DU.Warning(new object[]
+        //                                {
+        //                                        "role is not npc"
+        //                                }));
+        //                            }
+        //                            SaveData.SDMonsterDate npcdate = SaveData.SDMonsterDate.GetNPCDate(npc);
+        //                            sdsceneDate.MonsterList.Add(npcdate);
+        //                        }
+        //                    }
+        //                    else
+        //                    {
+        //                        Monster monster = role as Monster;
+        //                        if (monster == null)
+        //                        {
+        //                            Debug.LogWarning(DU.Warning(new object[]
+        //                            {
+        //                                    "role is not monster"
+        //                            }));
+        //                        }
+        //                        SaveData.SDMonsterDate monsterDate = SaveData.SDMonsterDate.GetMonsterDate(monster);
+        //                        sdsceneDate.MonsterList.Add(monsterDate);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        foreach (OperableItemBase operableItemBase in SceneManager.RoleMan.OperableItemList)
+        //        {
+        //            OperableSaveDataBase saveData = operableItemBase.GetSaveData();
+        //            if (saveData != null)
+        //            {
+        //                sdsceneDate.OperableList.Add(saveData);
+        //            }
+        //        }
+        //        for (int j = 0; j < SceneManager.RoleMan.MobSpawnList.Count; j++)
+        //        {
+        //            GameObjSpawn gameObjSpawn = SceneManager.RoleMan.MobSpawnList[j];
+        //            if (!(gameObjSpawn == null))
+        //            {
+        //                SaveData.SDSpawn spawn = SaveData.SDSpawn.GetSpawn(gameObjSpawn);
+        //                sdsceneDate.SpawnList.Add(spawn);
+        //            }
+        //        }
+        //        for (int k = 0; k < SceneManager.RoleMan.SpawnManList.Count; k++)
+        //        {
+        //            SpawnManager spawnManager = SceneManager.RoleMan.SpawnManList[k];
+        //            if (!(spawnManager == null))
+        //            {
+        //                SaveData.SDSpawnMan spawnMan = SaveData.SDSpawnMan.GetSpawnMan(spawnManager);
+        //                sdsceneDate.SpawnManList.Add(spawnMan);
+        //            }
+        //        }
+        //        foreach (StageState stageState in SingletonMono<StageManager>.GetInstance().StageStatic)
+        //        {
+        //            if (stageState == null)
+        //            {
+        //                Debug.LogWarning(DU.Warning(new object[]
+        //                {
+        //                        "Has destroy stage",
+        //                        stageState
+        //                }));
+        //            }
+        //            else
+        //            {
+        //                SaveData.SDStageState stageData = SaveData.SDStageState.GetStageData(stageState);
+        //                if (stageData != null)
+        //                {
+        //                    SaveData.SDStageState sdstageState = null;
+        //                    if (SaveData.SDStageState.FindStage(sdsceneDate.StageStateList, stageData.ID, out sdstageState))
+        //                    {
+        //                        Debug.LogWarning(DU.Warning(new object[]
+        //                        {
+        //                                "Read Stage Wrong!",
+        //                                "Have same id in scene",
+        //                                stageState.gameObject,
+        //                                stageState.id
+        //                        }));
+        //                    }
+        //                    else
+        //                    {
+        //                        sdsceneDate.StageStateList.Add(stageData);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        sdsceneDate.StageStateList.Sort((SaveData.SDStageState left, SaveData.SDStageState right) => left.ID.CompareTo(right.ID));
+        //    }
+        //    sdsceneDate.musicData = SingletonMono<MusicManager>.GetInstance().GetCurrentMusicData();
+        //    if (FantasyGod.Instance != null)
+        //    {
+        //        sdsceneDate.FantasyData = SDFantasyExecuteData.GetFantasyExecuteDataSD();
+        //    }
+        //    return sdsceneDate;
+        //}
+    }
 
-    //		// Token: 0x060007DE RID: 2014 RVA: 0x00023DD0 File Offset: 0x00021FD0
-    //		public void PrintDate()
-    //		{
-    //			Logger.Log(new object[]
-    //			{
-    //				string.Concat(new object[]
-    //				{
-    //					"version:",
-    //					this.Version,
-    //					",viewPos:",
-    //					this.ViewPos,
-    //					",saveTime:",
-    //					this.SaveTime
-    //				})
-    //			});
-    //		}
+    /// <summary>
+    /// 存档数据基类
+    /// </summary>
+    [Serializable]
+    public class SDBase
+    {
+        public int ViewPos;
 
-    //		// Token: 0x040006B9 RID: 1721
-    //		public int Version;
+        public string SaveTime;
 
-    //		// Token: 0x040006BA RID: 1722
-    //		public int ViewPos;
+        public static SaveData.SDBase GetBaseDate()
+        {
+            return new SaveData.SDBase
+            {
+                ViewPos = 1,
+                SaveTime = DateTime.Now.ToString()
+            };
+        }
 
-    //		// Token: 0x040006BB RID: 1723
-    //		public string SaveTime;
-    //	}
+        public void Reset()
+        {
+            this.ViewPos = 1;
+            this.SaveTime = string.Empty;
+        }
+    }
 
+    /// <summary>
+    /// 游戏存档
+    /// </summary>
     [Serializable]
     public class SDGame
     {
+        /// <summary>
+        /// 当前场景名称
+        /// </summary>
         public string CurSceneName;
 
+        /// <summary>
+        /// 玩家数据
+        /// </summary>
         public SaveData.SDPlayerDate PlayerDate = new SaveData.SDPlayerDate();
 
-        //public List<SaveData.SDSceneDate> SceneList = new List<SaveData.SDSceneDate>();
+        /// <summary>
+        /// 场景数据列表
+        /// </summary>
+        public List<SaveData.SDSceneDate> SceneList = new List<SaveData.SDSceneDate>();
+
+        /// <summary>
+        /// 剧情动画信息
+        /// </summary>
+        public List<SaveData.SDMoiveDate> MoiveInfoList = new List<SaveData.SDMoiveDate>();
 
         public void Reset()
         {
             this.CurSceneName = string.Empty;
             this.PlayerDate = null;
-            //this.SceneList.Clear();
-            //this.MoiveInfoList.Clear();
+            this.SceneList.Clear();
+            this.MoiveInfoList.Clear();
         }
 
+        /// <summary>
+        /// 获得游戏数据
+        /// </summary>
+        /// <returns></returns>
         public static SaveData.SDGame GetGameDate()
         {
             SaveData.SDGame sdgame = new SaveData.SDGame();
@@ -1032,35 +1021,6 @@ public class SaveData
             //}
             //sdgame.SceneList.Add(curSceneDate);
             return sdgame;
-        }
-
-        public void PrintDate()
-        {
-            //Logger.Log(new object[]
-            //{
-            //        "curSceneName:" + this.CurSceneName
-            //});
-            //foreach (SaveData.SDMoiveDate sdmoiveDate in this.MoiveInfoList)
-            //{
-            //    Logger.Log(new object[]
-            //    {
-            //            string.Concat(new object[]
-            //            {
-            //                "moiveDate:",
-            //                sdmoiveDate.ID,
-            //                ",",
-            //                sdmoiveDate.PlayCount
-            //            })
-            //    });
-            //}
-            //foreach (SaveData.SDPlayerDate sdplayerDate in this.PlayerList)
-            //{
-            //    sdplayerDate.PrintDate();
-            //}
-            //foreach (SaveData.SDSceneDate sdsceneDate in this.SceneList)
-            //{
-            //    sdsceneDate.PrintDate();
-            //}
         }
     }
 }

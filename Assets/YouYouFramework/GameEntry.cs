@@ -178,6 +178,15 @@ namespace YouYou
             get;
             private set;
         }
+
+        /// <summary>
+        /// 数据组件
+        /// </summary>
+        public static SaveLoadManager SaveLoad
+        {
+            get;
+            private set;
+        }
         #endregion
 
         public static ScriptManager Script = new ScriptManager();
@@ -185,8 +194,6 @@ namespace YouYou
         public static ScriptDataManager ScriptData = new ScriptDataManager();
 
         public static SaveDataManager SaveData = new SaveDataManager();
-
-        public static SaveLoadManager SaveLoad = new SaveLoadManager();
         #region 基础组件管理
         /// <summary>
         /// 基础组件列表
@@ -273,6 +280,7 @@ namespace YouYou
             Camera = GetBaseComponent<CameraManager>();
             Key = GetBaseComponent<KeyManager>();
             Battle= GetBaseComponent<BattleManager>();
+            SaveLoad= GetBaseComponent<SaveLoadManager>();
         }
         #endregion
 

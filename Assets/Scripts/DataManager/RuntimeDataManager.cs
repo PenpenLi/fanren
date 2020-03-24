@@ -48,6 +48,16 @@ public class RuntimeDataManager : IDisposable
 
     public int Money;
 
+    /// <summary>
+    /// 最后进入的世界地图Id
+    /// </summary>
+    public int LastInWorldMapId;
+
+    /// <summary>
+    /// 最后进入的世界地图坐标
+    /// </summary>
+    public string LastInWorldMapPos;
+
     public RuntimeDataManager()
     {
 

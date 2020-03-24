@@ -7,17 +7,15 @@ using YouYou;
 /// <summary>
 /// 存档读档管理
 /// </summary>
-public class SaveLoadManager 
+public class SaveLoadManager : YouYouBaseComponent
 {
     //	public const string EncryptKey = "";
 
-    private object SaveLoadLock = new object();
+    private static DES desObj = new DES();
 
-    private DES desObj = new DES();
+    public static string DIR_PATH ;
 
-    public static string DIR_PATH;
-
-    //	private static bool m_bKey = false;
+    private static bool m_bKey = false;
 
     [Serializable]
     public enum tagSL
@@ -43,12 +41,17 @@ public class SaveLoadManager
         NONE = -1
     }
 
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+        DIR_PATH = Application.dataPath + "/Save/";
+    }
+
     //	public static bool IsCanMudalSave()
     //	{
     //		return SaveLoadManager.m_bKey || GameData.Instance.cacheData.getSceneInfo(Application.loadedLevelName).isCanMudalSave;
     //	}
 
-    //	// Token: 0x060007EF RID: 2031 RVA: 0x00024560 File Offset: 0x00022760
     //	public static void SetKey(bool bo)
     //	{
     //		SaveLoadManager.m_bKey = bo;
@@ -60,14 +63,13 @@ public class SaveLoadManager
     //		return SDManager.m_saveInfoList.Count > 0;
     //	}
 
-    //	// Token: 0x060007F1 RID: 2033 RVA: 0x00024578 File Offset: 0x00022778
-    //	private static void CreateSaveFold()
-    //	{
-    //		if (!Directory.Exists(SaveLoadManager.DIR_PATH))
-    //		{
-    //			Directory.CreateDirectory(SaveLoadManager.DIR_PATH);
-    //		}
-    //	}
+    private static void CreateSaveFold()
+    {
+        if (!Directory.Exists(SaveLoadManager.DIR_PATH))
+        {
+            Directory.CreateDirectory(SaveLoadManager.DIR_PATH);
+        }
+    }
 
     //	// Token: 0x060007F2 RID: 2034 RVA: 0x00024594 File Offset: 0x00022794
     //	public static SaveLoadManager.tagSL SystemtagToSL(SystemTag st)
@@ -115,51 +117,50 @@ public class SaveLoadManager
     //		return SaveLoadManager.tagSL.NONE;
     //	}
 
-    public string GetFileName(SaveLoadManager.tagSL st)
+    public static string GetFileName(SaveLoadManager.tagSL st)
     {
         return "Data" + (int)st + ".sav";
     }
 
-    //	// Token: 0x060007F4 RID: 2036 RVA: 0x00024620 File Offset: 0x00022820
-    //	public static SaveInfo Save(SaveLoadManager.tagSL st)
-    //	{
-    //		int num = (int)st;
-    //		if (num >= 10 && num < 20)
-    //		{
-    //			num -= 10;
-    //			st = (SaveLoadManager.tagSL)num;
-    //		}
-    //		if (st == SaveLoadManager.tagSL.Save_Auto)
-    //		{
-    //			Singleton<EZGUIManager>.GetInstance().GetGUI<Tipplane>().SaveTip();
-    //		}
-    //		ModBuffProperty modBuffProperty = Player.Instance.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
-    //		modBuffProperty.DelAllBuff();
-    //		string fileName = SaveLoadManager.GetFileName(st);
-    //		SaveData saveDate = SaveData.GetSaveDate(st);
-    //		SaveInfo saveInfo = null;
-    //		if (SaveLoadManager.WriteSaveFile(fileName, saveDate))
-    //		{
-    //			SDManager.m_saveInfoList.Remove(SDManager.GetSaveInfo(st));
-    //			saveInfo = new SaveInfo(saveDate.SaveDateInfo, saveDate.SaveDateBitmap);
-    //			SDManager.m_saveInfoList.Add(saveInfo);
-    //		}
-    //		FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
-    //		TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, delegate()
-    //		{
-    //			Main.Instance.GC();
-    //		});
-    //		SingletonMono<TestSaveLoad>.GetInstance().ResetData(st, saveDate);
-    //		return saveInfo;
-    //	}
+    /// <summary>
+    /// 存档
+    /// </summary>
+    /// <param name="st"></param>
+    /// <returns></returns>
+    public static SaveInfo Save(SaveLoadManager.tagSL st)
+    {
+        int num = (int)st;
+        if (num >= 10 && num < 20)
+        {
+            num -= 10;
+            st = (SaveLoadManager.tagSL)num;
+        }
+        //ModBuffProperty modBuffProperty = Player.Instance.GetModule(MODULE_TYPE.MT_BUFF) as ModBuffProperty;
+        //modBuffProperty.DelAllBuff();//去除BUff
 
-    //	// Token: 0x060007F5 RID: 2037 RVA: 0x00024718 File Offset: 0x00022918
+        string fileName = SaveLoadManager.GetFileName(st);//文件名  
+        SaveData saveDate = SaveData.GetSaveDate(st);
+        SaveInfo saveInfo = null;
+        //if (SaveLoadManager.WriteSaveFile(fileName, saveDate))
+        //{
+        //    SDManager.m_saveInfoList.Remove(SDManager.GetSaveInfo(st));
+        //    saveInfo = new SaveInfo(saveDate.SaveDateInfo, saveDate.SaveDateBitmap);
+        //    SDManager.m_saveInfoList.Add(saveInfo);
+        //}
+        //FantasyWorld.Instance.Assist.TimerMan.TimePause(false);
+        //TimeOutManager.SetTimeOut(Main.Instance.transform, 1f, delegate ()
+        //{
+        //    Main.Instance.GC();
+        //});
+        //SingletonMono<TestSaveLoad>.GetInstance().ResetData(st, saveDate);
+        return saveInfo;
+    }
+
     //	public static bool Delete(SaveLoadManager.tagSL st)
     //	{
     //		return false;
     //	}
 
-    //	// Token: 0x060007F6 RID: 2038 RVA: 0x00024728 File Offset: 0x00022928
     //	public static bool Load(SaveLoadManager.tagSL st)
     //	{
     //		int num = (int)st;
@@ -242,29 +243,35 @@ public class SaveLoadManager
     //		return result;
     //	}
 
-    public object ReadSaveFile(string fileName)
+    /// <summary>
+    /// 读存档文件
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static object ReadSaveFile(string fileName)
     {
-        DIR_PATH = Application.dataPath + "/Save/";
-        string text = DIR_PATH + "tempLoad.save";
-        fileName = DIR_PATH + fileName;
+        string text = SaveLoadManager.DIR_PATH + "tempLoad.save";//临时读取的文件
+        fileName = SaveLoadManager.DIR_PATH + fileName;
         object result = null;
-        object saveLoadLock = SaveLoadLock;
+
+        object saveLoadLock = new object();
         lock (saveLoadLock)
         {
             Stream stream = null;
             try
             {
-                desObj.DecryptFile(fileName, text);
+                SaveLoadManager.desObj.DecryptFile(fileName, text);
                 stream = File.Open(text, FileMode.Open, FileAccess.Read);
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
-                object obj = binaryFormatter.Deserialize(stream);
-                stream.Close();
-                stream = null;
-                result = obj;
+                binaryFormatter.Deserialize(stream);//反序列化
+                //object obj = binaryFormatter.Deserialize(stream);//反序列化
+                //stream.Close();
+                //stream = null;
+                //result = obj;
             }
             catch (Exception ex)
             {
-                Debug.LogWarning("ReadSaveFile Fail:"+fileName);
+                Debug.LogWarning("ReadSaveFile Fail:" + fileName);
                 result = null;
             }
             finally
@@ -280,5 +287,10 @@ public class SaveLoadManager
             }
         }
         return result;
+    }
+
+    public override void Shutdown()
+    {
+        
     }
 }

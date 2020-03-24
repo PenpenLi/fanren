@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using UnityEngine;
 
 /// <summary>
 /// 数据加密
@@ -124,33 +125,38 @@ public sealed class DES
 		this.EncryptFile(sourceFile, sourceFile);
 	}
 
+    /// <summary>
+    /// 解密文件
+    /// </summary>
+    /// <param name="sourceFile"></param>
+    /// <param name="destFile"></param>
 	public void DecryptFile(string sourceFile, string destFile)
 	{
 		if (!File.Exists(sourceFile))
 		{
-			throw new FileNotFoundException("指定的文件路径不存在！", sourceFile);
+            throw new FileNotFoundException("指定的文件路径不存在！", sourceFile);
 		}
-		byte[] bytes = Encoding.Default.GetBytes(this.key);
+        byte[] bytes = Encoding.Default.GetBytes(this.key);
 		byte[] bytes2 = Encoding.Default.GetBytes(this.iv);
-		DESCryptoServiceProvider descryptoServiceProvider = new DESCryptoServiceProvider();
-		byte[] array = File.ReadAllBytes(sourceFile);
-		using (FileStream fileStream = new FileStream(destFile, FileMode.Create, FileAccess.Write))
+        DESCryptoServiceProvider descryptoServiceProvider = new DESCryptoServiceProvider();
+        byte[] array = File.ReadAllBytes(sourceFile);
+        using (FileStream fileStream = new FileStream(destFile, FileMode.Create, FileAccess.Write))
 		{
 			try
 			{
-				using (CryptoStream cryptoStream = new CryptoStream(fileStream, descryptoServiceProvider.CreateDecryptor(bytes, bytes2), CryptoStreamMode.Write))
+                using (CryptoStream cryptoStream = new CryptoStream(fileStream, descryptoServiceProvider.CreateDecryptor(bytes, bytes2), CryptoStreamMode.Write))
 				{
-					cryptoStream.Write(array, 0, array.Length);
+                    cryptoStream.Write(array, 0, array.Length);
 					cryptoStream.FlushFinalBlock();
 				}
 			}
 			catch
 			{
-				throw;
+                throw;
 			}
 			finally
 			{
-				fileStream.Close();
+                fileStream.Close();
 			}
 		}
 	}

@@ -281,6 +281,7 @@ public class RoleCtrl : MonoBehaviour
     /// <param name="pos"></param>
     public void Born(Vector3 pos)
     {
+        Debug.Log("角色出生");
         //PrevFightTime = 0f;
         //if (CurrRoleFSMMgr != null)
         //{

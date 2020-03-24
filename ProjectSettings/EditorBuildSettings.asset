@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Download/Scenes/BattleScene.unity
     guid: 5bbea03ea3db15a4b8a618f286787ae6
   - enabled: 1
-    path: Assets/Download/Scenes/GameScene_DaLi.unity
-    guid: d938b771fd48cac41bbba4ccf7b2277b
+    path: Assets/Download/Scenes/GameScene_DiZhiFang.unity
+    guid: b4132769eddfb154f8e91d5984a51250
+  - enabled: 1
+    path: Assets/Download/Scenes/GameScene_MenPai.unity
+    guid: cc16fd86a2a0cf24fb510819afc987d8
   m_configObjects: {}

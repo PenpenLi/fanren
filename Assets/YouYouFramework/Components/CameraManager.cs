@@ -492,7 +492,7 @@ public class CameraManager : YouYouBaseComponent, IUpdateComponent
 
         if (GameEntry.Procedure.CurrProcedureState == ProcedureState.WorldMap)
         {
-            if (GameEntry.Role.Player!=null)
+            if (GameEntry.Role.CurrPlayer != null)
             {
                 UpdateMouseOrbit();
             }        

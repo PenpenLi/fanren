@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ¥Êµµ–≈œ¢
+/// </summary>
 [Serializable]
 public class SaveInfo
 {
@@ -36,16 +39,16 @@ public class SaveInfo
         //this.Capture = SaveInfo.LoadScreen(buffer);
     }
 
-    //	public static SaveInfo GetInfoDate(SaveLoadManager.tagSL st)
-    //	{
-    //		return new SaveInfo
-    //		{
-    //			Version = GameData.GAME_VERSION,
-    //			ShowIndex = st,
-    //			MapName = SceneManager.scenenInfo.mapName,
-    //			SaveTime = DateTime.Now.ToString()
-    //		};
-    //	}
+    public static SaveInfo GetInfoDate(SaveLoadManager.tagSL st)
+    {
+        return new SaveInfo
+        {
+            //Version = GameData.GAME_VERSION,
+            //ShowIndex = st,
+            //MapName = SceneManager.scenenInfo.mapName,
+            //SaveTime = DateTime.Now.ToString()
+        };
+    }
 
     //	// Token: 0x060007E6 RID: 2022 RVA: 0x00024254 File Offset: 0x00022454
     //	public void TextLoad(string[] strArray, ref int idx)
@@ -107,27 +110,27 @@ public class SaveInfo
     //		return new Texture2D(width, height, TextureFormat.RGB24, false);
     //	}
 
-    //	public static List<byte> SaveScreen()
-    //	{
-    //		RenderTexture renderTexture = new RenderTexture(166, 117, 16);
-    //		Texture2D texture2D = SaveInfo.CreateTex2d(166, 117);
-    //		GameObject gameObject = new GameObject("NeedDeleted:SaveLoad");
-    //		Camera camera = gameObject.AddComponent<Camera>();
-    //		camera.transform.position = Camera.main.transform.position;
-    //		camera.transform.rotation = Camera.main.transform.rotation;
-    //		camera.depth = -2f;
-    //		camera.targetTexture = renderTexture;
-    //		camera.RenderDontRestore();
-    //		RenderTexture.active = renderTexture;
-    //		texture2D.ReadPixels(new Rect(0f, 0f, (float)texture2D.width, (float)texture2D.height), 0, 0);
-    //		camera.targetTexture = null;
-    //		RenderTexture.active = null;
-    //		UnityEngine.Object.Destroy(renderTexture);
-    //		List<byte> result = new List<byte>(texture2D.EncodeToPNG());
-    //		UnityEngine.Object.Destroy(texture2D);
-    //		UnityEngine.Object.Destroy(camera.gameObject);
-    //		return result;
-    //	}
+    //public static List<byte> SaveScreen()
+    //{
+    //    RenderTexture renderTexture = new RenderTexture(166, 117, 16);
+    //    //Texture2D texture2D = SaveInfo.CreateTex2d(166, 117);
+    //    GameObject gameObject = new GameObject("NeedDeleted:SaveLoad");
+    //    Camera camera = gameObject.AddComponent<Camera>();
+    //    camera.transform.position = Camera.main.transform.position;
+    //    camera.transform.rotation = Camera.main.transform.rotation;
+    //    camera.depth = -2f;
+    //    camera.targetTexture = renderTexture;
+    //    camera.RenderDontRestore();
+    //    RenderTexture.active = renderTexture;
+    //    //texture2D.ReadPixels(new Rect(0f, 0f, (float)texture2D.width, (float)texture2D.height), 0, 0);
+    //    camera.targetTexture = null;
+    //    RenderTexture.active = null;
+    //    UnityEngine.Object.Destroy(renderTexture);
+    //    //List<byte> result = new List<byte>(texture2D.EncodeToPNG());
+    //    //UnityEngine.Object.Destroy(texture2D);
+    //    UnityEngine.Object.Destroy(camera.gameObject);
+    //    return result;
+    //}
 
     //	public static Texture2D LoadScreen(List<byte> buffer)
     //	{

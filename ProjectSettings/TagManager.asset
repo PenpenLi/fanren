@@ -4,12 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - player
-  - npc
-  - scene_building
+  - NPC
   - Road
-  - Ground
+  - scene_stone
+  - scene_tree
+  - scene_sfx
+  - scene_building
   - scene_water
+  - scene_ground
+  - Ground
+  - building
+  - scene_grass
+  - scene_stairs
   layers:
   - Default
   - TransparentFX
@@ -19,7 +25,7 @@ TagManager:
   - UI
   - 
   - 
-  - Road
+  - Ground
   - Wall
   - 
   - 

@@ -15,6 +15,11 @@ namespace YouYou
         /// </summary>
         private YouYouSceneManager m_YouYouSceneManager;
 
+        /// <summary>
+        /// 目标世界地图的传送点Id
+        /// </summary>
+        public int TargertWorldMapTransPosId;
+
         protected override void OnAwake()
         {
             base.OnAwake();

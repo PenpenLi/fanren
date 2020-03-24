@@ -11,6 +11,9 @@ public class SaveDataManager
 {
     //	private static string SAVEINFO_FILE_NAME = "SaveInfo.ini";
 
+    /// <summary>
+    /// 存档信息列表
+    /// </summary>
     public List<SaveInfo> m_saveInfoList = new List<SaveInfo>();
 
     public SaveData m_SDSave = new SaveData();
@@ -18,10 +21,8 @@ public class SaveDataManager
     //	public static List<string> SaveFileList = new List<string>();
 
     /// <summary>
-    /// 存档路径
+    /// 存档数据
     /// </summary>
-    public string DIR_PATH ;
-
     public SaveData SDSave
     {
         get
@@ -189,32 +190,36 @@ public class SaveDataManager
     /// </summary>
     public void LoadSaveInfo()
     {
-        DIR_PATH = Application.dataPath + "/Save/";
         m_saveInfoList.Clear();
-        if (!Directory.Exists(DIR_PATH))
+        if (!Directory.Exists(GetSaveDir()))//如果没有存档文件夹 创建一个
         {
-            Directory.CreateDirectory(DIR_PATH);
+            Directory.CreateDirectory(GetSaveDir());
         }
-        DirectoryInfo directoryInfo = new DirectoryInfo(DIR_PATH);
+        DirectoryInfo directoryInfo = new DirectoryInfo(GetSaveDir());
         foreach (FileInfo fileInfo in directoryInfo.GetFiles())
         {
             string text = fileInfo.Name.Trim();
             for (SaveLoadManager.tagSL tagSL = SaveLoadManager.tagSL.Save_Auto; tagSL < SaveLoadManager.tagSL.Save_Five; tagSL++)
             {
-                if (text == GameEntry.SaveLoad.GetFileName(tagSL))
+                if (text == SaveLoadManager.GetFileName(tagSL))
                 {
-                    SaveData saveData = GameEntry.SaveLoad.ReadSaveFile(fileInfo.Name) as SaveData;
-                    if (saveData == null)
-                    {
-                        Debug.LogWarning("Load Err:"+text);
-                    }
-                    else
-                    {
-                        SaveInfo item = new SaveInfo(saveData.SaveDateInfo, saveData.SaveDateBitmap);
-                        m_saveInfoList.Add(item);
-                    }
+                    SaveData saveData = SaveLoadManager.ReadSaveFile(fileInfo.Name) as SaveData;//根据存档名称读取存档文件
+                    //if (saveData == null)
+                    //{
+                    //    Debug.LogWarning("Load Err:"+text);
+                    //}
+                    //else
+                    //{
+                    //    //SaveInfo item = new SaveInfo(saveData.SaveDateInfo, saveData.SaveDateBitmap);
+                    //    //SDManager.m_saveInfoList.Add(item);
+                    //}
                 }
             }
         }
+    }
+
+    public static string GetSaveDir()
+    {
+        return SaveLoadManager.DIR_PATH;
     }
 }

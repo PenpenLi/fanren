@@ -72,7 +72,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     /// 玩家
     /// </summary>
     [HideInInspector]
-    public RoleCtrl Player=null;
+    public RoleCtrl CurrPlayer = null;
 
     /// <summary>
     /// 可操作物体列表
@@ -82,6 +82,11 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
 
     [HideInInspector]
     public List<HelpManager> HelpList = new List<HelpManager>();
+
+    /// <summary>
+    /// 主角是否已经初始化
+    /// </summary>
+    private bool m_IsMainPlayerInit = false;
 
     /// <summary>
     /// 怪物HpRoot
@@ -115,29 +120,6 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
         //SingletonMono<StageManager>.GetInstance().Read();
         //Singleton<EZGUIManager>.GetInstance().GetGUI<DieGUI>().AfterLoad();
         //Singleton<HpCautionEffect>.GetInstance().AdjustSize();
-    }
-
-    /// <summary>
-    /// 初始化主角
-    /// </summary>
-    public void InitRole()
-    {
-
-        //if (m_IsMainPlayerInit) return;
-
-        //if (GlobalInit.Instance.MainPlayerInfo != null)
-        //{
-        //    GameObject mainPlayerObj = Object.Instantiate(GlobalInit.Instance.JobObjectDic[GlobalInit.Instance.MainPlayerInfo.JobId]);
-        //    Object.DontDestroyOnLoad(mainPlayerObj);
-
-
-        //    GlobalInit.Instance.MainPlayerInfo.SetPhySkillId(JobDBModel.Instance.Get(GlobalInit.Instance.MainPlayerInfo.JobId).UsedPhyAttackIds);
-
-        //    GlobalInit.Instance.CurrPlayer = mainPlayerObj.GetComponent<RoleCtrl>();
-        //    GlobalInit.Instance.CurrPlayer.Init(RoleType.MainPlayer, GlobalInit.Instance.MainPlayerInfo, new RoleMainPlayerCityAI(GlobalInit.Instance.CurrPlayer));
-        //}
-
-        //m_IsMainPlayerInit = true;
     }
 
     //	private void InitOther()
@@ -333,24 +315,34 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     }
 
     /// <summary>
-    /// 创建玩家
+    /// 初始化主角
     /// </summary>
-    public void CreatePlayer()
+    public void InitMainPlayer()
     {
-        GameObject gameObject = null;
-        GameEntry.Role.CreateRole("zhujiao_cike_animation", (ResourceEntity resourceEntity) =>
-        {
-            gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
-        });
-        gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
-        gameObject.transform.position = new Vector3(1f, 10f, 2f);//设置出生地    
-        Player = gameObject.GetComponent<RoleCtrl>();
-        gameObject.tag = "player";
-        //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
-        GameEntry.Camera.InitPosition(gameObject);
-        Player.Init(RoleType.MainPlayer,null, new RoleMainPlayerCityAI(Player));
+        if (m_IsMainPlayerInit) return;
 
-        this.AddRole(Player);//添加到角色列表
+        if (GameEntry.Data.RuntimeDataManager.Team.Count>0)
+        {
+            RoleInfo roleInfo = GameEntry.Data.RuntimeDataManager.Team[0];
+            RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleInfo.RoleId);
+            GameObject gameObject = null;
+            GameEntry.Role.CreateRole(roleEntity.Model, (ResourceEntity resourceEntity) =>
+            {
+                gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+            });
+            gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
+
+            CurrPlayer = gameObject.GetComponent<RoleCtrl>();
+            CurrPlayer.Init(RoleType.MainPlayer, roleInfo, new RoleMainPlayerCityAI(CurrPlayer));
+
+            gameObject.transform.position = new Vector3(1f, 20f, 2f);//设置出生地    
+            gameObject.tag = "Player";
+            //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
+            GameEntry.Camera.InitPosition(gameObject);
+            this.AddRole(CurrPlayer);//添加到角色列表
+        }
+
+        m_IsMainPlayerInit = true;
     }
 
     /// <summary>
@@ -359,22 +351,25 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     public void CreateAllNPC()
     {
         Sys_SceneEntity m_CurrSceneEntity = GameEntry.Scene.GetSceneEntity();
-        string[] arr1 = m_CurrSceneEntity.NPCList.Split('|');
-        for (int i = 0; i < arr1.Length; i++)
+        if (m_CurrSceneEntity.NPCList.Length>0)
         {
-            string[] arr2 = arr1[i].Split('_');
+            string[] arr1 = m_CurrSceneEntity.NPCList.Split('|');
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                string[] arr2 = arr1[i].Split('_');
 
-            int npcId = 0;
-            int.TryParse(arr2[0], out npcId);
+                int npcId = 0;
+                int.TryParse(arr2[0], out npcId);
 
-            float x = 0, y = 0, z = 0, anglesY = 0;
-            float.TryParse(arr2[1], out x);
-            float.TryParse(arr2[2], out y);
-            float.TryParse(arr2[3], out z);
-            float.TryParse(arr2[4], out anglesY);
+                float x = 0, y = 0, z = 0, anglesY = 0;
+                float.TryParse(arr2[1], out x);
+                float.TryParse(arr2[2], out y);
+                float.TryParse(arr2[3], out z);
+                float.TryParse(arr2[4], out anglesY);
 
-            CreateNPC(npcId, new Vector3(x, y, z), anglesY);
-        }
+                CreateNPC(npcId, new Vector3(x, y, z), anglesY);
+            }
+        }        
     }
 
     /// <summary>
@@ -389,7 +384,7 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
             gameObject.SetParent(this._npcRootGo.transform);//设置根节点 
             gameObject.transform.position = new Vector3(1f, 10f, 3f);
             gameObject.transform.eulerAngles = new Vector3(0, anglesY, 0);
-            gameObject.tag = "npc";
+            gameObject.tag = "NPC";
             RoleCtrl ctrl = gameObject.GetComponent<RoleCtrl>();
             ctrl.Init(RoleType.NPC,null, new RoleMainPlayerCityAI(ctrl));
             NPCClick npcclick = gameObject.AddComponent<NPCClick>();
