@@ -16,8 +16,6 @@ namespace SoftStar.Pal6
 {
     public class PalMain : MonoBehaviour
     {
-
-        //		// Token: 0x04003111 RID: 12561
         //		public const int MoneyFlag = 2;
 
         //		// Token: 0x04003112 RID: 12562
@@ -1985,9 +1983,9 @@ namespace SoftStar.Pal6
     /// <summary>
     /// 切换地图
     /// </summary>
-    /// <param name="DestName"></param>
-    /// <param name="LevelIndex"></param>
-    /// <param name="PlayDefaultAudio"></param>
+    /// <param name="DestName">目的名称</param>
+    /// <param name="LevelIndex">编号</param>
+    /// <param name="PlayDefaultAudio">播放违约音乐</param>
     /// <param name="SaveDynamicObjs"></param>
     public static void ChangeMap(string DestName, int LevelIndex, bool PlayDefaultAudio = true, bool SaveDynamicObjs = true)
         {
@@ -2000,14 +1998,17 @@ namespace SoftStar.Pal6
                         SaveDynamicObjs
             }));
             PalBattleManager.Instance().OnSceneChangeClear();
+
             if (ScenesManager.CurLoadedLevel == 11 && LevelIndex != 11)
             {
                 //FlagManager.SetFlag(8, 1, false);
             }
+
             //if (Cutscene.current != null && (Cutscene.current.isPlaying || Cutscene.current.isPause))
             //{
             //    Cutscene.current.End(false);
             //}
+
             //Transform transform = UtilFun.GetMainCamera().transform;
             //if (transform != null)
             //{
