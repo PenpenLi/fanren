@@ -2015,11 +2015,13 @@ namespace SoftStar.Pal6
             //    transform.parent = null;
             //}
             //UtilFun.GetMainCamera().cullingMask = 0;
-            //if (ScenesManager.IsChanging)
-            //{
-            //    return;
-            //}
-            //PlayersManager.RestoreLayer(true);
+
+            if (ScenesManager.IsChanging)
+            {
+                return;
+            }
+
+            PlayersManager.RestoreLayer(true);
             //PlayersManager.ChangeHairShader(false);
             //if (SaveDynamicObjs)
             //{

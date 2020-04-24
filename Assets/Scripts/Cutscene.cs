@@ -11,6 +11,232 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Cutscene : MonoBehaviour
 {
+    public static Cutscene current;
+
+    //	// Token: 0x0400040A RID: 1034
+    //	public static int maskValue = -1;
+
+    //	// Token: 0x0400040B RID: 1035
+    //	[NonSerialized]
+    //	public bool IsSaving;
+
+    //	// Token: 0x0400040C RID: 1036
+    //	public bool NeedChangeState = true;
+
+    //	// Token: 0x0400040D RID: 1037
+    //	public GameState lastGameState;
+
+    //	// Token: 0x0400040E RID: 1038
+    //	private GhostCamera m_ghostCamera;
+
+    //	// Token: 0x0400040F RID: 1039
+    //	[HideInInspector]
+    //	public uScriptAct_Cutscene uScriptCutsc;
+
+    //	// Token: 0x04000410 RID: 1040
+    //	public string cutscenePath;
+
+    //	// Token: 0x04000411 RID: 1041
+    //	public string MergedClipsPath = "Assets/CutsceneEditor/CutScene/MergedClips/";
+
+    //	// Token: 0x04000412 RID: 1042
+    //	public string cutsceneName = "新过场";
+
+    //	// Token: 0x04000413 RID: 1043
+    //	[HideInInspector]
+    //	public List<LockedGroup> lockedGroups = new List<LockedGroup>();
+
+    //	// Token: 0x04000414 RID: 1044
+    //	[NonSerialized]
+    //	public List<CutsceneEvent> tempEvents;
+
+    //	// Token: 0x04000415 RID: 1045
+    //	public List<CutsceneEvent> events = new List<CutsceneEvent>();
+
+    //	// Token: 0x04000416 RID: 1046
+    //	public CutsceneRow eventRow = new CutsceneRow();
+
+    //	// Token: 0x04000417 RID: 1047
+    //	public int eventIndex;
+
+    //	// Token: 0x04000418 RID: 1048
+    //	public List<CutsceneRow> cutsceneRows = new List<CutsceneRow>();
+
+    //	// Token: 0x04000419 RID: 1049
+    //	public List<CutsceneClip> activeClips = new List<CutsceneClip>();
+
+    //	// Token: 0x0400041A RID: 1050
+    //	public float TotalTime = 30f;
+
+    //	// Token: 0x0400041B RID: 1051
+    //	public float currentTime;
+
+    //	// Token: 0x0400041C RID: 1052
+    //	private float curBackMusicRatio = 1f;
+
+    //	// Token: 0x0400041D RID: 1053
+    //	private bool isplaying;
+
+    //	// Token: 0x0400041E RID: 1054
+    //	[NonSerialized]
+    //	public bool isPause;
+
+    //	// Token: 0x0400041F RID: 1055
+    //	public bool isSkip;
+
+    //	// Token: 0x04000420 RID: 1056
+    //	public List<CutParam_GameObject> cutsceneParams = new List<CutParam_GameObject>();
+
+    //	// Token: 0x04000421 RID: 1057
+    //	public bool CanESC = true;
+
+    //	// Token: 0x04000422 RID: 1058
+    //	public bool hideWeapon = true;
+
+    //	// Token: 0x04000423 RID: 1059
+    //	public bool restoreOrigin;
+
+    //	// Token: 0x04000424 RID: 1060
+    //	public Transform playerPoint;
+
+    //	// Token: 0x04000425 RID: 1061
+    //	public bool IsCGClip;
+
+    //	// Token: 0x04000426 RID: 1062
+    //	public float SmallfaceScale = 1f;
+
+    //	// Token: 0x04000427 RID: 1063
+    //	public float SmallFaceScaleTime = 1f;
+
+    //	// Token: 0x04000428 RID: 1064
+    //	public Action OnClickEvent;
+
+    //	// Token: 0x04000429 RID: 1065
+    //	public bool ContinueCutscene;
+
+    //	// Token: 0x0400042A RID: 1066
+    //	public bool BeginFromBlack = true;
+
+    //	// Token: 0x0400042B RID: 1067
+    //	private bool ReceiveShadows = true;
+
+    //	// Token: 0x0400042C RID: 1068
+    //	private Dictionary<GameObject, List<Cutscene.ProcessedData>> processedCpGO = new Dictionary<GameObject, List<Cutscene.ProcessedData>>();
+
+    //	// Token: 0x0400042D RID: 1069
+    //	[NonSerialized]
+    //	public List<CutsceneClip> StringClips = new List<CutsceneClip>();
+
+    //	// Token: 0x0400042E RID: 1070
+    //	[NonSerialized]
+    //	public List<DramaContent> dramas = new List<DramaContent>();
+
+    //	// Token: 0x0400042F RID: 1071
+    //	[NonSerialized]
+    //	public List<CutsceneClip> SkipPoints = new List<CutsceneClip>();
+
+    //	// Token: 0x04000430 RID: 1072
+    //	private int SkipPointIndex;
+
+    //	// Token: 0x04000431 RID: 1073
+    //	private ParamObject[] m_paramObjects;
+
+    //	// Token: 0x04000432 RID: 1074
+    //	private string skipContent1;
+
+    //	// Token: 0x04000433 RID: 1075
+    //	private string skipContent2;
+
+    //	// Token: 0x04000434 RID: 1076
+    //	public static bool CanEscSkip = true;
+
+    //	// Token: 0x04000435 RID: 1077
+    //	private cutsceneData data;
+
+    //	// Token: 0x04000436 RID: 1078
+    //	public static bool ShowTransferFlash = true;
+
+    //	// Token: 0x04000437 RID: 1079
+    //	private float curBeginTime;
+
+    //	// Token: 0x04000438 RID: 1080
+    //	private bool NeedSkipToEnd;
+
+    //	// Token: 0x04000439 RID: 1081
+    //	private float SkipEndTime = 10f;
+
+    //	// Token: 0x0400043A RID: 1082
+    //	private bool CanSkipToEnd = true;
+
+    //	// Token: 0x0400043B RID: 1083
+    //	public static bool SkipOnBegin;
+
+    //	// Token: 0x0400043C RID: 1084
+    //	private float SkipOnBeginTime = 2f;
+
+    //	// Token: 0x0400043D RID: 1085
+    //	private bool is2D;
+
+    //	// Token: 0x0400043E RID: 1086
+    //	public static bool ShowSkipContent = true;
+
+    //	// Token: 0x0400043F RID: 1087
+    //	private bool HasOpenedText;
+
+    //	// Token: 0x04000440 RID: 1088
+    //	private string SkipContent = string.Empty;
+
+    //	// Token: 0x04000441 RID: 1089
+    //	private static GameObject _mainCamera;
+
+    //	// Token: 0x04000442 RID: 1090
+    //	private List<string> SpeechPaths = new List<string>();
+
+    //	// Token: 0x04000443 RID: 1091
+    //	private bool HasChangeMap;
+
+    //	// Token: 0x04000444 RID: 1092
+    //	private List<Cutscene.SkipClipData> ChangeMapClipList = new List<Cutscene.SkipClipData>();
+
+    //	// Token: 0x04000445 RID: 1093
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> ActiveZhanDouDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x04000446 RID: 1094
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> PlayAnimDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x04000447 RID: 1095
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetPosDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x04000448 RID: 1096
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetVisDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x04000449 RID: 1097
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetActiveDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x0400044A RID: 1098
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetYanZhaoActiveDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x0400044B RID: 1099
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetClothDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x0400044C RID: 1100
+    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetTurnBodyDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
+
+    //	// Token: 0x0400044D RID: 1101
+    //	private List<Cutscene.SkipClipData> AddNewStrangeNewList = new List<Cutscene.SkipClipData>();
+
+    //	// Token: 0x0400044E RID: 1102
+    //	private Cutscene.SkipClipData LastPlayAudio;
+
+    //	// Token: 0x0400044F RID: 1103
+    //	private Cutscene.SkipClipData LastWeather;
+
+    //	// Token: 0x04000450 RID: 1104
+    //	private Cutscene.SkipClipData LastWeatherTime;
+
+    //	// Token: 0x04000451 RID: 1105
+    //	private bool skipEnd;
+
     public event Cutscene.void_fun OnEnd;
 
     //	public static int MaskValue
@@ -392,29 +618,27 @@ public class Cutscene : MonoBehaviour
     //		}
     //	}
 
-    //	// Token: 0x0600043A RID: 1082 RVA: 0x00026054 File Offset: 0x00024254
-    //	public void Init()
-    //	{
-    //		uint curLangue = Langue.CurLangue;
-    //		this.skipContent1 = ((curLangue != 0u) ? "秒內按~跳過" : "秒内按~跳过");
-    //		this.skipContent2 = ((curLangue != 0u) ? "即將跳過" : "即将跳过");
-    //		this.is2D = base.name.Contains("csmh");
-    //		Cutscene.current = this;
-    //		this.ReLoadSkipPoints();
-    //		this.ResetActorPos();
-    //	}
+    public void Init()
+    {
+        //uint curLangue = Langue.CurLangue;
+        //this.skipContent1 = ((curLangue != 0u) ? "秒內按~跳過" : "秒内按~跳过");
+        //this.skipContent2 = ((curLangue != 0u) ? "即將跳過" : "即将跳过");
+        //this.is2D = base.name.Contains("csmh");
+        //Cutscene.current = this;
+        //this.ReLoadSkipPoints();
+        //this.ResetActorPos();
+    }
 
     private void Awake()
     {
-       // this.Init();
+        this.Init();
     }
 
-    //	// Token: 0x0600043C RID: 1084 RVA: 0x000260D0 File Offset: 0x000242D0
-    //	private void Start()
-    //	{
-    //		Debug.LogWarning("Start");
-    //		this.PreProcessAssetBundle();
-    //	}
+    private void Start()
+    {
+        Debug.LogWarning("Start");
+        //this.PreProcessAssetBundle();
+    }
 
     //	// Token: 0x0600043D RID: 1085 RVA: 0x000260E4 File Offset: 0x000242E4
     //	private void ProcessActors(bool bActive)
@@ -2190,232 +2414,6 @@ public class Cutscene : MonoBehaviour
     //		}
     //	}
 
-    //	// Token: 0x04000409 RID: 1033
-    //	public static Cutscene current;
-
-    //	// Token: 0x0400040A RID: 1034
-    //	public static int maskValue = -1;
-
-    //	// Token: 0x0400040B RID: 1035
-    //	[NonSerialized]
-    //	public bool IsSaving;
-
-    //	// Token: 0x0400040C RID: 1036
-    //	public bool NeedChangeState = true;
-
-    //	// Token: 0x0400040D RID: 1037
-    //	public GameState lastGameState;
-
-    //	// Token: 0x0400040E RID: 1038
-    //	private GhostCamera m_ghostCamera;
-
-    //	// Token: 0x0400040F RID: 1039
-    //	[HideInInspector]
-    //	public uScriptAct_Cutscene uScriptCutsc;
-
-    //	// Token: 0x04000410 RID: 1040
-    //	public string cutscenePath;
-
-    //	// Token: 0x04000411 RID: 1041
-    //	public string MergedClipsPath = "Assets/CutsceneEditor/CutScene/MergedClips/";
-
-    //	// Token: 0x04000412 RID: 1042
-    //	public string cutsceneName = "新过场";
-
-    //	// Token: 0x04000413 RID: 1043
-    //	[HideInInspector]
-    //	public List<LockedGroup> lockedGroups = new List<LockedGroup>();
-
-    //	// Token: 0x04000414 RID: 1044
-    //	[NonSerialized]
-    //	public List<CutsceneEvent> tempEvents;
-
-    //	// Token: 0x04000415 RID: 1045
-    //	public List<CutsceneEvent> events = new List<CutsceneEvent>();
-
-    //	// Token: 0x04000416 RID: 1046
-    //	public CutsceneRow eventRow = new CutsceneRow();
-
-    //	// Token: 0x04000417 RID: 1047
-    //	public int eventIndex;
-
-    //	// Token: 0x04000418 RID: 1048
-    //	public List<CutsceneRow> cutsceneRows = new List<CutsceneRow>();
-
-    //	// Token: 0x04000419 RID: 1049
-    //	public List<CutsceneClip> activeClips = new List<CutsceneClip>();
-
-    //	// Token: 0x0400041A RID: 1050
-    //	public float TotalTime = 30f;
-
-    //	// Token: 0x0400041B RID: 1051
-    //	public float currentTime;
-
-    //	// Token: 0x0400041C RID: 1052
-    //	private float curBackMusicRatio = 1f;
-
-    //	// Token: 0x0400041D RID: 1053
-    //	private bool isplaying;
-
-    //	// Token: 0x0400041E RID: 1054
-    //	[NonSerialized]
-    //	public bool isPause;
-
-    //	// Token: 0x0400041F RID: 1055
-    //	public bool isSkip;
-
-    //	// Token: 0x04000420 RID: 1056
-    //	public List<CutParam_GameObject> cutsceneParams = new List<CutParam_GameObject>();
-
-    //	// Token: 0x04000421 RID: 1057
-    //	public bool CanESC = true;
-
-    //	// Token: 0x04000422 RID: 1058
-    //	public bool hideWeapon = true;
-
-    //	// Token: 0x04000423 RID: 1059
-    //	public bool restoreOrigin;
-
-    //	// Token: 0x04000424 RID: 1060
-    //	public Transform playerPoint;
-
-    //	// Token: 0x04000425 RID: 1061
-    //	public bool IsCGClip;
-
-    //	// Token: 0x04000426 RID: 1062
-    //	public float SmallfaceScale = 1f;
-
-    //	// Token: 0x04000427 RID: 1063
-    //	public float SmallFaceScaleTime = 1f;
-
-    //	// Token: 0x04000428 RID: 1064
-    //	public Action OnClickEvent;
-
-    //	// Token: 0x04000429 RID: 1065
-    //	public bool ContinueCutscene;
-
-    //	// Token: 0x0400042A RID: 1066
-    //	public bool BeginFromBlack = true;
-
-    //	// Token: 0x0400042B RID: 1067
-    //	private bool ReceiveShadows = true;
-
-    //	// Token: 0x0400042C RID: 1068
-    //	private Dictionary<GameObject, List<Cutscene.ProcessedData>> processedCpGO = new Dictionary<GameObject, List<Cutscene.ProcessedData>>();
-
-    //	// Token: 0x0400042D RID: 1069
-    //	[NonSerialized]
-    //	public List<CutsceneClip> StringClips = new List<CutsceneClip>();
-
-    //	// Token: 0x0400042E RID: 1070
-    //	[NonSerialized]
-    //	public List<DramaContent> dramas = new List<DramaContent>();
-
-    //	// Token: 0x0400042F RID: 1071
-    //	[NonSerialized]
-    //	public List<CutsceneClip> SkipPoints = new List<CutsceneClip>();
-
-    //	// Token: 0x04000430 RID: 1072
-    //	private int SkipPointIndex;
-
-    //	// Token: 0x04000431 RID: 1073
-    //	private ParamObject[] m_paramObjects;
-
-    //	// Token: 0x04000432 RID: 1074
-    //	private string skipContent1;
-
-    //	// Token: 0x04000433 RID: 1075
-    //	private string skipContent2;
-
-    //	// Token: 0x04000434 RID: 1076
-    //	public static bool CanEscSkip = true;
-
-    //	// Token: 0x04000435 RID: 1077
-    //	private cutsceneData data;
-
-    //	// Token: 0x04000436 RID: 1078
-    //	public static bool ShowTransferFlash = true;
-
-    //	// Token: 0x04000437 RID: 1079
-    //	private float curBeginTime;
-
-    //	// Token: 0x04000438 RID: 1080
-    //	private bool NeedSkipToEnd;
-
-    //	// Token: 0x04000439 RID: 1081
-    //	private float SkipEndTime = 10f;
-
-    //	// Token: 0x0400043A RID: 1082
-    //	private bool CanSkipToEnd = true;
-
-    //	// Token: 0x0400043B RID: 1083
-    //	public static bool SkipOnBegin;
-
-    //	// Token: 0x0400043C RID: 1084
-    //	private float SkipOnBeginTime = 2f;
-
-    //	// Token: 0x0400043D RID: 1085
-    //	private bool is2D;
-
-    //	// Token: 0x0400043E RID: 1086
-    //	public static bool ShowSkipContent = true;
-
-    //	// Token: 0x0400043F RID: 1087
-    //	private bool HasOpenedText;
-
-    //	// Token: 0x04000440 RID: 1088
-    //	private string SkipContent = string.Empty;
-
-    //	// Token: 0x04000441 RID: 1089
-    //	private static GameObject _mainCamera;
-
-    //	// Token: 0x04000442 RID: 1090
-    //	private List<string> SpeechPaths = new List<string>();
-
-    //	// Token: 0x04000443 RID: 1091
-    //	private bool HasChangeMap;
-
-    //	// Token: 0x04000444 RID: 1092
-    //	private List<Cutscene.SkipClipData> ChangeMapClipList = new List<Cutscene.SkipClipData>();
-
-    //	// Token: 0x04000445 RID: 1093
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> ActiveZhanDouDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x04000446 RID: 1094
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> PlayAnimDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x04000447 RID: 1095
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetPosDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x04000448 RID: 1096
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetVisDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x04000449 RID: 1097
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetActiveDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x0400044A RID: 1098
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetYanZhaoActiveDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x0400044B RID: 1099
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetClothDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x0400044C RID: 1100
-    //	private Dictionary<CutsceneActor, Cutscene.SkipClipData> SetTurnBodyDic = new Dictionary<CutsceneActor, Cutscene.SkipClipData>();
-
-    //	// Token: 0x0400044D RID: 1101
-    //	private List<Cutscene.SkipClipData> AddNewStrangeNewList = new List<Cutscene.SkipClipData>();
-
-    //	// Token: 0x0400044E RID: 1102
-    //	private Cutscene.SkipClipData LastPlayAudio;
-
-    //	// Token: 0x0400044F RID: 1103
-    //	private Cutscene.SkipClipData LastWeather;
-
-    //	// Token: 0x04000450 RID: 1104
-    //	private Cutscene.SkipClipData LastWeatherTime;
-
-    //	// Token: 0x04000451 RID: 1105
-    //	private bool skipEnd;
 
     //	// Token: 0x0200008D RID: 141
     //	public class ProcessedData

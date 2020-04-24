@@ -8,10 +8,9 @@ public class ScenesManager : MonoBehaviour
 {
     private static ScenesManager instance;
 
-    //	public int loadedLevel;
+    public int loadedLevel;
 
-    //	// Token: 0x040031FD RID: 12797
-    //	public static bool IsChanging;
+    public static bool IsChanging;
 
     //	// Token: 0x040031FE RID: 12798
     //	private static ShowLoading m_showLoading;
