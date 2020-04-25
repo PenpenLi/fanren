@@ -189,11 +189,6 @@ namespace YouYou
         }
         #endregion
 
-        public static ScriptManager Script = new ScriptManager();
-
-        public static ScriptDataManager ScriptData = new ScriptDataManager();
-
-        public static SaveDataManager SaveData = new SaveDataManager();
         #region 基础组件管理
         /// <summary>
         /// 基础组件列表

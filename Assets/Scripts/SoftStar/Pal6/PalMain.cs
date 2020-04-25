@@ -1212,782 +1212,781 @@ namespace SoftStar.Pal6
             //			}
         }
 
-    //		// Token: 0x060036C0 RID: 14016 RVA: 0x0018AD88 File Offset: 0x00188F88
-    //		private void PutOffItem(IItem inItem)
-    //		{
-    //			IItemAssemble<SymbolPanelItem> itemAssemble = inItem as IItemAssemble<SymbolPanelItem>;
-    //			if (itemAssemble != null)
-    //			{
-    //				SymbolPanelItem owner = itemAssemble.GetOwner();
-    //				if (owner != null)
-    //				{
-    //					owner.RemoveNode(itemAssemble as SymbolNodeItem);
-    //				}
-    //			}
-    //			IItemAssemble<PalNPC> itemAssemble2 = inItem as IItemAssemble<PalNPC>;
-    //			if (itemAssemble2 != null)
-    //			{
-    //				PalNPC owner2 = itemAssemble2.GetOwner();
-    //				if (owner2 != null)
-    //				{
-    //					owner2.PutOffEquip(inItem);
-    //				}
-    //			}
-    //		}
+        //		// Token: 0x060036C0 RID: 14016 RVA: 0x0018AD88 File Offset: 0x00188F88
+        //		private void PutOffItem(IItem inItem)
+        //		{
+        //			IItemAssemble<SymbolPanelItem> itemAssemble = inItem as IItemAssemble<SymbolPanelItem>;
+        //			if (itemAssemble != null)
+        //			{
+        //				SymbolPanelItem owner = itemAssemble.GetOwner();
+        //				if (owner != null)
+        //				{
+        //					owner.RemoveNode(itemAssemble as SymbolNodeItem);
+        //				}
+        //			}
+        //			IItemAssemble<PalNPC> itemAssemble2 = inItem as IItemAssemble<PalNPC>;
+        //			if (itemAssemble2 != null)
+        //			{
+        //				PalNPC owner2 = itemAssemble2.GetOwner();
+        //				if (owner2 != null)
+        //				{
+        //					owner2.PutOffEquip(inItem);
+        //				}
+        //			}
+        //		}
 
-    //		// Token: 0x060036C1 RID: 14017 RVA: 0x0018ADE4 File Offset: 0x00188FE4
-    //		public void InitPlayBeginMovie()
-    //		{
-    //			if (SceneManager.GetActiveScene().buildIndex == 0)
-    //			{
-    //				this.updateHandles = (PalMain.void_func_float_float)Delegate.Combine(this.updateHandles, new PalMain.void_func_float_float(this.PlayBeginMovie));
-    //			}
-    //		}
+        //		// Token: 0x060036C1 RID: 14017 RVA: 0x0018ADE4 File Offset: 0x00188FE4
+        //		public void InitPlayBeginMovie()
+        //		{
+        //			if (SceneManager.GetActiveScene().buildIndex == 0)
+        //			{
+        //				this.updateHandles = (PalMain.void_func_float_float)Delegate.Combine(this.updateHandles, new PalMain.void_func_float_float(this.PlayBeginMovie));
+        //			}
+        //		}
 
-    //		// Token: 0x060036C2 RID: 14018 RVA: 0x0018AE28 File Offset: 0x00189028
-    //		private void PlayBeginMovie(float d, float a)
-    //		{
-    //			if (StartInit.Instance == null)
-    //			{
-    //				UnityEngine.Debug.LogError("StartInit.Instance==null 无法播放健康公告");
-    //			}
-    //			else
-    //			{
-    //				StartInit.Instance.ShowCore();
-    //			}
-    //			this.updateHandles = (PalMain.void_func_float_float)Delegate.Remove(this.updateHandles, new PalMain.void_func_float_float(this.PlayBeginMovie));
-    //		}
+        //		// Token: 0x060036C2 RID: 14018 RVA: 0x0018AE28 File Offset: 0x00189028
+        //		private void PlayBeginMovie(float d, float a)
+        //		{
+        //			if (StartInit.Instance == null)
+        //			{
+        //				UnityEngine.Debug.LogError("StartInit.Instance==null 无法播放健康公告");
+        //			}
+        //			else
+        //			{
+        //				StartInit.Instance.ShowCore();
+        //			}
+        //			this.updateHandles = (PalMain.void_func_float_float)Delegate.Remove(this.updateHandles, new PalMain.void_func_float_float(this.PlayBeginMovie));
+        //		}
 
-    //		// Token: 0x060036C3 RID: 14019 RVA: 0x0018AE80 File Offset: 0x00189080
-    //		private void Start()
-    //		{
-    //			this.m_LevelCullOpParams.Add(0, new PalMain.SceneOptiDistFogParams(0, -1f, 305f, 305f));
-    //			this.m_LevelCullOpParams.Add(1, new PalMain.SceneOptiDistFogParams(1, -1f, 200f, 105f));
-    //			this.m_LevelCullOpParams.Add(2, new PalMain.SceneOptiDistFogParams(2, -1f, 145f, 145f));
-    //			this.m_LevelCullOpParams.Add(3, new PalMain.SceneOptiDistFogParams(3, -1f, 150f, 75f));
-    //			this.m_LevelCullOpParams.Add(4, new PalMain.SceneOptiDistFogParams(4, -1f, 150f, 75f));
-    //			this.m_LevelCullOpParams.Add(5, new PalMain.SceneOptiDistFogParams(5, -1f, 200f, 75f));
-    //			this.m_LevelCullOpParams.Add(6, new PalMain.SceneOptiDistFogParams(6, -1f, 70f, 45f));
-    //			this.m_LevelCullOpParams.Add(7, new PalMain.SceneOptiDistFogParams(7, -1f, 150f, 95f));
-    //			this.m_LevelCullOpParams.Add(8, new PalMain.SceneOptiDistFogParams(8, -1f, 200f, 105f));
-    //			this.m_LevelCullOpParams.Add(9, new PalMain.SceneOptiDistFogParams(9, -1f, 100f, 65f));
-    //			this.m_LevelCullOpParams.Add(10, new PalMain.SceneOptiDistFogParams(10, -1f, 120f, 85f));
-    //			this.m_LevelCullOpParams.Add(11, new PalMain.SceneOptiDistFogParams(11, -1f, 70f, 35f));
-    //			this.m_LevelCullOpParams.Add(12, new PalMain.SceneOptiDistFogParams(12, -1f, 80f, 105f));
-    //			this.m_LevelCullOpParams.Add(13, new PalMain.SceneOptiDistFogParams(13, -1f, 150f, 75f));
-    //			this.m_LevelCullOpParams.Add(14, new PalMain.SceneOptiDistFogParams(14, -1f, 140f, 85f));
-    //			this.m_LevelCullOpParams.Add(15, new PalMain.SceneOptiDistFogParams(15, -1f, 100f, 75f));
-    //			this.m_LevelCullOpParams.Add(16, new PalMain.SceneOptiDistFogParams(16, -1f, 200f, 205f));
-    //			this.m_LevelCullOpParams.Add(17, new PalMain.SceneOptiDistFogParams(17, -1f, 140f, 75f));
-    //			this.m_LevelCullOpParams.Add(18, new PalMain.SceneOptiDistFogParams(18, -1f, 200f, 205f));
-    //			this.m_LevelCullOpParams.Add(19, new PalMain.SceneOptiDistFogParams(19, -1f, 250f, 155f));
-    //			this.m_LevelCullOpParams.Add(20, new PalMain.SceneOptiDistFogParams(20, -1f, 150f, 85f));
-    //			this.m_LevelCullOpParams.Add(21, new PalMain.SceneOptiDistFogParams(21, -1f, 300f, 305f));
-    //			this.m_LevelCullOpParams.Add(22, new PalMain.SceneOptiDistFogParams(22, -1f, 150f, 55f));
-    //			this.m_LevelCullOpParams.Add(23, new PalMain.SceneOptiDistFogParams(23, -1f, 120f, 55f));
-    //			this.m_LevelCullOpParams.Add(24, new PalMain.SceneOptiDistFogParams(24, -1f, 100f, 105f));
-    //			this.m_LevelCullOpParams.Add(25, new PalMain.SceneOptiDistFogParams(25, -1f, 120f, 45f));
-    //			this.m_LevelCullOpParams.Add(26, new PalMain.SceneOptiDistFogParams(26, -1f, 75f, 75f));
-    //			this.m_LevelCullOpParams.Add(27, new PalMain.SceneOptiDistFogParams(27, -1f, 200f, 75f));
-    //			this.m_LevelCullOpParams.Add(28, new PalMain.SceneOptiDistFogParams(28, -1f, 200f, 75f));
-    //			this.m_LevelCullOpParams.Add(29, new PalMain.SceneOptiDistFogParams(29, -1f, 105f, 105f));
-    //			this.m_LevelCullOpParams.Add(30, new PalMain.SceneOptiDistFogParams(30, -1f, 105f, 105f));
-    //			this.m_LevelCullOpParams.Add(31, new PalMain.SceneOptiDistFogParams(31, -1f, 150f, 75f));
-    //			this.m_LevelCullOpParams.Add(32, new PalMain.SceneOptiDistFogParams(32, -1f, 105f, 105f));
-    //			this.m_LevelCullOpParams.Add(33, new PalMain.SceneOptiDistFogParams(33, -1f, 200f, 105f));
-    //			this.m_LevelCullOpParams.Add(34, new PalMain.SceneOptiDistFogParams(34, -1f, 905f, 905f));
-    //			string text = SystemInfo.graphicsDeviceName;
-    //			string text2 = SystemInfo.graphicsDeviceVendor;
-    //			UnityEngine.Debug.Log(string.Format("[Info] : Graphics Device Name={0}, Vender={1}", text, text2));
-    //			text = text.ToLower();
-    //			text2 = text2.ToLower();
-    //			if (text.Contains("intel"))
-    //			{
-    //				this.m_bIsIntel = true;
-    //			}
-    //			if (text2.Contains("intel"))
-    //			{
-    //				this.m_bIsIntel = true;
-    //			}
-    //			if (text.Contains("gdi"))
-    //			{
-    //				this.m_bIsGDI = true;
-    //			}
-    //			if (text2.Contains("gdi"))
-    //			{
-    //				this.m_bIsGDI = true;
-    //			}
-    //			int systemMemorySize = SystemInfo.systemMemorySize;
-    //			if (base.GetComponent<LoadFont>() == null)
-    //			{
-    //				base.gameObject.AddComponent<LoadFont>();
-    //			}
-    //			if (base.GetComponent<AudioSource>() == null)
-    //			{
-    //				base.gameObject.AddComponent<AudioSource>();
-    //			}
-    //			PalMain.backgroundAudio = base.GetComponent<BackgroundAudio>();
-    //			if (PalMain.backgroundAudio == null)
-    //			{
-    //				PalMain.backgroundAudio = base.gameObject.AddComponent<BackgroundAudio>();
-    //			}
-    //		}
+        //		// Token: 0x060036C3 RID: 14019 RVA: 0x0018AE80 File Offset: 0x00189080
+        //		private void Start()
+        //		{
+        //			this.m_LevelCullOpParams.Add(0, new PalMain.SceneOptiDistFogParams(0, -1f, 305f, 305f));
+        //			this.m_LevelCullOpParams.Add(1, new PalMain.SceneOptiDistFogParams(1, -1f, 200f, 105f));
+        //			this.m_LevelCullOpParams.Add(2, new PalMain.SceneOptiDistFogParams(2, -1f, 145f, 145f));
+        //			this.m_LevelCullOpParams.Add(3, new PalMain.SceneOptiDistFogParams(3, -1f, 150f, 75f));
+        //			this.m_LevelCullOpParams.Add(4, new PalMain.SceneOptiDistFogParams(4, -1f, 150f, 75f));
+        //			this.m_LevelCullOpParams.Add(5, new PalMain.SceneOptiDistFogParams(5, -1f, 200f, 75f));
+        //			this.m_LevelCullOpParams.Add(6, new PalMain.SceneOptiDistFogParams(6, -1f, 70f, 45f));
+        //			this.m_LevelCullOpParams.Add(7, new PalMain.SceneOptiDistFogParams(7, -1f, 150f, 95f));
+        //			this.m_LevelCullOpParams.Add(8, new PalMain.SceneOptiDistFogParams(8, -1f, 200f, 105f));
+        //			this.m_LevelCullOpParams.Add(9, new PalMain.SceneOptiDistFogParams(9, -1f, 100f, 65f));
+        //			this.m_LevelCullOpParams.Add(10, new PalMain.SceneOptiDistFogParams(10, -1f, 120f, 85f));
+        //			this.m_LevelCullOpParams.Add(11, new PalMain.SceneOptiDistFogParams(11, -1f, 70f, 35f));
+        //			this.m_LevelCullOpParams.Add(12, new PalMain.SceneOptiDistFogParams(12, -1f, 80f, 105f));
+        //			this.m_LevelCullOpParams.Add(13, new PalMain.SceneOptiDistFogParams(13, -1f, 150f, 75f));
+        //			this.m_LevelCullOpParams.Add(14, new PalMain.SceneOptiDistFogParams(14, -1f, 140f, 85f));
+        //			this.m_LevelCullOpParams.Add(15, new PalMain.SceneOptiDistFogParams(15, -1f, 100f, 75f));
+        //			this.m_LevelCullOpParams.Add(16, new PalMain.SceneOptiDistFogParams(16, -1f, 200f, 205f));
+        //			this.m_LevelCullOpParams.Add(17, new PalMain.SceneOptiDistFogParams(17, -1f, 140f, 75f));
+        //			this.m_LevelCullOpParams.Add(18, new PalMain.SceneOptiDistFogParams(18, -1f, 200f, 205f));
+        //			this.m_LevelCullOpParams.Add(19, new PalMain.SceneOptiDistFogParams(19, -1f, 250f, 155f));
+        //			this.m_LevelCullOpParams.Add(20, new PalMain.SceneOptiDistFogParams(20, -1f, 150f, 85f));
+        //			this.m_LevelCullOpParams.Add(21, new PalMain.SceneOptiDistFogParams(21, -1f, 300f, 305f));
+        //			this.m_LevelCullOpParams.Add(22, new PalMain.SceneOptiDistFogParams(22, -1f, 150f, 55f));
+        //			this.m_LevelCullOpParams.Add(23, new PalMain.SceneOptiDistFogParams(23, -1f, 120f, 55f));
+        //			this.m_LevelCullOpParams.Add(24, new PalMain.SceneOptiDistFogParams(24, -1f, 100f, 105f));
+        //			this.m_LevelCullOpParams.Add(25, new PalMain.SceneOptiDistFogParams(25, -1f, 120f, 45f));
+        //			this.m_LevelCullOpParams.Add(26, new PalMain.SceneOptiDistFogParams(26, -1f, 75f, 75f));
+        //			this.m_LevelCullOpParams.Add(27, new PalMain.SceneOptiDistFogParams(27, -1f, 200f, 75f));
+        //			this.m_LevelCullOpParams.Add(28, new PalMain.SceneOptiDistFogParams(28, -1f, 200f, 75f));
+        //			this.m_LevelCullOpParams.Add(29, new PalMain.SceneOptiDistFogParams(29, -1f, 105f, 105f));
+        //			this.m_LevelCullOpParams.Add(30, new PalMain.SceneOptiDistFogParams(30, -1f, 105f, 105f));
+        //			this.m_LevelCullOpParams.Add(31, new PalMain.SceneOptiDistFogParams(31, -1f, 150f, 75f));
+        //			this.m_LevelCullOpParams.Add(32, new PalMain.SceneOptiDistFogParams(32, -1f, 105f, 105f));
+        //			this.m_LevelCullOpParams.Add(33, new PalMain.SceneOptiDistFogParams(33, -1f, 200f, 105f));
+        //			this.m_LevelCullOpParams.Add(34, new PalMain.SceneOptiDistFogParams(34, -1f, 905f, 905f));
+        //			string text = SystemInfo.graphicsDeviceName;
+        //			string text2 = SystemInfo.graphicsDeviceVendor;
+        //			UnityEngine.Debug.Log(string.Format("[Info] : Graphics Device Name={0}, Vender={1}", text, text2));
+        //			text = text.ToLower();
+        //			text2 = text2.ToLower();
+        //			if (text.Contains("intel"))
+        //			{
+        //				this.m_bIsIntel = true;
+        //			}
+        //			if (text2.Contains("intel"))
+        //			{
+        //				this.m_bIsIntel = true;
+        //			}
+        //			if (text.Contains("gdi"))
+        //			{
+        //				this.m_bIsGDI = true;
+        //			}
+        //			if (text2.Contains("gdi"))
+        //			{
+        //				this.m_bIsGDI = true;
+        //			}
+        //			int systemMemorySize = SystemInfo.systemMemorySize;
+        //			if (base.GetComponent<LoadFont>() == null)
+        //			{
+        //				base.gameObject.AddComponent<LoadFont>();
+        //			}
+        //			if (base.GetComponent<AudioSource>() == null)
+        //			{
+        //				base.gameObject.AddComponent<AudioSource>();
+        //			}
+        //			PalMain.backgroundAudio = base.GetComponent<BackgroundAudio>();
+        //			if (PalMain.backgroundAudio == null)
+        //			{
+        //				PalMain.backgroundAudio = base.gameObject.AddComponent<BackgroundAudio>();
+        //			}
+        //		}
 
-    //		// Token: 0x060036C4 RID: 14020 RVA: 0x0018B438 File Offset: 0x00189638
-    //		public static void RefreshAllLandMarks()
-    //		{
-    //			PalMain.landMarks.Clear();
-    //			Landmark[] collection = (Landmark[])UnityEngine.Object.FindObjectsOfType(typeof(Landmark));
-    //			PalMain.landMarks.AddRange(collection);
-    //		}
+        //		// Token: 0x060036C4 RID: 14020 RVA: 0x0018B438 File Offset: 0x00189638
+        //		public static void RefreshAllLandMarks()
+        //		{
+        //			PalMain.landMarks.Clear();
+        //			Landmark[] collection = (Landmark[])UnityEngine.Object.FindObjectsOfType(typeof(Landmark));
+        //			PalMain.landMarks.AddRange(collection);
+        //		}
 
-    //		// Token: 0x060036C5 RID: 14021 RVA: 0x0018B470 File Offset: 0x00189670
-    //		private void UpdateMinFPS()
-    //		{
-    //			if (PalMain.MinFPS != this.minFPS)
-    //			{
-    //				PalMain.MinFPS = this.minFPS;
-    //				PalMain.MinDeltaTime = 1f / this.minFPS;
-    //			}
-    //		}
+        //		// Token: 0x060036C5 RID: 14021 RVA: 0x0018B470 File Offset: 0x00189670
+        //		private void UpdateMinFPS()
+        //		{
+        //			if (PalMain.MinFPS != this.minFPS)
+        //			{
+        //				PalMain.MinFPS = this.minFPS;
+        //				PalMain.MinDeltaTime = 1f / this.minFPS;
+        //			}
+        //		}
 
-    //		// Token: 0x060036C6 RID: 14022 RVA: 0x0018B4AC File Offset: 0x001896AC
-    //		private void Update()
-    //		{
-    //			this.UpdateMinFPS();
-    //			if (this.onInputHandles != null)
-    //			{
-    //				this.onInputHandles();
-    //			}
-    //			if (this.updateHandles != null)
-    //			{
-    //				this.updateHandles(Time.time, Time.deltaTime);
-    //			}
-    //			this.m_QTEManager.Update();
-    //			if (ScenesManager.IsChanging || ShowLoading.Instance != null)
-    //			{
-    //				return;
-    //			}
-    //			this.UpdateOpCull();
-    //			PalMain.UpdateCheckUnload();
-    //			this.UpdateSpecialIssueForNonFocus();
-    //			if (WaitForSonyCheck.Instance == null)
-    //			{
-    //			}
-    //			FileLoader.Instance.Update();
-    //		}
+        //		// Token: 0x060036C6 RID: 14022 RVA: 0x0018B4AC File Offset: 0x001896AC
+        //		private void Update()
+        //		{
+        //			this.UpdateMinFPS();
+        //			if (this.onInputHandles != null)
+        //			{
+        //				this.onInputHandles();
+        //			}
+        //			if (this.updateHandles != null)
+        //			{
+        //				this.updateHandles(Time.time, Time.deltaTime);
+        //			}
+        //			this.m_QTEManager.Update();
+        //			if (ScenesManager.IsChanging || ShowLoading.Instance != null)
+        //			{
+        //				return;
+        //			}
+        //			this.UpdateOpCull();
+        //			PalMain.UpdateCheckUnload();
+        //			this.UpdateSpecialIssueForNonFocus();
+        //			if (WaitForSonyCheck.Instance == null)
+        //			{
+        //			}
+        //			FileLoader.Instance.Update();
+        //		}
 
-    //		// Token: 0x060036C7 RID: 14023 RVA: 0x0018B548 File Offset: 0x00189748
-    //		private void FixedUpdate()
-    //		{
-    //			BuffDebuffManager.GetInstance().FixedUpdate(Time.fixedTime);
-    //			if (DateTime.Now > this.mLastConfigSave)
-    //			{
-    //				this.mLastConfigSave = DateTime.Now.AddSeconds(1.0);
-    //				bool flag = false;
-    //				OptionConfig optionConfig = OptionConfig.GetInstance();
-    //				if (optionConfig.IsDirty)
-    //				{
-    //					optionConfig.Save();
-    //					flag = true;
-    //				}
-    //				if (flag)
-    //				{
-    //					SaveManager.SaveGlobalData();
-    //				}
-    //			}
-    //		}
+        //		// Token: 0x060036C7 RID: 14023 RVA: 0x0018B548 File Offset: 0x00189748
+        //		private void FixedUpdate()
+        //		{
+        //			BuffDebuffManager.GetInstance().FixedUpdate(Time.fixedTime);
+        //			if (DateTime.Now > this.mLastConfigSave)
+        //			{
+        //				this.mLastConfigSave = DateTime.Now.AddSeconds(1.0);
+        //				bool flag = false;
+        //				OptionConfig optionConfig = OptionConfig.GetInstance();
+        //				if (optionConfig.IsDirty)
+        //				{
+        //					optionConfig.Save();
+        //					flag = true;
+        //				}
+        //				if (flag)
+        //				{
+        //					SaveManager.SaveGlobalData();
+        //				}
+        //			}
+        //		}
 
-    //		// Token: 0x060036C8 RID: 14024 RVA: 0x0018B5BC File Offset: 0x001897BC
-    //		private void OnGUI()
-    //		{
-    //			if (this.onGUIHandles != null)
-    //			{
-    //				this.onGUIHandles();
-    //			}
-    //		}
+        //		// Token: 0x060036C8 RID: 14024 RVA: 0x0018B5BC File Offset: 0x001897BC
+        //		private void OnGUI()
+        //		{
+        //			if (this.onGUIHandles != null)
+        //			{
+        //				this.onGUIHandles();
+        //			}
+        //		}
 
-    //		// Token: 0x060036C9 RID: 14025 RVA: 0x0018B5D4 File Offset: 0x001897D4
-    //		private void ReplaceMeshColliderFor7()
-    //		{
-    //			GameObject gameObject = GameObject.Find("/jianzhu");
-    //			if (gameObject != null)
-    //			{
-    //				foreach (MeshCollider meshCollider in gameObject.GetComponentsInChildren<MeshCollider>())
-    //				{
-    //					if (!(meshCollider.name == "jz_ymh_shitou12") && !(meshCollider.name == "jz_fyy_st01") && !(meshCollider.name == "jz_fyy_st02") && !(meshCollider.name == "jz_fyy_st03") && !(meshCollider.name == "jz_fyy_st04") && !(meshCollider.name == "jz_fyy_shitou07") && !(meshCollider.name == "jz_fyy_shitou05") && !(meshCollider.name == "Object566") && !(meshCollider.name == "Object567") && !(meshCollider.name == "Object572") && !(meshCollider.name == "Object574") && !(meshCollider.name == "Object575") && !(meshCollider.name == "Object576"))
-    //					{
-    //						meshCollider.enabled = false;
-    //					}
-    //				}
-    //			}
-    //			FileLoader.LoadObjectFromFile<UnityEngine.Object>("Collider/pengzhuang7".ToAssetBundlePath(), true, true);
-    //		}
+        //		// Token: 0x060036C9 RID: 14025 RVA: 0x0018B5D4 File Offset: 0x001897D4
+        //		private void ReplaceMeshColliderFor7()
+        //		{
+        //			GameObject gameObject = GameObject.Find("/jianzhu");
+        //			if (gameObject != null)
+        //			{
+        //				foreach (MeshCollider meshCollider in gameObject.GetComponentsInChildren<MeshCollider>())
+        //				{
+        //					if (!(meshCollider.name == "jz_ymh_shitou12") && !(meshCollider.name == "jz_fyy_st01") && !(meshCollider.name == "jz_fyy_st02") && !(meshCollider.name == "jz_fyy_st03") && !(meshCollider.name == "jz_fyy_st04") && !(meshCollider.name == "jz_fyy_shitou07") && !(meshCollider.name == "jz_fyy_shitou05") && !(meshCollider.name == "Object566") && !(meshCollider.name == "Object567") && !(meshCollider.name == "Object572") && !(meshCollider.name == "Object574") && !(meshCollider.name == "Object575") && !(meshCollider.name == "Object576"))
+        //					{
+        //						meshCollider.enabled = false;
+        //					}
+        //				}
+        //			}
+        //			FileLoader.LoadObjectFromFile<UnityEngine.Object>("Collider/pengzhuang7".ToAssetBundlePath(), true, true);
+        //		}
 
-    //		// Token: 0x060036CA RID: 14026 RVA: 0x0018B748 File Offset: 0x00189948
-    //		private void ReplaceMapElementFor25()
-    //		{
-    //			GameObject gameObject = FileLoader.LoadObjectFromFile<GameObject>("LevelParticles/EXPH_huanjing_PUBU_B".ToAssetBundlePath(), true, true);
-    //			if (gameObject == null)
-    //			{
-    //				UnityEngine.Debug.LogError("Error : 没有找到 LevelParticles/EXPH_huanjing_PUBU_B");
-    //				return;
-    //			}
-    //			string str = "/texiao/PUBU";
-    //			for (int i = 1; i < 5; i++)
-    //			{
-    //				string name = str + i.ToString();
-    //				GameObject gameObject2 = GameObject.Find(name);
-    //				if (gameObject2 != null)
-    //				{
-    //					Transform[] componentsInChildren = gameObject2.GetComponentsInChildren<Transform>();
-    //					foreach (Transform transform in componentsInChildren)
-    //					{
-    //						if (transform.name == "EXPH_huanjing_PUBU_B")
-    //						{
-    //							transform.gameObject.SetActive(false);
-    //							GameObject gameObject3 = UnityEngine.Object.Instantiate<GameObject>(gameObject);
-    //							Transform transform2 = gameObject3.transform;
-    //							transform2.parent = transform.parent;
-    //							transform2.position = transform.position;
-    //							transform2.localScale = transform.localScale;
-    //							transform2.localRotation = transform.localRotation;
-    //						}
-    //					}
-    //				}
-    //			}
-    //			UnityEngine.Object.Destroy(gameObject);
-    //		}
+        //		// Token: 0x060036CA RID: 14026 RVA: 0x0018B748 File Offset: 0x00189948
+        //		private void ReplaceMapElementFor25()
+        //		{
+        //			GameObject gameObject = FileLoader.LoadObjectFromFile<GameObject>("LevelParticles/EXPH_huanjing_PUBU_B".ToAssetBundlePath(), true, true);
+        //			if (gameObject == null)
+        //			{
+        //				UnityEngine.Debug.LogError("Error : 没有找到 LevelParticles/EXPH_huanjing_PUBU_B");
+        //				return;
+        //			}
+        //			string str = "/texiao/PUBU";
+        //			for (int i = 1; i < 5; i++)
+        //			{
+        //				string name = str + i.ToString();
+        //				GameObject gameObject2 = GameObject.Find(name);
+        //				if (gameObject2 != null)
+        //				{
+        //					Transform[] componentsInChildren = gameObject2.GetComponentsInChildren<Transform>();
+        //					foreach (Transform transform in componentsInChildren)
+        //					{
+        //						if (transform.name == "EXPH_huanjing_PUBU_B")
+        //						{
+        //							transform.gameObject.SetActive(false);
+        //							GameObject gameObject3 = UnityEngine.Object.Instantiate<GameObject>(gameObject);
+        //							Transform transform2 = gameObject3.transform;
+        //							transform2.parent = transform.parent;
+        //							transform2.position = transform.position;
+        //							transform2.localScale = transform.localScale;
+        //							transform2.localRotation = transform.localRotation;
+        //						}
+        //					}
+        //				}
+        //			}
+        //			UnityEngine.Object.Destroy(gameObject);
+        //		}
 
-    //		// Token: 0x060036CB RID: 14027 RVA: 0x0018B858 File Offset: 0x00189A58
-    //		public static void SetForOpt(bool bActive)
-    //		{
-    //			PalMain.SetEnableWaterReflect("/shui", !bActive);
-    //			PalMain.SetEnableMeshCollide("/shitou", !bActive);
-    //		}
+        //		// Token: 0x060036CB RID: 14027 RVA: 0x0018B858 File Offset: 0x00189A58
+        //		public static void SetForOpt(bool bActive)
+        //		{
+        //			PalMain.SetEnableWaterReflect("/shui", !bActive);
+        //			PalMain.SetEnableMeshCollide("/shitou", !bActive);
+        //		}
 
-    //		// Token: 0x060036CC RID: 14028 RVA: 0x0018B878 File Offset: 0x00189A78
-    //		public static void SetEnableWaterReflect(string path, bool bEnable)
-    //		{
-    //			GameObject gameObject = GameObject.Find(path);
-    //			if (gameObject == null)
-    //			{
-    //				UnityEngine.Debug.LogError("Error : SetEnableWaterReflect 没有找到 " + path);
-    //				return;
-    //			}
-    //			foreach (PalMirrorReflection palMirrorReflection in gameObject.GetComponentsInChildren<PalMirrorReflection>())
-    //			{
-    //				palMirrorReflection.enabled = bEnable;
-    //			}
-    //		}
+        //		// Token: 0x060036CC RID: 14028 RVA: 0x0018B878 File Offset: 0x00189A78
+        //		public static void SetEnableWaterReflect(string path, bool bEnable)
+        //		{
+        //			GameObject gameObject = GameObject.Find(path);
+        //			if (gameObject == null)
+        //			{
+        //				UnityEngine.Debug.LogError("Error : SetEnableWaterReflect 没有找到 " + path);
+        //				return;
+        //			}
+        //			foreach (PalMirrorReflection palMirrorReflection in gameObject.GetComponentsInChildren<PalMirrorReflection>())
+        //			{
+        //				palMirrorReflection.enabled = bEnable;
+        //			}
+        //		}
 
-    //		// Token: 0x060036CD RID: 14029 RVA: 0x0018B8D0 File Offset: 0x00189AD0
-    //		public static void SetEnableMeshCollide(string path, bool bEnable)
-    //		{
-    //			GameObject gameObject = GameObject.Find(path);
-    //			if (gameObject == null)
-    //			{
-    //				UnityEngine.Debug.LogError("Error : SetEnableMeshCollide 没有找到 " + path);
-    //				return;
-    //			}
-    //			foreach (MeshCollider meshCollider in gameObject.GetComponentsInChildren<MeshCollider>())
-    //			{
-    //				meshCollider.enabled = bEnable;
-    //			}
-    //		}
+        //		// Token: 0x060036CD RID: 14029 RVA: 0x0018B8D0 File Offset: 0x00189AD0
+        //		public static void SetEnableMeshCollide(string path, bool bEnable)
+        //		{
+        //			GameObject gameObject = GameObject.Find(path);
+        //			if (gameObject == null)
+        //			{
+        //				UnityEngine.Debug.LogError("Error : SetEnableMeshCollide 没有找到 " + path);
+        //				return;
+        //			}
+        //			foreach (MeshCollider meshCollider in gameObject.GetComponentsInChildren<MeshCollider>())
+        //			{
+        //				meshCollider.enabled = bEnable;
+        //			}
+        //		}
 
-    //		// Token: 0x060036CE RID: 14030 RVA: 0x0018B928 File Offset: 0x00189B28
-    //		public void SpecialProcessForLevel(int level)
-    //		{
-    //			Terrain activeTerrain = Terrain.activeTerrain;
-    //			if (level == 11)
-    //			{
-    //				FlagManager.SetFlag(8, 0, false);
-    //			}
-    //			switch (level)
-    //			{
-    //			case 1:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 100f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 119f;
-    //					activeTerrain.treeCrossFadeLength = 12f;
-    //				}
-    //				break;
-    //			case 3:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 33f;
-    //					activeTerrain.basemapDistance = 130f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 95f;
-    //					activeTerrain.treeCrossFadeLength = 76f;
-    //				}
-    //				break;
-    //			case 4:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 40f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 31f;
-    //				}
-    //				break;
-    //			case 5:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 63f;
-    //					activeTerrain.basemapDistance = 117f;
-    //					activeTerrain.treeBillboardDistance = 103f;
-    //					activeTerrain.treeCrossFadeLength = 35f;
-    //				}
-    //				break;
-    //			case 6:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 44f;
-    //					activeTerrain.basemapDistance = 128f;
-    //					activeTerrain.castShadows = false;
-    //				}
-    //				if (PalShroudObjectManager.Instance != null)
-    //				{
-    //					Vector3 windDir = new Vector3(0.2f, 0f, -0.64f);
-    //					PalShroudObjectManager.Instance.WindDir = windDir;
-    //				}
-    //				break;
-    //			case 7:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 60f;
-    //					activeTerrain.basemapDistance = 160f;
-    //					activeTerrain.castShadows = false;
-    //				}
-    //				break;
-    //			case 8:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 56f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeDistance = 291f;
-    //					activeTerrain.treeBillboardDistance = 150f;
-    //					activeTerrain.treeCrossFadeLength = 45f;
-    //				}
-    //				break;
-    //			case 10:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 18f;
-    //					activeTerrain.basemapDistance = 97f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 90f;
-    //					activeTerrain.treeCrossFadeLength = 50f;
-    //				}
-    //				break;
-    //			case 12:
-    //			{
-    //				GameObject gameObject = GameObject.Find("/texiao/EXPH_P_JQ44_HUNYU02");
-    //				if (gameObject != null)
-    //				{
-    //					UtilFun.SetActive(gameObject, false);
-    //				}
-    //				break;
-    //			}
-    //			case 13:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 100f;
-    //					activeTerrain.basemapDistance = 38f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 67f;
-    //					activeTerrain.treeCrossFadeLength = 28f;
-    //				}
-    //				break;
-    //			case 14:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 44f;
-    //					activeTerrain.basemapDistance = 114f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 60f;
-    //					activeTerrain.treeCrossFadeLength = 25f;
-    //				}
-    //				break;
-    //			case 15:
-    //			{
-    //				RenderSettings.skybox = null;
-    //				Camera mainCamera = UtilFun.GetMainCamera();
-    //				if (mainCamera != null)
-    //				{
-    //					mainCamera.backgroundColor = Color.black;
-    //				}
-    //				break;
-    //			}
-    //			case 17:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 16f;
-    //					activeTerrain.basemapDistance = 159f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 155f;
-    //					activeTerrain.treeCrossFadeLength = 32f;
-    //				}
-    //				break;
-    //			case 20:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 28f;
-    //					activeTerrain.basemapDistance = 129f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 116f;
-    //					activeTerrain.treeCrossFadeLength = 44f;
-    //				}
-    //				break;
-    //			case 21:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 626f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 341f;
-    //					activeTerrain.treeCrossFadeLength = 44f;
-    //				}
-    //				break;
-    //			case 22:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 37f;
-    //					activeTerrain.basemapDistance = 113f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 128f;
-    //					activeTerrain.treeCrossFadeLength = 23f;
-    //				}
-    //				break;
-    //			case 23:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 93f;
-    //					activeTerrain.treeCrossFadeLength = 22f;
-    //				}
-    //				break;
-    //			case 25:
-    //			{
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 263f;
-    //					activeTerrain.castShadows = false;
-    //				}
-    //				this.ReplaceMapElementFor25();
-    //				GameObject gameObject2 = GameObject.Find("/Move_fuban");
-    //				if (gameObject2 != null)
-    //				{
-    //					SetActiveByGameState.AddSetActiveByGameState(gameObject2, GameState.Battle, false);
-    //				}
-    //				break;
-    //			}
-    //			case 28:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 50f;
-    //					activeTerrain.basemapDistance = 213f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeDistance = 366f;
-    //					activeTerrain.treeBillboardDistance = 200f;
-    //					activeTerrain.treeCrossFadeLength = 52.8f;
-    //				}
-    //				break;
-    //			case 31:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.heightmapPixelError = 100f;
-    //					activeTerrain.basemapDistance = 81f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 320f;
-    //					activeTerrain.treeCrossFadeLength = 32f;
-    //				}
-    //				break;
-    //			case 33:
-    //				if (activeTerrain != null)
-    //				{
-    //					activeTerrain.basemapDistance = 86f;
-    //					activeTerrain.castShadows = false;
-    //					activeTerrain.treeBillboardDistance = 119f;
-    //					activeTerrain.treeCrossFadeLength = 12f;
-    //				}
-    //				break;
-    //			}
-    //		}
+        //		// Token: 0x060036CE RID: 14030 RVA: 0x0018B928 File Offset: 0x00189B28
+        //		public void SpecialProcessForLevel(int level)
+        //		{
+        //			Terrain activeTerrain = Terrain.activeTerrain;
+        //			if (level == 11)
+        //			{
+        //				FlagManager.SetFlag(8, 0, false);
+        //			}
+        //			switch (level)
+        //			{
+        //			case 1:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 100f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 119f;
+        //					activeTerrain.treeCrossFadeLength = 12f;
+        //				}
+        //				break;
+        //			case 3:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 33f;
+        //					activeTerrain.basemapDistance = 130f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 95f;
+        //					activeTerrain.treeCrossFadeLength = 76f;
+        //				}
+        //				break;
+        //			case 4:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 40f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 31f;
+        //				}
+        //				break;
+        //			case 5:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 63f;
+        //					activeTerrain.basemapDistance = 117f;
+        //					activeTerrain.treeBillboardDistance = 103f;
+        //					activeTerrain.treeCrossFadeLength = 35f;
+        //				}
+        //				break;
+        //			case 6:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 44f;
+        //					activeTerrain.basemapDistance = 128f;
+        //					activeTerrain.castShadows = false;
+        //				}
+        //				if (PalShroudObjectManager.Instance != null)
+        //				{
+        //					Vector3 windDir = new Vector3(0.2f, 0f, -0.64f);
+        //					PalShroudObjectManager.Instance.WindDir = windDir;
+        //				}
+        //				break;
+        //			case 7:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 60f;
+        //					activeTerrain.basemapDistance = 160f;
+        //					activeTerrain.castShadows = false;
+        //				}
+        //				break;
+        //			case 8:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 56f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeDistance = 291f;
+        //					activeTerrain.treeBillboardDistance = 150f;
+        //					activeTerrain.treeCrossFadeLength = 45f;
+        //				}
+        //				break;
+        //			case 10:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 18f;
+        //					activeTerrain.basemapDistance = 97f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 90f;
+        //					activeTerrain.treeCrossFadeLength = 50f;
+        //				}
+        //				break;
+        //			case 12:
+        //			{
+        //				GameObject gameObject = GameObject.Find("/texiao/EXPH_P_JQ44_HUNYU02");
+        //				if (gameObject != null)
+        //				{
+        //					UtilFun.SetActive(gameObject, false);
+        //				}
+        //				break;
+        //			}
+        //			case 13:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 100f;
+        //					activeTerrain.basemapDistance = 38f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 67f;
+        //					activeTerrain.treeCrossFadeLength = 28f;
+        //				}
+        //				break;
+        //			case 14:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 44f;
+        //					activeTerrain.basemapDistance = 114f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 60f;
+        //					activeTerrain.treeCrossFadeLength = 25f;
+        //				}
+        //				break;
+        //			case 15:
+        //			{
+        //				RenderSettings.skybox = null;
+        //				Camera mainCamera = UtilFun.GetMainCamera();
+        //				if (mainCamera != null)
+        //				{
+        //					mainCamera.backgroundColor = Color.black;
+        //				}
+        //				break;
+        //			}
+        //			case 17:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 16f;
+        //					activeTerrain.basemapDistance = 159f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 155f;
+        //					activeTerrain.treeCrossFadeLength = 32f;
+        //				}
+        //				break;
+        //			case 20:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 28f;
+        //					activeTerrain.basemapDistance = 129f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 116f;
+        //					activeTerrain.treeCrossFadeLength = 44f;
+        //				}
+        //				break;
+        //			case 21:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 626f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 341f;
+        //					activeTerrain.treeCrossFadeLength = 44f;
+        //				}
+        //				break;
+        //			case 22:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 37f;
+        //					activeTerrain.basemapDistance = 113f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 128f;
+        //					activeTerrain.treeCrossFadeLength = 23f;
+        //				}
+        //				break;
+        //			case 23:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 93f;
+        //					activeTerrain.treeCrossFadeLength = 22f;
+        //				}
+        //				break;
+        //			case 25:
+        //			{
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 263f;
+        //					activeTerrain.castShadows = false;
+        //				}
+        //				this.ReplaceMapElementFor25();
+        //				GameObject gameObject2 = GameObject.Find("/Move_fuban");
+        //				if (gameObject2 != null)
+        //				{
+        //					SetActiveByGameState.AddSetActiveByGameState(gameObject2, GameState.Battle, false);
+        //				}
+        //				break;
+        //			}
+        //			case 28:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 50f;
+        //					activeTerrain.basemapDistance = 213f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeDistance = 366f;
+        //					activeTerrain.treeBillboardDistance = 200f;
+        //					activeTerrain.treeCrossFadeLength = 52.8f;
+        //				}
+        //				break;
+        //			case 31:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.heightmapPixelError = 100f;
+        //					activeTerrain.basemapDistance = 81f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 320f;
+        //					activeTerrain.treeCrossFadeLength = 32f;
+        //				}
+        //				break;
+        //			case 33:
+        //				if (activeTerrain != null)
+        //				{
+        //					activeTerrain.basemapDistance = 86f;
+        //					activeTerrain.castShadows = false;
+        //					activeTerrain.treeBillboardDistance = 119f;
+        //					activeTerrain.treeCrossFadeLength = 12f;
+        //				}
+        //				break;
+        //			}
+        //		}
 
-    //		// Token: 0x060036CF RID: 14031 RVA: 0x0018BEFC File Offset: 0x0018A0FC
-    //		private void OnLevelLoaded(int level)
-    //		{
-    //			level = ScenesManager.CurLoadedLevel;
-    //			PlayerCtrlManager.OnLevelLoaded(level);
-    //			PalMain.OnReadySpawn();
-    //			EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
-    //			EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
-    //			EntityManager.OnLevelWasLoaded(level);
-    //			OptionConfig.GetInstance().Use_OnLevelLoaded();
-    //			OptionConfig.GetInstance().Use_CharacterEmission();
-    //			MapWatch.Instance.SetMap();
-    //		}
+        private void OnLevelLoaded(int level)
+        {
+            level = ScenesManager.CurLoadedLevel;
+            //PlayerCtrlManager.OnLevelLoaded(level);
+            //PalMain.OnReadySpawn();
+            //EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
+            //EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
+            //EntityManager.OnLevelWasLoaded(level);
+            //OptionConfig.GetInstance().Use_OnLevelLoaded();
+            //OptionConfig.GetInstance().Use_CharacterEmission();
+            //MapWatch.Instance.SetMap();
+        }
 
-    //		// Token: 0x060036D0 RID: 14032 RVA: 0x0018BF80 File Offset: 0x0018A180
-    //		public static IEnumerator Quit(float time)
-    //		{
-    //			Console.Log("Game will quit in " + time.ToString() + " seconds");
-    //			yield return new WaitForSeconds(time);
-    //			Application.Quit();
-    //			yield break;
-    //		}
+        //		// Token: 0x060036D0 RID: 14032 RVA: 0x0018BF80 File Offset: 0x0018A180
+        //		public static IEnumerator Quit(float time)
+        //		{
+        //			Console.Log("Game will quit in " + time.ToString() + " seconds");
+        //			yield return new WaitForSeconds(time);
+        //			Application.Quit();
+        //			yield break;
+        //		}
 
-    //		// Token: 0x060036D1 RID: 14033 RVA: 0x0018BFA4 File Offset: 0x0018A1A4
-    //		public static void LoadLevel(int LevelIndex)
-    //		{
-    //			SceneManager.LoadSceneAsync(LevelIndex);
-    //		}
+        //		// Token: 0x060036D1 RID: 14033 RVA: 0x0018BFA4 File Offset: 0x0018A1A4
+        //		public static void LoadLevel(int LevelIndex)
+        //		{
+        //			SceneManager.LoadSceneAsync(LevelIndex);
+        //		}
 
-    //		// Token: 0x060036D2 RID: 14034 RVA: 0x0018BFB0 File Offset: 0x0018A1B0
-    //		public static void LoadLevel(string levelName)
-    //		{
-    //			SceneManager.LoadSceneAsync(levelName);
-    //		}
+        //		// Token: 0x060036D2 RID: 14034 RVA: 0x0018BFB0 File Offset: 0x0018A1B0
+        //		public static void LoadLevel(string levelName)
+        //		{
+        //			SceneManager.LoadSceneAsync(levelName);
+        //		}
 
-    //		// Token: 0x060036D3 RID: 14035 RVA: 0x0018BFBC File Offset: 0x0018A1BC
-    //		public static void ToSuitablePlace(GameObject o)
-    //		{
-    //			if (UtilFun.GetMainCamera() == null)
-    //			{
-    //				return;
-    //			}
-    //			if (o == null && UtilFun.GetMainCamera() == null)
-    //			{
-    //				return;
-    //			}
-    //			RaycastHit raycastHit = default(RaycastHit);
-    //			Ray ray = UtilFun.GetMainCamera().ScreenPointToRay(new Vector2((float)UtilFun.GetMainCamera().pixelWidth * 0.5f, (float)UtilFun.GetMainCamera().pixelHeight * 0.5f));
-    //			if (Physics.Raycast(ray, out raycastHit))
-    //			{
-    //				UtilFun.SetPosition(o.transform, raycastHit.point);
-    //			}
-    //			else
-    //			{
-    //				Plane plane = new Plane(Vector3.up, Vector3.zero);
-    //				float distance;
-    //				if (plane.Raycast(ray, out distance))
-    //				{
-    //					o.transform.position = ray.GetPoint(distance);
-    //				}
-    //				else
-    //				{
-    //					UtilFun.SetPosition(o.transform, ray.GetPoint(0f));
-    //				}
-    //			}
-    //		}
+        //		// Token: 0x060036D3 RID: 14035 RVA: 0x0018BFBC File Offset: 0x0018A1BC
+        //		public static void ToSuitablePlace(GameObject o)
+        //		{
+        //			if (UtilFun.GetMainCamera() == null)
+        //			{
+        //				return;
+        //			}
+        //			if (o == null && UtilFun.GetMainCamera() == null)
+        //			{
+        //				return;
+        //			}
+        //			RaycastHit raycastHit = default(RaycastHit);
+        //			Ray ray = UtilFun.GetMainCamera().ScreenPointToRay(new Vector2((float)UtilFun.GetMainCamera().pixelWidth * 0.5f, (float)UtilFun.GetMainCamera().pixelHeight * 0.5f));
+        //			if (Physics.Raycast(ray, out raycastHit))
+        //			{
+        //				UtilFun.SetPosition(o.transform, raycastHit.point);
+        //			}
+        //			else
+        //			{
+        //				Plane plane = new Plane(Vector3.up, Vector3.zero);
+        //				float distance;
+        //				if (plane.Raycast(ray, out distance))
+        //				{
+        //					o.transform.position = ray.GetPoint(distance);
+        //				}
+        //				else
+        //				{
+        //					UtilFun.SetPosition(o.transform, ray.GetPoint(0f));
+        //				}
+        //			}
+        //		}
 
-    //		// Token: 0x060036D4 RID: 14036 RVA: 0x0018C0AC File Offset: 0x0018A2AC
-    //		public static GameObject ABInstantiateToUscript(string path)
-    //		{
-    //			return FileLoader.LoadObjectFromFile<GameObject>(path.ToAssetBundlePath(), true, true);
-    //		}
+        //		// Token: 0x060036D4 RID: 14036 RVA: 0x0018C0AC File Offset: 0x0018A2AC
+        //		public static GameObject ABInstantiateToUscript(string path)
+        //		{
+        //			return FileLoader.LoadObjectFromFile<GameObject>(path.ToAssetBundlePath(), true, true);
+        //		}
 
-    //		// Token: 0x060036D5 RID: 14037 RVA: 0x0018C0C8 File Offset: 0x0018A2C8
-    //		public static void SetBianLuoHuanState()
-    //		{
-    //			UIManager.Instance.EndState_Normal();
-    //			PlayerCtrlManager.bCanTab = false;
-    //			PlayerCtrlManager.bCtrlOther = true;
-    //			TimeManager.Initialize().selfUpdate -= TimeManager.Initialize().AutoSave;
-    //		}
+        //		// Token: 0x060036D5 RID: 14037 RVA: 0x0018C0C8 File Offset: 0x0018A2C8
+        //		public static void SetBianLuoHuanState()
+        //		{
+        //			UIManager.Instance.EndState_Normal();
+        //			PlayerCtrlManager.bCanTab = false;
+        //			PlayerCtrlManager.bCtrlOther = true;
+        //			TimeManager.Initialize().selfUpdate -= TimeManager.Initialize().AutoSave;
+        //		}
 
-    //		// Token: 0x060036D6 RID: 14038 RVA: 0x0018C108 File Offset: 0x0018A308
-    //		public static void EndNPCWeatherInteract(GameObject npc)
-    //		{
-    //			NPCWeatherInteract component = npc.GetComponent<NPCWeatherInteract>();
-    //			if (component != null)
-    //			{
-    //				component.EndActive();
-    //			}
-    //		}
+        //		// Token: 0x060036D6 RID: 14038 RVA: 0x0018C108 File Offset: 0x0018A308
+        //		public static void EndNPCWeatherInteract(GameObject npc)
+        //		{
+        //			NPCWeatherInteract component = npc.GetComponent<NPCWeatherInteract>();
+        //			if (component != null)
+        //			{
+        //				component.EndActive();
+        //			}
+        //		}
 
-    //		// Token: 0x060036D7 RID: 14039 RVA: 0x0018C130 File Offset: 0x0018A330
-    //		public static void SetFlyMapBtnEnabled(bool enabled)
-    //		{
-    //			UtilFun.SetFlyMapBtnEnabled(enabled);
-    //		}
+        //		// Token: 0x060036D7 RID: 14039 RVA: 0x0018C130 File Offset: 0x0018A330
+        //		public static void SetFlyMapBtnEnabled(bool enabled)
+        //		{
+        //			UtilFun.SetFlyMapBtnEnabled(enabled);
+        //		}
 
-    //		// Token: 0x060036D8 RID: 14040 RVA: 0x0018C138 File Offset: 0x0018A338
-    //		public static void TeamRecoverHPAndMP()
-    //		{
-    //			UtilFun.TeamRecoverHPAndMP();
-    //		}
+        //		// Token: 0x060036D8 RID: 14040 RVA: 0x0018C138 File Offset: 0x0018A338
+        //		public static void TeamRecoverHPAndMP()
+        //		{
+        //			UtilFun.TeamRecoverHPAndMP();
+        //		}
 
-    //		// Token: 0x060036D9 RID: 14041 RVA: 0x0018C140 File Offset: 0x0018A340
-    //		public static void ActiveBranch()
-    //		{
-    //			FlagManager.SetFlag(MissionManager.BranchLineToggleFlag, 1, true);
-    //		}
+        //		// Token: 0x060036D9 RID: 14041 RVA: 0x0018C140 File Offset: 0x0018A340
+        //		public static void ActiveBranch()
+        //		{
+        //			FlagManager.SetFlag(MissionManager.BranchLineToggleFlag, 1, true);
+        //		}
 
-    //		// Token: 0x060036DA RID: 14042 RVA: 0x0018C150 File Offset: 0x0018A350
-    //		public static void InActiveBranch()
-    //		{
-    //			FlagManager.SetFlag(MissionManager.BranchLineToggleFlag, 0, true);
-    //		}
+        //		// Token: 0x060036DA RID: 14042 RVA: 0x0018C150 File Offset: 0x0018A350
+        //		public static void InActiveBranch()
+        //		{
+        //			FlagManager.SetFlag(MissionManager.BranchLineToggleFlag, 0, true);
+        //		}
 
-    //		// Token: 0x060036DB RID: 14043 RVA: 0x0018C160 File Offset: 0x0018A360
-    //		public static bool IsBranch()
-    //		{
-    //			int flag = FlagManager.GetFlag(MissionManager.BranchLineToggleFlag);
-    //			return flag > 0;
-    //		}
+        //		// Token: 0x060036DB RID: 14043 RVA: 0x0018C160 File Offset: 0x0018A360
+        //		public static bool IsBranch()
+        //		{
+        //			int flag = FlagManager.GetFlag(MissionManager.BranchLineToggleFlag);
+        //			return flag > 0;
+        //		}
 
-    //		// Token: 0x060036DC RID: 14044 RVA: 0x0018C17C File Offset: 0x0018A37C
-    //		public static void SetFlag(int idx, int value)
-    //		{
-    //			FlagManager.SetFlag(idx, value, true);
-    //		}
+        //		// Token: 0x060036DC RID: 14044 RVA: 0x0018C17C File Offset: 0x0018A37C
+        //		public static void SetFlag(int idx, int value)
+        //		{
+        //			FlagManager.SetFlag(idx, value, true);
+        //		}
 
-    //		// Token: 0x060036DD RID: 14045 RVA: 0x0018C188 File Offset: 0x0018A388
-    //		public static int GetFlag(int idx)
-    //		{
-    //			return FlagManager.GetFlag(idx);
-    //		}
+        //		// Token: 0x060036DD RID: 14045 RVA: 0x0018C188 File Offset: 0x0018A388
+        //		public static int GetFlag(int idx)
+        //		{
+        //			return FlagManager.GetFlag(idx);
+        //		}
 
-    //		// Token: 0x060036DE RID: 14046 RVA: 0x0018C190 File Offset: 0x0018A390
-    //		public static void ChangeFlag(int idx, int value)
-    //		{
-    //			int flag = FlagManager.GetFlag(idx);
-    //			FlagManager.SetFlag(idx, flag + value, true);
-    //		}
+        //		// Token: 0x060036DE RID: 14046 RVA: 0x0018C190 File Offset: 0x0018A390
+        //		public static void ChangeFlag(int idx, int value)
+        //		{
+        //			int flag = FlagManager.GetFlag(idx);
+        //			FlagManager.SetFlag(idx, flag + value, true);
+        //		}
 
-    //		// Token: 0x060036DF RID: 14047 RVA: 0x0018C1B0 File Offset: 0x0018A3B0
-    //		public static void ChangeMoney(int difmoney)
-    //		{
-    //			int num = PalMain.GetMoney();
-    //			num += difmoney;
-    //			PalMain.SetFlag(2, num);
-    //		}
+        //		// Token: 0x060036DF RID: 14047 RVA: 0x0018C1B0 File Offset: 0x0018A3B0
+        //		public static void ChangeMoney(int difmoney)
+        //		{
+        //			int num = PalMain.GetMoney();
+        //			num += difmoney;
+        //			PalMain.SetFlag(2, num);
+        //		}
 
-    //		// Token: 0x060036E0 RID: 14048 RVA: 0x0018C1D0 File Offset: 0x0018A3D0
-    //		public static int GetMoney()
-    //		{
-    //			return PalMain.GetFlag(2);
-    //		}
+        //		// Token: 0x060036E0 RID: 14048 RVA: 0x0018C1D0 File Offset: 0x0018A3D0
+        //		public static int GetMoney()
+        //		{
+        //			return PalMain.GetFlag(2);
+        //		}
 
-    //		// Token: 0x060036E1 RID: 14049 RVA: 0x0018C1D8 File Offset: 0x0018A3D8
-    //		public static void SetMoney(int money)
-    //		{
-    //			PalMain.SetFlag(2, money);
-    //		}
+        //		// Token: 0x060036E1 RID: 14049 RVA: 0x0018C1D8 File Offset: 0x0018A3D8
+        //		public static void SetMoney(int money)
+        //		{
+        //			PalMain.SetFlag(2, money);
+        //		}
 
-    //		// Token: 0x060036E2 RID: 14050 RVA: 0x0018C1E4 File Offset: 0x0018A3E4
-    //		public static void SetCameraDistanceForPot()
-    //		{
-    //			Camera mainCamera = UtilFun.GetMainCamera();
-    //			mainCamera.layerCullSpherical = true;
-    //			float[] array = new float[32];
-    //			int num = LayerMask.NameToLayer("DistanceCull");
-    //			if (num < 0 || num > array.Length - 1)
-    //			{
-    //				UnityEngine.Debug.LogError("请更新工程的ProjectSettings文件夹");
-    //				return;
-    //			}
-    //			array[num] = PalMain.CameraOptDistance;
-    //			mainCamera.layerCullDistances = array;
-    //		}
+        //		// Token: 0x060036E2 RID: 14050 RVA: 0x0018C1E4 File Offset: 0x0018A3E4
+        //		public static void SetCameraDistanceForPot()
+        //		{
+        //			Camera mainCamera = UtilFun.GetMainCamera();
+        //			mainCamera.layerCullSpherical = true;
+        //			float[] array = new float[32];
+        //			int num = LayerMask.NameToLayer("DistanceCull");
+        //			if (num < 0 || num > array.Length - 1)
+        //			{
+        //				UnityEngine.Debug.LogError("请更新工程的ProjectSettings文件夹");
+        //				return;
+        //			}
+        //			array[num] = PalMain.CameraOptDistance;
+        //			mainCamera.layerCullDistances = array;
+        //		}
 
-    //		// Token: 0x060036E3 RID: 14051 RVA: 0x0018C240 File Offset: 0x0018A440
-    //		private static void AddGlowCamera()
-    //		{
-    //		}
+        //		// Token: 0x060036E3 RID: 14051 RVA: 0x0018C240 File Offset: 0x0018A440
+        //		private static void AddGlowCamera()
+        //		{
+        //		}
 
-    //		// Token: 0x060036E4 RID: 14052 RVA: 0x0018C244 File Offset: 0x0018A444
-    //		public static void KeepCameraOnly()
-    //		{
-    //			if (PalMain.MainCamera == null && UtilFun.GetMainCamera() != null)
-    //			{
-    //				PalMain.MainCamera = UtilFun.GetMainCamera().gameObject;
-    //			}
-    //			if (PalMain.MainCamera == null)
-    //			{
-    //				UnityEngine.Debug.Log("PalMain.KeepCameraOnly: MainCamera == null");
-    //				return;
-    //			}
-    //			if (!PalMain.MainCamera.activeSelf)
-    //			{
-    //				UtilFun.SetActive(PalMain.MainCamera, true);
-    //			}
-    //			GameObject[] array = GameObject.FindGameObjectsWithTag("MainCamera");
-    //			if (array.Length > 1)
-    //			{
-    //				foreach (GameObject gameObject in array)
-    //				{
-    //					if (PalMain.MainCamera != gameObject)
-    //					{
-    //						gameObject.SetActive(false);
-    //						UnityEngine.Object.Destroy(gameObject);
-    //					}
-    //				}
-    //			}
-    //			DontDestroyOnLevelChange[] components = UtilFun.GetMainCamera().GetComponents<DontDestroyOnLevelChange>();
-    //			if (components.Length > 0)
-    //			{
-    //				foreach (DontDestroyOnLevelChange obj in components)
-    //				{
-    //					UnityEngine.Object.Destroy(obj);
-    //				}
-    //			}
-    //		}
+        //		// Token: 0x060036E4 RID: 14052 RVA: 0x0018C244 File Offset: 0x0018A444
+        //		public static void KeepCameraOnly()
+        //		{
+        //			if (PalMain.MainCamera == null && UtilFun.GetMainCamera() != null)
+        //			{
+        //				PalMain.MainCamera = UtilFun.GetMainCamera().gameObject;
+        //			}
+        //			if (PalMain.MainCamera == null)
+        //			{
+        //				UnityEngine.Debug.Log("PalMain.KeepCameraOnly: MainCamera == null");
+        //				return;
+        //			}
+        //			if (!PalMain.MainCamera.activeSelf)
+        //			{
+        //				UtilFun.SetActive(PalMain.MainCamera, true);
+        //			}
+        //			GameObject[] array = GameObject.FindGameObjectsWithTag("MainCamera");
+        //			if (array.Length > 1)
+        //			{
+        //				foreach (GameObject gameObject in array)
+        //				{
+        //					if (PalMain.MainCamera != gameObject)
+        //					{
+        //						gameObject.SetActive(false);
+        //						UnityEngine.Object.Destroy(gameObject);
+        //					}
+        //				}
+        //			}
+        //			DontDestroyOnLevelChange[] components = UtilFun.GetMainCamera().GetComponents<DontDestroyOnLevelChange>();
+        //			if (components.Length > 0)
+        //			{
+        //				foreach (DontDestroyOnLevelChange obj in components)
+        //				{
+        //					UnityEngine.Object.Destroy(obj);
+        //				}
+        //			}
+        //		}
 
-    //		// Token: 0x060036E5 RID: 14053 RVA: 0x0018C344 File Offset: 0x0018A544
-    //		public static void SetMainCamera(GameObject go)
-    //		{
-    //			go = go.GetModelObj(false);
-    //			AudioReverbZoneTrigger.Owner = go;
-    //			PalMain.KeepCameraOnly();
-    //			PalMain.SetCameraDistanceForPot();
-    //			PalMain.AddGlowCamera();
-    //			if (UtilFun.GetMainCamera())
-    //			{
-    //				SmoothFollow2 orAddComponent = UtilFun.GetMainCamera().gameObject.GetOrAddComponent<SmoothFollow2>();
-    //				orAddComponent.Init(go);
-    //			}
-    //			UtilFun.GetMainCamera().cullingMask = (-67108865 & UtilFun.GetMainCamera().cullingMask);
-    //		}
+        //		// Token: 0x060036E5 RID: 14053 RVA: 0x0018C344 File Offset: 0x0018A544
+        //		public static void SetMainCamera(GameObject go)
+        //		{
+        //			go = go.GetModelObj(false);
+        //			AudioReverbZoneTrigger.Owner = go;
+        //			PalMain.KeepCameraOnly();
+        //			PalMain.SetCameraDistanceForPot();
+        //			PalMain.AddGlowCamera();
+        //			if (UtilFun.GetMainCamera())
+        //			{
+        //				SmoothFollow2 orAddComponent = UtilFun.GetMainCamera().gameObject.GetOrAddComponent<SmoothFollow2>();
+        //				orAddComponent.Init(go);
+        //			}
+        //			UtilFun.GetMainCamera().cullingMask = (-67108865 & UtilFun.GetMainCamera().cullingMask);
+        //		}
 
-    //		// Token: 0x060036E6 RID: 14054 RVA: 0x0018C3B0 File Offset: 0x0018A5B0
-    //		private void OnDrawGizmos()
-    //		{
-    //			if (PalBattleManager.Instance() != null)
-    //			{
-    //				PalBattleManager.Instance().DrawGizmos();
-    //			}
-    //		}
+        //		// Token: 0x060036E6 RID: 14054 RVA: 0x0018C3B0 File Offset: 0x0018A5B0
+        //		private void OnDrawGizmos()
+        //		{
+        //			if (PalBattleManager.Instance() != null)
+        //			{
+        //				PalBattleManager.Instance().DrawGizmos();
+        //			}
+        //		}
 
-    //		// Token: 0x060036E7 RID: 14055 RVA: 0x0018C3C8 File Offset: 0x0018A5C8
-    //		public static void ClearManagerData()
-    //		{
-    //			GameObject gameObject = GameObject.Find("/FootMarks");
-    //			if (gameObject != null)
-    //			{
-    //				UnityEngine.Object.Destroy(gameObject);
-    //			}
-    //			SetActiveByFlagManager.Clear();
-    //			AnimCtrlScript.ClearAnimClipsDic();
-    //			PalMain.mapinfo = null;
-    //			DistanceCullManager.Instance.ClearMats();
-    //			CharactersManager.Clear();
-    //			DynamicObjsDataManager.Instance.ClearLayers();
-    //			Footmark.Clear();
-    //		}
+        //		// Token: 0x060036E7 RID: 14055 RVA: 0x0018C3C8 File Offset: 0x0018A5C8
+        //		public static void ClearManagerData()
+        //		{
+        //			GameObject gameObject = GameObject.Find("/FootMarks");
+        //			if (gameObject != null)
+        //			{
+        //				UnityEngine.Object.Destroy(gameObject);
+        //			}
+        //			SetActiveByFlagManager.Clear();
+        //			AnimCtrlScript.ClearAnimClipsDic();
+        //			PalMain.mapinfo = null;
+        //			DistanceCullManager.Instance.ClearMats();
+        //			CharactersManager.Clear();
+        //			DynamicObjsDataManager.Instance.ClearLayers();
+        //			Footmark.Clear();
+        //		}
 
-    /// <summary>
-    /// 切换地图
-    /// </summary>
-    /// <param name="DestName">目的名称</param>
-    /// <param name="LevelIndex">编号</param>
-    /// <param name="PlayDefaultAudio">播放违约音乐</param>
-    /// <param name="SaveDynamicObjs"></param>
-    public static void ChangeMap(string DestName, int LevelIndex, bool PlayDefaultAudio = true, bool SaveDynamicObjs = true)
+        /// <summary>
+        /// 切换地图
+        /// </summary>
+        /// <param name="DestName">目的名称</param>
+        /// <param name="LevelIndex">编号</param>
+        /// <param name="PlayDefaultAudio">播放违约音乐</param>
+        /// <param name="SaveDynamicObjs"></param>
+        public static void ChangeMap(string DestName, int LevelIndex, bool PlayDefaultAudio = true, bool SaveDynamicObjs = true)
         {
             Time.timeScale = 1f;
             UnityEngine.Debug.Log(string.Format("ChangeMap : DestName={0}, LevelIndex={1}, PlayDefaultAudio={2}, SaveDynamicObjs={3}", new object[]
@@ -2041,7 +2040,8 @@ namespace SoftStar.Pal6
             //{
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
             //}
-            //ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
+
+            ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
         }
 
         //		// Token: 0x060036E9 RID: 14057 RVA: 0x0018C580 File Offset: 0x0018A780

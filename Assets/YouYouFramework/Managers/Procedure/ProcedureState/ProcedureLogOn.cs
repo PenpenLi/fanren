@@ -18,8 +18,6 @@ namespace YouYou
         {
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureLogOn");
-            GameEntry.SaveData.SDSave.Reset();
-            GameEntry.SaveData.LoadSaveInfo();
             GameEntry.Data.RuntimeDataManager.Clear();
             GameEntry.UI.OpenUIForm(UIFormId.LogOn);
         }
