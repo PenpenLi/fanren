@@ -37,14 +37,14 @@ public class PlayerTeam : MonoBehaviour
         }
     }
 
-    //	public static void ReStart()
-    //	{
-    //		if (PlayerTeam.instance != null)
-    //		{
-    //			UnityEngine.Object.Destroy(PlayerTeam.instance.gameObject);
-    //			PlayerTeam.instance = null;
-    //		}
-    //	}
+    public static void ReStart()
+    {
+        if (PlayerTeam.instance != null)
+        {
+            UnityEngine.Object.Destroy(PlayerTeam.instance.gameObject);
+            PlayerTeam.instance = null;
+        }
+    }
 
     private void Start()
     {

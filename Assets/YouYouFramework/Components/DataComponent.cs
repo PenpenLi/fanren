@@ -11,15 +11,6 @@ namespace YouYou
     public class DataComponent : YouYouBaseComponent
     {
         /// <summary>
-        /// 运行数据
-        /// </summary>
-        public RuntimeDataManager RuntimeDataManager
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// 系统相关数据
         /// </summary>
         public SysDataManager SysDataManager
@@ -31,13 +22,11 @@ namespace YouYou
         protected override void OnAwake()
         {
             base.OnAwake();
-            RuntimeDataManager = new RuntimeDataManager();
             SysDataManager = new SysDataManager();
         }
 
         public override void Shutdown()
         {
-            RuntimeDataManager.Dispose();
             SysDataManager.Dispose();
         }
     }

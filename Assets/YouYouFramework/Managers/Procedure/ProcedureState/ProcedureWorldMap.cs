@@ -32,27 +32,27 @@ namespace YouYou
                 if (GameEntry.Scene.TargertWorldMapTransPosId == 0)
                 {
                     //如果服务器告诉了客户端 主角最后进入世界地图场景坐标信息
-                    if (!string.IsNullOrEmpty(GameEntry.Data.RuntimeDataManager.LastInWorldMapPos))
-                    {
-                        Debug.Log("主角信息为空");
-                        //string[] arr = PlayerCtrl.Instance.LastInWorldMapPos.Split('_');
-                        //Vector3 pos = new Vector3(float.Parse(arr[0]), float.Parse(arr[1]), float.Parse(arr[2]));
+                    //if (!string.IsNullOrEmpty(GameEntry.Data.RuntimeDataManager.LastInWorldMapPos))
+                    //{
+                    //    Debug.Log("主角信息为空");
+                    //    //string[] arr = PlayerCtrl.Instance.LastInWorldMapPos.Split('_');
+                    //    //Vector3 pos = new Vector3(float.Parse(arr[0]), float.Parse(arr[1]), float.Parse(arr[2]));
 
-                        //GlobalInit.Instance.CurrPlayer.Born(pos);
-                        //GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, float.Parse(arr[3]), 0);
-                    }
-                    else
-                    {
-                        //if (CurrWorldMapEntity.RoleBirthPostion != Vector3.zero)
-                        //{
-                        //    GlobalInit.Instance.CurrPlayer.Born(CurrWorldMapEntity.RoleBirthPostion);
-                        //    GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, CurrWorldMapEntity.RoleBirthEulerAnglesY, 0);
-                        //}
-                        //else
-                        //{
-                        //    GlobalInit.Instance.CurrPlayer.Born(m_PlayerBornPos.position);
-                        //}
-                    }
+                    //    //GlobalInit.Instance.CurrPlayer.Born(pos);
+                    //    //GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, float.Parse(arr[3]), 0);
+                    //}
+                    //else
+                    //{
+                    //    //if (CurrWorldMapEntity.RoleBirthPostion != Vector3.zero)
+                    //    //{
+                    //    //    GlobalInit.Instance.CurrPlayer.Born(CurrWorldMapEntity.RoleBirthPostion);
+                    //    //    GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, CurrWorldMapEntity.RoleBirthEulerAnglesY, 0);
+                    //    //}
+                    //    //else
+                    //    //{
+                    //    //    GlobalInit.Instance.CurrPlayer.Born(m_PlayerBornPos.position);
+                    //    //}
+                    //}
                 }
                 else
                 {

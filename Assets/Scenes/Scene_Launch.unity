@@ -1205,7 +1205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 1000
-  data: []
+  data:
+  - Enqueue: 0
+    HP: 0
+    mCharacterID: 0
+    mLevel: 0
 --- !u!1 &943130461
 GameObject:
   m_ObjectHideFlags: 0

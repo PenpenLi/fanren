@@ -41,9 +41,9 @@ public class BattleManager : YouYouBaseComponent
 
 
         CurrentWave = 0;
-        m_BattleEntity = GameEntry.DataTable.DataTableManager.BattleDBModel.Get(GameEntry.Data.RuntimeDataManager.CurrBattleID);
+        //m_BattleEntity = GameEntry.DataTable.DataTableManager.BattleDBModel.Get(GameEntry.Data.RuntimeDataManager.CurrBattleID);
 
-        PlayerFormation.SetCharacters(GameEntry.Data.RuntimeDataManager.Team);//加载玩家 王家只加载一次，敌人每一波都需要加载
+        //PlayerFormation.SetCharacters(GameEntry.Data.RuntimeDataManager.Team);//加载玩家 王家只加载一次，敌人每一波都需要加载
 
         NextWave();
         NewTurn();

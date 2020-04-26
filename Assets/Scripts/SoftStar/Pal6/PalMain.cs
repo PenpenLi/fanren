@@ -30,6 +30,9 @@ namespace SoftStar.Pal6
         //		// Token: 0x04003115 RID: 12565
         //		private static uint _MoneyID = 0u;
 
+        /// <summary>
+        /// 游戏难度
+        /// </summary>
         public static int GameDifficulty = 0;
 
         //		// Token: 0x04003117 RID: 12567
@@ -56,6 +59,7 @@ namespace SoftStar.Pal6
         //		// Token: 0x0400311E RID: 12574
         //		public BattleFormationManager CurBattleFormationManager = new BattleFormationManager();
 
+            
         [NonSerialized]
         public static float GameBeginTime;
 
@@ -817,61 +821,39 @@ namespace SoftStar.Pal6
         //			cacheAtlas.replacement = uiatlas;
         //		}
 
-        //		// Token: 0x060036BE RID: 14014 RVA: 0x0018A8A4 File Offset: 0x00188AA4
-        //		public static void LoadUI()
-        //		{
-        //			foreach (string str in UIManager.BigImageNames)
-        //			{
-        //				FileLoader.LoadObjectFromFile<Texture>(("AssetBundles/UI/BigImage/" + str).ToAssetBundlePath(), false, true);
-        //				FileLoader.SetNoUnload(("AssetBundles/UI/BigImage/" + str).ToAssetBundlePath(), true);
-        //			}
-        //			FileLoader.LoadComponentFromFile<UIAtlas>("AssetBundles/UI/Menu0".ToAssetBundlePath(), false);
-        //			FileLoader.SetNoUnload("AssetBundles/UI/Menu0".ToAssetBundlePath(), true);
-        //			FileLoader.LoadComponentFromFile<UIAtlas>("AssetBundles/UI/Dialog0".ToAssetBundlePath(), false);
-        //			FileLoader.SetNoUnload("AssetBundles/UI/Dialog0".ToAssetBundlePath(), true);
-        //			FileLoader.LoadComponentFromFile<UIAtlas>("AssetBundles/UI/Dialog1".ToAssetBundlePath(), false);
-        //			FileLoader.SetNoUnload("AssetBundles/UI/Dialog1".ToAssetBundlePath(), true);
-        //			PalMain.LoadOneLangueUIAtlas("StringImage0");
-        //		}
-
         private void Initialize()
         {
             if (PalMain.initialized || !Application.isPlaying)
             {
                 return;
             }
-            UnityEngine.Debug.Log("Log : CurVersion = " + this.CurVersion.ToString());
-            //			try
-            //			{
-            //				UIStart.CheckSetProcessAffintyMask_Return = UtilFun.CheckSetProcessAffintyMask(Process.GetCurrentProcess().Handle);
-            //			}
-            //			catch
-            //			{
-            //				UIStart.CheckSetProcessAffintyMask_Return = 0;
-            //			}
-            //			try
-            //			{
-            //				if (ConfigManager.ReadWritePath == null)
-            //				{
-            //					UnityEngine.Debug.LogError("Read or write fail 0x2204.");
-            //					UtilFun.WinMessageBox("read or write fail", "error", 8708);
-            //					Application.Quit();
-            //					return;
-            //				}
-            //			}
-            //			catch (Exception ex)
-            //			{
-            //				UnityEngine.Debug.Log(ex.ToString() + " 0x2204.");
-            //				UtilFun.WinMessageBox(ex.ToString(), "error", 8708);
-            //				Application.Quit();
-            //				return;
-            //			}
-            //			int num = QualitySettings.names.Length - 1;
-            //			num = Mathf.Clamp(num, 0, 10);
-            //			QualitySettings.SetQualityLevel(num);
-            //			Application.logMessageReceived -= LogManager.LogCallback;
-            //			Application.logMessageReceived += LogManager.LogCallback;
-            //			OptionConfig optionConfig = OptionConfig.GetInstance();
+
+            //UnityEngine.Debug.Log("Log : CurVersion = " + this.CurVersion.ToString());
+
+            //try
+            //{
+            //    if (ConfigManager.ReadWritePath == null) //配置管理 路径如果为空 关闭程序
+            //    {
+            //        UnityEngine.Debug.LogError("Read or write fail 0x2204.");
+            //        UtilFun.WinMessageBox("read or write fail", "error", 8708);
+            //        Application.Quit();
+            //        return;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    UnityEngine.Debug.Log(ex.ToString() + " 0x2204.");
+            //    UtilFun.WinMessageBox(ex.ToString(), "error", 8708);
+            //    Application.Quit();
+            //    return;
+            //}
+
+            //int num = QualitySettings.names.Length - 1;//质量有6个级别
+            //UnityEngine.Debug.Log(QualitySettings.names);
+            //num = Mathf.Clamp(num, 0, 10);
+            //QualitySettings.SetQualityLevel(num); //设置质量级别
+
+            //			OptionConfig optionConfig = OptionConfig.GetInstance(); //选项设置
             //			if (!ConfigManager.IsFileExist())
             //			{
             //				optionConfig.SetAllQualityFirstTime(PalMain.FirstTimeLaunch103());
@@ -879,21 +861,21 @@ namespace SoftStar.Pal6
             //			}
             //			optionConfig.Use_Start();
             //			optionConfig.Use_Other();
-            //			PalMain.LoadUI();
-            //			Physics.gravity = new Vector3(0f, -20f, 0f);
-            //			Physics2D.queriesHitTriggers = false;
-            //			QualitySettings.blendWeights = BlendWeights.FourBones;
-            //			string operatingSystem = SystemInfo.operatingSystem;
-            //			PalMain.IsXP = operatingSystem.Contains("Windows XP");
-            //			PalMain.IsWin32 = !operatingSystem.Contains("64bit");
-            //			if (!PalMain.IsXP)
-            //			{
-            //				QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
-            //				QualitySettings.shadowProjection = ShadowProjection.StableFit;
-            //			}
-            //			UnityEngine.Object.DontDestroyOnLoad(base.gameObject);
+
+            Physics.gravity = new Vector3(0f, -20f, 0f);//重力设置
+            Physics2D.queriesHitTriggers = false;//关闭2D碰撞
+                                                 //			QualitySettings.blendWeights = BlendWeights.FourBones;
+                                                 //			string operatingSystem = SystemInfo.operatingSystem;
+                                                 //			PalMain.IsXP = operatingSystem.Contains("Windows XP");
+                                                 //			PalMain.IsWin32 = !operatingSystem.Contains("64bit");
+                                                 //			if (!PalMain.IsXP)
+                                                 //			{
+                                                 //				QualitySettings.anisotropicFiltering = AnisotropicFiltering.ForceEnable;
+                                                 //				QualitySettings.shadowProjection = ShadowProjection.StableFit;
+                                                 //			}
+            UnityEngine.Object.DontDestroyOnLoad(base.gameObject);
             PalMain.instance = this;
-            //			PalMain.InitPermanentObject();
+
             //			ItemManager.GetInstance().OnBeforeRemoveItem += this.PutOffItem;
             //			ItemPackage orCreatePackage = ItemManager.GetInstance().GetOrCreatePackage(1u);
             //			orCreatePackage.OnItemAdded += delegate(IItem obj)

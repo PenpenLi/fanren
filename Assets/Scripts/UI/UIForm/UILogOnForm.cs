@@ -19,13 +19,9 @@ public class UILogOnForm : UIFormBase
     public void OnNewGameBtn()
     {
         Debug.Log("开始新游戏 添加初始数据");
-        //GameEntry.Data.RuntimeDataManager.Money = 0; ;
-        //GameEntry.Data.RuntimeDataManager.addTeamMember(1);
-        ////RuntimeData.Instance.addItem(ItemInstance.Generate("大还丹", false), 10);
-        //GameEntry.Data.RuntimeDataManager.AutoAcceptMisson();
 
         PalMain.GameDifficulty = 0;
-        //SaveManager.GameDifficulty = v;
+        SaveManager.GameDifficulty = 0;
         HPMPDPProperty.StaticData.Reset();
         FightProperty.StaticData.Reset();
         //PalMain.backgroundAudio.ChangeBackMusicImmediate(null);

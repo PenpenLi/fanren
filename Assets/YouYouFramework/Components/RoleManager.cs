@@ -321,26 +321,26 @@ public class RoleManager : YouYouBaseComponent, IUpdateComponent
     {
         if (m_IsMainPlayerInit) return;
 
-        if (GameEntry.Data.RuntimeDataManager.Team.Count>0)
-        {
-            RoleInfo roleInfo = GameEntry.Data.RuntimeDataManager.Team[0];
-            RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleInfo.RoleId);
-            GameObject gameObject = null;
-            GameEntry.Role.CreateRole(roleEntity.Model, (ResourceEntity resourceEntity) =>
-            {
-                gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
-            });
-            gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
+        //if (GameEntry.Data.RuntimeDataManager.Team.Count > 0)
+        //{
+        //    RoleInfo roleInfo = GameEntry.Data.RuntimeDataManager.Team[0];
+        //    RoleEntity roleEntity = GameEntry.DataTable.DataTableManager.RoleDBModel.Get(roleInfo.RoleId);
+        //    GameObject gameObject = null;
+        //    GameEntry.Role.CreateRole(roleEntity.Model, (ResourceEntity resourceEntity) =>
+        //    {
+        //        gameObject = UnityEngine.Object.Instantiate(resourceEntity.Target as GameObject);
+        //    });
+        //    gameObject.SetParent(this._playerRootGo.transform);//设置根节点 
 
-            CurrPlayer = gameObject.GetComponent<RoleCtrl>();
-            CurrPlayer.Init(RoleType.MainPlayer, roleInfo, new RoleMainPlayerCityAI(CurrPlayer));
+        //    CurrPlayer = gameObject.GetComponent<RoleCtrl>();
+        //    CurrPlayer.Init(RoleType.MainPlayer, roleInfo, new RoleMainPlayerCityAI(CurrPlayer));
 
-            gameObject.transform.position = new Vector3(1f, 20f, 2f);//设置出生地    
-            gameObject.tag = "Player";
-            //gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
-            GameEntry.Camera.InitPosition(gameObject);
-            this.AddRole(CurrPlayer);//添加到角色列表
-        }
+        //    gameObject.transform.position = new Vector3(1f, 20f, 2f);//设置出生地    
+        //    gameObject.tag = "Player";
+        //    gameObject.layer = LayerMask.NameToLayer("zhujue");//设置层 
+        //    GameEntry.Camera.InitPosition(gameObject);
+        //    this.AddRole(CurrPlayer);//添加到角色列表
+        //}
 
         m_IsMainPlayerInit = true;
     }
