@@ -20,61 +20,9 @@ namespace YouYou
             m_TransPosDic = new Dictionary<int, MapTransCtrl>();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureWorldMap");            
 
-            GameEntry.Role.InitMainPlayer();               
-            if (GameEntry.Role.CurrPlayer != null)
-            {
-                Debug.Log("播放背景音乐");
-                //AudioBackGroundMgr.Instance.Play(CurrWorldMapEntity.Audio_BG);
+           
 
-                InitTransPos();
-
-                //如果未设置玩家目标场景传送点 id 则使用表上配置的出生点
-                if (GameEntry.Scene.TargertWorldMapTransPosId == 0)
-                {
-                    //如果服务器告诉了客户端 主角最后进入世界地图场景坐标信息
-                    //if (!string.IsNullOrEmpty(GameEntry.Data.RuntimeDataManager.LastInWorldMapPos))
-                    //{
-                    //    Debug.Log("主角信息为空");
-                    //    //string[] arr = PlayerCtrl.Instance.LastInWorldMapPos.Split('_');
-                    //    //Vector3 pos = new Vector3(float.Parse(arr[0]), float.Parse(arr[1]), float.Parse(arr[2]));
-
-                    //    //GlobalInit.Instance.CurrPlayer.Born(pos);
-                    //    //GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, float.Parse(arr[3]), 0);
-                    //}
-                    //else
-                    //{
-                    //    //if (CurrWorldMapEntity.RoleBirthPostion != Vector3.zero)
-                    //    //{
-                    //    //    GlobalInit.Instance.CurrPlayer.Born(CurrWorldMapEntity.RoleBirthPostion);
-                    //    //    GlobalInit.Instance.CurrPlayer.gameObject.transform.eulerAngles = new Vector3(0, CurrWorldMapEntity.RoleBirthEulerAnglesY, 0);
-                    //    //}
-                    //    //else
-                    //    //{
-                    //    //    GlobalInit.Instance.CurrPlayer.Born(m_PlayerBornPos.position);
-                    //    //}
-                    //}
-                }
-                else
-                {
-                    //找传送点
-                    if (m_TransPosDic.ContainsKey(GameEntry.Scene.TargertWorldMapTransPosId))
-                    {
-                        Vector3 newBornPos = m_TransPosDic[GameEntry.Scene.TargertWorldMapTransPosId].transform.forward.normalized * 3 + m_TransPosDic[GameEntry.Scene.TargertWorldMapTransPosId].transform.position;
-                        Vector3 lookAtPos = m_TransPosDic[GameEntry.Scene.TargertWorldMapTransPosId].transform.forward.normalized * 3.5f + m_TransPosDic[GameEntry.Scene.TargertWorldMapTransPosId].transform.position;
-
-                        GameEntry.Role.CurrPlayer.Born(newBornPos);
-                        GameEntry.Role.CurrPlayer.transform.LookAt(lookAtPos);
-
-                        GameEntry.Scene.TargertWorldMapTransPosId = 0;
-                    }
-                }
-                ////当前玩家也添加
-                //m_AllRoleDic[GlobalInit.Instance.CurrPlayer.CurrRoleInfo.RoleId] = GlobalInit.Instance.CurrPlayer;
-
-                Debug.Log("加载主UI同时加载数据");
-            }
-
-            GameEntry.Role.CreateAllNPC();
+      
             //DoScriptMoudle();
         }
 
@@ -86,8 +34,7 @@ namespace YouYou
         public override void OnLeave()
         {
             base.OnLeave();
-            GameEntry.Role.CurrPlayer.gameObject.SetActive(false);
-            GameEntry.Role.ClearRole();
+          
             m_TransPosDic = null;
             GameEntry.Log(LogCategory.Procedure, "OnLeave ProcedureWorldMap");
         }

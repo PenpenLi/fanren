@@ -13,14 +13,11 @@ namespace YouYou
         {
             base.OnEnter();
             GameEntry.Log(LogCategory.Procedure, "OnEnter ProcedureGameLevel");
-
-            GameEntry.Battle.StartGame();
         }
 
         public override void OnUpdate()
         {
-            base.OnUpdate();
-            GameEntry.Battle.OnUpdate();
+            base.OnUpdate();          
         }
 
         public override void OnLeave()

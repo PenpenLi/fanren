@@ -154,39 +154,6 @@ namespace YouYou
             get;
             private set;
         }
-
-        public static KeyManager Key
-        {
-            get;
-            private set;
-        }
-
-        public static RoleManager Role
-        {
-            get;
-            private set;
-        }
-
-        public static CameraManager Camera
-        {
-            get;
-            private set;
-        }
-
-        public static BattleManager Battle
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
-        /// 数据组件
-        /// </summary>
-        public static SaveLoadManager SaveLoad
-        {
-            get;
-            private set;
-        }
         #endregion
 
         #region 基础组件管理
@@ -270,12 +237,7 @@ namespace YouYou
             Resource = GetBaseComponent<ResourceComponent>();
             Download = GetBaseComponent<DownloadComponent>();
             UI = GetBaseComponent<UIComponent>();          
-            Mouse = GetBaseComponent<MouseManager>();
-            Role = GetBaseComponent<RoleManager>();
-            Camera = GetBaseComponent<CameraManager>();
-            Key = GetBaseComponent<KeyManager>();
-            Battle= GetBaseComponent<BattleManager>();
-            SaveLoad= GetBaseComponent<SaveLoadManager>();
+            Mouse = GetBaseComponent<MouseManager>();           
         }
         #endregion
 

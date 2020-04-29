@@ -24,7 +24,7 @@ public class UIRoleAction : UIFormBase
     {
         if (IsOn)
         {
-            GameEntry.Battle.ActiveRole.SetAction(SkillId);
+            //GameEntry.Battle.ActiveRole.SetAction(SkillId);
         }
     }
 }

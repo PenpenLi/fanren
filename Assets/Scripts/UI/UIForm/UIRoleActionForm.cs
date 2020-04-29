@@ -20,15 +20,15 @@ public class UIRoleActionForm : UIFormBase
     {
         base.OnInit(userData);
         TempToggleGroup.allowSwitchOff = false;
-        for (int i = 0; i < GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList.Count; ++i)
-        {
-            GameObject go=Instantiate(uiActions.gameObject);
-            go.transform.SetParent(transform);
-            go.GetComponent<Toggle>().group = TempToggleGroup;
-            UIRoleAction uIRoleAction = go.GetComponent<UIRoleAction>();
-            uIRoleAction.SkillId = GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList[i].SkillId;
-            UIRoleSkills.Add(uIRoleAction);
-        }     
+        //for (int i = 0; i < GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList.Count; ++i)
+        //{
+        //    GameObject go=Instantiate(uiActions.gameObject);
+        //    go.transform.SetParent(transform);
+        //    go.GetComponent<Toggle>().group = TempToggleGroup;
+        //    UIRoleAction uIRoleAction = go.GetComponent<UIRoleAction>();
+        //    uIRoleAction.SkillId = GameEntry.Battle.ActiveRole.CurrRoleInfo.SkillList[i].SkillId;
+        //    UIRoleSkills.Add(uIRoleAction);
+        //}     
     }
 
     protected override void OnOpen(object userData)
