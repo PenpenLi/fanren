@@ -59,16 +59,17 @@ namespace SoftStar.Pal6
         //		// Token: 0x0400311E RID: 12574
         //		public BattleFormationManager CurBattleFormationManager = new BattleFormationManager();
 
-            
+        /// <summary>
+        /// 游戏开始事件
+        /// </summary>
         [NonSerialized]
         public static float GameBeginTime;
 
         [NonSerialized]
         public static float GameTotleTime;
 
-        //		// Token: 0x04003121 RID: 12577
-        //		[SerializeField]
-        //		private PalMain.WatchType mCurWatchType;
+        //[SerializeField]
+        //private PalMain.WatchType mCurWatchType;
 
         //		// Token: 0x04003122 RID: 12578
         //		public static string PlayerName = "Default";
@@ -780,10 +781,9 @@ namespace SoftStar.Pal6
             this.Initialize();
         }
 
-        //		// Token: 0x060036BA RID: 14010 RVA: 0x0018A7B4 File Offset: 0x001889B4
-        //		private void OnDestroy()
-        //		{
-        //		}
+        private void OnDestroy()
+        {
+        }
 
         //		// Token: 0x060036BB RID: 14011 RVA: 0x0018A7B8 File Offset: 0x001889B8
         //		public static void LoadOneLangueUIAtlas(string subname)
@@ -1821,11 +1821,10 @@ namespace SoftStar.Pal6
         //			return flag > 0;
         //		}
 
-        //		// Token: 0x060036DC RID: 14044 RVA: 0x0018C17C File Offset: 0x0018A37C
-        //		public static void SetFlag(int idx, int value)
-        //		{
-        //			FlagManager.SetFlag(idx, value, true);
-        //		}
+        public static void SetFlag(int idx, int value)
+        {
+            FlagManager.SetFlag(idx, value, true);
+        }
 
         //		// Token: 0x060036DD RID: 14045 RVA: 0x0018C188 File Offset: 0x0018A388
         //		public static int GetFlag(int idx)
@@ -1854,13 +1853,11 @@ namespace SoftStar.Pal6
         //			return PalMain.GetFlag(2);
         //		}
 
-        //		// Token: 0x060036E1 RID: 14049 RVA: 0x0018C1D8 File Offset: 0x0018A3D8
-        //		public static void SetMoney(int money)
-        //		{
-        //			PalMain.SetFlag(2, money);
-        //		}
+        public static void SetMoney(int money)
+        {
+            PalMain.SetFlag(2, money);
+        }
 
-        //		// Token: 0x060036E2 RID: 14050 RVA: 0x0018C1E4 File Offset: 0x0018A3E4
         //		public static void SetCameraDistanceForPot()
         //		{
         //			Camera mainCamera = UtilFun.GetMainCamera();

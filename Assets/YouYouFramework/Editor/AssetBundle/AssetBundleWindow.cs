@@ -1,8 +1,3 @@
-//===================================================
-//作    者：边涯  http://www.u3dol.com  QQ群：87481002
-//创建时间：2016-03-19 18:41:09
-//备    注：
-//===================================================
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
@@ -492,7 +487,7 @@ public class AssetBundleWindow : EditorWindow
         BuildPipeline.BuildAssetBundles(toPath, BuildAssetBundleOptions.ChunkBasedCompression, target);
         Debug.Log("打包完毕");
 
-        AssetBundleEncrypt();
+        //AssetBundleEncrypt();
 
         OnCreateDependenciesFile();
 

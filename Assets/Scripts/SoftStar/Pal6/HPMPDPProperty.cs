@@ -8,27 +8,19 @@ namespace SoftStar.Pal6
 {
     public class HPMPDPProperty
     {
+        //private HPMPDPProperty.DynamicValue mHPRange;
 
-        //        // Token: 0x04002B43 RID: 11075
-        //        private HPMPDPProperty.DynamicValue mHPRange;
+        //private HPMPDPProperty.DynamicValue mMPRange;
 
-        //        // Token: 0x04002B44 RID: 11076
-        //        private HPMPDPProperty.DynamicValue mMPRange;
+        //private HPMPDPProperty.DynamicValue mDPRange;
 
-        //        // Token: 0x04002B45 RID: 11077
-        //        private HPMPDPProperty.DynamicValue mDPRange;
+        private int mHP;
 
-        //        // Token: 0x04002B46 RID: 11078
-        //        private int mHP;
+        private int mMP;
 
-        //        // Token: 0x04002B47 RID: 11079
-        //        private int mMP;
+        private int mDP;
 
-        //        // Token: 0x04002B48 RID: 11080
-        //        private int mDP;
-
-        //        // Token: 0x04002B49 RID: 11081
-        //        private PlayerBaseProperty mLinkPlayerBase;
+        //private PlayerBaseProperty mLinkPlayerBase;
 
         //        public enum FieldEnum
         //        {
@@ -40,19 +32,16 @@ namespace SoftStar.Pal6
         //            mDPRange
         //        }
 
-        //        public HPMPDPProperty(HPMPDPProperty.StaticData SourceData)
-        //		{
-        //			this.mHPRange = new HPMPDPProperty.DynamicValue(1, 999999);
-        //			this.mHPRange.Base = SourceData.HPRange;
-        //			this.mMPRange = new HPMPDPProperty.DynamicValue(1, 9999);
-        //			this.mMPRange.Base = SourceData.MPRange;
-        //			this.mDPRange = new HPMPDPProperty.DynamicValue(1, 9999);
-        //			this.mDPRange.Base = SourceData.DPRange;
-        //		}
+        //public HPMPDPProperty(HPMPDPProperty.StaticData SourceData)
+        //{
+        //    this.mHPRange = new HPMPDPProperty.DynamicValue(1, 999999);
+        //    this.mHPRange.Base = SourceData.HPRange;
+        //    this.mMPRange = new HPMPDPProperty.DynamicValue(1, 9999);
+        //    this.mMPRange.Base = SourceData.MPRange;
+        //    this.mDPRange = new HPMPDPProperty.DynamicValue(1, 9999);
+        //    this.mDPRange.Base = SourceData.DPRange;
+        //}
 
-        //		// Token: 0x14000016 RID: 22
-        //		// (add) Token: 0x06002F67 RID: 12135 RVA: 0x0015C4EC File Offset: 0x0015A6EC
-        //		// (remove) Token: 0x06002F68 RID: 12136 RVA: 0x0015C508 File Offset: 0x0015A708
         //		public event Action<int> OnChangeHP;
 
         //		// Token: 0x14000017 RID: 23
@@ -70,15 +59,13 @@ namespace SoftStar.Pal6
         //		// (remove) Token: 0x06002F6E RID: 12142 RVA: 0x0015C5B0 File Offset: 0x0015A7B0
         //		public event Action OnUnLink;
 
-        //		// Token: 0x17000310 RID: 784
-        //		// (get) Token: 0x06002F6F RID: 12143 RVA: 0x0015C5CC File Offset: 0x0015A7CC
-        //		public HPMPDPProperty.DynamicValue HPRange
-        //		{
-        //			get
-        //			{
-        //				return this.mHPRange;
-        //			}
-        //		}
+        //public HPMPDPProperty.DynamicValue HPRange
+        //{
+        //    get
+        //    {
+        //        return this.mHPRange;
+        //    }
+        //}
 
         //		// Token: 0x17000311 RID: 785
         //		// (get) Token: 0x06002F70 RID: 12144 RVA: 0x0015C5D4 File Offset: 0x0015A7D4
@@ -280,100 +267,83 @@ namespace SoftStar.Pal6
         //			this.UnLink();
         //		}
 
+        //public class DynamicValue : DynamicInt32
+        //{
+        //    private int mBase;
 
-        //		// Token: 0x020006C8 RID: 1736
-        //		public class DynamicValue : DynamicInt32
-        //		{
-        //            private int mBase;
+        //    private int mByCalculate;
 
-        //            private int mByCalculate;
+        //    public DynamicValue(int inMinValue, int inMaxValue) : base(inMinValue, inMaxValue)
+        //    {
+        //    }
 
-        //            public DynamicValue(int inMinValue, int inMaxValue) : base(inMinValue, inMaxValue)
-        //			{
-        //			}
+        //    public int Base
+        //    {
+        //        get
+        //        {
+        //            return this.mBase;
+        //        }
+        //        set
+        //        {
+        //            this.mBase = value;
+        //            this.Calculate();
+        //        }
+        //    }
 
-        //			// Token: 0x17000317 RID: 791
-        //			// (get) Token: 0x06002F7F RID: 12159 RVA: 0x0015C918 File Offset: 0x0015AB18
-        //			// (set) Token: 0x06002F80 RID: 12160 RVA: 0x0015C920 File Offset: 0x0015AB20
-        //			public int Base
-        //			{
-        //				get
-        //				{
-        //					return this.mBase;
-        //				}
-        //				set
-        //				{
-        //					this.mBase = value;
-        //					this.Calculate();
-        //				}
-        //			}
+        //    public int ByCalculate
+        //    {
+        //        get
+        //        {
+        //            return this.mByCalculate;
+        //        }
+        //        set
+        //        {
+        //            this.mByCalculate = value;
+        //            this.Calculate();
+        //        }
+        //    }
 
-        //			// Token: 0x17000318 RID: 792
-        //			// (get) Token: 0x06002F81 RID: 12161 RVA: 0x0015C930 File Offset: 0x0015AB30
-        //			// (set) Token: 0x06002F82 RID: 12162 RVA: 0x0015C938 File Offset: 0x0015AB38
-        //			public int ByCalculate
-        //			{
-        //				get
-        //				{
-        //					return this.mByCalculate;
-        //				}
-        //				set
-        //				{
-        //					this.mByCalculate = value;
-        //					this.Calculate();
-        //				}
-        //			}
-
-        //			// Token: 0x06002F83 RID: 12163 RVA: 0x0015C948 File Offset: 0x0015AB48
-        //			public override void Calculate()
-        //			{
-        //				int result = this.result;
-        //				this.result = (int)((float)(this.mBase + this.mByCalculate + this.mAdd) * this.mScale);
-        //				if (this.result < this.mMinValue)
-        //				{
-        //					this.mIsOverdraw = true;
-        //					this.result = this.mMinValue;
-        //				}
-        //				else if (this.result > this.mMaxValue)
-        //				{
-        //					this.result = this.mMaxValue;
-        //				}
-        //				if (result != this.result)
-        //				{
-        //					base.ChangeValue(result);
-        //				}
-        //			}
-
-
-        //		}
+        //    public override void Calculate()
+        //    {
+        //        int result = this.result;
+        //        this.result = (int)((float)(this.mBase + this.mByCalculate + this.mAdd) * this.mScale);
+        //        if (this.result < this.mMinValue)
+        //        {
+        //            this.mIsOverdraw = true;
+        //            this.result = this.mMinValue;
+        //        }
+        //        else if (this.result > this.mMaxValue)
+        //        {
+        //            this.result = this.mMaxValue;
+        //        }
+        //        if (result != this.result)
+        //        {
+        //            base.ChangeValue(result);
+        //        }
+        //    }
+        //}
 
         public class StaticData
         {
+            public static readonly string DefaultDataPath = Path.Combine(Application.dataPath, "Data/Property/HPMPDP.dat");
 
-            //            // Token: 0x04002B54 RID: 11092
-            //            public static readonly string DefaultDataPath = Path.Combine(Application.dataPath, "Data/Property/HPMPDP.dat");
+            private int mHPRange;
 
-            //            // Token: 0x04002B55 RID: 11093
-            //            private int mHPRange;
+            private int mMPRange;
 
-            //            // Token: 0x04002B56 RID: 11094
-            //            private int mMPRange;
-
-            //            // Token: 0x04002B57 RID: 11095
-            //            private int mDPRange;
+            private int mDPRange;
 
             private static string[] mDataPaths = null;
 
             private static Dictionary<uint, HPMPDPProperty.StaticData> Datas = null;
 
-
-            //            public StaticData(out uint Key, BinaryReader DataReader)
-            //			{
-            //				Key = DataReader.ReadUInt32();
-            //				this.mHPRange = DataReader.ReadInt32();
-            //				this.mMPRange = DataReader.ReadInt32();
-            //				this.mDPRange = DataReader.ReadInt32();
-            //			}
+            public StaticData(out uint Key, BinaryReader DataReader)
+            {
+                Key = DataReader.ReadUInt32();
+                this.mHPRange = DataReader.ReadInt32();
+                this.mMPRange = DataReader.ReadInt32();
+                this.mDPRange = DataReader.ReadInt32();
+            }
 
             //			// Token: 0x17000319 RID: 793
             //			// (get) Token: 0x06002F86 RID: 12166 RVA: 0x0015CA48 File Offset: 0x0015AC48
@@ -481,7 +451,6 @@ namespace SoftStar.Pal6
             //				datasFromFile.TryGetValue(id, out result);
             //				return result;
             //			}
-
 
             public static void Reset()
             {

@@ -20,7 +20,7 @@ public class UILogOnForm : UIFormBase
     {
         Debug.Log("开始新游戏 添加初始数据");
 
-        PalMain.GameDifficulty = 0;
+        PalMain.GameDifficulty = 0;//设置游戏难度
         SaveManager.GameDifficulty = 0;
         HPMPDPProperty.StaticData.Reset();
         FightProperty.StaticData.Reset();

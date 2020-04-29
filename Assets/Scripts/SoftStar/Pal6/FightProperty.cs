@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace SoftStar.Pal6
 {
+    /// <summary>
+    /// ’Ω∂∑ Ù–‘
+    /// </summary>
     public class FightProperty
     {
 

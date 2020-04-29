@@ -62,36 +62,36 @@ public class PlayerTeam : MonoBehaviour
 
     public void LoadTeam()
     {
-        //ScenesManager.Instance.OnLevelLoaded += this.OnLoadTeam;
-        //this.SetInitValue();
+        ScenesManager.Instance.OnLevelLoaded += this.OnLoadTeam;
+        this.SetInitValue();
     }
 
-    //	public void SetInitValue()
-    //	{
-    //		PalMain.SetMoney(this.money);
-    //		this.InitTime();
-    //	}
+    public void SetInitValue()
+    {
+        PalMain.SetMoney(this.money);
+        this.InitTime();
+    }
 
-    //	public void OnLoadTeam(int Level)
-    //	{
-    //		ScenesManager.Instance.OnLevelLoaded -= this.OnLoadTeam;
-    //		if (UniStormWeatherSystem.instance != null)
-    //		{
-    //			TimeManager.Initialize().timeStopped = UniStormWeatherSystem.instance.timeStopped;
-    //		}
-    //		else
-    //		{
-    //			Debug.LogWarning("Warn : UniStormWeatherSystem.instance==null");
-    //		}
-    //		this.InitTeam();
-    //		this.InitPlayerLevel();
-    //		this.InitSkill();
-    //		this.InitItem();
-    //		if (base.gameObject != null)
-    //		{
-    //			UnityEngine.Object.Destroy(base.gameObject);
-    //		}
-    //	}
+    public void OnLoadTeam(int Level)
+    {
+        ScenesManager.Instance.OnLevelLoaded -= this.OnLoadTeam;
+        //if (UniStormWeatherSystem.instance != null)
+        //{
+        //    TimeManager.Initialize().timeStopped = UniStormWeatherSystem.instance.timeStopped;
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("Warn : UniStormWeatherSystem.instance==null");
+        //}
+        //this.InitTeam();
+        //this.InitPlayerLevel();
+        //this.InitSkill();
+        //this.InitItem();
+        if (base.gameObject != null)
+        {
+            UnityEngine.Object.Destroy(base.gameObject);
+        }
+    }
 
     //	public void InitTeam()
     //	{
@@ -205,9 +205,9 @@ public class PlayerTeam : MonoBehaviour
     //		}
     //	}
 
-    //	public void InitTime()
-    //	{
-    //		TimeManager.Initialize().AutoSaveInit();
-    //		TimeManager.Initialize().weatherTime = this.startWeatherTime;
-    //	}
+    public void InitTime()
+    {
+        //TimeManager.Initialize().AutoSaveInit();
+        //TimeManager.Initialize().weatherTime = this.startWeatherTime;
+    }
 }

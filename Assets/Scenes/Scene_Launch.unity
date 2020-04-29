@@ -168,14 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b81c638de2eaa48a246c4b8d6f81bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foeFormation: {fileID: 0}
-  isPlayerFormation: 0
-  containers:
-  - {fileID: 943130462}
-  - {fileID: 1561630713}
-  - {fileID: 184391539}
-  - {fileID: 703858558}
-  - {fileID: 2043008159}
 --- !u!1 &47414797
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,38 +277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6016deb5ae330714eba891b42db81a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCamera: {fileID: 1423184512}
-  m_CameraUpAndDown: {fileID: 1861685799}
-  m_CameraZoomContainer: {fileID: 949719481}
-  m_CameraContainer: {fileID: 369363276}
-  minDistance: 4
-  currentDistance: 8
-  nomalDistance: 8
-  maxDistance: 12
-  height: 2
-  centerHeight: 3
-  far: 80
-  fieldOfView: 60
-  moveTime: 0.5
-  smoothTime: 0.06
-  cameraLockPosition: {x: 0, y: 0, z: 0}
-  vLockAxis: {x: 0, y: 0, z: 0}
-  vXLockFollowLimit: {x: 0, y: 0}
-  vYLockFollowLimit: {x: 0, y: 0}
-  vZLockFollowLimit: {x: 0, y: 0}
-  FollowPositionLockAxisOffset: {x: 0, y: 0, z: 0}
-  FollowPositionLockAxisRotation: {x: 0, y: 0, z: 0}
-  x: 0
-  y: 0
-  deltaTime: 6
-  isMouseOrbit: 1
-  isSmooth: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8194
-  isLockCamera: 0
-  isScaleCamera: 1
-  cameraState: 0
 --- !u!1 &168994866
 GameObject:
   m_ObjectHideFlags: 0
@@ -364,16 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60664208d999dc14a842ca8edffc6160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoleList: []
-  _roleRootGO: {fileID: 168994866}
-  _playerRootGo: {fileID: 1181234732}
-  _monsterRootGo: {fileID: 2115057648}
-  operableRootGo: {fileID: 1122805719}
-  _npcRootGo: {fileID: 2144723474}
-  _chestRootGo: {fileID: 0}
-  CurrPlayer: {fileID: 0}
-  OperableItemList: []
-  HelpList: []
 --- !u!1 &184391538
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461410594}
   - component: {fileID: 461410595}
+  - component: {fileID: 461410596}
   m_Layer: 0
   m_Name: PalMain
   m_TagString: Untagged
@@ -831,6 +782,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d72d375fa533ad43b1fad34f116dc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &461410596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461410593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03170704152b313489f6d7ddcc507e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoSaveSecond: 300
+  waitSaveSecond: 10
+  weatherTime: 0
+  NightTimeAcceleration: 1
+  dayLength: 4800
+  startAcceleration: 0
+  endAcceleration: 0
+  timeStopped: 0
 --- !u!1 &518137585
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,14 +893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b81c638de2eaa48a246c4b8d6f81bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foeFormation: {fileID: 0}
-  isPlayerFormation: 0
-  containers:
-  - {fileID: 1629953588}
-  - {fileID: 452346929}
-  - {fileID: 769834744}
-  - {fileID: 47414798}
-  - {fileID: 1933299595}
 --- !u!1 &703858557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,13 +2315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edad0e76501b874ebf108255af6a4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerFormation: {fileID: 10085122}
-  FoeFormation: {fileID: 696166002}
-  doActionMoveSpeed: 8
-  isUnitRunningToTarget: 0
-  isUnitRunningBack: 0
-  isWaitForPlayerToChooseSkill: 0
-  IsAutoPlay: 0
 --- !u!1 &2144723474
 GameObject:
   m_ObjectHideFlags: 0
