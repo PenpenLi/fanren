@@ -12,6 +12,7 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public delegate void void_fun();
 
     //	// Token: 0x04002DB5 RID: 11701
     //	private const int GLOBALDATA_FILE_SIZE = 1024;
@@ -67,13 +68,10 @@ public class SaveManager : MonoBehaviour
         //SaveManager.AllSaveInfos = new Dictionary<int, SaveManager.SaveInfo>();
         //SaveManager.inheritStruct = new SaveManager.InheritStruct();
         SaveManager.GameDifficulty = 0;
-        //SaveManager.OnLoadOver = null;
+        SaveManager.OnLoadOver = null;
     }
 
-    //	// Token: 0x1400001F RID: 31
-    //	// (add) Token: 0x0600322E RID: 12846 RVA: 0x0016C314 File Offset: 0x0016A514
-    //	// (remove) Token: 0x0600322F RID: 12847 RVA: 0x0016C32C File Offset: 0x0016A52C
-    //	public static event SaveManager.void_fun OnLoadOver;
+    public static event SaveManager.void_fun OnLoadOver;
 
     //	// Token: 0x06003230 RID: 12848 RVA: 0x0016C344 File Offset: 0x0016A544
     //	public static bool Load(string LoadName)
@@ -1795,8 +1793,4 @@ public class SaveManager : MonoBehaviour
     //		// Token: 0x04002DE5 RID: 11749
     //		public int mLSI;
     //	}
-
-    //	// Token: 0x0200184D RID: 6221
-    //	// (Invoke) Token: 0x0601669C RID: 91804
-    //	public delegate void void_fun();
 }

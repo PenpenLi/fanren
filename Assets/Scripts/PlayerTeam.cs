@@ -21,7 +21,7 @@ public class PlayerTeam : MonoBehaviour
     //	[SerializeField]
     //	private List<FlagValue> flagValues = new List<FlagValue>();
 
-    //	public float startWeatherTime = 0.4f;
+    public float startWeatherTime = 0.4f;
 
     public static PlayerTeam instance;
 
@@ -74,6 +74,7 @@ public class PlayerTeam : MonoBehaviour
 
     public void OnLoadTeam(int Level)
     {
+        UnityEngine.Debug.Log("加载队伍");
         ScenesManager.Instance.OnLevelLoaded -= this.OnLoadTeam;
         //if (UniStormWeatherSystem.instance != null)
         //{
@@ -207,7 +208,7 @@ public class PlayerTeam : MonoBehaviour
 
     public void InitTime()
     {
-        //TimeManager.Initialize().AutoSaveInit();
-        //TimeManager.Initialize().weatherTime = this.startWeatherTime;
+        TimeManager.Initialize().AutoSaveInit();
+        TimeManager.Initialize().weatherTime = this.startWeatherTime;
     }
 }

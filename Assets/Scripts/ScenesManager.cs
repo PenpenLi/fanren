@@ -16,15 +16,15 @@ public class ScenesManager : MonoBehaviour
 
     private static int m_loadLevel = -1;
 
-    //	public string flashPath = string.Empty;
+    public string flashPath = string.Empty;
 
     //	private FlashStruct flashStruct;
 
-    //	private string nextDestObjName = string.Empty;
+    private string nextDestObjName = string.Empty;
 
     private int NextLevelIndex = -1;
 
-    //	public static float curSceneBeforeTime;
+    public static float curSceneBeforeTime;
 
     public static int CurLoadedLevel = -1;
 
@@ -83,36 +83,37 @@ public class ScenesManager : MonoBehaviour
             this.OnChangeMap(LevelIndex);
         }
 
-        //MapData data = MapData.GetData(this.loadedLevel);
         string text = string.Empty;
     
         ShowLoading showLoading;
       
-        showLoading = ShowLoading.Initialize("1");        
+        showLoading = ShowLoading.Initialize("1");
 
-        //if (showLoading != null)
-        //{
-        //    string text2 = this.flashPath.ToLanguagePath();
-        //    System.Console.WriteLine("Play flash: " + text2);
-        //    this.flashStruct = FlashManager.Instance.Play(text2, null, new Action<UnityEngine.Object, EventArgs>(this.flashLoadFinish), true, false, ShowLoading.LoadingCamera, null);
-        //    EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
-        //    EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
-        //}
-        //this.OnLevelLoaded = (Action<int>)Delegate.Remove(this.OnLevelLoaded, _OnLevelLoaded);
-        //this.OnLevelLoaded = (Action<int>)Delegate.Combine(this.OnLevelLoaded, _OnLevelLoaded);
-        //if (string.IsNullOrEmpty(DestName))
-        //{
-        //    DestName = "SceneEnter";
-        //}
-        //this.NextDestObjName = DestName;
-        //GameStateManager.ClearState();
+        if (showLoading != null)
+        {
+            //string text2 = this.flashPath.ToLanguagePath();
+            //System.Console.WriteLine("Play flash: " + text2);
+            //this.flashStruct = FlashManager.Instance.Play(text2, null, new Action<UnityEngine.Object, EventArgs>(this.flashLoadFinish), true, false, ShowLoading.LoadingCamera, null);
+            //EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
+            //EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
+        }
+        this.OnLevelLoaded = (Action<int>)Delegate.Remove(this.OnLevelLoaded, _OnLevelLoaded);
+        this.OnLevelLoaded = (Action<int>)Delegate.Combine(this.OnLevelLoaded, _OnLevelLoaded);
+        if (string.IsNullOrEmpty(DestName))
+        {
+            DestName = "SceneEnter";
+        }
+        this.NextDestObjName = DestName;
+        GameStateManager.ClearState();
         //GameStateManager.CurGameState = GameState.Loading;
-        //if (LevelIndex == -1)
-        //{
-        //    Debug.LogError("[Error] : LevelIndex = -1 on ChangeMap");
-        //}
+
+        if (LevelIndex == -1)
+        {
+            Debug.LogError("[Error] : LevelIndex = -1 on ChangeMap");
+        }
+
         ScenesManager.m_loadLevel = LevelIndex;
-        //ScenesManager.m_showLoading = showLoading;
+        ScenesManager.m_showLoading = showLoading;
     }
 
     //	public void flashLoadFinish(UnityEngine.Object obj, EventArgs args)
@@ -151,17 +152,17 @@ public class ScenesManager : MonoBehaviour
     //		this.RandomFlash();
     //	}
 
-    //	public string NextDestObjName
-    //	{
-    //		get
-    //		{
-    //			return this.nextDestObjName;
-    //		}
-    //		set
-    //		{
-    //			this.nextDestObjName = value;
-    //		}
-    //	}
+    public string NextDestObjName
+    {
+        get
+        {
+            return this.nextDestObjName;
+        }
+        set
+        {
+            this.nextDestObjName = value;
+        }
+    }
 
     public void LoadLevel(int LevelIndex)
     {

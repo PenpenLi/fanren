@@ -1970,16 +1970,17 @@ namespace SoftStar.Pal6
             Time.timeScale = 1f;
             UnityEngine.Debug.Log(string.Format("ChangeMap : DestName={0}, LevelIndex={1}, PlayDefaultAudio={2}, SaveDynamicObjs={3}", new object[]
             {
-                        DestName,
-                        LevelIndex,
-                        PlayDefaultAudio,
-                        SaveDynamicObjs
+                DestName,
+                LevelIndex,
+                PlayDefaultAudio,
+                SaveDynamicObjs
             }));
+
             PalBattleManager.Instance().OnSceneChangeClear();
 
             if (ScenesManager.CurLoadedLevel == 11 && LevelIndex != 11)
             {
-                //FlagManager.SetFlag(8, 1, false);
+                FlagManager.SetFlag(8, 1, false);
             }
 
             //if (Cutscene.current != null && (Cutscene.current.isPlaying || Cutscene.current.isPause))
@@ -2000,13 +2001,18 @@ namespace SoftStar.Pal6
             }
 
             PlayersManager.RestoreLayer(true);
+
             //PlayersManager.ChangeHairShader(false);
+
             //if (SaveDynamicObjs)
             //{
             //    DynamicObjsDataManager.Instance.SaveCurObjsDataToMemory();
             //}
+
             //PalMain.ClearManagerData();
-            //ScenesManager.IsChanging = true;
+
+            ScenesManager.IsChanging = true;
+
             //if (PalMain.backgroundAudio != null)
             //{
             //    PalMain.backgroundAudio.PlayDefaultAudio = PlayDefaultAudio;
@@ -2015,6 +2021,7 @@ namespace SoftStar.Pal6
             //{
             //    UnityEngine.Debug.LogError("PalMain.backgroundAudio==null");
             //}
+
             //if (SkillSEPreloader.s_preloadEnable)
             //{
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
@@ -2023,7 +2030,6 @@ namespace SoftStar.Pal6
             ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
         }
 
-        //		// Token: 0x060036E9 RID: 14057 RVA: 0x0018C580 File Offset: 0x0018A780
         //		public static void OnReadySpawn()
         //		{
         //			if (PlayersManager.Player == null)

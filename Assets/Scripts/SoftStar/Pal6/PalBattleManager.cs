@@ -4325,8 +4325,6 @@ namespace SoftStar.Pal6
             //}
         }
 
-        //		// Token: 0x170001F3 RID: 499
-        //		// (get) Token: 0x06001310 RID: 4880 RVA: 0x000BC324 File Offset: 0x000BA524
         //		public bool IsLoadingFinished
         //		{
         //			get

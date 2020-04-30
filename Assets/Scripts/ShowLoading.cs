@@ -107,7 +107,6 @@ public class ShowLoading : MonoBehaviour
         return ShowLoading.Instance;
     }
 
-    //	// Token: 0x060032AF RID: 12975 RVA: 0x00170DC8 File Offset: 0x0016EFC8
     //	public void setDepth(UnityEngine.Object obj, EventArgs args)
     //	{
     //		if (this.LoadingPlane == null)

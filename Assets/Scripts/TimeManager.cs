@@ -54,17 +54,17 @@ public class TimeManager : MonoBehaviour
 			{
 				TimeManager.instance = gameMain.gameObject.AddComponent<TimeManager>();
 			}
-			//SaveManager.OnLoadOver -= TimeManager.instance.AutoSaveInit;
-			//SaveManager.OnLoadOver += TimeManager.instance.AutoSaveInit;
-			//ScenesManager.Instance.OnChangeMap -= TimeManager.instance.RecordWeatherTime;
-			//ScenesManager.Instance.OnChangeMap += TimeManager.instance.RecordWeatherTime;
-			//ScenesManager.Instance.OnLevelLoaded -= TimeManager.instance.RecoverWeatherTime;
-			//ScenesManager.Instance.OnLevelLoaded += TimeManager.instance.RecoverWeatherTime;
-			//GameStateManager.AddInitStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.InitNormal));
-			//GameStateManager.AddEndStateFun(GameState.Cutscene, new GameStateManager.void_fun(TimeManager.EndCutscene));
-			//GameStateManager.AddInitStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.instance.Begin));
-			//GameStateManager.AddEndStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.instance.Pause));
-		}
+            SaveManager.OnLoadOver -= TimeManager.instance.AutoSaveInit;
+            SaveManager.OnLoadOver += TimeManager.instance.AutoSaveInit;
+            //ScenesManager.Instance.OnChangeMap -= TimeManager.instance.RecordWeatherTime;
+            //ScenesManager.Instance.OnChangeMap += TimeManager.instance.RecordWeatherTime;
+            //ScenesManager.Instance.OnLevelLoaded -= TimeManager.instance.RecoverWeatherTime;
+            //ScenesManager.Instance.OnLevelLoaded += TimeManager.instance.RecoverWeatherTime;
+            //GameStateManager.AddInitStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.InitNormal));
+            //GameStateManager.AddEndStateFun(GameState.Cutscene, new GameStateManager.void_fun(TimeManager.EndCutscene));
+            //GameStateManager.AddInitStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.instance.Begin));
+            //GameStateManager.AddEndStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.instance.Pause));
+        }
 		return TimeManager.instance;
 	}
 
@@ -74,7 +74,7 @@ public class TimeManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		//SaveManager.OnLoadOver -= TimeManager.instance.AutoSaveInit;
+		SaveManager.OnLoadOver -= TimeManager.instance.AutoSaveInit;
 		ScenesManager.Instance.OnChangeMap -= TimeManager.instance.RecordWeatherTime;
 		ScenesManager.Instance.OnLevelLoaded -= TimeManager.instance.RecoverWeatherTime;
 		//GameStateManager.RemoveInitStateFun(GameState.Normal, new GameStateManager.void_fun(TimeManager.InitNormal));
