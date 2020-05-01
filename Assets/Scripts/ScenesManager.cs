@@ -80,6 +80,7 @@ public class ScenesManager : MonoBehaviour
 
         if (this.OnChangeMap != null)
         {
+            Debug.LogError("Ö´ÐÐ");
             this.OnChangeMap(LevelIndex);
         }
 
@@ -92,7 +93,7 @@ public class ScenesManager : MonoBehaviour
         if (showLoading != null)
         {
             //string text2 = this.flashPath.ToLanguagePath();
-            //System.Console.WriteLine("Play flash: " + text2);
+            Debug.LogError("Ö´ÐÐ");
             //this.flashStruct = FlashManager.Instance.Play(text2, null, new Action<UnityEngine.Object, EventArgs>(this.flashLoadFinish), true, false, ShowLoading.LoadingCamera, null);
             //EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
             //EntityManager.OnLoadOverEnd = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOverEnd, new EntityManager.void_fun(this.EntityLoadOver));
@@ -105,7 +106,7 @@ public class ScenesManager : MonoBehaviour
         }
         this.NextDestObjName = DestName;
         GameStateManager.ClearState();
-        //GameStateManager.CurGameState = GameState.Loading;
+        GameStateManager.CurGameState = GameState.Loading;
 
         if (LevelIndex == -1)
         {

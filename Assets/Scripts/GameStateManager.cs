@@ -5,54 +5,54 @@ using UnityEngine;
 
 public class GameStateManager
 {
-    //    private static Dictionary<GameState, GameStateManager.void_fun> EndStateFuns = new Dictionary<GameState, GameStateManager.void_fun>();
+    private static Dictionary<GameState, GameStateManager.void_fun> EndStateFuns = new Dictionary<GameState, GameStateManager.void_fun>();
 
-    //    private static Dictionary<GameState, GameStateManager.void_fun> InitStateFuns = new Dictionary<GameState, GameStateManager.void_fun>();
+    private static Dictionary<GameState, GameStateManager.void_fun> InitStateFuns = new Dictionary<GameState, GameStateManager.void_fun>();
 
-    //    public static GameState NextGameState = GameState.None;
+    public static GameState NextGameState = GameState.None;
 
     private static Stack<GameState> m_CurGameState = new Stack<GameState>(new GameState[]
     {
             GameState.None
     });
 
-    //    public delegate void void_fun();
+    public delegate void void_fun();
 
-    //    public static GameState CurGameState
-    //	{
-    //		get
-    //		{
-    //			return GameStateManager.m_CurGameState.Peek();
-    //		}
-    //		set
-    //		{
-    //			GameState gameState = GameStateManager.m_CurGameState.Peek();
-    //			if (gameState == value)
-    //			{
-    //				return;
-    //			}
-    //			if (GameStateManager.m_CurGameState.Count > 1)
-    //			{
-    //				GameStateManager.PopGameState();
-    //			}
-    //			GameStateManager.PushGameState(value);
-    //		}
-    //	}
+    public static GameState CurGameState
+    {
+        get
+        {
+            return GameStateManager.m_CurGameState.Peek();
+        }
+        set
+        {
+            GameState gameState = GameStateManager.m_CurGameState.Peek();
+            if (gameState == value)
+            {
+                return;
+            }
+            if (GameStateManager.m_CurGameState.Count > 1)
+            {
+                GameStateManager.PopGameState();
+            }
+            GameStateManager.PushGameState(value);
+        }
+    }
 
-    //	public static void PushGameState(GameState nv)
-    //	{
-    //		if (GameStateManager.m_CurGameState.Count > 0)
-    //		{
-    //			GameState gameState = GameStateManager.m_CurGameState.Peek();
-    //			GameStateManager.NextGameState = nv;
-    //			if (gameState == GameState.Normal || gameState == GameState.SpecialSmallGame)
-    //			{
-    //				GameStateManager.DoEndStateFun(gameState);
-    //			}
-    //		}
-    //		GameStateManager.m_CurGameState.Push(nv);
-    //		GameStateManager.DoInitStateFun(nv);
-    //	}
+    public static void PushGameState(GameState nv)
+    {
+        if (GameStateManager.m_CurGameState.Count > 0)
+        {
+            GameState gameState = GameStateManager.m_CurGameState.Peek();
+            GameStateManager.NextGameState = nv;
+            if (gameState == GameState.Normal || gameState == GameState.SpecialSmallGame)
+            {
+                GameStateManager.DoEndStateFun(gameState);
+            }
+        }
+        GameStateManager.m_CurGameState.Push(nv);
+        GameStateManager.DoInitStateFun(nv);
+    }
 
     public static GameState PopGameState()
     {
@@ -62,15 +62,15 @@ public class GameStateManager
             return GameStateManager.m_CurGameState.Peek();
         }
         GameState gameState = GameStateManager.m_CurGameState.Peek();
-        //GameStateManager.NextGameState = GameStateManager.m_CurGameState.ToArray()[1];
-        //GameStateManager.DoEndStateFun(gameState);
+        GameStateManager.NextGameState = GameStateManager.m_CurGameState.ToArray()[1];
+        GameStateManager.DoEndStateFun(gameState);
         GameStateManager.m_CurGameState.Pop();
         if (GameStateManager.m_CurGameState.Count > 0)
         {
             GameState gameState2 = GameStateManager.m_CurGameState.Peek();
             if (gameState2 == GameState.Normal || gameState2 == GameState.SpecialSmallGame)
             {
-             // GameStateManager.DoInitStateFun(gameState2);
+                GameStateManager.DoInitStateFun(gameState2);
             }
         }
         return gameState;
@@ -89,21 +89,21 @@ public class GameStateManager
     //		}
     //	}
 
-    //	public static void DoInitStateFun(GameState cs)
-    //	{
-    //		if (GameStateManager.InitStateFuns.ContainsKey(cs))
-    //		{
-    //			GameStateManager.InitStateFuns[cs]();
-    //		}
-    //	}
+    public static void DoInitStateFun(GameState cs)
+    {
+        if (GameStateManager.InitStateFuns.ContainsKey(cs))
+        {
+            GameStateManager.InitStateFuns[cs]();
+        }
+    }
 
-    //	public static void DoEndStateFun(GameState cs)
-    //	{
-    //		if (GameStateManager.EndStateFuns.ContainsKey(cs))
-    //		{
-    //			GameStateManager.EndStateFuns[cs]();
-    //		}
-    //	}
+    public static void DoEndStateFun(GameState cs)
+    {
+        if (GameStateManager.EndStateFuns.ContainsKey(cs))
+        {
+            GameStateManager.EndStateFuns[cs]();
+        }
+    }
 
     //	public static void AddInitStateFun(GameState state, GameStateManager.void_fun fun)
     //	{

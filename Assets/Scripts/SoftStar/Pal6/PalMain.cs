@@ -10,6 +10,7 @@ using System.Text;
 //using SoftStar.Pal6.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YouYou;
 //using UnityStandardAssets.ImageEffects;
 
 namespace SoftStar.Pal6
@@ -1701,6 +1702,7 @@ namespace SoftStar.Pal6
 
         private void OnLevelLoaded(int level)
         {
+            UnityEngine.Debug.Log("Log :加载完毕");
             level = ScenesManager.CurLoadedLevel;
             //PlayerCtrlManager.OnLevelLoaded(level);
             //PalMain.OnReadySpawn();
@@ -2027,7 +2029,8 @@ namespace SoftStar.Pal6
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
             //}
 
-            ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
+            //ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
+            GameEntry.Scene.LoadScene(1);
         }
 
         //		public static void OnReadySpawn()
