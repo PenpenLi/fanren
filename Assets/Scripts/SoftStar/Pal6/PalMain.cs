@@ -2029,8 +2029,7 @@ namespace SoftStar.Pal6
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
             //}
 
-            //ScenesManager.Instance.ChangeMap(DestName, LevelIndex, new Action<int>(PalMain.Instance.OnLevelLoaded));
-            GameEntry.Scene.LoadScene(1);
+            GameEntry.Scene.LoadScene(1,true,OnLoadOver);
         }
 
         //		public static void OnReadySpawn()
@@ -2046,20 +2045,20 @@ namespace SoftStar.Pal6
         //			}
         //		}
 
-        //		// Token: 0x060036EA RID: 14058 RVA: 0x0018C5D0 File Offset: 0x0018A7D0
-        //		public static void OnLoadOver()
-        //		{
-        //			EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
-        //			PalMain.RefreshAllLandMarks();
-        //			DynamicObjsDataManager.Instance.LoadCurObjsDataFromMemory();
-        //			GameStateManager.CurGameState = GameState.Normal;
-        //			PalMain.Instance.SpecialProcessForLevel(ScenesManager.CurLoadedLevel);
-        //			PalMain.ShowMemory();
-        //			if (PalMain.LoadOverEvent != null)
-        //			{
-        //				PalMain.LoadOverEvent();
-        //			}
-        //		}
+        public static void OnLoadOver()
+        {
+            UnityEngine.Debug.Log("加载完毕");
+            //EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
+            //PalMain.RefreshAllLandMarks();
+            //DynamicObjsDataManager.Instance.LoadCurObjsDataFromMemory();
+            //GameStateManager.CurGameState = GameState.Normal;
+            //PalMain.Instance.SpecialProcessForLevel(ScenesManager.CurLoadedLevel);
+            //PalMain.ShowMemory();
+            //if (PalMain.LoadOverEvent != null)
+            //{
+            //    PalMain.LoadOverEvent();
+            //}
+        }
 
         //		// Token: 0x060036EB RID: 14059 RVA: 0x0018C63C File Offset: 0x0018A83C
         //		public static void ShowMemory()
