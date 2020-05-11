@@ -80,7 +80,6 @@ namespace YouYou
         /// <param name="onComplete">加载完毕</param>
         public void LoadScene(int sceneId, bool showLoadingForm = true, BaseAction onComplete = null)
         {
-            GameEntry.Procedure.ChangeState(ProcedureState.ChangeScene);
             if (m_CurrSceneIsLoading)
             {
                 GameEntry.LogError("场景{0}正在加载中", m_CurrLoadSceneId);

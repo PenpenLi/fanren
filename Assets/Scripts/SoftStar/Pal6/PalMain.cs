@@ -2028,7 +2028,7 @@ namespace SoftStar.Pal6
             //{
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
             //}
-
+            GameEntry.Procedure.ChangeState(ProcedureState.ChangeScene);
             GameEntry.Scene.LoadScene(1,true,OnLoadOver);
         }
 
