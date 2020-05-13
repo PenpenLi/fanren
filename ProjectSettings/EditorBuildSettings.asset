@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Download/Scenes/GameScene_DaLi.unity
     guid: 785e4a3ccc69d6b458dc0e3aba50c38f
+  - enabled: 1
+    path: Assets/Scenes/Scene_Start.unity
+    guid: 207a5f833209673488ad215cdc5232c6
   m_configObjects: {}

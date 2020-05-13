@@ -72,8 +72,7 @@ namespace SoftStar.Pal6
         //[SerializeField]
         //private PalMain.WatchType mCurWatchType;
 
-        //		// Token: 0x04003122 RID: 12578
-        //		public static string PlayerName = "Default";
+        public static string PlayerName = "Default";
 
         //		// Token: 0x04003123 RID: 12579
         //		public static List<Landmark> landMarks = new List<Landmark>();
@@ -912,7 +911,7 @@ namespace SoftStar.Pal6
             PalBattleManager.Initialize();
             //			EntityManager.Initialize();
             //			MissionTick.Initialize();
-            //			PlayersManager.Initialize();
+            PlayersManager.Initialize();
             //			RenownManager.Initialize();
             //			AnimWithoutClothSet.Initialize();
             //			SlowLoopAnimSet.Initialize();
@@ -1700,12 +1699,10 @@ namespace SoftStar.Pal6
         //			}
         //		}
 
-        private void OnLevelLoaded(int level)
+        public static void OnLevelLoaded()
         {
-            UnityEngine.Debug.Log("Log :加载完毕");
-            level = ScenesManager.CurLoadedLevel;
-            //PlayerCtrlManager.OnLevelLoaded(level);
-            //PalMain.OnReadySpawn();
+            //PlayerCtrlManager.OnLevelLoaded(1);
+            PalMain.OnReadySpawn();
             //EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Remove(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
             //EntityManager.OnLoadOver = (EntityManager.void_fun)Delegate.Combine(EntityManager.OnLoadOver, new EntityManager.void_fun(PalMain.OnLoadOver));
             //EntityManager.OnLevelWasLoaded(level);
@@ -2029,21 +2026,24 @@ namespace SoftStar.Pal6
             //    SkillSEPreloader.Instance.unLoadAllSkillSE();
             //}
             GameEntry.Procedure.ChangeState(ProcedureState.ChangeScene);
-            GameEntry.Scene.LoadScene(1,true,OnLoadOver);
+            GameEntry.Scene.LoadScene(1,true, OnLevelLoaded);
         }
 
-        //		public static void OnReadySpawn()
-        //		{
-        //			if (PlayersManager.Player == null)
-        //			{
-        //				PlayersManager.SpawnPlayer(null, null, false);
-        //			}
-        //			PlayersManager.SetPlayerPosByDestObj(ScenesManager.Instance.NextDestObjName);
-        //			if (PlayersManager.Player != null)
-        //			{
-        //				PalMain.SetMainCamera(PlayersManager.Player);
-        //			}
-        //		}
+        /// <summary>
+        /// 读取出生点
+        /// </summary>
+        public static void OnReadySpawn()
+        {
+            if (PlayersManager.Player == null)
+            {
+                PlayersManager.SpawnPlayer(null, null, false);
+            }
+            //PlayersManager.SetPlayerPosByDestObj(ScenesManager.Instance.NextDestObjName);
+            //if (PlayersManager.Player != null)
+            //{
+            //    //PalMain.SetMainCamera(PlayersManager.Player);
+            //}
+        }
 
         public static void OnLoadOver()
         {

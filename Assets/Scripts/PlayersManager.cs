@@ -5,173 +5,162 @@ using SoftStar.Pal6;
 //using SoftStar.Pal6.UI;
 using UnityEngine;
 
+/// <summary>
+/// 玩家管理器
+/// </summary>
 public class PlayersManager
 {
+    public static GameObject curCtrlModel = null;
 
-    //	// Token: 0x040031D8 RID: 12760
-    //	public static GameObject curCtrlModel = null;
+    public static List<GameObject> ActivePlayers = new List<GameObject>();
 
-    //	// Token: 0x040031D9 RID: 12761
-    //	public static List<GameObject> ActivePlayers = new List<GameObject>();
-
+    /// <summary>
+    /// 全部角色
+    /// </summary>
     public static List<GameObject> AllPlayers = new List<GameObject>();
 
-    //	// Token: 0x040031DB RID: 12763
-    //	private static List<PerceptionRange> AllPlayersPerceptionRange = new List<PerceptionRange>();
+    /// <summary>
+    /// 全部玩家感知范围
+    /// </summary>
+    private static List<PerceptionRange> AllPlayersPerceptionRange = new List<PerceptionRange>();
 
-    //	// Token: 0x040031DC RID: 12764
-    //	private static int PlayerIndex = 0;
+    private static int PlayerIndex = 0;
 
-    //	// Token: 0x040031DD RID: 12765
     //	private static string PlayerTemplatePath = "Template/Character/";
 
-    //	// Token: 0x040031DE RID: 12766
     //	public static Action<int> OnAddPlayer = null;
 
-    //	// Token: 0x040031DF RID: 12767
     //	private static Transform tempDestTF = null;
 
-    //	// Token: 0x040031E0 RID: 12768
     //	private static int TempPlayersCount = 0;
 
-    //	// Token: 0x040031E1 RID: 12769
     //	private static int TempPlayerIndex = 0;
 
     static PlayersManager()
     {
-        //PlayersManager.OnTabPlayer = null;
-        //PlayersManager.OnRemovePlayer = null;
+        PlayersManager.OnTabPlayer = null;
+        PlayersManager.OnRemovePlayer = null;
     }
 
-    //	// Token: 0x14000028 RID: 40
-    //	// (add) Token: 0x0600375E RID: 14174 RVA: 0x0019170C File Offset: 0x0018F90C
-    //	// (remove) Token: 0x0600375F RID: 14175 RVA: 0x00191724 File Offset: 0x0018F924
-    //	public static event Action<int> OnTabPlayer;
+    public static event Action<int> OnTabPlayer;
 
-    //	// Token: 0x14000029 RID: 41
-    //	// (add) Token: 0x06003760 RID: 14176 RVA: 0x0019173C File Offset: 0x0018F93C
-    //	// (remove) Token: 0x06003761 RID: 14177 RVA: 0x00191754 File Offset: 0x0018F954
     //	public static event Action<PalNPC> OnAfterSetPlayer;
 
-    //	// Token: 0x1400002A RID: 42
-    //	// (add) Token: 0x06003762 RID: 14178 RVA: 0x0019176C File Offset: 0x0018F96C
-    //	// (remove) Token: 0x06003763 RID: 14179 RVA: 0x00191784 File Offset: 0x0018F984
-    //	public static event Action<int> OnRemovePlayer;
+    public static event Action<int> OnRemovePlayer;
 
-    //	// Token: 0x1700043B RID: 1083
-    //	// (get) Token: 0x06003764 RID: 14180 RVA: 0x0019179C File Offset: 0x0018F99C
-    //	public static GameObject Player
-    //	{
-    //		get
-    //		{
-    //			if (PlayersManager.curCtrlModel != null)
-    //			{
-    //				return PlayersManager.curCtrlModel;
-    //			}
-    //			if (PlayersManager.ActivePlayers.Count < 1)
-    //			{
-    //				GameObject gameObject = GameObject.FindWithTag("Player");
-    //				if (gameObject != null)
-    //				{
-    //					PlayersManager.ActivePlayers.Add(gameObject);
-    //				}
-    //			}
-    //			if (PlayersManager.PlayerIndex < 0 || PlayersManager.PlayerIndex >= PlayersManager.ActivePlayers.Count)
-    //			{
-    //				return null;
-    //			}
-    //			return PlayersManager.ActivePlayers[PlayersManager.PlayerIndex];
-    //		}
-    //	}
+    public static GameObject Player
+    {
+        get
+        {
+            if (PlayersManager.curCtrlModel != null)
+            {
+                return PlayersManager.curCtrlModel;
+            }
+            if (PlayersManager.ActivePlayers.Count < 1)
+            {
+                GameObject gameObject = GameObject.FindWithTag("Player");
+                if (gameObject != null)
+                {
+                    PlayersManager.ActivePlayers.Add(gameObject);
+                }
+            }
+            if (PlayersManager.PlayerIndex < 0 || PlayersManager.PlayerIndex >= PlayersManager.ActivePlayers.Count)
+            {
+                return null;
+            }
+            return PlayersManager.ActivePlayers[PlayersManager.PlayerIndex];
+        }
+    }
 
-    //	// Token: 0x06003765 RID: 14181 RVA: 0x00191824 File Offset: 0x0018FA24
-    //	public static void Initialize()
-    //	{
-    //		PlayersManager.AllPlayers.Clear();
-    //		PlayersManager.AllPlayersPerceptionRange.Clear();
-    //		for (int i = 0; i < 8; i++)
-    //		{
-    //			if (i != 6)
-    //			{
-    //				GameObject gameObject = PlayersManager.FindMainChar(i, true);
-    //				if (!(gameObject == null))
-    //				{
-    //					PalNPC component = gameObject.GetComponent<PalNPC>();
-    //					if (!(component == null))
-    //					{
-    //						PalNPC palNPC = component;
-    //						palNPC.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.SetClothFar));
-    //					}
-    //				}
-    //			}
-    //		}
-    //		GameObject gameObject2 = PlayersManager.FindMainChar(0, true);
-    //		if (gameObject2 != null)
-    //		{
-    //			PalNPC component2 = gameObject2.GetComponent<PalNPC>();
-    //			if (component2 == null)
-    //			{
-    //				Debug.Log("PlayersManager.Initialize: NPC 0 is null");
-    //			}
-    //			else
-    //			{
-    //				PalNPC palNPC2 = component2;
-    //				palNPC2.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC2.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
-    //			}
-    //		}
-    //		GameObject gameObject3 = PlayersManager.FindMainChar(5, true);
-    //		if (gameObject3 != null)
-    //		{
-    //			PalNPC component3 = gameObject3.GetComponent<PalNPC>();
-    //			if (component3 == null)
-    //			{
-    //				Debug.Log("PlayersManager.Initialize: NPC 5 is null");
-    //			}
-    //			else
-    //			{
-    //				PalNPC palNPC3 = component3;
-    //				palNPC3.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC3.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
-    //			}
-    //		}
-    //		GameObject gameObject4 = PlayersManager.FindMainChar(3, true);
-    //		if (gameObject4 != null)
-    //		{
-    //			ModelChangeScript component4 = gameObject4.GetComponent<ModelChangeScript>();
-    //			if (component4 != null)
-    //			{
-    //				ModelChangeScript modelChangeScript = component4;
-    //				modelChangeScript.OnSetModeEnd = (Action<PalNPC>)Delegate.Combine(modelChangeScript.OnSetModeEnd, new Action<PalNPC>(PlayersManager.OnSetModeEnd));
-    //			}
-    //		}
-    //		GameObject gameObject5 = PlayersManager.FindMainChar(4, true);
-    //		if (gameObject5 != null)
-    //		{
-    //			PalNPC component5 = gameObject5.GetComponent<PalNPC>();
-    //			if (component5 == null)
-    //			{
-    //				Debug.Log("PlayersManager.Initialize: NPC 4 is null");
-    //			}
-    //			else if (component5.model != null)
-    //			{
-    //				Agent component6 = component5.model.GetComponent<Agent>();
-    //				component6.CrossZhuoDiTime = 0.12f;
-    //			}
-    //			else
-    //			{
-    //				PalNPC palNPC4 = component5;
-    //				palNPC4.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC4.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
-    //			}
-    //		}
-    //		GameObject gameObject6 = PlayersManager.FindMainChar(7, true);
-    //		if (gameObject6 != null)
-    //		{
-    //			PlayersManager.PlayerInitSneakScript(gameObject6, null);
-    //		}
-    //		ScenesManager.Instance.OnChangeMap -= PlayersManager.OnChangeMap;
-    //		ScenesManager.Instance.OnChangeMap += PlayersManager.OnChangeMap;
-    //		FlagManager.OnSetFlag = (Action<int, int>)Delegate.Remove(FlagManager.OnSetFlag, new Action<int, int>(PlayersManager.OnSetFlag));
-    //		FlagManager.OnSetFlag = (Action<int, int>)Delegate.Combine(FlagManager.OnSetFlag, new Action<int, int>(PlayersManager.OnSetFlag));
-    //	}
+    public static void Initialize()
+    {
+        PlayersManager.AllPlayers.Clear();
+        PlayersManager.AllPlayersPerceptionRange.Clear();
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (i != 6)
+            {
+                GameObject gameObject = PlayersManager.FindMainChar(i, true);
+                //if (!(gameObject == null))
+                //{
+                //    PalNPC component = gameObject.GetComponent<PalNPC>();
+                //    if (!(component == null))
+                //    {
+                //        PalNPC palNPC = component;
+                //        palNPC.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.SetClothFar));
+                //    }
+                //}
+            }
+        }
+
+        //GameObject gameObject2 = PlayersManager.FindMainChar(0, true);
+        //if (gameObject2 != null)
+        //{
+        //    PalNPC component2 = gameObject2.GetComponent<PalNPC>();
+        //    if (component2 == null)
+        //    {
+        //        Debug.Log("PlayersManager.Initialize: NPC 0 is null");
+        //    }
+        //    else
+        //    {
+        //        PalNPC palNPC2 = component2;
+        //        palNPC2.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC2.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
+        //    }
+        //}
+        //GameObject gameObject3 = PlayersManager.FindMainChar(5, true);
+        //if (gameObject3 != null)
+        //{
+        //    PalNPC component3 = gameObject3.GetComponent<PalNPC>();
+        //    if (component3 == null)
+        //    {
+        //        Debug.Log("PlayersManager.Initialize: NPC 5 is null");
+        //    }
+        //    else
+        //    {
+        //        PalNPC palNPC3 = component3;
+        //        palNPC3.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC3.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
+        //    }
+        //}
+        //GameObject gameObject4 = PlayersManager.FindMainChar(3, true);
+        //if (gameObject4 != null)
+        //{
+        //    ModelChangeScript component4 = gameObject4.GetComponent<ModelChangeScript>();
+        //    if (component4 != null)
+        //    {
+        //        ModelChangeScript modelChangeScript = component4;
+        //        modelChangeScript.OnSetModeEnd = (Action<PalNPC>)Delegate.Combine(modelChangeScript.OnSetModeEnd, new Action<PalNPC>(PlayersManager.OnSetModeEnd));
+        //    }
+        //}
+        //GameObject gameObject5 = PlayersManager.FindMainChar(4, true);
+        //if (gameObject5 != null)
+        //{
+        //    PalNPC component5 = gameObject5.GetComponent<PalNPC>();
+        //    if (component5 == null)
+        //    {
+        //        Debug.Log("PlayersManager.Initialize: NPC 4 is null");
+        //    }
+        //    else if (component5.model != null)
+        //    {
+        //        Agent component6 = component5.model.GetComponent<Agent>();
+        //        component6.CrossZhuoDiTime = 0.12f;
+        //    }
+        //    else
+        //    {
+        //        PalNPC palNPC4 = component5;
+        //        palNPC4.OnLoadModelEnd = (PalNPC.void_fun_TF)Delegate.Combine(palNPC4.OnLoadModelEnd, new PalNPC.void_fun_TF(PlayersManager.OnLoadModelEnd));
+        //    }
+        //}
+        //GameObject gameObject6 = PlayersManager.FindMainChar(7, true);
+        //if (gameObject6 != null)
+        //{
+        //    PlayersManager.PlayerInitSneakScript(gameObject6, null);
+        //}
+        //ScenesManager.Instance.OnChangeMap -= PlayersManager.OnChangeMap;
+        //ScenesManager.Instance.OnChangeMap += PlayersManager.OnChangeMap;
+        //FlagManager.OnSetFlag = (Action<int, int>)Delegate.Remove(FlagManager.OnSetFlag, new Action<int, int>(PlayersManager.OnSetFlag));
+        //FlagManager.OnSetFlag = (Action<int, int>)Delegate.Combine(FlagManager.OnSetFlag, new Action<int, int>(PlayersManager.OnSetFlag));
+    }
 
     //	// Token: 0x06003766 RID: 14182 RVA: 0x00191AD8 File Offset: 0x0018FCD8
     //	public static void BeforeLoadData()
@@ -734,89 +723,87 @@ public class PlayersManager
     //		}
     //	}
 
-    //	// Token: 0x06003778 RID: 14200 RVA: 0x00192A90 File Offset: 0x00190C90
-    //	public static GameObject GetPlayer(int ID)
-    //	{
-    //		GameObject result = null;
-    //		foreach (GameObject gameObject in PlayersManager.ActivePlayers)
-    //		{
-    //			if (gameObject != null && gameObject.name == ID.ToString())
-    //			{
-    //				result = gameObject;
-    //				break;
-    //			}
-    //		}
-    //		return result;
-    //	}
+    public static GameObject GetPlayer(int ID)
+    {
+        GameObject result = null;
+        foreach (GameObject gameObject in PlayersManager.ActivePlayers)
+        {
+            if (gameObject != null && gameObject.name == ID.ToString())
+            {
+                result = gameObject;
+                break;
+            }
+        }
+        return result;
+    }
 
-    //	// Token: 0x06003779 RID: 14201 RVA: 0x00192B1C File Offset: 0x00190D1C
-    //	public static GameObject FindMainChar(int ID, bool NeedAddToAllPlayers = true)
-    //	{
-    //		for (int i = 0; i < PlayersManager.AllPlayers.Count; i++)
-    //		{
-    //			GameObject gameObject = PlayersManager.AllPlayers[i];
-    //			if (!(gameObject == null))
-    //			{
-    //				if (gameObject.name == ID.ToString())
-    //				{
-    //					return gameObject;
-    //				}
-    //			}
-    //		}
-    //		GameObject gameObject2 = GameObject.Find("/" + ID.ToString());
-    //		if (gameObject2 == null)
-    //		{
-    //			gameObject2 = GameObject.Find(ID.ToString());
-    //		}
-    //		if (NeedAddToAllPlayers && gameObject2 != null && ID != 6)
-    //		{
-    //			PlayersManager.AllPlayers.Add(gameObject2);
-    //		}
-    //		return gameObject2;
-    //	}
+    public static GameObject FindMainChar(int ID, bool NeedAddToAllPlayers = true)
+    {
+        for (int i = 0; i < PlayersManager.AllPlayers.Count; i++)
+        {
+            GameObject gameObject = PlayersManager.AllPlayers[i];
+            if (!(gameObject == null))
+            {
+                if (gameObject.name == ID.ToString())
+                {
+                    return gameObject;
+                }
+            }
+        }
+        GameObject gameObject2 = GameObject.Find("/" + ID.ToString());
+        if (gameObject2 == null)
+        {
+            gameObject2 = GameObject.Find(ID.ToString());
+        }
+        if (NeedAddToAllPlayers && gameObject2 != null && ID != 6)
+        {
+            PlayersManager.AllPlayers.Add(gameObject2);
+        }
+        return gameObject2;
+    }
 
-    //	// Token: 0x0600377A RID: 14202 RVA: 0x00192BD0 File Offset: 0x00190DD0
-    //	public static GameObject AddPlayer(int ID, bool bSetLevel = true)
-    //	{
-    //		GameObject player = PlayersManager.GetPlayer(ID);
-    //		if (player != null)
-    //		{
-    //			Debug.Log("PlayersManager.AddPlayer 已经存在" + ID.ToString());
-    //			return player;
-    //		}
-    //		GameObject gameObject = PlayersManager.FindMainChar(ID, true);
-    //		if (gameObject != null && gameObject.GetComponent<PalNPC>() != null)
-    //		{
-    //			PlayersManager.AddPlayer(gameObject, bSetLevel);
-    //			if (PlayersManager.ActivePlayers.Count == 1)
-    //			{
-    //				PlayersManager.SetPlayer(ID, false);
-    //			}
-    //			if (ID != 6 && PlayersManager.OnAddPlayer != null)
-    //			{
-    //				PlayersManager.OnAddPlayer(ID);
-    //			}
-    //			return gameObject;
-    //		}
-    //		GameObject gameObject2 = PlayersManager.LoadPlayer(ID);
-    //		if (gameObject2 != null)
-    //		{
-    //			if (PlayersManager.AllPlayers.Count > ID + 1 && PlayersManager.AllPlayers[ID] == null)
-    //			{
-    //				PlayersManager.AllPlayers[ID] = gameObject2;
-    //			}
-    //			PlayersManager.AddPlayer(gameObject2, bSetLevel);
-    //			if (ID == 4)
-    //			{
-    //				PlayersManager.AddPlayer(6, true);
-    //			}
-    //		}
-    //		if (ID != 6 && PlayersManager.OnAddPlayer != null)
-    //		{
-    //			PlayersManager.OnAddPlayer(ID);
-    //		}
-    //		return gameObject2;
-    //	}
+    public static GameObject AddPlayer(int ID, bool bSetLevel = true)
+    {
+        GameObject player = PlayersManager.GetPlayer(ID);
+        //if (player != null)
+        //{
+        //    Debug.Log("PlayersManager.AddPlayer 已经存在" + ID.ToString());
+        //    return player;
+        //}
+        //GameObject gameObject = PlayersManager.FindMainChar(ID, true);
+        //if (gameObject != null && gameObject.GetComponent<PalNPC>() != null)
+        //{
+        //    PlayersManager.AddPlayer(gameObject, bSetLevel);
+        //    if (PlayersManager.ActivePlayers.Count == 1)
+        //    {
+        //        PlayersManager.SetPlayer(ID, false);
+        //    }
+        //    if (ID != 6 && PlayersManager.OnAddPlayer != null)
+        //    {
+        //        PlayersManager.OnAddPlayer(ID);
+        //    }
+        //    return gameObject;
+        //}
+        //GameObject gameObject2 = PlayersManager.LoadPlayer(ID);
+        //if (gameObject2 != null)
+        //{
+        //    if (PlayersManager.AllPlayers.Count > ID + 1 && PlayersManager.AllPlayers[ID] == null)
+        //    {
+        //        PlayersManager.AllPlayers[ID] = gameObject2;
+        //    }
+        //    PlayersManager.AddPlayer(gameObject2, bSetLevel);
+        //    if (ID == 4)
+        //    {
+        //        PlayersManager.AddPlayer(6, true);
+        //    }
+        //}
+        //if (ID != 6 && PlayersManager.OnAddPlayer != null)
+        //{
+        //    PlayersManager.OnAddPlayer(ID);
+        //}
+        //return gameObject2;
+        return null;
+    }
 
     //	// Token: 0x0600377B RID: 14203 RVA: 0x00192CE4 File Offset: 0x00190EE4
     //	private static void SetLevel(GameObject go)
@@ -1032,20 +1019,15 @@ public class PlayersManager
     //		}
     //	}
 
-    //	// Token: 0x06003782 RID: 14210 RVA: 0x001931FC File Offset: 0x001913FC
-    //	public static GameObject SpawnPlayer(string path = null, string DestPosName = null, bool NeedSetCamera = false)
-    //	{
-    //		if (Application.loadedLevelName != "Start")
-    //		{
-    //			GameObject gameObject = PlayersManager.AddPlayer(0, true);
-    //			PlayersManager.SetPlayer(0, true);
-    //		}
-    //		if (!string.IsNullOrEmpty(DestPosName))
-    //		{
-    //			PlayersManager.SetPlayerPosByDestObj(DestPosName);
-    //		}
-    //		return PlayersManager.Player;
-    //	}
+    public static GameObject SpawnPlayer(string path = null, string DestPosName = null, bool NeedSetCamera = false)
+    {
+        //if (Application.loadedLevelName != "Start")
+        //{
+        GameObject gameObject = PlayersManager.AddPlayer(0, true);
+        //PlayersManager.SetPlayer(0, true);
+        //}
+        return PlayersManager.Player;
+    }
 
     //	// Token: 0x06003783 RID: 14211 RVA: 0x00193244 File Offset: 0x00191444
     //	public static void SetPlayerPosByDestObj(string DestName)
