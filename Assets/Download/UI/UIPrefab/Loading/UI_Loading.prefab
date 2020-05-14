@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224898252325189130}
   - component: {fileID: 222509371362887302}
-  - component: {fileID: 466046203283166150}
+  - component: {fileID: 114903840000054890}
   m_Layer: 5
   m_Name: txtTip
   m_TagString: Untagged
@@ -151,7 +151,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688222989497158}
   m_CullTransparentMesh: 0
---- !u!114 &466046203283166150
+--- !u!114 &114903840000054890
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u6B63\u5728\u66F4\u65B0\u8D44\u6E90 18/80"
 --- !u!1 &1703956128941766
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,13 +429,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1988337133857764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f60481f0dc8974093805aa18f97278, type: 3}
+  m_Script: {fileID: 11500000, guid: 551f57429244f944cace364d12e3143d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtTip: {fileID: 0}
-  txtSize: {fileID: 0}
-  txtResourceVersion: {fileID: 0}
-  scrollbar: {fileID: 0}
+  luaScript: {fileID: 4900000, guid: 55b57dc7e695bca46b8a8b2888f1afa9, type: 3}
+  m_LuaComGroups:
+  - Name: Common
+    LuaComs:
+    - Name: Scrollbar
+      Type: 9
+      Trans: {fileID: 224663870242395664}
+    - Name: txtTip
+      Type: 5
+      Trans: {fileID: 224898252325189130}
+    - Name: imgBG
+      Type: 7
+      Trans: {fileID: 224577593791626628}
 --- !u!223 &223887179264670012
 Canvas:
   m_ObjectHideFlags: 0
@@ -473,4 +482,4 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 311
