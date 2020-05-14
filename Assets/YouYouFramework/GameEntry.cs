@@ -248,6 +248,7 @@ namespace YouYou
         /// 更新组件列表
         /// </summary>
         private static readonly LinkedList<IUpdateComponent> m_UpdateComponentList = new LinkedList<IUpdateComponent>();
+        internal static YouYouLanguage CurrLanguage;
 
         #region RegisterUpdateComponent 注册更新组件
         /// <summary>
